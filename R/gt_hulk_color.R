@@ -1,4 +1,9 @@
-#' Apply 'hulk' palette to specific columns in a gt table. The hulk names comes from the idea of a divergin purple and green theme that is colorblind safe and visually appealing. It is a useful alternative to the red/green palette.
+#' Apply 'hulk' palette to specific columns in a gt table.
+#' @description
+#' The hulk names comes from the idea of a diverging purple and green theme
+#' that is colorblind safe and visually appealing.
+#' It is a useful alternative to the red/green palette where purple typically
+#' can indicate low or "bad" value, and green can indicate a high or "good" value.
 #'
 #' @param gt_object An existing gt table object
 #' @param ... columns to apply color to

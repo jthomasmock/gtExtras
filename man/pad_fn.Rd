@@ -15,7 +15,8 @@ pad_fn(x, nsmall = 2)
 Returns a gt table
 }
 \description{
-Pad a vector of numbers to align on the decimal point.
+This helper function adds whitespace to numeric values so that they can
+be aligned on the decimal without requiring additional trailing zeroes.
 }
 \section{Figures}{
 

@@ -71,7 +71,7 @@
 <a href="#gtextras" class="anchor"></a>gtExtras</h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p>The goal of gtExtras is to …</p>
+<p>The goal of gtExtras is to provide some additional helper functions to assist in creating beautiful tables with <a href="https://gt.rstudio.com/">gt</a></p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -85,6 +85,8 @@
 <p>This function allows you to format your columns only on the first row, where remaining rows in that column have whitespace added to the end to maintain proper alignment.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jthomasmock/gtExtra">gtExtras</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/">gt</a></span><span class="op">)</span>
+
 <span class="va">gtcars</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">mfr</span>, <span class="va">year</span>, <span class="va">bdy_style</span>, <span class="va">mpg_h</span>, <span class="va">hp</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -105,12 +107,12 @@
 <p>You can use <code><a href="reference/pad_fn.html">pad_fn()</a></code> with <code><a href="https://gt.rstudio.com/reference/fmt.html">gt::fmt()</a></code> to pad specific columns that contain numeric values. You will use it when you want to “decimal align” the values in the column, but not require printing extra trailing zeroes.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.2345</span>, <span class="fl">12.345</span>, <span class="fl">123.45</span>, <span class="fl">1234.5</span>, <span class="fl">12345</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">gt</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">fmt</span><span class="op">(</span>fns <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="fu"><a href="reference/pad_fn.html">pad_fn</a></span><span class="op">(</span><span class="va">x</span>, nsmall <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">}</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">tab_style</span><span class="op">(</span>
+  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://gt.rstudio.com/reference/fmt.html">fmt</a></span><span class="op">(</span>fns <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="fu"><a href="reference/pad_fn.html">pad_fn</a></span><span class="op">(</span><span class="va">x</span>, nsmall <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">}</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://gt.rstudio.com/reference/tab_style.html">tab_style</a></span><span class="op">(</span>
     <span class="co"># MUST USE A MONO-SPACED FONT</span>
-    style <span class="op">=</span> <span class="fu">cell_text</span><span class="op">(</span>font <span class="op">=</span> <span class="fu">google_font</span><span class="op">(</span><span class="st">"Fira Mono"</span><span class="op">)</span><span class="op">)</span>,
-    locations <span class="op">=</span> <span class="fu">cells_body</span><span class="op">(</span>columns <span class="op">=</span> <span class="va">x</span><span class="op">)</span>
+    style <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/cell_text.html">cell_text</a></span><span class="op">(</span>font <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/google_font.html">google_font</a></span><span class="op">(</span><span class="st">"Fira Mono"</span><span class="op">)</span><span class="op">)</span>,
+    locations <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/cells_body.html">cells_body</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="va">x</span><span class="op">)</span>
     <span class="op">)</span></code></pre></div>
 <p align="center">
 <img src="reference/figures/gt_pad_fn.png" width="200px"></p>
@@ -121,13 +123,13 @@
 <p>The package includes two different themes, the <code><a href="reference/gt_theme_538.html">gt_theme_538()</a></code> styled after FiveThirtyEight style tables, and <code><a href="reference/gt_theme_espn.html">gt_theme_espn()</a></code> styled after ESPN style tables.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">gt</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="reference/gt_theme_538.html">gt_theme_538</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p align="center">
 <img src="reference/figures/gt_538.png" width="700px"></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">gt</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="reference/gt_theme_538.html">gt_theme_538</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p align="center">
 <img src="reference/figures/gt_espn.png" width="700px"></p>
@@ -182,9 +184,8 @@
 <div class="license">
 <h2>License</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
-</li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
 <div class="developers">

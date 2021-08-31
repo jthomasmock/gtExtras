@@ -1,5 +1,8 @@
 #' Aligning first-row text only
-#'
+#' @description
+#' This is an experimental function that allows you to apply a suffix/symbol
+#' to only the first row of a table, and maintain the alignment with whitespace
+#' in the remaining rows.
 #' @param gt_data An existing gt table object
 #' @param column columns to apply color to with tidyeval
 #' @param symbol The HTML code or raw character string of the symbol being inserted, optionally

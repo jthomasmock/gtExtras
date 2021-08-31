@@ -1,5 +1,7 @@
 #' Pad a vector of numbers to align on the decimal point.
-#'
+#' @description
+#' This helper function adds whitespace to numeric values so that they can
+#' be aligned on the decimal without requiring additional trailing zeroes.
 #' @param x a vector of numbers to pad/align at the decimal point
 #' @param nsmall max number of decimal places to round at/display
 #' @return Returns a gt table

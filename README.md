@@ -6,7 +6,8 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of gtExtras is to …
+The goal of gtExtras is to provide some additional helper functions to
+assist in creating beautiful tables with `{gt}`
 
 ## Installation
 
@@ -25,6 +26,8 @@ maintain proper alignment.
 
 ``` r
 library(gtExtras)
+library(gt)
+
 gtcars %>%
   head() %>%
   dplyr::select(mfr, year, bdy_style, mpg_h, hp) %>%

@@ -33,7 +33,9 @@ fmt_symbol_first(
 Returns a gt table
 }
 \description{
-Aligning first-row text only
+This is an experimental function that allows you to apply a suffix/symbol
+to only the first row of a table, and maintain the alignment with whitespace
+in the remaining rows.
 }
 \section{Figures}{
 

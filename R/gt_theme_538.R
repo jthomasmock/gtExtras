@@ -40,7 +40,7 @@ gt_theme_538 <- function(gt_object,...) {
         columns = everything(),
         # This is a relatively sneaky way of changing the bottom border
         # Regardless of data size
-        rows = nrow(data$`_data`)
+        rows = nrow(gt_object[["_data"]])
       )
     )  %>%
     tab_options(

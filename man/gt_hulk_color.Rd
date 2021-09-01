@@ -4,26 +4,47 @@
 \alias{gt_hulk_color}
 \title{Apply 'hulk' palette to specific columns in a gt table.}
 \usage{
-gt_hulk_color(gt_object, columns = NULL, ..., trim = FALSE)
+gt_hulk_color(gt_object, columns = NULL, domain = NULL, ..., trim = FALSE)
 }
 \arguments{
-\item{...}{Additional arguments passed to scales::col_numeric}
+\item{gt_object}{An existing gt table object}
+
+\item{columns}{The columns wherein changes to cell data colors should occur.}
+
+\item{domain}{The possible values that can be mapped.
+
+For \code{col_numeric} and \code{col_bin}, this can be a simple numeric
+range (e.g. \code{c(0, 100)}); \code{col_quantile} needs representative
+numeric data; and \code{col_factor} needs categorical data.
+
+If \code{NULL}, then whenever the resulting colour function is called, the
+\code{x} value will represent the domain. This implies that if the function
+is invoked multiple times, the encoding between values and colours may not
+be consistent; if consistency is needed, you must provide a non-\code{NULL}
+domain.}
+
+\item{...}{
+  Arguments passed on to \code{\link[scales:col_numeric]{scales::col_numeric}}
+  \describe{
+    \item{\code{palette}}{The colours or colour function that values will be mapped to}
+    \item{\code{na.color}}{The colour to return for \code{NA} values. Note that
+\code{na.color = NA} is valid.}
+    \item{\code{alpha}}{Whether alpha channels should be respected or ignored. If \code{TRUE}
+then colors without explicit alpha information will be treated as fully
+opaque.}
+    \item{\code{reverse}}{Whether the colors (or color function) in \code{palette} should be
+used in reverse order. For example, if the default order of a palette goes
+from blue to green, then \code{reverse = TRUE} will result in the colors going
+from green to blue.}
+  }}
 
 \item{trim}{trim the palette to give less intense maximal colors}
-
-\item{gt_data}{An existing gt table object}
-
-\item{na.color}{Applies to scales::col_numeric, the colour to return for NA values. Note that na.color = NA is valid.}
-
-\item{alpha}{Applies to scales:col_numeric, Whether alpha channels should be respected or ignored. If TRUE then colors without explicit alpha information will be treated as fully opaque.}
-
-\item{reverse}{Applied to scales::col_numeric, Whether the colors (or color function) in palette should be used in reverse order. The default order of this palette goes from purple to green, then reverse = TRUE will result in the colors going from green to purple.}
 }
 \value{
 Returns a gt table
 }
 \description{
-The hulk names comes from the idea of a diverging purple and green theme
+The hulk name comes from the idea of a diverging purple and green theme
 that is colorblind safe and visually appealing.
 It is a useful alternative to the red/green palette where purple typically
 can indicate low or "bad" value, and green can indicate a high or "good" value.

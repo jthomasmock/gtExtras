@@ -4,10 +4,10 @@
 \alias{gt_theme_espn}
 \title{Apply ESPN theme to a gt table}
 \usage{
-gt_theme_espn(data, ...)
+gt_theme_espn(gt_data, ...)
 }
 \arguments{
-\item{data}{An existing gt table object}
+\item{gt_data}{An existing gt table object}
 
 \item{...}{Optional additional arguments to gt::table_options()}
 }

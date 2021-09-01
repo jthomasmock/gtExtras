@@ -4,10 +4,10 @@
 \alias{gt_theme_538}
 \title{Apply FiveThirtyEight theme to a gt table}
 \usage{
-gt_theme_538(data, ...)
+gt_theme_538(gt_data, ...)
 }
 \arguments{
-\item{data}{An existing gt table object}
+\item{gt_data}{An existing gt table object}
 
 \item{...}{Optional additional arguments to gt::table_options()}
 }

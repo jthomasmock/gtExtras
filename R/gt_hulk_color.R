@@ -5,13 +5,13 @@
 #' It is a useful alternative to the red/green palette where purple typically
 #' can indicate low or "bad" value, and green can indicate a high or "good" value.
 #'
-#' @param gt_object An existing gt table object
+#' @param gt_data An existing gt table object
 #' @param ... columns to apply color to
 #' @param trim trim the palette to give less intense maximal colors
-#' @param reverse reverse the color palette. The default is green = high and purple = low, but reverse = TRUE will make purple high and green low.
 #' @return Returns a gt table
 #' @importFrom gt %>%
 #' @importFrom scales col_numeric
+#' @inheritParams scales::col_numeric
 #' @export
 #' @import gt
 #' @examples
@@ -44,10 +44,10 @@
 #'
 
 
-gt_hulk_color <- function(gt_object, ..., domain = NULL, trim = FALSE, reverse = FALSE){
+gt_hulk_color <- function(gt_object, columns = NULL, domain = NULL,..., trim = FALSE){
 
-  pal_hex <- c("#1b7837", "#7fbf7b", "#d9f0d3", "#f7f7f7",
-               "#e7d4e8", "#af8dc3", "#762a83")
+  pal_hex <- c("#762a83", "#af8dc3", "#e7d4e8", "#f7f7f7",
+               "#d9f0d3", "#7fbf7b", "#1b7837")
 
   pal_hex <- if(isTRUE(trim)){
     pal_hex[2:6]
@@ -55,22 +55,17 @@ gt_hulk_color <- function(gt_object, ..., domain = NULL, trim = FALSE, reverse =
     pal_hex
   }
 
-  pal_hex <- if(isTRUE(reverse)){
-    pal_hex
-  }else{
-    rev(pal_hex)
-  }
-
   hulk_pal <- function(x){
     scales::col_numeric(
       pal_hex,
-      domain = domain
+      domain = domain,
+      ...
     )(x)
   }
 
   gt::data_color(
     gt_object,
-    columns = ...,
+    columns = {{ columns }},
     colors = hulk_pal
                  )
 

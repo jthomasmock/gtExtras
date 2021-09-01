@@ -123,14 +123,22 @@ It is a useful alternative to the red/green palette where purple typically
 can indicate low or "bad" value, and green can indicate a high or "good" value.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gt_hulk_color</span><span class='op'>(</span><span class='va'>gt_object</span>, <span class='va'>...</span>, domain <span class='op'>=</span> <span class='cn'>NULL</span>, trim <span class='op'>=</span> <span class='cn'>FALSE</span>, reverse <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>gt_hulk_color</span><span class='op'>(</span><span class='va'>gt_object</span>, columns <span class='op'>=</span> <span class='cn'>NULL</span>, domain <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span>, trim <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>gt_object</th>
-      <td><p>An existing gt table object</p></td>
+      <th>domain</th>
+      <td><p>The possible values that can be mapped.</p>
+<p>For <code>col_numeric</code> and <code>col_bin</code>, this can be a simple numeric
+range (e.g. <code><a href='https://rdrr.io/r/base/c.html'>c(0, 100)</a></code>); <code>col_quantile</code> needs representative
+numeric data; and <code>col_factor</code> needs categorical data.</p>
+<p>If <code>NULL</code>, then whenever the resulting colour function is called, the
+<code>x</code> value will represent the domain. This implies that if the function
+is invoked multiple times, the encoding between values and colours may not
+be consistent; if consistency is needed, you must provide a non-<code>NULL</code>
+domain.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -141,8 +149,8 @@ can indicate low or "bad" value, and green can indicate a high or "good" value.<
       <td><p>trim the palette to give less intense maximal colors</p></td>
     </tr>
     <tr>
-      <th>reverse</th>
-      <td><p>reverse the color palette. The default is green = high and purple = low, but reverse = TRUE will make purple high and green low.</p></td>
+      <th>gt_data</th>
+      <td><p>An existing gt table object</p></td>
     </tr>
     </table>
 

@@ -1,6 +1,6 @@
 #' Apply FiveThirtyEight theme to a gt table
 #'
-#' @param data An existing gt table object
+#' @param gt_data An existing gt table object
 #' @param ... Optional additional arguments to gt::table_options()
 #' @return Returns a tibble
 #' @importFrom gt %>%
@@ -18,8 +18,8 @@
 #'@family Themes
 
 
-gt_theme_538 <- function(data,...) {
-  data %>%
+gt_theme_538 <- function(gt_data,...) {
+  gt_data %>%
     opt_all_caps()  %>%
     opt_table_font(
       font = list(

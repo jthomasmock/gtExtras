@@ -4,16 +4,26 @@
 \alias{gt_hulk_color}
 \title{Apply 'hulk' palette to specific columns in a gt table.}
 \usage{
-gt_hulk_color(gt_object, ..., domain = NULL, trim = FALSE, reverse = FALSE)
+gt_hulk_color(gt_object, columns = NULL, domain = NULL, ..., trim = FALSE)
 }
 \arguments{
-\item{gt_object}{An existing gt table object}
+\item{domain}{The possible values that can be mapped.
+
+For \code{col_numeric} and \code{col_bin}, this can be a simple numeric
+range (e.g. \code{c(0, 100)}); \code{col_quantile} needs representative
+numeric data; and \code{col_factor} needs categorical data.
+
+If \code{NULL}, then whenever the resulting colour function is called, the
+\code{x} value will represent the domain. This implies that if the function
+is invoked multiple times, the encoding between values and colours may not
+be consistent; if consistency is needed, you must provide a non-\code{NULL}
+domain.}
 
 \item{...}{columns to apply color to}
 
 \item{trim}{trim the palette to give less intense maximal colors}
 
-\item{reverse}{reverse the color palette. The default is green = high and purple = low, but reverse = TRUE will make purple high and green low.}
+\item{gt_data}{An existing gt table object}
 }
 \value{
 Returns a gt table

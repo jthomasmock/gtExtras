@@ -42,10 +42,10 @@ gtcars %>%
   dplyr::mutate(mpg_h = rnorm(n = dplyr::n(), mean = 22, sd = 1)) %>%
   gt::gt() %>%
   gt::opt_table_lines() %>%
-  fmt_symbol_first(column = mfr, symbol = "&#x24;", suffix = " ", last_row_n = 6) %>%
-  fmt_symbol_first(column = year, symbol = NULL, suffix = "%", last_row_n = 6) %>%
-  fmt_symbol_first(column = mpg_h, symbol = "&#37;", suffix = NULL, last_row_n = 6, decimals = 1) %>%
-  fmt_symbol_first(column = hp, symbol = "&#176;", suffix = "F", last_row_n = 6, decimals = NULL, symbol_first = TRUE)
+  fmt_symbol_first(column = mfr, symbol = "&#x24;", last_row_n = 6) %>%
+  fmt_symbol_first(column = year, suffix = "%") %>%
+  fmt_symbol_first(column = mpg_h, symbol = "&#37;", decimals = 1) %>%
+  fmt_symbol_first(hp, symbol = "&#176;", suffix = "F", symbol_first = TRUE)
 ```
 
 <p align="center"><img src="man/figures/gt_fmt_first.png" width="700px"></p>

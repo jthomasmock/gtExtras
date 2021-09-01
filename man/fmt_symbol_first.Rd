@@ -10,7 +10,7 @@ fmt_symbol_first(
   symbol = NULL,
   suffix = "",
   decimals = NULL,
-  last_row_n,
+  last_row_n = NULL,
   symbol_first = FALSE,
   gfont = "Fira Mono"
 )
@@ -26,7 +26,7 @@ fmt_symbol_first(
 
 \item{decimals}{the number of decimal places to round to}
 
-\item{last_row_n}{defining the last row to apply this to}
+\item{last_row_n}{Defining the last row to apply this to. The function will attempt to guess the proper length, but you can always hardcode a specific length.}
 
 \item{symbol_first}{TRUE/FALSE - symbol before after suffix.}
 
@@ -54,14 +54,14 @@ in the remaining rows.
 library(gt)
 fmted_tab <- gtcars \%>\%
   head() \%>\%
-  dplyr::select(mfr, year, bdy_style, mpg_h, hp) \%>\%
-  dplyr::mutate(mpg_h = rnorm(n = dplyr::n(), mean = 22, sd = 1)) \%>\%
-  gt::gt() \%>\%
-  gt::opt_table_lines() \%>\%
-  fmt_symbol_first(column = mfr, symbol = "&#x24;", suffix = " ", last_row_n = 6) \%>\%
-  fmt_symbol_first(column = year, symbol = NULL, suffix = "\%", last_row_n = 6) \%>\%
-  fmt_symbol_first(column = mpg_h, symbol = "&#37;", suffix = NULL, last_row_n = 6, decimals = 1) \%>\%
-  fmt_symbol_first(column = hp, symbol = "&#176;", suffix = "F", last_row_n = 6, decimals = NULL, symbol_first = TRUE)
+    dplyr::select(mfr, year, bdy_style, mpg_h, hp) \%>\%
+    dplyr::mutate(mpg_h = rnorm(n = dplyr::n(), mean = 22, sd = 1)) \%>\%
+    gt::gt() \%>\%
+    gt::opt_table_lines() \%>\%
+    fmt_symbol_first(column = mfr, symbol = "&#x24;", last_row_n = 6) \%>\%
+    fmt_symbol_first(column = year, suffix = "\%") \%>\%
+    fmt_symbol_first(column = mpg_h, symbol = "&#37;", decimals = 1) \%>\%
+    fmt_symbol_first(hp, symbol = "&#176;", suffix = "F", symbol_first = TRUE)
 
 }
 \seealso{

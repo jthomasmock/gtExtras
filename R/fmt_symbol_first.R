@@ -8,7 +8,7 @@
 #' @param symbol The HTML code or raw character string of the symbol being inserted, optionally
 #' @param suffix a suffix to add, optionally
 #' @param decimals the number of decimal places to round to
-#' @param last_row_n defining the last row to apply this to
+#' @param last_row_n Defining the last row to apply this to. The function will attempt to guess the proper length, but you can always hardcode a specific length.
 #' @param symbol_first TRUE/FALSE - symbol before after suffix.
 #' @param gfont A string passed to `gt::google_font()` - defaults to "Fira Mono" and requires a Monospaced font for alignment purposes. Existing Google Monospaced fonts are available at: [fonts.google.com](https://fonts.google.com/?category=Monospace&preview.text=0123456789&preview.text_type=custom)
 #' @return An object of class `gt_tbl`.
@@ -19,14 +19,14 @@
 #' library(gt)
 #' fmted_tab <- gtcars %>%
 #'   head() %>%
-#'   dplyr::select(mfr, year, bdy_style, mpg_h, hp) %>%
-#'   dplyr::mutate(mpg_h = rnorm(n = dplyr::n(), mean = 22, sd = 1)) %>%
-#'   gt::gt() %>%
-#'   gt::opt_table_lines() %>%
-#'   fmt_symbol_first(column = mfr, symbol = "&#x24;", suffix = " ", last_row_n = 6) %>%
-#'   fmt_symbol_first(column = year, symbol = NULL, suffix = "%", last_row_n = 6) %>%
-#'   fmt_symbol_first(column = mpg_h, symbol = "&#37;", suffix = NULL, last_row_n = 6, decimals = 1) %>%
-#'   fmt_symbol_first(column = hp, symbol = "&#176;", suffix = "F", last_row_n = 6, decimals = NULL, symbol_first = TRUE)
+#'     dplyr::select(mfr, year, bdy_style, mpg_h, hp) %>%
+#'     dplyr::mutate(mpg_h = rnorm(n = dplyr::n(), mean = 22, sd = 1)) %>%
+#'     gt::gt() %>%
+#'     gt::opt_table_lines() %>%
+#'     fmt_symbol_first(column = mfr, symbol = "&#x24;", last_row_n = 6) %>%
+#'     fmt_symbol_first(column = year, suffix = "%") %>%
+#'     fmt_symbol_first(column = mpg_h, symbol = "&#37;", decimals = 1) %>%
+#'     fmt_symbol_first(hp, symbol = "&#176;", suffix = "F", symbol_first = TRUE)
 #'
 #' @section Figures:
 #' \if{html}{\figure{gt_fmt_first.png}{options: width=100\%}}
@@ -42,18 +42,21 @@ fmt_symbol_first <- function(
   symbol = NULL,        # symbol to add, optionally
   suffix = "",          # suffix to add, optionally
   decimals = NULL,      # number of decimal places to round to
-  last_row_n,           # what's the last row in data?
-  symbol_first = FALSE,  # symbol before or after suffix?,
+  last_row_n = NULL,    # what's the last row in data?
+  symbol_first = FALSE, # symbol before or after suffix?,
   gfont = "Fira Mono"   # Google font with monospacing
 ) {
 
   # Test and error out if mandatory columns are missing
   stopifnot("`symbol_first` argument must be a logical" = is.logical(symbol_first))
-  stopifnot("`last_row_n` argument must be specified and numeric" = is.numeric(last_row_n))
+  # stopifnot("`last_row_n` argument must be specified and numeric" = is.numeric(last_row_n))
   stopifnot("Input must be a gt table" = "gt_tbl" %in% class(gt_object))
+
+  decimals <- decimals
 
   # needs to type convert to double to play nicely with decimals and rounding
   # as it's converted to character by gt::text_transform
+
   add_to_first <- function(x, suff = suffix, symb = symbol) {
     if (!is.null(decimals)) {
       x <- suppressWarnings(as.double(x))
@@ -94,6 +97,14 @@ fmt_symbol_first <- function(
     }
     paste0(fmt_val, length) %>% lapply(FUN = gt::html)
   }
+
+  # default to nrows in input data
+  if(is.null(last_row_n)){
+    last_row_n <- nrow(gt_object[["_data"]])
+  } else {
+    last_row_n <- last_row_n
+  }
+
 
   # pass gt object
   # align right to make sure the spacing is meaningful

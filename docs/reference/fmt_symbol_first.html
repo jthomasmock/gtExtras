@@ -74,7 +74,7 @@ in the remaining rows." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
       </span>
     </div>
 
@@ -127,7 +127,7 @@ in the remaining rows.</p>
   symbol <span class='op'>=</span> <span class='cn'>NULL</span>,
   suffix <span class='op'>=</span> <span class='st'>""</span>,
   decimals <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>last_row_n</span>,
+  last_row_n <span class='op'>=</span> <span class='cn'>NULL</span>,
   symbol_first <span class='op'>=</span> <span class='cn'>FALSE</span>,
   gfont <span class='op'>=</span> <span class='st'>"Fira Mono"</span>
 <span class='op'>)</span></pre>
@@ -157,7 +157,7 @@ in the remaining rows.</p>
     </tr>
     <tr>
       <th>last_row_n</th>
-      <td><p>defining the last row to apply this to</p></td>
+      <td><p>Defining the last row to apply this to. The function will attempt to guess the proper length, but you can always hardcode a specific length.</p></td>
     </tr>
     <tr>
       <th>symbol_first</th>
@@ -191,14 +191,14 @@ in the remaining rows.</p>
     <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
 <span class='va'>fmted_tab</span> <span class='op'>&lt;-</span> <span class='va'>gtcars</span> <span class='op'>%&gt;%</span>
   <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>mfr</span>, <span class='va'>year</span>, <span class='va'>bdy_style</span>, <span class='va'>mpg_h</span>, <span class='va'>hp</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>mpg_h <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span>, mean <span class='op'>=</span> <span class='fl'>22</span>, sd <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>gt</span><span class='fu'>::</span><span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>gt</span><span class='fu'>::</span><span class='fu'><a href='https://gt.rstudio.com/reference/opt_table_lines.html'>opt_table_lines</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>fmt_symbol_first</span><span class='op'>(</span>column <span class='op'>=</span> <span class='va'>mfr</span>, symbol <span class='op'>=</span> <span class='st'>"&amp;#x24;"</span>, suffix <span class='op'>=</span> <span class='st'>" "</span>, last_row_n <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>fmt_symbol_first</span><span class='op'>(</span>column <span class='op'>=</span> <span class='va'>year</span>, symbol <span class='op'>=</span> <span class='cn'>NULL</span>, suffix <span class='op'>=</span> <span class='st'>"%"</span>, last_row_n <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>fmt_symbol_first</span><span class='op'>(</span>column <span class='op'>=</span> <span class='va'>mpg_h</span>, symbol <span class='op'>=</span> <span class='st'>"&amp;#37;"</span>, suffix <span class='op'>=</span> <span class='cn'>NULL</span>, last_row_n <span class='op'>=</span> <span class='fl'>6</span>, decimals <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>fmt_symbol_first</span><span class='op'>(</span>column <span class='op'>=</span> <span class='va'>hp</span>, symbol <span class='op'>=</span> <span class='st'>"&amp;#176;"</span>, suffix <span class='op'>=</span> <span class='st'>"F"</span>, last_row_n <span class='op'>=</span> <span class='fl'>6</span>, decimals <span class='op'>=</span> <span class='cn'>NULL</span>, symbol_first <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+    <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>mfr</span>, <span class='va'>year</span>, <span class='va'>bdy_style</span>, <span class='va'>mpg_h</span>, <span class='va'>hp</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>mpg_h <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span>, mean <span class='op'>=</span> <span class='fl'>22</span>, sd <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>gt</span><span class='fu'>::</span><span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>gt</span><span class='fu'>::</span><span class='fu'><a href='https://gt.rstudio.com/reference/opt_table_lines.html'>opt_table_lines</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>fmt_symbol_first</span><span class='op'>(</span>column <span class='op'>=</span> <span class='va'>mfr</span>, symbol <span class='op'>=</span> <span class='st'>"&amp;#x24;"</span>, last_row_n <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>fmt_symbol_first</span><span class='op'>(</span>column <span class='op'>=</span> <span class='va'>year</span>, suffix <span class='op'>=</span> <span class='st'>"%"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>fmt_symbol_first</span><span class='op'>(</span>column <span class='op'>=</span> <span class='va'>mpg_h</span>, symbol <span class='op'>=</span> <span class='st'>"&amp;#37;"</span>, decimals <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>fmt_symbol_first</span><span class='op'>(</span><span class='va'>hp</span>, symbol <span class='op'>=</span> <span class='st'>"&amp;#176;"</span>, suffix <span class='op'>=</span> <span class='st'>"F"</span>, symbol_first <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
 </div></pre>
   </div>

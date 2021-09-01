@@ -41,7 +41,8 @@
 
 <meta property="og:title" content="Pad a vector of numbers to align on the decimal point. — pad_fn" />
 <meta property="og:description" content="This helper function adds whitespace to numeric values so that they can
-be aligned on the decimal without requiring additional trailing zeroes." />
+be aligned on the decimal without requiring additional trailing zeroes.
+This function is intended to use within the gt::fmt() function." />
 
 
 
@@ -116,7 +117,8 @@ be aligned on the decimal without requiring additional trailing zeroes." />
 
     <div class="ref-description">
     <p>This helper function adds whitespace to numeric values so that they can
-be aligned on the decimal without requiring additional trailing zeroes.</p>
+be aligned on the decimal without requiring additional trailing zeroes.
+This function is intended to use within the <code><a href='https://gt.rstudio.com/reference/fmt.html'>gt::fmt()</a></code> function.</p>
     </div>
 
     <pre class="usage"><span class='fu'>pad_fn</span><span class='op'>(</span><span class='va'>x</span>, nsmall <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></pre>
@@ -126,17 +128,17 @@ be aligned on the decimal without requiring additional trailing zeroes.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>a vector of numbers to pad/align at the decimal point</p></td>
+      <td><p>A vector of numbers to pad/align at the decimal point</p></td>
     </tr>
     <tr>
       <th>nsmall</th>
-      <td><p>max number of decimal places to round at/display</p></td>
+      <td><p>The max number of decimal places to round at/display</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns a gt table</p>
+    <p>Returns a vector of equal length to the input vector</p>
     <h2 class="hasAnchor" id="figures"><a class="anchor" href="#figures"></a>Figures</h2>
 
     

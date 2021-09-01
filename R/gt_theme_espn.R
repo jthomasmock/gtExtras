@@ -1,8 +1,8 @@
 #' Apply ESPN theme to a gt table
 #'
-#' @param gt_data An existing gt table object
+#' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param ... Optional additional arguments to gt::table_options()
-#' @return Returns a tibble
+#' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
 #' @import scales
 #' @export
@@ -23,8 +23,11 @@
 
 
 
-gt_theme_espn <- function(gt_data, ...){
-  gt_data %>%
+gt_theme_espn <- function(gt_object, ...){
+
+  stopifnot("Input must be a gt table" = "gt_tbl" %in% class(gt_object))
+
+  gt_object %>%
     opt_all_caps()  %>%
     opt_table_font(
       font = list(

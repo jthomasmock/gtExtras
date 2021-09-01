@@ -7,16 +7,17 @@
 pad_fn(x, nsmall = 2)
 }
 \arguments{
-\item{x}{a vector of numbers to pad/align at the decimal point}
+\item{x}{A vector of numbers to pad/align at the decimal point}
 
-\item{nsmall}{max number of decimal places to round at/display}
+\item{nsmall}{The max number of decimal places to round at/display}
 }
 \value{
-Returns a gt table
+Returns a vector of equal length to the input vector
 }
 \description{
 This helper function adds whitespace to numeric values so that they can
 be aligned on the decimal without requiring additional trailing zeroes.
+This function is intended to use within the \code{gt::fmt()} function.
 }
 \section{Figures}{
 

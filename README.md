@@ -106,7 +106,7 @@ Basic usage below, where a specific column is passed.
 # basic use
 head(mtcars) %>%
   gt::gt() %>%
-  gt_hulk_color(mpg)
+  gt_hulk_col_numeric(mpg)
 ```
 
 <p align="center">
@@ -121,7 +121,7 @@ head(mtcars) %>%
   gt::gt() %>%
   # trim gives smaller range of colors
   # so the green and purples are not as dark
-  gt_hulk_color(mpg:disp, trim = TRUE) 
+  gt_hulk_col_numeric(mpg:disp, trim = TRUE) 
 ```
 
 <p align="center">
@@ -139,7 +139,7 @@ The default is to have high = green, low = purple.
 head(mtcars) %>%
   gt::gt() %>%
   # reverse = green for low, purple for high
-  gt_hulk_color(mpg:disp, reverse = FALSE) 
+  gt_hulk_col_numeric(mpg:disp, reverse = FALSE) 
 ```
 
 <p align="center">

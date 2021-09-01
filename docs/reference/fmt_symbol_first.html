@@ -122,21 +122,22 @@ in the remaining rows.</p>
     </div>
 
     <pre class="usage"><span class='fu'>fmt_symbol_first</span><span class='op'>(</span>
-  <span class='va'>gt_data</span>,
+  <span class='va'>gt_object</span>,
   column <span class='op'>=</span> <span class='cn'>NULL</span>,
   symbol <span class='op'>=</span> <span class='cn'>NULL</span>,
   suffix <span class='op'>=</span> <span class='st'>""</span>,
   decimals <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>last_row_n</span>,
-  symbol_first <span class='op'>=</span> <span class='cn'>FALSE</span>
+  symbol_first <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  gfont <span class='op'>=</span> <span class='st'>"Fira Mono"</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>gt_data</th>
-      <td><p>An existing gt table object</p></td>
+      <th>gt_object</th>
+      <td><p>An existing gt table object of class <code>gt_tbl</code></p></td>
     </tr>
     <tr>
       <th>column</th>
@@ -162,11 +163,15 @@ in the remaining rows.</p>
       <th>symbol_first</th>
       <td><p>TRUE/FALSE - symbol before after suffix.</p></td>
     </tr>
+    <tr>
+      <th>gfont</th>
+      <td><p>A string passed to <code><a href='https://gt.rstudio.com/reference/google_font.html'>gt::google_font()</a></code> - defaults to "Fira Mono" and requires a Monospaced font for alignment purposes. Existing Google Monospaced fonts are available at: <a href='https://fonts.google.com/?category=Monospace&amp;preview.text=0123456789&amp;preview.text_type=custom'>fonts.google.com</a></p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns a gt table</p>
+    <p>An object of class <code>gt_tbl</code>.</p>
     <h2 class="hasAnchor" id="figures"><a class="anchor" href="#figures"></a>Figures</h2>
 
     

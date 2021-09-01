@@ -143,7 +143,7 @@
 <code class="sourceCode R"><span class="co"># basic use</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/gt_hulk_color.html">gt_hulk_color</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="reference/gt_hulk_col_numeric.html">gt_hulk_col_numeric</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span></code></pre></div>
 <p align="center">
 <img src="reference/figures/hulk_basic.png" width="700px"></p>
 <p>Trim provides a tighter range of purple/green so the colors are less pronounced.</p>
@@ -152,7 +152,7 @@
   <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="co"># trim gives smaller range of colors</span>
   <span class="co"># so the green and purples are not as dark</span>
-  <span class="fu"><a href="reference/gt_hulk_color.html">gt_hulk_color</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">:</span><span class="va">disp</span>, trim <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </code></pre></div>
+  <span class="fu"><a href="reference/gt_hulk_col_numeric.html">gt_hulk_col_numeric</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">:</span><span class="va">disp</span>, trim <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </code></pre></div>
 <p align="center">
 <img src="reference/figures/hulk_trim.png" width="700px"></p>
 <!-- width="1200px" -->
@@ -163,7 +163,7 @@
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="co"># reverse = green for low, purple for high</span>
-  <span class="fu"><a href="reference/gt_hulk_color.html">gt_hulk_color</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">:</span><span class="va">disp</span>, reverse <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </code></pre></div>
+  <span class="fu"><a href="reference/gt_hulk_col_numeric.html">gt_hulk_col_numeric</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">:</span><span class="va">disp</span>, reverse <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </code></pre></div>
 <p align="center">
 <img src="reference/figures/hulk_reverse.png" width="700px"></p>
 </div>

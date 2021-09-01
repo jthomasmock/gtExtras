@@ -4,15 +4,15 @@
 \alias{gt_theme_espn}
 \title{Apply ESPN theme to a gt table}
 \usage{
-gt_theme_espn(gt_data, ...)
+gt_theme_espn(gt_object, ...)
 }
 \arguments{
-\item{gt_data}{An existing gt table object}
+\item{gt_object}{An existing gt table object of class \code{gt_tbl}}
 
 \item{...}{Optional additional arguments to gt::table_options()}
 }
 \value{
-Returns a tibble
+An object of class \code{gt_tbl}.
 }
 \description{
 Apply ESPN theme to a gt table

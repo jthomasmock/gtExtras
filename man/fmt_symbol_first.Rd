@@ -5,17 +5,18 @@
 \title{Aligning first-row text only}
 \usage{
 fmt_symbol_first(
-  gt_data,
+  gt_object,
   column = NULL,
   symbol = NULL,
   suffix = "",
   decimals = NULL,
   last_row_n,
-  symbol_first = FALSE
+  symbol_first = FALSE,
+  gfont = "Fira Mono"
 )
 }
 \arguments{
-\item{gt_data}{An existing gt table object}
+\item{gt_object}{An existing gt table object of class \code{gt_tbl}}
 
 \item{column}{columns to apply color to with tidyeval}
 
@@ -28,9 +29,11 @@ fmt_symbol_first(
 \item{last_row_n}{defining the last row to apply this to}
 
 \item{symbol_first}{TRUE/FALSE - symbol before after suffix.}
+
+\item{gfont}{A string passed to \code{gt::google_font()} - defaults to "Fira Mono" and requires a Monospaced font for alignment purposes. Existing Google Monospaced fonts are available at: \href{https://fonts.google.com/?category=Monospace&preview.text=0123456789&preview.text_type=custom}{fonts.google.com}}
 }
 \value{
-Returns a gt table
+An object of class \code{gt_tbl}.
 }
 \description{
 This is an experimental function that allows you to apply a suffix/symbol

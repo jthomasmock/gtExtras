@@ -2,9 +2,10 @@
 #' @description
 #' This helper function adds whitespace to numeric values so that they can
 #' be aligned on the decimal without requiring additional trailing zeroes.
-#' @param x a vector of numbers to pad/align at the decimal point
-#' @param nsmall max number of decimal places to round at/display
-#' @return Returns a gt table
+#' This function is intended to use within the `gt::fmt()` function.
+#' @param x A vector of numbers to pad/align at the decimal point
+#' @param nsmall The max number of decimal places to round at/display
+#' @return Returns a vector of equal length to the input vector
 #' @importFrom gt %>%
 #' @export
 #' @import gt

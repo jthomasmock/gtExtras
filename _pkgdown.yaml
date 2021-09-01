@@ -12,6 +12,6 @@ reference:
   - fmt_symbol_first
   - pad_fn
 - title: Colors
-  desc: Wrappers around the `{scales}` package that provide easier or more succinct applications of palettes and colors.
+  desc: Wrappers around the `{scales}` package that provide easier or more succinct applications of palettes and colors inside `{gt}`.
   contents:
-  - gt_hulk_color
+  - gt_hulk_col_numeric

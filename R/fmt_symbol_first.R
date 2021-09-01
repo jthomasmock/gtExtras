@@ -3,14 +3,15 @@
 #' This is an experimental function that allows you to apply a suffix/symbol
 #' to only the first row of a table, and maintain the alignment with whitespace
 #' in the remaining rows.
-#' @param gt_data An existing gt table object
+#' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param column columns to apply color to with tidyeval
 #' @param symbol The HTML code or raw character string of the symbol being inserted, optionally
 #' @param suffix a suffix to add, optionally
 #' @param decimals the number of decimal places to round to
 #' @param last_row_n defining the last row to apply this to
 #' @param symbol_first TRUE/FALSE - symbol before after suffix.
-#' @return Returns a gt table
+#' @param gfont A string passed to `gt::google_font()` - defaults to "Fira Mono" and requires a Monospaced font for alignment purposes. Existing Google Monospaced fonts are available at: [fonts.google.com](https://fonts.google.com/?category=Monospace&preview.text=0123456789&preview.text_type=custom)
+#' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
 #' @export
 #' @import gt
@@ -36,19 +37,20 @@
 
 
 fmt_symbol_first <- function(
-  gt_data,
+  gt_object,
   column = NULL,        # column of interest to apply to
   symbol = NULL,        # symbol to add, optionally
   suffix = "",          # suffix to add, optionally
   decimals = NULL,      # number of decimal places to round to
   last_row_n,           # what's the last row in data?
-  symbol_first = FALSE  # symbol before or after suffix?
+  symbol_first = FALSE,  # symbol before or after suffix?,
+  gfont = "Fira Mono"   # Google font with monospacing
 ) {
 
   # Test and error out if mandatory columns are missing
   stopifnot("`symbol_first` argument must be a logical" = is.logical(symbol_first))
   stopifnot("`last_row_n` argument must be specified and numeric" = is.numeric(last_row_n))
-  stopifnot("Input must be a gt table" = class(gt_data)[[1]] == "gt_tbl")
+  stopifnot("Input must be a gt table" = "gt_tbl" %in% class(gt_object))
 
   # needs to type convert to double to play nicely with decimals and rounding
   # as it's converted to character by gt::text_transform
@@ -95,11 +97,11 @@ fmt_symbol_first <- function(
 
   # pass gt object
   # align right to make sure the spacing is meaningful
-  gt_data %>%
+  gt_object %>%
     cols_align(align = "right", columns = c({{ column }})) %>%
     # convert to mono-font for column of interest
     tab_style(
-      style = cell_text(font = google_font("Fira Mono")),
+      style = cell_text(font = google_font(gfont)),
       locations = cells_body(columns = c({{ column }}))
     ) %>%
     # transform first rows

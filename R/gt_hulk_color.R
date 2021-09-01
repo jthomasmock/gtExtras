@@ -6,8 +6,11 @@
 #' can indicate low or "bad" value, and green can indicate a high or "good" value.
 #'
 #' @param gt_data An existing gt table object
-#' @param ... columns to apply color to
+#' @param ... Additional arguments passed to scales::col_numeric
 #' @param trim trim the palette to give less intense maximal colors
+#' @param na.color Applies to scales::col_numeric, the colour to return for NA values. Note that na.color = NA is valid.
+#' @param alpha Applies to scales:col_numeric, Whether alpha channels should be respected or ignored. If TRUE then colors without explicit alpha information will be treated as fully opaque.
+#' @param reverse Applied to scales::col_numeric, Whether the colors (or color function) in palette should be used in reverse order. The default order of this palette goes from purple to green, then reverse = TRUE will result in the colors going from green to purple.
 #' @return Returns a gt table
 #' @importFrom gt %>%
 #' @importFrom scales col_numeric
@@ -42,9 +45,12 @@
 #'
 #' \if{html}{\figure{hulk_reverse.png}{options: width=100\%}}
 #'
+#' @family Colors
+#' @section Function ID:
+#' 2-1
 
 
-gt_hulk_color <- function(gt_object, columns = NULL, domain = NULL,..., trim = FALSE){
+gt_hulk_color <- function(gt_object, columns = NULL, ..., trim = FALSE){
 
   pal_hex <- c("#762a83", "#af8dc3", "#e7d4e8", "#f7f7f7",
                "#d9f0d3", "#7fbf7b", "#1b7837")
@@ -58,7 +64,6 @@ gt_hulk_color <- function(gt_object, columns = NULL, domain = NULL,..., trim = F
   hulk_pal <- function(x){
     scales::col_numeric(
       pal_hex,
-      domain = domain,
       ...
     )(x)
   }

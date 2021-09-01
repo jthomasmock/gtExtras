@@ -1,0 +1,17 @@
+url: https://jthomasmock.github.io/gtExtras
+
+reference:
+- title: Themes
+  desc: Full blown `{gt}` themes that affect most if not all visual components of the table. Similar in spirit to `{ggplot2}` themes like `ggplot2::theme_minimal()` or `{ggthemes}` like `ggthemes::theme_fivethirtyeight()`.
+  contents:
+  - gt_theme_538
+  - gt_theme_espn
+- title: Utilities
+  desc: Helper functions and utilities with features not _yet_ built into `{gt}`.
+  contents:
+  - fmt_symbol_first
+  - pad_fn
+- title: Colors
+  desc: Wrappers around the `{scales}` package that provide easier or more succinct applications of palettes and colors.
+  contents:
+  - gt_hulk_color

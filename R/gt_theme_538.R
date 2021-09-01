@@ -15,7 +15,9 @@
 #' @section Figures:
 #' \if{html}{\figure{gt_538.png}{options: width=100\%}}
 #'
-#'@family Themes
+#' @family Themes
+#' @section Function ID:
+#' 1-1
 
 
 gt_theme_538 <- function(gt_data,...) {

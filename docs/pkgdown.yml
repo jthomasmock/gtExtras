@@ -2,5 +2,8 @@ pandoc: 2.14.2
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2021-09-01T01:00Z
+last_built: 2021-09-01T01:29Z
+urls:
+  reference: https://jthomasmock.github.io/gtExtras/reference
+  article: https://jthomasmock.github.io/gtExtras/articles
 

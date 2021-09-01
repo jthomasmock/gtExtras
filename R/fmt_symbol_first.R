@@ -31,6 +31,8 @@
 #' \if{html}{\figure{gt_fmt_first.png}{options: width=100\%}}
 #'
 #' @family Utilities
+#' @section Function ID:
+#' 3-1
 
 
 fmt_symbol_first <- function(

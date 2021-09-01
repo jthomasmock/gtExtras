@@ -16,8 +16,9 @@
 #' @section Figures:
 #' \if{html}{\figure{gt_espn.png}{options: width=100\%}}
 #'
-#'@family Themes
-
+#' @family Themes
+#' @section Function ID:
+#' 1-2
 
 
 

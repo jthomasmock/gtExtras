@@ -4,26 +4,20 @@
 \alias{gt_hulk_color}
 \title{Apply 'hulk' palette to specific columns in a gt table.}
 \usage{
-gt_hulk_color(gt_object, columns = NULL, domain = NULL, ..., trim = FALSE)
+gt_hulk_color(gt_object, columns = NULL, ..., trim = FALSE)
 }
 \arguments{
-\item{domain}{The possible values that can be mapped.
-
-For \code{col_numeric} and \code{col_bin}, this can be a simple numeric
-range (e.g. \code{c(0, 100)}); \code{col_quantile} needs representative
-numeric data; and \code{col_factor} needs categorical data.
-
-If \code{NULL}, then whenever the resulting colour function is called, the
-\code{x} value will represent the domain. This implies that if the function
-is invoked multiple times, the encoding between values and colours may not
-be consistent; if consistency is needed, you must provide a non-\code{NULL}
-domain.}
-
-\item{...}{columns to apply color to}
+\item{...}{Additional arguments passed to scales::col_numeric}
 
 \item{trim}{trim the palette to give less intense maximal colors}
 
 \item{gt_data}{An existing gt table object}
+
+\item{na.color}{Applies to scales::col_numeric, the colour to return for NA values. Note that na.color = NA is valid.}
+
+\item{alpha}{Applies to scales:col_numeric, Whether alpha channels should be respected or ignored. If TRUE then colors without explicit alpha information will be treated as fully opaque.}
+
+\item{reverse}{Applied to scales::col_numeric, Whether the colors (or color function) in palette should be used in reverse order. The default order of this palette goes from purple to green, then reverse = TRUE will result in the colors going from green to purple.}
 }
 \value{
 Returns a gt table
@@ -41,6 +35,11 @@ can indicate low or "bad" value, and green can indicate a high or "good" value.
 \if{html}{\figure{hulk_trim.png}{options: width=100\%}}
 
 \if{html}{\figure{hulk_reverse.png}{options: width=100\%}}
+}
+
+\section{Function ID}{
+
+2-1
 }
 
 \examples{
@@ -65,3 +64,4 @@ can indicate low or "bad" value, and green can indicate a high or "good" value.
    gt_hulk_color(mpg:disp, reverse = TRUE)
 
 }
+\concept{Colors}

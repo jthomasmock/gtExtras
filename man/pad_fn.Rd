@@ -23,6 +23,11 @@ be aligned on the decimal without requiring additional trailing zeroes.
 \if{html}{\figure{gt_pad_fn.png}{options: width=20\%}}
 }
 
+\section{Function ID}{
+
+3-2
+}
+
 \examples{
 
 library(gt)

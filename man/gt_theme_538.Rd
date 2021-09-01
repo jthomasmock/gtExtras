@@ -22,6 +22,11 @@ Apply FiveThirtyEight theme to a gt table
 \if{html}{\figure{gt_538.png}{options: width=100\%}}
 }
 
+\section{Function ID}{
+
+1-1
+}
+
 \examples{
 
 library(gt)

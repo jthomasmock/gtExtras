@@ -42,6 +42,11 @@ in the remaining rows.
 \if{html}{\figure{gt_fmt_first.png}{options: width=100\%}}
 }
 
+\section{Function ID}{
+
+3-1
+}
+
 \examples{
 library(gt)
 fmted_tab <- gtcars \%>\%

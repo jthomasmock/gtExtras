@@ -24,6 +24,8 @@
 #' \if{html}{\figure{gt_pad_fn.png}{options: width=20\%}}
 #'
 #' @family Utilities
+#' @section Function ID:
+#' 3-2
 
 
 pad_fn <- function(x, nsmall = 2){

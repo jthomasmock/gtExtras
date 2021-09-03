@@ -54,7 +54,14 @@
 #'    gt_color_rows(
 #'    gear, type = "discrete", direction = -1,
 #'    palette = "colorblindr::OkabeIto_black", domain = c(3,4,5))
+#' @section Figures:
+#' \if{html}{\figure{basic-pal.png}{options: width=100\%}}
 #'
+#' \if{html}{\figure{blue-pal.png}{options: width=100\%}}
+#'
+#' \if{html}{\figure{custom-pal.png}{options: width=100\%}}
+#'
+#' \if{html}{\figure{discrete-pal.png}{options: width=100\%}}
 #'
 #' @family Colors
 #' @section Function ID:

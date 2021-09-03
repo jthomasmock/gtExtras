@@ -87,6 +87,15 @@ head(mtcars) %>%
 
 <p align="center"><img src="man/figures/gt_espn.png" width="700px"></p>
 
+```{r}
+head(mtcars) %>% 
+  gt() %>% 
+  gt_theme_nytimes() %>% 
+  tab_header(title = "Table styled like the NY Times")
+```
+
+<p align="center"><img src="man/figures/gt_nyt.png" width="700px"></p>
+
 ### Hulk data_color
 
 This is an opinionated diverging color palette. It diverges from low to high as purple to green. It is a good alternative to a red-green diverging palette as a color-blind friendly palette. The specific colors come from [colorbrewer2](https://colorbrewer2.org/#type=diverging&scheme=PRGn&n=7).
@@ -184,3 +193,37 @@ mtcars %>%
 ```
 
 <p align="center"><img src="man/figures/discrete-pal.png" width="700px"></p>
+
+### `gt_kable_sparkline()`
+
+```{r}
+mtcars %>%
+  dplyr::group_by(cyl) %>%
+  # must end up with list of data for each row in the input dataframe
+  dplyr::summarize(mpg_data = list(mpg), .groups = "drop") %>%
+  gt() %>%
+  gt_kable_sparkline(mpg_data, height = 45)
+```
+
+<p align="center"><img src="man/figures/kable-sparkline.png" width="200px"></p>
+
+### `gt_bar_plot()`
+
+The `gt_bar_plot` function takes an existing `gt_tbl` object and adds horizontal barplots via native HTML. This is a wrapper around raw HTML strings, `gt::text_transform()` and `gt::cols_align()`. Note that values default to being normalized to the percent of the maximum observed value in the specified column. You can turn this off if the values already represent a percentage value representing 0-100.
+
+```{r}
+mtcars %>%
+  head() %>%
+  dplyr::select(cyl, mpg) %>%
+  dplyr::mutate(mpg_pct_max = round(mpg/max(mpg) * 100, digits = 2),
+                mpg_scaled = mpg/max(mpg) * 100) %>%
+  dplyr::mutate(mpg_unscaled = mpg) %>%
+  gt() %>%
+  gt_bar_plot(column = mpg_scaled, scaled = TRUE) %>%
+  gt_bar_plot(column = mpg_unscaled, scaled = FALSE, fill = "blue", background = "lightblue") %>%
+  cols_align("center", contains("scale")) %>%
+  cols_width(4 ~ px(125),
+             5 ~ px(125))
+```
+
+<p align="center"><img src="man/figures/gt_bar_plot.png" width="700px"></p>

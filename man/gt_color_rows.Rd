@@ -65,6 +65,17 @@ palettes defined by the user. This function is a custom wrapper around
 \code{gt::data_color()}, and uses some of the boilerplate code. Basic use
 is simpler than \code{data_color()}.
 }
+\section{Figures}{
+
+\if{html}{\figure{basic-pal.png}{options: width=100\%}}
+
+\if{html}{\figure{blue-pal.png}{options: width=100\%}}
+
+\if{html}{\figure{custom-pal.png}{options: width=100\%}}
+
+\if{html}{\figure{discrete-pal.png}{options: width=100\%}}
+}
+
 \section{Function ID}{
 
 2-2
@@ -107,8 +118,6 @@ is simpler than \code{data_color()}.
    gt_color_rows(
    gear, type = "discrete", direction = -1,
    palette = "colorblindr::OkabeIto_black", domain = c(3,4,5))
-
-
 }
 \seealso{
 Other Colors: 

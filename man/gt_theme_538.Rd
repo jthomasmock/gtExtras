@@ -36,6 +36,7 @@ themed_tab <- head(mtcars) \%>\%
 }
 \seealso{
 Other Themes: 
-\code{\link{gt_theme_espn}()}
+\code{\link{gt_theme_espn}()},
+\code{\link{gt_theme_nytimes}()}
 }
 \concept{Themes}

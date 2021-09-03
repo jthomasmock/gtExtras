@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Apply FiveThirtyEight theme to a gt table — gt_theme_538 • gtExtras</title>
+<title>Add local or web images into rows of a gt table — gt_img_rows • gtExtras</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,11 @@
 
 
 
-<meta property="og:title" content="Apply FiveThirtyEight theme to a gt table — gt_theme_538" />
-<meta property="og:description" content="Apply FiveThirtyEight theme to a gt table" />
+<meta property="og:title" content="Add local or web images into rows of a gt table — gt_img_rows" />
+<meta property="og:description" content="The gt_img_rows function takes an existing gt_tbl object and
+converts filenames or urls to images into inline images. This is a wrapper
+around gt::text_transform() + gt::web_image()/gt::local_image() with
+the necessary boilerplate already applied." />
 
 
 
@@ -108,16 +111,19 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Apply FiveThirtyEight theme to a gt table</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/gt_theme_538.R'><code>R/gt_theme_538.R</code></a></small>
-    <div class="hidden name"><code>gt_theme_538.Rd</code></div>
+    <h1>Add local or web images into rows of a <code>gt</code> table</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/gt_image_rows.R'><code>R/gt_image_rows.R</code></a></small>
+    <div class="hidden name"><code>gt_img_rows.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Apply FiveThirtyEight theme to a gt table</p>
+    <p>The <code>gt_img_rows</code> function takes an existing <code>gt_tbl</code> object and
+converts filenames or urls to images into inline images. This is a wrapper
+around <code><a href='https://gt.rstudio.com/reference/text_transform.html'>gt::text_transform()</a></code> + <code><a href='https://gt.rstudio.com/reference/web_image.html'>gt::web_image()</a></code>/<code><a href='https://gt.rstudio.com/reference/local_image.html'>gt::local_image()</a></code> with
+the necessary boilerplate already applied.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gt_theme_538</span><span class='op'>(</span><span class='va'>gt_object</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>gt_img_rows</span><span class='op'>(</span><span class='va'>gt_object</span>, <span class='va'>columns</span>, img_source <span class='op'>=</span> <span class='st'>"web"</span>, height <span class='op'>=</span> <span class='fl'>30</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -127,8 +133,16 @@
       <td><p>An existing gt table object of class <code>gt_tbl</code></p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Optional additional arguments to gt::table_options()</p></td>
+      <th>columns</th>
+      <td><p>The columns wherein changes to cell data colors should occur.</p></td>
+    </tr>
+    <tr>
+      <th>img_source</th>
+      <td><p>A string, specifying either "local" or "web" as the source of the images.</p></td>
+    </tr>
+    <tr>
+      <th>height</th>
+      <td><p>The absolute height (px) of the image in the table cell.</p></td>
     </tr>
     </table>
 
@@ -139,24 +153,31 @@
 
     
 
-<p><img src='figures/gt_538.png' width=100% /></p>
+<p><img src='figures/img-rows.png' width=100% /></p>
     <h2 class="hasAnchor" id="function-id"><a class="anchor" href="#function-id"></a>Function ID</h2>
 
     
 
-<p>1-1</p>
+<p>1-3</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Themes: 
-<code><a href='gt_theme_espn.html'>gt_theme_espn</a>()</code>,
-<code><a href='gt_theme_nytimes.html'>gt_theme_nytimes</a>()</code></p></div>
+    <div class='dont-index'><p>Other Utilities: 
+<code><a href='fmt_symbol_first.html'>fmt_symbol_first</a>()</code>,
+<code><a href='gt_bar_plot.html'>gt_bar_plot</a>()</code>,
+<code><a href='gt_kable_sparkline.html'>gt_kable_sparkline</a>()</code>,
+<code><a href='pad_fn.html'>pad_fn</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
-<span class='va'>themed_tab</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='gt_theme_espn.html'>gt_theme_espn</a></span><span class='op'>(</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='va'>team_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/readRDS.html'>readRDS</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/connections.html'>url</a></span><span class='op'>(</span><span class='st'>"https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"</span><span class='op'>)</span><span class='op'>)</span>
+
+ <span class='va'>logo_table</span> <span class='op'>&lt;-</span> <span class='va'>team_df</span> <span class='op'>%&gt;%</span>
+   <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>team_wordmark</span>, <span class='va'>team_abbr</span>, logo <span class='op'>=</span> <span class='va'>team_logo_espn</span>, <span class='va'>team_name</span><span class='op'>:</span><span class='va'>team_conf</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+   <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+   <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+   <span class='fu'>gt_img_rows</span><span class='op'>(</span>columns <span class='op'>=</span> <span class='va'>team_wordmark</span>, height <span class='op'>=</span> <span class='fl'>25</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+   <span class='fu'>gt_img_rows</span><span class='op'>(</span>columns <span class='op'>=</span> <span class='va'>logo</span>, img_source <span class='op'>=</span> <span class='st'>"web"</span>, height <span class='op'>=</span> <span class='fl'>30</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+   <span class='fu'><a href='https://gt.rstudio.com/reference/tab_options.html'>tab_options</a></span><span class='op'>(</span>data_row.padding <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/px.html'>px</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

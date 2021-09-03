@@ -6,11 +6,15 @@ reference:
   contents:
   - gt_theme_538
   - gt_theme_espn
+  - gt_theme_nytimes
 - title: Utilities
   desc: Helper functions and utilities with features not _yet_ built into `{gt}`.
   contents:
   - fmt_symbol_first
   - pad_fn
+  - gt_img_rows
+  - gt_kable_sparkline
+  - gt_bar_plot
 - title: Colors
   desc: Wrappers around the `{scales}` package that provide easier or more succinct applications of palettes and colors inside `{gt}`.
   contents:

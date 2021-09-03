@@ -269,3 +269,25 @@ mtcars %>%
 <p align="center">
 <img src="man/figures/gt_bar_plot.png" width="700px">
 </p>
+
+### `gt_merge_stack()`
+
+The `gt_merge_stack()` function takes an existing `gt` table and merges
+column 1 and column 2, stacking column 1’s text on top of column 2’s.
+Top text is in all caps with black bold text, while the lower text is
+smaller and dark grey.
+
+``` r
+team_df <- readRDS(url("https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"))
+
+team_df %>%
+  dplyr::select(team_nick, team_abbr, team_conf, team_division, team_wordmark) %>%
+  head(8) %>%
+  gt(groupname_col = "team_conf") %>%
+  gt_merge_stack(col1 = team_nick, col2 = team_division) %>%
+  gt_img_rows(team_wordmark)
+```
+
+<p align="center">
+<img src="man/figures/merge-stack.png" width="500px">
+</p>

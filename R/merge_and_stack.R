@@ -17,10 +17,10 @@
 #' team_df <- readRDS(url("https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"))
 #'
 #' stacked_tab <- team_df %>%
-#'  dplyr::select(team_nick, team_abbr, team_conf, team_divison, team_wordmark) %>%
+#'  dplyr::select(team_nick, team_abbr, team_conf, team_division, team_wordmark) %>%
 #'  head(8) %>%
 #'  gt(groupname_col = "team_conf") %>%
-#'  gt_merge_stack(col1 = team_nick, col2 = team_divison) %>%
+#'  gt_merge_stack(col1 = team_nick, col2 = team_division) %>%
 #'  gt_img_rows(team_wordmark)
 #'
 #' @section Figures:
@@ -31,23 +31,28 @@
 #' 1-4
 
 gt_merge_stack <- function(gt_object, col1, col2) {
-  col_bare <- rlang::enexpr(col2) %>% rlang::as_string()
+  col1_bare <- rlang::enexpr(col1) %>% rlang::as_string()
+
+  row_name_var <- gt_object[["_boxhead"]][["var"]][which(gt_object[["_boxhead"]][["type"]] == "stub")]
+
+  col2_bare <- rlang::enexpr(col2) %>% rlang::as_string()
   # segment data with bare string column name
-  data_in <- gt_object[["_data"]][[col_bare]]
+  data_in <- gt_object[["_data"]][[col2_bare]]
 
   gt_object %>%
     text_transform(
-      locations = cells_body(
-        columns = {{ col1 }}
-      ),
+      locations = if (isTRUE(row_name_var == col1_bare)) {
+        cells_stub(rows = gt::everything())
+      } else {
+        cells_body(columns = {{ col1 }})
+      },
       fn = function(x) {
         glue::glue(
-        "<div style='line-height:10px'><span style='font-weight:bold;font-variant:small-caps;font-size:14px'>{x}</div>
+          "<div style='line-height:10px'><span style='font-weight:bold;font-variant:small-caps;font-size:14px'>{x}</div>
         <div style='line-height:12px'><span style ='font-weight:bold;color:grey;font-size:10px'>{data_in}</span></div>"
         )
       }
     ) %>%
     cols_hide(columns = {{ col2 }})
+
 }
-
-

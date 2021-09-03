@@ -127,3 +127,60 @@ head(mtcars) %>%
 ```
 
 <p align="center"><img src="man/figures/hulk_reverse.png" width="700px"></p>
+
+### `gt_color_rows()`
+
+The `gt_color_rows()` function is a thin boilerplate wrapper around `gt::data_color()`. It's simpler to use but still provides rich color choices thanks to the inclusion of `paletteer::paletteer_d()`. This can provide 100s of discrete (ie categorical) or continuous color palettes.
+
+```{r}
+# basic use
+mtcars %>%
+  head() %>%
+  gt() %>%
+  gt_color_rows(mpg:disp)
+```
+
+<p align="center"><img src="man/figures/basic-pal.png" width="700px"></p>
+
+You can change the specific palette with `palette = "package_name::palette_name"`
+
+```{r}
+# recognizes all of the dynamic palettes from paletteer
+mtcars %>%
+  head() %>%
+  gt() %>%
+  gt_color_rows(mpg:disp, palette = "ggsci::blue_material")
+```
+
+<p align="center"><img src="man/figures/blue-pal.png" width="700px"></p>
+
+You can also use custom-defined palettes if you wish with `use_paletteer = FALSE`.
+
+```{r}
+mtcars %>%
+  head() %>%
+  gt() %>%
+  gt_color_rows(
+    mpg:disp, palette = c("white", "green"),
+    # could also use palette = c("#ffffff", "##00FF00")
+    use_paletteer = FALSE)
+```
+
+<p align="center"><img src="man/figures/custom-pal.png" width="700px"></p>
+
+Lastly, you can also provide categorical or discrete data to be colored.
+
+```{r}
+# provide type = "discrete"
+mtcars %>%
+  head() %>%
+  gt() %>%
+  gt_color_rows(
+    cyl, type = "discrete",
+    palette = "ggthemes::colorblind", 
+    # note that you can manually define range like c(4, 6, 8)
+    domain = range(mtcars$cyl)
+   )
+```
+
+<p align="center"><img src="man/figures/discrete-pal.png" width="700px"></p>

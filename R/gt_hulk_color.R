@@ -14,7 +14,7 @@
 #' @importFrom gt %>%
 #' @importFrom scales col_numeric
 #' @export
-#' @import gt
+#' @import gt paletteer
 #' @examples
 #'  library(gt)
 #'  # basic use

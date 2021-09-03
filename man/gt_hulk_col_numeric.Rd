@@ -91,4 +91,8 @@ can indicate low or "bad" value, and green can indicate a high or "good" value.
    gt_hulk_col_numeric(mpg:disp, reverse = TRUE)
 
 }
+\seealso{
+Other Colors: 
+\code{\link{gt_color_rows}()}
+}
 \concept{Colors}

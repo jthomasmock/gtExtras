@@ -15,3 +15,4 @@ reference:
   desc: Wrappers around the `{scales}` package that provide easier or more succinct applications of palettes and colors inside `{gt}`.
   contents:
   - gt_hulk_col_numeric
+  - gt_color_rows

@@ -1,7 +1,7 @@
 Package: gtExtras
 Type: Package
 Title: A Collection of Helper Functions for the gt Package.
-Version: 0.1.6
+Version: 0.1.7
 Author: Thomas Mock
 Maintainer: Thomas Mock <j.thomasmock@gmail.com>
 Description: Provides utility functions for capabilities not yet built into the gt package.
@@ -15,7 +15,9 @@ BugReports: https://github.com/jthomasmock/gtExtras/issues
 Imports: 
     gt (>= 0.3),
     scales,
-    kableExtra
+    kableExtra,
+    glue,
+    paletteer
 Suggests: 
     rmarkdown,
     knitr,

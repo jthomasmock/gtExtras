@@ -15,6 +15,7 @@ reference:
   - gt_img_rows
   - gt_kable_sparkline
   - gt_bar_plot
+  - gt_merge_stack
 - title: Colors
   desc: Wrappers around the `{scales}` package that provide easier or more succinct applications of palettes and colors inside `{gt}`.
   contents:

@@ -47,6 +47,7 @@ Other Utilities:
 \code{\link{fmt_symbol_first}()},
 \code{\link{gt_bar_plot}()},
 \code{\link{gt_img_rows}()},
-\code{\link{gt_kable_sparkline}()}
+\code{\link{gt_kable_sparkline}()},
+\code{\link{gt_merge_stack}()}
 }
 \concept{Utilities}

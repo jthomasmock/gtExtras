@@ -54,7 +54,7 @@ gt_theme_nytimes <- function(gt_object, ...){
     tab_style(
       style = cell_text(
         font = google_font("Source Sans Pro"),
-        weight =  600
+        weight =  400
       ),
       locations = cells_body()
     )

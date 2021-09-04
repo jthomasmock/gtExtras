@@ -69,6 +69,7 @@ Other Utilities:
 \code{\link{gt_img_rows}()},
 \code{\link{gt_kable_sparkline}()},
 \code{\link{gt_merge_stack}()},
+\code{\link{gt_plt_winloss}()},
 \code{\link{pad_fn}()}
 }
 \concept{Utilities}

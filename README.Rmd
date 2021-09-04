@@ -18,13 +18,16 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of gtExtras is to provide some additional helper functions to assist in creating beautiful tables with `{gt}`
+The goal of `{gtExtras}` is to provide some additional helper functions to assist in creating beautiful tables with `{gt}`.
+
+The functions are generally wrappers around boilerplate or adding capabilities that are currently not *yet* built into `{gt}`. The [`{gt}` package](https://gt.rstudio.com/) is amazing, make sure to go read the official documentation.
 
 ## Installation
 
 You can install the dev version of gtExtras from [GitHub](https://github.com/jthomasmock/gtExtra) with:
 
 ``` r
+# if needed install.packages("remotes)
 remotes::install_github("jthomasmock/gtExtras")
 ```
 
@@ -244,3 +247,122 @@ team_df %>%
 ```
 
 <p align="center"><img src="man/figures/merge-stack.png" width="500px"></p>
+
+### `gt_plt_winloss()`
+
+This function takes a list-column of win loss values (ie, 0=loss, 0.5 = tie, 1 = win) and ouputs an inline plot representing the win/loss squares with blue = win, red = loss, grey = tie. Points are also also redundantly coded with height, where wins are highest, ties are middle, and losses are at the bottom. 
+
+The example below generates an example dataset and then embeds a plot.
+
+```{r}
+create_input_df <- function(repeats = 3){
+  
+  input_df <- dplyr::tibble(
+    team = c("A1", "B2", "C3", "C4"),
+    Wins = c(3, 2, 1, 1),
+    Losses = c(2, 3, 2, 4),
+    Ties = c(0, 0, 2, 0),
+    outcomes = list(
+      c(1, .5, 0) %>% rep(each = repeats),
+      c(0, 1, 0.5) %>% rep(each = repeats),
+      c(0, 0.5, 1) %>% rep(each = repeats),
+      c(0.5, 1, 0) %>% rep(each = repeats)
+    )
+  )
+  
+  input_df
+  
+}
+
+create_input_df(5) %>% 
+  dplyr::glimpse()
+```
+
+```
+#> create_input_df(5) %>% 
+#>   dplyr::glimpse()
+#>
+#> Rows: 4
+#> Columns: 5
+#> $ team     <chr> "A1", "B2", "C3", "C4"
+#> $ Wins     <dbl> 3, 2, 1, 1
+#> $ Losses   <dbl> 2, 3, 2, 4
+#> $ Ties     <dbl> 0, 0, 2, 0
+#> $ outcomes <list> <1.0, 1.0, 1.0, 1.0, 1.0, 0.5,...
+```
+
+Now that we have way to quickly generate example data, we can show the ability to incrementally add the win/losses.
+
+Starting with 3 games. **Please ignore the Wins/Loss/Ties columns**, as they are simply placeholders. I am iterating the length of the outcomes list row.
+
+```{r}
+create_input_df(1) %>% 
+  gt() %>% 
+  gt_plt_winloss(outcomes, max_wins = 15) %>% 
+  tab_options(data_row.padding = px(2)) 
+```
+
+<p align="center"><img src="man/figures/wl-1.png" width="500px"></p>
+
+And moving to 12 games, we can see that the scale is unchanged, and "empty" points are replaced with outcomes once the values are present in the data.
+
+```{r}
+create_input_df(4) %>% 
+  gt() %>% 
+  gt_plt_winloss(outcomes, max_wins = 15) %>% 
+  tab_options(data_row.padding = px(2))
+```
+
+<p align="center"><img src="man/figures/wl-4.png" width="500px"></p>
+
+A more realistic use case is seen below with data from `{nflreadr}`:
+
+```{r}
+library(tidyverse)
+library(nflreadr)
+
+games_df <- nflreadr::load_schedules() %>% 
+  filter(season == 2020, game_type == "REG") %>% 
+  select(game_id, team_home = home_team, team_away = away_team, result, week) %>% 
+  pivot_longer(contains('team'), names_to = 'home_away', values_to = 'team', names_prefix = 'team_') %>% 
+  mutate(
+    result = ifelse(home_away == 'home', result, -result),
+    win = ifelse(result == 0 , 0.5, ifelse(result > 0, 1, 0))
+  ) %>% 
+  select(week, team, win) %>% 
+  mutate(
+    team = case_when(
+      team == 'STL' ~ 'LA',
+      team == 'OAK' ~ 'LV',
+      team == 'SD' ~ 'LAC',
+      T ~ team
+    )
+  )
+
+team_df <- nflreadr::load_teams() %>% 
+  select(team_wordmark, team_abbr, team_conf, team_division)
+
+joined_df <- games_df %>% 
+  group_by(team) %>% 
+  summarise(
+    Wins = length(win[win==1]),
+    Losses = length(win[win==0]),
+    outcomes = list(win), .groups = "drop") %>% 
+  left_join(team_df, by = c("team" = "team_abbr")) %>% 
+  select(team_wordmark, team_conf, team_division, Wins:outcomes)
+
+final_df <- joined_df %>% 
+  filter(team_conf == "AFC") %>% 
+  group_by(team_division) %>% 
+  arrange(desc(Wins)) %>% 
+  ungroup()
+
+final_df %>% 
+  gt(groupname_col = "team_division") %>%
+  gt_plt_winloss(outcomes, max_wins = 16) %>% 
+  gt_img_rows(columns = team_wordmark) %>% 
+  gt_theme_538() %>% 
+  tab_header(title = "2020 Results by Division for the AFC")
+```
+
+<p align="center"><img src="man/figures/nfl-outcomes.png" width="500px"></p>

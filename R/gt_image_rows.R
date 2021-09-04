@@ -34,11 +34,22 @@
 
 gt_img_rows <- function(gt_object, columns, img_source = "web", height = 30){
 
+  # convert tidyeval column to bare string
+  col_bare <- rlang::enexpr(columns) %>% rlang::as_string()
+
+
+  grp_var <- gt_object[["_boxhead"]][["var"]][which(gt_object[["_boxhead"]][["type"]]=="stub")]
+
   stopifnot("img_source must be 'web' or 'local'" = img_source %in% c("web", "local"))
 
+  # need to correct for rownames
   gt_object %>%
     text_transform(
-      locations = cells_body({{ columns }}),
+      locations = if(isTRUE(grp_var == col_bare)){
+        cells_stub()
+      } else {
+        cells_body({{ columns }})
+      },
       fn = function(x){
         if(img_source == "web"){
           web_image(url = x, height = height)

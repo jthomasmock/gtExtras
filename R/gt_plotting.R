@@ -50,6 +50,73 @@ gt_kable_sparkline <- function(gt_object, column, width = 200, height = 45, colo
   )
 }
 
+#' winloss_plot
+#' Add win loss point plot into rows of a `gt` table
+#' @description
+#' The `gt_plt_winloss` function takes an existing `gt_tbl` object and
+#' adds squares of a specific color and vertical position based on wins/losses.
+#' It is a wrapper around `gt::text_transform()`.
+#'
+#' @param gt_object An existing gt table object of class `gt_tbl`
+#' @param column The column wherein the winloss plot should replace existing data. Note that the data *must* be represented as a list of numeric values ahead of time.
+#' @param height Number representing the vertical height of the plot in pixels. Defaults to 45 px.
+#' @param colors A character string of length 3, specifying the colors for loss, win, tie in that exact order.
+#' @param max_wins An integer indicating the max possible wins, this will be used to add padding if the total wins/losses observed is less than the max. This is useful for mid-season reporting.
+#' @return An object of class `gt_tbl`.
+#' @importFrom gt %>%
+#' @import gt
+#' @export
+#' @importFrom kableExtra spec_plot
+#' @examples
+#'
+#' @family Utilities
+#' @section Function ID:
+#' 1-5
+
+gt_plt_winloss <- function(
+  gt_object, column,
+  colors = c("#D50A0A", "#013369", "gray"), max_wins = 17
+  ) {
+
+  plot_fn <- function(x){
+
+    vals <- strsplit(x, split = ", ") %>%
+      unlist() %>%
+      as.double()
+
+    len_val <- length(vals)
+
+    vals2 <- c(vals, rep(0.49, max_wins-len_val))
+
+    my_pal <- c(colors, "white")
+
+    pt_col <- factor(vals2, levels = c(0, 1, 0.5, 0.49),
+                     labels = my_pal)
+
+    raw_plt <- kableExtra::spec_plot(
+      vals2, width = 120, height = 35, same_lim = TRUE,
+      cex = 4, minmax = list(), xlim = c(0, max_wins), ylim = c(-.5, 1.5),
+      type = "b", res = 140, col = my_pal[pt_col], polymin = NA
+    )
+
+    plot_svg <- as.character(raw_plt[["svg_text"]]) %>%
+      gt::html()
+
+    plot_svg
+
+  }
+
+
+
+  text_transform(
+    gt_object,
+    locations = cells_body(columns = {{ column }}),
+    fn = function(x){lapply(x, plot_fn)}
+  )
+
+}
+
+
 #' Add HTML-based bar plots into rows of a `gt` table
 #' @description
 #' The `gt_bar_plot` function takes an existing `gt_tbl` object and

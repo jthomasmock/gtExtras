@@ -61,6 +61,7 @@ Other Utilities:
 \code{\link{gt_bar_plot}()},
 \code{\link{gt_img_rows}()},
 \code{\link{gt_merge_stack}()},
+\code{\link{gt_plt_winloss}()},
 \code{\link{pad_fn}()}
 }
 \concept{Utilities}

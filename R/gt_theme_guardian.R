@@ -32,9 +32,9 @@ gt_theme_guardian <- function(gt_object,...) {
     ) %>%
     tab_style(
       style = cell_borders(
-        sides = "bottom", color = "#ececec", weight = px(3)
+        sides = "top", color = "red", weight = px(0)
       ),
-      locations = cells_column_labels(columns = everything())
+      locations = cells_body(rows = 1)
     ) %>%
     tab_options(
       row.striping.include_table_body = TRUE,
@@ -46,6 +46,8 @@ gt_theme_guardian <- function(gt_object,...) {
       table.border.top.color = "#ffffff00",
       table.border.bottom.width = px(3),
       table.border.bottom.color = "#ffffff00",
+      footnotes.border.bottom.width = px(0),
+      source_notes.border.bottom.width = px(0),
       table_body.border.bottom.width = px(3),
       table_body.border.bottom.color = "#ffffff00",
       table_body.hlines.width = "#ffffff00",
@@ -55,10 +57,11 @@ gt_theme_guardian <- function(gt_object,...) {
       row_group.border.bottom.width = px(1),
       row_group.border.bottom.color = "grey",
       row_group.font.weight = "bold",
-      column_labels.border.top.width = px(3),
-      column_labels.border.top.color = "#ffffff00",
-      column_labels.border.bottom.width = px(1),
-      column_labels.border.bottom.color = "red",
+      column_labels.border.top.width = px(1),
+      column_labels.border.top.color = "#40c5ff",
+      column_labels.border.bottom.width = px(2),
+      column_labels.border.bottom.color = "#ececec",
+      heading.border.bottom.width = px(0),
       data_row.padding = px(4),
       source_notes.font.size = 12,
       table.font.size = 16,

@@ -50,7 +50,6 @@ gt_kable_sparkline <- function(gt_object, column, width = 200, height = 45, colo
   )
 }
 
-#' winloss_plot
 #' Add win loss point plot into rows of a `gt` table
 #' @description
 #' The `gt_plt_winloss` function takes an existing `gt_tbl` object and
@@ -59,9 +58,9 @@ gt_kable_sparkline <- function(gt_object, column, width = 200, height = 45, colo
 #'
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param column The column wherein the winloss plot should replace existing data. Note that the data *must* be represented as a list of numeric values ahead of time.
-#' @param height Number representing the vertical height of the plot in pixels. Defaults to 45 px.
-#' @param colors A character string of length 3, specifying the colors for loss, win, tie in that exact order.
-#' @param max_wins An integer indicating the max possible wins, this will be used to add padding if the total wins/losses observed is less than the max. This is useful for mid-season reporting.
+#' @param max_wins An integer indicating the max possible wins, this will be used to add padding if the total wins/losses observed is less than the max. This is useful for mid-season reporting. Defaults to a red, blue, grey palette.
+#' @param colors A character vector of length 3, specifying the colors for loss, win, tie in that exact order.
+#' @param type A character string representing the type of plot, either a 'pill' or 'square'
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
 #' @import gt
@@ -71,14 +70,60 @@ gt_kable_sparkline <- function(gt_object, column, width = 200, height = 45, colo
 #'
 #' @family Utilities
 #' @section Function ID:
-#' 1-5
+#' 1-6
 
 gt_plt_winloss <- function(
   gt_object, column,
-  colors = c("#D50A0A", "#013369", "gray"), max_wins = 17
-  ) {
+  max_wins = 17,
+  colors = c("#D50A0A", "#013369", "gray"),
+  type = "pill"
+) {
 
-  plot_fn <- function(x){
+  stopifnot("type must be on of 'pill' or 'square'" ={type %in% c("pill", "square")})
+
+  stopifnot("There must be 3 colors" = length(colors) == 3L)
+
+  plot_fn_pill <- function(x){
+
+    vals <- strsplit(x, split = ", ") %>%
+      unlist() %>%
+      as.double()
+
+    input_data <- data.frame(
+      x = 1:length(vals),
+      xend = 1:length(vals),
+      y = ifelse(vals == 0.5, 0.4, vals),
+      yend = ifelse(vals == 0, 0.6, ifelse(vals > 0.5, 0.4, 0.6)),
+      color = ifelse(vals == 0, "#D50A0A", ifelse(vals == 1, "#013369", "grey"))
+    )
+
+    plot_out <- ggplot(input_data) +
+      geom_segment(
+        aes(x = x, xend = xend, y = y, yend = yend, color = I(color)),
+        size = 1, lineend = "round") +
+      scale_x_continuous(limits = c(0.5, max_wins + 0.5)) +
+      scale_y_continuous(limits = c(-.2, 1.2)) +
+      theme_void()
+
+    out_name <- file.path(
+      tempfile(pattern = "file", tmpdir = tempdir(), fileext = ".svg")
+    )
+
+    ggsave(out_name, plot = plot_out,
+           dpi = 20, height = 0.15, width = 0.9)
+
+    img_plot <- out_name %>%
+      readLines() %>%
+      paste0(collapse = "") %>%
+      gt::html()
+
+    on.exit(file.remove(out_name))
+
+    img_plot
+
+  }
+
+  plot_fn_square <- function(x){
 
     vals <- strsplit(x, split = ", ") %>%
       unlist() %>%
@@ -107,11 +152,15 @@ gt_plt_winloss <- function(
   }
 
 
-
   text_transform(
     gt_object,
     locations = cells_body(columns = {{ column }}),
-    fn = function(x){lapply(x, plot_fn)}
+    fn = function(x){
+      lapply(
+        x,
+        if(type == "pill"){plot_fn_pill} else {plot_fn_square}
+      )
+    }
   )
 
 }

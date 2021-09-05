@@ -1,7 +1,7 @@
 #' Apply FiveThirtyEight theme to a gt table
 #'
 #' @param gt_object An existing gt table object of class `gt_tbl`
-#' @param ... Optional additional arguments to gt::table_options()
+#' @param ... Optional additional arguments to `gt::table_options()`
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
 #' @export
@@ -11,7 +11,7 @@
 #' library(gt)
 #' themed_tab <- head(mtcars) %>%
 #'   gt() %>%
-#'   gt_theme_espn()
+#'   gt_theme_538()
 #' @section Figures:
 #' \if{html}{\figure{gt_538.png}{options: width=100\%}}
 #'
@@ -53,6 +53,10 @@ gt_theme_538 <- function(gt_object,...) {
       column_labels.border.top.color = "#00000000",
       column_labels.border.bottom.width = px(3),
       column_labels.border.bottom.color = "black",
+      row_group.border.top.width = px(2),
+      row_group.border.top.color = "black",
+      row_group.border.bottom.width = px(1),
+      row_group.border.bottom.color = "black",
       data_row.padding = px(3),
       source_notes.font.size = 12,
       table.font.size = 16,

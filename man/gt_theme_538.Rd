@@ -9,7 +9,7 @@ gt_theme_538(gt_object, ...)
 \arguments{
 \item{gt_object}{An existing gt table object of class \code{gt_tbl}}
 
-\item{...}{Optional additional arguments to gt::table_options()}
+\item{...}{Optional additional arguments to \code{gt::table_options()}}
 }
 \value{
 An object of class \code{gt_tbl}.
@@ -32,11 +32,12 @@ Apply FiveThirtyEight theme to a gt table
 library(gt)
 themed_tab <- head(mtcars) \%>\%
   gt() \%>\%
-  gt_theme_espn()
+  gt_theme_538()
 }
 \seealso{
 Other Themes: 
 \code{\link{gt_theme_espn}()},
+\code{\link{gt_theme_guardian}()},
 \code{\link{gt_theme_nytimes}()}
 }
 \concept{Themes}

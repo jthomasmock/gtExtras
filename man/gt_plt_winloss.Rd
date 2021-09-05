@@ -2,14 +2,14 @@
 % Please edit documentation in R/gt_plotting.R
 \name{gt_plt_winloss}
 \alias{gt_plt_winloss}
-\title{winloss_plot
-Add win loss point plot into rows of a \code{gt} table}
+\title{Add win loss point plot into rows of a \code{gt} table}
 \usage{
 gt_plt_winloss(
   gt_object,
   column,
+  max_wins = 17,
   colors = c("#D50A0A", "#013369", "gray"),
-  max_wins = 17
+  type = "pill"
 )
 }
 \arguments{
@@ -17,11 +17,11 @@ gt_plt_winloss(
 
 \item{column}{The column wherein the winloss plot should replace existing data. Note that the data \emph{must} be represented as a list of numeric values ahead of time.}
 
-\item{colors}{A character string of length 3, specifying the colors for loss, win, tie in that exact order.}
+\item{max_wins}{An integer indicating the max possible wins, this will be used to add padding if the total wins/losses observed is less than the max. This is useful for mid-season reporting. Defaults to a red, blue, grey palette.}
 
-\item{max_wins}{An integer indicating the max possible wins, this will be used to add padding if the total wins/losses observed is less than the max. This is useful for mid-season reporting.}
+\item{colors}{A character vector of length 3, specifying the colors for loss, win, tie in that exact order.}
 
-\item{height}{Number representing the vertical height of the plot in pixels. Defaults to 45 px.}
+\item{type}{A character string representing the type of plot, either a 'pill' or 'square'}
 }
 \value{
 An object of class \code{gt_tbl}.
@@ -33,7 +33,7 @@ It is a wrapper around \code{gt::text_transform()}.
 }
 \section{Function ID}{
 
-1-5
+1-6
 }
 
 \examples{
@@ -41,11 +41,13 @@ It is a wrapper around \code{gt::text_transform()}.
 }
 \seealso{
 Other Utilities: 
+\code{\link{fmt_pad_num}()},
 \code{\link{fmt_symbol_first}()},
 \code{\link{gt_bar_plot}()},
 \code{\link{gt_img_rows}()},
 \code{\link{gt_kable_sparkline}()},
 \code{\link{gt_merge_stack}()},
+\code{\link{gt_text_img}()},
 \code{\link{pad_fn}()}
 }
 \concept{Utilities}

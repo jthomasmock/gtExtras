@@ -37,6 +37,7 @@ padded_tab <- data.frame(x = c(1.2345, 12.345, 123.45, 1234.5, 12345)) \%>\%
   fmt(fns = function(x){pad_fn(x, nsmall = 4)}) \%>\%
   tab_style(
     # MUST USE A MONO-SPACED FONT
+    # https://fonts.google.com/?category=Monospace
     style = cell_text(font = google_font("Fira Mono")),
     locations = cells_body(columns = x)
     )
@@ -44,11 +45,13 @@ padded_tab <- data.frame(x = c(1.2345, 12.345, 123.45, 1234.5, 12345)) \%>\%
 }
 \seealso{
 Other Utilities: 
+\code{\link{fmt_pad_num}()},
 \code{\link{fmt_symbol_first}()},
 \code{\link{gt_bar_plot}()},
 \code{\link{gt_img_rows}()},
 \code{\link{gt_kable_sparkline}()},
 \code{\link{gt_merge_stack}()},
-\code{\link{gt_plt_winloss}()}
+\code{\link{gt_plt_winloss}()},
+\code{\link{gt_text_img}()}
 }
 \concept{Utilities}

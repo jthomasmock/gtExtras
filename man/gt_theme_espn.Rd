@@ -9,7 +9,7 @@ gt_theme_espn(gt_object, ...)
 \arguments{
 \item{gt_object}{An existing gt table object of class \code{gt_tbl}}
 
-\item{...}{Optional additional arguments to gt::table_options()}
+\item{...}{Optional additional arguments to \code{gt::table_options()}}
 }
 \value{
 An object of class \code{gt_tbl}.
@@ -37,6 +37,7 @@ themed_tab <- head(mtcars) \%>\%
 \seealso{
 Other Themes: 
 \code{\link{gt_theme_538}()},
+\code{\link{gt_theme_guardian}()},
 \code{\link{gt_theme_nytimes}()}
 }
 \concept{Themes}

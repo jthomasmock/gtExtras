@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add win loss point plot into rows of a gt table — gt_plt_winloss • gtExtras</title>
+<title>Format numeric columns to align at decimal point without trailing zeroes — fmt_pad_num • gtExtras</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,11 @@
 
 
 
-<meta property="og:title" content="Add win loss point plot into rows of a gt table — gt_plt_winloss" />
-<meta property="og:description" content="The gt_plt_winloss function takes an existing gt_tbl object and
-adds squares of a specific color and vertical position based on wins/losses.
-It is a wrapper around gt::text_transform()." />
+<meta property="og:title" content="Format numeric columns to align at decimal point without trailing zeroes — fmt_pad_num" />
+<meta property="og:description" content="This function removes repeating trailing zeroes and adds blank white space
+to align at the decimal point. This requires the use of true monospaced fonts,
+which are supplied via the gt::google_font() function. This is a wrapper
+around gt::fmt() and gtExtras::pad_fn()." />
 
 
 
@@ -110,24 +111,19 @@ It is a wrapper around gt::text_transform()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add win loss point plot into rows of a <code>gt</code> table</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/gt_plotting.R'><code>R/gt_plotting.R</code></a></small>
-    <div class="hidden name"><code>gt_plt_winloss.Rd</code></div>
+    <h1>Format numeric columns to align at decimal point without trailing zeroes</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/fmt_pad_num.R'><code>R/fmt_pad_num.R</code></a></small>
+    <div class="hidden name"><code>fmt_pad_num.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The <code>gt_plt_winloss</code> function takes an existing <code>gt_tbl</code> object and
-adds squares of a specific color and vertical position based on wins/losses.
-It is a wrapper around <code><a href='https://gt.rstudio.com/reference/text_transform.html'>gt::text_transform()</a></code>.</p>
+    <p>This function removes repeating trailing zeroes and adds blank white space
+to align at the decimal point. This requires the use of true monospaced fonts,
+which are supplied via the <code><a href='https://gt.rstudio.com/reference/google_font.html'>gt::google_font()</a></code> function. This is a wrapper
+around <code><a href='https://gt.rstudio.com/reference/fmt.html'>gt::fmt()</a></code> and <code><a href='pad_fn.html'>gtExtras::pad_fn()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gt_plt_winloss</span><span class='op'>(</span>
-  <span class='va'>gt_object</span>,
-  <span class='va'>column</span>,
-  max_wins <span class='op'>=</span> <span class='fl'>17</span>,
-  colors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#D50A0A"</span>, <span class='st'>"#013369"</span>, <span class='st'>"gray"</span><span class='op'>)</span>,
-  type <span class='op'>=</span> <span class='st'>"pill"</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>fmt_pad_num</span><span class='op'>(</span><span class='va'>gt_object</span>, <span class='va'>columns</span>, nsmall <span class='op'>=</span> <span class='fl'>2</span>, gfont <span class='op'>=</span> <span class='st'>"Fira Mono"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -137,45 +133,50 @@ It is a wrapper around <code><a href='https://gt.rstudio.com/reference/text_tran
       <td><p>An existing gt table object of class <code>gt_tbl</code></p></td>
     </tr>
     <tr>
-      <th>column</th>
-      <td><p>The column wherein the winloss plot should replace existing data. Note that the data <em>must</em> be represented as a list of numeric values ahead of time.</p></td>
+      <th>columns</th>
+      <td><p>The columns to format. Can either be a series of column names provided in <code><a href='https://rdrr.io/r/base/c.html'>c()</a></code>, a vector of column indices, or a helper function focused on selections. The select helper functions are: <code><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with()</a></code>, <code><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>ends_with()</a></code>, <code><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>contains()</a></code>, <code><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>matches()</a></code>, <code><a href='https://tidyselect.r-lib.org/reference/one_of.html'>one_of()</a></code>, <code><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>num_range()</a></code>, and <code><a href='https://tidyselect.r-lib.org/reference/everything.html'>everything()</a></code>.</p></td>
     </tr>
     <tr>
-      <th>max_wins</th>
-      <td><p>An integer indicating the max possible wins, this will be used to add padding if the total wins/losses observed is less than the max. This is useful for mid-season reporting. Defaults to a red, blue, grey palette.</p></td>
+      <th>nsmall</th>
+      <td><p>The max number of decimal places to round at/display</p></td>
     </tr>
     <tr>
-      <th>colors</th>
-      <td><p>A character vector of length 3, specifying the colors for loss, win, tie in that exact order.</p></td>
-    </tr>
-    <tr>
-      <th>type</th>
-      <td><p>A character string representing the type of plot, either a 'pill' or 'square'</p></td>
+      <th>gfont</th>
+      <td><p>The complete name of a font available in Google Fonts. For the <code>fmt_pad_num</code> function this requires a monospaced font, where Google has many available at <a href='https://fonts.google.com/?category=Monospace&amp;preview.text=1234567890&amp;preview.text_type=custom'>fonts.google.com</a></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>An object of class <code>gt_tbl</code>.</p>
+    <h2 class="hasAnchor" id="figures"><a class="anchor" href="#figures"></a>Figures</h2>
+
+    
+
+<p><img src='figures/fmt_pad_num.png' width=20% /></p>
     <h2 class="hasAnchor" id="function-id"><a class="anchor" href="#function-id"></a>Function ID</h2>
 
     
 
-<p>1-6</p>
+<p>1-8</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Utilities: 
-<code><a href='fmt_pad_num.html'>fmt_pad_num</a>()</code>,
+    <div class='dont-index'><p><code><a href='pad_fn.html'>pad_fn()</a></code></p>
+<p>Other Utilities: 
 <code><a href='fmt_symbol_first.html'>fmt_symbol_first</a>()</code>,
 <code><a href='gt_bar_plot.html'>gt_bar_plot</a>()</code>,
 <code><a href='gt_img_rows.html'>gt_img_rows</a>()</code>,
 <code><a href='gt_kable_sparkline.html'>gt_kable_sparkline</a>()</code>,
 <code><a href='gt_merge_stack.html'>gt_merge_stack</a>()</code>,
+<code><a href='gt_plt_winloss.html'>gt_plt_winloss</a>()</code>,
 <code><a href='gt_text_img.html'>gt_text_img</a>()</code>,
 <code><a href='pad_fn.html'>pad_fn</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
+<span class='va'>padded_tab</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>numbers <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1.2345</span>, <span class='fl'>12.345</span>, <span class='fl'>123.45</span>, <span class='fl'>1234.5</span>, <span class='fl'>12345</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>fmt_pad_num</span><span class='op'>(</span>columns <span class='op'>=</span> <span class='va'>numbers</span>, nsmall <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

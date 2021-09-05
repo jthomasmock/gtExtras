@@ -1,10 +1,9 @@
 #' Apply ESPN theme to a gt table
 #'
 #' @param gt_object An existing gt table object of class `gt_tbl`
-#' @param ... Optional additional arguments to gt::table_options()
+#' @param ... Optional additional arguments to `gt::table_options()`
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
-#' @import scales
 #' @export
 #' @import gt
 #' @examples

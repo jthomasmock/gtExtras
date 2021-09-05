@@ -354,7 +354,7 @@ list row.
 create_input_df(1) %>% 
   gt() %>% 
   gt_plt_winloss(outcomes, max_wins = 15) %>% 
-  tab_options(data_row.padding = px(2)) 
+  tab_options(data_row.padding = px(2))
 ```
 
 <p align="center">
@@ -369,11 +369,26 @@ the data.
 create_input_df(4) %>% 
   gt() %>% 
   gt_plt_winloss(outcomes, max_wins = 15) %>% 
-  tab_options(data_row.padding = px(2))
+  tab_options(data_row.padding = px(2))  %>% 
+  gtsave("man/figures/wl-4.png")
 ```
 
 <p align="center">
 <img src="man/figures/wl-4.png" width="500px">
+</p>
+
+You can also switch over to ‘squares’ instead of ‘pills’ by changing the
+`type` argument.
+
+``` r
+create_input_df(4) %>% 
+  gt() %>% 
+  gt_plt_winloss(outcomes, max_wins = 15, type = "square") %>% 
+  tab_options(data_row.padding = px(2))
+```
+
+<p align="center">
+<img src="man/figures/wl-4-sq.png" width="500px">
 </p>
 
 A more realistic use case is seen below with data from `{nflreadr}`:
@@ -416,7 +431,8 @@ final_df <- joined_df %>%
   filter(team_conf == "AFC") %>% 
   group_by(team_division) %>% 
   arrange(desc(Wins)) %>% 
-  ungroup()
+  ungroup() %>% 
+  arrange(team_division)
 
 final_df %>% 
   gt(groupname_col = "team_division") %>%

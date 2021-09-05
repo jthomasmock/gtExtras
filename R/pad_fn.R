@@ -17,6 +17,7 @@
 #'   fmt(fns = function(x){pad_fn(x, nsmall = 4)}) %>%
 #'   tab_style(
 #'     # MUST USE A MONO-SPACED FONT
+#'     # https://fonts.google.com/?category=Monospace
 #'     style = cell_text(font = google_font("Fira Mono")),
 #'     locations = cells_body(columns = x)
 #'     )

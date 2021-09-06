@@ -17,7 +17,7 @@
 #' @import gt
 #' @importFrom kableExtra spec_plot
 #' @examples
-#'
+#'  library(gt)
 #'  kable_sparkline_tab <- mtcars %>%
 #'     dplyr::group_by(cyl) %>%
 #'     # must end up with list of data for each row in the input dataframe

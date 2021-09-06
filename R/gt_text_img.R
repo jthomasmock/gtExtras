@@ -1,6 +1,6 @@
 #' Add text and an image to the left or right of it
 #' @description
-#' The `gt_text_img` function takes an existing `gt_tbl` object and
+#' The `add_text_img` function takes an existing `gt_tbl` object and
 #' adds some user specified text and an image url to a specific cell. This is a
 #' wrapper raw HTML strings and `gt::web_image()`. Intended to be used inside
 #' the header of a table via `gt::tab_header()`.
@@ -18,8 +18,23 @@
 #' @family Utilities
 #' @section Function ID:
 #' 1-7
+#'
+#' @examples
+#' library(gt)
+#' title_car <- mtcars %>%
+#'   head() %>%
+#'   gt() %>%
+#'   gt::tab_header(
+#'     title = add_text_img(
+#'       "A table about cars made with",
+#'       url = "https://www.r-project.org/logo/Rlogo.png"
+#'       )
+#'     )
+#' @section Figures:
+#' \if{html}{\figure{title-car.png}{options: width=70\%}}
+#'
 
-gt_text_img <- function(text, url, height = 30, left = FALSE){
+add_text_img <- function(text, url, height = 30, left = FALSE){
 
   text_div <- glue::glue("<div style='display:inline;vertical-align: top;'>{text}</div>")
   img_div <- glue::glue("<div style='display:inline;margin-left:10px'>{web_image(url = url, height = height)}</div>")

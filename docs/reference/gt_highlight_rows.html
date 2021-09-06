@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add sparklines into rows of a gt table — gt_kable_sparkline • gtExtras</title>
+<title>Add color highlighting to a specific row — gt_highlight_rows • gtExtras</title>
 
 
 <!-- jquery -->
@@ -39,11 +39,10 @@
 
 
 
-<meta property="og:title" content="Add sparklines into rows of a gt table — gt_kable_sparkline" />
-<meta property="og:description" content="The gt_kable_sparkline function takes an existing gt_tbl object and
-adds sparklines via the kableExtra::spec_plot() function. This is a wrapper
-around gt::text_transform() + kableExtra::spec_plot() with
-the necessary boilerplate already applied." />
+<meta property="og:title" content="Add color highlighting to a specific row — gt_highlight_rows" />
+<meta property="og:description" content="The gt_highlight_rows function takes an existing gt_tbl object and
+adds highlighting color to the cell background of a specific row. The function
+accepts rows only by number (not by logical expression) for now." />
 
 
 
@@ -111,25 +110,26 @@ the necessary boilerplate already applied." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add sparklines into rows of a <code>gt</code> table</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/gt_plotting.R'><code>R/gt_plotting.R</code></a></small>
-    <div class="hidden name"><code>gt_kable_sparkline.Rd</code></div>
+    <h1>Add color highlighting to a specific row</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/gt_highlight_rows.R'><code>R/gt_highlight_rows.R</code></a></small>
+    <div class="hidden name"><code>gt_highlight_rows.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The <code>gt_kable_sparkline</code> function takes an existing <code>gt_tbl</code> object and
-adds sparklines via the <code><a href='https://rdrr.io/pkg/kableExtra/man/spec_plot.html'>kableExtra::spec_plot()</a></code> function. This is a wrapper
-around <code><a href='https://gt.rstudio.com/reference/text_transform.html'>gt::text_transform()</a></code> + <code><a href='https://rdrr.io/pkg/kableExtra/man/spec_plot.html'>kableExtra::spec_plot()</a></code> with
-the necessary boilerplate already applied.</p>
+    <p>The <code>gt_highlight_rows</code> function takes an existing <code>gt_tbl</code> object and
+adds highlighting color to the cell background of a specific row. The function
+accepts rows only by number (not by logical expression) for now.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gt_kable_sparkline</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>gt_highlight_rows</span><span class='op'>(</span>
   <span class='va'>gt_object</span>,
-  <span class='va'>column</span>,
-  width <span class='op'>=</span> <span class='fl'>200</span>,
-  height <span class='op'>=</span> <span class='fl'>45</span>,
-  color <span class='op'>=</span> <span class='st'>"lightgrey"</span>,
-  <span class='va'>...</span>
+  columns <span class='op'>=</span> <span class='fu'>gt</span><span class='fu'>::</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/everything.html'>everything</a></span><span class='op'>(</span><span class='op'>)</span>,
+  rows <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  fill <span class='op'>=</span> <span class='st'>"#80bcd8"</span>,
+  alpha <span class='op'>=</span> <span class='fl'>0.8</span>,
+  font_weight <span class='op'>=</span> <span class='st'>"bold"</span>,
+  bold_target_only <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  target_col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -140,24 +140,32 @@ the necessary boilerplate already applied.</p>
       <td><p>An existing gt table object of class <code>gt_tbl</code></p></td>
     </tr>
     <tr>
-      <th>column</th>
-      <td><p>The column wherein the sparkline plot should replace existing data. Note that the data <em>must</em> be represented as a list of numeric values ahead of time.</p></td>
+      <th>columns</th>
+      <td><p>Specific columns to apply color to, accepts either <code>tidyeval</code> colum names or columns by position.</p></td>
     </tr>
     <tr>
-      <th>width</th>
-      <td><p>Number representing the horizontal width of the plot in pixels. Defaults to 300 px.</p></td>
+      <th>rows</th>
+      <td><p>A number indicating specific row(s) to apply color to.</p></td>
     </tr>
     <tr>
-      <th>height</th>
-      <td><p>Number representing the vertical height of the plot in pixels. Defaults to 45 px.</p></td>
+      <th>fill</th>
+      <td><p>A character string indicating the fill color. If nothing is provided, then "#80bcd8" (light blue) will be used as a default.</p></td>
     </tr>
     <tr>
-      <th>color</th>
-      <td><p>Color for the line, defaults to light grey. Accepts a named color (eg 'blue') or a hex color.</p></td>
+      <th>alpha</th>
+      <td><p>An optional alpha transparency value for the color as single value in the range of 0 (fully transparent) to 1 (fully opaque). If not provided the fill color will either be fully opaque or use alpha information from the color value if it is supplied in the #RRGGBBAA format.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Additional arguments passed to <code><a href='https://rdrr.io/pkg/kableExtra/man/spec_plot.html'>kableExtra::spec_plot</a></code></p></td>
+      <th>font_weight</th>
+      <td><p>A string or number indicating the weight of the font. Can be a text-based keyword such as "normal", "bold", "lighter", "bolder", or, a numeric value between 1 and 1000, inclusive. Note that only variable fonts may support the numeric mapping of weight.</p></td>
+    </tr>
+    <tr>
+      <th>bold_target_only</th>
+      <td><p>A logical of TRUE/FALSE indicating whether to apply bold to only the specific <code>target_col</code>. You must indicate a specific column with <code>target_col</code>.</p></td>
+    </tr>
+    <tr>
+      <th>target_col</th>
+      <td><p>A specific <code>tidyeval</code> column to apply bold text to, which allows for normal weight text for the remaining highlighted columns.</p></td>
     </tr>
     </table>
 
@@ -168,12 +176,13 @@ the necessary boilerplate already applied.</p>
 
     
 
-<p><img src='figures/kable-sparkline.png' width=20% /></p>
+<p><img src='figures/highlight-basic.png' width=70% />
+<img src='figures/highlight-target.png' width=70% /></p>
     <h2 class="hasAnchor" id="function-id"><a class="anchor" href="#function-id"></a>Function ID</h2>
 
     
 
-<p>1-4</p>
+<p>1-8</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Utilities: 
@@ -181,20 +190,28 @@ the necessary boilerplate already applied.</p>
 <code><a href='fmt_pad_num.html'>fmt_pad_num</a>()</code>,
 <code><a href='fmt_symbol_first.html'>fmt_symbol_first</a>()</code>,
 <code><a href='gt_bar_plot.html'>gt_bar_plot</a>()</code>,
-<code><a href='gt_highlight_rows.html'>gt_highlight_rows</a>()</code>,
 <code><a href='gt_img_rows.html'>gt_img_rows</a>()</code>,
+<code><a href='gt_kable_sparkline.html'>gt_kable_sparkline</a>()</code>,
 <code><a href='gt_merge_stack.html'>gt_merge_stack</a>()</code>,
 <code><a href='gt_plt_winloss.html'>gt_plt_winloss</a>()</code>,
 <code><a href='pad_fn.html'>pad_fn</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'> <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
- <span class='va'>kable_sparkline_tab</span> <span class='op'>&lt;-</span> <span class='va'>mtcars</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>cyl</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-    <span class='co'># must end up with list of data for each row in the input dataframe</span>
-    <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>mpg_data <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span>, .groups <span class='op'>=</span> <span class='st'>"drop"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-    <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>gt_kable_sparkline</span><span class='op'>(</span><span class='va'>mpg_data</span>, height <span class='op'>=</span> <span class='fl'>45</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+<span class='va'>basic_use</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/rownames.html'>rownames_to_column</a></span><span class='op'>(</span><span class='st'>"car"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+   <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+   <span class='fu'>gt_highlight_rows</span><span class='op'>(</span>rows <span class='op'>=</span> <span class='fl'>2</span>, font_weight <span class='op'>=</span> <span class='st'>"normal"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in tibble::rownames_to_column("car"): is.data.frame(df) is not TRUE</span></div><div class='input'>
+<span class='va'>target_bold_column</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+   <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/rownames.html'>rownames_to_column</a></span><span class='op'>(</span><span class='st'>"car"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+   <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+   <span class='fu'>gt_highlight_rows</span><span class='op'>(</span>
+     rows <span class='op'>=</span> <span class='fl'>5</span>,
+     fill <span class='op'>=</span> <span class='st'>"lightgrey"</span>,
+     bold_target_only <span class='op'>=</span> <span class='cn'>TRUE</span>,
+     target_col <span class='op'>=</span> <span class='va'>car</span>
+   <span class='op'>)</span>
 
 </div></pre>
   </div>

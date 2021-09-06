@@ -4,6 +4,9 @@
     <loc>https://jthomasmock.github.io/gtExtras/index.html</loc>
   </url>
   <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/add_text_img.html</loc>
+  </url>
+  <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/fmt_pad_num.html</loc>
   </url>
   <url>
@@ -14,6 +17,9 @@
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_color_rows.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_highlight_rows.html</loc>
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_hulk_col_numeric.html</loc>
@@ -29,9 +35,6 @@
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_winloss.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_text_img.html</loc>
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_theme_538.html</loc>

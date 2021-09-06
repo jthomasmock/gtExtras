@@ -91,7 +91,7 @@ head(mtcars) %>%
 ``` r
 head(mtcars) %>%
   gt() %>% 
-  gt_theme_538()
+  gt_theme_espn()
 ```
 
 <p align="center">
@@ -231,6 +231,42 @@ mtcars %>%
 
 <p align="center">
 <img src="man/figures/discrete-pal.png" width="700px">
+</p>
+
+### `gt_highlight_rows()`
+
+This provides the ability to highlight and optionally bold entire rows
+within an existing `gt` table. Basic use defaults to a light-blue
+highlight which can be changed with the `fill` argument.
+
+``` r
+head(mtcars[,1:5]) %>% 
+  tibble::rownames_to_column("car") %>% 
+  gt() %>% 
+  gt_highlight_rows(rows = 2, font_weight = "normal") 
+```
+
+<p align="center">
+<img src="man/figures/highlight-basic.png" width="500px">
+</p>
+
+You can optionally specify a target column with `target_col` that will
+be bold, while the rest of the row’s text will be default weight.
+
+``` r
+head(mtcars[,1:5]) %>% 
+  tibble::rownames_to_column("car") %>% 
+  gt() %>% 
+  gt_highlight_rows(
+    rows = 5, 
+    fill = "lightgrey",
+    bold_target_only = TRUE,
+    target_col = car
+    )
+```
+
+<p align="center">
+<img src="man/figures/highlight-target.png" width="500px">
 </p>
 
 ### `gt_kable_sparkline()`

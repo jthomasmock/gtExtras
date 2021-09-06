@@ -66,9 +66,10 @@ gt_theme_guardian <- function(gt_object,...) {
       row_group.border.bottom.color = "grey",
       row_group.font.weight = "bold",
       column_labels.border.top.width = px(1),
-      column_labels.border.top.color = if(is.null(tab_out[["_heading"]][["title"]])){
+      column_labels.border.top.color = if(
+        is.null(tab_out[["_heading"]][["title"]])){
         "#40c5ff"
-      }else{"#ececec"},
+      } else {"#ececec"},
       column_labels.border.bottom.width = px(2),
       column_labels.border.bottom.color = "#ececec",
       heading.border.bottom.width = px(0),

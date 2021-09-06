@@ -65,13 +65,14 @@ represent a percentage value representing 0-100.
 }
 \seealso{
 Other Utilities: 
+\code{\link{add_text_img}()},
 \code{\link{fmt_pad_num}()},
 \code{\link{fmt_symbol_first}()},
+\code{\link{gt_highlight_rows}()},
 \code{\link{gt_img_rows}()},
 \code{\link{gt_kable_sparkline}()},
 \code{\link{gt_merge_stack}()},
 \code{\link{gt_plt_winloss}()},
-\code{\link{gt_text_img}()},
 \code{\link{pad_fn}()}
 }
 \concept{Utilities}

@@ -35,6 +35,7 @@ the necessary boilerplate already applied.
 }
 
 \examples{
+#' library(gt)
 team_df <- readRDS(url("https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"))
 
  logo_table <- team_df \%>\%
@@ -48,13 +49,14 @@ team_df <- readRDS(url("https://github.com/nflverse/nflfastR-data/raw/master/tea
 }
 \seealso{
 Other Utilities: 
+\code{\link{add_text_img}()},
 \code{\link{fmt_pad_num}()},
 \code{\link{fmt_symbol_first}()},
 \code{\link{gt_bar_plot}()},
+\code{\link{gt_highlight_rows}()},
 \code{\link{gt_kable_sparkline}()},
 \code{\link{gt_merge_stack}()},
 \code{\link{gt_plt_winloss}()},
-\code{\link{gt_text_img}()},
 \code{\link{pad_fn}()}
 }
 \concept{Utilities}

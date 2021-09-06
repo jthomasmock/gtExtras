@@ -15,6 +15,7 @@
 #' @export
 #' @import gt
 #' @examples
+#' #' library(gt)
 #' team_df <- readRDS(url("https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"))
 #'
 #'  logo_table <- team_df %>%

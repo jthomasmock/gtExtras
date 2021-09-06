@@ -14,14 +14,16 @@ reference:
   - fmt_symbol_first
   - fmt_pad_num
   - pad_fn
+  - add_text_img
   - gt_merge_stack
   - gt_img_rows
-  - gt_text_img
   - gt_plt_winloss
   - gt_kable_sparkline
   - gt_bar_plot
 - title: Colors
-  desc: Wrappers around the `{scales}` package that provide easier or more succinct applications of palettes and colors inside `{gt}`.
+  desc: Add color to the entire table or to specific locations. Includes wrappers around the `{scales}` and `{paletteer}` packages that provide easier or more succinct applications of palettes and colors inside `{gt}`.
   contents:
   - gt_hulk_col_numeric
   - gt_color_rows
+  - gt_highlight_rows
+

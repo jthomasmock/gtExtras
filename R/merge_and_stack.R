@@ -14,6 +14,7 @@
 #' @export
 #' @import gt glue
 #' @examples
+#' library(gt)
 #' team_df <- readRDS(url("https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"))
 #'
 #' stacked_tab <- team_df %>%

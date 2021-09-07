@@ -67,7 +67,7 @@ gt_highlight_rows <- function(
     gt_object %>%
       tab_style(
         style = list(
-          cell_fill(color = "lightblue", alpha = alpha),
+          cell_fill(color = fill, alpha = alpha),
           cell_text(weight = font_weight)
         ),
         locations = cells_body(

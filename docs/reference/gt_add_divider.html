@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Apply NY Times theme to a gt table — gt_theme_nytimes • gtExtras</title>
+<title>Add a dividing border to an existing gt table. — gt_add_divider • gtExtras</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Apply NY Times theme to a gt table — gt_theme_nytimes" />
-<meta property="og:description" content="Apply NY Times theme to a gt table" />
+<meta property="og:title" content="Add a dividing border to an existing gt table. — gt_add_divider" />
+<meta property="og:description" content="The gt_add_divider function takes an existing gt_tbl object and
+adds borders or dividers to specific columns." />
 
 
 
@@ -108,16 +109,25 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Apply NY Times theme to a <code>gt</code> table</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/gt_theme_nytimes.R'><code>R/gt_theme_nytimes.R</code></a></small>
-    <div class="hidden name"><code>gt_theme_nytimes.Rd</code></div>
+    <h1>Add a dividing border to an existing <code>gt</code> table.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/gt_add_divider.R'><code>R/gt_add_divider.R</code></a></small>
+    <div class="hidden name"><code>gt_add_divider.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Apply NY Times theme to a <code>gt</code> table</p>
+    <p>The <code>gt_add_divider</code> function takes an existing <code>gt_tbl</code> object and
+adds borders or dividers to specific columns.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gt_theme_nytimes</span><span class='op'>(</span><span class='va'>gt_object</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>gt_add_divider</span><span class='op'>(</span>
+  <span class='va'>gt_object</span>,
+  <span class='va'>columns</span>,
+  sides <span class='op'>=</span> <span class='st'>"right"</span>,
+  color <span class='op'>=</span> <span class='st'>"#000000"</span>,
+  style <span class='op'>=</span> <span class='st'>"solid"</span>,
+  weight <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/px.html'>px</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span>,
+  include_labels <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -127,8 +137,16 @@
       <td><p>An existing gt table object of class <code>gt_tbl</code></p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Optional additional arguments to <code>gt::table_options()</code></p></td>
+      <th>columns</th>
+      <td><p>Specific columns to apply color to, accepts either <code>tidyeval</code> colum names or columns by position.</p></td>
+    </tr>
+    <tr>
+      <th>sides</th>
+      <td><p>The border sides to be modified. Options include <code>"left"</code>, <code>"right"</code>, <code>"top"</code>, and <code>"bottom"</code>. For all borders surrounding the selected cells, we can use the `"all"`` option.</p></td>
+    </tr>
+    <tr>
+      <th>color, style, weight</th>
+      <td><p>The border color, style, and weight. The <code>color</code> can be defined with a color name or with a hexadecimal color code. The default <code>color</code> value is <code>"#000000"</code> (black). The <code>style</code> can be one of either <code>"solid"</code> (the default), <code>"dashed"</code>, or <code>"dotted"</code>. The <code>weight</code> of the border lines is to be given in pixel values (the <code><a href='https://gt.rstudio.com/reference/px.html'>px()</a></code> helper function is useful for this. The default value for <code>weight</code> is <code>"1px"</code>.</p></td>
     </tr>
     </table>
 
@@ -139,26 +157,35 @@
 
     
 
-<p><img src='figures/gt_nyt.png' width=100% /></p>
+<p><img src='figures/add-divider.png' width=70% /></p>
     <h2 class="hasAnchor" id="function-id"><a class="anchor" href="#function-id"></a>Function ID</h2>
 
     
 
-<p>1-3</p>
+<p>1-12</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Themes: 
-<code><a href='gt_theme_538.html'>gt_theme_538</a>()</code>,
-<code><a href='gt_theme_espn.html'>gt_theme_espn</a>()</code>,
-<code><a href='gt_theme_guardian.html'>gt_theme_guardian</a>()</code></p></div>
+    <div class='dont-index'><p>Other Utilities: 
+<code><a href='add_text_img.html'>add_text_img</a>()</code>,
+<code><a href='fa_icon_repeat.html'>fa_icon_repeat</a>()</code>,
+<code><a href='fmt_pad_num.html'>fmt_pad_num</a>()</code>,
+<code><a href='fmt_symbol_first.html'>fmt_symbol_first</a>()</code>,
+<code><a href='gt_add_fa_icons.html'>gt_add_fa_icons</a>()</code>,
+<code><a href='gt_bar_plot.html'>gt_bar_plot</a>()</code>,
+<code><a href='gt_highlight_cols.html'>gt_highlight_cols</a>()</code>,
+<code><a href='gt_highlight_rows.html'>gt_highlight_rows</a>()</code>,
+<code><a href='gt_img_rows.html'>gt_img_rows</a>()</code>,
+<code><a href='gt_kable_sparkline.html'>gt_kable_sparkline</a>()</code>,
+<code><a href='gt_merge_stack.html'>gt_merge_stack</a>()</code>,
+<code><a href='gt_plt_winloss.html'>gt_plt_winloss</a>()</code>,
+<code><a href='pad_fn.html'>pad_fn</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
-<span class='va'>nyt_tab</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
+<span class='va'>basic_divider</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>gt_theme_nytimes</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://gt.rstudio.com/reference/tab_header.html'>tab_header</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Table styled like the NY Times"</span><span class='op'>)</span>
+  <span class='fu'>gt_add_divider</span><span class='op'>(</span>columns <span class='op'>=</span> <span class='st'>"cyl"</span>, style <span class='op'>=</span> <span class='st'>"dashed"</span><span class='op'>)</span>
+
 
 </div></pre>
   </div>

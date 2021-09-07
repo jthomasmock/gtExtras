@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Apply NY Times theme to a gt table — gt_theme_nytimes • gtExtras</title>
+<title>Add color highlighting to a specific column(s) — gt_highlight_cols • gtExtras</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Apply NY Times theme to a gt table — gt_theme_nytimes" />
-<meta property="og:description" content="Apply NY Times theme to a gt table" />
+<meta property="og:title" content="Add color highlighting to a specific column(s) — gt_highlight_cols" />
+<meta property="og:description" content="The gt_highlight_cols function takes an existing gt_tbl object and
+adds highlighting color to the cell background of a specific column(s)." />
 
 
 
@@ -108,16 +109,23 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Apply NY Times theme to a <code>gt</code> table</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/gt_theme_nytimes.R'><code>R/gt_theme_nytimes.R</code></a></small>
-    <div class="hidden name"><code>gt_theme_nytimes.Rd</code></div>
+    <h1>Add color highlighting to a specific column(s)</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/gt_highlight_cols.R'><code>R/gt_highlight_cols.R</code></a></small>
+    <div class="hidden name"><code>gt_highlight_cols.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Apply NY Times theme to a <code>gt</code> table</p>
+    <p>The <code>gt_highlight_cols</code> function takes an existing <code>gt_tbl</code> object and
+adds highlighting color to the cell background of a specific column(s).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gt_theme_nytimes</span><span class='op'>(</span><span class='va'>gt_object</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>gt_highlight_cols</span><span class='op'>(</span>
+  <span class='va'>gt_object</span>,
+  <span class='va'>columns</span>,
+  fill <span class='op'>=</span> <span class='st'>"#80bcd8"</span>,
+  alpha <span class='op'>=</span> <span class='fl'>1</span>,
+  font_weight <span class='op'>=</span> <span class='st'>"normal"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -127,8 +135,20 @@
       <td><p>An existing gt table object of class <code>gt_tbl</code></p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Optional additional arguments to <code>gt::table_options()</code></p></td>
+      <th>columns</th>
+      <td><p>Specific columns to apply color to, accepts either <code>tidyeval</code> colum names or columns by position.</p></td>
+    </tr>
+    <tr>
+      <th>fill</th>
+      <td><p>A character string indicating the fill color. If nothing is provided, then "#80bcd8" (light blue) will be used as a default.</p></td>
+    </tr>
+    <tr>
+      <th>alpha</th>
+      <td><p>An optional alpha transparency value for the color as single value in the range of 0 (fully transparent) to 1 (fully opaque). If not provided the fill color will either be fully opaque or use alpha information from the color value if it is supplied in the #RRGGBBAA format.</p></td>
+    </tr>
+    <tr>
+      <th>font_weight</th>
+      <td><p>A string or number indicating the weight of the font. Can be a text-based keyword such as "normal", "bold", "lighter", "bolder", or, a numeric value between 1 and 1000, inclusive. Note that only variable fonts may support the numeric mapping of weight.</p></td>
     </tr>
     </table>
 
@@ -139,26 +159,34 @@
 
     
 
-<p><img src='figures/gt_nyt.png' width=100% /></p>
+<p><img src='figures/highlight-col.png' width=70% /></p>
     <h2 class="hasAnchor" id="function-id"><a class="anchor" href="#function-id"></a>Function ID</h2>
 
     
 
-<p>1-3</p>
+<p>1-11</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Themes: 
-<code><a href='gt_theme_538.html'>gt_theme_538</a>()</code>,
-<code><a href='gt_theme_espn.html'>gt_theme_espn</a>()</code>,
-<code><a href='gt_theme_guardian.html'>gt_theme_guardian</a>()</code></p></div>
+    <div class='dont-index'><p>Other Utilities: 
+<code><a href='add_text_img.html'>add_text_img</a>()</code>,
+<code><a href='fa_icon_repeat.html'>fa_icon_repeat</a>()</code>,
+<code><a href='fmt_pad_num.html'>fmt_pad_num</a>()</code>,
+<code><a href='fmt_symbol_first.html'>fmt_symbol_first</a>()</code>,
+<code><a href='gt_add_divider.html'>gt_add_divider</a>()</code>,
+<code><a href='gt_add_fa_icons.html'>gt_add_fa_icons</a>()</code>,
+<code><a href='gt_bar_plot.html'>gt_bar_plot</a>()</code>,
+<code><a href='gt_highlight_rows.html'>gt_highlight_rows</a>()</code>,
+<code><a href='gt_img_rows.html'>gt_img_rows</a>()</code>,
+<code><a href='gt_kable_sparkline.html'>gt_kable_sparkline</a>()</code>,
+<code><a href='gt_merge_stack.html'>gt_merge_stack</a>()</code>,
+<code><a href='gt_plt_winloss.html'>gt_plt_winloss</a>()</code>,
+<code><a href='pad_fn.html'>pad_fn</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
-<span class='va'>nyt_tab</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
+<span class='va'>basic_col</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>gt_theme_nytimes</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://gt.rstudio.com/reference/tab_header.html'>tab_header</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Table styled like the NY Times"</span><span class='op'>)</span>
+  <span class='fu'>gt_highlight_cols</span><span class='op'>(</span><span class='va'>cyl</span>, fill <span class='op'>=</span> <span class='st'>"red"</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
 
 </div></pre>
   </div>

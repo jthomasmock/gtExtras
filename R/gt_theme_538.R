@@ -30,7 +30,8 @@ gt_theme_538 <- function(gt_object,...) {
       font = list(
         google_font("Chivo"),
         default_fonts()
-      )
+      ),
+      weight = 300
     ) %>%
     tab_style(
       style = cell_borders(

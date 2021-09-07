@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pad a vector of numbers to align on the decimal point. — pad_fn • gtExtras</title>
+<title>Repeat {fontawesome} icons and convert to HTML — fa_icon_repeat • gtExtras</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,8 @@
 
 
 
-<meta property="og:title" content="Pad a vector of numbers to align on the decimal point. — pad_fn" />
-<meta property="og:description" content="This helper function adds whitespace to numeric values so that they can
-be aligned on the decimal without requiring additional trailing zeroes.
-This function is intended to use within the gt::fmt() function." />
+<meta property="og:title" content="Repeat {fontawesome} icons and convert to HTML — fa_icon_repeat" />
+<meta property="og:description" content="The fa_icon_repeat function takes an fontawesome icon and repeats it n times." />
 
 
 
@@ -110,50 +108,85 @@ This function is intended to use within the gt::fmt() function." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pad a vector of numbers to align on the decimal point.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/pad_fn.R'><code>R/pad_fn.R</code></a></small>
-    <div class="hidden name"><code>pad_fn.Rd</code></div>
+    <h1>Repeat <code>{fontawesome}</code> icons and convert to HTML</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/icon_fun.R'><code>R/icon_fun.R</code></a></small>
+    <div class="hidden name"><code>fa_icon_repeat.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This helper function adds whitespace to numeric values so that they can
-be aligned on the decimal without requiring additional trailing zeroes.
-This function is intended to use within the <code><a href='https://gt.rstudio.com/reference/fmt.html'>gt::fmt()</a></code> function.</p>
+    <p>The <code>fa_icon_repeat</code> function takes an <a href='https://fontawesome.com/'>fontawesome</a> icon and repeats it <code>n</code> times.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pad_fn</span><span class='op'>(</span><span class='va'>x</span>, nsmall <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>fa_icon_repeat</span><span class='op'>(</span>
+  name <span class='op'>=</span> <span class='st'>"star"</span>,
+  repeats <span class='op'>=</span> <span class='fl'>1</span>,
+  fill <span class='op'>=</span> <span class='cn'>NULL</span>,
+  fill_opacity <span class='op'>=</span> <span class='cn'>NULL</span>,
+  stroke <span class='op'>=</span> <span class='cn'>NULL</span>,
+  stroke_width <span class='op'>=</span> <span class='cn'>NULL</span>,
+  stroke_opacity <span class='op'>=</span> <span class='cn'>NULL</span>,
+  height <span class='op'>=</span> <span class='cn'>NULL</span>,
+  width <span class='op'>=</span> <span class='cn'>NULL</span>,
+  margin_left <span class='op'>=</span> <span class='cn'>NULL</span>,
+  margin_right <span class='op'>=</span> <span class='cn'>NULL</span>,
+  position <span class='op'>=</span> <span class='cn'>NULL</span>,
+  title <span class='op'>=</span> <span class='cn'>NULL</span>,
+  a11y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"deco"</span>, <span class='st'>"sem"</span>, <span class='st'>"none"</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A vector of numbers to pad/align at the decimal point</p></td>
+      <th>name</th>
+      <td><p>The name of the Font Awesome icon. This could be as a short name (e.g., "npm", "drum", etc.), or, a full name (e.g., "fab fa-npm", "fas fa-drum", etc.). The names should correspond to current Version 5 Font Awesome names. A list of short and full names can be accessed through the fa_metadata() function with fa_metadata()$icon_names and fa_metadata()$icon_names_full. If supplying a Version 4 icon name, it will be internally translated to the Version 5 icon name and a Version 5 icon will be returned. A data frame containing the short names that changed from version 4 (v4_name) to version 5 (v5_name) can be obtained by using fa_metadata()$v4_v5_name_tbl.</p></td>
     </tr>
     <tr>
-      <th>nsmall</th>
-      <td><p>The max number of decimal places to round at/display</p></td>
+      <th>fill, fill_opacity</th>
+      <td><p>The fill color of the icon can be set with fill. If not provided then the default value of "currentColor" is applied so that the SVG fill matches the color of the parent HTML element's color attribute. The opacity level of the SVG fill can be controlled with a decimal value between 0 and 1.</p></td>
+    </tr>
+    <tr>
+      <th>stroke, stroke_width, stroke_opacity</th>
+      <td><p>The stroke options allow for setting the color, width, and opacity of the SVG outline stroke. By default, the stroke width is very small at "1px" so a size adjustment with "stroke_width" can be useful. The "stroke_opacity" value can be any decimal values between 0 and 1 (bounds included).</p></td>
+    </tr>
+    <tr>
+      <th>height, width</th>
+      <td><p>The height and width style attributes of the rendered SVG. If nothing is provided for height then a default value of "1em" will be applied. If a width isn't given, then it will be calculated in units of "em" on the basis of the icon's SVG "viewBox" dimensions.</p></td>
+    </tr>
+    <tr>
+      <th>margin_left, margin_right</th>
+      <td><p>The length value for the margin that's either left or right of the icon. By default, "auto" is used for both properties. If space is needed on either side then a length of "0.2em" is recommended as a starting point.</p></td>
+    </tr>
+    <tr>
+      <th>position</th>
+      <td><p>The value for the position style attribute. By default, "relative" is used here.</p></td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td><p>An option for populating the SVG 'title' attribute, which provides on-hover text for the icon. By default, no title text is given to the icon. If a11y == "semantic" then title text will be automatically given to the rendered icon, however, providing text here will override that.</p></td>
+    </tr>
+    <tr>
+      <th>a11y</th>
+      <td><p>Cases that distinguish the role of the icon and inform which accessibility attributes to be used. Icons can either be "deco" (decorative, the default case) or "sem" (semantic). Using "none" will result in no accessibility features for the icon.</p></td>
+    </tr>
+    <tr>
+      <th>gt_object</th>
+      <td><p>An existing gt table object of class <code>gt_tbl</code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns a vector of equal length to the input vector</p>
-    <h2 class="hasAnchor" id="figures"><a class="anchor" href="#figures"></a>Figures</h2>
-
-    
-
-<p><img src='figures/gt_pad_fn.png' width=20% /></p>
+    <p>A character string of class HTML, representing repeated SVG logos</p>
     <h2 class="hasAnchor" id="function-id"><a class="anchor" href="#function-id"></a>Function ID</h2>
 
     
 
-<p>3-2</p>
+<p>1-9</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Utilities: 
 <code><a href='add_text_img.html'>add_text_img</a>()</code>,
-<code><a href='fa_icon_repeat.html'>fa_icon_repeat</a>()</code>,
 <code><a href='fmt_pad_num.html'>fmt_pad_num</a>()</code>,
 <code><a href='fmt_symbol_first.html'>fmt_symbol_first</a>()</code>,
 <code><a href='gt_add_fa_icons.html'>gt_add_fa_icons</a>()</code>,
@@ -162,22 +195,9 @@ This function is intended to use within the <code><a href='https://gt.rstudio.co
 <code><a href='gt_img_rows.html'>gt_img_rows</a>()</code>,
 <code><a href='gt_kable_sparkline.html'>gt_kable_sparkline</a>()</code>,
 <code><a href='gt_merge_stack.html'>gt_merge_stack</a>()</code>,
-<code><a href='gt_plt_winloss.html'>gt_plt_winloss</a>()</code></p></div>
+<code><a href='gt_plt_winloss.html'>gt_plt_winloss</a>()</code>,
+<code><a href='pad_fn.html'>pad_fn</a>()</code></p></div>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
-<span class='va'>padded_tab</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1.2345</span>, <span class='fl'>12.345</span>, <span class='fl'>123.45</span>, <span class='fl'>1234.5</span>, <span class='fl'>12345</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://gt.rstudio.com/reference/fmt.html'>fmt</a></span><span class='op'>(</span>fns <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>{</span><span class='fu'>pad_fn</span><span class='op'>(</span><span class='va'>x</span>, nsmall <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>}</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://gt.rstudio.com/reference/tab_style.html'>tab_style</a></span><span class='op'>(</span>
-    <span class='co'># MUST USE A MONO-SPACED FONT</span>
-    <span class='co'># https://fonts.google.com/?category=Monospace</span>
-    style <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/cell_text.html'>cell_text</a></span><span class='op'>(</span>font <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/google_font.html'>google_font</a></span><span class='op'>(</span><span class='st'>"Fira Mono"</span><span class='op'>)</span><span class='op'>)</span>,
-    locations <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/cells_body.html'>cells_body</a></span><span class='op'>(</span>columns <span class='op'>=</span> <span class='va'>x</span><span class='op'>)</span>
-    <span class='op'>)</span>
-
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

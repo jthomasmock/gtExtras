@@ -46,6 +46,7 @@ padded_tab <- data.frame(x = c(1.2345, 12.345, 123.45, 1234.5, 12345)) \%>\%
 \seealso{
 Other Utilities: 
 \code{\link{add_text_img}()},
+\code{\link{fa_icon_repeat}()},
 \code{\link{fmt_pad_num}()},
 \code{\link{fmt_symbol_first}()},
 \code{\link{gt_add_fa_icons}()},

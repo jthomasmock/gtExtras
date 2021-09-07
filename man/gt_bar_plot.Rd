@@ -66,6 +66,7 @@ represent a percentage value representing 0-100.
 \seealso{
 Other Utilities: 
 \code{\link{add_text_img}()},
+\code{\link{fa_icon_repeat}()},
 \code{\link{fmt_pad_num}()},
 \code{\link{fmt_symbol_first}()},
 \code{\link{gt_add_fa_icons}()},

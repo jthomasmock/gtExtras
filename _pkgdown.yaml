@@ -14,6 +14,7 @@ reference:
   - fmt_symbol_first
   - fmt_pad_num
   - pad_fn
+  - fa_icon_repeat
   - add_text_img
   - gt_merge_stack
   - gt_img_rows

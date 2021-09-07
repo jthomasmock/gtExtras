@@ -53,8 +53,8 @@ accepts rows only by number (not by logical expression) for now.
 
 \examples{
 library(gt)
-head(mtcars[,1:5]) \%>\%
-basic_use <- tibble::rownames_to_column("car") \%>\%
+basic_use <- head(mtcars[,1:5]) \%>\%
+ tibble::rownames_to_column("car") \%>\%
    gt() \%>\%
    gt_highlight_rows(rows = 2, font_weight = "normal")
 
@@ -74,6 +74,7 @@ Other Utilities:
 \code{\link{add_text_img}()},
 \code{\link{fmt_pad_num}()},
 \code{\link{fmt_symbol_first}()},
+\code{\link{gt_add_fa_icons}()},
 \code{\link{gt_bar_plot}()},
 \code{\link{gt_img_rows}()},
 \code{\link{gt_kable_sparkline}()},

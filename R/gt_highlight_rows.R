@@ -18,8 +18,8 @@
 #' @import gt
 #' @examples
 #' library(gt)
-#' head(mtcars[,1:5]) %>%
-#' basic_use <- tibble::rownames_to_column("car") %>%
+#' basic_use <- head(mtcars[,1:5]) %>%
+#'  tibble::rownames_to_column("car") %>%
 #'    gt() %>%
 #'    gt_highlight_rows(rows = 2, font_weight = "normal")
 #'

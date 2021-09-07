@@ -52,6 +52,7 @@ Other Utilities:
 \code{\link{add_text_img}()},
 \code{\link{fmt_pad_num}()},
 \code{\link{fmt_symbol_first}()},
+\code{\link{gt_add_fa_icons}()},
 \code{\link{gt_bar_plot}()},
 \code{\link{gt_highlight_rows}()},
 \code{\link{gt_kable_sparkline}()},

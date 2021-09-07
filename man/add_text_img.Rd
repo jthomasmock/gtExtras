@@ -50,6 +50,7 @@ title_car <- mtcars \%>\%
 Other Utilities: 
 \code{\link{fmt_pad_num}()},
 \code{\link{fmt_symbol_first}()},
+\code{\link{gt_add_fa_icons}()},
 \code{\link{gt_bar_plot}()},
 \code{\link{gt_highlight_rows}()},
 \code{\link{gt_img_rows}()},

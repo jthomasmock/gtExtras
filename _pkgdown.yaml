@@ -22,6 +22,7 @@ reference:
   - gt_highlight_rows
   - gt_highlight_cols
   - gt_add_divider
+  - tab_style_by_grp
 - title: Plotting
   desc: Add plots to specific rows of an existing table
   contents:

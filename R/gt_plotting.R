@@ -28,9 +28,9 @@
 #' @section Figures:
 #' \if{html}{\figure{kable-sparkline.png}{options: width=20\%}}
 #'
-#' @family Utilities
+#' @family Plotting
 #' @section Function ID:
-#' 1-4
+#' 1-2
 
 gt_kable_sparkline <- function(gt_object, column, width = 200, height = 45, color = "lightgrey", ...){
 
@@ -68,9 +68,9 @@ gt_kable_sparkline <- function(gt_object, column, width = 200, height = 45, colo
 #' @importFrom kableExtra spec_plot
 #' @examples
 #'
-#' @family Utilities
+#' @family Plotting
 #' @section Function ID:
-#' 1-6
+#' 1-3
 
 gt_plt_winloss <- function(
   gt_object, column,
@@ -79,7 +79,7 @@ gt_plt_winloss <- function(
   type = "pill"
 ) {
 
-  stopifnot("type must be on of 'pill' or 'square'" ={type %in% c("pill", "square")})
+  stopifnot("type must be on of 'pill' or 'square'" = {type %in% c("pill", "square")})
 
   stopifnot("There must be 3 colors" = length(colors) == 3L)
 
@@ -203,9 +203,9 @@ gt_plt_winloss <- function(
 #' @section Figures:
 #' \if{html}{\figure{gt_bar_plot.png}{options: width=100\%}}
 #'
-#' @family Utilities
+#' @family Plotting
 #' @section Function ID:
-#' 1-5
+#' 1-1
 
 gt_bar_plot <- function(
   gt_object, column, height = 16, fill = "purple", background = "#e1e1e1",

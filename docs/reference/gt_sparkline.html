@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pad a vector of numbers to align on the decimal point. — pad_fn • gtExtras</title>
+<title>Add sparklines into rows of a gt table — gt_sparkline • gtExtras</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,10 @@
 
 
 
-<meta property="og:title" content="Pad a vector of numbers to align on the decimal point. — pad_fn" />
-<meta property="og:description" content="This helper function adds whitespace to numeric values so that they can
-be aligned on the decimal without requiring additional trailing zeroes.
-This function is intended to use within the gt::fmt() function." />
+<meta property="og:title" content="Add sparklines into rows of a gt table — gt_sparkline" />
+<meta property="og:description" content="The gt_sparkline function takes an existing gt_tbl object and
+adds sparklines via the ggplot2. This is a wrapper around
+gt::text_transform() + ggplot2 with the necessary boilerplate already applied." />
 
 
 
@@ -122,71 +122,78 @@ This function is intended to use within the gt::fmt() function." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pad a vector of numbers to align on the decimal point.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/pad_fn.R'><code>R/pad_fn.R</code></a></small>
-    <div class="hidden name"><code>pad_fn.Rd</code></div>
+    <h1>Add sparklines into rows of a <code>gt</code> table</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/gt_sparkline.R'><code>R/gt_sparkline.R</code></a></small>
+    <div class="hidden name"><code>gt_sparkline.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This helper function adds whitespace to numeric values so that they can
-be aligned on the decimal without requiring additional trailing zeroes.
-This function is intended to use within the <code><a href='https://gt.rstudio.com/reference/fmt.html'>gt::fmt()</a></code> function.</p>
+    <p>The <code>gt_sparkline</code> function takes an existing <code>gt_tbl</code> object and
+adds sparklines via the <code>ggplot2</code>. This is a wrapper around
+<code><a href='https://gt.rstudio.com/reference/text_transform.html'>gt::text_transform()</a></code> + <code>ggplot2</code> with the necessary boilerplate already applied.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pad_fn</span><span class='op'>(</span><span class='va'>x</span>, nsmall <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>gt_sparkline</span><span class='op'>(</span>
+  <span class='va'>gt_object</span>,
+  <span class='va'>column</span>,
+  line_color <span class='op'>=</span> <span class='st'>"lightgrey"</span>,
+  range_colors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"red"</span>, <span class='st'>"blue"</span><span class='op'>)</span>,
+  same_limit <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A vector of numbers to pad/align at the decimal point</p></td>
+      <th>gt_object</th>
+      <td><p>An existing gt table object of class <code>gt_tbl</code></p></td>
     </tr>
     <tr>
-      <th>nsmall</th>
-      <td><p>The max number of decimal places to round at/display</p></td>
+      <th>column</th>
+      <td><p>The column wherein the sparkline plot should replace existing data. Note that the data <em>must</em> be represented as a list of numeric values ahead of time.</p></td>
+    </tr>
+    <tr>
+      <th>line_color</th>
+      <td><p>Color for the line, defaults to <code>"lightgrey"</code>. Accepts a named color (eg 'blue') or a hex color.</p></td>
+    </tr>
+    <tr>
+      <th>range_colors</th>
+      <td><p>A vector of two valid color names or hex codes, the first color represents the min values and the second color represents the highest point per plot. Defaults to <code><a href='https://rdrr.io/r/base/c.html'>c("blue", "blue")</a></code>. Accepts a named color (eg <code>'blue'</code>) or a hex color like <code>"#fafafa"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>same_lim</th>
+      <td><p>A logical indicating that the plots will use the same y-axis range (<code>TRUE</code>) or have individual y-axis ranges (<code>FALSE</code>).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns a vector of equal length to the input vector</p>
+    <p>An object of class <code>gt_tbl</code>.</p>
     <h2 class="hasAnchor" id="figures"><a class="anchor" href="#figures"></a>Figures</h2>
 
     
 
-<p><img src='figures/gt_pad_fn.png' width=20% /></p>
+<p><img src='figures/ggplot2-sparkline.png' width=20% /></p>
     <h2 class="hasAnchor" id="function-id"><a class="anchor" href="#function-id"></a>Function ID</h2>
 
     
 
-<p>3-2</p>
+<p>1-4</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Utilities: 
-<code><a href='add_text_img.html'>add_text_img</a>()</code>,
-<code><a href='fa_icon_repeat.html'>fa_icon_repeat</a>()</code>,
-<code><a href='fmt_pad_num.html'>fmt_pad_num</a>()</code>,
-<code><a href='fmt_symbol_first.html'>fmt_symbol_first</a>()</code>,
-<code><a href='gt_add_divider.html'>gt_add_divider</a>()</code>,
-<code><a href='gt_add_fa_icons.html'>gt_add_fa_icons</a>()</code>,
-<code><a href='gt_highlight_cols.html'>gt_highlight_cols</a>()</code>,
-<code><a href='gt_highlight_rows.html'>gt_highlight_rows</a>()</code>,
-<code><a href='gt_img_rows.html'>gt_img_rows</a>()</code>,
-<code><a href='gt_merge_stack.html'>gt_merge_stack</a>()</code></p></div>
+    <div class='dont-index'><p>Other Plotting: 
+<code><a href='gt_bar_plot.html'>gt_bar_plot</a>()</code>,
+<code><a href='gt_kable_sparkline.html'>gt_kable_sparkline</a>()</code>,
+<code><a href='gt_plt_winloss.html'>gt_plt_winloss</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
-<span class='va'>padded_tab</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1.2345</span>, <span class='fl'>12.345</span>, <span class='fl'>123.45</span>, <span class='fl'>1234.5</span>, <span class='fl'>12345</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://gt.rstudio.com/reference/fmt.html'>fmt</a></span><span class='op'>(</span>fns <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>{</span><span class='fu'>pad_fn</span><span class='op'>(</span><span class='va'>x</span>, nsmall <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>}</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://gt.rstudio.com/reference/tab_style.html'>tab_style</a></span><span class='op'>(</span>
-    <span class='co'># MUST USE A MONO-SPACED FONT</span>
-    <span class='co'># https://fonts.google.com/?category=Monospace</span>
-    style <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/cell_text.html'>cell_text</a></span><span class='op'>(</span>font <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/google_font.html'>google_font</a></span><span class='op'>(</span><span class='st'>"Fira Mono"</span><span class='op'>)</span><span class='op'>)</span>,
-    locations <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/cells_body.html'>cells_body</a></span><span class='op'>(</span>columns <span class='op'>=</span> <span class='va'>x</span><span class='op'>)</span>
-    <span class='op'>)</span>
+    <pre class="examples"><div class='input'> <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
+ <span class='va'>gt_sparkline_tab</span> <span class='op'>&lt;-</span> <span class='va'>mtcars</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>cyl</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='co'># must end up with list of data for each row in the input dataframe</span>
+    <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>mpg_data <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span>, .groups <span class='op'>=</span> <span class='st'>"drop"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>gt_sparkline</span><span class='op'>(</span><span class='va'>mpg_data</span><span class='op'>)</span>
 
 </div></pre>
   </div>

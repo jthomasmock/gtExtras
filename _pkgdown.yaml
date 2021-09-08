@@ -18,13 +18,17 @@ reference:
   - add_text_img
   - gt_merge_stack
   - gt_img_rows
-  - gt_plt_winloss
-  - gt_kable_sparkline
-  - gt_bar_plot
   - gt_add_fa_icons
   - gt_highlight_rows
   - gt_highlight_cols
   - gt_add_divider
+- title: Plotting
+  desc: Add plots to specific rows of an existing table
+  contents:
+  - gt_plt_winloss
+  - gt_kable_sparkline
+  - gt_sparkline
+  - gt_bar_plot
 - title: Colors
   desc: Add color to the entire table or to specific locations. Includes wrappers around the `{scales}` and `{paletteer}` packages that provide easier or more succinct applications of palettes and colors inside `{gt}`.
   contents:

@@ -10,6 +10,7 @@
 #' @param decimals the number of decimal places to round to
 #' @param last_row_n Defining the last row to apply this to. The function will attempt to guess the proper length, but you can always hardcode a specific length.
 #' @param symbol_first TRUE/FALSE - symbol before after suffix.
+#' @param scale_by A numeric value to multiply the values by. Useful for scaling percentages from 0 to 1 to 0 to 100.
 #' @param gfont A string passed to `gt::google_font()` - defaults to "Fira Mono" and requires a Monospaced font for alignment purposes. Existing Google Monospaced fonts are available at: [fonts.google.com](https://fonts.google.com/?category=Monospace&preview.text=0123456789&preview.text_type=custom)
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
@@ -44,6 +45,7 @@ fmt_symbol_first <- function(
   decimals = NULL,      # number of decimal places to round to
   last_row_n = NULL,    # what's the last row in data?
   symbol_first = FALSE, # symbol before or after suffix?,
+  scale_by = NULL,
   gfont = "Fira Mono"   # Google font with monospacing
 ) {
 
@@ -58,10 +60,15 @@ fmt_symbol_first <- function(
   # as it's converted to character by gt::text_transform
 
   add_to_first <- function(x, suff = suffix, symb = symbol) {
-    if (!is.null(decimals)) {
+    if (!is.null(decimals)&&!is.null(scale_by)) {
+      # if decimal not null, convert to double
+      x <- suppressWarnings(as.double(x)*scale_by)
+      fmt_val <- format(x = x, nsmall = decimals, digits = decimals)
+    } else if (!is.null(decimals) && is.null(scale_by)) {
+      # if decimal not null, convert to double
       x <- suppressWarnings(as.double(x))
       fmt_val <- format(x = x, nsmall = decimals, digits = decimals)
-    } else {
+    } else if (is.null(decimals) && is.null(scale_by)) {
       fmt_val <- x
     }
 
@@ -87,12 +94,18 @@ fmt_symbol_first <- function(
 
   # affect rows OTHER than the first row
   add_to_remainder <- function(x, length = length_nbsp) {
-    if (!is.null(decimals)) {
+    if (!is.null(decimals)&&!is.null(scale_by)) {
+      # if decimal not null, convert to double
+      x <- suppressWarnings(as.double(x)*scale_by)
+      # then round and format ALL to force specific decimals
+      fmt_val <- format(x = x, nsmall = decimals, digits = decimals)
+    } else if (!is.null(decimals) && is.null(scale_by)) {
       # if decimal not null, convert to double
       x <- suppressWarnings(as.double(x))
       # then round and format ALL to force specific decimals
       fmt_val <- format(x = x, nsmall = decimals, digits = decimals)
-    } else {
+
+    } else if (is.null(decimals) && is.null(scale_by)) {
       fmt_val <- x
     }
     paste0(fmt_val, length) %>% lapply(FUN = gt::html)

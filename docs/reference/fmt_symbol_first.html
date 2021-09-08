@@ -74,7 +74,7 @@ in the remaining rows." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.16</span>
       </span>
     </div>
 
@@ -88,6 +88,18 @@ in the remaining rows." />
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/plots-in-gt.html">Graphing in gt</a>
+    </li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -129,6 +141,7 @@ in the remaining rows.</p>
   decimals <span class='op'>=</span> <span class='cn'>NULL</span>,
   last_row_n <span class='op'>=</span> <span class='cn'>NULL</span>,
   symbol_first <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  scale_by <span class='op'>=</span> <span class='cn'>NULL</span>,
   gfont <span class='op'>=</span> <span class='st'>"Fira Mono"</span>
 <span class='op'>)</span></pre>
 
@@ -164,6 +177,10 @@ in the remaining rows.</p>
       <td><p>TRUE/FALSE - symbol before after suffix.</p></td>
     </tr>
     <tr>
+      <th>scale_by</th>
+      <td><p>A numeric value to multiply the values by. Useful for scaling percentages from 0 to 1 to 0 to 100.</p></td>
+    </tr>
+    <tr>
       <th>gfont</th>
       <td><p>A string passed to <code><a href='https://gt.rstudio.com/reference/google_font.html'>gt::google_font()</a></code> - defaults to "Fira Mono" and requires a Monospaced font for alignment purposes. Existing Google Monospaced fonts are available at: <a href='https://fonts.google.com/?category=Monospace&amp;preview.text=0123456789&amp;preview.text_type=custom'>fonts.google.com</a></p></td>
     </tr>
@@ -190,13 +207,10 @@ in the remaining rows.</p>
 <code><a href='fmt_pad_num.html'>fmt_pad_num</a>()</code>,
 <code><a href='gt_add_divider.html'>gt_add_divider</a>()</code>,
 <code><a href='gt_add_fa_icons.html'>gt_add_fa_icons</a>()</code>,
-<code><a href='gt_bar_plot.html'>gt_bar_plot</a>()</code>,
 <code><a href='gt_highlight_cols.html'>gt_highlight_cols</a>()</code>,
 <code><a href='gt_highlight_rows.html'>gt_highlight_rows</a>()</code>,
 <code><a href='gt_img_rows.html'>gt_img_rows</a>()</code>,
-<code><a href='gt_kable_sparkline.html'>gt_kable_sparkline</a>()</code>,
 <code><a href='gt_merge_stack.html'>gt_merge_stack</a>()</code>,
-<code><a href='gt_plt_winloss.html'>gt_plt_winloss</a>()</code>,
 <code><a href='pad_fn.html'>pad_fn</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

@@ -49,6 +49,9 @@
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_winloss.html</loc>
   </url>
   <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_sparkline.html</loc>
+  </url>
+  <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_theme_538.html</loc>
   </url>
   <url>
@@ -62,5 +65,8 @@
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/pad_fn.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/articles/plots-in-gt.html</loc>
   </url>
 </urlset>

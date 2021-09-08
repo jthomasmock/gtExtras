@@ -6,3 +6,4 @@
 .httr-oauth
 .DS_Store
 gtExtras.Rproj
+inst/doc

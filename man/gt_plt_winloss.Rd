@@ -33,26 +33,16 @@ It is a wrapper around \code{gt::text_transform()}.
 }
 \section{Function ID}{
 
-1-6
+1-3
 }
 
 \examples{
 
 }
 \seealso{
-Other Utilities: 
-\code{\link{add_text_img}()},
-\code{\link{fa_icon_repeat}()},
-\code{\link{fmt_pad_num}()},
-\code{\link{fmt_symbol_first}()},
-\code{\link{gt_add_divider}()},
-\code{\link{gt_add_fa_icons}()},
+Other Plotting: 
 \code{\link{gt_bar_plot}()},
-\code{\link{gt_highlight_cols}()},
-\code{\link{gt_highlight_rows}()},
-\code{\link{gt_img_rows}()},
 \code{\link{gt_kable_sparkline}()},
-\code{\link{gt_merge_stack}()},
-\code{\link{pad_fn}()}
+\code{\link{gt_sparkline}()}
 }
-\concept{Utilities}
+\concept{Plotting}

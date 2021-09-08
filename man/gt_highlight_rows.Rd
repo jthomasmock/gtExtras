@@ -77,12 +77,9 @@ Other Utilities:
 \code{\link{fmt_symbol_first}()},
 \code{\link{gt_add_divider}()},
 \code{\link{gt_add_fa_icons}()},
-\code{\link{gt_bar_plot}()},
 \code{\link{gt_highlight_cols}()},
 \code{\link{gt_img_rows}()},
-\code{\link{gt_kable_sparkline}()},
 \code{\link{gt_merge_stack}()},
-\code{\link{gt_plt_winloss}()},
 \code{\link{pad_fn}()}
 }
 \concept{Utilities}

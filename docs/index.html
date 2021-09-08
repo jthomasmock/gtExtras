@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.16</span>
       </span>
     </div>
 
@@ -45,6 +45,18 @@
 </li>
 <li>
   <a href="reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/plots-in-gt.html">Graphing in gt</a>
+    </li>
+  </ul>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -371,7 +383,7 @@
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://nflreadr.nflverse.com">nflreadr</a></span><span class="op">)</span>
 
-<span class="va">games_df</span> <span class="op">&lt;-</span> <span class="fu">nflreadr</span><span class="fu">::</span><span class="fu"><a href="nflreadr.nflverse.com/reference/load_schedules.html">load_schedules</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<span class="va">games_df</span> <span class="op">&lt;-</span> <span class="fu">nflreadr</span><span class="fu">::</span><span class="fu"><a href="https://nflreadr.nflverse.com/reference/load_schedules.html">load_schedules</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">season</span> <span class="op">==</span> <span class="fl">2020</span>, <span class="va">game_type</span> <span class="op">==</span> <span class="st">"REG"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">select</span><span class="op">(</span><span class="va">game_id</span>, team_home <span class="op">=</span> <span class="va">home_team</span>, team_away <span class="op">=</span> <span class="va">away_team</span>, <span class="va">result</span>, <span class="va">week</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">pivot_longer</span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">'team'</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">'home_away'</span>, values_to <span class="op">=</span> <span class="st">'team'</span>, names_prefix <span class="op">=</span> <span class="st">'team_'</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -389,7 +401,7 @@
     <span class="op">)</span>
   <span class="op">)</span>
 
-<span class="va">team_df</span> <span class="op">&lt;-</span> <span class="fu">nflreadr</span><span class="fu">::</span><span class="fu"><a href="nflreadr.nflverse.com/reference/load_teams.html">load_teams</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<span class="va">team_df</span> <span class="op">&lt;-</span> <span class="fu">nflreadr</span><span class="fu">::</span><span class="fu"><a href="https://nflreadr.nflverse.com/reference/load_teams.html">load_teams</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">select</span><span class="op">(</span><span class="va">team_wordmark</span>, <span class="va">team_abbr</span>, <span class="va">team_conf</span>, <span class="va">team_division</span><span class="op">)</span>
 
 <span class="va">joined_df</span> <span class="op">&lt;-</span> <span class="va">games_df</span> <span class="op">%&gt;%</span> 

@@ -12,6 +12,7 @@ fmt_symbol_first(
   decimals = NULL,
   last_row_n = NULL,
   symbol_first = FALSE,
+  scale_by = NULL,
   gfont = "Fira Mono"
 )
 }
@@ -29,6 +30,8 @@ fmt_symbol_first(
 \item{last_row_n}{Defining the last row to apply this to. The function will attempt to guess the proper length, but you can always hardcode a specific length.}
 
 \item{symbol_first}{TRUE/FALSE - symbol before after suffix.}
+
+\item{scale_by}{A numeric value to multiply the values by. Useful for scaling percentages from 0 to 1 to 0 to 100.}
 
 \item{gfont}{A string passed to \code{gt::google_font()} - defaults to "Fira Mono" and requires a Monospaced font for alignment purposes. Existing Google Monospaced fonts are available at: \href{https://fonts.google.com/?category=Monospace&preview.text=0123456789&preview.text_type=custom}{fonts.google.com}}
 }
@@ -71,13 +74,10 @@ Other Utilities:
 \code{\link{fmt_pad_num}()},
 \code{\link{gt_add_divider}()},
 \code{\link{gt_add_fa_icons}()},
-\code{\link{gt_bar_plot}()},
 \code{\link{gt_highlight_cols}()},
 \code{\link{gt_highlight_rows}()},
 \code{\link{gt_img_rows}()},
-\code{\link{gt_kable_sparkline}()},
 \code{\link{gt_merge_stack}()},
-\code{\link{gt_plt_winloss}()},
 \code{\link{pad_fn}()}
 }
 \concept{Utilities}

@@ -1,0 +1,187 @@
+---
+title: "Graphing in gt"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Plotting in gt}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Graphs vs Tables
+
+
+Per Stephen Few in his book, [_Show Me the Numbers_](http://www.stephen-few.com/smtn.php):
+
+The difference between Tables and Graphs:  
+
+> Tables: Display used to look up and compare individual values  
+
+> Graphs: Display used to reveal relationships among whole sets of values and their overall   shape
+
+While we typically reach for our graphing tools whenever we want to tell a story with data, we are likely underutilizing tables. We can merge graphs and tables to often get the best of both worlds.
+
+## Get started
+
+We can first load our libraries.
+
+```{r setup, message=FALSE, warning=FALSE}
+library(gt)
+library(gtExtras)
+library(dplyr, warn.conflicts =  FALSE)
+library(ggplot2)
+```
+
+### Sparklines
+
+Per [Wikipedia](https://en.wikipedia.org/wiki/Sparkline):
+
+> A sparkline is a very small line chart, typically drawn without axes or coordinates. It presents the general shape of the variation (typically over time) in some measurement, such as temperature or stock market price, in a simple and highly condensed way.
+
+![A 1999 screenshot of an implementation of sparklines developed around January 1998. The concept was developed by interaction designer Peter Zelchenko in conversation with programmer Michael Medved, while Medved was developing the QuoteTracker application. The product was later sold to Ameritrade.](https://upload.wikimedia.org/wikipedia/commons/9/95/Screenshot_of_Sparklines_in_Medved_QuoteTracker%2C_1998.png)
+
+We can use `gtExtras::gt_kable_sparkline()` to add an inline sparkline very quickly. A necessary prep step is to first convert from a long data format to a summarized data format, where each row represents one "group" and the data column is now a vector of the values.
+
+```{r}
+mtcars %>% 
+  head()
+```
+
+By using `summarize(list_data = list(col_name))` we can create a list-column of ALL the data for that group.
+
+```{r}
+car_summary <- mtcars %>%
+  dplyr::group_by(cyl) %>%
+  # must end up with list of data for each row in the input dataframe
+  dplyr::summarize(
+    mean = mean(mpg),
+    sd = sd(mpg),
+    mpg_data = list(mpg),
+    .groups = "drop"
+  )
+
+car_summary
+```
+
+```{r}
+car_summary %>%
+  arrange(desc(cyl)) %>% 
+  gt() %>%
+  gt_sparkline(mpg_data) %>%
+  fmt_number(columns = mean:sd, decimals = 1)
+```
+
+### Inline Win Loss plots
+
+You can also generate really nice looking "Win Loss" plots, similar to the ones used by [The Guardian](https://www.theguardian.com/football/premierleague/table) for Soccer outcomes. The code to bring in the data via the `{nflreadr}` package is hidden in an expandable tab below.
+
+<details><Summary>Bring data in</summary>
+
+```{r}
+library(tidyverse)
+
+games_df <- nflreadr::load_schedules() %>%
+  filter(season == 2020, game_type == "REG") %>%
+  select(game_id, team_home = home_team, team_away = away_team, result, week) %>%
+  pivot_longer(contains('team'), names_to = 'home_away', values_to = 'team', names_prefix = 'team_') %>%
+  mutate(
+    result = ifelse(home_away == 'home', result, -result),
+    win = ifelse(result == 0 , 0.5, ifelse(result > 0, 1, 0))
+  ) %>%
+  select(week, team, win) %>%
+  mutate(
+    team = case_when(
+      team == 'STL' ~ 'LA',
+      team == 'OAK' ~ 'LV',
+      team == 'SD' ~ 'LAC',
+      T ~ team
+    )
+  )
+
+team_df <- nflreadr::load_teams() %>%
+  select(team_wordmark, team_abbr, team_conf, team_division)
+
+joined_df <- games_df %>%
+  group_by(team) %>%
+  summarise(
+    Wins = length(win[win==1]),
+    Losses = length(win[win==0]),
+    outcomes = list(win), .groups = "drop") %>%
+  left_join(team_df, by = c("team" = "team_abbr")) %>%
+  select(team_wordmark, team_conf, team_division, Wins:outcomes)
+
+final_df <- joined_df %>%
+  filter(team_conf == "AFC") %>%
+  group_by(team_division) %>%
+  arrange(desc(Wins)) %>%
+  ungroup() %>%
+  arrange(team_division) %>%
+  select(-team_conf) %>%
+  mutate(team_division = str_remove(team_division, "AFC |NFC ")) %>%
+  mutate(
+    team_division = factor(team_division,
+      levels = c("North", "South", "East", "West")
+      )
+    ) %>%
+  arrange(team_division)
+```
+
+</details>
+
+Note that we have a list-column of the outcomes for each team.
+
+```{r}
+glimpse(final_df)
+```
+
+And now we can generate an example table!
+
+```{r}
+final_df %>%
+  gt(groupname_col = "team_division") %>%
+  cols_label(team_wordmark = "") %>%
+  cols_align("left", team_division) %>%
+  gtExtras::gt_plt_winloss(outcomes, max_wins = 16, type = "pill") %>%
+  gtExtras::gt_img_rows(columns = team_wordmark, height = 20) %>%
+  gtExtras::gt_theme_538() %>%
+  tab_header(
+    title = gtExtras::add_text_img(
+      "2020 Results by Division",
+      url = "https://github.com/nflverse/nflfastR-data/raw/master/AFC.png",
+      height = 30
+    )
+  ) %>%
+  tab_options(data_row.padding = px(2))
+```
+
+### Inline bar plots
+
+We can also do inline bar plots, purely via HTML! You can customize the colors, and have the option to scale or use unscaled values.
+
+```{r}
+gt_bar_plot_tab <- mtcars %>%
+  head() %>%
+  dplyr::select(cyl, mpg) %>%
+  dplyr::mutate(
+    mpg_pct_max = round(mpg / max(mpg) * 100, digits = 2),
+    mpg_scaled = mpg / max(mpg) * 100
+  ) %>%
+  dplyr::mutate(mpg_unscaled = mpg) %>%
+  gt() %>%
+  gt_bar_plot(column = mpg_scaled, scaled = TRUE) %>%
+  gt_bar_plot(column = mpg_unscaled, scaled = FALSE, fill = "blue", background = "lightblue") %>%
+  cols_align("center", contains("scale")) %>%
+  cols_width(
+    4 ~ px(125),
+    5 ~ px(125)
+  )
+
+gt_bar_plot_tab
+```
+

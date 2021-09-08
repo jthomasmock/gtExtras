@@ -46,7 +46,7 @@ Per [Wikipedia](https://en.wikipedia.org/wiki/Sparkline):
 
 ![A 1999 screenshot of an implementation of sparklines developed around January 1998. The concept was developed by interaction designer Peter Zelchenko in conversation with programmer Michael Medved, while Medved was developing the QuoteTracker application. The product was later sold to Ameritrade.](https://upload.wikimedia.org/wikipedia/commons/9/95/Screenshot_of_Sparklines_in_Medved_QuoteTracker%2C_1998.png)
 
-We can use `gtExtras::gt_kable_sparkline()` to add an inline sparkline very quickly. A necessary prep step is to first convert from a long data format to a summarized data format, where each row represents one "group" and the data column is now a vector of the values.
+We can use `gtExtras::gt_sparkline()` to add an inline sparkline very quickly. A necessary prep step is to first convert from a long data format to a summarized data format, where each row represents one "group" and the data column is now a vector of the values.
 
 ```{r}
 mtcars %>% 
@@ -58,10 +58,11 @@ By using `summarize(list_data = list(col_name))` we can create a list-column of 
 ```{r}
 car_summary <- mtcars %>%
   dplyr::group_by(cyl) %>%
-  # must end up with list of data for each row in the input dataframe
+  
   dplyr::summarize(
     mean = mean(mpg),
     sd = sd(mpg),
+    # must end up with list of data for each row in the input dataframe
     mpg_data = list(mpg),
     .groups = "drop"
   )
@@ -73,7 +74,7 @@ car_summary
 car_summary %>%
   arrange(desc(cyl)) %>% 
   gt() %>%
-  gt_sparkline(mpg_data) %>%
+  gtExtras::gt_sparkline(mpg_data) %>%
   fmt_number(columns = mean:sd, decimals = 1)
 ```
 

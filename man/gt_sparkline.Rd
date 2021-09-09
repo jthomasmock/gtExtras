@@ -55,6 +55,7 @@ adds sparklines via the \code{ggplot2}. This is a wrapper around
 Other Plotting: 
 \code{\link{gt_bar_plot}()},
 \code{\link{gt_kable_sparkline}()},
+\code{\link{gt_plt_bar_stack}()},
 \code{\link{gt_plt_winloss}()}
 }
 \concept{Plotting}

@@ -30,6 +30,7 @@ reference:
   - gt_kable_sparkline
   - gt_sparkline
   - gt_bar_plot
+  - gt_plt_bar_stack
 - title: Colors
   desc: Add color to the entire table or to specific locations. Includes wrappers around the `{scales}` and `{paletteer}` packages that provide easier or more succinct applications of palettes and colors inside `{gt}`.
   contents:

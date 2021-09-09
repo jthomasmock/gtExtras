@@ -35,14 +35,6 @@ gt_theme_538 <- function(gt_object,...) {
     ) %>%
     tab_style(
       style = cell_borders(
-        sides = "bottom", color = "red", weight = px(3)
-      ),
-      locations = gt::cells_column_spanners(
-        spanners = gt::everything()
-      )
-    ) %>%
-    tab_style(
-      style = cell_borders(
         sides = "top", color = "black", weight = px(0)
       ),
       locations = gt::cells_column_labels(
@@ -51,7 +43,7 @@ gt_theme_538 <- function(gt_object,...) {
     ) %>%
     tab_style(
       style = cell_borders(
-        sides = "bottom", color = "#00000000", weight = px(3)
+        sides = "bottom", color = NULL, weight = px(3)
       ),
       locations = cells_body(
         columns = everything(),
@@ -62,7 +54,7 @@ gt_theme_538 <- function(gt_object,...) {
     ) %>%
     tab_style(
       style = cell_borders(
-        sides = "bottom", color = "#00000000", weight = px(2)
+        sides = "bottom", color = NULL, weight = px(2)
       ),
       locations = cells_body(
         columns = everything(),
@@ -73,24 +65,21 @@ gt_theme_538 <- function(gt_object,...) {
     )  %>%
     tab_options(
       column_labels.background.color = "white",
+      heading.border.bottom.style = "none",
       table.border.top.width = px(3),
-      table.border.top.style = "transparent",
-      table.border.bottom.style = "transparent",
-      table.border.top.color = "#00000000",
-      table.border.bottom.color = "#00000000",
-      table.border.bottom.width = px(3),
+      table.border.top.style = "none", #transparent
+      table.border.bottom.style = "none",
       column_labels.font.weight = "normal",
-      column_labels.border.top.width = px(1),
-      column_labels.border.top.color = "#00000000",
-      column_labels.border.top.style = "transparent",
+      column_labels.border.top.style = "none",
       column_labels.border.bottom.width = px(2),
       column_labels.border.bottom.color = "black",
-      row_group.border.top.width = px(2),
+      row_group.border.top.style = "none", #x(2)
       row_group.border.top.color = "black",
       row_group.border.bottom.width = px(1),
       row_group.border.bottom.color = "black",
       data_row.padding = px(3),
       source_notes.font.size = 12,
+      source_notes.border.lr.style = "none",
       table.font.size = 16,
       heading.align = "left",
       ...

@@ -56,7 +56,3 @@ gt_add_divider <- function(gt_object, columns, sides = "right", color = "#000000
   }
 
 }
-
-head(mtcars) %>%
-  gt() %>%
-  gt_add_divider(columns = "cyl", style = "dashed")

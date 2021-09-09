@@ -66,6 +66,7 @@ represent a percentage value representing 0-100.
 \seealso{
 Other Plotting: 
 \code{\link{gt_kable_sparkline}()},
+\code{\link{gt_plt_bar_stack}()},
 \code{\link{gt_plt_winloss}()},
 \code{\link{gt_sparkline}()}
 }

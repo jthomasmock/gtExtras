@@ -9,7 +9,7 @@
 #' @param columns The columns wherein changes to cell data colors should occur.
 #' @param trim trim the palette to give less intense maximal colors
 #' @inheritParams scales::col_numeric
-#' @inheritDotParams scales::col_numeric
+#' @param ... Additional arguments passed to `scales::col_numeric()`
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
 #' @importFrom scales col_numeric

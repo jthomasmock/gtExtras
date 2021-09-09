@@ -9,8 +9,8 @@
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param columns The columns wherein changes to cell data colors should occur.
 #' @param use_paletteer Should the palette be passed as a "package::palette_name" to `paletteer` or should the palette be treated as a raw character string of colors. Defaults to `TRUE`. Note that if `FALSE`, that the "n", "direction", and "type" arguments are ignored, as they are passed only to `paletter::paletteer_d()`.
+#' @param ... Additional arguments passed to `scales::col_numeric()`
 #' @inheritParams scales::col_numeric
-#' @inheritDotParams scales::col_numeric
 #' @inheritParams paletteer::paletteer_d
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%

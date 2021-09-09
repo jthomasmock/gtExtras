@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Apply Guardian theme to a gt table — gt_theme_guardian • gtExtras</title>
+<title>Add a percent stacked barchart in place of existing data. — gt_plt_bar_stack • gtExtras</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,11 @@
 
 
 
-<meta property="og:title" content="Apply Guardian theme to a gt table — gt_theme_guardian" />
-<meta property="og:description" content="Apply Guardian theme to a gt table" />
+<meta property="og:title" content="Add a percent stacked barchart in place of existing data. — gt_plt_bar_stack" />
+<meta property="og:description" content="The gt_plt_bar_stack function takes an existing gt_tbl object and
+converts the existing values into a percent stacked barchart. The bar chart
+will represent either 2 or 3 user-specified values per row, and requires
+a list column ahead of time. The palette and labels need to be equal length." />
 
 
 
@@ -120,16 +123,25 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Apply Guardian theme to a <code>gt</code> table</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/gt_theme_guardian.R'><code>R/gt_theme_guardian.R</code></a></small>
-    <div class="hidden name"><code>gt_theme_guardian.Rd</code></div>
+    <h1>Add a percent stacked barchart in place of existing data.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/gt_pct_bar.R'><code>R/gt_pct_bar.R</code></a></small>
+    <div class="hidden name"><code>gt_plt_bar_stack.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Apply Guardian theme to a <code>gt</code> table</p>
+    <p>The <code>gt_plt_bar_stack</code> function takes an existing <code>gt_tbl</code> object and
+converts the existing values into a percent stacked barchart. The bar chart
+will represent either 2 or 3 user-specified values per row, and requires
+a list column ahead of time. The palette and labels need to be equal length.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gt_theme_guardian</span><span class='op'>(</span><span class='va'>gt_object</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>gt_plt_bar_stack</span><span class='op'>(</span>
+  <span class='va'>gt_object</span>,
+  column <span class='op'>=</span> <span class='cn'>NULL</span>,
+  palette <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#ff4343"</span>, <span class='st'>"#bfbfbf"</span>, <span class='st'>"#0a1c2b"</span><span class='op'>)</span>,
+  labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 1"</span>, <span class='st'>"Group 2"</span>, <span class='st'>"Group 3"</span><span class='op'>)</span>,
+  width <span class='op'>=</span> <span class='fl'>70</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -139,38 +151,39 @@
       <td><p>An existing gt table object of class <code>gt_tbl</code></p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Optional additional arguments to <code>gt::table_options()</code></p></td>
+      <th>column</th>
+      <td><p>The column wherein the percent stacked barchart should replace existing data. Note that the data <em>must</em> be represented as a list of numeric values ahead of time.</p></td>
+    </tr>
+    <tr>
+      <th>palette</th>
+      <td><p>A color palette of length 2 or 3, represented either by hex colors (<code>"#ff4343</code>) or named colors (<code>"red"</code>).</p></td>
+    </tr>
+    <tr>
+      <th>labels</th>
+      <td><p>A vector of strings of length 2 or 3, representing the labels for the bar chart, will be colored according to the palette as well.</p></td>
+    </tr>
+    <tr>
+      <th>width</th>
+      <td><p>An integer representing the width of the bar chart in pixels.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>An object of class <code>gt_tbl</code>.</p>
-    <h2 class="hasAnchor" id="figures"><a class="anchor" href="#figures"></a>Figures</h2>
-
-    
-
-<p><img src='figures/gt_guardian.png' width=100% /></p>
     <h2 class="hasAnchor" id="function-id"><a class="anchor" href="#function-id"></a>Function ID</h2>
 
     
 
-<p>1-4</p>
+<p>1-5</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Themes: 
-<code><a href='gt_theme_538.html'>gt_theme_538</a>()</code>,
-<code><a href='gt_theme_espn.html'>gt_theme_espn</a>()</code>,
-<code><a href='gt_theme_nytimes.html'>gt_theme_nytimes</a>()</code></p></div>
+    <div class='dont-index'><p>Other Plotting: 
+<code><a href='gt_bar_plot.html'>gt_bar_plot</a>()</code>,
+<code><a href='gt_kable_sparkline.html'>gt_kable_sparkline</a>()</code>,
+<code><a href='gt_plt_winloss.html'>gt_plt_winloss</a>()</code>,
+<code><a href='gt_sparkline.html'>gt_sparkline</a>()</code></p></div>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
-<span class='va'>themed_tab</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>gt_theme_guardian</span><span class='op'>(</span><span class='op'>)</span>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

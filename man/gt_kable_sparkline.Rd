@@ -58,6 +58,7 @@ the necessary boilerplate already applied.
 \seealso{
 Other Plotting: 
 \code{\link{gt_bar_plot}()},
+\code{\link{gt_plt_bar_stack}()},
 \code{\link{gt_plt_winloss}()},
 \code{\link{gt_sparkline}()}
 }

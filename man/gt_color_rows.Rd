@@ -39,19 +39,7 @@ domain.}
 \item{type}{Either "discrete" or "continuous". Colors are interpolated if
 "continuous" is picked. Defaults to "discrete".}
 
-\item{...}{
-  Arguments passed on to \code{\link[scales:col_numeric]{scales::col_numeric}}
-  \describe{
-    \item{\code{na.color}}{The colour to return for \code{NA} values. Note that
-\code{na.color = NA} is valid.}
-    \item{\code{alpha}}{Whether alpha channels should be respected or ignored. If \code{TRUE}
-then colors without explicit alpha information will be treated as fully
-opaque.}
-    \item{\code{reverse}}{Whether the colors (or color function) in \code{palette} should be
-used in reverse order. For example, if the default order of a palette goes
-from blue to green, then \code{reverse = TRUE} will result in the colors going
-from green to blue.}
-  }}
+\item{...}{Additional arguments passed to \code{scales::col_numeric()}}
 
 \item{use_paletteer}{Should the palette be passed as a "package::palette_name" to \code{paletteer} or should the palette be treated as a raw character string of colors. Defaults to \code{TRUE}. Note that if \code{FALSE}, that the "n", "direction", and "type" arguments are ignored, as they are passed only to \code{paletter::paletteer_d()}.}
 }

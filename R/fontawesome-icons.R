@@ -1,5 +1,3 @@
-
-
 #' Add `{fontawesome}` icons inside a `{gt}` table.
 #' @description
 #' The `gt_img_rows` function takes an existing `gt_tbl` object and

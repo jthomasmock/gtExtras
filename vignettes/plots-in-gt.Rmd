@@ -186,3 +186,95 @@ gt_bar_plot_tab <- mtcars %>%
 gt_bar_plot_tab
 ```
 
+### Stacked Percent bar charts
+
+We can create a horizontal stacked percent bar chart inline like so. The data can be prepped as seen in the expandable section below.
+
+<details>
+```{r}
+library(tidyverse)
+library(gt)
+library(magick)
+
+player_df <- tibble(
+  player = c(
+    "Evan Mobley",
+    "Sandro Mamukelashvili",
+    "Charles Bassey",
+    "Luke Garza",
+    "Moses Wright",
+    "Neemias Queta",
+    "Isaiah Jackson",
+    "Day'Ron Sharpe"
+  ),
+  team = c(
+    "USC", "Seton Hall", "Western Kentucky",
+    "Iowa", "Georgia Tech", "Utah St", "Kentucky",
+    "North Carolina"
+  ),
+  ht = c(
+    "7'0\"",
+    "6'10\"",
+    "6'10\"",
+    "6'11\"",
+    "6'9\"",
+    "7'1\"",
+    "6'11\"",
+    "6'10\""
+  ),
+  dk_pct_time = c(40, 48, 50, 50, 51, 55, 60, 66),
+  dk_pps = c(1.62, 1.02, 1.54,1.33,1.46,1.37,1.33,1.18),
+  tip_pct_time = c(26, 10, 19, 15, 25, 27, 15, 24),
+  tip_pps = c(0.88, .97,1,1.05, .63, .85, .76, .84),
+  jmp_pct_time = c(33, 42, 31, 35, 25, 18, 25, 10),
+  jmp_pps = c(.91, .91, .78, 1.04, .86, .74, .71, .42)
+) %>%
+  left_join(
+    tibble(
+      player = c(
+        "Evan Mobley",
+        "Sandro Mamukelashvili",
+        "Charles Bassey",
+        "Luke Garza",
+        "Moses Wright",
+        "Neemias Queta",
+        "Isaiah Jackson",
+        "Day'Ron Sharpe"
+      ) %>% rep(each = 3),
+      shot_type = c("Dunks + Lays", "Hooks + Floats", "Jumpers") %>% rep(8)
+    ) %>%
+      mutate(
+        shot_type = factor(shot_type, levels = c("Jumpers", "Hooks + Floats", "Dunks + Lays")),
+        shot_mix = c(
+          40, 26, 33,
+          48, 10, 42,
+          50, 19, 31,
+          50, 15, 35,
+          51, 25, 25,
+          55, 27, 18,
+          60, 15, 25,
+          66, 24, 10
+        )
+      ),
+    by = "player"
+  )
+```
+
+</details>
+
+```{r}
+basic_tb <- player_df %>%
+  group_by(player) %>%
+  summarize(dunks = shot_mix[1], list_data = list(shot_mix)) %>%
+  arrange(dunks) %>%
+  gt()
+```
+
+```{r}
+basic_tb %>%
+  gt_plt_bar_stack(list_data, width = 65,
+                   labels = c("DUNKS", "HOOKS/FLOATS", "JUMPERS"),
+                   palette= c("#ff4343", "#bfbfbf", "#0a1c2b")) %>%
+  gt_theme_538()
+```
+

@@ -29,20 +29,7 @@ is invoked multiple times, the encoding between values and colours may not
 be consistent; if consistency is needed, you must provide a non-\code{NULL}
 domain.}
 
-\item{...}{
-  Arguments passed on to \code{\link[scales:col_numeric]{scales::col_numeric}}
-  \describe{
-    \item{\code{palette}}{The colours or colour function that values will be mapped to}
-    \item{\code{na.color}}{The colour to return for \code{NA} values. Note that
-\code{na.color = NA} is valid.}
-    \item{\code{alpha}}{Whether alpha channels should be respected or ignored. If \code{TRUE}
-then colors without explicit alpha information will be treated as fully
-opaque.}
-    \item{\code{reverse}}{Whether the colors (or color function) in \code{palette} should be
-used in reverse order. For example, if the default order of a palette goes
-from blue to green, then \code{reverse = TRUE} will result in the colors going
-from green to blue.}
-  }}
+\item{...}{Additional arguments passed to \code{scales::col_numeric()}}
 
 \item{trim}{trim the palette to give less intense maximal colors}
 }

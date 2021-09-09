@@ -7,7 +7,7 @@
 gt_highlight_rows(
   gt_object,
   columns = gt::everything(),
-  rows = FALSE,
+  rows = TRUE,
   fill = "#80bcd8",
   alpha = 0.8,
   font_weight = "bold",
@@ -20,7 +20,7 @@ gt_highlight_rows(
 
 \item{columns}{Specific columns to apply color to, accepts either \code{tidyeval} colum names or columns by position.}
 
-\item{rows}{A number indicating specific row(s) to apply color to.}
+\item{rows}{The rows to apply the highlight to. Can either by a \code{tidyeval} compliant statement (like \code{cyl == 4}), a number indicating specific row(s) to apply color to or \code{TRUE} to indicate all rows.}
 
 \item{fill}{A character string indicating the fill color. If nothing is provided, then "#80bcd8" (light blue) will be used as a default.}
 

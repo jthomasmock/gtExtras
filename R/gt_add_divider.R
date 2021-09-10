@@ -5,7 +5,7 @@
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param columns Specific columns to apply color to, accepts either `tidyeval` colum names or columns by position.
 #' @param sides The border sides to be modified. Options include `"left"`, `"right"`, `"top"`, and `"bottom"`. For all borders surrounding the selected cells, we can use the `"all"`` option.
-#' @param color,style,weight The border color, style, and weight. The `color` can be defined with a color name or with a hexadecimal color code. The default `color` value is `"#000000"` (black). The `style` can be one of either `"solid"` (the default), `"dashed"`, or `"dotted"`. The `weight` of the border lines is to be given in pixel values (the `px()` helper function is useful for this. The default value for `weight` is `"1px"`.
+#' @param color,style,weight The border color, style, and weight. The `color` can be defined with a color name or with a hexadecimal color code. The default `color` value is `"#00FFFFFF"` (black). The `style` can be one of either `"solid"` (the default), `"dashed"`, or `"dotted"`. The `weight` of the border lines is to be given in pixel values (the `px()` helper function is useful for this. The default value for `weight` is `"1px"`.
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
 #' @export
@@ -24,7 +24,7 @@
 #' @section Function ID:
 #' 1-12
 
-gt_add_divider <- function(gt_object, columns, sides = "right", color = "#000000",
+gt_add_divider <- function(gt_object, columns, sides = "right", color = "#00FFFFFF",
                            style = "solid", weight = px(2), include_labels = TRUE){
 
 

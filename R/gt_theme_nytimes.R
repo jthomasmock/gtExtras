@@ -32,7 +32,7 @@ gt_theme_nytimes <- function(gt_object, ...){
       column_labels.border.bottom.width = 1,
       column_labels.border.bottom.color = "#334422",
       table_body.border.top.style = "none",
-      table_body.border.bottom.color = "#0000001A",
+      table_body.border.bottom.color = "#00FFFFFF1A",
       heading.border.bottom.style = "none",
       data_row.padding = px(7),
       ...

@@ -8,7 +8,7 @@ gt_add_divider(
   gt_object,
   columns,
   sides = "right",
-  color = "#000000",
+  color = "#00FFFFFF",
   style = "solid",
   weight = px(2),
   include_labels = TRUE
@@ -21,7 +21,7 @@ gt_add_divider(
 
 \item{sides}{The border sides to be modified. Options include \code{"left"}, \code{"right"}, \code{"top"}, and \code{"bottom"}. For all borders surrounding the selected cells, we can use the `"all"`` option.}
 
-\item{color, style, weight}{The border color, style, and weight. The \code{color} can be defined with a color name or with a hexadecimal color code. The default \code{color} value is \code{"#000000"} (black). The \code{style} can be one of either \code{"solid"} (the default), \code{"dashed"}, or \code{"dotted"}. The \code{weight} of the border lines is to be given in pixel values (the \code{px()} helper function is useful for this. The default value for \code{weight} is \code{"1px"}.}
+\item{color, style, weight}{The border color, style, and weight. The \code{color} can be defined with a color name or with a hexadecimal color code. The default \code{color} value is \code{"#00FFFFFF"} (black). The \code{style} can be one of either \code{"solid"} (the default), \code{"dashed"}, or \code{"dotted"}. The \code{weight} of the border lines is to be given in pixel values (the \code{px()} helper function is useful for this. The default value for \code{weight} is \code{"1px"}.}
 }
 \value{
 An object of class \code{gt_tbl}.

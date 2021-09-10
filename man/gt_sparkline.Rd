@@ -9,6 +9,8 @@ gt_sparkline(
   column,
   line_color = "lightgrey",
   range_colors = c("red", "blue"),
+  type = "sparkline",
+  fill_color = "lightblue",
   same_limit = FALSE
 )
 }
@@ -20,6 +22,8 @@ gt_sparkline(
 \item{line_color}{Color for the line, defaults to \code{"lightgrey"}. Accepts a named color (eg 'blue') or a hex color.}
 
 \item{range_colors}{A vector of two valid color names or hex codes, the first color represents the min values and the second color represents the highest point per plot. Defaults to \code{c("blue", "blue")}. Accepts a named color (eg \code{'blue'}) or a hex color like \code{"#fafafa"}.}
+
+\item{fill_color}{= Color for the fill of histograms/density plots, defaults to \code{"lightgrey"}. Accepts a named color (eg \code{'blue'}) or a hex color.}
 
 \item{same_lim}{A logical indicating that the plots will use the same y-axis range (\code{TRUE}) or have individual y-axis ranges (\code{FALSE}).}
 }

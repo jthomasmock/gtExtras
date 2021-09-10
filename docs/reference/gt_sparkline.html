@@ -79,7 +79,7 @@ gt::text_transform() + ggplot2 with the necessary boilerplate already applied." 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.18</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.19</span>
       </span>
     </div>
 
@@ -143,6 +143,8 @@ adds sparklines via the <code>ggplot2</code>. This is a wrapper around
   <span class='va'>column</span>,
   line_color <span class='op'>=</span> <span class='st'>"lightgrey"</span>,
   range_colors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"red"</span>, <span class='st'>"blue"</span><span class='op'>)</span>,
+  type <span class='op'>=</span> <span class='st'>"sparkline"</span>,
+  fill_color <span class='op'>=</span> <span class='st'>"lightblue"</span>,
   same_limit <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span></pre>
 
@@ -164,6 +166,10 @@ adds sparklines via the <code>ggplot2</code>. This is a wrapper around
     <tr>
       <th>range_colors</th>
       <td><p>A vector of two valid color names or hex codes, the first color represents the min values and the second color represents the highest point per plot. Defaults to <code><a href='https://rdrr.io/r/base/c.html'>c("blue", "blue")</a></code>. Accepts a named color (eg <code>'blue'</code>) or a hex color like <code>"#fafafa"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>fill_color</th>
+      <td><p>= Color for the fill of histograms/density plots, defaults to <code>"lightgrey"</code>. Accepts a named color (eg <code>'blue'</code>) or a hex color.</p></td>
     </tr>
     <tr>
       <th>same_lim</th>

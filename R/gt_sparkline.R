@@ -8,6 +8,7 @@
 #' @param column The column wherein the sparkline plot should replace existing data. Note that the data *must* be represented as a list of numeric values ahead of time.
 #' @param line_color Color for the line, defaults to `"lightgrey"`. Accepts a named color (eg 'blue') or a hex color.
 #' @param range_colors A vector of two valid color names or hex codes, the first color represents the min values and the second color represents the highest point per plot. Defaults to `c("blue", "blue")`. Accepts a named color (eg `'blue'`) or a hex color like `"#fafafa"`.
+#' @param fill_color = Color for the fill of histograms/density plots, defaults to `"lightgrey"`. Accepts a named color (eg `'blue'`) or a hex color.
 #' @param same_lim A logical indicating that the plots will use the same y-axis range (`TRUE`) or have individual y-axis ranges (`FALSE`).
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
@@ -30,16 +31,19 @@
 #' 1-4
 
 gt_sparkline <- function(
-  gt_object, column,
+  gt_object,
+  column,
   line_color = "lightgrey",
   range_colors = c("red", "blue"),
+  type = "sparkline",
+  fill_color = "lightblue",
   same_limit = FALSE
 ) {
 
   # convert tidyeval column to bare string
   col_bare <- rlang::enexpr(column) %>% rlang::as_string()
   # segment data with bare string column name
-  data_in = gt_object[["_data"]][[col_bare]]
+  data_in <- gt_object[["_data"]][[col_bare]]
 
   stopifnot("Specified column must contain list of values" = class(data_in) %in% "list")
   stopifnot("You must supply two colors for the max and min values." = length(range_colors) == 2L)
@@ -49,8 +53,7 @@ gt_sparkline <- function(
   # range to be used for plotting if same axis
   total_rng <- range(data_in, na.rm = TRUE)
 
-  plot_fn_spark <- function(x){
-
+  plot_fn_spark <- function(x) {
     vals <- strsplit(x, split = ", ") %>%
       unlist() %>%
       as.double()
@@ -58,8 +61,8 @@ gt_sparkline <- function(
     max_val <- max(vals, na.rm = TRUE)
     min_val <- min(vals, na.rm = TRUE)
 
-    x_max <- vals[vals==max_val]
-    x_min <- vals[vals==min_val]
+    x_max <- vals[vals == max_val]
+    x_min <- vals[vals == min_val]
 
     point_data <- dplyr::tibble(
       x = c(
@@ -75,31 +78,100 @@ gt_sparkline <- function(
       y = vals
     )
 
-    plot_base <- ggplot(input_data) +
-      theme_void()  +
-      coord_cartesian(clip = "off")
+    if (type == "sparkline") {
+      plot_base <- ggplot(input_data) +
+        theme_void() +
+        coord_cartesian(clip = "off")
 
-      if(isTRUE(same_limit)){
+      if (isTRUE(same_limit)) {
         plot_base <- plot_base +
-          scale_y_continuous(limits = total_rng,
-                             expand = expansion(mult = 0.2))
+          scale_y_continuous(
+            limits = total_rng,
+            expand = expansion(mult = 0.2)
+          )
       } else {
         plot_base <- plot_base +
-          scale_y_continuous(limits = range(vals, na.rm = TRUE),
-                             expand = expansion(mult = 0.2))
+          scale_y_continuous(
+            limits = range(vals, na.rm = TRUE),
+            expand = expansion(mult = 0.2)
+          )
       }
 
       plot_out <- plot_base +
-        geom_line(aes(x = x, y = y), size =0.5, color = line_color) +
-        geom_point(data = point_data,
-                   aes(x = x, y = y, color = I(colors)), size = 0.5)
+        geom_line(aes(x = x, y = y), size = 0.5, color = line_color) +
+        geom_point(
+          data = point_data,
+          aes(x = x, y = y, color = I(colors)),
+          size = 0.5
+        )
+    } else if (type == "histogram") {
+      plot_base <- ggplot(input_data) +
+        theme_void() +
+        coord_cartesian(clip = "off")
+
+      if (isTRUE(same_limit)) {
+        bw <- 2 * IQR(data_in) / length(data_in)^(1 / 3)
+
+        plot_out <- plot_base +
+          geom_histogram(
+            aes(x = y),
+            color = line_color,
+            fill = fill_color,
+            binwidth = bw
+          )
+      } else {
+        bw <- 2 * IQR(vals) / length(vals)^(1 / 3)
+
+        plot_out <- plot_base +
+          geom_histogram(
+            aes(x = y),
+            color = line_color,
+            fill = fill_color,
+            binwidth = bw
+          )
+      }
+    } else if (type == "density") {
+      plot_base <- ggplot(input_data) +
+        theme_void() +
+        coord_cartesian(clip = "off")
+
+      if (isTRUE(same_limit)) {
+        bw <- bw.nrd0(data_in)
+
+        plot_out <- plot_base +
+          geom_density(
+            aes(x = y),
+            color = line_color,
+            fill = fill_color,
+            bw = bw
+          )
+        # plot_out <- plot_base + geom_density(aes(x = y))
+      } else {
+        bw <- bw.nrd0(vals)
+
+        plot_out <- plot_base +
+          geom_density(
+            aes(x = y),
+            color = line_color,
+            fill = fill_color,
+            bw = bw
+          )
+      }
+
+    }
+
 
     out_name <- file.path(
       tempfile(pattern = "file", tmpdir = tempdir(), fileext = ".svg")
     )
 
-    ggsave(out_name, plot = plot_out,
-           dpi = 20, height = 0.15, width = 0.9)
+    ggsave(
+      out_name,
+      plot = plot_out,
+      dpi = 20,
+      height = 0.15,
+      width = 0.9
+    )
 
     img_plot <- out_name %>%
       readLines() %>%
@@ -109,17 +181,16 @@ gt_sparkline <- function(
     on.exit(file.remove(out_name))
 
     img_plot
-
   }
 
   text_transform(
     gt_object,
     locations = cells_body(columns = {{ column }}),
-    fn = function(x){
+    fn = function(x) {
       lapply(
-        x, plot_fn_spark
+        x,
+        plot_fn_spark
       )
     }
   )
-
 }

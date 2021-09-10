@@ -20,7 +20,7 @@ You can install the dev version of gtExtras from
 [GitHub](https://github.com/jthomasmock/gtExtra) with:
 
 ``` r
-# if needed install.packages("remotes)
+# if needed install.packages("remotes")
 remotes::install_github("jthomasmock/gtExtras")
 ```
 

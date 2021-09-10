@@ -168,7 +168,7 @@ gt_plt_winloss <- function(
 
 #' Add HTML-based bar plots into rows of a `gt` table
 #' @description
-#' The `gt_bar_plot` function takes an existing `gt_tbl` object and
+#' The `gt_plt_bar` function takes an existing `gt_tbl` object and
 #' adds horizontal barplots via native HTML. This is a wrapper around raw HTML
 #' strings, `gt::text_transform()` and `gt::cols_align()`. Note that values
 #' default to being normalized to the percent of the maximum observed value
@@ -207,7 +207,7 @@ gt_plt_winloss <- function(
 #' @section Function ID:
 #' 1-1
 
-gt_bar_plot <- function(
+gt_plt_bar <- function(
   gt_object, column, height = 16, fill = "purple", background = "#e1e1e1",
   scaled = FALSE) {
 

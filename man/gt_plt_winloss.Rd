@@ -41,9 +41,9 @@ It is a wrapper around \code{gt::text_transform()}.
 }
 \seealso{
 Other Plotting: 
-\code{\link{gt_bar_plot}()},
 \code{\link{gt_kable_sparkline}()},
 \code{\link{gt_plt_bar_stack}()},
+\code{\link{gt_plt_bar}()},
 \code{\link{gt_sparkline}()}
 }
 \concept{Plotting}

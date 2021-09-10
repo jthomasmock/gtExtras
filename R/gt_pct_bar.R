@@ -7,7 +7,7 @@
 #'
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param column The column wherein the percent stacked barchart should replace existing data. Note that the data *must* be represented as a list of numeric values ahead of time.
-#' @param palette A color palette of length 2 or 3, represented either by hex colors (`"#ff4343`) or named colors (`"red"`).
+#' @param palette A color palette of length 2 or 3, represented either by hex colors (`"#ff4343"`) or named colors (`"red"`).
 #' @param labels A vector of strings of length 2 or 3, representing the labels for the bar chart, will be colored according to the palette as well.
 #' @param width An integer representing the width of the bar chart in pixels.
 #' @return An object of class `gt_tbl`.
@@ -18,7 +18,35 @@
 #' @family Plotting
 #' @section Function ID:
 #' 1-5
+#' @examples
+#' library(gt)
+#' library(dplyr)
 #'
+#' ex_df <- dplyr::tibble(
+#'   x = c("Example 1","Example 1",
+#'         "Example 1","Example 2","Example 2","Example 2",
+#'         "Example 3","Example 3","Example 3","Example 4","Example 4",
+#'         "Example 4"),
+#'   measure = c("Measure 1","Measure 2",
+#'               "Measure 3","Measure 1","Measure 2","Measure 3",
+#'               "Measure 1","Measure 2","Measure 3","Measure 1","Measure 2",
+#'               "Measure 3"),
+#'   data = c(30, 20, 50, 30, 30, 40, 30, 40, 30, 30, 50, 20)
+#' )
+#'
+#'
+#' tab_df <- ex_df %>%
+#'   group_by(x) %>%
+#'   summarise(list_data = list(data))
+#'
+#' tab_df
+#'
+#' ex_tab <- tab_df %>%
+#'   gt() %>%
+#'   gt_plt_bar_stack(column = list_data)
+#'
+#' @section Figures:
+#' \if{html}{\figure{plt-bar-stack.png}{options: width=70\%}}
 
 gt_plt_bar_stack <- function(
   gt_object,

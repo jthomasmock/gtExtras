@@ -22,9 +22,6 @@
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_add_fa_icons.html</loc>
   </url>
   <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_bar_plot.html</loc>
-  </url>
-  <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_color_rows.html</loc>
   </url>
   <url>
@@ -44,6 +41,9 @@
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_merge_stack.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_bar.html</loc>
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_bar_stack.html</loc>

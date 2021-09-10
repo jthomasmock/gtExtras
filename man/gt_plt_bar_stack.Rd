@@ -17,7 +17,7 @@ gt_plt_bar_stack(
 
 \item{column}{The column wherein the percent stacked barchart should replace existing data. Note that the data \emph{must} be represented as a list of numeric values ahead of time.}
 
-\item{palette}{A color palette of length 2 or 3, represented either by hex colors (\verb{"#ff4343}) or named colors (\code{"red"}).}
+\item{palette}{A color palette of length 2 or 3, represented either by hex colors (\code{"#ff4343"}) or named colors (\code{"red"}).}
 
 \item{labels}{A vector of strings of length 2 or 3, representing the labels for the bar chart, will be colored according to the palette as well.}
 
@@ -37,10 +37,43 @@ a list column ahead of time. The palette and labels need to be equal length.
 1-5
 }
 
+\section{Figures}{
+
+\if{html}{\figure{plt-bar-stack.png}{options: width=70\%}}
+}
+
+\examples{
+library(gt)
+library(dplyr)
+
+ex_df <- dplyr::tibble(
+  x = c("Example 1","Example 1",
+        "Example 1","Example 2","Example 2","Example 2",
+        "Example 3","Example 3","Example 3","Example 4","Example 4",
+        "Example 4"),
+  measure = c("Measure 1","Measure 2",
+              "Measure 3","Measure 1","Measure 2","Measure 3",
+              "Measure 1","Measure 2","Measure 3","Measure 1","Measure 2",
+              "Measure 3"),
+  data = c(30, 20, 50, 30, 30, 40, 30, 40, 30, 30, 50, 20)
+)
+
+
+tab_df <- ex_df \%>\%
+  group_by(x) \%>\%
+  summarise(list_data = list(data))
+
+tab_df
+
+ex_tab <- tab_df \%>\%
+  gt() \%>\%
+  gt_plt_bar_stack(column = list_data)
+
+}
 \seealso{
 Other Plotting: 
-\code{\link{gt_bar_plot}()},
 \code{\link{gt_kable_sparkline}()},
+\code{\link{gt_plt_bar}()},
 \code{\link{gt_plt_winloss}()},
 \code{\link{gt_sparkline}()}
 }

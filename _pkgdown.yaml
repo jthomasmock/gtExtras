@@ -22,6 +22,7 @@ reference:
   - gt_theme_espn
   - gt_theme_nytimes
   - gt_theme_guardian
+  - gt_theme_dot_matrix
 - title: Utilities
   desc: Helper functions and utilities with features not _yet_ built into `{gt}`.
   contents:

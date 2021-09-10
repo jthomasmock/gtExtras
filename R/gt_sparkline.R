@@ -6,6 +6,7 @@
 #'
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param column The column wherein the sparkline plot should replace existing data. Note that the data *must* be represented as a list of numeric values ahead of time.
+#' @param type A string indicating the type of plot to generate, accepts `"sparkline"`, `"histogram"` or `"density"`.
 #' @param line_color Color for the line, defaults to `"lightgrey"`. Accepts a named color (eg 'blue') or a hex color.
 #' @param range_colors A vector of two valid color names or hex codes, the first color represents the min values and the second color represents the highest point per plot. Defaults to `c("blue", "blue")`. Accepts a named color (eg `'blue'`) or a hex color like `"#fafafa"`.
 #' @param fill_color = Color for the fill of histograms/density plots, defaults to `"lightgrey"`. Accepts a named color (eg `'blue'`) or a hex color.
@@ -33,9 +34,9 @@
 gt_sparkline <- function(
   gt_object,
   column,
+  type = "sparkline",
   line_color = "lightgrey",
   range_colors = c("red", "blue"),
-  type = "sparkline",
   fill_color = "lightblue",
   same_limit = FALSE
 ) {
@@ -47,6 +48,7 @@ gt_sparkline <- function(
 
   stopifnot("Specified column must contain list of values" = class(data_in) %in% "list")
   stopifnot("You must supply two colors for the max and min values." = length(range_colors) == 2L)
+  stopifnot("You must indicate the `type` of plot as one of 'sparkline', 'histogram' or 'density'." = isTRUE(type %in% c("sparkline", "histogram", "density")))
 
   # convert to a single vector
   data_in <- unlist(data_in)
@@ -145,7 +147,6 @@ gt_sparkline <- function(
             fill = fill_color,
             bw = bw
           )
-        # plot_out <- plot_base + geom_density(aes(x = y))
       } else {
         bw <- bw.nrd0(vals)
 

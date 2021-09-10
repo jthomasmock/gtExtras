@@ -7,9 +7,9 @@
 gt_sparkline(
   gt_object,
   column,
+  type = "sparkline",
   line_color = "lightgrey",
   range_colors = c("red", "blue"),
-  type = "sparkline",
   fill_color = "lightblue",
   same_limit = FALSE
 )
@@ -18,6 +18,8 @@ gt_sparkline(
 \item{gt_object}{An existing gt table object of class \code{gt_tbl}}
 
 \item{column}{The column wherein the sparkline plot should replace existing data. Note that the data \emph{must} be represented as a list of numeric values ahead of time.}
+
+\item{type}{A string indicating the type of plot to generate, accepts \code{"sparkline"}, \code{"histogram"} or \code{"density"}.}
 
 \item{line_color}{Color for the line, defaults to \code{"lightgrey"}. Accepts a named color (eg 'blue') or a hex color.}
 

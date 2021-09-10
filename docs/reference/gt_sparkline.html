@@ -141,9 +141,9 @@ adds sparklines via the <code>ggplot2</code>. This is a wrapper around
     <pre class="usage"><span class='fu'>gt_sparkline</span><span class='op'>(</span>
   <span class='va'>gt_object</span>,
   <span class='va'>column</span>,
+  type <span class='op'>=</span> <span class='st'>"sparkline"</span>,
   line_color <span class='op'>=</span> <span class='st'>"lightgrey"</span>,
   range_colors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"red"</span>, <span class='st'>"blue"</span><span class='op'>)</span>,
-  type <span class='op'>=</span> <span class='st'>"sparkline"</span>,
   fill_color <span class='op'>=</span> <span class='st'>"lightblue"</span>,
   same_limit <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span></pre>
@@ -158,6 +158,10 @@ adds sparklines via the <code>ggplot2</code>. This is a wrapper around
     <tr>
       <th>column</th>
       <td><p>The column wherein the sparkline plot should replace existing data. Note that the data <em>must</em> be represented as a list of numeric values ahead of time.</p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td><p>A string indicating the type of plot to generate, accepts <code>"sparkline"</code>, <code>"histogram"</code> or <code>"density"</code>.</p></td>
     </tr>
     <tr>
       <th>line_color</th>

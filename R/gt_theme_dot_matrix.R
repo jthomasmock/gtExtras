@@ -23,7 +23,7 @@ gt_theme_dot_matrix <- function(gt_object, ..., color = "#b5dbb6"){
   gt_object %>%
     opt_row_striping() %>%
     tab_style(
-      style = cell_borders(sides = "bottom", weight = px(3), color = "#00FFFFFF"),
+      style = cell_borders(sides = "bottom", weight = px(3), color = "white"),
       locations = list(
         cells_body(rows = nrow(gt_object[["_data"]]))
       )
@@ -32,7 +32,7 @@ gt_theme_dot_matrix <- function(gt_object, ..., color = "#b5dbb6"){
     tab_options(
       ...,
       heading.align = "left",
-      heading.border.bottom.color = "#00FFFFFF",
+      heading.border.bottom.color = "white",
       column_labels.text_transform = "lowercase",
       column_labels.font.size = pct(85),
       column_labels.border.top.style = "none",
@@ -40,7 +40,7 @@ gt_theme_dot_matrix <- function(gt_object, ..., color = "#b5dbb6"){
       column_labels.border.bottom.width = px(2),
       table.border.bottom.style = "none",
       table.border.bottom.width = px(2),
-      table.border.bottom.color = "#00FFFFFF",
+      table.border.bottom.color = "white",
       table.border.top.style = "none",
       row.striping.background_color = color,
       table_body.hlines.style = "none",

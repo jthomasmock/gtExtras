@@ -73,7 +73,7 @@ gt_theme_538 <- function(gt_object,...) {
       column_labels.border.top.style = "none",
       column_labels.border.bottom.width = px(2),
       column_labels.border.bottom.color = "black",
-      row_group.border.top.style = "none", #x(2)
+      row_group.border.top.style = "none",
       row_group.border.top.color = "black",
       row_group.border.bottom.width = px(1),
       row_group.border.bottom.color = "black",

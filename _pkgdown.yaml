@@ -23,6 +23,7 @@ reference:
   - gt_theme_nytimes
   - gt_theme_guardian
   - gt_theme_dot_matrix
+  - gt_theme_dark
 - title: Utilities
   desc: Helper functions and utilities with features not _yet_ built into `{gt}`.
   contents:

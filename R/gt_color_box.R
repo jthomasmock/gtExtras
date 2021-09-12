@@ -12,7 +12,7 @@
 #'
 #' @examples
 #' library(gt)
-#' test_data <- tibble(x = letters[1:10],
+#' test_data <- dplyr::tibble(x = letters[1:10],
 #'                     y = seq(100, 10, by = -10),
 #'                     z = seq(10, 100, by = 10))
 #' color_box_tab <- test_data %>%
@@ -22,7 +22,7 @@
 #'   gt_color_box(columns = z, domain = 0:100,
 #'                palette = c("purple", "lightgrey", "green"))
 #' @section Figures:
-#' \if{html}{\figure{color_box.png.png}{options: width=30\%}}
+#' \if{html}{\figure{color_box.png}{options: width=30\%}}
 #'
 #' @family Colors
 #' @section Function ID:

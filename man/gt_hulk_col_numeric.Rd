@@ -80,6 +80,7 @@ can indicate low or "bad" value, and green can indicate a high or "good" value.
 }
 \seealso{
 Other Colors: 
+\code{\link{gt_color_box}()},
 \code{\link{gt_color_rows}()}
 }
 \concept{Colors}

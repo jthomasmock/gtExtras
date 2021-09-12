@@ -109,6 +109,7 @@ is simpler than \code{data_color()}.
 }
 \seealso{
 Other Colors: 
+\code{\link{gt_color_box}()},
 \code{\link{gt_hulk_col_numeric}()}
 }
 \concept{Colors}

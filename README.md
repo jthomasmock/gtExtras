@@ -301,8 +301,8 @@ mtcars %>%
                 mpg_scaled = mpg/max(mpg) * 100) %>%
   dplyr::mutate(mpg_unscaled = mpg) %>%
   gt() %>%
-  gt_bar_plot(column = mpg_scaled, scaled = TRUE) %>%
-  gt_bar_plot(column = mpg_unscaled, scaled = FALSE, fill = "blue", background = "lightblue") %>%
+  gt_plt_bar(column = mpg_scaled, scaled = TRUE) %>%
+  gt_plt_bar(column = mpg_unscaled, scaled = FALSE, fill = "blue", background = "lightblue") %>%
   cols_align("center", contains("scale")) %>%
   cols_width(4 ~ px(125),
              5 ~ px(125))

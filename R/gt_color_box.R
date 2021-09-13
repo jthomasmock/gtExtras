@@ -7,8 +7,12 @@
 #' @param use_paletteer Should the palette be passed as a "package::palette_name" to `paletteer` or should the palette be treated as a raw character string of colors. Defaults to `TRUE`. Note that if `FALSE`, that the "n", "direction", and "type" arguments are ignored, as they are passed only to `paletter::paletteer_d()`.
 #' @param width The width of the entire coloring area in pixels.
 #'
-#' @return
+#' @return An object of class `gt_tbl`.
+#' @importFrom gt %>%
+#' @importFrom scales col_numeric
+#' @importFrom htmltools div
 #' @export
+#' @import gt paletteer
 #'
 #' @examples
 #' library(gt)
@@ -50,7 +54,7 @@ gt_color_box <- function(gt_object, columns, palette = NULL, domain = NULL,
 
     colors <- scales::col_numeric(palette = palette, domain = domain)(x)
 
-    background_col <- scales::alpha(colors, alpha = 0.1)
+    background_col <- scales::alpha(colors, alpha = 0.2)
 
     div(
       div(

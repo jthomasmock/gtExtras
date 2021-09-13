@@ -27,7 +27,7 @@ gt_color_box(
 \item{width}{The width of the entire coloring area in pixels.}
 }
 \value{
-
+An object of class \code{gt_tbl}.
 }
 \description{
 Add a small color box relative to the cell value.

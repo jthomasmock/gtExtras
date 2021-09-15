@@ -43,6 +43,7 @@ Other Themes:
 \code{\link{gt_theme_dark}()},
 \code{\link{gt_theme_dot_matrix}()},
 \code{\link{gt_theme_espn}()},
+\code{\link{gt_theme_excel}()},
 \code{\link{gt_theme_guardian}()}
 }
 \concept{Themes}

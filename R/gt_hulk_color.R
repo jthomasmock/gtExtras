@@ -45,7 +45,7 @@
 #'
 #' @family Colors
 #' @section Function ID:
-#' 2-1
+#' 4-1
 gt_hulk_col_numeric <- function(gt_object, columns = NULL, domain = NULL, ..., trim = FALSE){
 
   stopifnot("Input must be a gt table" = "gt_tbl" %in% class(gt_object))

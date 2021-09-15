@@ -31,7 +31,7 @@
 #'
 #' @family Utilities
 #' @section Function ID:
-#' 1-12
+#' 2-12
 
 tab_style_by_grp <- function(gt_object, column, fn, ...){
 

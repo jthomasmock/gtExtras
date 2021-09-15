@@ -26,7 +26,7 @@ This function is intended to use within the \code{gt::fmt()} function.
 
 \section{Function ID}{
 
-3-2
+2-3
 }
 
 \examples{

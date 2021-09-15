@@ -17,7 +17,7 @@
 #' @importFrom glue glue
 #' @family Plotting
 #' @section Function ID:
-#' 1-5
+#' 3-5
 #' @examples
 #' library(gt)
 #' library(dplyr)

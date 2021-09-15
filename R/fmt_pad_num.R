@@ -25,7 +25,7 @@
 #'
 #' @family Utilities
 #' @section Function ID:
-#' 1-8
+#' 2-2
 
 fmt_pad_num <- function(gt_object, columns, nsmall = 2, gfont = "Fira Mono") {
   gt_object %>%

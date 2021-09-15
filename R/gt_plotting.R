@@ -30,7 +30,7 @@
 #'
 #' @family Plotting
 #' @section Function ID:
-#' 1-2
+#' 3-2
 
 gt_kable_sparkline <- function(gt_object, column, width = 200, height = 45, color = "lightgrey", ...){
 
@@ -70,7 +70,7 @@ gt_kable_sparkline <- function(gt_object, column, width = 200, height = 45, colo
 #'
 #' @family Plotting
 #' @section Function ID:
-#' 1-3
+#' 3-1
 
 gt_plt_winloss <- function(
   gt_object, column,
@@ -205,7 +205,7 @@ gt_plt_winloss <- function(
 #'
 #' @family Plotting
 #' @section Function ID:
-#' 1-1
+#' 3-4
 
 gt_plt_bar <- function(
   gt_object, column, height = 16, fill = "purple", background = "#e1e1e1",

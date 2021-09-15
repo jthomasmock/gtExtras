@@ -34,7 +34,7 @@
 #'
 #' @family Utilities
 #' @section Function ID:
-#' 3-1
+#' 2-1
 
 
 fmt_symbol_first <- function(

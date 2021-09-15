@@ -26,7 +26,7 @@ the header of a table via \code{gt::tab_header()}.
 }
 \section{Function ID}{
 
-1-7
+2-5
 }
 
 \section{Figures}{

@@ -17,7 +17,7 @@
 #'
 #' @family Utilities
 #' @section Function ID:
-#' 1-7
+#' 2-5
 #'
 #' @examples
 #' library(gt)

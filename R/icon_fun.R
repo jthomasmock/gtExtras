@@ -18,7 +18,7 @@
 #'
 #' @family Utilities
 #' @section Function ID:
-#' 1-9
+#' 2-4
 
 fa_icon_repeat <- function(name = "star",
                      repeats = 1,

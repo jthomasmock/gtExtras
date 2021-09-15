@@ -66,7 +66,7 @@ is simpler than \code{data_color()}.
 
 \section{Function ID}{
 
-2-2
+4-2
 }
 
 \examples{

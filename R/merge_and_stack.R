@@ -30,7 +30,7 @@
 #'
 #' @family Utilities
 #' @section Function ID:
-#' 1-4
+#' 2-6
 
 gt_merge_stack <- function(gt_object, col1, col2) {
   col1_bare <- rlang::enexpr(col1) %>% rlang::as_string()

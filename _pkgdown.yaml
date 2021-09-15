@@ -53,6 +53,5 @@ reference:
   contents:
   - gt_hulk_col_numeric
   - gt_color_rows
-  - gt_highlight_rows
   - gt_color_box
 

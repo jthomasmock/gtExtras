@@ -34,7 +34,7 @@ a list column ahead of time. The palette and labels need to be equal length.
 }
 \section{Function ID}{
 
-1-5
+3-5
 }
 
 \section{Figures}{

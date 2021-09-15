@@ -39,7 +39,7 @@
 #'
 #' @family Utilities
 #' @section Function ID:
-#' 1-8
+#' 2-10
 
 gt_highlight_rows <- function(
   gt_object, columns = gt::everything(), rows = TRUE, fill = "#80bcd8",

@@ -40,7 +40,7 @@ add specific \code{fontawesome} to the cells.
 
 \section{Function ID}{
 
-1-10
+2-8
 }
 
 \examples{

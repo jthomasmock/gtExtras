@@ -65,7 +65,7 @@
 #'
 #' @family Colors
 #' @section Function ID:
-#' 2-2
+#' 4-2
 gt_color_rows <- function(
   gt_object,
   columns,

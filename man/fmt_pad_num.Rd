@@ -31,7 +31,7 @@ around \code{gt::fmt()} and \code{gtExtras::pad_fn()}.
 
 \section{Function ID}{
 
-1-8
+2-2
 }
 
 \examples{

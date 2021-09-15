@@ -33,7 +33,7 @@ It is a wrapper around \code{gt::text_transform()}.
 }
 \section{Function ID}{
 
-1-3
+3-1
 }
 
 \examples{

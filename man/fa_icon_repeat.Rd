@@ -48,7 +48,7 @@ The \code{fa_icon_repeat} function takes an \href{https://fontawesome.com/}{font
 }
 \section{Function ID}{
 
-1-9
+2-4
 }
 
 \seealso{

@@ -27,7 +27,7 @@
 #'
 #' @family Utilities
 #' @section Function ID:
-#' 1-10
+#' 2-8
 
 gt_add_fa_icons <- function(gt_object, column, name = NULL, ..., palette = "ggthemes::colorblind", align = "left"){
 

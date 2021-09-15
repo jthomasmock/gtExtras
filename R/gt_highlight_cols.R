@@ -23,7 +23,7 @@
 #'
 #' @family Utilities
 #' @section Function ID:
-#' 1-11
+#' 2-9
 #'
 #'
 

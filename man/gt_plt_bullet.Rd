@@ -7,8 +7,10 @@
 gt_plt_bullet(
   gt_object,
   column = NULL,
-  target_col = NULL,
+  target = NULL,
   width = 65,
+  keep_column = FALSE,
+  keep_target = FALSE,
   color = "grey",
   target_color = "red"
 )
@@ -18,9 +20,13 @@ gt_plt_bullet(
 
 \item{column}{The column where a 'bullet chart' will replace the inline values.}
 
-\item{target_col}{The column indicating the target values that will be represented by a vertical line}
+\item{target}{The column indicating the target values that will be represented by a vertical line}
 
 \item{width}{Width of the plot in pixels}
+
+\item{keep_column}{Logical indicating whether to duplicate the column for the plot.}
+
+\item{keep_target}{Logical indicating whether to keep (\code{TRUE}) or hide the target column (\code{FALSE})}
 
 \item{color}{Color of the bar, defaults to \code{"grey"}, can use named colors or hex colors.}
 
@@ -39,7 +45,7 @@ Create an inline 'bullet chart' in a gt table
 
 \section{Function ID}{
 
-1-6
+3-6
 }
 
 \examples{
@@ -53,7 +59,7 @@ bullet_tab <- tibble::rownames_to_column(mtcars) \%>\%
  dplyr::slice_sample(n = 3) \%>\%
  dplyr::ungroup() \%>\%
  gt() \%>\%
- gt_plt_bullet(column = mpg, target_col = target_col, width = 45,
+ gt_plt_bullet(column = mpg, target = target_col, width = 45,
                color = "lightblue", target_color = "black") \%>\%
  gt_theme_538()
 

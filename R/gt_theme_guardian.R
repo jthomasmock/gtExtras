@@ -79,4 +79,6 @@ gt_theme_guardian <- function(gt_object,...) {
       heading.align = "left",
       ...
     )
+
+  tab_out
 }

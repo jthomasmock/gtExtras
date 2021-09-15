@@ -22,7 +22,7 @@
 #'
 #' @family Utilities
 #' @section Function ID:
-#' 1-12
+#' 2-11
 
 gt_add_divider <- function(gt_object, columns, sides = "right", color = "#00FFFFFF",
                            style = "solid", weight = px(2), include_labels = TRUE){

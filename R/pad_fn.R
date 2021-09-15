@@ -27,7 +27,7 @@
 #'
 #' @family Utilities
 #' @section Function ID:
-#' 3-2
+#' 2-3
 
 
 pad_fn <- function(x, nsmall = 2){

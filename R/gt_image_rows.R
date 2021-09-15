@@ -31,7 +31,7 @@
 #'
 #' @family Utilities
 #' @section Function ID:
-#' 1-3
+#' 2-7
 
 gt_img_rows <- function(gt_object, columns, img_source = "web", height = 30){
 
@@ -40,6 +40,10 @@ gt_img_rows <- function(gt_object, columns, img_source = "web", height = 30){
     expr = {{ columns }},
     data = gt_object
   )
+
+  # if NA return nothing
+  gt_object[["_data"]] <- gt_object[["_data"]] %>%
+    dplyr::mutate({{columns}} := ifelse(is.na({{columns}}), "", {{columns}}))
 
   stub_var <- gt_object[["_boxhead"]][["var"]][which(gt_object[["_boxhead"]][["type"]]=="stub")]
   grp_var <- gt_object[["_boxhead"]][["var"]][which(gt_object[["_boxhead"]][["type"]]=="row_group")]

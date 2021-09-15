@@ -12,6 +12,7 @@
 #' @inheritParams gt::local_image
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
+#' @importFrom dplyr mutate
 #' @export
 #' @import gt
 #' @examples
@@ -41,10 +42,6 @@ gt_img_rows <- function(gt_object, columns, img_source = "web", height = 30){
     data = gt_object
   )
 
-  # if NA return nothing
-  gt_object[["_data"]] <- gt_object[["_data"]] %>%
-    dplyr::mutate({{columns}} := ifelse(is.na({{columns}}), "", {{columns}}))
-
   stub_var <- gt_object[["_boxhead"]][["var"]][which(gt_object[["_boxhead"]][["type"]]=="stub")]
   grp_var <- gt_object[["_boxhead"]][["var"]][which(gt_object[["_boxhead"]][["type"]]=="row_group")]
 
@@ -56,17 +53,31 @@ gt_img_rows <- function(gt_object, columns, img_source = "web", height = 30){
       locations = if(isTRUE(grp_var %in% column_names)){
         cells_row_groups()
       } else if(isTRUE(stub_var %in% column_names)){
-        cells_stub(rows = gt::everything())
+        cells_stub(rows = !is.na({{columns}}))
       } else {
-        cells_body({{ columns }})
+        cells_body({{ columns }}, rows = !is.na({{columns}}))
       },
       fn = function(x){
-        if(img_source == "web"){
+        if(img_source == "web" && !is.na(x)){
           web_image(url = x, height = height)
-        } else {
+        } else if(img_source == "local" && !is.na(x)) {
           local_image(filename = x, height = height)
+        } else if(x == "NA" | is.na(x)){
+          ""
         }
       }
+    ) %>%
+    # NA Handling so doesn't return broken img
+    text_transform(
+      locations = if(isTRUE(stub_var %in% column_names)){
+        cells_stub(rows = is.na({{columns}}))
+      } else {
+        cells_body({{ columns }}, rows = is.na({{columns}}))
+      },
+      fn = function(x){
+        warning("Column has some NA values, returning empty row", call. = FALSE)
+        ""
+        }
     )
 
-}
+  }

@@ -9,6 +9,8 @@ gt_plt_bar_stack(
   column = NULL,
   palette = c("#ff4343", "#bfbfbf", "#0a1c2b"),
   labels = c("Group 1", "Group 2", "Group 3"),
+  position = "fill",
+  ...,
   width = 70
 )
 }
@@ -21,6 +23,10 @@ gt_plt_bar_stack(
 
 \item{labels}{A vector of strings of length 2 or 3, representing the labels for the bar chart, will be colored according to the palette as well.}
 
+\item{position}{An string indicator passed to \code{ggplot2} indicating if the bar should be a percent of total \code{"fill"} or stacked as the raw values \code{"stack"}.}
+
+\item{...}{Additional arguments passe to the \code{format()} function. Specifically, a combination of \code{digits} and \code{nsmall} argument are useful here for rounding non-integers.}
+
 \item{width}{An integer representing the width of the bar chart in pixels.}
 }
 \value{
@@ -31,6 +37,9 @@ The \code{gt_plt_bar_stack} function takes an existing \code{gt_tbl} object and
 converts the existing values into a percent stacked barchart. The bar chart
 will represent either 2 or 3 user-specified values per row, and requires
 a list column ahead of time. The palette and labels need to be equal length.
+The values must either add up to 100 ie as percentage points if using
+\code{position = 'fill'}, or can be raw values with \code{position = 'stack'}. Note that
+the labels can be controlled via the \code{...} which is passed to \code{format()}.
 }
 \section{Function ID}{
 

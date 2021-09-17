@@ -40,6 +40,8 @@ reference:
   - gt_highlight_cols
   - gt_add_divider
   - tab_style_by_grp
+  - gt_double_table
+  - gt_two_column_layout
 - title: Plotting
   desc: Add plots to specific rows of an existing table
   contents:

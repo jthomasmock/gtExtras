@@ -4,11 +4,16 @@
 #' converts the existing values into a percent stacked barchart. The bar chart
 #' will represent either 2 or 3 user-specified values per row, and requires
 #' a list column ahead of time. The palette and labels need to be equal length.
+#' The values must either add up to 100 ie as percentage points if using
+#' `position = 'fill'`, or can be raw values with `position = 'stack'`. Note that
+#' the labels can be controlled via the `...` which is passed to `format()`.
 #'
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param column The column wherein the percent stacked barchart should replace existing data. Note that the data *must* be represented as a list of numeric values ahead of time.
 #' @param palette A color palette of length 2 or 3, represented either by hex colors (`"#ff4343"`) or named colors (`"red"`).
 #' @param labels A vector of strings of length 2 or 3, representing the labels for the bar chart, will be colored according to the palette as well.
+#' @param position An string indicator passed to `ggplot2` indicating if the bar should be a percent of total `"fill"` or stacked as the raw values `"stack"`.
+#' @param ... Additional arguments passe to the `format()` function. Specifically, a combination of `digits` and `nsmall` argument are useful here for rounding non-integers.
 #' @param width An integer representing the width of the bar chart in pixels.
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
@@ -53,10 +58,23 @@ gt_plt_bar_stack <- function(
   column = NULL,
   palette = c("#ff4343", "#bfbfbf", "#0a1c2b"),
   labels = c("Group 1", "Group 2", "Group 3"),
+  position = "fill",
+  ...,
   width = 70
 ) {
   stopifnot("There must be 2 or 3 labels" = (length(labels) %in% c(2:3)))
   stopifnot("There must be 2 or 3 colors in the palette" = (length(palette) %in% c(2:3)))
+  stopifnot("`position` must be one of 'stack' or 'fill'" = (position %in% c("stack", "fill")))
+
+  var_sym <- rlang::enquo(column)
+  var_bare <- rlang::as_label(var_sym)
+
+  all_vals <- gt_object[["_data"]] %>%
+    pull({{ column }}) %>%
+    lapply(X = ., FUN = sum, na.rm = TRUE) %>%
+    unlist()
+
+  total_rng <- max(all_vals)
 
   tab_out <- text_transform(
     gt_object,
@@ -68,6 +86,8 @@ gt_plt_bar_stack <- function(
         vals <- strsplit(x_val, split = ", ") %>%
           unlist() %>%
           as.double()
+
+
 
         n_val <- length(vals)
 
@@ -87,17 +107,25 @@ gt_plt_bar_stack <- function(
 
         plot_out <- df_in %>%
           ggplot(aes(x = x, y = factor(y), fill = I(fill), group = y)) +
-          geom_col(position = "fill", color = "white", size = 1) +
+          geom_col(position = position, color = "white", size = 1) +
           geom_text(
-            aes(label = x),
+            aes(label = format(x, ...)),
             hjust = 0.5,
             size = 3,
             family = "mono",
-            position = position_fill(vjust = .5),
+            position = if(position == "fill"){
+              position_fill(vjust = .5)
+              } else if (position == "stack"){
+                position_stack(vjust = .5)
+            },
             color = "white"
           ) +
-          scale_x_continuous(expand = c(0, 0)) +
+          scale_x_continuous(
+            expand = if(position == "stack"){expansion(mult = c(0, 0.1))} else {c(0, 0)},
+            limits = if(position == "stack"){c(0, total_rng)} else {NULL}
+            ) +
           scale_y_discrete(expand = c(0, 0)) +
+          coord_cartesian(clip = "off") +
           theme_void() +
           theme(legend.position = "none", plot.margin = unit(rep(0, 4), "pt"))
 
@@ -159,8 +187,7 @@ gt_plt_bar_stack <- function(
     ) %>% gt::html()
   }
 
-  var_sym <- rlang::enquo(column)
-  var_bare <- rlang::as_label(var_sym)
+
 
   # Get the columns supplied in `columns` as a character vector
   tab_out <-

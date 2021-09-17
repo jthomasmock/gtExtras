@@ -1,7 +1,7 @@
 Package: gtExtras
 Type: Package
 Title: A Collection of Helper Functions for the gt Package.
-Version: 0.1.26
+Version: 0.1.28
 Author: Thomas Mock
 Maintainer: Thomas Mock <j.thomasmock@gmail.com>
 Description: Provides utility functions for capabilities not yet built into the gt package.
@@ -13,18 +13,33 @@ Roxygen: list(markdown = TRUE)
 URL: https://github.com/jthomasmock/gtExtra
 BugReports: https://github.com/jthomasmock/gtExtras/issues
 Imports: 
-    gt (>= 0.3),
-    scales (>= 1.1.0),
-    rlang (>= 0.4.5),
-    kableExtra,
+    base64enc (>= 0.1-3),
+    bitops (>= 1.0.6),
+    checkmate (>= 2.0.0),
+    commonmark (>= 1.7),
+    dplyr (>= 0.8.5),
+    fs (>= 1.3.2),
     ggplot2 (>= 3.3.0),
     glue (>= 1.3.2),
-    dplyr (>= 1.0.0),
+    htmltools (>= 0.5.0),
+    magrittr (>= 1.5),
+    rlang (>= 0.4.5),
+    sass (>= 0.1.1),
+    scales (>= 1.1.0),
+    stringr (>= 1.3.1),
+    tibble (>= 3.0.0),
+    tidyselect (>= 1.0.0),
+    kableExtra,
     paletteer,
     fontawesome
 Suggests: 
+    paletteer,
+    testthat (>= 2.1.0),
+    RColorBrewer,
     rmarkdown,
+    rvest,
     knitr,
-    htmltools
+    tidyr,
+    webshot
 VignetteBuilder: knitr
 

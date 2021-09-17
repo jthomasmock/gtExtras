@@ -43,7 +43,10 @@
 <meta property="og:description" content="The gt_plt_bar_stack function takes an existing gt_tbl object and
 converts the existing values into a percent stacked barchart. The bar chart
 will represent either 2 or 3 user-specified values per row, and requires
-a list column ahead of time. The palette and labels need to be equal length." />
+a list column ahead of time. The palette and labels need to be equal length.
+The values must either add up to 100 ie as percentage points if using
+position = 'fill', or can be raw values with position = 'stack'. Note that
+the labels can be controlled via the ... which is passed to format()." />
 <meta property="og:image" content="https://jthomasmock.github.io/gtExtras/reference/figures/opengraph.png" />
 <meta property="og:image:alt" content="Screenshot of a data table that has the win/loss record of the 2020 NFL teams" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -80,7 +83,7 @@ a list column ahead of time. The palette and labels need to be equal length." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.26</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.28</span>
       </span>
     </div>
 
@@ -137,7 +140,10 @@ a list column ahead of time. The palette and labels need to be equal length." />
     <p>The <code>gt_plt_bar_stack</code> function takes an existing <code>gt_tbl</code> object and
 converts the existing values into a percent stacked barchart. The bar chart
 will represent either 2 or 3 user-specified values per row, and requires
-a list column ahead of time. The palette and labels need to be equal length.</p>
+a list column ahead of time. The palette and labels need to be equal length.
+The values must either add up to 100 ie as percentage points if using
+<code>position = 'fill'</code>, or can be raw values with <code>position = 'stack'</code>. Note that
+the labels can be controlled via the <code>...</code> which is passed to <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>gt_plt_bar_stack</span><span class='op'>(</span>
@@ -145,6 +151,8 @@ a list column ahead of time. The palette and labels need to be equal length.</p>
   column <span class='op'>=</span> <span class='cn'>NULL</span>,
   palette <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#ff4343"</span>, <span class='st'>"#bfbfbf"</span>, <span class='st'>"#0a1c2b"</span><span class='op'>)</span>,
   labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 1"</span>, <span class='st'>"Group 2"</span>, <span class='st'>"Group 3"</span><span class='op'>)</span>,
+  position <span class='op'>=</span> <span class='st'>"fill"</span>,
+  <span class='va'>...</span>,
   width <span class='op'>=</span> <span class='fl'>70</span>
 <span class='op'>)</span></pre>
 
@@ -166,6 +174,14 @@ a list column ahead of time. The palette and labels need to be equal length.</p>
     <tr>
       <th>labels</th>
       <td><p>A vector of strings of length 2 or 3, representing the labels for the bar chart, will be colored according to the palette as well.</p></td>
+    </tr>
+    <tr>
+      <th>position</th>
+      <td><p>An string indicator passed to <code>ggplot2</code> indicating if the bar should be a percent of total <code>"fill"</code> or stacked as the raw values <code>"stack"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments passe to the <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> function. Specifically, a combination of <code>digits</code> and <code>nsmall</code> argument are useful here for rounding non-integers.</p></td>
     </tr>
     <tr>
       <th>width</th>

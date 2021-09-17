@@ -75,7 +75,7 @@ gt_img_rows <- function(gt_object, columns, img_source = "web", height = 30){
         cells_body({{ columns }}, rows = is.na({{columns}}))
       },
       fn = function(x){
-        warning("Column has some NA values, returning empty row", call. = FALSE)
+        # warning("Column has some NA values, returning empty row", call. = FALSE)
         ""
         }
     )

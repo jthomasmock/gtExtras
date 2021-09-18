@@ -46,7 +46,7 @@ gt_double_table <- function(data, gt_fn, nrows = NULL, noisy = TRUE){
 
   if(is.null(nrows)){
     total_rows <- nrow(data)
-    half_rows <- (total_rows/2) %>% ceiling()
+    half_rows <- ceiling(total_rows/2)
     tab2_start <- half_rows + 1
 
     tab1 <- data %>%

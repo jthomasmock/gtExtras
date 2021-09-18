@@ -32,7 +32,7 @@
 #'
 #' @family Themes
 #' @section Function ID:
-#' 3-6
+#' 3-7
 gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
                           keep_column = FALSE, keep_target = FALSE,
                           color = "grey", target_color = "red"){

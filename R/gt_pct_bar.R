@@ -22,7 +22,7 @@
 #' @importFrom glue glue
 #' @family Plotting
 #' @section Function ID:
-#' 3-5
+#' 3-6
 #' @examples
 #' library(gt)
 #' library(dplyr)

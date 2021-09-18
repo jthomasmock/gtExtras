@@ -27,9 +27,7 @@ code to a function, you can follow the approximate pattern:
 Your function should only have a \strong{single argument}, which is the \strong{data}
 to be supplied directly into the \code{gt::gt()} function. This function is
 intended to be passed directly into \code{gt_two_column_layout()}, for printing
-it to the viewer, saving it to a \code{.png}, or returning the raw HTML. Please
-note that you will likely need to adjust some of the arguments to
-\code{webshot2::webshot()}, typically just adjusting the \code{vwidth} argument.
+it to the viewer, saving it to a \code{.png}, or returning the raw HTML.
 }
 \section{Function ID}{
 

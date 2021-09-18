@@ -14,7 +14,7 @@
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
 #' @export
-#' @import gt
+#' @import gt rlang
 #' @importFrom kableExtra spec_plot
 #' @examples
 #'  library(gt)
@@ -54,7 +54,9 @@ gt_kable_sparkline <- function(gt_object, column, width = 200, height = 45, colo
 #' @description
 #' The `gt_plt_winloss` function takes an existing `gt_tbl` object and
 #' adds squares of a specific color and vertical position based on wins/losses.
-#' It is a wrapper around `gt::text_transform()`.
+#' It is a wrapper around `gt::text_transform()`. The column chosen **must** be
+#' a list-column as seen in the example code. The column should also only contain
+#' values of 0 (loss), 0.5 (tie), and 1 (win).
 #'
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param column The column wherein the winloss plot should replace existing data. Note that the data *must* be represented as a list of numeric values ahead of time.
@@ -63,25 +65,46 @@ gt_kable_sparkline <- function(gt_object, column, width = 200, height = 45, colo
 #' @param type A character string representing the type of plot, either a 'pill' or 'square'
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
-#' @import gt
+#' @import gt rlang
 #' @export
 #' @importFrom kableExtra spec_plot
 #' @examples
+#' library(gt)
+#'
+#' set.seed(37)
+#' data_in <- dplyr::tibble(
+#'   grp = rep(c("A", "B", "C"), each = 10),
+#'   wins = sample(c(0,1,.5), size = 30, prob = c(0.45, 0.45, 0.1), replace = TRUE)
+#' ) %>%
+#'   dplyr::group_by(grp) %>%
+#'   dplyr::summarize(wins=list(wins), .groups = "drop")
+#'
+#' data_in
+#'
+#' win_table <- data_in %>%
+#'   gt() %>%
+#'   gt_plt_winloss(wins)
+#' @section Figures:
+#' \if{html}{\figure{gt_plt_winloss-ex.png}{options: width=60\%}}
 #'
 #' @family Plotting
 #' @section Function ID:
 #' 3-1
 
-gt_plt_winloss <- function(
-  gt_object, column,
-  max_wins = 17,
-  colors = c("#D50A0A", "#013369", "gray"),
-  type = "pill"
-) {
+gt_plt_winloss <- function(gt_object, column, max_wins = 17,
+                           colors = c("#D50A0A", "#013369", "gray"),
+                           type = "pill") {
 
+  stopifnot("'gt_object' must be a 'gt_tbl'" = gt:::is_gt(gt_object))
   stopifnot("type must be on of 'pill' or 'square'" = {type %in% c("pill", "square")})
-
   stopifnot("There must be 3 colors" = length(colors) == 3L)
+
+  test_vals <- gt_object[["_data"]] %>%
+    dplyr::select({{ column }}) %>%
+    dplyr::pull()
+
+  stopifnot("The column must be a list-column" = is.list(test_vals))
+  stopifnot("All values must be 1, 0 or 0.5" = unlist(test_vals) %in% c(1, 0, 0.5))
 
   plot_fn_pill <- function(x){
 
@@ -168,7 +191,7 @@ gt_plt_winloss <- function(
 
 #' Add HTML-based bar plots into rows of a `gt` table
 #' @description
-#' The `gt_plt_bar` function takes an existing `gt_tbl` object and
+#' The `gt_plt_bar_pct` function takes an existing `gt_tbl` object and
 #' adds horizontal barplots via native HTML. This is a wrapper around raw HTML
 #' strings, `gt::text_transform()` and `gt::cols_align()`. Note that values
 #' default to being normalized to the percent of the maximum observed value
@@ -194,8 +217,8 @@ gt_plt_winloss <- function(
 #'                  mpg_scaled = mpg/max(mpg) * 100) %>%
 #'    dplyr::mutate(mpg_unscaled = mpg) %>%
 #'    gt() %>%
-#'    gt_bar_plot(column = mpg_scaled, scaled = TRUE) %>%
-#'    gt_bar_plot(column = mpg_unscaled, scaled = FALSE, fill = "blue", background = "lightblue") %>%
+#'    gt_plt_bar_pct(column = mpg_scaled, scaled = TRUE) %>%
+#'    gt_plt_bar_pct(column = mpg_unscaled, scaled = FALSE, fill = "blue", background = "lightblue") %>%
 #'    cols_align("center", contains("scale")) %>%
 #'    cols_width(4 ~ px(125),
 #'               5 ~ px(125))
@@ -205,9 +228,9 @@ gt_plt_winloss <- function(
 #'
 #' @family Plotting
 #' @section Function ID:
-#' 3-4
+#' 3-5
 
-gt_plt_bar <- function(
+gt_plt_bar_pct <- function(
   gt_object, column, height = 16, fill = "purple", background = "#e1e1e1",
   scaled = FALSE) {
 

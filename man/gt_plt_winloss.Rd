@@ -29,19 +29,41 @@ An object of class \code{gt_tbl}.
 \description{
 The \code{gt_plt_winloss} function takes an existing \code{gt_tbl} object and
 adds squares of a specific color and vertical position based on wins/losses.
-It is a wrapper around \code{gt::text_transform()}.
+It is a wrapper around \code{gt::text_transform()}. The column chosen \strong{must} be
+a list-column as seen in the example code. The column should also only contain
+values of 0 (loss), 0.5 (tie), and 1 (win).
 }
+\section{Figures}{
+
+\if{html}{\figure{gt_plt_winloss-ex.png}{options: width=60\%}}
+}
+
 \section{Function ID}{
 
 3-1
 }
 
 \examples{
+library(gt)
 
+set.seed(37)
+data_in <- dplyr::tibble(
+  grp = rep(c("A", "B", "C"), each = 10),
+  wins = sample(c(0,1,.5), size = 30, prob = c(0.45, 0.45, 0.1), replace = TRUE)
+) \%>\%
+  dplyr::group_by(grp) \%>\%
+  dplyr::summarize(wins=list(wins), .groups = "drop")
+
+data_in
+
+win_table <- data_in \%>\%
+  gt() \%>\%
+  gt_plt_winloss(wins)
 }
 \seealso{
 Other Plotting: 
 \code{\link{gt_kable_sparkline}()},
+\code{\link{gt_plt_bar_pct}()},
 \code{\link{gt_plt_bar_stack}()},
 \code{\link{gt_plt_bar}()},
 \code{\link{gt_sparkline}()}

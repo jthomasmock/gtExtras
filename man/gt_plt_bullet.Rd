@@ -45,7 +45,7 @@ Create an inline 'bullet chart' in a gt table
 
 \section{Function ID}{
 
-3-6
+3-7
 }
 
 \examples{

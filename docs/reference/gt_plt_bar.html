@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add HTML-based bar plots into rows of a gt table — gt_plt_bar • gtExtras</title>
+<title>Add bar plots into rows of a gt table — gt_plt_bar • gtExtras</title>
 
 
 <!-- jquery -->
@@ -39,13 +39,10 @@
 
 
 
-<meta property="og:title" content="Add HTML-based bar plots into rows of a gt table — gt_plt_bar" />
+<meta property="og:title" content="Add bar plots into rows of a gt table — gt_plt_bar" />
 <meta property="og:description" content="The gt_plt_bar function takes an existing gt_tbl object and
-adds horizontal barplots via native HTML. This is a wrapper around raw HTML
-strings, gt::text_transform() and gt::cols_align(). Note that values
-default to being normalized to the percent of the maximum observed value
-in the specified column. You can turn this off if the values already
-represent a percentage value representing 0-100." />
+adds horizontal barplots via ggplot2. Note that values are plotted on a
+shared x-axis, and a vertical black bar is added at x = zero." />
 <meta property="og:image" content="https://jthomasmock.github.io/gtExtras/reference/figures/opengraph.png" />
 <meta property="og:image:alt" content="Screenshot of a data table that has the win/loss record of the 2020 NFL teams" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -82,7 +79,7 @@ represent a percentage value representing 0-100." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.28</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.29</span>
       </span>
     </div>
 
@@ -130,27 +127,23 @@ represent a percentage value representing 0-100." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add HTML-based bar plots into rows of a <code>gt</code> table</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/gt_plotting.R'><code>R/gt_plotting.R</code></a></small>
+    <h1>Add bar plots into rows of a <code>gt</code> table</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/gt_plt_bar.R'><code>R/gt_plt_bar.R</code></a></small>
     <div class="hidden name"><code>gt_plt_bar.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>The <code>gt_plt_bar</code> function takes an existing <code>gt_tbl</code> object and
-adds horizontal barplots via native HTML. This is a wrapper around raw HTML
-strings, <code><a href='https://gt.rstudio.com/reference/text_transform.html'>gt::text_transform()</a></code> and <code><a href='https://gt.rstudio.com/reference/cols_align.html'>gt::cols_align()</a></code>. Note that values
-default to being normalized to the percent of the maximum observed value
-in the specified column. You can turn this off if the values already
-represent a percentage value representing 0-100.</p>
+adds horizontal barplots via <code>ggplot2</code>. Note that values are plotted on a
+shared x-axis, and a vertical black bar is added at x = zero.</p>
     </div>
 
     <pre class="usage"><span class='fu'>gt_plt_bar</span><span class='op'>(</span>
   <span class='va'>gt_object</span>,
-  <span class='va'>column</span>,
-  height <span class='op'>=</span> <span class='fl'>16</span>,
-  fill <span class='op'>=</span> <span class='st'>"purple"</span>,
-  background <span class='op'>=</span> <span class='st'>"#e1e1e1"</span>,
-  scaled <span class='op'>=</span> <span class='cn'>FALSE</span>
+  column <span class='op'>=</span> <span class='cn'>NULL</span>,
+  color <span class='op'>=</span> <span class='st'>"purple"</span>,
+  keep_column <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  width <span class='op'>=</span> <span class='fl'>70</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -162,23 +155,15 @@ represent a percentage value representing 0-100.</p>
     </tr>
     <tr>
       <th>column</th>
-      <td><p>The column wherein the bar plot should replace existing data.</p></td>
+      <td><p>A single column wherein the bar plot should replace existing data.</p></td>
     </tr>
     <tr>
-      <th>height</th>
-      <td><p>A number representing the vertical height of the plot in pixels. Defaults to 16 px.</p></td>
+      <th>color</th>
+      <td><p>A character representing the color for the bar, defaults to purple. Accepts a named color (eg <code>'purple'</code>) or a hex color.</p></td>
     </tr>
     <tr>
-      <th>fill</th>
-      <td><p>A character representing the fill for the bar, defaults to purple. Accepts a named color (eg 'purple') or a hex color.</p></td>
-    </tr>
-    <tr>
-      <th>background</th>
-      <td><p>A character representing the background filling out the 100% mark of the bar, defaults to light grey. Accepts a named color (eg 'white') or a hex color.</p></td>
-    </tr>
-    <tr>
-      <th>scaled</th>
-      <td><p><code>TRUE</code>/<code>FALSE</code> logical indicating if the value is already scaled to a percent of max (<code>TRUE</code>) or if it needs to be scaled (<code>FALSE</code>). Defaults to <code>FALSE</code>, meaning the value will be divided by the max value in that column and then multiplied by 100.</p></td>
+      <th>keep_column</th>
+      <td><p><code>TRUE</code>/<code>FALSE</code> logical indicating if you want to keep a copy of the "plotted" column as raw values next to the plot itself..</p></td>
     </tr>
     </table>
 
@@ -189,7 +174,7 @@ represent a percentage value representing 0-100.</p>
 
     
 
-<p><img src='figures/gt_bar_plot.png' width=100% /></p>
+<p><img src='figures/gt_plt_bar.png' width=100% /></p>
     <h2 class="hasAnchor" id="function-id"><a class="anchor" href="#function-id"></a>Function ID</h2>
 
     
@@ -199,25 +184,18 @@ represent a percentage value representing 0-100.</p>
 
     <div class='dont-index'><p>Other Plotting: 
 <code><a href='gt_kable_sparkline.html'>gt_kable_sparkline</a>()</code>,
+<code><a href='gt_plt_bar_pct.html'>gt_plt_bar_pct</a>()</code>,
 <code><a href='gt_plt_bar_stack.html'>gt_plt_bar_stack</a>()</code>,
 <code><a href='gt_plt_winloss.html'>gt_plt_winloss</a>()</code>,
 <code><a href='gt_sparkline.html'>gt_sparkline</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
- <span class='va'>gt_bar_plot_tab</span> <span class='op'>&lt;-</span> <span class='va'>mtcars</span> <span class='op'>%&gt;%</span>
+ <span class='va'>gt_plt_bar_tab</span> <span class='op'>&lt;-</span> <span class='va'>mtcars</span> <span class='op'>%&gt;%</span>
    <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-   <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>cyl</span>, <span class='va'>mpg</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-   <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>mpg_pct_max <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>/</span><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>100</span>, digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>,
-                 mpg_scaled <span class='op'>=</span> <span class='va'>mpg</span><span class='op'>/</span><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>100</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-   <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>mpg_unscaled <span class='op'>=</span> <span class='va'>mpg</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
    <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-   <span class='fu'>gt_bar_plot</span><span class='op'>(</span>column <span class='op'>=</span> <span class='va'>mpg_scaled</span>, scaled <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-   <span class='fu'>gt_bar_plot</span><span class='op'>(</span>column <span class='op'>=</span> <span class='va'>mpg_unscaled</span>, scaled <span class='op'>=</span> <span class='cn'>FALSE</span>, fill <span class='op'>=</span> <span class='st'>"blue"</span>, background <span class='op'>=</span> <span class='st'>"lightblue"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-   <span class='fu'><a href='https://gt.rstudio.com/reference/cols_align.html'>cols_align</a></span><span class='op'>(</span><span class='st'>"center"</span>, <span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>contains</a></span><span class='op'>(</span><span class='st'>"scale"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-   <span class='fu'><a href='https://gt.rstudio.com/reference/cols_width.html'>cols_width</a></span><span class='op'>(</span><span class='fl'>4</span> <span class='op'>~</span> <span class='fu'><a href='https://gt.rstudio.com/reference/px.html'>px</a></span><span class='op'>(</span><span class='fl'>125</span><span class='op'>)</span>,
-              <span class='fl'>5</span> <span class='op'>~</span> <span class='fu'><a href='https://gt.rstudio.com/reference/px.html'>px</a></span><span class='op'>(</span><span class='fl'>125</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in gt_bar_plot(., column = mpg_unscaled, scaled = FALSE, fill = "blue",     background = "lightblue"): could not find function "gt_bar_plot"</span></div><div class='input'>
+   <span class='fu'>gt_plt_bar</span><span class='op'>(</span>column <span class='op'>=</span> <span class='va'>mpg</span>, keep_column <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

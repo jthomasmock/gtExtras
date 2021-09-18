@@ -19,21 +19,21 @@ gt_two_column_layout(
 \arguments{
 \item{tables}{A \code{list()} of two tables, typically supplied by \code{gt_double_table()}}
 
-\item{output}{A character string indicating the desired output, either \code{"save"} to save it to disk via \code{webshot2}, \code{"viewer"} to return it to the RStudio Viewer, or \code{"html"} to return the raw HTML.}
+\item{output}{A character string indicating the desired output, either \code{"save"} to save it to disk via \code{webshot}, \code{"viewer"} to return it to the RStudio Viewer, or \code{"html"} to return the raw HTML.}
 
 \item{filename}{The filename of the table, must contain \code{.png} and only used if \code{output = "save"}}
 
 \item{path}{An optional path of where to save the printed \code{.png}, used in conjunction with \code{filename}.}
 
-\item{vwidth}{Viewport width. This is the width of the browser "window" when passed to \code{webshot2}.}
+\item{vwidth}{Viewport width. This is the width of the browser "window" when passed to \code{webshot::webshot()}.}
 
-\item{vheight}{Viewport height This is the height of the browser "window" when passed to \code{webshot2::webshot}.}
+\item{vheight}{Viewport height This is the height of the browser "window" when passed to \code{webshot::webshot()}.}
 
-\item{...}{Additional arguments passed to \code{webshot2::webshot()}, only to be used if \code{output = "save"}, saving the two-column layout tables to disk as a \code{.png}.}
+\item{...}{Additional arguments passed to \code{webshot::webshot()}, only to be used if \code{output = "save"}, saving the two-column layout tables to disk as a \code{.png}.}
 
-\item{zoom}{Argument to `webshot2::webshot. A number specifying the zoom factor. A zoom factor of 2 will result in twice as many pixels vertically and horizontally. Note that using 2 is not exactly the same as taking a screenshot on a HiDPI (Retina) device: it is like increasing the zoom to 200 doubling the height and width of the browser window. This differs from using a HiDPI device because some web pages load different, higher-resolution images when they know they will be displayed on a HiDPI device (but using zoom will not report that there is a HiDPI device).}
+\item{zoom}{Argument to \code{webshot::webshot()}. A number specifying the zoom factor. A zoom factor of 2 will result in twice as many pixels vertically and horizontally. Note that using 2 is not exactly the same as taking a screenshot on a HiDPI (Retina) device: it is like increasing the zoom to 200 doubling the height and width of the browser window. This differs from using a HiDPI device because some web pages load different, higher-resolution images when they know they will be displayed on a HiDPI device (but using zoom will not report that there is a HiDPI device).}
 
-\item{expand}{Argument to `webshot2::webshot. A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order. When taking screenshots of multiple URLs, this parameter can also be a list with same length as url with each element of the list containing a single number or four numbers to use for the corresponding URL.}
+\item{expand}{Argument to \code{webshot::webshot()}. A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order. When taking screenshots of multiple URLs, this parameter can also be a list with same length as url with each element of the list containing a single number or four numbers to use for the corresponding URL.}
 }
 \value{
 Saves a \code{.png} to disk if \code{output = "save"}, returns HTML to the viewer via \code{htmltools::browsable()} when \code{output = "viewer"}, or returns raw HTML if \code{output = "html"}.
@@ -45,10 +45,10 @@ two tables like \code{list(table1, table2)}, or passes the output of \code{gt_do
 into this function. The user should indicate whether they want to return the
 HTML to R's viewer with \code{output = "viewer"} to "view" the final output, or to
 save to disk as a \code{.png} via \verb{output = "save".} Note that this is a relatively
-complex wrapper around \code{htmltools::div()} + \code{webshot2::webshot()}. Additional
-arguments can be passed to \code{webshot2::webshot()} if the automatic output is not
+complex wrapper around \code{htmltools::div()} + \code{webshot::webshot()}. Additional
+arguments can be passed to \code{webshot::webshot()} if the automatic output is not
 satisfactory. In most situations, modifying the \code{vwidth} argument is sufficient
-to get the desired output, but all arguments to \code{webshot2::webshot()} are
+to get the desired output, but all arguments to \code{webshot::webshot()} are
 available by their original name via the passed \code{...}.
 }
 \section{Figures}{

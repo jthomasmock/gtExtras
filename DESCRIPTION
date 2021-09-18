@@ -1,10 +1,10 @@
 Package: gtExtras
 Type: Package
 Title: A Collection of Helper Functions for the gt Package.
-Version: 0.1.28
+Version: 0.1.29
 Author: Thomas Mock
 Maintainer: Thomas Mock <j.thomasmock@gmail.com>
-Description: Provides utility functions for capabilities not yet built into the gt package.
+Description: Provides utility functions and common use-cases applied via the gt package.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -31,7 +31,8 @@ Imports:
     tidyselect (>= 1.0.0),
     kableExtra,
     paletteer,
-    fontawesome
+    fontawesome,
+    webshot
 Suggests: 
     paletteer,
     testthat (>= 2.1.0),
@@ -39,7 +40,6 @@ Suggests:
     rmarkdown,
     rvest,
     knitr,
-    tidyr,
-    webshot
+    tidyr
 VignetteBuilder: knitr
 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add sparklines into rows of a gt table — gt_sparkline • gtExtras</title>
+<title>Add HTML-based bar plots into rows of a gt table — gt_plt_bar_pct • gtExtras</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,13 @@
 
 
 
-<meta property="og:title" content="Add sparklines into rows of a gt table — gt_sparkline" />
-<meta property="og:description" content="The gt_sparkline function takes an existing gt_tbl object and
-adds sparklines via the ggplot2. This is a wrapper around
-gt::text_transform() + ggplot2 with the necessary boilerplate already applied." />
+<meta property="og:title" content="Add HTML-based bar plots into rows of a gt table — gt_plt_bar_pct" />
+<meta property="og:description" content="The gt_plt_bar_pct function takes an existing gt_tbl object and
+adds horizontal barplots via native HTML. This is a wrapper around raw HTML
+strings, gt::text_transform() and gt::cols_align(). Note that values
+default to being normalized to the percent of the maximum observed value
+in the specified column. You can turn this off if the values already
+represent a percentage value representing 0-100." />
 <meta property="og:image" content="https://jthomasmock.github.io/gtExtras/reference/figures/opengraph.png" />
 <meta property="og:image:alt" content="Screenshot of a data table that has the win/loss record of the 2020 NFL teams" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -127,25 +130,27 @@ gt::text_transform() + ggplot2 with the necessary boilerplate already applied." 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add sparklines into rows of a <code>gt</code> table</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/gt_sparkline.R'><code>R/gt_sparkline.R</code></a></small>
-    <div class="hidden name"><code>gt_sparkline.Rd</code></div>
+    <h1>Add HTML-based bar plots into rows of a <code>gt</code> table</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/gt_plotting.R'><code>R/gt_plotting.R</code></a></small>
+    <div class="hidden name"><code>gt_plt_bar_pct.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The <code>gt_sparkline</code> function takes an existing <code>gt_tbl</code> object and
-adds sparklines via the <code>ggplot2</code>. This is a wrapper around
-<code><a href='https://gt.rstudio.com/reference/text_transform.html'>gt::text_transform()</a></code> + <code>ggplot2</code> with the necessary boilerplate already applied.</p>
+    <p>The <code>gt_plt_bar_pct</code> function takes an existing <code>gt_tbl</code> object and
+adds horizontal barplots via native HTML. This is a wrapper around raw HTML
+strings, <code><a href='https://gt.rstudio.com/reference/text_transform.html'>gt::text_transform()</a></code> and <code><a href='https://gt.rstudio.com/reference/cols_align.html'>gt::cols_align()</a></code>. Note that values
+default to being normalized to the percent of the maximum observed value
+in the specified column. You can turn this off if the values already
+represent a percentage value representing 0-100.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gt_sparkline</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>gt_plt_bar_pct</span><span class='op'>(</span>
   <span class='va'>gt_object</span>,
   <span class='va'>column</span>,
-  type <span class='op'>=</span> <span class='st'>"sparkline"</span>,
-  line_color <span class='op'>=</span> <span class='st'>"lightgrey"</span>,
-  range_colors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"red"</span>, <span class='st'>"blue"</span><span class='op'>)</span>,
-  fill_color <span class='op'>=</span> <span class='st'>"lightblue"</span>,
-  same_limit <span class='op'>=</span> <span class='cn'>FALSE</span>
+  height <span class='op'>=</span> <span class='fl'>16</span>,
+  fill <span class='op'>=</span> <span class='st'>"purple"</span>,
+  background <span class='op'>=</span> <span class='st'>"#e1e1e1"</span>,
+  scaled <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -157,27 +162,23 @@ adds sparklines via the <code>ggplot2</code>. This is a wrapper around
     </tr>
     <tr>
       <th>column</th>
-      <td><p>The column wherein the sparkline plot should replace existing data. Note that the data <em>must</em> be represented as a list of numeric values ahead of time.</p></td>
+      <td><p>The column wherein the bar plot should replace existing data.</p></td>
     </tr>
     <tr>
-      <th>type</th>
-      <td><p>A string indicating the type of plot to generate, accepts <code>"sparkline"</code>, <code>"histogram"</code> or <code>"density"</code>.</p></td>
+      <th>height</th>
+      <td><p>A number representing the vertical height of the plot in pixels. Defaults to 16 px.</p></td>
     </tr>
     <tr>
-      <th>line_color</th>
-      <td><p>Color for the line, defaults to <code>"lightgrey"</code>. Accepts a named color (eg 'blue') or a hex color.</p></td>
+      <th>fill</th>
+      <td><p>A character representing the fill for the bar, defaults to purple. Accepts a named color (eg 'purple') or a hex color.</p></td>
     </tr>
     <tr>
-      <th>range_colors</th>
-      <td><p>A vector of two valid color names or hex codes, the first color represents the min values and the second color represents the highest point per plot. Defaults to <code><a href='https://rdrr.io/r/base/c.html'>c("blue", "blue")</a></code>. Accepts a named color (eg <code>'blue'</code>) or a hex color like <code>"#fafafa"</code>.</p></td>
+      <th>background</th>
+      <td><p>A character representing the background filling out the 100% mark of the bar, defaults to light grey. Accepts a named color (eg 'white') or a hex color.</p></td>
     </tr>
     <tr>
-      <th>fill_color</th>
-      <td><p>= Color for the fill of histograms/density plots, defaults to <code>"lightgrey"</code>. Accepts a named color (eg <code>'blue'</code>) or a hex color.</p></td>
-    </tr>
-    <tr>
-      <th>same_lim</th>
-      <td><p>A logical indicating that the plots will use the same y-axis range (<code>TRUE</code>) or have individual y-axis ranges (<code>FALSE</code>).</p></td>
+      <th>scaled</th>
+      <td><p><code>TRUE</code>/<code>FALSE</code> logical indicating if the value is already scaled to a percent of max (<code>TRUE</code>) or if it needs to be scaled (<code>FALSE</code>). Defaults to <code>FALSE</code>, meaning the value will be divided by the max value in that column and then multiplied by 100.</p></td>
     </tr>
     </table>
 
@@ -188,29 +189,35 @@ adds sparklines via the <code>ggplot2</code>. This is a wrapper around
 
     
 
-<p><img src='figures/ggplot2-sparkline.png' width=20% /></p>
+<p><img src='figures/gt_bar_plot.png' width=100% /></p>
     <h2 class="hasAnchor" id="function-id"><a class="anchor" href="#function-id"></a>Function ID</h2>
 
     
 
-<p>1-4</p>
+<p>3-5</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Plotting: 
 <code><a href='gt_kable_sparkline.html'>gt_kable_sparkline</a>()</code>,
-<code><a href='gt_plt_bar_pct.html'>gt_plt_bar_pct</a>()</code>,
 <code><a href='gt_plt_bar_stack.html'>gt_plt_bar_stack</a>()</code>,
 <code><a href='gt_plt_bar.html'>gt_plt_bar</a>()</code>,
-<code><a href='gt_plt_winloss.html'>gt_plt_winloss</a>()</code></p></div>
+<code><a href='gt_plt_winloss.html'>gt_plt_winloss</a>()</code>,
+<code><a href='gt_sparkline.html'>gt_sparkline</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'> <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
- <span class='va'>gt_sparkline_tab</span> <span class='op'>&lt;-</span> <span class='va'>mtcars</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>cyl</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-    <span class='co'># must end up with list of data for each row in the input dataframe</span>
-    <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>mpg_data <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span>, .groups <span class='op'>=</span> <span class='st'>"drop"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-    <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>gt_sparkline</span><span class='op'>(</span><span class='va'>mpg_data</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>
+ <span class='va'>gt_bar_plot_tab</span> <span class='op'>&lt;-</span> <span class='va'>mtcars</span> <span class='op'>%&gt;%</span>
+   <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+   <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>cyl</span>, <span class='va'>mpg</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+   <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>mpg_pct_max <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>/</span><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>100</span>, digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>,
+                 mpg_scaled <span class='op'>=</span> <span class='va'>mpg</span><span class='op'>/</span><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>100</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+   <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>mpg_unscaled <span class='op'>=</span> <span class='va'>mpg</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+   <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+   <span class='fu'>gt_plt_bar_pct</span><span class='op'>(</span>column <span class='op'>=</span> <span class='va'>mpg_scaled</span>, scaled <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+   <span class='fu'>gt_plt_bar_pct</span><span class='op'>(</span>column <span class='op'>=</span> <span class='va'>mpg_unscaled</span>, scaled <span class='op'>=</span> <span class='cn'>FALSE</span>, fill <span class='op'>=</span> <span class='st'>"blue"</span>, background <span class='op'>=</span> <span class='st'>"lightblue"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+   <span class='fu'><a href='https://gt.rstudio.com/reference/cols_align.html'>cols_align</a></span><span class='op'>(</span><span class='st'>"center"</span>, <span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>contains</a></span><span class='op'>(</span><span class='st'>"scale"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+   <span class='fu'><a href='https://gt.rstudio.com/reference/cols_width.html'>cols_width</a></span><span class='op'>(</span><span class='fl'>4</span> <span class='op'>~</span> <span class='fu'><a href='https://gt.rstudio.com/reference/px.html'>px</a></span><span class='op'>(</span><span class='fl'>125</span><span class='op'>)</span>,
+              <span class='fl'>5</span> <span class='op'>~</span> <span class='fu'><a href='https://gt.rstudio.com/reference/px.html'>px</a></span><span class='op'>(</span><span class='fl'>125</span><span class='op'>)</span><span class='op'>)</span>
 
 </div></pre>
   </div>

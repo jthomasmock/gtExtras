@@ -60,6 +60,7 @@ adds sparklines via the \code{ggplot2}. This is a wrapper around
 \seealso{
 Other Plotting: 
 \code{\link{gt_kable_sparkline}()},
+\code{\link{gt_plt_bar_pct}()},
 \code{\link{gt_plt_bar_stack}()},
 \code{\link{gt_plt_bar}()},
 \code{\link{gt_plt_winloss}()}

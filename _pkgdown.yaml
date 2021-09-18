@@ -49,6 +49,7 @@ reference:
   - gt_kable_sparkline
   - gt_sparkline
   - gt_plt_bar
+  - gt_plt_bar_pct
   - gt_plt_bar_stack
   - gt_plt_bullet
 - title: Colors

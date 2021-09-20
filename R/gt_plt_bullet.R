@@ -37,6 +37,8 @@ gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
                           keep_column = FALSE, keep_target = FALSE,
                           color = "grey", target_color = "red"){
 
+  stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
+
   col_bare <- rlang::enexpr(column) %>% rlang::as_string()
   raw_data <- gt:::dt_data_get(gt_object)
 

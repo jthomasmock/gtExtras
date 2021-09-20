@@ -23,6 +23,8 @@
 
 gt_theme_nytimes <- function(gt_object, ...){
 
+  stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
+
   gt_object %>%
     tab_options(
       heading.align = "left",

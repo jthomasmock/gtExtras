@@ -22,7 +22,7 @@
 
 gt_theme_538 <- function(gt_object,...) {
 
-  stopifnot("Input must be a gt table" = "gt_tbl" %in% class(gt_object))
+  stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
 
   gt_object %>%
     opt_all_caps()  %>%

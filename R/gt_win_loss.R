@@ -43,7 +43,7 @@ gt_plt_winloss <- function(gt_object, column, max_wins = 17,
                            colors = c("#D50A0A", "#013369", "gray"),
                            type = "pill") {
 
-  stopifnot("'gt_object' must be a 'gt_tbl'" = gt:::is_gt(gt_object))
+  stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
   stopifnot("type must be on of 'pill' or 'square'" = {type %in% c("pill", "square")})
   stopifnot("There must be 3 colors" = length(colors) == 3L)
 

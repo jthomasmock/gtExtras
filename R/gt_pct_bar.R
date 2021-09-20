@@ -62,6 +62,8 @@ gt_plt_bar_stack <- function(
   ...,
   width = 70
 ) {
+
+  stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
   stopifnot("There must be 2 or 3 labels" = (length(labels) %in% c(2:3)))
   stopifnot("There must be 2 or 3 colors in the palette" = (length(palette) %in% c(2:3)))
   stopifnot("`position` must be one of 'stack' or 'fill'" = (position %in% c("stack", "fill")))

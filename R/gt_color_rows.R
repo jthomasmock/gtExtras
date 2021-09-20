@@ -77,6 +77,7 @@ gt_color_rows <- function(
   use_paletteer = TRUE
 ) {
 
+  stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
   if(is.null(domain)){
     warning(
       "Domain not specified, defaulting to observed range within each specified column.",

@@ -29,6 +29,7 @@
 
 gt_highlight_cols <- function(gt_object, columns, fill = "#80bcd8", alpha = 1,
                               font_weight = "normal"){
+  stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
     gt_object %>%
       tab_style(
         style = list(

@@ -37,6 +37,7 @@
 gt_color_box <- function(gt_object, columns, palette = NULL, domain = NULL,
                          use_paletteer = FALSE, width = 70){
 
+  stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
   color_boxes <- function(x){
 
     stopifnot("Error: 'domain' must be specified." = !is.null(domain))

@@ -34,6 +34,9 @@
 #' 2-6
 
 gt_merge_stack <- function(gt_object, col1, col2) {
+
+  stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
+
   col1_bare <- rlang::enexpr(col1) %>% rlang::as_string()
 
   row_name_var <- gt_object[["_boxhead"]][["var"]][which(gt_object[["_boxhead"]][["type"]] == "stub")]

@@ -28,6 +28,7 @@
 #' 2-2
 
 fmt_pad_num <- function(gt_object, columns, nsmall = 2, gfont = "Fira Mono") {
+  stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
   gt_object %>%
     fmt(
       columns = {{ columns }},

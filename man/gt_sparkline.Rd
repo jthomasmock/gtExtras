@@ -11,7 +11,8 @@ gt_sparkline(
   line_color = "lightgrey",
   range_colors = c("red", "blue"),
   fill_color = "lightblue",
-  same_limit = FALSE
+  bw = NULL,
+  same_limit = TRUE
 )
 }
 \arguments{
@@ -25,7 +26,9 @@ gt_sparkline(
 
 \item{range_colors}{A vector of two valid color names or hex codes, the first color represents the min values and the second color represents the highest point per plot. Defaults to \code{c("blue", "blue")}. Accepts a named color (eg \code{'blue'}) or a hex color like \code{"#fafafa"}.}
 
-\item{fill_color}{= Color for the fill of histograms/density plots, defaults to \code{"lightgrey"}. Accepts a named color (eg \code{'blue'}) or a hex color.}
+\item{fill_color}{Color for the fill of histograms/density plots, defaults to \code{"lightgrey"}. Accepts a named color (eg \code{'blue'}) or a hex color.}
+
+\item{bw}{The bandwidth or binwidth, passed to \code{ggplot2::geom_density()} or \code{ggplot2::geom_histogram()}. If \code{type = "density"}, then \code{bw} is passed to the \code{bw} argument, if \code{type = "histogram"}, then \code{bw} is passed to the \code{binwidth} argument.}
 
 \item{same_limit}{A logical indicating that the plots will use the same y-axis range (\code{TRUE}) or have individual y-axis ranges (\code{FALSE}).}
 }

@@ -49,6 +49,7 @@ fmt_symbol_first <- function(
   gfont = "Fira Mono"   # Google font with monospacing
 ) {
 
+  stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
   # Test and error out if mandatory columns are missing
   stopifnot("`symbol_first` argument must be a logical" = is.logical(symbol_first))
   # stopifnot("`last_row_n` argument must be specified and numeric" = is.numeric(last_row_n))

@@ -9,7 +9,8 @@
 #' @param type A string indicating the type of plot to generate, accepts `"sparkline"`, `"histogram"` or `"density"`.
 #' @param line_color Color for the line, defaults to `"lightgrey"`. Accepts a named color (eg 'blue') or a hex color.
 #' @param range_colors A vector of two valid color names or hex codes, the first color represents the min values and the second color represents the highest point per plot. Defaults to `c("blue", "blue")`. Accepts a named color (eg `'blue'`) or a hex color like `"#fafafa"`.
-#' @param fill_color = Color for the fill of histograms/density plots, defaults to `"lightgrey"`. Accepts a named color (eg `'blue'`) or a hex color.
+#' @param fill_color Color for the fill of histograms/density plots, defaults to `"lightgrey"`. Accepts a named color (eg `'blue'`) or a hex color.
+#' @param bw The bandwidth or binwidth, passed to `ggplot2::geom_density()` or `ggplot2::geom_histogram()`. If `type = "density"`, then `bw` is passed to the `bw` argument, if `type = "histogram"`, then `bw` is passed to the `binwidth` argument.
 #' @param same_limit A logical indicating that the plots will use the same y-axis range (`TRUE`) or have individual y-axis ranges (`FALSE`).
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
@@ -38,9 +39,11 @@ gt_sparkline <- function(
   line_color = "lightgrey",
   range_colors = c("red", "blue"),
   fill_color = "lightblue",
-  same_limit = FALSE
+  bw = NULL,
+  same_limit = TRUE
 ) {
 
+  stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
   # convert tidyeval column to bare string
   col_bare <- rlang::enexpr(column) %>% rlang::as_string()
   # segment data with bare string column name
@@ -108,11 +111,15 @@ gt_sparkline <- function(
         )
     } else if (type == "histogram") {
       plot_base <- ggplot(input_data) +
-        theme_void() +
-        coord_cartesian(clip = "off")
+        theme_void()
 
       if (isTRUE(same_limit)) {
-        bw <- 2 * IQR(data_in) / length(data_in)^(1 / 3)
+
+        if(is.null(bw)){
+          bw <- 2 * IQR(data_in, na.rm = TRUE) / length(data_in)^(1 / 3)
+        } else {
+          bw <- bw
+        }
 
         plot_out <- plot_base +
           geom_histogram(
@@ -120,9 +127,16 @@ gt_sparkline <- function(
             color = line_color,
             fill = fill_color,
             binwidth = bw
-          )
+          ) +
+          scale_x_continuous(expand = expansion(mult = 0.2)) +
+          coord_cartesian(clip = "off", xlim = range(data_in, na.rm = TRUE))
+
       } else {
-        bw <- 2 * IQR(vals) / length(vals)^(1 / 3)
+        if(is.null(bw)){
+          bw <- 2 * IQR(vals, na.rm = TRUE) / length(vals)^(1 / 3)
+        } else {
+          bw <- bw
+        }
 
         plot_out <- plot_base +
           geom_histogram(
@@ -130,15 +144,19 @@ gt_sparkline <- function(
             color = line_color,
             fill = fill_color,
             binwidth = bw
-          )
+          ) +
+          coord_cartesian(clip = "off")
       }
     } else if (type == "density") {
       plot_base <- ggplot(input_data) +
-        theme_void() +
-        coord_cartesian(clip = "off")
+        theme_void()
 
       if (isTRUE(same_limit)) {
-        bw <- bw.nrd0(data_in)
+        if(is.null(bw)){
+          bw <- bw.nrd0(data_in)
+        } else {
+          bw <- bw
+        }
 
         plot_out <- plot_base +
           geom_density(
@@ -146,9 +164,15 @@ gt_sparkline <- function(
             color = line_color,
             fill = fill_color,
             bw = bw
-          )
+          ) +
+          coord_cartesian(xlim = range(data_in, na.rm = TRUE),
+                          expand = TRUE, clip = "off")
       } else {
-        bw <- bw.nrd0(vals)
+        if(is.null(bw)){
+          bw <- bw.nrd0(vals)
+        } else {
+          bw <- bw
+        }
 
         plot_out <- plot_base +
           geom_density(
@@ -156,11 +180,10 @@ gt_sparkline <- function(
             color = line_color,
             fill = fill_color,
             bw = bw
-          )
+          ) +
+          coord_cartesian(clip = "off", expand = TRUE)
       }
-
     }
-
 
     out_name <- file.path(
       tempfile(pattern = "file", tmpdir = tempdir(), fileext = ".svg")

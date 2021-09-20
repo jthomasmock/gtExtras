@@ -16,14 +16,13 @@ knitr::opts_chunk$set(
 
 ## Graphs vs Tables
 
+Per Stephen Few in his book, [*Show Me the Numbers*](http://www.stephen-few.com/smtn.php):
 
-Per Stephen Few in his book, [_Show Me the Numbers_](http://www.stephen-few.com/smtn.php):
+The difference between Tables and Graphs:
 
-The difference between Tables and Graphs:  
+> Tables: Display used to look up and compare individual values
 
-> Tables: Display used to look up and compare individual values  
-
-> Graphs: Display used to reveal relationships among whole sets of values and their overall   shape
+> Graphs: Display used to reveal relationships among whole sets of values and their overall shape
 
 While we typically reach for our graphing tools whenever we want to tell a story with data, we are likely underutilizing tables. We can merge graphs and tables to often get the best of both worlds.
 
@@ -44,7 +43,7 @@ Per [Wikipedia](https://en.wikipedia.org/wiki/Sparkline):
 
 > A sparkline is a very small line chart, typically drawn without axes or coordinates. It presents the general shape of the variation (typically over time) in some measurement, such as temperature or stock market price, in a simple and highly condensed way.
 
-![A 1999 screenshot of an implementation of sparklines developed around January 1998. The concept was developed by interaction designer Peter Zelchenko in conversation with programmer Michael Medved, while Medved was developing the QuoteTracker application. The product was later sold to Ameritrade.](https://upload.wikimedia.org/wikipedia/commons/9/95/Screenshot_of_Sparklines_in_Medved_QuoteTracker%2C_1998.png)
+![A 1999 screenshot of an implementation of sparklines developed around January 1998. The concept was developed by interaction designer Peter Zelchenko in conversation with programmer Michael Medved, while Medved was developing the QuoteTracker application. The product was later sold to Ameritrade.](https://upload.wikimedia.org/wikipedia/commons/9/95/Screenshot_of_Sparklines_in_Medved_QuoteTracker%252C_1998.png)
 
 We can use `gtExtras::gt_sparkline()` to add an inline sparkline very quickly. A necessary prep step is to first convert from a long data format to a summarized data format, where each row represents one "group" and the data column is now a vector of the values.
 
@@ -78,11 +77,72 @@ car_summary %>%
   fmt_number(columns = mean:sd, decimals = 1)
 ```
 
+### Sparkline alternatives
+
+You can also plot a density-plot or a histogram instead of just a line plot.
+
+```{r}
+car_summary %>%
+  arrange(desc(cyl)) %>% 
+  gt() %>%
+  gtExtras::gt_sparkline(mpg_data, type = "density", line_color = "blue", 
+                         fill_color = "red") %>%
+  fmt_number(columns = mean:sd, decimals = 1)
+```
+
+```{r}
+car_summary %>%
+  arrange(desc(cyl)) %>% 
+  gt() %>%
+  gtExtras::gt_sparkline(mpg_data, type = "histogram", line_color = "black", 
+                         fill_color = "grey", bw = 4) %>%
+  fmt_number(columns = mean:sd, decimals = 1)
+```
+
+### Inline bars
+
+You can also generate `ggplot2` created bar plots inline. Note that `keep_column` allows you to keep the raw values and the plot inline.
+
+```{r}
+mtcars %>%
+  dplyr::select(cyl:wt, mpg) %>% 
+  head() %>%
+  gt() %>%
+  gt_plt_bar(column = mpg, keep_column = TRUE, width = 35)
+```
+
+### Percent bars
+
+Alternatively, you may prefer the HTML-generated bar plotsfrom `gt_plt_bar_pct()`. Note that the bars represent a percentage of max, so the largest value will indicate 100% of the row. You can pass raw values that are scaled to a 0-100% range, or pass values between 0 and 100 that represent an existing percent.
+
+```{r}
+mtcars %>%
+   head() %>%
+   dplyr::select(cyl, mpg) %>%
+   dplyr::mutate(mpg_pct_max = round(mpg/max(mpg) * 100, digits = 2),
+                 mpg_scaled = mpg/max(mpg) * 100) %>%
+   dplyr::mutate(mpg_unscaled = mpg) %>%
+   gt() %>%
+   gt_plt_bar_pct(column = mpg_scaled, scaled = TRUE) %>%
+   gt_plt_bar_pct(column = mpg_unscaled, scaled = FALSE,
+                  fill = "blue", background = "lightblue") %>%
+   cols_align("center", contains("scale")) %>%
+   cols_width(4 ~ px(125),
+              5 ~ px(125))
+```
+
+
 ### Inline Win Loss plots
 
 You can also generate really nice looking "Win Loss" plots, similar to the ones used by [The Guardian](https://www.theguardian.com/football/premierleague/table) for Soccer outcomes. The code to bring in the data via the `{nflreadr}` package is hidden in an expandable tab below.
 
-<details><Summary>Bring data in</summary>
+<details>
+
+<Summary>
+
+Bring data in
+
+</summary>
 
 ```{r}
 library(tidyverse)
@@ -191,6 +251,7 @@ gt_bar_plot_tab
 We can create a horizontal stacked percent bar chart inline like so. The data can be prepped as seen in the expandable section below.
 
 <details>
+
 ```{r}
 library(tidyverse)
 library(gt)
@@ -275,5 +336,36 @@ basic_tb %>%
                    labels = c("DUNKS", "HOOKS/FLOATS", "JUMPERS"),
                    palette= c("#ff4343", "#bfbfbf", "#0a1c2b")) %>%
   gt_theme_538()
+```
+
+### Bullet chart
+
+There's also an option to create [bullet charts](https://en.wikipedia.org/wiki/Bullet_graph) which represent a core value and a target metric. 
+
+![A representative diagram of a bullet chart, where there's a specific target value represented by a vertical line and a core value represented as a thin bar plot.](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Labelled_Bullet_Graph_Example.svg/500px-Labelled_Bullet_Graph_Example.svg.png)
+
+```{r}
+set.seed(37)
+
+bullet_df <- tibble::rownames_to_column(mtcars) %>%
+ dplyr::select(rowname, cyl:drat, mpg) %>%
+ dplyr::group_by(cyl) %>%
+ dplyr::mutate(target_col = mean(mpg)) %>%
+ dplyr::slice_sample(n = 3) %>%
+ dplyr::ungroup() 
+
+bullet_df %>%
+ gt() %>%
+ gt_plt_bullet(column = mpg, target = target_col, width = 45,
+               color = "lightblue", target_color = "black")
+```
+
+Note that similar to a core bar plot, you can keep the column and the output with `keep_column = TRUE`.
+
+```{r}
+bullet_df %>%
+ gt() %>%
+ gt_plt_bullet(column = mpg, target = target_col, 
+               width = 45, keep_column = TRUE)
 ```
 

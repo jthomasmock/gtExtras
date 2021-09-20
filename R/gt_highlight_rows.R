@@ -45,6 +45,8 @@ gt_highlight_rows <- function(
   gt_object, columns = gt::everything(), rows = TRUE, fill = "#80bcd8",
   alpha = 0.8, font_weight = "bold", bold_target_only = FALSE, target_col = c()){
 
+  stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
+
   if(isTRUE(bold_target_only)){
     gt_object %>%
       tab_style(

@@ -37,6 +37,7 @@
 
 gt_img_rows <- function(gt_object, columns, img_source = "web", height = 30){
 
+  stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
   # convert tidyeval column to bare strings
   column_names <- gt:::resolve_cols_c(
     expr = {{ columns }},
@@ -47,7 +48,6 @@ gt_img_rows <- function(gt_object, columns, img_source = "web", height = 30){
   grp_var <- gt_object[["_boxhead"]][["var"]][which(gt_object[["_boxhead"]][["type"]]=="row_group")]
 
   stopifnot("img_source must be 'web' or 'local'" = img_source %in% c("web", "local"))
-
 
   gt_object %>%
     text_transform(

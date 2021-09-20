@@ -41,9 +41,10 @@
 #' @section Function ID:
 #' 3-5
 
-gt_plt_bar_pct <- function(
-  gt_object, column, height = 16, fill = "purple", background = "#e1e1e1",
-  scaled = FALSE) {
+gt_plt_bar_pct <- function(gt_object, column, height = 16, fill = "purple",
+                           background = "#e1e1e1", scaled = FALSE) {
+
+  stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
 
   # convert tidyeval column to bare string
   col_bare <- rlang::enexpr(column) %>% rlang::as_string()

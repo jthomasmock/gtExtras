@@ -21,6 +21,9 @@
 #' 1-5
 
 gt_theme_dot_matrix <- function(gt_object, ..., color = "#b5dbb6"){
+
+  stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
+
   gt_object %>%
     opt_row_striping() %>%
     tab_style(

@@ -30,7 +30,7 @@
 gt_plt_bar <- function(gt_object, column = NULL, color = "purple",
                        keep_column = FALSE, width = 70) {
 
-  stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = gt:::is_gt(gt_object))
+  stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
 
   var_sym <- rlang::enquo(column)
   var_bare <- rlang::as_label(var_sym)

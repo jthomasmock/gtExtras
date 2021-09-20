@@ -35,6 +35,8 @@
 
 tab_style_by_grp <- function(gt_object, column, fn, ...){
 
+  stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
+
   subset_log <- gt_object[["_boxhead"]][["type"]]=="row_group"
   grp_col <- gt_object[["_boxhead"]][["var"]][subset_log] %>% rlang::sym()
 

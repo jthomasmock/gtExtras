@@ -20,6 +20,8 @@ gt_plt_bar(
 \item{color}{A character representing the color for the bar, defaults to purple. Accepts a named color (eg \code{'purple'}) or a hex color.}
 
 \item{keep_column}{\code{TRUE}/\code{FALSE} logical indicating if you want to keep a copy of the "plotted" column as raw values next to the plot itself..}
+
+\item{width}{An integer indicating the width of the plot in pixels.}
 }
 \value{
 An object of class \code{gt_tbl}.
@@ -40,7 +42,7 @@ shared x-axis, and a vertical black bar is added at x = zero.
 }
 
 \examples{
-
+library(gt)
  gt_plt_bar_tab <- mtcars \%>\%
    head() \%>\%
    gt() \%>\%
@@ -49,7 +51,6 @@ shared x-axis, and a vertical black bar is added at x = zero.
 }
 \seealso{
 Other Plotting: 
-\code{\link{gt_kable_sparkline}()},
 \code{\link{gt_plt_bar_pct}()},
 \code{\link{gt_plt_bar_stack}()},
 \code{\link{gt_plt_winloss}()},

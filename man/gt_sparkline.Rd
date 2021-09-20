@@ -27,7 +27,7 @@ gt_sparkline(
 
 \item{fill_color}{= Color for the fill of histograms/density plots, defaults to \code{"lightgrey"}. Accepts a named color (eg \code{'blue'}) or a hex color.}
 
-\item{same_lim}{A logical indicating that the plots will use the same y-axis range (\code{TRUE}) or have individual y-axis ranges (\code{FALSE}).}
+\item{same_limit}{A logical indicating that the plots will use the same y-axis range (\code{TRUE}) or have individual y-axis ranges (\code{FALSE}).}
 }
 \value{
 An object of class \code{gt_tbl}.
@@ -59,7 +59,6 @@ adds sparklines via the \code{ggplot2}. This is a wrapper around
 }
 \seealso{
 Other Plotting: 
-\code{\link{gt_kable_sparkline}()},
 \code{\link{gt_plt_bar_pct}()},
 \code{\link{gt_plt_bar_stack}()},
 \code{\link{gt_plt_bar}()},

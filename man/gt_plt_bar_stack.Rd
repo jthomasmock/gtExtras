@@ -81,7 +81,6 @@ ex_tab <- tab_df \%>\%
 }
 \seealso{
 Other Plotting: 
-\code{\link{gt_kable_sparkline}()},
 \code{\link{gt_plt_bar_pct}()},
 \code{\link{gt_plt_bar}()},
 \code{\link{gt_plt_winloss}()},

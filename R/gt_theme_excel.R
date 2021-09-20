@@ -2,6 +2,7 @@
 #'
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param ... Additional arguments passed to `gt::tab_options()`
+#' @param color A string indicating the color of the row striping, defaults to a light gray Accepts either named colors or hex colors.
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
 #' @export

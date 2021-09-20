@@ -79,7 +79,7 @@ shared x-axis, and a vertical black bar is added at x = zero." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.29</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2</span>
       </span>
     </div>
 
@@ -165,6 +165,10 @@ shared x-axis, and a vertical black bar is added at x = zero.</p>
       <th>keep_column</th>
       <td><p><code>TRUE</code>/<code>FALSE</code> logical indicating if you want to keep a copy of the "plotted" column as raw values next to the plot itself..</p></td>
     </tr>
+    <tr>
+      <th>width</th>
+      <td><p>An integer indicating the width of the plot in pixels.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -183,14 +187,13 @@ shared x-axis, and a vertical black bar is added at x = zero.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Plotting: 
-<code><a href='gt_kable_sparkline.html'>gt_kable_sparkline</a>()</code>,
 <code><a href='gt_plt_bar_pct.html'>gt_plt_bar_pct</a>()</code>,
 <code><a href='gt_plt_bar_stack.html'>gt_plt_bar_stack</a>()</code>,
 <code><a href='gt_plt_winloss.html'>gt_plt_winloss</a>()</code>,
 <code><a href='gt_sparkline.html'>gt_sparkline</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
  <span class='va'>gt_plt_bar_tab</span> <span class='op'>&lt;-</span> <span class='va'>mtcars</span> <span class='op'>%&gt;%</span>
    <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
    <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>

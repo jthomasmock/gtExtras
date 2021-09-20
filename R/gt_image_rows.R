@@ -16,8 +16,9 @@
 #' @export
 #' @import gt
 #' @examples
-#' #' library(gt)
-#' team_df <- readRDS(url("https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"))
+#' library(gt)
+#' teams <- "https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"
+#' team_df <- readRDS(url(teams))
 #'
 #'  logo_table <- team_df %>%
 #'    dplyr::select(team_wordmark, team_abbr, logo = team_logo_espn, team_name:team_conf) %>%
@@ -58,12 +59,10 @@ gt_img_rows <- function(gt_object, columns, img_source = "web", height = 30){
         cells_body({{ columns }}, rows = !is.na({{columns}}))
       },
       fn = function(x){
-        if(img_source == "web" && !is.na(x)){
+        if(img_source == "web"){
           web_image(url = x, height = height)
-        } else if(img_source == "local" && !is.na(x)) {
+        } else if(img_source == "local") {
           local_image(filename = x, height = height)
-        } else if(x == "NA" | is.na(x)){
-          ""
         }
       }
     ) %>%

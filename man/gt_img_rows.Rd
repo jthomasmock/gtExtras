@@ -35,8 +35,9 @@ the necessary boilerplate already applied.
 }
 
 \examples{
-#' library(gt)
-team_df <- readRDS(url("https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"))
+library(gt)
+teams <- "https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"
+team_df <- readRDS(url(teams))
 
  logo_table <- team_df \%>\%
    dplyr::select(team_wordmark, team_abbr, logo = team_logo_espn, team_name:team_conf) \%>\%

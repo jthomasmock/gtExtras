@@ -16,7 +16,8 @@
 #' @import gt
 #' @examples
 #' library(gt)
-#' team_df <- readRDS(url("https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"))
+#' teams <- "https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"
+#' team_df <- readRDS(url(teams))
 #'
 #' stacked_tab <- team_df %>%
 #'  dplyr::select(team_nick, team_abbr, team_conf, team_division, team_wordmark) %>%

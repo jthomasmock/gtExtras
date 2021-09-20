@@ -10,6 +10,8 @@ gt_theme_excel(gt_object, ..., color = "lightgrey")
 \item{gt_object}{An existing gt table object of class \code{gt_tbl}}
 
 \item{...}{Additional arguments passed to \code{gt::tab_options()}}
+
+\item{color}{A string indicating the color of the row striping, defaults to a light gray Accepts either named colors or hex colors.}
 }
 \value{
 An object of class \code{gt_tbl}.

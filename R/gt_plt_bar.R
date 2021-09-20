@@ -8,12 +8,13 @@
 #' @param column A single column wherein the bar plot should replace existing data.
 #' @param color A character representing the color for the bar, defaults to purple. Accepts a named color (eg `'purple'`) or a hex color.
 #' @param keep_column `TRUE`/`FALSE` logical indicating if you want to keep a copy of the "plotted" column as raw values next to the plot itself..
+#' @param width An integer indicating the width of the plot in pixels.
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
 #' @export
 #' @import gt ggplot2 rlang dplyr
 #' @examples
-#'
+#' library(gt)
 #'  gt_plt_bar_tab <- mtcars %>%
 #'    head() %>%
 #'    gt() %>%

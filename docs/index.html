@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.29</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2</span>
       </span>
     </div>
 
@@ -88,7 +88,7 @@
 <a href="#gtextras" class="anchor"></a>gtExtras</h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p>The goal of <a href="https://github.com/jthomasmock/gtExtra">gtExtras</a> is to provide some additional helper functions to assist in creating beautiful tables with <a href="https://gt.rstudio.com/">gt</a>.</p>
+<p>The goal of <a href="https://github.com/jthomasmock/gtExtras">gtExtras</a> is to provide some additional helper functions to assist in creating beautiful tables with <a href="https://gt.rstudio.com/">gt</a>.</p>
 <p>The functions are generally wrappers around boilerplate or adding capabilities that are currently not <em>yet</em> built into <a href="https://gt.rstudio.com/">gt</a>. The <a href="https://gt.rstudio.com/"><code>{gt}</code> package</a> is amazing, make sure to go read the official documentation.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
@@ -103,7 +103,7 @@
 </h3>
 <p>This function allows you to format your columns only on the first row, where remaining rows in that column have whitespace added to the end to maintain proper alignment.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jthomasmock/gtExtra">gtExtras</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jthomasmock/gtExtras">gtExtras</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/">gt</a></span><span class="op">)</span>
 
 <span class="va">gtcars</span> <span class="op">%&gt;%</span>
@@ -277,7 +277,7 @@
   <span class="co"># must end up with list of data for each row in the input dataframe</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mpg_data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/gt_kable_sparkline.html">gt_kable_sparkline</a></span><span class="op">(</span><span class="va">mpg_data</span>, height <span class="op">=</span> <span class="fl">45</span><span class="op">)</span></code></pre></div>
+  <span class="fu">gt_kable_sparkline</span><span class="op">(</span><span class="va">mpg_data</span>, height <span class="op">=</span> <span class="fl">45</span><span class="op">)</span></code></pre></div>
 <p align="center">
 <img src="reference/figures/kable-sparkline.png" width="200px"></p>
 </div>

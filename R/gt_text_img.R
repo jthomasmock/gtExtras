@@ -12,7 +12,6 @@
 #' @importFrom gt %>%
 #' @export
 #' @import gt
-#' @importFrom kableExtra spec_plot
 #' @importFrom glue glue
 #'
 #' @family Utilities

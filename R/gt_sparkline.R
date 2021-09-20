@@ -10,7 +10,7 @@
 #' @param line_color Color for the line, defaults to `"lightgrey"`. Accepts a named color (eg 'blue') or a hex color.
 #' @param range_colors A vector of two valid color names or hex codes, the first color represents the min values and the second color represents the highest point per plot. Defaults to `c("blue", "blue")`. Accepts a named color (eg `'blue'`) or a hex color like `"#fafafa"`.
 #' @param fill_color = Color for the fill of histograms/density plots, defaults to `"lightgrey"`. Accepts a named color (eg `'blue'`) or a hex color.
-#' @param same_lim A logical indicating that the plots will use the same y-axis range (`TRUE`) or have individual y-axis ranges (`FALSE`).
+#' @param same_limit A logical indicating that the plots will use the same y-axis range (`TRUE`) or have individual y-axis ranges (`FALSE`).
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
 #' @export

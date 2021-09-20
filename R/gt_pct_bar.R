@@ -196,5 +196,5 @@ gt_plt_bar_stack <- function(
       var = var_bare,
       column_label = label_built
     )
-  tab_out
+  suppressWarnings(tab_out)
 }

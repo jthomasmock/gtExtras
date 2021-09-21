@@ -32,10 +32,11 @@ reference:
   - fmt_pad_num
   - pad_fn
   - fa_icon_repeat
+  - gt_fa_column
+  - gt_fa_repeats
   - add_text_img
   - gt_merge_stack
   - gt_img_rows
-  - gt_add_fa_icons
   - gt_highlight_rows
   - gt_highlight_cols
   - gt_add_divider

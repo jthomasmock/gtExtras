@@ -19,9 +19,6 @@
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_add_divider.html</loc>
   </url>
   <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_add_fa_icons.html</loc>
-  </url>
-  <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_color_box.html</loc>
   </url>
   <url>
@@ -29,6 +26,12 @@
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_double_table.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_fa_column.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_fa_repeats.html</loc>
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_highlight_cols.html</loc>

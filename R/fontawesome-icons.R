@@ -8,7 +8,6 @@
 #' @param column The column wherein the integers should be replaced with `{fontawesome}` icons.
 #' @param name A character string indicating the name of the "`fontawesome` icon.
 #' @param ... Additional arguments passed to `fontawesome::fa()`
-#' @param palette Name of palette as a string. Must be on the form packagename::palettename.
 #' @param palette Name of palette as a string. Must be `paletteer` compliant like `"packagename::palettename"` or a vector of valid color names/hex values of equal length to the unique levels of the column (ie if there are 4 names, there need to be 4x colors).
 #' @param align Character string indicating alignment of the column, defaults to "left"
 #' @param direction The direction of the `paletteer` palette, should be either `-1` for reversed or the default of `1` for the existing direction.
@@ -22,7 +21,6 @@
 #'
 #' library(gt)
 #' fa_cars <- mtcars[1:5,1:4] %>%
-#'     head() %>%
 #'     gt() %>%
 #'     gt_fa_repeats(cyl, name = "car")
 #'
@@ -51,7 +49,7 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
           direction = direction
         ) %>% as.character()
       } else {
-        pal_filler <- palette
+        pal_filler <- palette %>% rep(length(unique(int_x)))
       }
 
       lapply(X = int_x, FUN = function(xy){
@@ -139,5 +137,70 @@ gt_fa_column <- function(gt_object, column, ..., palette = "ggthemes::colorblind
     }
   ) %>%
     cols_align(align = align, columns = {{ column }})
+
+}
+
+#' Add rating "stars" to a gt column
+#'
+#' @param gt_object An existing gt table object of class `gt_tbl`
+#' @param column The column wherein the numeric values should be replaced with their corresponding `{fontawesome}` icons.
+#' @param max_rating The max number of icons to add, these will be added in grey to indicate "missing"
+#' @param color The color of the icon, accepts named colors (`"orange"`) or hex strings.
+#' @param icon The icon name, passed to `fontawesome::fa()`
+#'
+#' @return An object of class `gt_tbl`.
+#' @importFrom gt %>%
+#' @importFrom htmltools div
+#' @importFrom fontawesome fa
+#' @export
+#' @import gt
+#'
+#' @examples
+#' library(gt)
+#' set.seed(37)
+#' rating_table <- mtcars %>%
+#'   dplyr::select(mpg:wt) %>%
+#'   dplyr::slice(1:5) %>%
+#'   dplyr::mutate(rating = sample(1:5, size = 5, TRUE)) %>%
+#'   gt() %>%
+#'   gt_fa_rating(rating, icon = "r-project")
+#'
+#' @section Figures:
+#' \if{html}{\figure{fa-stars.png}{options: width=60\%}}
+#'
+#' @family Utilities
+#' @section Function ID:
+#' 2-16
+
+gt_fa_rating <- function(gt_object, column, max_rating = 5,
+                         color = "orange", icon = "star"){
+
+  stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
+
+  text_transform(
+    gt_object,
+    locations = cells_body(columns = {{ column }}),
+    fn = function(x){
+      num_x <- as.numeric(x)
+
+      lapply(X = num_x, FUN = function(rating){
+        # adapted from: glin.github.io/reactable/articles/cookbook/cookbook.html#rating-stars
+        rounded_rating <- floor(rating + 0.5)  # always round up
+        stars <- lapply(seq_len(max_rating), function(i) {
+          if (i <= rounded_rating){
+            fontawesome::fa(icon, fill= color)
+          }  else {
+            fontawesome::fa(icon, fill= "grey")
+          }
+        })
+        label <- sprintf("%s out of %s", rating, max_rating)
+        div_out <- htmltools::div(title = label, "aria-label" = label, role = "img", stars)
+
+        as.character(div_out) %>%
+          gt::html()
+      })
+    }
+  ) %>%
+    cols_align(align = "left", columns = {{ column }})
 
 }

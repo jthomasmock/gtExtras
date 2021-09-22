@@ -65,6 +65,7 @@ Other Utilities:
 \code{\link{fmt_symbol_first}()},
 \code{\link{gt_add_divider}()},
 \code{\link{gt_double_table}()},
+\code{\link{gt_fa_rating}()},
 \code{\link{gt_fa_repeats}()},
 \code{\link{gt_highlight_cols}()},
 \code{\link{gt_highlight_rows}()},

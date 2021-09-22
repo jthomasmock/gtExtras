@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Apply ESPN theme to a gt table — gt_theme_espn • gtExtras</title>
+<title>Add rating "stars" to a gt column — gt_fa_rating • gtExtras</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Apply ESPN theme to a gt table — gt_theme_espn" />
-<meta property="og:description" content="Apply ESPN theme to a gt table" />
+<meta property="og:title" content="Add rating "stars" to a gt column — gt_fa_rating" />
+<meta property="og:description" content="Add rating &quot;stars&quot; to a gt column" />
 <meta property="og:image" content="https://jthomasmock.github.io/gtExtras/reference/figures/opengraph.png" />
 <meta property="og:image:alt" content="Screenshot of a data table that has the win/loss record of the 2020 NFL teams" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -125,16 +125,22 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Apply ESPN theme to a gt table</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/gt_theme_espn.R'><code>R/gt_theme_espn.R</code></a></small>
-    <div class="hidden name"><code>gt_theme_espn.Rd</code></div>
+    <h1>Add rating "stars" to a gt column</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/fontawesome-icons.R'><code>R/fontawesome-icons.R</code></a></small>
+    <div class="hidden name"><code>gt_fa_rating.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Apply ESPN theme to a gt table</p>
+    <p>Add rating "stars" to a gt column</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gt_theme_espn</span><span class='op'>(</span><span class='va'>gt_object</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>gt_fa_rating</span><span class='op'>(</span>
+  <span class='va'>gt_object</span>,
+  <span class='va'>column</span>,
+  max_rating <span class='op'>=</span> <span class='fl'>5</span>,
+  color <span class='op'>=</span> <span class='st'>"orange"</span>,
+  icon <span class='op'>=</span> <span class='st'>"star"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -144,8 +150,20 @@
       <td><p>An existing gt table object of class <code>gt_tbl</code></p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Optional additional arguments to <code>gt::table_options()</code></p></td>
+      <th>column</th>
+      <td><p>The column wherein the numeric values should be replaced with their corresponding <code>{fontawesome}</code> icons.</p></td>
+    </tr>
+    <tr>
+      <th>max_rating</th>
+      <td><p>The max number of icons to add, these will be added in grey to indicate "missing"</p></td>
+    </tr>
+    <tr>
+      <th>color</th>
+      <td><p>The color of the icon, accepts named colors (<code>"orange"</code>) or hex strings.</p></td>
+    </tr>
+    <tr>
+      <th>icon</th>
+      <td><p>The icon name, passed to <code><a href='https://rdrr.io/pkg/fontawesome/man/fa.html'>fontawesome::fa()</a></code></p></td>
     </tr>
     </table>
 
@@ -156,29 +174,41 @@
 
     
 
-<p><img src='figures/gt_espn.png' width=100% /></p>
+<p><img src='figures/fa-stars.png' width=60% /></p>
     <h2 class="hasAnchor" id="function-id"><a class="anchor" href="#function-id"></a>Function ID</h2>
 
     
 
-<p>1-2</p>
+<p>2-16</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Themes: 
-<code><a href='gt_plt_bullet.html'>gt_plt_bullet</a>()</code>,
-<code><a href='gt_theme_538.html'>gt_theme_538</a>()</code>,
-<code><a href='gt_theme_dark.html'>gt_theme_dark</a>()</code>,
-<code><a href='gt_theme_dot_matrix.html'>gt_theme_dot_matrix</a>()</code>,
-<code><a href='gt_theme_excel.html'>gt_theme_excel</a>()</code>,
-<code><a href='gt_theme_guardian.html'>gt_theme_guardian</a>()</code>,
-<code><a href='gt_theme_nytimes.html'>gt_theme_nytimes</a>()</code></p></div>
+    <div class='dont-index'><p>Other Utilities: 
+<code><a href='add_text_img.html'>add_text_img</a>()</code>,
+<code><a href='fa_icon_repeat.html'>fa_icon_repeat</a>()</code>,
+<code><a href='fmt_pad_num.html'>fmt_pad_num</a>()</code>,
+<code><a href='fmt_symbol_first.html'>fmt_symbol_first</a>()</code>,
+<code><a href='gt_add_divider.html'>gt_add_divider</a>()</code>,
+<code><a href='gt_double_table.html'>gt_double_table</a>()</code>,
+<code><a href='gt_fa_column.html'>gt_fa_column</a>()</code>,
+<code><a href='gt_fa_repeats.html'>gt_fa_repeats</a>()</code>,
+<code><a href='gt_highlight_cols.html'>gt_highlight_cols</a>()</code>,
+<code><a href='gt_highlight_rows.html'>gt_highlight_rows</a>()</code>,
+<code><a href='gt_img_rows.html'>gt_img_rows</a>()</code>,
+<code><a href='gt_merge_stack.html'>gt_merge_stack</a>()</code>,
+<code><a href='gt_two_column_layout.html'>gt_two_column_layout</a>()</code>,
+<code><a href='pad_fn.html'>pad_fn</a>()</code>,
+<code><a href='tab_style_by_grp.html'>tab_style_by_grp</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
-<span class='va'>themed_tab</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>37</span><span class='op'>)</span>
+<span class='va'>rating_table</span> <span class='op'>&lt;-</span> <span class='va'>mtcars</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>:</span><span class='va'>wt</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/slice.html'>slice</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>rating <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, size <span class='op'>=</span> <span class='fl'>5</span>, <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>gt_theme_espn</span><span class='op'>(</span><span class='op'>)</span>
+  <span class='fu'>gt_fa_rating</span><span class='op'>(</span><span class='va'>rating</span>, icon <span class='op'>=</span> <span class='st'>"r-project"</span><span class='op'>)</span>
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

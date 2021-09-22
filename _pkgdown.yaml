@@ -34,6 +34,7 @@ reference:
   - fa_icon_repeat
   - gt_fa_column
   - gt_fa_repeats
+  - gt_fa_rating
   - add_text_img
   - gt_merge_stack
   - gt_img_rows

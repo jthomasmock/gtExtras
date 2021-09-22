@@ -51,7 +51,6 @@ integer that the column contains.
 
 library(gt)
 fa_cars <- mtcars[1:5,1:4] \%>\%
-    head() \%>\%
     gt() \%>\%
     gt_fa_repeats(cyl, name = "car")
 
@@ -65,6 +64,7 @@ Other Utilities:
 \code{\link{gt_add_divider}()},
 \code{\link{gt_double_table}()},
 \code{\link{gt_fa_column}()},
+\code{\link{gt_fa_rating}()},
 \code{\link{gt_highlight_cols}()},
 \code{\link{gt_highlight_rows}()},
 \code{\link{gt_img_rows}()},

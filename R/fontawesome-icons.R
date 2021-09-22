@@ -49,7 +49,12 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
           direction = direction
         ) %>% as.character()
       } else {
-        pal_filler <- palette %>% rep(length(unique(int_x)))
+        if(length(palette) == 1){
+          pal_filler <- palette %>% rep(length(unique(int_x)))
+        } else {
+          pal_filler <- palette
+        }
+
       }
 
       lapply(X = int_x, FUN = function(xy){

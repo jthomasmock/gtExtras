@@ -9,7 +9,7 @@ gt_fa_repeats(
   column,
   name = NULL,
   ...,
-  palette = "ggthemes::colorblind",
+  palette = NULL,
   align = "left",
   direction = 1
 )
@@ -23,7 +23,7 @@ gt_fa_repeats(
 
 \item{...}{Additional arguments passed to \code{fontawesome::fa()}}
 
-\item{palette}{Name of palette as a string. Must be \code{paletteer} compliant like \code{"packagename::palettename"} or a vector of valid color names/hex values of equal length to the unique levels of the column (ie if there are 4 names, there need to be 4x colors).}
+\item{palette}{Name of palette as a string. Must be either length of 1 or a vector of valid color names/hex values of equal length to the unique levels of the column (ie if there are 4 names, there need to be 4x colors).}
 
 \item{align}{Character string indicating alignment of the column, defaults to "left"}
 

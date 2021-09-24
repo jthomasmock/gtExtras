@@ -8,6 +8,7 @@ gt_fa_rating(
   gt_object,
   column,
   max_rating = 5,
+  ...,
   color = "orange",
   icon = "star"
 )
@@ -18,6 +19,8 @@ gt_fa_rating(
 \item{column}{The column wherein the numeric values should be replaced with their corresponding \code{{fontawesome}} icons.}
 
 \item{max_rating}{The max number of icons to add, these will be added in grey to indicate "missing"}
+
+\item{...}{Additional arguments passed to \code{fontawesome::fa()}}
 
 \item{color}{The color of the icon, accepts named colors (\code{"orange"}) or hex strings.}
 

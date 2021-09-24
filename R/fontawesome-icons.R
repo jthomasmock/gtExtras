@@ -8,13 +8,14 @@
 #' @param column The column wherein the integers should be replaced with `{fontawesome}` icons.
 #' @param name A character string indicating the name of the "`fontawesome` icon.
 #' @param ... Additional arguments passed to `fontawesome::fa()`
-#' @param palette Name of palette as a string. Must be `paletteer` compliant like `"packagename::palettename"` or a vector of valid color names/hex values of equal length to the unique levels of the column (ie if there are 4 names, there need to be 4x colors).
+#' @param palette Name of palette as a string. Must be either length of 1 or a vector of valid color names/hex values of equal length to the unique levels of the column (ie if there are 4 names, there need to be 4x colors).
 #' @param align Character string indicating alignment of the column, defaults to "left"
 #' @param direction The direction of the `paletteer` palette, should be either `-1` for reversed or the default of `1` for the existing direction.
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
 #' @importFrom fontawesome fa
 #' @importFrom paletteer paletteer_d
+#' @importFrom htmltools div
 #' @export
 #' @import gt
 #' @examples
@@ -32,7 +33,7 @@
 #' 2-8
 
 gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
-                          palette = "ggthemes::colorblind", align = "left",
+                          palette = NULL, align = "left",
                           direction = 1){
 
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
@@ -43,28 +44,37 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
     fn = function(x){
       int_x <- as.integer(x)
 
-      if(isTRUE(unlist(lapply(palette, grepl, pattern = "::")))){
-        pal_filler <- paletteer::paletteer_d(
-          palette = palette, n = length(unique(x)), type = "discrete",
-          direction = direction
-        ) %>% as.character()
-      } else {
-        if(length(palette) == 1){
+      if(is.null(palette) && unique(int_x) >= 8){
+        stop("Please add your own palette that is equal to the number of unique counts", call. = FALSE)
+      }
+
+      if(is.null(palette)){
+        pal_filler <- rev(c("#CC79A7", "#D55E00", "#0072B2",
+                        "#F0E442", "#009E73", "#56B4E9",
+                        "#E69F00", "#000000"))[seq_along(unique(int_x))]
+      } else if(length(palette) == 1){
           pal_filler <- palette %>% rep(length(unique(int_x)))
         } else {
           pal_filler <- palette
         }
-
-      }
 
       lapply(X = int_x, FUN = function(xy){
 
         fct_x <- factor(xy, levels = unique(int_x), labels = pal_filler) %>%
           as.character()
 
-        fontawesome::fa(name, ..., fill = fct_x) %>%
+        fct_lvl <- unique(x)
+        stopifnot("The length of the unique elements must match the palette length" = length(fct_lvl) == length(pal_filler))
+
+        fa_repeats <- fontawesome::fa(name, ..., fill = fct_x, height = "20px", a11y = "sem") %>%
+          as.character() %>%
           rep(., xy) %>%
           gt::html()
+
+        label <- paste(xy, name)
+
+        htmltools::div(title = label, "aria-label" = label, role = "img",
+                       list(fa_repeats))
       })
     }
   ) %>%
@@ -77,13 +87,12 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
 #' The `gt_fa_column` function takes an existing `gt_tbl` object and
 #' adds specific `fontawesome` icons based on what the names in the column are.
 #' The icons are colored according to a palette that the user supplies, either
-#' a vector of valid colors/hex colors of length equal to the unique levels, or
-#' a `paletteer::paletteer_d()` compliant palette like `"ggthemes::colorblind"`.
+#' a vector of valid colors/hex colors of length equal to the unique levels.
 #'
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param column The column wherein the character strings should be replaced with their corresponding `{fontawesome}` icons.
 #' @param ... Additional arguments passed to `fontawesome::fa()`
-#' @param palette Name of palette as a string. Must be `paletteer` compliant like `"packagename::palettename"` or a vector of valid color names/hex values of equal length to the unique levels of the column (ie if there are 4 names, there need to be 4x colors).
+#' @param palette Name of palette as a string. Must be either length of 1 or a vector of valid color names/hex values of equal length to the unique levels of the column (ie if there are 4 names, there need to be 4x colors).
 #' @param align Character string indicating alignment of the column, defaults to "left"
 #' @param direction The direction of the `paletteer` palette, should be either `-1` for reversed or the default of `1` for the existing direction.
 
@@ -91,6 +100,7 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
 #' @importFrom gt %>%
 #' @importFrom paletteer paletteer_d
 #' @importFrom fontawesome fa
+#' @importFrom htmltools div
 #' @export
 #' @import gt
 #' @examples
@@ -110,7 +120,7 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
 #' @section Function ID:
 #' 2-15
 
-gt_fa_column <- function(gt_object, column, ..., palette = "ggthemes::colorblind",
+gt_fa_column <- function(gt_object, column, ..., palette = NULL,
                          align = "left", direction = 1){
 
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
@@ -120,16 +130,17 @@ gt_fa_column <- function(gt_object, column, ..., palette = "ggthemes::colorblind
     locations = cells_body(columns = {{ column }}),
     fn = function(x){
 
-      lapply(X = x, FUN = function(xy){
+      if(is.null(palette)){
+        pal_filler <- rev(c("#CC79A7", "#D55E00", "#0072B2",
+                        "#F0E442", "#009E73", "#56B4E9",
+                        "#E69F00", "#000000"))[seq_along(unique(x))]
+      } else if(length(palette) == 1){
+        pal_filler <- palette %>% rep(length(unique(x)))
+      } else {
+        pal_filler <- palette
+      }
 
-        if(isTRUE(unlist(lapply(palette, grepl, pattern = "::")))){
-          pal_filler <- paletteer::paletteer_d(
-            palette = palette, n = length(unique(x)), type = "discrete",
-            direction = direction
-          ) %>% as.character()
-        } else {
-          pal_filler <- palette
-        }
+      lapply(X = x, FUN = function(xy){
 
         fct_lvl <- unique(x)
         stopifnot("The length of the unique elements must match the palette length" = length(fct_lvl) == length(pal_filler))
@@ -137,7 +148,8 @@ gt_fa_column <- function(gt_object, column, ..., palette = "ggthemes::colorblind
         fct_x <- factor(xy, levels = fct_lvl, labels = pal_filler) %>%
           as.character()
 
-        fontawesome::fa(xy, ..., fill = fct_x) %>% gt::html()
+        my_fa <- list(fontawesome::fa(xy, ..., fill = fct_x, height = "20px", a11y = "sem") %>% gt::html())
+        htmltools::div(title = xy, "aria-label" = xy, role = "img", my_fa, style = "padding:0px")
       })
     }
   ) %>%
@@ -150,6 +162,7 @@ gt_fa_column <- function(gt_object, column, ..., palette = "ggthemes::colorblind
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param column The column wherein the numeric values should be replaced with their corresponding `{fontawesome}` icons.
 #' @param max_rating The max number of icons to add, these will be added in grey to indicate "missing"
+#' @param ... Additional arguments passed to `fontawesome::fa()`
 #' @param color The color of the icon, accepts named colors (`"orange"`) or hex strings.
 #' @param icon The icon name, passed to `fontawesome::fa()`
 #'
@@ -177,7 +190,7 @@ gt_fa_column <- function(gt_object, column, ..., palette = "ggthemes::colorblind
 #' @section Function ID:
 #' 2-16
 
-gt_fa_rating <- function(gt_object, column, max_rating = 5,
+gt_fa_rating <- function(gt_object, column, max_rating = 5,...,
                          color = "orange", icon = "star"){
 
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
@@ -193,13 +206,13 @@ gt_fa_rating <- function(gt_object, column, max_rating = 5,
         rounded_rating <- floor(rating + 0.5)  # always round up
         stars <- lapply(seq_len(max_rating), function(i) {
           if (i <= rounded_rating){
-            fontawesome::fa(icon, fill= color)
+            fontawesome::fa(icon, fill= color, height = "20px", a11y = "sem")
           }  else {
-            fontawesome::fa(icon, fill= "grey")
+            fontawesome::fa(icon, fill= "grey", height = "20px", a11y = "sem")
           }
         })
         label <- sprintf("%s out of %s", rating, max_rating)
-        div_out <- htmltools::div(title = label, "aria-label" = label, role = "img", stars)
+        div_out <- htmltools::div(title = label, "aria-label" = label, role = "img", stars, style = "padding:0px")
 
         as.character(div_out) %>%
           gt::html()

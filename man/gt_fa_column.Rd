@@ -8,7 +8,7 @@ gt_fa_column(
   gt_object,
   column,
   ...,
-  palette = "ggthemes::colorblind",
+  palette = NULL,
   align = "left",
   direction = 1
 )
@@ -20,7 +20,7 @@ gt_fa_column(
 
 \item{...}{Additional arguments passed to \code{fontawesome::fa()}}
 
-\item{palette}{Name of palette as a string. Must be \code{paletteer} compliant like \code{"packagename::palettename"} or a vector of valid color names/hex values of equal length to the unique levels of the column (ie if there are 4 names, there need to be 4x colors).}
+\item{palette}{Name of palette as a string. Must be either length of 1 or a vector of valid color names/hex values of equal length to the unique levels of the column (ie if there are 4 names, there need to be 4x colors).}
 
 \item{align}{Character string indicating alignment of the column, defaults to "left"}
 
@@ -33,8 +33,7 @@ An object of class \code{gt_tbl}.
 The \code{gt_fa_column} function takes an existing \code{gt_tbl} object and
 adds specific \code{fontawesome} icons based on what the names in the column are.
 The icons are colored according to a palette that the user supplies, either
-a vector of valid colors/hex colors of length equal to the unique levels, or
-a \code{paletteer::paletteer_d()} compliant palette like \code{"ggthemes::colorblind"}.
+a vector of valid colors/hex colors of length equal to the unique levels.
 }
 \section{Figures}{
 

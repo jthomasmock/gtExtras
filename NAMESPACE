@@ -46,4 +46,3 @@ importFrom(htmltools,div)
 importFrom(htmltools,save_html)
 importFrom(paletteer,paletteer_d)
 importFrom(scales,col_numeric)
-

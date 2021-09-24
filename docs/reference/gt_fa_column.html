@@ -43,8 +43,7 @@
 <meta property="og:description" content="The gt_fa_column function takes an existing gt_tbl object and
 adds specific fontawesome icons based on what the names in the column are.
 The icons are colored according to a palette that the user supplies, either
-a vector of valid colors/hex colors of length equal to the unique levels, or
-a paletteer::paletteer_d() compliant palette like &quot;ggthemes::colorblind&quot;." />
+a vector of valid colors/hex colors of length equal to the unique levels." />
 <meta property="og:image" content="https://jthomasmock.github.io/gtExtras/reference/figures/opengraph.png" />
 <meta property="og:image:alt" content="Screenshot of a data table that has the win/loss record of the 2020 NFL teams" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -81,7 +80,7 @@ a paletteer::paletteer_d() compliant palette like &quot;ggthemes::colorblind&quo
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4</span>
       </span>
     </div>
 
@@ -138,15 +137,14 @@ a paletteer::paletteer_d() compliant palette like &quot;ggthemes::colorblind&quo
     <p>The <code>gt_fa_column</code> function takes an existing <code>gt_tbl</code> object and
 adds specific <code>fontawesome</code> icons based on what the names in the column are.
 The icons are colored according to a palette that the user supplies, either
-a vector of valid colors/hex colors of length equal to the unique levels, or
-a <code><a href='https://rdrr.io/pkg/paletteer/man/paletteer_d.html'>paletteer::paletteer_d()</a></code> compliant palette like <code>"ggthemes::colorblind"</code>.</p>
+a vector of valid colors/hex colors of length equal to the unique levels.</p>
     </div>
 
     <pre class="usage"><span class='fu'>gt_fa_column</span><span class='op'>(</span>
   <span class='va'>gt_object</span>,
   <span class='va'>column</span>,
   <span class='va'>...</span>,
-  palette <span class='op'>=</span> <span class='st'>"ggthemes::colorblind"</span>,
+  palette <span class='op'>=</span> <span class='cn'>NULL</span>,
   align <span class='op'>=</span> <span class='st'>"left"</span>,
   direction <span class='op'>=</span> <span class='fl'>1</span>
 <span class='op'>)</span></pre>
@@ -168,7 +166,7 @@ a <code><a href='https://rdrr.io/pkg/paletteer/man/paletteer_d.html'>paletteer::
     </tr>
     <tr>
       <th>palette</th>
-      <td><p>Name of palette as a string. Must be <code>paletteer</code> compliant like <code>"packagename::palettename"</code> or a vector of valid color names/hex values of equal length to the unique levels of the column (ie if there are 4 names, there need to be 4x colors).</p></td>
+      <td><p>Name of palette as a string. Must be either length of 1 or a vector of valid color names/hex values of equal length to the unique levels of the column (ie if there are 4 names, there need to be 4x colors).</p></td>
     </tr>
     <tr>
       <th>align</th>

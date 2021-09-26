@@ -66,7 +66,7 @@ gt_theme_538 <- function(gt_object,...) {
       row_group.border.top.color = "black",
       row_group.border.bottom.width = px(1),
       row_group.border.bottom.color = "white",
-      stub.border.color = "#ffffff00",
+      stub.border.color = "white",
       stub.border.width = px(0),
       data_row.padding = px(3),
       source_notes.font.size = 12,

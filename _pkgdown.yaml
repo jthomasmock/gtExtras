@@ -44,6 +44,7 @@ reference:
   - tab_style_by_grp
   - gt_double_table
   - gt_two_column_layout
+  - gtsave_extra
 - title: Plotting
   desc: Add plots to specific rows of an existing table
   contents:

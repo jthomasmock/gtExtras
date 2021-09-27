@@ -7,6 +7,11 @@
 #' @param category_column The category column, where a colored dot and bar will be added
 #' @param palette The colors or color function that values will be mapped to. Can be a character vector (eg `c("white", "red")` or hex colors) or a named palette from the `{paletteer}` package.
 #' @param max_value A single numeric value indicating the max value, if left as `NULL` then the range of the `column` values will be used
+#' @import gt rlang
+#' @importFrom gt %>%
+#' @importFrom glue glue
+#' @importFrom paletteer paletteer_d
+#' @importFrom htmltools div
 #'
 #' @return a `gt_tbl`
 #' @export

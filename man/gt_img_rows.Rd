@@ -63,6 +63,7 @@ Other Utilities:
 \code{\link{gt_highlight_rows}()},
 \code{\link{gt_merge_stack}()},
 \code{\link{gt_two_column_layout}()},
+\code{\link{gtsave_extra}()},
 \code{\link{pad_fn}()},
 \code{\link{tab_style_by_grp}()}
 }

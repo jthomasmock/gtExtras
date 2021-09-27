@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>License • gtExtras</title>
+<title>Use webshot to save a gt table as a PNG — gtsave_extra • gtExtras</title>
 
 
 <!-- jquery -->
@@ -18,8 +18,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
-<link rel="stylesheet" href="bootstrap-toc.css">
-<script src="bootstrap-toc.js"></script>
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
@@ -33,13 +33,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script>
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script>
 
 
 
 
-<meta property="og:title" content="License" />
+<meta property="og:title" content="Use webshot to save a gt table as a PNG — gtsave_extra" />
+<meta property="og:description" content="Takes existing HTML content, typically additional HTML including a gt table as a PNG via the {webshot} package." />
 <meta property="og:image" content="https://jthomasmock.github.io/gtExtras/reference/figures/opengraph.png" />
 <meta property="og:image:alt" content="Screenshot of a data table that has the win/loss record of the 2020 NFL teams" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -63,7 +64,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-title-body">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -75,7 +76,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">gtExtras</a>
+        <a class="navbar-link" href="../index.html">gtExtras</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.6</span>
       </span>
     </div>
@@ -83,13 +84,13 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">
+  <a href="../index.html">
     <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -99,7 +100,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="articles/plots-in-gt.html">Graphing in gt</a>
+      <a href="../articles/plots-in-gt.html">Graphing in gt</a>
     </li>
   </ul>
 </li>
@@ -122,25 +123,83 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>License</h1>
+    <h1>Use webshot to save a gt table as a PNG</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/gtsave_extra.R'><code>R/gtsave_extra.R</code></a></small>
+    <div class="hidden name"><code>gtsave_extra.Rd</code></div>
     </div>
 
-<pre>YEAR: 2021
-COPYRIGHT HOLDER: gtExtras authors
-</pre>
+    <div class="ref-description">
+    <p>Takes existing HTML content, typically additional HTML including a gt table as a PNG via the <code>{webshot}</code> package.</p>
+    </div>
+
+    <pre class="usage"><span class='fu'>gtsave_extra</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>filename</span>, path <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span>, zoom <span class='op'>=</span> <span class='fl'>2</span>, expand <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>data</th>
+      <td><p>HTML content to be saved temporarily to disk</p></td>
+    </tr>
+    <tr>
+      <th>filename</th>
+      <td><p>The name of the file, should end in <code>.png</code></p></td>
+    </tr>
+    <tr>
+      <th>path</th>
+      <td><p>An optional path</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments to <code><a href='https://rdrr.io/pkg/webshot/man/webshot.html'>webshot::webshot()</a></code></p></td>
+    </tr>
+    <tr>
+      <th>zoom</th>
+      <td><p>A number specifying the zoom factor. A zoom factor of 2 will result in twice as many pixels vertically and horizontally. Note that using 2 is not exactly the same as taking a screenshot on a HiDPI (Retina) device: it is like increasing the zoom to 200 doubling the height and width of the browser window.</p></td>
+    </tr>
+    <tr>
+      <th>expand</th>
+      <td><p>A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order.</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Prints the HTML content to the RStudio viewer and saves a <code>.png</code> file to disk</p>
+    <h2 class="hasAnchor" id="function-id"><a class="anchor" href="#function-id"></a>Function ID</h2>
+
+    
+
+<p>2-14</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Utilities: 
+<code><a href='add_text_img.html'>add_text_img</a>()</code>,
+<code><a href='fa_icon_repeat.html'>fa_icon_repeat</a>()</code>,
+<code><a href='fmt_pad_num.html'>fmt_pad_num</a>()</code>,
+<code><a href='fmt_symbol_first.html'>fmt_symbol_first</a>()</code>,
+<code><a href='gt_add_divider.html'>gt_add_divider</a>()</code>,
+<code><a href='gt_double_table.html'>gt_double_table</a>()</code>,
+<code><a href='gt_fa_column.html'>gt_fa_column</a>()</code>,
+<code><a href='gt_fa_rating.html'>gt_fa_rating</a>()</code>,
+<code><a href='gt_fa_repeats.html'>gt_fa_repeats</a>()</code>,
+<code><a href='gt_highlight_cols.html'>gt_highlight_cols</a>()</code>,
+<code><a href='gt_highlight_rows.html'>gt_highlight_rows</a>()</code>,
+<code><a href='gt_img_rows.html'>gt_img_rows</a>()</code>,
+<code><a href='gt_merge_stack.html'>gt_merge_stack</a>()</code>,
+<code><a href='gt_two_column_layout.html'>gt_two_column_layout</a>()</code>,
+<code><a href='pad_fn.html'>pad_fn</a>()</code>,
+<code><a href='tab_style_by_grp.html'>tab_style_by_grp</a>()</code></p></div>
 
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
-
 
 
       <footer>

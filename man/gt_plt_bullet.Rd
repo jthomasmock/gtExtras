@@ -66,6 +66,7 @@ bullet_tab <- tibble::rownames_to_column(mtcars) \%>\%
 }
 \seealso{
 Other Themes: 
+\code{\link{gt_plt_dot}()},
 \code{\link{gt_theme_538}()},
 \code{\link{gt_theme_dark}()},
 \code{\link{gt_theme_dot_matrix}()},

@@ -39,6 +39,7 @@ dark_tab <- head(mtcars) \%>\%
 \seealso{
 Other Themes: 
 \code{\link{gt_plt_bullet}()},
+\code{\link{gt_plt_dot}()},
 \code{\link{gt_theme_538}()},
 \code{\link{gt_theme_dot_matrix}()},
 \code{\link{gt_theme_espn}()},

@@ -9,7 +9,9 @@ gt_plt_bar(
   column = NULL,
   color = "purple",
   keep_column = FALSE,
-  width = 70
+  width = 70,
+  scale_type = "none",
+  ...
 )
 }
 \arguments{
@@ -22,6 +24,10 @@ gt_plt_bar(
 \item{keep_column}{\code{TRUE}/\code{FALSE} logical indicating if you want to keep a copy of the "plotted" column as raw values next to the plot itself..}
 
 \item{width}{An integer indicating the width of the plot in pixels.}
+
+\item{scale_type}{A string indicating additional text formatting and the addition of numeric labels to the plotted bars if not \code{'none'}. If \code{'none'}, no numbers will be added to the bar, but if \code{"number"} or \code{"percent"} are used, then the numbers in the plotted column will be added as a bar-label and formatted according to \code{scales::label_percent()} or \code{scales::label_number()}.}
+
+\item{...}{Additional arguments passed to \code{scales::label_number()} or \code{scales::label_percent()}, depending on what was specified in \code{scale_type}}
 }
 \value{
 An object of class \code{gt_tbl}.

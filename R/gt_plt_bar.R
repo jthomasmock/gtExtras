@@ -9,8 +9,11 @@
 #' @param color A character representing the color for the bar, defaults to purple. Accepts a named color (eg `'purple'`) or a hex color.
 #' @param keep_column `TRUE`/`FALSE` logical indicating if you want to keep a copy of the "plotted" column as raw values next to the plot itself..
 #' @param width An integer indicating the width of the plot in pixels.
+#' @param scale_type A string indicating additional text formatting and the addition of numeric labels to the plotted bars if not `'none'`. If `'none'`, no numbers will be added to the bar, but if `"number"` or `"percent"` are used, then the numbers in the plotted column will be added as a bar-label and formatted according to `scales::label_percent()` or `scales::label_number()`.
+#' @param ... Additional arguments passed to `scales::label_number()` or `scales::label_percent()`, depending on what was specified in `scale_type`
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
+#' @importFrom scales label_number label_percent
 #' @export
 #' @import gt ggplot2 rlang dplyr
 #' @examples
@@ -28,9 +31,10 @@
 #' 3-4
 
 gt_plt_bar <- function(gt_object, column = NULL, color = "purple",
-                       keep_column = FALSE, width = 70) {
+                       keep_column = FALSE, width = 70, scale_type = "none", ...) {
 
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
+  stopifnot("`scale_type` must be one of 'number', 'percent' or 'none'" = scale_type %in% c("number", "percent", "none"))
 
   var_sym <- rlang::enquo(column)
   var_bare <- rlang::as_label(var_sym)
@@ -83,6 +87,23 @@ gt_plt_bar <- function(gt_object, column = NULL, color = "purple",
           coord_cartesian(clip = "off") +
           theme_void() +
           theme(legend.position = "none", plot.margin = unit(rep(0, 4), "pt"))
+
+        if(scale_type != "none"){
+          plot_out <- plot_out +
+            geom_text(
+            aes(x = x,
+              label = if(scale_type == "number"){
+              scales::label_number(...)(x)
+            } else if (scale_type == "percent"){
+              scales::label_percent(...)(x)
+            }),
+            hjust = 1, nudge_x = -0.1, vjust = 0.5,
+            size = 3,
+            family = "mono",
+            color = "white",
+            fontface = "bold"
+          )
+        }
 
         out_name <- file.path(tempfile(
           pattern = "file",

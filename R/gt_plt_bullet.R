@@ -4,10 +4,8 @@
 #' @param column The column where a 'bullet chart' will replace the inline values.
 #' @param target The column indicating the target values that will be represented by a vertical line
 #' @param width Width of the plot in pixels
-#' @param color Color of the bar, defaults to `"grey"`, can use named colors or hex colors.
-#' @param target_color Color of the target vertical line, defaults to `"red"`, can use named colors or hex colors.
-#' @param keep_column Logical indicating whether to duplicate the column for the plot.
-#' @param keep_target Logical indicating whether to keep (`TRUE`) or hide the target column (`FALSE`)
+#' @param colors Color of the bar and target line, defaults to `c("grey", "red")`, can use named colors or hex colors. Must be of length two, and the first color will always be used as the bar color.
+#' @param keep_column Logical indicating whether to keep a copy of the `column` as raw values, in addition to the bullet chart
 #' @return An object of class `gt_tbl`.
 #' @import gt ggplot2 rlang dplyr
 #' @export
@@ -24,7 +22,7 @@
 #'  dplyr::ungroup() %>%
 #'  gt() %>%
 #'  gt_plt_bullet(column = mpg, target = target_col, width = 45,
-#'                color = "lightblue", target_color = "black") %>%
+#'                colors = c("lightblue", "black")) %>%
 #'  gt_theme_538()
 #'
 #' @section Figures:
@@ -34,10 +32,10 @@
 #' @section Function ID:
 #' 3-7
 gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
-                          keep_column = FALSE, keep_target = FALSE,
-                          color = "grey", target_color = "red"){
+                          keep_column = FALSE, colors = c("grey", "red")){
 
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
+  stopifnot("'colors' must be 2 colors" = length(colors) == 2)
 
   col_bare <- rlang::enexpr(column) %>% rlang::as_string()
   raw_data <- gt:::dt_data_get(gt_object)
@@ -49,114 +47,69 @@ gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
   tar_col_bare <- rlang::enexpr(target) %>% rlang::as_string()
   target_vals <- raw_data[[tar_col_bare]]
 
-  tab_out <- text_transform(
-    gt_object,
-    locations = cells_body({{ column }}),
-    fn = function(x) {
-      bar_fx <- function(x_val, target_vals) {
-        col_pal <- palette
-
-        vals <- as.double(x_val)
-
-        plot_out <- ggplot(data = NULL, aes(x = vals, y = factor("1"))) +
-          geom_col(width = 0.1, color = color, fill = color) +
-          geom_vline(xintercept = target_vals, color = target_color, size = 1.5,
-                     alpha = 0.7) +
-          geom_vline(xintercept = 0, color = "black", size = 1) +
-          theme_void() +
-          coord_cartesian(xlim = c(0, max_val)) +
-          scale_x_continuous(expand = expansion(mult = c(0, 0.1))) +
-          scale_y_discrete(expand = expansion(mult = c(0.1, 0.1))) +
-          theme_void() +
-          theme(legend.position = "none", plot.margin = unit(rep(0, 4), "pt"),
-                plot.background = element_blank(),
-                panel.background = element_blank())
-
-        out_name <- file.path(tempfile(
-          pattern = "file",
-          tmpdir = tempdir(),
-          fileext = ".svg"
-        ))
-
-        ggsave(
-          out_name,
-          plot = plot_out,
-          dpi = 30,
-          height = 6,
-          width = width,
-          units = "px"
-        )
-
-        img_plot <- readLines(out_name) %>%
-          paste0(collapse = "") %>%
-          gt::html()
-
-        on.exit(file.remove(out_name))
-
-        img_plot
-      }
-
-      tab_built <- mapply(FUN = bar_fx, x,target_vals)
-      tab_built
-    }
-  )
-
-  if (isTRUE(keep_column)) {
-
-    # core concept is that we are adding a duplicate column
-    # which takes the place of the original column
-    # this will be "kept" in place as the original gets overwritten as a plot
-    dupe_name <- paste0(col_bare, "_dupe")
-    col_name_replace <- paste0(col_bare, "_plt")
-
-    col_bare_index <- which(tab_out[["_boxhead"]][["var"]] == col_bare)
-
-    tab_out[["_data"]] <- tab_out[["_data"]] %>%
-      dplyr::mutate(!!dupe_name := {{ column }}, .before = {{ column }}) %>%
-      dplyr::rename(
-        !!col_name_replace := col_bare,
-        !!col_bare := !!dupe_name
-      )
-
-    tab_out[["_boxhead"]] <- tab_out[["_boxhead"]] %>%
-      mutate(column_label = dplyr::if_else(
-        var == !!col_bare,
-        list(!!col_name_replace),
-        column_label
-      ))
-
-
-    tab_out <- gt:::dt_boxhead_add_var(
-      data = tab_out,
-      var = col_name_replace,
-      type = "default",
-      column_label = list(col_bare),
-      column_align = "left",
-      column_width = list(NULL),
-      hidden_px = list(NULL),
-      add_where = "bottom"
+  tab_out <- if (isFALSE(keep_column)) {
+    cols_merge(
+      gt_object,
+      columns = c({{ target }}, {{ column }}),
+      pattern = "{1}^split^{2}"
     )
-
-    tab_out <- tab_out %>%
-      cols_move(columns = col_bare, after = col_name_replace) %>%
-      cols_align(align = "left", columns = {{ column }})
-
-    if (isTRUE(keep_target)) {
-      tab_out
-    } else {
-      tab_out %>%
-        cols_hide(columns = {{ target }})
-    }
-  } else {
-    if (isTRUE(keep_target)) {
-      tab_out %>%
-        cols_align(align = "left", columns = {{ column }})
-    } else {
-      tab_out %>%
-        cols_align(align = "left", columns = {{ column }}) %>%
-        cols_hide(columns = {{ target }})
-    }
+  } else if (isTRUE(keep_column)) {
+    cols_merge(
+      gt_object,
+      columns = c({{ target }}, {{ column }}),
+      pattern = "{1}^split^{2}",
+      hide_columns = FALSE
+    )
   }
+
+  tab_out <- tab_out %>%
+    text_transform(
+      locations = cells_body({{ target }}),
+      fn = function(x) {
+        bar_fx <- function(xz, target_vals) {
+
+          split_cols <- strsplit(xz, "^split^", fixed = TRUE) %>% unlist()
+
+          target_vals <- as.double(split_cols[1])
+          vals <- as.double(split_cols[2])
+
+          plot_out <- ggplot(data = NULL, aes(x = vals, y = factor("1"))) +
+            geom_col(width = 0.1, color = colors[1], fill = colors[1]) +
+            geom_vline(xintercept = target_vals, color = colors[2], size = 1.5,
+                       alpha = 0.7) +
+            geom_vline(xintercept = 0, color = "black", size = 1) +
+            theme_void() +
+            coord_cartesian(xlim = c(0, max_val)) +
+            scale_x_continuous(expand = expansion(mult = c(0, 0.15))) +
+            scale_y_discrete(expand = expansion(mult = c(0.1, 0.1))) +
+            theme_void() +
+            theme(legend.position = "none", plot.margin = unit(rep(0, 4), "pt"),
+                  plot.background = element_blank(),
+                  panel.background = element_blank())
+
+          out_name <- file.path(tempfile(pattern = "file", tmpdir = tempdir(),
+                                         fileext = ".svg"))
+
+          ggsave(out_name, plot = plot_out, dpi = 30, height = 6, width = width,
+                 units = "px")
+
+          img_plot <- readLines(out_name) %>%
+            paste0(collapse = "") %>%
+            gt::html()
+
+          on.exit(file.remove(out_name))
+
+          img_plot
+        }
+
+        tab_built <- lapply(X = x, FUN = bar_fx)
+        tab_built
+      }
+    ) %>%
+    gt::cols_align(align = "left", columns = {{ target }}) %>%
+    gt::cols_label({{ target }} := col_bare)
+
+  tab_out
 
 }
 

@@ -6,10 +6,11 @@
 #' @param domain The possible values that can be mapped. This should be a simple numeric range (e.g. `c(0, 100)`)
 #' @param use_paletteer Should the palette be passed as a "package::palette_name" to `paletteer` or should the palette be treated as a raw character string of colors. Defaults to `TRUE`. Note that if `FALSE`, that the "n", "direction", and "type" arguments are ignored, as they are passed only to `paletter::paletteer_d()`.
 #' @param width The width of the entire coloring area in pixels.
+#' @param ... Additional arguments passed to `scales::label_number()`, primarily used to format the numbers inside the color box
 #'
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
-#' @importFrom scales col_numeric
+#' @importFrom scales col_numeric label_number
 #' @importFrom htmltools div
 #' @export
 #' @import gt paletteer
@@ -21,8 +22,7 @@
 #'                     z = seq(10, 100, by = 10))
 #' color_box_tab <- test_data %>%
 #'   gt() %>%
-#'   gt_color_box(columns = y, domain = 0:100,
-#'                palette = "ggsci::blue_material", use_paletteer = TRUE) %>%
+#'   gt_color_box(columns = y, domain = 0:100, palette = "ggsci::blue_material") %>%
 #'   gt_color_box(columns = z, domain = 0:100,
 #'                palette = c("purple", "lightgrey", "green"))
 #' @section Figures:
@@ -33,19 +33,23 @@
 #' 4-3
 
 
-
-gt_color_box <- function(gt_object, columns, palette = NULL, domain = NULL,
-                         use_paletteer = FALSE, width = 70){
+gt_color_box <- function(gt_object, columns, palette = NULL, ..., domain = NULL,
+                         width = 70){
 
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
+
   color_boxes <- function(x){
 
     stopifnot("Error: 'domain' must be specified." = !is.null(domain))
 
-    if(isTRUE(use_paletteer)){
-      palette <- paletteer::paletteer_d(
-        palette = palette
-      ) %>% as.character()
+    if(length(palette) == 1){
+      if(grepl(x = palette, pattern = "::", fixed = TRUE)){
+        palette <- paletteer::paletteer_d(
+          palette = palette
+        ) %>% as.character()
+      } else {
+        palette <- palette
+      }
     } else if(is.null(palette)){
       palette <- c("#762a83", "#af8dc3", "#e7d4e8", "#f7f7f7",
                    "#d9f0d3", "#7fbf7b", "#1b7837")
@@ -60,18 +64,20 @@ gt_color_box <- function(gt_object, columns, palette = NULL, domain = NULL,
     div(
       div(
         style = paste0(
-          glue::glue("height: 20px;width:{width}px; background-color: {background_col};"),
+          glue::glue(
+            "height: 20px;width:{width}px; background-color: {background_col};"
+            ),
           "border-radius:5px;)"
         ),
         div(
           style = paste0(
             glue::glue("height: 15px;width: 15px;background-color: {colors};"),
             "display: inline-block;border-radius:5px;float:left;",
-            "position:relative;top:12%;left:5%;"
+            "position:relative;top:15%;left:5%;" # top 12%-15%
           )
         ),
         div(
-          format(x, nsmall = 1L, digits = 1L),
+          scales::label_number(...)(x),
           style = paste0(
             "display: inline-block;float:right;line-height:20px;",
             "padding: 0px 2.5px;"

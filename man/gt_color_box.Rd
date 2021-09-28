@@ -8,8 +8,8 @@ gt_color_box(
   gt_object,
   columns,
   palette = NULL,
+  ...,
   domain = NULL,
-  use_paletteer = FALSE,
   width = 70
 )
 }
@@ -20,9 +20,9 @@ gt_color_box(
 
 \item{palette}{The colours or colour function that values will be mapped to. Can be a character vector (eg \code{c("white", "red")} or hex colors) or if \code{use_paletteer = TRUE}, a named palette from the \code{{paletteer}} package.}
 
-\item{domain}{The possible values that can be mapped. This should be a simple numeric range (e.g. \code{c(0, 100)})}
+\item{...}{Additional arguments passed to \code{scales::label_number()}, primarily used to format the numbers inside the color box}
 
-\item{use_paletteer}{Should the palette be passed as a "package::palette_name" to \code{paletteer} or should the palette be treated as a raw character string of colors. Defaults to \code{TRUE}. Note that if \code{FALSE}, that the "n", "direction", and "type" arguments are ignored, as they are passed only to \code{paletter::paletteer_d()}.}
+\item{domain}{The possible values that can be mapped. This should be a simple numeric range (e.g. \code{c(0, 100)})}
 
 \item{width}{The width of the entire coloring area in pixels.}
 }
@@ -49,8 +49,7 @@ test_data <- dplyr::tibble(x = letters[1:10],
                     z = seq(10, 100, by = 10))
 color_box_tab <- test_data \%>\%
   gt() \%>\%
-  gt_color_box(columns = y, domain = 0:100,
-               palette = "ggsci::blue_material", use_paletteer = TRUE) \%>\%
+  gt_color_box(columns = y, domain = 0:100, palette = "ggsci::blue_material") \%>\%
   gt_color_box(columns = z, domain = 0:100,
                palette = c("purple", "lightgrey", "green"))
 }

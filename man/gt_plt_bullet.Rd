@@ -10,9 +10,7 @@ gt_plt_bullet(
   target = NULL,
   width = 65,
   keep_column = FALSE,
-  keep_target = FALSE,
-  color = "grey",
-  target_color = "red"
+  colors = c("grey", "red")
 )
 }
 \arguments{
@@ -24,13 +22,9 @@ gt_plt_bullet(
 
 \item{width}{Width of the plot in pixels}
 
-\item{keep_column}{Logical indicating whether to duplicate the column for the plot.}
+\item{keep_column}{Logical indicating whether to keep a copy of the \code{column} as raw values, in addition to the bullet chart}
 
-\item{keep_target}{Logical indicating whether to keep (\code{TRUE}) or hide the target column (\code{FALSE})}
-
-\item{color}{Color of the bar, defaults to \code{"grey"}, can use named colors or hex colors.}
-
-\item{target_color}{Color of the target vertical line, defaults to \code{"red"}, can use named colors or hex colors.}
+\item{colors}{Color of the bar and target line, defaults to \code{c("grey", "red")}, can use named colors or hex colors. Must be of length two, and the first color will always be used as the bar color.}
 }
 \value{
 An object of class \code{gt_tbl}.
@@ -60,7 +54,7 @@ bullet_tab <- tibble::rownames_to_column(mtcars) \%>\%
  dplyr::ungroup() \%>\%
  gt() \%>\%
  gt_plt_bullet(column = mpg, target = target_col, width = 45,
-               color = "lightblue", target_color = "black") \%>\%
+               colors = c("lightblue", "black")) \%>\%
  gt_theme_538()
 
 }

@@ -357,15 +357,24 @@ bullet_df <- tibble::rownames_to_column(mtcars) %>%
 bullet_df %>%
  gt() %>%
  gt_plt_bullet(column = mpg, target = target_col, width = 45,
-               color = "lightblue", target_color = "black")
+               colors = c("lightblue", "black"))
 ```
 
 Note that similar to a core bar plot, you can keep the column and the output with `keep_column = TRUE`.
 
 ```{r}
 bullet_df %>%
- gt() %>%
- gt_plt_bullet(column = mpg, target = target_col, 
-               width = 45, keep_column = TRUE)
+  gt() %>%
+  gt_plt_bullet(column = mpg, target = target_col, width = 45, keep_column = TRUE)
+```
+
+Note that for now, if you want to use any of the `gt::fmt_` functions on your `column` of interest, you'll need to create a duplicate column ahead of time.
+
+```{r}
+bullet_df %>%
+  dplyr::mutate(plot_column = mpg) %>%
+  gt() %>%
+  gt_plt_bullet(column = plot_column, target = target_col, width = 45) %>%
+  fmt_number(mpg, decimals = 1)
 ```
 

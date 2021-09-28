@@ -73,6 +73,17 @@ gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
           target_vals <- as.double(split_cols[1])
           vals <- as.double(split_cols[2])
 
+
+          if(is.na(target_vals)) {
+            stop("Target Column not coercible to numeric, please create and supply an unformatted column ahead of time",
+                 call. = FALSE)
+          }
+
+          if(is.na(vals)) {
+            stop("Column not coercible to numeric, please create and supply an unformatted column ahead of time",
+                 call. = FALSE)
+          }
+
           plot_out <- ggplot(data = NULL, aes(x = vals, y = factor("1"))) +
             geom_col(width = 0.1, color = colors[1], fill = colors[1]) +
             geom_vline(xintercept = target_vals, color = colors[2], size = 1.5,

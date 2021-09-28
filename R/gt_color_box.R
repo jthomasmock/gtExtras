@@ -4,7 +4,6 @@
 #' @param columns he columns wherein changes to cell data colors should occur.
 #' @param palette The colours or colour function that values will be mapped to. Can be a character vector (eg `c("white", "red")` or hex colors) or if `use_paletteer = TRUE`, a named palette from the `{paletteer}` package.
 #' @param domain The possible values that can be mapped. This should be a simple numeric range (e.g. `c(0, 100)`)
-#' @param use_paletteer Should the palette be passed as a "package::palette_name" to `paletteer` or should the palette be treated as a raw character string of colors. Defaults to `TRUE`. Note that if `FALSE`, that the "n", "direction", and "type" arguments are ignored, as they are passed only to `paletter::paletteer_d()`.
 #' @param width The width of the entire coloring area in pixels.
 #' @param ... Additional arguments passed to `scales::label_number()`, primarily used to format the numbers inside the color box
 #'

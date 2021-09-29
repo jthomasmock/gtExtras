@@ -9,6 +9,7 @@
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param col1 The column to stack on top. Will be converted to all caps, with black and bold text.
 #' @param col2 The column to merge and place below. Will be smaller and dark grey.
+#' @param color The color for the "under" text, ie `col2`. Defaults to `"grey"`
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
 #' @importFrom glue glue
@@ -33,7 +34,7 @@
 #' @section Function ID:
 #' 2-6
 
-gt_merge_stack <- function(gt_object, col1, col2) {
+gt_merge_stack <- function(gt_object, col1, col2, color = "grey") {
 
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
 
@@ -55,7 +56,7 @@ gt_merge_stack <- function(gt_object, col1, col2) {
       fn = function(x) {
         glue::glue(
           "<div style='line-height:10px'><span style='font-weight:bold;font-variant:small-caps;font-size:14px'>{x}</div>
-        <div style='line-height:12px'><span style ='font-weight:bold;color:grey;font-size:10px'>{data_in}</span></div>"
+        <div style='line-height:12px'><span style ='font-weight:bold;color:{color};font-size:10px'>{data_in}</span></div>"
         )
       }
     ) %>%

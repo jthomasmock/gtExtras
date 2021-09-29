@@ -4,7 +4,7 @@
 \alias{gt_merge_stack}
 \title{Merge and stack text from two columns in \code{gt}}
 \usage{
-gt_merge_stack(gt_object, col1, col2)
+gt_merge_stack(gt_object, col1, col2, color = "grey")
 }
 \arguments{
 \item{gt_object}{An existing gt table object of class \code{gt_tbl}}
@@ -12,6 +12,8 @@ gt_merge_stack(gt_object, col1, col2)
 \item{col1}{The column to stack on top. Will be converted to all caps, with black and bold text.}
 
 \item{col2}{The column to merge and place below. Will be smaller and dark grey.}
+
+\item{color}{The color for the "under" text, ie \code{col2}. Defaults to \code{"grey"}}
 }
 \value{
 An object of class \code{gt_tbl}.

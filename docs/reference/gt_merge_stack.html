@@ -80,7 +80,7 @@ and dark grey." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.8</span>
       </span>
     </div>
 
@@ -140,7 +140,7 @@ Top text is in all caps with black bold text, while the lower text is smaller
 and dark grey.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gt_merge_stack</span><span class='op'>(</span><span class='va'>gt_object</span>, <span class='va'>col1</span>, <span class='va'>col2</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>gt_merge_stack</span><span class='op'>(</span><span class='va'>gt_object</span>, <span class='va'>col1</span>, <span class='va'>col2</span>, color <span class='op'>=</span> <span class='st'>"grey"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -156,6 +156,10 @@ and dark grey.</p>
     <tr>
       <th>col2</th>
       <td><p>The column to merge and place below. Will be smaller and dark grey.</p></td>
+    </tr>
+    <tr>
+      <th>color</th>
+      <td><p>The color for the "under" text, ie <code>col2</code>. Defaults to <code>"grey"</code></p></td>
     </tr>
     </table>
 

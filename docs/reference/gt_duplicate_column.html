@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add table styling to specific rows by group — tab_style_by_grp • gtExtras</title>
+<title>Duplicate an existing column in a gt table — gt_duplicate_column • gtExtras</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,10 @@
 
 
 
-<meta property="og:title" content="Add table styling to specific rows by group — tab_style_by_grp" />
-<meta property="og:description" content="The tab_style_by_grp function takes an existing gt_tbl object and
-styling according to each group. Currently it support styling the max()/min()
-for each group." />
+<meta property="og:title" content="Duplicate an existing column in a gt table — gt_duplicate_column" />
+<meta property="og:description" content="This function takes an existing gt table and will duplicate a column.
+You also have the option to specify where the column ends up, and what will
+be appending to the end of the column name to differentiate it." />
 <meta property="og:image" content="https://jthomasmock.github.io/gtExtras/reference/figures/opengraph.png" />
 <meta property="og:image:alt" content="Screenshot of a data table that has the win/loss record of the 2020 NFL teams" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -127,18 +127,24 @@ for each group." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add table styling to specific rows by group</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/tab_style_by_grp.R'><code>R/tab_style_by_grp.R</code></a></small>
-    <div class="hidden name"><code>tab_style_by_grp.Rd</code></div>
+    <h1>Duplicate an existing column in a gt table</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/gt_duplicate_column.R'><code>R/gt_duplicate_column.R</code></a></small>
+    <div class="hidden name"><code>gt_duplicate_column.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The <code>tab_style_by_grp</code> function takes an existing <code>gt_tbl</code> object and
-styling according to each group. Currently it support styling the <code><a href='https://rdrr.io/r/base/Extremes.html'>max()</a></code>/<code><a href='https://rdrr.io/r/base/Extremes.html'>min()</a></code>
-for each group.</p>
+    <p>This function takes an existing gt table and will duplicate a column.
+You also have the option to specify where the column ends up, and what will
+be appending to the end of the column name to differentiate it.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tab_style_by_grp</span><span class='op'>(</span><span class='va'>gt_object</span>, <span class='va'>column</span>, <span class='va'>fn</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>gt_duplicate_column</span><span class='op'>(</span>
+  <span class='va'>gt_object</span>,
+  <span class='va'>column</span>,
+  after <span class='op'>=</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/everything.html'>last_col</a></span><span class='op'>(</span><span class='op'>)</span>,
+  append_text <span class='op'>=</span> <span class='st'>"_dupe"</span>,
+  dupe_name <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -149,31 +155,30 @@ for each group.</p>
     </tr>
     <tr>
       <th>column</th>
-      <td><p>The column using tidy variable name or a number indicating which column should have the styling affect it.</p></td>
+      <td><p>The column to be duplicated</p></td>
     </tr>
     <tr>
-      <th>fn</th>
-      <td><p>The name of a summarizing function (ie <code><a href='https://rdrr.io/r/base/Extremes.html'>max()</a></code>, <code><a href='https://rdrr.io/r/base/Extremes.html'>min()</a></code>)</p></td>
+      <th>after</th>
+      <td><p>The column to place the duplicate column after</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Arguments passed to <code><a href='https://gt.rstudio.com/reference/tab_style.html'>tab_style(style = ...)</a></code></p></td>
+      <th>append_text</th>
+      <td><p>The text to add to the column name to differentiate it from the original column name</p></td>
+    </tr>
+    <tr>
+      <th>dupe_name</th>
+      <td><p>A full name for the "new" duplicated column, will override <code>append_text</code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>An object of class <code>gt_tbl</code>.</p>
-    <h2 class="hasAnchor" id="figures"><a class="anchor" href="#figures"></a>Figures</h2>
-
-    
-
-<p><img src='figures/grp-tab-style.png' width=20% /></p>
     <h2 class="hasAnchor" id="function-id"><a class="anchor" href="#function-id"></a>Function ID</h2>
 
     
 
-<p>2-12</p>
+<p>2-15</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Utilities: 
@@ -183,7 +188,6 @@ for each group.</p>
 <code><a href='fmt_symbol_first.html'>fmt_symbol_first</a>()</code>,
 <code><a href='gt_add_divider.html'>gt_add_divider</a>()</code>,
 <code><a href='gt_double_table.html'>gt_double_table</a>()</code>,
-<code><a href='gt_duplicate_column.html'>gt_duplicate_column</a>()</code>,
 <code><a href='gt_fa_column.html'>gt_fa_column</a>()</code>,
 <code><a href='gt_fa_rating.html'>gt_fa_rating</a>()</code>,
 <code><a href='gt_fa_repeats.html'>gt_fa_repeats</a>()</code>,
@@ -193,21 +197,15 @@ for each group.</p>
 <code><a href='gt_merge_stack.html'>gt_merge_stack</a>()</code>,
 <code><a href='gt_two_column_layout.html'>gt_two_column_layout</a>()</code>,
 <code><a href='gtsave_extra.html'>gtsave_extra</a>()</code>,
-<code><a href='pad_fn.html'>pad_fn</a>()</code></p></div>
+<code><a href='pad_fn.html'>pad_fn</a>()</code>,
+<code><a href='tab_style_by_grp.html'>tab_style_by_grp</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
-<span class='va'>df_in</span> <span class='op'>&lt;-</span> <span class='va'>mtcars</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>cyl</span><span class='op'>:</span><span class='va'>hp</span>, <span class='va'>mpg</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/rownames.html'>rownames_to_column</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>cyl</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/slice.html'>slice</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='va'>test_tab</span> <span class='op'>&lt;-</span> <span class='va'>df_in</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span>groupname_col <span class='op'>=</span> <span class='st'>"cyl"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>tab_style_by_grp</span><span class='op'>(</span><span class='va'>mpg</span>, fn <span class='op'>=</span> <span class='va'>max</span>,
-                   <span class='fu'><a href='https://gt.rstudio.com/reference/cell_fill.html'>cell_fill</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"red"</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>dupe_table</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>mpg</span>, <span class='va'>disp</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>gt_duplicate_column</span><span class='op'>(</span><span class='va'>mpg</span>, after <span class='op'>=</span> <span class='va'>disp</span>, append_text <span class='op'>=</span> <span class='st'>"2"</span><span class='op'>)</span>
 
 </div></pre>
   </div>

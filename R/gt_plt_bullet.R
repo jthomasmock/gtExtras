@@ -54,11 +54,11 @@ gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
       pattern = "{1}^split^{2}"
     )
   } else if (isTRUE(keep_column)) {
-    cols_merge(
-      gt_object,
-      columns = c({{ target }}, {{ column }}),
-      pattern = "{1}^split^{2}",
-      hide_columns = FALSE
+    gt_object %>%
+      gt_duplicate_column({{column}}, dupe_name = "DUPE_COLUMN_PLT") %>%
+      cols_merge(
+      columns = c({{ target }}, DUPE_COLUMN_PLT),
+      pattern = "{1}^split^{2}"
     )
   }
 
@@ -75,12 +75,12 @@ gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
 
 
           if(is.na(target_vals)) {
-            stop("Target Column not coercible to numeric, please create and supply an unformatted column ahead of time",
+            stop("Target Column not coercible to numeric, please create and supply an unformatted column ahead of time with gtExtras::gt_duplicate_columns()",
                  call. = FALSE)
           }
 
           if(is.na(vals)) {
-            stop("Column not coercible to numeric, please create and supply an unformatted column ahead of time",
+            stop("Column not coercible to numeric, please create and supply an unformatted column ahead of time with gtExtras::gt_duplicate_columns()",
                  call. = FALSE)
           }
 

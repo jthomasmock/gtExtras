@@ -110,6 +110,7 @@ Other Utilities:
 \code{\link{fmt_symbol_first}()},
 \code{\link{gt_add_divider}()},
 \code{\link{gt_double_table}()},
+\code{\link{gt_duplicate_column}()},
 \code{\link{gt_fa_column}()},
 \code{\link{gt_fa_rating}()},
 \code{\link{gt_fa_repeats}()},

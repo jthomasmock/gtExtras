@@ -72,7 +72,7 @@ gt_color_box <- function(gt_object, columns, palette = NULL, ..., domain = NULL,
           style = paste0(
             glue::glue("height: 15px;width: 15px;background-color: {colors};"),
             "display: inline-block;border-radius:5px;float:left;",
-            "position:relative;top:15%;left:5%;" # top 12%-15%
+            "position:relative;top:13%;left:5%;" # top 12%-15%
           )
         ),
         div(

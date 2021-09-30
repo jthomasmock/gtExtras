@@ -9,7 +9,7 @@
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param col1 The column to stack on top. Will be converted to all caps, with black and bold text.
 #' @param col2 The column to merge and place below. Will be smaller and dark grey.
-#' @param color The color for the "under" text, ie `col2`. Defaults to `"grey"`
+#' @param colors The colors for the text, where the first color is the top , ie `col1` and the second color is the bottom, ie `col2`. Defaults to `c("black","grey")`
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
 #' @importFrom glue glue
@@ -34,9 +34,10 @@
 #' @section Function ID:
 #' 2-6
 
-gt_merge_stack <- function(gt_object, col1, col2, color = "grey") {
+gt_merge_stack <- function(gt_object, col1, col2, colors = c("black","grey")) {
 
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
+  stopifnot("There must be two colors" = length(colors) == 2)
 
   col1_bare <- rlang::enexpr(col1) %>% rlang::as_string()
 
@@ -55,8 +56,8 @@ gt_merge_stack <- function(gt_object, col1, col2, color = "grey") {
       },
       fn = function(x) {
         glue::glue(
-          "<div style='line-height:10px'><span style='font-weight:bold;font-variant:small-caps;font-size:14px'>{x}</div>
-        <div style='line-height:12px'><span style ='font-weight:bold;color:{color};font-size:10px'>{data_in}</span></div>"
+          "<div style='line-height:10px'><span style='font-weight:bold;font-variant:small-caps;color:{colors[1]};font-size:14px'>{x}</div>
+        <div style='line-height:12px'><span style ='font-weight:bold;color:{colors[2]};font-size:10px'>{data_in}</span></div>"
         )
       }
     ) %>%

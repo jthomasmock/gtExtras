@@ -61,124 +61,97 @@ gt_plt_bar <- function(gt_object, column = NULL, color = "purple",
     )
   total_rng <- c(min_val, max(all_vals, na.rm = TRUE))
 
-  tab_out <- text_transform(
-    gt_object,
-    locations = cells_body({{ column }}),
-    fn = function(x) {
-      bar_fx <- function(x_val, colors) {
+  if (isTRUE(keep_column)) {
 
-        vals <- as.double(x_val)
+    gt_object <- gt_object %>%
+      gt_duplicate_column({{ column }}, dupe_name = "DUPE_COLUMN_PLT")
+  }
 
-        df_in <- dplyr::tibble(
-          x = vals,
-          y = rep(1),
-          fill = colors
-        )
+    bar_fx <- function(x_val, colors) {
 
-        plot_out <- df_in %>%
-          ggplot(aes(x = x, y = factor(y), fill = I(fill), group = y)) +
-          geom_col(color = "transparent", width = 0.3) +
-          scale_x_continuous(
-            expand = expansion(mult = c(0.01, 0.01)),
-            limits = total_rng
-          ) +
-          scale_y_discrete(expand = expansion(mult = c(0.2, 0.2))) +
-          geom_vline(xintercept = 0, color = "black", size = 1) +
-          coord_cartesian(clip = "off") +
-          theme_void() +
-          theme(legend.position = "none", plot.margin = unit(rep(0, 4), "pt"))
+      vals <- as.double(x_val)
 
-        if(scale_type != "none"){
-          plot_out <- plot_out +
-            geom_text(
+      df_in <- dplyr::tibble(
+        x = vals,
+        y = rep(1),
+        fill = colors
+      )
+
+      plot_out <- df_in %>%
+        ggplot(aes(x = x, y = factor(y), fill = I(fill), group = y)) +
+        geom_col(color = "transparent", width = 0.3) +
+        scale_x_continuous(
+          expand = expansion(mult = c(0.01, 0.01)),
+          limits = total_rng
+        ) +
+        scale_y_discrete(expand = expansion(mult = c(0.2, 0.2))) +
+        geom_vline(xintercept = 0, color = "black", size = 1) +
+        coord_cartesian(clip = "off") +
+        theme_void() +
+        theme(legend.position = "none", plot.margin = unit(rep(0, 4), "pt"))
+
+      if(scale_type != "none"){
+        plot_out <- plot_out +
+          geom_text(
             aes(x = x,
-              label = if(scale_type == "number"){
-              scales::label_number(...)(x)
-            } else if (scale_type == "percent"){
-              scales::label_percent(...)(x)
-            }),
+                label = if(scale_type == "number"){
+                  scales::label_number(...)(x)
+                } else if (scale_type == "percent"){
+                  scales::label_percent(...)(x)
+                }),
             hjust = 1, nudge_x = -0.1, vjust = 0.5,
             size = 3,
             family = "mono",
             color = "white",
             fontface = "bold"
           )
-        }
-
-        out_name <- file.path(tempfile(
-          pattern = "file",
-          tmpdir = tempdir(),
-          fileext = ".svg"
-        ))
-
-        ggsave(
-          out_name,
-          plot = plot_out,
-          dpi = 30,
-          height = 6,
-          width = width,
-          units = "px"
-        )
-
-        img_plot <- readLines(out_name) %>%
-          paste0(collapse = "") %>%
-          gt::html()
-
-        on.exit(file.remove(out_name))
-
-        img_plot
       }
 
-      # tab_built <- lapply(X = x, FUN = bar_fx)
+      out_name <- file.path(tempfile(
+        pattern = "file",
+        tmpdir = tempdir(),
+        fileext = ".svg"
+      ))
+
+      ggsave(
+        out_name,
+        plot = plot_out,
+        dpi = 30,
+        height = 6,
+        width = width,
+        units = "px"
+      )
+
+      img_plot <- readLines(out_name) %>%
+        paste0(collapse = "") %>%
+        gt::html()
+
+      on.exit(file.remove(out_name))
+
+      img_plot
+    }
+
+
+  tab_out <- text_transform(
+    gt_object,
+    locations = if(isTRUE(keep_column)){
+      cells_body(columns = DUPE_COLUMN_PLT)
+    } else {
+      cells_body(columns = {{ column }} )
+    },
+    fn =   function(x) {
       tab_built <- mapply(bar_fx, x_val = x, colors = colors)
     }
   )
 
-  if (isTRUE(keep_column)) {
-
-    # core concept is that we are adding a duplicate column
-    # which takes the place of the original column
-    # this will be "kept" in place as the original gets overwritten as a plot
-    dupe_name <- paste0(col_bare, "_dupe")
-    col_name_replace <- paste0(col_bare, "_plt")
-
-    col_bare_index <- which(tab_out[["_boxhead"]][["var"]] == col_bare)
-
-    tab_out[["_data"]] <- tab_out[["_data"]] %>%
-      dplyr::mutate(!!dupe_name := {{ column }}, .before = {{ column }}) %>%
-      dplyr::rename(
-        !!col_name_replace := col_bare,
-        !!col_bare := !!dupe_name
-      )
-
-    tab_out[["_boxhead"]] <- tab_out[["_boxhead"]] %>%
-      dplyr::mutate(column_label = dplyr::if_else(
-        var == !!col_bare,
-        list(!!col_name_replace),
-        column_label
-      ))
-
-
-    tab_out <- gt:::dt_boxhead_add_var(
-      data = tab_out,
-      var = col_name_replace,
-      type = "default",
-      column_label = list(col_bare),
-      column_align = "left",
-      column_width = list(NULL),
-      hidden_px = list(NULL),
-      add_where = "bottom"
-    )
-
-    tab_out <- tab_out %>%
-      cols_move(columns = all_of(col_bare), after = col_name_replace) %>%
-      cols_align(align = "left", columns = {{ column }})
+  if(isTRUE(keep_column)){
+    tab_out %>%
+      cols_label(DUPE_COLUMN_PLT = col_bare) %>%
+      cols_align("left", columns = DUPE_COLUMN_PLT)
   } else {
-    tab_out <- tab_out %>%
-      cols_align(align = "left", columns = {{ column }})
+    tab_out %>%
+      cols_align("left", columns = {{ column }})
   }
 
-  tab_out
-
-}
+  }
 

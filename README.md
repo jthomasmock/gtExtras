@@ -269,19 +269,19 @@ head(mtcars[,1:5]) %>%
 <img src="man/figures/highlight-target.png" width="500px">
 </p>
 
-### `gt_kable_sparkline()`
+### `gt_sparkline()`
 
 ``` r
-mtcars %>%
-  dplyr::group_by(cyl) %>%
-  # must end up with list of data for each row in the input dataframe
-  dplyr::summarize(mpg_data = list(mpg), .groups = "drop") %>%
-  gt() %>%
-  gt_kable_sparkline(mpg_data, height = 45)
+gt_sparkline_tab <- mtcars %>%
+   dplyr::group_by(cyl) %>%
+   # must end up with list of data for each row in the input dataframe
+   dplyr::summarize(mpg_data = list(mpg), .groups = "drop") %>%
+   gt() %>%
+   gt_sparkline(mpg_data)
 ```
 
 <p align="center">
-<img src="man/figures/kable-sparkline.png" width="200px">
+<img src="man/figures/ggplot2-sparkline.png" width="200px">
 </p>
 
 ### `gt_bar_plot()`

@@ -79,7 +79,7 @@ shared x-axis, and a vertical black bar is added at x = zero." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.10</span>
       </span>
     </div>
 
@@ -142,10 +142,11 @@ shared x-axis, and a vertical black bar is added at x = zero.</p>
   <span class='va'>gt_object</span>,
   column <span class='op'>=</span> <span class='cn'>NULL</span>,
   color <span class='op'>=</span> <span class='st'>"purple"</span>,
+  <span class='va'>...</span>,
   keep_column <span class='op'>=</span> <span class='cn'>FALSE</span>,
   width <span class='op'>=</span> <span class='fl'>70</span>,
   scale_type <span class='op'>=</span> <span class='st'>"none"</span>,
-  <span class='va'>...</span>
+  text_color <span class='op'>=</span> <span class='st'>"white"</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -164,6 +165,10 @@ shared x-axis, and a vertical black bar is added at x = zero.</p>
       <td><p>A character representing the color for the bar, defaults to purple. Accepts a named color (eg <code>'purple'</code>) or a hex color.</p></td>
     </tr>
     <tr>
+      <th>...</th>
+      <td><p>Additional arguments passed to <code><a href='https://scales.r-lib.org/reference/label_number.html'>scales::label_number()</a></code> or <code><a href='https://scales.r-lib.org/reference/label_percent.html'>scales::label_percent()</a></code>, depending on what was specified in <code>scale_type</code></p></td>
+    </tr>
+    <tr>
       <th>keep_column</th>
       <td><p><code>TRUE</code>/<code>FALSE</code> logical indicating if you want to keep a copy of the "plotted" column as raw values next to the plot itself..</p></td>
     </tr>
@@ -176,8 +181,8 @@ shared x-axis, and a vertical black bar is added at x = zero.</p>
       <td><p>A string indicating additional text formatting and the addition of numeric labels to the plotted bars if not <code>'none'</code>. If <code>'none'</code>, no numbers will be added to the bar, but if <code>"number"</code> or <code>"percent"</code> are used, then the numbers in the plotted column will be added as a bar-label and formatted according to <code><a href='https://scales.r-lib.org/reference/label_percent.html'>scales::label_percent()</a></code> or <code><a href='https://scales.r-lib.org/reference/label_number.html'>scales::label_number()</a></code>.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Additional arguments passed to <code><a href='https://scales.r-lib.org/reference/label_number.html'>scales::label_number()</a></code> or <code><a href='https://scales.r-lib.org/reference/label_percent.html'>scales::label_percent()</a></code>, depending on what was specified in <code>scale_type</code></p></td>
+      <th>text_color</th>
+      <td><p>A string indicating the color of text if <code>scale_type</code> is used. Defaults to <code>"white"</code></p></td>
     </tr>
     </table>
 

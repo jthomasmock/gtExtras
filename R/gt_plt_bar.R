@@ -7,10 +7,11 @@
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param column A single column wherein the bar plot should replace existing data.
 #' @param color A character representing the color for the bar, defaults to purple. Accepts a named color (eg `'purple'`) or a hex color.
+#' @param ... Additional arguments passed to `scales::label_number()` or `scales::label_percent()`, depending on what was specified in `scale_type`
 #' @param keep_column `TRUE`/`FALSE` logical indicating if you want to keep a copy of the "plotted" column as raw values next to the plot itself..
 #' @param width An integer indicating the width of the plot in pixels.
 #' @param scale_type A string indicating additional text formatting and the addition of numeric labels to the plotted bars if not `'none'`. If `'none'`, no numbers will be added to the bar, but if `"number"` or `"percent"` are used, then the numbers in the plotted column will be added as a bar-label and formatted according to `scales::label_percent()` or `scales::label_number()`.
-#' @param ... Additional arguments passed to `scales::label_number()` or `scales::label_percent()`, depending on what was specified in `scale_type`
+#' @param text_color A string indicating the color of text if `scale_type` is used. Defaults to `"white"`
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
 #' @importFrom scales label_number label_percent
@@ -30,8 +31,9 @@
 #' @section Function ID:
 #' 3-4
 
-gt_plt_bar <- function(gt_object, column = NULL, color = "purple",
-                       keep_column = FALSE, width = 70, scale_type = "none", ...) {
+gt_plt_bar <- function(gt_object, column = NULL, color = "purple",...,
+                       keep_column = FALSE, width = 70, scale_type = "none",
+                       text_color = "white") {
 
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
   stopifnot("`scale_type` must be one of 'number', 'percent' or 'none'" = scale_type %in% c("number", "percent", "none"))
@@ -48,18 +50,21 @@ gt_plt_bar <- function(gt_object, column = NULL, color = "purple",
               isTRUE(length(color) == 1|length(color)==length(all_vals))
             )
 
+  stopifnot("'text_color' must be length 1" = length(text_color) == 1)
+
   if(length(color) == 1){
     colors <- rep(color, length(all_vals))
-  } else if(color == length(all_vals)){
+  } else if(length(color) == length(all_vals)){
     colors <- color
   }
 
   min_val <- ifelse(
-    min(all_vals, na.rm = TRUE) > 0,
+    min(all_vals, na.rm = TRUE) >= 0,
     0,
     min(all_vals, na.rm = TRUE)
     )
-  total_rng <- c(min_val, max(all_vals, na.rm = TRUE))
+  rng_multiplier <- ifelse(min_val < 0, c(1.02, 1.02), c(.98, 1.02))
+  total_rng <- c(min_val, max(all_vals, na.rm = TRUE))*rng_multiplier
 
   if (isTRUE(keep_column)) {
 
@@ -81,8 +86,8 @@ gt_plt_bar <- function(gt_object, column = NULL, color = "purple",
         ggplot(aes(x = x, y = factor(y), fill = I(fill), group = y)) +
         geom_col(color = "transparent", width = 0.3) +
         scale_x_continuous(
-          expand = expansion(mult = c(0.01, 0.01)),
-          limits = total_rng
+          limits = total_rng,
+          expand = expansion(mult = c(0.05, 0.08)),
         ) +
         scale_y_discrete(expand = expansion(mult = c(0.2, 0.2))) +
         geom_vline(xintercept = 0, color = "black", size = 1) +
@@ -98,11 +103,13 @@ gt_plt_bar <- function(gt_object, column = NULL, color = "purple",
                   scales::label_number(...)(x)
                 } else if (scale_type == "percent"){
                   scales::label_percent(...)(x)
-                }),
-            hjust = 1, nudge_x = -0.1, vjust = 0.5,
+                },
+                hjust = ifelse(x >= 0, 1, 0)
+                ),
+            nudge_x = sign(df_in$x)*(-1)/80, vjust = 0.5,
             size = 3,
             family = "mono",
-            color = "white",
+            color = text_color,
             fontface = "bold"
           )
       }

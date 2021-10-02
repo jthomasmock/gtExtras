@@ -94,15 +94,16 @@ gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
             scale_x_continuous(expand = expansion(mult = c(0, 0.15))) +
             scale_y_discrete(expand = expansion(mult = c(0.1, 0.1))) +
             theme_void() +
-            theme(legend.position = "none", plot.margin = unit(rep(0, 4), "pt"),
+            theme(legend.position = "none",
+                  plot.margin = margin(0,0,0,0, "pt"),
                   plot.background = element_blank(),
                   panel.background = element_blank())
 
           out_name <- file.path(tempfile(pattern = "file", tmpdir = tempdir(),
                                          fileext = ".svg"))
 
-          ggsave(out_name, plot = plot_out, dpi = 30, height = 6, width = width,
-                 units = "px")
+          ggsave(out_name, plot = plot_out, dpi = 25.4, height = 5, width = width,
+                 units = "mm", device = "svg")
 
           img_plot <- readLines(out_name) %>%
             paste0(collapse = "") %>%

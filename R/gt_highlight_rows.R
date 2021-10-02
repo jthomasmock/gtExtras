@@ -54,7 +54,7 @@ gt_highlight_rows <- function(
         locations =
           cells_body(
             columns = {{ columns }},
-            rows = rows
+            rows = {{ rows }}
             )
       ) %>%
       tab_style(

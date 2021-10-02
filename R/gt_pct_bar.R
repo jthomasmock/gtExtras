@@ -129,7 +129,7 @@ gt_plt_bar_stack <- function(
           scale_y_discrete(expand = c(0, 0)) +
           coord_cartesian(clip = "off") +
           theme_void() +
-          theme(legend.position = "none", plot.margin = unit(rep(0, 4), "pt"))
+          theme(legend.position = "none", plot.margin = margin(0,0,0,0, "pt"))
 
         out_name <- file.path(tempfile(
           pattern = "file",
@@ -138,12 +138,9 @@ gt_plt_bar_stack <- function(
         ))
 
         ggsave(
-          out_name,
-          plot = plot_out,
-          dpi = 30,
-          height = 6,
-          width = width,
-          units = "px"
+          out_name, plot = plot_out, dpi = 25.4,
+          height = 5, width = width, units = "mm",
+          device = "svg"
         )
 
         img_plot <- readLines(out_name) %>%

@@ -58,13 +58,15 @@ gt_plt_bar <- function(gt_object, column = NULL, color = "purple",...,
     colors <- color
   }
 
-  min_val <- ifelse(
-    min(all_vals, na.rm = TRUE) >= 0,
-    0,
-    min(all_vals, na.rm = TRUE)
-    )
-  rng_multiplier <- ifelse(min_val < 0, c(1.02, 1.02), c(.98, 1.02))
-  total_rng <- c(min_val, max(all_vals, na.rm = TRUE))*rng_multiplier
+  if((min(all_vals, na.rm = TRUE) >= 0)){
+    min_val <- 0
+    rng_multiplier <- c(0.98, 1.02)
+  } else {
+    min_val <- min(all_vals, na.rm = TRUE)
+    rng_multiplier <- c(1.02, 1.02)
+  }
+
+  total_rng <- c(min_val, max(all_vals, na.rm = TRUE)) * rng_multiplier
 
   if (isTRUE(keep_column)) {
 
@@ -120,14 +122,10 @@ gt_plt_bar <- function(gt_object, column = NULL, color = "purple",...,
         fileext = ".svg"
       ))
 
-      ggsave(
-        out_name,
-        plot = plot_out,
-        dpi = 30,
-        height = 6,
-        width = width,
-        units = "px"
-      )
+      ggsave(out_name, plot = plot_out, dpi = 25.4,
+             height = 5, width = width, units = "mm",
+             device = "svg"
+             )
 
       img_plot <- readLines(out_name) %>%
         paste0(collapse = "") %>%

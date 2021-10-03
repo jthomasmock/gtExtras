@@ -32,15 +32,9 @@
 #' @section Function ID:
 #' 1-4
 
-gt_sparkline <- function(
-  gt_object,
-  column,
-  type = "sparkline",
-  line_color = "black",
-  range_colors = c("red", "blue"),
-  fill_color = "grey",
-  bw = NULL,
-  same_limit = TRUE
+gt_sparkline <- function( gt_object, column, type = "sparkline",
+                          line_color = "black", range_colors = c("red", "blue"),
+                          fill_color = "grey", bw = NULL, same_limit = TRUE
 ) {
 
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
@@ -56,7 +50,7 @@ gt_sparkline <- function(
   # convert to a single vector
   data_in <- unlist(data_in)
   # range to be used for plotting if same axis
-  total_rng <- range(data_in, na.rm = TRUE)
+  total_rng <- grDevices::extendrange(data_in, r = range(data_in, na.rm = TRUE), f = 0.02)
 
   plot_fn_spark <- function(x) {
     vals <- strsplit(x, split = ", ") %>%
@@ -75,7 +69,8 @@ gt_sparkline <- function(
         c(1:length(vals))[vals == max_val]
       ),
       y = c(x_min, x_max),
-      colors = c(rep(range_colors[1], length(x_min)), rep(range_colors[2], length(x_max)))
+      colors = c(rep(range_colors[1], length(x_min)),
+                 rep(range_colors[2], length(x_max)))
     )
 
     input_data <- dplyr::tibble(
@@ -85,30 +80,29 @@ gt_sparkline <- function(
 
     if (type == "sparkline") {
       plot_base <- ggplot(input_data) +
-        theme_void() +
-        coord_cartesian(clip = "off")
+        theme_void()
 
       if (isTRUE(same_limit)) {
         plot_base <- plot_base +
-          scale_y_continuous(
-            limits = total_rng,
-            expand = expansion(mult = 0.2)
-          )
+          scale_y_continuous(expand = expansion(mult = 0.05)) +
+          coord_cartesian(clip = "off", ylim = total_rng,
+                          xlim = c(0, length(vals) + 0.5))
       } else {
         plot_base <- plot_base +
-          scale_y_continuous(
-            limits = range(vals, na.rm = TRUE),
-            expand = expansion(mult = 0.2)
-          )
+          scale_y_continuous(expand = expansion(mult = 0.05)) +
+          coord_cartesian(clip = "off", ylim = grDevices::extendrange(vals),
+                          xlim = c(0, length(vals) + 0.5))
       }
 
-      plot_out <- plot_base +
-        geom_line(aes(x = x, y = y), size = 0.5, color = line_color) +
+        plot_out <- plot_base +
+          geom_line(aes(x = x, y = y, group = 1), size = 0.5,
+                  color = line_color) +
         geom_point(
           data = point_data,
-          aes(x = x, y = y, color = I(colors)),
+          aes(x = x, y = y, color = I(colors), group = 1),
           size = 0.5
         )
+
     } else if (type == "histogram") {
       plot_base <- ggplot(input_data) +
         theme_void()
@@ -129,7 +123,10 @@ gt_sparkline <- function(
             binwidth = bw
           ) +
           scale_x_continuous(expand = expansion(mult = 0.2)) +
-          coord_cartesian(clip = "off", xlim = range(data_in, na.rm = TRUE))
+          coord_cartesian(
+            clip = "off",
+            xlim = grDevices::extendrange(
+              data_in, r = range(data_in, na.rm = TRUE), f = 0.02))
 
       } else {
         if(is.null(bw)){
@@ -145,7 +142,10 @@ gt_sparkline <- function(
             fill = fill_color,
             binwidth = bw
           ) +
-          coord_cartesian(clip = "off")
+          coord_cartesian(clip = "off",
+                          xlim = grDevices::extendrange(
+                            vals, r = range(vals, na.rm = TRUE), f = 0.02
+                          ))
       }
     } else if (type == "density") {
 

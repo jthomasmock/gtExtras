@@ -16,7 +16,7 @@ gt_color_box(
 \arguments{
 \item{gt_object}{An existing gt table object of class \code{gt_tbl}}
 
-\item{columns}{he columns wherein changes to cell data colors should occur.}
+\item{columns}{The columns wherein changes to cell data colors should occur.}
 
 \item{palette}{The colours or colour function that values will be mapped to. Can be a character vector (eg \code{c("white", "red")} or hex colors) or if \code{use_paletteer = TRUE}, a named palette from the \code{{paletteer}} package.}
 
@@ -30,7 +30,10 @@ gt_color_box(
 An object of class \code{gt_tbl}.
 }
 \description{
-Add a small color box relative to the cell value.
+Create \code{PFF}-style colorboxes in a \code{gt} table.
+Note that rather than using \code{gt::fmt_} functions on this column, you can send
+numeric formatting arguments via \code{...}. All arguments should be named
+and are passed to \code{scales::label_number()}.
 }
 \section{Figures}{
 

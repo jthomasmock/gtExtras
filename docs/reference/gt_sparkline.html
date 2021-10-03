@@ -79,7 +79,7 @@ gt::text_transform() + ggplot2 with the necessary boilerplate already applied." 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.14</span>
       </span>
     </div>
 
@@ -142,9 +142,9 @@ adds sparklines via the <code>ggplot2</code>. This is a wrapper around
   <span class='va'>gt_object</span>,
   <span class='va'>column</span>,
   type <span class='op'>=</span> <span class='st'>"sparkline"</span>,
-  line_color <span class='op'>=</span> <span class='st'>"lightgrey"</span>,
+  line_color <span class='op'>=</span> <span class='st'>"black"</span>,
   range_colors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"red"</span>, <span class='st'>"blue"</span><span class='op'>)</span>,
-  fill_color <span class='op'>=</span> <span class='st'>"lightblue"</span>,
+  fill_color <span class='op'>=</span> <span class='st'>"grey"</span>,
   bw <span class='op'>=</span> <span class='cn'>NULL</span>,
   same_limit <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span></pre>
@@ -166,7 +166,7 @@ adds sparklines via the <code>ggplot2</code>. This is a wrapper around
     </tr>
     <tr>
       <th>line_color</th>
-      <td><p>Color for the line, defaults to <code>"lightgrey"</code>. Accepts a named color (eg 'blue') or a hex color.</p></td>
+      <td><p>Color for the line, defaults to <code>"black"</code>. Accepts a named color (eg 'blue') or a hex color.</p></td>
     </tr>
     <tr>
       <th>range_colors</th>
@@ -174,15 +174,15 @@ adds sparklines via the <code>ggplot2</code>. This is a wrapper around
     </tr>
     <tr>
       <th>fill_color</th>
-      <td><p>Color for the fill of histograms/density plots, defaults to <code>"lightgrey"</code>. Accepts a named color (eg <code>'blue'</code>) or a hex color.</p></td>
+      <td><p>Color for the fill of histograms/density plots, defaults to <code>"grey"</code>. Accepts a named color (eg <code>'blue'</code>) or a hex color.</p></td>
     </tr>
     <tr>
       <th>bw</th>
-      <td><p>The bandwidth or binwidth, passed to <code><a href='https://ggplot2.tidyverse.org/reference/geom_density.html'>ggplot2::geom_density()</a></code> or <code><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>ggplot2::geom_histogram()</a></code>. If <code>type = "density"</code>, then <code>bw</code> is passed to the <code>bw</code> argument, if <code>type = "histogram"</code>, then <code>bw</code> is passed to the <code>binwidth</code> argument.</p></td>
+      <td><p>The bandwidth or binwidth, passed to <code><a href='https://rdrr.io/r/stats/density.html'>density()</a></code> or <code><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>ggplot2::geom_histogram()</a></code>. If <code>type = "density"</code>, then <code>bw</code> is passed to the <code>bw</code> argument, if <code>type = "histogram"</code>, then <code>bw</code> is passed to the <code>binwidth</code> argument.</p></td>
     </tr>
     <tr>
       <th>same_limit</th>
-      <td><p>A logical indicating that the plots will use the same y-axis range (<code>TRUE</code>) or have individual y-axis ranges (<code>FALSE</code>).</p></td>
+      <td><p>A logical indicating that the plots will use the same axis range (<code>TRUE</code>) or have individual axis ranges (<code>FALSE</code>).</p></td>
     </tr>
     </table>
 

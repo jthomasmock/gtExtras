@@ -3,6 +3,7 @@
 export(add_text_img)
 export(fmt_pad_num)
 export(fmt_symbol_first)
+export(generate_df)
 export(gt_add_divider)
 export(gt_color_box)
 export(gt_color_rows)

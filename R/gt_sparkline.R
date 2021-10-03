@@ -7,11 +7,11 @@
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param column The column wherein the sparkline plot should replace existing data. Note that the data *must* be represented as a list of numeric values ahead of time.
 #' @param type A string indicating the type of plot to generate, accepts `"sparkline"`, `"histogram"` or `"density"`.
-#' @param line_color Color for the line, defaults to `"lightgrey"`. Accepts a named color (eg 'blue') or a hex color.
+#' @param line_color Color for the line, defaults to `"black"`. Accepts a named color (eg 'blue') or a hex color.
 #' @param range_colors A vector of two valid color names or hex codes, the first color represents the min values and the second color represents the highest point per plot. Defaults to `c("blue", "blue")`. Accepts a named color (eg `'blue'`) or a hex color like `"#fafafa"`.
-#' @param fill_color Color for the fill of histograms/density plots, defaults to `"lightgrey"`. Accepts a named color (eg `'blue'`) or a hex color.
-#' @param bw The bandwidth or binwidth, passed to `ggplot2::geom_density()` or `ggplot2::geom_histogram()`. If `type = "density"`, then `bw` is passed to the `bw` argument, if `type = "histogram"`, then `bw` is passed to the `binwidth` argument.
-#' @param same_limit A logical indicating that the plots will use the same y-axis range (`TRUE`) or have individual y-axis ranges (`FALSE`).
+#' @param fill_color Color for the fill of histograms/density plots, defaults to `"grey"`. Accepts a named color (eg `'blue'`) or a hex color.
+#' @param bw The bandwidth or binwidth, passed to `density()` or `ggplot2::geom_histogram()`. If `type = "density"`, then `bw` is passed to the `bw` argument, if `type = "histogram"`, then `bw` is passed to the `binwidth` argument.
+#' @param same_limit A logical indicating that the plots will use the same axis range (`TRUE`) or have individual axis ranges (`FALSE`).
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
 #' @export
@@ -36,9 +36,9 @@ gt_sparkline <- function(
   gt_object,
   column,
   type = "sparkline",
-  line_color = "lightgrey",
+  line_color = "black",
   range_colors = c("red", "blue"),
-  fill_color = "lightblue",
+  fill_color = "grey",
   bw = NULL,
   same_limit = TRUE
 ) {
@@ -148,8 +148,6 @@ gt_sparkline <- function(
           coord_cartesian(clip = "off")
       }
     } else if (type == "density") {
-      plot_base <- ggplot(input_data) +
-        theme_void()
 
       if (isTRUE(same_limit)) {
         if(is.null(bw)){
@@ -158,14 +156,26 @@ gt_sparkline <- function(
           bw <- bw
         }
 
+        total_rng <- density(data_in, bw = bw)[["x"]]
+
+        density_calc <- density(input_data[["y"]], bw = bw)
+        density_range <- density_calc[["x"]]
+
+        density_df <- dplyr::tibble(
+          x = density_calc[["x"]],
+          y = density_calc[["y"]]
+          )
+
+          plot_base <- ggplot(density_df) +
+            theme_void()
+
+
         plot_out <- plot_base +
-          geom_density(
-            aes(x = y),
-            color = line_color,
-            fill = fill_color,
-            bw = bw
-          ) +
-          coord_cartesian(xlim = range(data_in, na.rm = TRUE),
+          geom_area(aes(x = x, y = y),
+                    color = line_color,
+                    fill = fill_color) +
+          xlim(range(density_range)) +
+          coord_cartesian(xlim = range(total_rng, na.rm = TRUE),
                           expand = TRUE, clip = "off")
       } else {
         if(is.null(bw)){
@@ -174,14 +184,26 @@ gt_sparkline <- function(
           bw <- bw
         }
 
+        total_rng <- density(data_in, bw = bw)[["x"]]
+
+        density_calc <- density(input_data[["y"]], bw = bw)
+        density_range <- density_calc[["x"]]
+
+        density_df <- dplyr::tibble(
+          x = density_calc[["x"]],
+          y = density_calc[["y"]]
+        )
+
+        plot_base <- ggplot(density_df) +
+          theme_void()
+
         plot_out <- plot_base +
-          geom_density(
-            aes(x = y),
-            color = line_color,
-            fill = fill_color,
-            bw = bw
-          ) +
-          coord_cartesian(clip = "off", expand = TRUE)
+          geom_area(aes(x = x, y = y),
+                    color = line_color,
+                    fill = fill_color) +
+          xlim(range(density_range)) +
+          coord_cartesian(xlim = range(total_rng, na.rm = TRUE),
+                          expand = TRUE, clip = "off")
       }
     }
 

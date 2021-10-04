@@ -92,7 +92,7 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param column The column wherein the character strings should be replaced with their corresponding `{fontawesome}` icons.
 #' @param ... Additional arguments passed to `fontawesome::fa()`
-#' @param palette Name of palette as a string. Must be either length of 1 or a vector of valid color names/hex values of equal length to the unique levels of the column (ie if there are 4 names, there need to be 4x colors).
+#' @param palette Name of palette as a string. Must be either length of 1 or a vector of valid color names/hex values of equal length to the unique levels of the column (ie if there are 4 names, there need to be 4x colors). Note that if you would like to specify a specific color to match a specific icon, you can also use a named vector like: `c("angle-double-up" = "#009E73", "angle-double-down" = "#D55E00","sort" = "#000000")`
 #' @param align Character string indicating alignment of the column, defaults to "left"
 #' @param direction The direction of the `paletteer` palette, should be either `-1` for reversed or the default of `1` for the existing direction.
 
@@ -145,8 +145,13 @@ gt_fa_column <- function(gt_object, column, ..., palette = NULL,
         fct_lvl <- unique(x)
         stopifnot("The length of the unique elements must match the palette length" = length(fct_lvl) == length(pal_filler))
 
-        fct_x <- factor(xy, levels = fct_lvl, labels = pal_filler) %>%
-          as.character()
+        if(!is.null(names(pal_filler))){
+          fct_x <- factor(xy, levels = names(pal_filler), labels = pal_filler) %>%
+            as.character()
+        } else {
+          fct_x <- factor(xy, levels = fct_lvl, labels = pal_filler) %>%
+            as.character()
+        }
 
         my_fa <- list(fontawesome::fa(xy, ..., fill = fct_x, height = "20px", a11y = "sem") %>% gt::html())
         htmltools::div(title = xy, "aria-label" = xy, role = "img", my_fa, style = "padding:0px")

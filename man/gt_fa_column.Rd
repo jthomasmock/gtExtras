@@ -20,7 +20,7 @@ gt_fa_column(
 
 \item{...}{Additional arguments passed to \code{fontawesome::fa()}}
 
-\item{palette}{Name of palette as a string. Must be either length of 1 or a vector of valid color names/hex values of equal length to the unique levels of the column (ie if there are 4 names, there need to be 4x colors).}
+\item{palette}{Name of palette as a string. Must be either length of 1 or a vector of valid color names/hex values of equal length to the unique levels of the column (ie if there are 4 names, there need to be 4x colors). Note that if you would like to specify a specific color to match a specific icon, you can also use a named vector like: \code{c("angle-double-up" = "#009E73", "angle-double-down" = "#D55E00","sort" = "#000000")}}
 
 \item{align}{Character string indicating alignment of the column, defaults to "left"}
 

@@ -79,7 +79,7 @@ gt::text_transform() + ggplot2 with the necessary boilerplate already applied." 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.15</span>
       </span>
     </div>
 
@@ -146,6 +146,7 @@ adds sparklines via the <code>ggplot2</code>. This is a wrapper around
   range_colors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"red"</span>, <span class='st'>"blue"</span><span class='op'>)</span>,
   fill_color <span class='op'>=</span> <span class='st'>"grey"</span>,
   bw <span class='op'>=</span> <span class='cn'>NULL</span>,
+  trim <span class='op'>=</span> <span class='cn'>FALSE</span>,
   same_limit <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span></pre>
 
@@ -179,6 +180,10 @@ adds sparklines via the <code>ggplot2</code>. This is a wrapper around
     <tr>
       <th>bw</th>
       <td><p>The bandwidth or binwidth, passed to <code><a href='https://rdrr.io/r/stats/density.html'>density()</a></code> or <code><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>ggplot2::geom_histogram()</a></code>. If <code>type = "density"</code>, then <code>bw</code> is passed to the <code>bw</code> argument, if <code>type = "histogram"</code>, then <code>bw</code> is passed to the <code>binwidth</code> argument.</p></td>
+    </tr>
+    <tr>
+      <th>trim</th>
+      <td><p>A logical indicating whether to trim the values to a slight expansion beyond the observable range. Can help with long tails.</p></td>
     </tr>
     <tr>
       <th>same_limit</th>

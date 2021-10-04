@@ -12,6 +12,7 @@ gt_sparkline(
   range_colors = c("red", "blue"),
   fill_color = "grey",
   bw = NULL,
+  trim = FALSE,
   same_limit = TRUE
 )
 }
@@ -29,6 +30,8 @@ gt_sparkline(
 \item{fill_color}{Color for the fill of histograms/density plots, defaults to \code{"grey"}. Accepts a named color (eg \code{'blue'}) or a hex color.}
 
 \item{bw}{The bandwidth or binwidth, passed to \code{density()} or \code{ggplot2::geom_histogram()}. If \code{type = "density"}, then \code{bw} is passed to the \code{bw} argument, if \code{type = "histogram"}, then \code{bw} is passed to the \code{binwidth} argument.}
+
+\item{trim}{A logical indicating whether to trim the values to a slight expansion beyond the observable range. Can help with long tails.}
 
 \item{same_limit}{A logical indicating that the plots will use the same axis range (\code{TRUE}) or have individual axis ranges (\code{FALSE}).}
 }

@@ -11,6 +11,7 @@
 #' @param range_colors A vector of two valid color names or hex codes, the first color represents the min values and the second color represents the highest point per plot. Defaults to `c("blue", "blue")`. Accepts a named color (eg `'blue'`) or a hex color like `"#fafafa"`.
 #' @param fill_color Color for the fill of histograms/density plots, defaults to `"grey"`. Accepts a named color (eg `'blue'`) or a hex color.
 #' @param bw The bandwidth or binwidth, passed to `density()` or `ggplot2::geom_histogram()`. If `type = "density"`, then `bw` is passed to the `bw` argument, if `type = "histogram"`, then `bw` is passed to the `binwidth` argument.
+#' @param trim A logical indicating whether to trim the values to a slight expansion beyond the observable range. Can help with long tails.
 #' @param same_limit A logical indicating that the plots will use the same axis range (`TRUE`) or have individual axis ranges (`FALSE`).
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
@@ -34,7 +35,8 @@
 
 gt_sparkline <- function( gt_object, column, type = "sparkline",
                           line_color = "black", range_colors = c("red", "blue"),
-                          fill_color = "grey", bw = NULL, same_limit = TRUE
+                          fill_color = "grey", bw = NULL, trim = FALSE,
+                          same_limit = TRUE
 ) {
 
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
@@ -52,7 +54,7 @@ gt_sparkline <- function( gt_object, column, type = "sparkline",
   # range to be used for plotting if same axis
   total_rng <- grDevices::extendrange(data_in, r = range(data_in, na.rm = TRUE), f = 0.02)
 
-  plot_fn_spark <- function(x) {
+  plot_fn_spark <- function(x, trim) {
     vals <- strsplit(x, split = ", ") %>%
       unlist() %>%
       as.double()
@@ -166,6 +168,16 @@ gt_sparkline <- function( gt_object, column, type = "sparkline",
           y = density_calc[["y"]]
           )
 
+        if(trim){ # implementation of filtering values
+          # only to actual and slightly outside the range
+          filter_range <- range(vals, na.rm = TRUE) %>%
+            scales::expand_range(mul = 0.05)
+
+          density_df <- dplyr::filter(
+            density_df,
+            dplyr::between(x, filter_range[1], filter_range[2]))
+        }
+
           plot_base <- ggplot(density_df) +
             theme_void()
 
@@ -193,6 +205,16 @@ gt_sparkline <- function( gt_object, column, type = "sparkline",
           x = density_calc[["x"]],
           y = density_calc[["y"]]
         )
+
+        if(trim){ # implementation of filtering values
+          # only to actual and slightly outside the range
+          filter_range <- range(vals, na.rm = TRUE) %>%
+            scales::expand_range(mul = 0.05)
+
+          density_df <- dplyr::filter(
+            density_df,
+            dplyr::between(x, filter_range[1], filter_range[2]))
+        }
 
         plot_base <- ggplot(density_df) +
           theme_void()
@@ -235,8 +257,11 @@ gt_sparkline <- function( gt_object, column, type = "sparkline",
     fn = function(x) {
       lapply(
         x,
-        plot_fn_spark
+        function(x) {
+          plot_fn_spark(x, trim)
+        }
       )
     }
   )
 }
+

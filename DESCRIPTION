@@ -1,7 +1,7 @@
 Package: gtExtras
 Type: Package
 Title: A Collection of Helper Functions for the gt Package
-Version: 0.2.14
+Version: 0.2.15
 Author: Thomas Mock
 Maintainer: Thomas Mock <j.thomasmock@gmail.com>
 Description: Provides utility functions and common use-cases applied via the gt package.

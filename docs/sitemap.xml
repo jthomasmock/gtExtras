@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://jthomasmock.github.io/gtExtras/404.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/articles/plots-in-gt.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/authors.html</loc>
+  </url>
+  <url>
     <loc>https://jthomasmock.github.io/gtExtras/index.html</loc>
   </url>
   <url>
@@ -20,6 +38,12 @@
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_add_divider.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_add_fa_icons.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_bar_plot.html</loc>
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_color_box.html</loc>
@@ -52,7 +76,13 @@
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_hulk_col_numeric.html</loc>
   </url>
   <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_hulk_color.html</loc>
+  </url>
+  <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_img_rows.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_kable_sparkline.html</loc>
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_merge_stack.html</loc>
@@ -77,6 +107,9 @@
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_sparkline.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_text_img.html</loc>
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_theme_538.html</loc>
@@ -106,12 +139,15 @@
     <loc>https://jthomasmock.github.io/gtExtras/reference/gtsave_extra.html</loc>
   </url>
   <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/n_decimals.html</loc>
+  </url>
+  <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/pad_fn.html</loc>
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/tab_style_by_grp.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/articles/plots-in-gt.html</loc>
   </url>
 </urlset>

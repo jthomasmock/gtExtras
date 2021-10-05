@@ -8,6 +8,7 @@ gt_sparkline(
   gt_object,
   column,
   type = "sparkline",
+  width = 30,
   line_color = "black",
   range_colors = c("red", "blue"),
   fill_color = "grey",
@@ -23,6 +24,8 @@ gt_sparkline(
 
 \item{type}{A string indicating the type of plot to generate, accepts \code{"sparkline"}, \code{"histogram"} or \code{"density"}.}
 
+\item{width}{A number indicating the width of the plot in mm at a DPI of 25.4, defaults to 30}
+
 \item{line_color}{Color for the line, defaults to \code{"black"}. Accepts a named color (eg 'blue') or a hex color.}
 
 \item{range_colors}{A vector of two valid color names or hex codes, the first color represents the min values and the second color represents the highest point per plot. Defaults to \code{c("blue", "blue")}. Accepts a named color (eg \code{'blue'}) or a hex color like \code{"#fafafa"}.}
@@ -31,7 +34,7 @@ gt_sparkline(
 
 \item{bw}{The bandwidth or binwidth, passed to \code{density()} or \code{ggplot2::geom_histogram()}. If \code{type = "density"}, then \code{bw} is passed to the \code{bw} argument, if \code{type = "histogram"}, then \code{bw} is passed to the \code{binwidth} argument.}
 
-\item{trim}{A logical indicating whether to trim the values to a slight expansion beyond the observable range. Can help with long tails.}
+\item{trim}{A logical indicating whether to trim the values in \code{type = "density"} to a slight expansion beyond the observable range. Can help with long tails in \code{density} plots.}
 
 \item{same_limit}{A logical indicating that the plots will use the same axis range (\code{TRUE}) or have individual axis ranges (\code{FALSE}).}
 }
@@ -45,7 +48,7 @@ adds sparklines via the \code{ggplot2}. This is a wrapper around
 }
 \section{Figures}{
 
-\if{html}{\figure{ggplot2-sparkline.png}{options: width=20\%}}
+\if{html}{\figure{ggplot2-sparkline.png}{options: width=50\%}}
 }
 
 \section{Function ID}{

@@ -90,12 +90,12 @@ gt_sparkline <- function(gt_object, column, type = "sparkline", width = 30,
         plot_base <- plot_base +
           scale_y_continuous(expand = expansion(mult = 0.05)) +
           coord_cartesian(clip = "off", ylim = grDevices::extendrange(total_rng, f = 0.09),
-                          xlim = c(0.25, length(vals)*1.2))
+                          xlim = c(0.25, length(vals)*1.25))
       } else {
         plot_base <- plot_base +
           scale_y_continuous(expand = expansion(mult = 0.05)) +
           coord_cartesian(clip = "off", ylim = grDevices::extendrange(vals, f = 0.09),
-                          xlim = c(0.25, length(vals)*1.2))
+                          xlim = c(0.25, length(vals)*1.25))
       }
 
       med_y_rnd <- round(median(input_data$y))
@@ -125,7 +125,7 @@ gt_sparkline <- function(gt_object, column, type = "sparkline", width = 30,
                 )(y)
                 ),
             size = 2, family = "mono", hjust = 0, vjust = 0.5,
-            position = position_nudge(x = max(input_data$x)*0.03)
+            position = position_nudge(x = max(input_data$x)*0.05)
             )
 
     } else if (type == "histogram") {

@@ -38,8 +38,12 @@ gt_theme_guardian <- function(gt_object,...) {
     ) %>%
     tab_style(
       style = cell_text(color = "#005689", size = px(22), weight = 700),
-      locations = list(cells_title(groups = "title"),
-                       cells_title(groups = "subtitle")
+      locations = list(cells_title(groups = "title")
+      )
+    ) %>%
+    tab_style(
+      style = cell_text(color = "#005689", size = px(16), weight = 700),
+      locations = list(cells_title(groups = "subtitle")
       )
     )
 

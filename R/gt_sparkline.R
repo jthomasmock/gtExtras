@@ -105,14 +105,14 @@ gt_sparkline <- function(gt_object, column, type = "sparkline", width = 30,
           geom_line(aes(x = x, y = y, group = 1), size = 0.5,
                   color = line_color) +
           geom_point(
+            data = filter(input_data, x == max(x)),
+            aes(x = x, y=y), size = 0.5,  color = "black"
+          ) +
+          geom_point(
             data = point_data,
             aes(x = x, y = y, color = I(colors), group = 1),
             size = 0.5
             ) +
-          geom_point(
-            data = filter(input_data, x == max(x)),
-            aes(x = x, y=y), size = 0.5,  color = "black"
-          ) +
           geom_text(
             data = filter(input_data, x == max(x)),
             aes(x = x, y=y, color = "black",

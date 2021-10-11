@@ -83,13 +83,16 @@ gt_plt_bar_stack <- function(
     locations = cells_body({{ column }}),
     fn = function(x) {
       bar_fx <- function(x_val) {
+
+        if(x_val %in% c("NA", "NULL")){
+          return("<div></div>")
+        }
+
         col_pal <- palette
 
         vals <- strsplit(x_val, split = ", ") %>%
           unlist() %>%
           as.double()
-
-
 
         n_val <- length(vals)
 

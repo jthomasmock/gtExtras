@@ -89,6 +89,10 @@ gt_plt_dot <- function(gt_object, column, category_column , palette = NULL,
 
   color_dots <- function(x){
 
+    if(x %in% c("NA", "NULL")){
+      return("<div></div>")
+    }
+
     split_cols <- strsplit(x, "^split^", fixed = TRUE) %>% unlist()
 
     category_label <- split_cols[1]

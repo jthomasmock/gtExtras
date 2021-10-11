@@ -56,6 +56,10 @@ gt_plt_winloss <- function(gt_object, column, max_wins = 17,
 
   plot_fn_pill <- function(x){
 
+    if(x %in% c("NA", "NULL")){
+      return("<div></div>")
+    }
+
     vals <- strsplit(x, split = ", ") %>%
       unlist() %>%
       as.double()

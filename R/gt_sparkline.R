@@ -57,6 +57,11 @@ gt_sparkline <- function(gt_object, column, type = "sparkline", width = 30,
   total_rng <- grDevices::extendrange(data_in, r = range(data_in, na.rm = TRUE), f = 0.02)
 
   plot_fn_spark <- function(x, trim) {
+
+    if(x %in% c("NA", "NULL")){
+      return("<div></div>")
+    }
+
     vals <- strsplit(x, split = ", ") %>%
       unlist() %>%
       as.double()

@@ -76,6 +76,10 @@ gt_plt_bar <- function(gt_object, column = NULL, color = "purple",...,
 
     bar_fx <- function(x_val, colors) {
 
+      if(x_val %in% c("NA", "NULL")){
+        return("<div></div>")
+      }
+
       vals <- as.double(x_val)
 
       df_in <- dplyr::tibble(

@@ -68,6 +68,10 @@ gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
       fn = function(x) {
         bar_fx <- function(xz, target_vals) {
 
+          if(xz %in% c("NA", "NULL")){
+            return("<div></div>")
+          }
+
           split_cols <- strsplit(xz, "^split^", fixed = TRUE) %>% unlist()
 
           target_vals <- as.double(split_cols[1])

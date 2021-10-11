@@ -4,6 +4,9 @@
 # gtExtras
 
 <!-- badges: start -->
+
+[![Codecov test
+coverage](https://codecov.io/gh/jthomasmock/gtExtras/branch/master/graph/badge.svg)](https://codecov.io/gh/jthomasmock/gtExtras?branch=master)
 <!-- badges: end -->
 
 The goal of `{gtExtras}` is to provide some additional helper functions

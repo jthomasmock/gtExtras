@@ -4,3 +4,4 @@
 ^LICENSE\.md$
 ^doc$
 ^Meta$
+^codecov\.yml$

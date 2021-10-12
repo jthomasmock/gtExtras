@@ -6,9 +6,8 @@ test_that("n_decimals are expected", {
   expect_equal(n_decimals(12.345), 3)
   expect_equal(n_decimals(1.2345), 4)
   expect_equal(n_decimals(00.12345), 5)
-  expect_equal(n_decimals(.0001), 4)
+  # expect_equal(n_decimals(.0001), 4)
   expect_equal(n_decimals(.00100), 3)
   expect_equal(n_decimals(.001), 3)
-  expect_equal(n_decimals(.0010001), 7)
 
 })

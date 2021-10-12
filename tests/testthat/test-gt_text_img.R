@@ -5,7 +5,7 @@ check_suggests <- function() {
 
 }
 
-test_that("two_column_layout, two gt_tbl objects", {
+test_that("gt_text_img is created and matches", {
   check_suggests()
 
   temp_nm <- tempfile(fileext = ".html")

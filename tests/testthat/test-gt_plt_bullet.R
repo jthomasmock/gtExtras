@@ -10,7 +10,7 @@ test_that("gt_plt_bullet SVG is created and has specific values", {
   bullet_tab <- tibble::rownames_to_column(mtcars) %>%
     dplyr::select(rowname, cyl:drat, mpg) %>%
     dplyr::group_by(cyl) %>%
-    dplyr::mutate(target_col = mean(mpg)) %>%
+    dplyr::mutate(target_col = round(mean(mpg), digits = 1)) %>%
     dplyr::slice_head(n = 3) %>%
     dplyr::ungroup() %>%
     gt::gt() %>%
@@ -22,17 +22,19 @@ test_that("gt_plt_bullet SVG is created and has specific values", {
   bar_vals <- bullet_tab %>%
     rvest::html_nodes("svg > g > rect") %>%
     rvest::html_attr("width") %>%
-    as.character()
+    as.double() %>%
+    round(digits = 1)
 
   target_vals <- bullet_tab %>%
     rvest::html_nodes("svg > g") %>%
     rvest::html_nodes("line") %>%
     .[seq(1, 17, by = 2)] %>%
     rvest::html_attr("x1") %>%
-    as.character()
+    as.double() %>%
+    round(digits = 0)
 
-  exp_bar_vals <- as.character(c("103.65","110.92","103.65","95.46","95.46","97.28","85.01","65.01","74.55" ))
-  exp_tar_vals <- as.character(c("121.19","121.19","121.19","89.74","89.74","89.74","68.64","68.64","68.64"))
+  exp_bar_vals <- c(103.7, 110.9, 103.7, 95.5, 95.5, 97.3, 85, 65, 74.6)
+  exp_tar_vals <- c(121, 121, 121, 90, 90, 90, 69, 69, 69)
   expect_equal(bar_vals, exp_bar_vals)
   expect_equal(target_vals, exp_tar_vals)
   })

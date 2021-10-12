@@ -25,7 +25,7 @@
 #' @section Function ID:
 #' 2-11
 
-gt_add_divider <- function(gt_object, columns, sides = "right", color = "#00FFFFFF",
+gt_add_divider <- function(gt_object, columns, sides = "right", color = "grey",
                            style = "solid", weight = px(2), include_labels = TRUE){
 
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))

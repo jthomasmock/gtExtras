@@ -19,6 +19,10 @@ official documentation.
 
 ## Installation
 
+Full disclosure, `gtExtras` is under extremely active development. I
+appreciate any bug reports as issues, and I highly recommend updating
+frequently at least until an initial CRAN release.
+
 You can install the dev version of gtExtras from
 [GitHub](https://github.com/jthomasmock/gtExtra) with:
 

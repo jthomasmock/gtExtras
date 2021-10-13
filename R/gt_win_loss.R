@@ -10,7 +10,7 @@
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param column The column wherein the winloss plot should replace existing data. Note that the data *must* be represented as a list of numeric values ahead of time.
 #' @param max_wins An integer indicating the max possible wins, this will be used to add padding if the total wins/losses observed is less than the max. This is useful for mid-season reporting. Defaults to a red, blue, grey palette.
-#' @param colors A character vector of length 3, specifying the colors for loss, win, tie in that exact order.
+#' @param colors A character vector of length 3, specifying the colors for win, loss, tie in that exact order.
 #' @param type A character string representing the type of plot, either a 'pill' or 'square'
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
@@ -40,7 +40,7 @@
 #' 3-1
 
 gt_plt_winloss <- function(gt_object, column, max_wins = 17,
-                           colors = c("#D50A0A", "#013369", "gray"),
+                           colors = c("#013369", "#D50A0A", "gray"),
                            type = "pill") {
 
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
@@ -69,7 +69,7 @@ gt_plt_winloss <- function(gt_object, column, max_wins = 17,
       xend = 1:length(vals),
       y = ifelse(vals == 0.5, 0.4, vals),
       yend = ifelse(vals == 0, 0.6, ifelse(vals > 0.5, 0.4, 0.6)),
-      color = ifelse(vals == 0, "#D50A0A", ifelse(vals == 1, "#013369", "grey"))
+      color = ifelse(vals == 0, colors[2], ifelse(vals == 1, colors[1], colors[3]))
     )
 
     plot_out <- ggplot(input_data) +
@@ -109,7 +109,7 @@ gt_plt_winloss <- function(gt_object, column, max_wins = 17,
       xend = 1:length(vals),
       y = ifelse(vals == 0.5, 0.4, vals),
       yend = ifelse(vals == 0, 0.6, ifelse(vals > 0.5, 0.4, 0.6)),
-      color = ifelse(vals == 0, "#D50A0A", ifelse(vals == 1, "#013369", "grey"))
+      color = ifelse(vals == 0, colors[2], ifelse(vals == 1, colors[1], colors[3]))
     )
 
     plot_out <- ggplot(input_data) +

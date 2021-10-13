@@ -8,7 +8,7 @@ gt_add_divider(
   gt_object,
   columns,
   sides = "right",
-  color = "#00FFFFFF",
+  color = "grey",
   style = "solid",
   weight = px(2),
   include_labels = TRUE

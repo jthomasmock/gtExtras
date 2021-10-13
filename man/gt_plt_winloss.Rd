@@ -8,7 +8,7 @@ gt_plt_winloss(
   gt_object,
   column,
   max_wins = 17,
-  colors = c("#D50A0A", "#013369", "gray"),
+  colors = c("#013369", "#D50A0A", "gray"),
   type = "pill"
 )
 }
@@ -19,7 +19,7 @@ gt_plt_winloss(
 
 \item{max_wins}{An integer indicating the max possible wins, this will be used to add padding if the total wins/losses observed is less than the max. This is useful for mid-season reporting. Defaults to a red, blue, grey palette.}
 
-\item{colors}{A character vector of length 3, specifying the colors for loss, win, tie in that exact order.}
+\item{colors}{A character vector of length 3, specifying the colors for win, loss, tie in that exact order.}
 
 \item{type}{A character string representing the type of plot, either a 'pill' or 'square'}
 }

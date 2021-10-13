@@ -65,12 +65,14 @@ gt_plt_winloss <- function(gt_object, column, max_wins = 17,
       as.double()
 
     input_data <- data.frame(
-      x = 1:length(vals),
-      xend = 1:length(vals),
-      y = ifelse(vals == 0.5, 0.4, vals),
-      yend = ifelse(vals == 0, 0.6, ifelse(vals > 0.5, 0.4, 0.6)),
-      color = ifelse(vals == 0, "#D50A0A", ifelse(vals == 1, "#013369", "grey"))
-    )
+        x = 1:length(vals),
+        xend = 1:length(vals),
+        y = ifelse(vals == 0.5, 0.4, vals),
+        yend = ifelse(vals == 0, 0.6, ifelse(vals > 0.5, 0.4, 0.6)),
+        color = ifelse(vals == 0, colors[3], ifelse(vals == 1, colors[1], colors[2]))
+      )
+    
+    
 
     plot_out <- ggplot(input_data) +
       geom_segment(

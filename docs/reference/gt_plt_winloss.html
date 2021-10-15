@@ -89,7 +89,7 @@ values of 0 (loss), 0.5 (tie), and 1 (win)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.18</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.19</span>
       </span>
     </div>
 
@@ -149,7 +149,8 @@ values of 0 (loss), 0.5 (tie), and 1 (win).</p>
   <span class='va'>column</span>,
   max_wins <span class='op'>=</span> <span class='fl'>17</span>,
   colors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#013369"</span>, <span class='st'>"#D50A0A"</span>, <span class='st'>"gray"</span><span class='op'>)</span>,
-  type <span class='op'>=</span> <span class='st'>"pill"</span>
+  type <span class='op'>=</span> <span class='st'>"pill"</span>,
+  width <span class='op'>=</span> <span class='fl'>23</span>
 <span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -174,6 +175,10 @@ values of 0 (loss), 0.5 (tie), and 1 (win).</p>
     <tr>
       <th>type</th>
       <td><p>A character string representing the type of plot, either a 'pill' or 'square'</p></td>
+    </tr>
+    <tr>
+      <th>width</th>
+      <td><p>A numeric indicating the width of the plot in <code>mm</code>, this can help with larger datasets where data points are overlapping.</p></td>
     </tr>
     </table>
 

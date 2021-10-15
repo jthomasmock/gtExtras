@@ -252,3 +252,44 @@ test_that("svg is created and has specific values, trim = TRUE and bw = 2.5", {
 
 })
 
+
+test_that("label is created or not created", {
+  check_suggests()
+
+  # basic sparkline
+  spark_label <- mtcars %>%
+    dplyr::group_by(cyl) %>%
+    # must end up with list of data for each row in the input dataframe
+    dplyr::summarize(mpg_data = list(mpg), .groups = "drop") %>%
+    gt() %>%
+    gt_sparkline(mpg_data, same_limit = FALSE, label = TRUE)
+
+  spark_no_lab <- mtcars %>%
+    dplyr::group_by(cyl) %>%
+    # must end up with list of data for each row in the input dataframe
+    dplyr::summarize(mpg_data = list(mpg), .groups = "drop") %>%
+    gt() %>%
+    gt_sparkline(mpg_data, same_limit = FALSE, label = FALSE)
+
+  spark_lab_html <- spark_label %>%
+    gt::as_raw_html() %>%
+    rvest::read_html()
+
+  spark_nolab_html <- spark_no_lab %>%
+    gt::as_raw_html() %>%
+    rvest::read_html()
+
+  # SVG text has specific values ----
+
+  spark_txt <- spark_lab_html %>%
+    rvest::html_nodes("svg > g > text") %>%
+    rvest::html_text()
+
+  spark_no_txt <- spark_nolab_html %>%
+    rvest::html_nodes("svg > g > text") %>%
+    rvest::html_text()
+
+  expect_equal(spark_txt, c("21.4","19.7","15.0"))
+  expect_equal(spark_no_txt, character(0))
+
+})

@@ -14,6 +14,7 @@
 #' @param bw The bandwidth or binwidth, passed to `density()` or `ggplot2::geom_histogram()`. If `type = "density"`, then `bw` is passed to the `bw` argument, if `type = "histogram"`, then `bw` is passed to the `binwidth` argument.
 #' @param trim A logical indicating whether to trim the values in `type = "density"` to a slight expansion beyond the observable range. Can help with long tails in `density` plots.
 #' @param same_limit A logical indicating that the plots will use the same axis range (`TRUE`) or have individual axis ranges (`FALSE`).
+#' @param label A logical indicating whether the sparkline will have a numeric label at the end of the plot.
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
 #' @importFrom scales label_number_si
@@ -38,7 +39,7 @@
 gt_sparkline <- function(gt_object, column, type = "sparkline", width = 30,
                          line_color = "black", range_colors = c("red", "blue"),
                          fill_color = "grey", bw = NULL, trim = FALSE,
-                         same_limit = TRUE
+                         same_limit = TRUE, label = TRUE
 ) {
 
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
@@ -117,21 +118,27 @@ gt_sparkline <- function(gt_object, column, type = "sparkline", width = 30,
             data = point_data,
             aes(x = x, y = y, color = I(colors), group = 1),
             size = 0.5
-            ) +
-          geom_text(
-            data = filter(input_data, x == max(x)),
-            aes(x = x, y=y, color = "black",
-                label = scales::label_number_si(
-                  accuracy = if(med_y_rnd > 0){
-                    .1
-                } else if(med_y_rnd == 0) {
-                  .01
-                }
-                )(y)
-                ),
-            size = 2, family = "mono", hjust = 0, vjust = 0.5,
-            position = position_nudge(x = max(input_data$x)*0.05)
             )
+
+        if(isTRUE(label)){
+          plot_out <- plot_out +
+            geom_text(
+              data = filter(input_data, x == max(x)),
+              aes(x = x, y=y, color = "black",
+                  label = scales::label_number_si(
+                    accuracy = if(med_y_rnd > 0){
+                      .1
+                    } else if(med_y_rnd == 0) {
+                      .01
+                    }
+                  )(y)
+              ),
+              size = 2, family = "mono", hjust = 0, vjust = 0.5,
+              position = position_nudge(x = max(input_data$x)*0.05)
+            )
+        }
+
+
 
     } else if (type == "histogram") {
       plot_base <- ggplot(input_data) +

@@ -9,7 +9,8 @@ gt_plt_winloss(
   column,
   max_wins = 17,
   colors = c("#013369", "#D50A0A", "gray"),
-  type = "pill"
+  type = "pill",
+  width = 23
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ gt_plt_winloss(
 \item{colors}{A character vector of length 3, specifying the colors for win, loss, tie in that exact order.}
 
 \item{type}{A character string representing the type of plot, either a 'pill' or 'square'}
+
+\item{width}{A numeric indicating the width of the plot in \code{mm}, this can help with larger datasets where data points are overlapping.}
 }
 \value{
 An object of class \code{gt_tbl}.

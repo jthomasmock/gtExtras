@@ -14,7 +14,8 @@ gt_sparkline(
   fill_color = "grey",
   bw = NULL,
   trim = FALSE,
-  same_limit = TRUE
+  same_limit = TRUE,
+  label = TRUE
 )
 }
 \arguments{
@@ -37,6 +38,8 @@ gt_sparkline(
 \item{trim}{A logical indicating whether to trim the values in \code{type = "density"} to a slight expansion beyond the observable range. Can help with long tails in \code{density} plots.}
 
 \item{same_limit}{A logical indicating that the plots will use the same axis range (\code{TRUE}) or have individual axis ranges (\code{FALSE}).}
+
+\item{label}{A logical indicating whether the sparkline will have a numeric label at the end of the plot.}
 }
 \value{
 An object of class \code{gt_tbl}.

@@ -12,6 +12,7 @@
 #' @param max_wins An integer indicating the max possible wins, this will be used to add padding if the total wins/losses observed is less than the max. This is useful for mid-season reporting. Defaults to a red, blue, grey palette.
 #' @param colors A character vector of length 3, specifying the colors for win, loss, tie in that exact order.
 #' @param type A character string representing the type of plot, either a 'pill' or 'square'
+#' @param width A numeric indicating the width of the plot in `mm`, this can help with larger datasets where data points are overlapping.
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
 #' @import gt rlang
@@ -41,7 +42,7 @@
 
 gt_plt_winloss <- function(gt_object, column, max_wins = 17,
                            colors = c("#013369", "#D50A0A", "gray"),
-                           type = "pill") {
+                           type = "pill", width = 23) {
 
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
   stopifnot("type must be on of 'pill' or 'square'" = {type %in% c("pill", "square")})
@@ -85,7 +86,7 @@ gt_plt_winloss <- function(gt_object, column, max_wins = 17,
     )
 
     ggsave(out_name, plot = plot_out,
-           dpi = 20, height = 0.15, width = 0.9)
+           dpi = 20, height = 3.81, width = width, units = "mm")
 
     img_plot <- out_name %>%
       readLines() %>%

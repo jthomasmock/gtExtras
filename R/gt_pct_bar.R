@@ -99,7 +99,7 @@ gt_plt_bar_stack <- function(
         stopifnot("There must be 2 or 3 values" = (n_val %in% c(2, 3)))
 
         col_fill <- if (n_val == 2) {
-          c(1, 3)
+          c(1, 2)
         } else {
           c(1:3)
         }

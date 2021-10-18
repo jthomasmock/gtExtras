@@ -12,7 +12,9 @@
 #' @param gt_object An existing gt table object
 #' @param column The column name that you intend to extract, accepts tidyeval semantics (ie `mpg` instead of `"mpg"`)
 #' @param as_vector A logical indicating whether you'd like just the column indicated as a vector, or the entire dataframe
-#'
+#' @import gt rlang
+#' @importFrom gt %>%
+#' @importFrom dplyr pull mutate arrange
 #' @return A vector or a `tibble`
 #' @export
 #'

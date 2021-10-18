@@ -44,7 +44,7 @@ gt_sparkline <- function(gt_object, column, type = "sparkline", width = 30,
 
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
   # convert tidyeval column to bare string
-  col_bare <- rlang::enexpr(column) %>% rlang::as_string()
+  col_bare <- dplyr::select(gt_object[["_data"]], {{ column }}) %>% names()
   # segment data with bare string column name
   data_in <- gt_object[["_data"]][[col_bare]]
 

@@ -117,6 +117,7 @@ Other Utilities:
 \code{\link{gt_fa_repeats}()},
 \code{\link{gt_highlight_cols}()},
 \code{\link{gt_highlight_rows}()},
+\code{\link{gt_img_circle}()},
 \code{\link{gt_img_rows}()},
 \code{\link{gt_merge_stack}()},
 \code{\link{gtsave_extra}()},

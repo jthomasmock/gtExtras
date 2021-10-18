@@ -15,6 +15,6 @@ with_tooltip(label, tooltip)
 HTML text
 }
 \description{
-This is a lightweight helper to add tooltip, tyoically to be
+This is a lightweight helper to add tooltip, typically to be
 used within \code{gt::cols_label()}.
 }

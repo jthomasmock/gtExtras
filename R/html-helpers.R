@@ -33,7 +33,7 @@ gt_label_details <- function(label, content){
 }
 
 #' A helper to add basic tooltip inside a gt table
-#' @description This is a lightweight helper to add tooltip, tyoically to be
+#' @description This is a lightweight helper to add tooltip, typically to be
 #' used within `gt::cols_label()`.
 #' @param label The label for the item with a tooltip
 #' @param tooltip The text based tooltip for the item

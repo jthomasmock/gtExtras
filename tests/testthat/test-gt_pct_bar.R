@@ -86,8 +86,8 @@ test_that("gt_pct_bar SVG is created and has specific palette", {
   expect_equal(bar_vals, c(0, 119.06, 0, 124.02, 0, 85.04, 0, 85.04))
   expect_equal(
     bar_colors,
-    c("FF4343;", "0A1C2B;", "FF4343;", "0A1C2B;",
-      "FF4343;", "0A1C2B;", "FF4343;", "0A1C2B;")
+    c("FF4343;", "BFBFBF;", "FF4343;", "BFBFBF;",
+      "FF4343;", "BFBFBF;", "FF4343;", "BFBFBF;")
   )
 
 })

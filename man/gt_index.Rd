@@ -29,7 +29,7 @@ based on multiple indices.
 }
 \section{Figures}{
 
-\if{html}{\figure{gt_index_style.png}{options: width=20\%}}
+\if{html}{\figure{gt_index_style.png}{options: width=50\%}}
 }
 
 \section{Function ID}{

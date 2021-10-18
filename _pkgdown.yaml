@@ -48,6 +48,9 @@ reference:
   - gtsave_extra
   - gt_duplicate_column
   - gt_index
+  - gt_label_details
+  - with_tooltip
+  - gt_hyperlink
 - title: Plotting
   desc: Add plots to specific rows of an existing table
   contents:

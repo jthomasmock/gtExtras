@@ -79,6 +79,9 @@
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_hulk_color.html</loc>
   </url>
   <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_hyperlink.html</loc>
+  </url>
+  <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_img_circle.html</loc>
   </url>
   <url>
@@ -89,6 +92,9 @@
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_kable_sparkline.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_label_details.html</loc>
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_merge_stack.html</loc>
@@ -158,5 +164,8 @@
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/tab_style_by_grp.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/with_tooltip.html</loc>
   </url>
 </urlset>

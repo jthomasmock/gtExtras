@@ -56,6 +56,7 @@ Other Utilities:
 \code{\link{fmt_symbol_first}()},
 \code{\link{generate_df}()},
 \code{\link{gt_add_divider}()},
+\code{\link{gt_badge}()},
 \code{\link{gt_double_table}()},
 \code{\link{gt_duplicate_column}()},
 \code{\link{gt_fa_column}()},

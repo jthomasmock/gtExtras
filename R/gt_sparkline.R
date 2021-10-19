@@ -45,8 +45,9 @@ gt_sparkline <- function(gt_object, column, type = "sparkline", width = 30,
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
   # convert tidyeval column to bare string
   col_bare <- dplyr::select(gt_object[["_data"]], {{ column }}) %>% names()
+
   # segment data with bare string column name
-  data_in <- gt_object[["_data"]][[col_bare]]
+  data_in <- gt_index(gt_object, col_bare, as_vector = TRUE)
 
   stopifnot("Specified column must contain list of values" = class(data_in) %in% "list")
   stopifnot("You must supply two colors for the max and min values." = length(range_colors) == 2L)
@@ -141,6 +142,7 @@ gt_sparkline <- function(gt_object, column, type = "sparkline", width = 30,
 
 
     } else if (type == "histogram") {
+
       plot_base <- ggplot(input_data) +
         theme_void()
 
@@ -188,12 +190,12 @@ gt_sparkline <- function(gt_object, column, type = "sparkline", width = 30,
 
       if (isTRUE(same_limit)) {
         if(is.null(bw)){
-          bw <- bw.nrd0(data_in)
+          bw <- bw.nrd0(na.omit(data_in))
         } else {
           bw <- bw
         }
 
-        total_rng_dens <- density(data_in, bw = bw)[["x"]]
+        total_rng_dens <- density(na.omit(data_in), bw = bw)[["x"]]
 
         density_calc <- density(input_data[["y"]], bw = bw)
         density_range <- density_calc[["x"]]

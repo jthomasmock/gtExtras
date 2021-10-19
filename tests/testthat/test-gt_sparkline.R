@@ -293,3 +293,45 @@ test_that("label is created or not created", {
   expect_equal(spark_no_txt, character(0))
 
 })
+
+test_that("gt_sparkline, missing data means no plot", {
+
+  input_data <- mtcars %>%
+    dplyr::group_by(cyl) %>%
+    # must end up with list of data for each row in the input dataframe
+    dplyr::summarize(mpg_data = list(mpg), .groups = "drop") %>%
+    dplyr::mutate(
+      mpg_data = list(mpg_data[[1]], list(NA), list(NULL))
+    )
+
+  spark_tb_miss <- input_data %>%
+    gt::gt() %>%
+    gt_sparkline(.data$mpg_data, type = "sparkline") %>%
+    gt::as_raw_html() %>%
+    rvest::read_html()
+  hist_tb_miss <- input_data %>%
+    gt::gt() %>%
+    gt_sparkline(.data$mpg_data, type = "histogram") %>%
+    gt::as_raw_html() %>%
+    rvest::read_html()
+  dens_tb_miss <- input_data %>%
+    gt::gt() %>%
+    gt_sparkline(.data$mpg_data, type = "density") %>%
+    gt::as_raw_html() %>%
+    rvest::read_html()
+
+  len_spark <- spark_tb_miss %>%
+    rvest::html_elements("svg") %>%
+    length()
+  len_hist <- hist_tb_miss %>%
+    rvest::html_elements("svg") %>%
+    length()
+  len_dens <- dens_tb_miss %>%
+    rvest::html_elements("svg") %>%
+    length()
+
+  expect_equal(len_spark, 1)
+  expect_equal(len_hist, 1)
+  expect_equal(len_dens, 1)
+
+})

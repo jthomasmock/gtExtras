@@ -227,3 +227,116 @@ gt_fa_rating <- function(gt_object, column, max_rating = 5,...,
     cols_align(align = "left", columns = {{ column }})
 
 }
+
+
+#' Add rank change indicators to a gt table
+#' @description Takes an existing `gt` table and converts a column of integers
+#' into various types of up/down arrows. Note that you need to specify a palette
+#' of three colors, in the order of up, neutral, down. Defaults to green, grey,
+#' purple. There are 6 supported `fa_type`, representing various arrows.
+#' Note that you can use `font_color = 'match'` to match the palette across
+#' arrows and text. `show_text = FALSE` will remove the text from the column,
+#' resulting only in colored arrows.
+#' @param gt_object An existing `gt` table object
+#' @param column The single column that you would like to convert to rank change indicators.
+#' @param palette A character vector of length 3. Colors can be represented as hex values or named colors. Colors should be in the order of up-arrow, no-change, down-arrow, defaults to green, grey, purple.
+#' @param fa_type The name of the Fontawesome icon, limited to 6 types of various arrows.
+#' @param font_color A string, indicating the color of the font, can also be returned as `'match'` to match the font color to the arrow palette.
+#' @param show_text A logical indicating whether to show/hide the values in the column.
+#' @importFrom htmltools div
+#' @import gt
+#' @importFrom gt %>%
+#' @importFrom dplyr case_when
+#' @importFrom glue glue
+#' @importFrom fontawesome fa
+#' @return a `gt` table
+#' @export
+#'
+#' @examples
+#' library(gt)
+#' rank_table <- tibble(x = c(1:3,-1,-2,-5,0)) %>%
+#'   gt() %>%
+#'   gt_fa_rank_chg(x, font_color = "match")
+#' @section Figures:
+#' \if{html}{\figure{fa_rank_change.png}{options: width=20\%}}
+#'
+#' @family Utilities
+gt_fa_rank_change <- function(gt_object, column, palette=c("#1b7837","lightgrey","#762a83"),
+                        fa_type = c("angle-double", "arrow", "level", "chevron", "caret", "long-arrow-alt"),
+                        font_color = "black", show_text = TRUE){
+
+  vals <- gt_index(gt_object, {{column}})
+
+  stopifnot("Column must be integers" = is.integer(as.integer(vals)))
+  stopifnot("Palette must be length 3, in order of increase, no change, decrease" = length(palette) == 3)
+  stopifnot('fa_type must be one of "angle-double", "arrow", "level", "chevron", "caret", "long-arrow-alt"' =
+              fa_type %in% c("angle-double", "arrow", "level", "chevron", "caret", "long-arrow-alt"))
+
+  fa_rank_chg <- function(fa_name, color, font_color, text){
+
+    if(font_color == "match"){
+      font_color <- color
+    }
+
+    if(text == ""){
+      fa_height <- "20px"
+    } else {
+      fa_height <- "12px"
+    }
+
+    my_fa <- list(
+      fontawesome::fa(name = fa_name, fill = color, height = fa_height,
+                      a11y = "sem") %>% gt::html())
+
+    htmltools::div(
+      "aria-label" = text, role = "img",
+      htmltools::div(my_fa, style = "float: left;margin-right:1px;"),
+      htmltools::div(text, style = "float:right;"),
+      style = glue::glue("padding:0px;display:inline;color:{font_color};font-weight:bold;font-size:12px;")
+    ) %>%
+      as.character() %>%
+      gt::html()
+
+  }
+
+  gt_object %>%
+    text_transform(
+      locations = cells_body({{column}}),
+      fn = function(x){
+
+        vals <- gt_index(gt_object, {{column}})
+
+        color_vals <- dplyr::case_when(
+          vals > 0 ~ palette[1],
+          vals == 0 ~ palette[2],
+          vals < 0 ~ palette[3]
+        )
+
+        if(fa_type[1] == "level"){
+          fa_vals <- dplyr::case_when(
+            vals > 0 ~ "level-up-alt",
+            vals < 0 ~ "level-down-alt",
+            vals == 0 ~ "equals"
+          )
+        } else {
+          fa_vals <- dplyr::case_when(
+            vals > 0 ~ paste0(fa_type[1], "-up"),
+            vals == 0 ~ "equals",
+            vals < 0 ~ paste0(fa_type[1], "-down")
+          )
+        }
+
+        if(isFALSE(show_text)){
+          vals <- ""
+        }
+
+        mapply(fa_rank_chg, fa_vals, color_vals, font_color, vals,
+               SIMPLIFY = FALSE)
+
+      }
+    )
+
+}
+
+
+

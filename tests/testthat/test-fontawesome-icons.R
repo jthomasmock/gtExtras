@@ -150,3 +150,90 @@ test_that("fontawesome, test column, name and colors", {
   expect_equal(col_cog_fn(c("red")), rep(c("red"), each = 6))
   expect_equal(col_cog_fn(c("cog" = "red", "cogs" = "green")), rep(c("red", "green"), each = 3))
 })
+
+# Check for palette -------------------------------------------------------
+
+test_that("fontawesome, test rank change", {
+  check_suggests()
+
+  base_tab <- dplyr::tibble(x = c(1:3,-1,-2,-5,0)) %>%
+    gt::gt()
+
+  rank_tab <- base_tab %>%
+    gt_fa_rank_change(x, font_color = "match") %>%
+    gt::as_raw_html() %>%
+    rvest::read_html()
+
+  rank_tab_items <- rank_tab %>%
+    rvest::html_elements("svg") %>%
+    rvest::html_attrs() %>%
+    lapply(function(x){
+      x[c("aria-label", "style")] %>%
+        gsub(x = ., pattern = ".*fill:", "") %>%
+        gsub(x =., pattern = ";.*", "")
+    })
+
+  expect_equal(
+    sapply(rank_tab_items, function(x)x[1]) %>% unname(),
+    c(rep("Angle Double Up", 3), rep("Angle Double Down", 3), "Equals")
+  )
+
+  expect_equal(
+    sapply(rank_tab_items, function(x)x[2]) %>% unname(),
+    c(rep("#1b7837", 3), rep("#762a83", 3), "lightgrey")
+  )
+
+no_text <- base_tab %>%
+  gt_fa_rank_change(x, show_text = FALSE, fa_type = "caret") %>%
+  gt::as_raw_html() %>%
+  rvest::read_html()
+
+no_text_items <- no_text %>%
+  rvest::html_elements("svg") %>%
+  rvest::html_attrs() %>%
+  lapply(function(x){
+    x[c("aria-label", "style")] %>%
+      gsub(x = ., pattern = ".*fill:", "") %>%
+      gsub(x =., pattern = ";.*", "")
+  })
+
+expect_equal(
+  sapply(no_text_items, function(x)x[1]) %>% unname(),
+  c(rep("Caret Up", 3), rep("Caret Down", 3), "Equals")
+)
+
+expect_equal(
+  sapply(no_text_items, function(x)x[2]) %>% unname(),
+  c(rep("#1b7837", 3), rep("#762a83", 3), "lightgrey")
+)
+
+custom_tab <- base_tab %>%
+  gt_fa_rank_change(
+    x,
+    palette = c("blue", "grey", "red"),
+    font_color = "black",
+    fa_type = "caret"
+  ) %>%
+  gt::as_raw_html() %>%
+  rvest::read_html()
+
+custom_tab_items <- custom_tab %>%
+  rvest::html_elements("svg") %>%
+  rvest::html_attrs() %>%
+  lapply(function(x) {
+    x[c("aria-label", "style")] %>%
+      gsub(x = ., pattern = ".*fill:", "") %>%
+      gsub(x = ., pattern = ";.*", "")
+  })
+
+expect_equal(
+  sapply(custom_tab_items, function(x) x[1]) %>% unname(),
+  c(rep("Caret Up", 3), rep("Caret Down", 3), "Equals")
+)
+
+expect_equal(
+  sapply(custom_tab_items, function(x) x[2]) %>% unname(),
+  c(rep("blue", 3), rep("red", 3), "grey")
+)
+
+})

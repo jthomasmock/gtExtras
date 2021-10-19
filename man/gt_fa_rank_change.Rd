@@ -40,14 +40,14 @@ resulting only in colored arrows.
 }
 \section{Figures}{
 
-\if{html}{\figure{fa_rank_change.png}{options: width=20\%}}
+\if{html}{\figure{fa_rank_change.png}{options: width=5\%}}
 }
 
 \examples{
 library(gt)
 rank_table <- tibble(x = c(1:3,-1,-2,-5,0)) \%>\%
   gt() \%>\%
-  gt_fa_rank_chg(x, font_color = "match")
+  gt_fa_rank_change(x, font_color = "match")
 }
 \seealso{
 Other Utilities: 

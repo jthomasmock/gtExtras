@@ -256,9 +256,9 @@ gt_fa_rating <- function(gt_object, column, max_rating = 5,...,
 #' library(gt)
 #' rank_table <- tibble(x = c(1:3,-1,-2,-5,0)) %>%
 #'   gt() %>%
-#'   gt_fa_rank_chg(x, font_color = "match")
+#'   gt_fa_rank_change(x, font_color = "match")
 #' @section Figures:
-#' \if{html}{\figure{fa_rank_change.png}{options: width=20\%}}
+#' \if{html}{\figure{fa_rank_change.png}{options: width=5\%}}
 #'
 #' @family Utilities
 gt_fa_rank_change <- function(gt_object, column, palette=c("#1b7837","lightgrey","#762a83"),

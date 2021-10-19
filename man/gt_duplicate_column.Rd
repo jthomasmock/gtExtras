@@ -55,6 +55,7 @@ Other Utilities:
 \code{\link{gt_badge}()},
 \code{\link{gt_double_table}()},
 \code{\link{gt_fa_column}()},
+\code{\link{gt_fa_rank_change}()},
 \code{\link{gt_fa_rating}()},
 \code{\link{gt_fa_repeats}()},
 \code{\link{gt_highlight_cols}()},

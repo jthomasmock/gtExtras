@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pad a vector of numbers to align on the decimal point. — pad_fn • gtExtras</title>
+<title>Add rank change indicators to a gt table — gt_fa_rank_change • gtExtras</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,14 @@
 
 
 
-<meta property="og:title" content="Pad a vector of numbers to align on the decimal point. — pad_fn" />
-<meta property="og:description" content="This helper function adds whitespace to numeric values so that they can
-be aligned on the decimal without requiring additional trailing zeroes.
-This function is intended to use within the gt::fmt() function." />
+<meta property="og:title" content="Add rank change indicators to a gt table — gt_fa_rank_change" />
+<meta property="og:description" content="Takes an existing gt table and converts a column of integers
+into various types of up/down arrows. Note that you need to specify a palette
+of three colors, in the order of up, neutral, down. Defaults to green, grey,
+purple. There are 6 supported fa_type, representing various arrows.
+Note that you can use font_color = 'match' to match the palette across
+arrows and text. show_text = FALSE will remove the text from the column,
+resulting only in colored arrows." />
 <meta property="og:image" content="https://jthomasmock.github.io/gtExtras/reference/figures/opengraph.png" />
 <meta property="og:image:alt" content="Screenshot of a data table that has the win/loss record of the 2020 NFL teams" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -129,45 +133,67 @@ This function is intended to use within the gt::fmt() function." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pad a vector of numbers to align on the decimal point.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/pad_fn.R'><code>R/pad_fn.R</code></a></small>
-    <div class="hidden name"><code>pad_fn.Rd</code></div>
+    <h1>Add rank change indicators to a gt table</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/fontawesome-icons.R'><code>R/fontawesome-icons.R</code></a></small>
+    <div class="hidden name"><code>gt_fa_rank_change.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This helper function adds whitespace to numeric values so that they can
-be aligned on the decimal without requiring additional trailing zeroes.
-This function is intended to use within the <code><a href='https://gt.rstudio.com/reference/fmt.html'>gt::fmt()</a></code> function.</p>
+    <p>Takes an existing <code>gt</code> table and converts a column of integers
+into various types of up/down arrows. Note that you need to specify a palette
+of three colors, in the order of up, neutral, down. Defaults to green, grey,
+purple. There are 6 supported <code>fa_type</code>, representing various arrows.
+Note that you can use <code>font_color = 'match'</code> to match the palette across
+arrows and text. <code>show_text = FALSE</code> will remove the text from the column,
+resulting only in colored arrows.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>pad_fn</span><span class='op'>(</span><span class='va'>x</span>, nsmall <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></code></pre></div>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>gt_fa_rank_change</span><span class='op'>(</span>
+  <span class='va'>gt_object</span>,
+  <span class='va'>column</span>,
+  palette <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#1b7837"</span>, <span class='st'>"lightgrey"</span>, <span class='st'>"#762a83"</span><span class='op'>)</span>,
+  fa_type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"angle-double"</span>, <span class='st'>"arrow"</span>, <span class='st'>"level"</span>, <span class='st'>"chevron"</span>, <span class='st'>"caret"</span>, <span class='st'>"long-arrow-alt"</span><span class='op'>)</span>,
+  font_color <span class='op'>=</span> <span class='st'>"black"</span>,
+  show_text <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A vector of numbers to pad/align at the decimal point</p></td>
+      <th>gt_object</th>
+      <td><p>An existing <code>gt</code> table object</p></td>
     </tr>
     <tr>
-      <th>nsmall</th>
-      <td><p>The max number of decimal places to round at/display</p></td>
+      <th>column</th>
+      <td><p>The single column that you would like to convert to rank change indicators.</p></td>
+    </tr>
+    <tr>
+      <th>palette</th>
+      <td><p>A character vector of length 3. Colors can be represented as hex values or named colors. Colors should be in the order of up-arrow, no-change, down-arrow, defaults to green, grey, purple.</p></td>
+    </tr>
+    <tr>
+      <th>fa_type</th>
+      <td><p>The name of the Fontawesome icon, limited to 6 types of various arrows.</p></td>
+    </tr>
+    <tr>
+      <th>font_color</th>
+      <td><p>A string, indicating the color of the font, can also be returned as <code>'match'</code> to match the font color to the arrow palette.</p></td>
+    </tr>
+    <tr>
+      <th>show_text</th>
+      <td><p>A logical indicating whether to show/hide the values in the column.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns a vector of equal length to the input vector</p>
+    <p>a <code>gt</code> table</p>
     <h2 class="hasAnchor" id="figures"><a class="anchor" href="#figures"></a>Figures</h2>
 
     
 
-<p><img src='figures/gt_pad_fn.png' width=20% /></p>
-    <h2 class="hasAnchor" id="function-id"><a class="anchor" href="#function-id"></a>Function ID</h2>
-
-    
-
-<p>2-3</p>
+<p><img src='figures/fa_rank_change.png' width=20% /></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Utilities: 
@@ -181,7 +207,6 @@ This function is intended to use within the <code><a href='https://gt.rstudio.co
 <code><a href='gt_double_table.html'>gt_double_table</a>()</code>,
 <code><a href='gt_duplicate_column.html'>gt_duplicate_column</a>()</code>,
 <code><a href='gt_fa_column.html'>gt_fa_column</a>()</code>,
-<code><a href='gt_fa_rank_change.html'>gt_fa_rank_change</a>()</code>,
 <code><a href='gt_fa_rating.html'>gt_fa_rating</a>()</code>,
 <code><a href='gt_fa_repeats.html'>gt_fa_repeats</a>()</code>,
 <code><a href='gt_highlight_cols.html'>gt_highlight_cols</a>()</code>,
@@ -192,21 +217,15 @@ This function is intended to use within the <code><a href='https://gt.rstudio.co
 <code><a href='gt_merge_stack.html'>gt_merge_stack</a>()</code>,
 <code><a href='gt_two_column_layout.html'>gt_two_column_layout</a>()</code>,
 <code><a href='gtsave_extra.html'>gtsave_extra</a>()</code>,
+<code><a href='pad_fn.html'>pad_fn</a>()</code>,
 <code><a href='tab_style_by_grp.html'>tab_style_by_grp</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'></span>
-<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span></span>
-<span class='r-in'><span class='va'>padded_tab</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1.2345</span>, <span class='fl'>12.345</span>, <span class='fl'>123.45</span>, <span class='fl'>1234.5</span>, <span class='fl'>12345</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://gt.rstudio.com/reference/pipe.html'>%&gt;%</a></span></span>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>rank_table</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>,<span class='op'>-</span><span class='fl'>1</span>,<span class='op'>-</span><span class='fl'>2</span>,<span class='op'>-</span><span class='fl'>5</span>,<span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://gt.rstudio.com/reference/pipe.html'>%&gt;%</a></span></span>
 <span class='r-in'>  <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://gt.rstudio.com/reference/pipe.html'>%&gt;%</a></span></span>
-<span class='r-in'>  <span class='fu'><a href='https://gt.rstudio.com/reference/fmt.html'>fmt</a></span><span class='op'>(</span>fns <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>{</span><span class='fu'>pad_fn</span><span class='op'>(</span><span class='va'>x</span>, nsmall <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>}</span><span class='op'>)</span> <span class='op'><a href='https://gt.rstudio.com/reference/pipe.html'>%&gt;%</a></span></span>
-<span class='r-in'>  <span class='fu'><a href='https://gt.rstudio.com/reference/tab_style.html'>tab_style</a></span><span class='op'>(</span></span>
-<span class='r-in'>    <span class='co'># MUST USE A MONO-SPACED FONT</span></span>
-<span class='r-in'>    <span class='co'># https://fonts.google.com/?category=Monospace</span></span>
-<span class='r-in'>    style <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/cell_text.html'>cell_text</a></span><span class='op'>(</span>font <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/google_font.html'>google_font</a></span><span class='op'>(</span><span class='st'>"Fira Mono"</span><span class='op'>)</span><span class='op'>)</span>,</span>
-<span class='r-in'>    locations <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/cells_body.html'>cells_body</a></span><span class='op'>(</span>columns <span class='op'>=</span> <span class='va'>x</span><span class='op'>)</span></span>
-<span class='r-in'>    <span class='op'>)</span></span>
-<span class='r-in'></span>
+<span class='r-in'>  <span class='fu'>gt_fa_rank_chg</span><span class='op'>(</span><span class='va'>x</span>, font_color <span class='op'>=</span> <span class='st'>"match"</span><span class='op'>)</span></span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in gt_fa_rank_chg(., x, font_color = "match")</span> could not find function "gt_fa_rank_chg"</span>
 </code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

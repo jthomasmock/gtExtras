@@ -43,14 +43,9 @@ gt_theme_538 <- function(gt_object,...) {
     ) %>%
     tab_style(
       style = cell_borders(
-        sides = "bottom", color = NULL, weight = px(3)
+        sides = "bottom", color = "black", weight = px(1)
       ),
-      locations = cells_body(
-        columns = everything(),
-        # This is a relatively sneaky way of changing the bottom border
-        # Regardless of data size
-        rows = nrow(gt_object[["_data"]])
-      )
+      locations = cells_row_groups()
     ) %>%
     tab_options(
       column_labels.background.color = "white",
@@ -74,5 +69,13 @@ gt_theme_538 <- function(gt_object,...) {
       table.font.size = 16,
       heading.align = "left",
       ...
+    ) %>% opt_css(
+      "tbody tr:last-child {
+    border-bottom: 2px solid #ffffff00;
+      }
+
+    ",
+    add = TRUE
     )
 }
+

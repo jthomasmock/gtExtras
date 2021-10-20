@@ -99,6 +99,8 @@ add_badge_color <- function(add_color, add_label, alpha_lvl){
 #' @param column The column to convert to badges, accepts `tidyeval`
 #' @param palette Name of palette as a string. Must be either length of 1 or a vector of valid color names/hex values of equal length to the unique levels of the column (ie if there are 4 names, there need to be 4x colors). Note that if you would like to specify a specific color to match a specific icon, you can also use a named vector like: `c("angle-double-up" = "#009E73", "angle-double-down" = "#D55E00","sort" = "#000000")`
 #' @param alpha A numeric indicating the alpha/transparency. Range from 0 to 1
+#' @import gt
+#' @importFrom gt %>%
 #' @export
 #' @return `gt` table
 #' @examples

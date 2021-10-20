@@ -3,7 +3,7 @@ pkgdown: 1.9000.9000.9000
 pkgdown_sha: 2720abc02fbddbb761104d44d30ce7a3d0c26812
 articles:
   plots-in-gt: plots-in-gt.html
-last_built: 2021-10-20T14:33Z
+last_built: 2021-10-20T21:37Z
 urls:
   reference: https://jthomasmock.github.io/gtExtras/reference
   article: https://jthomasmock.github.io/gtExtras/articles

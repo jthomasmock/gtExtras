@@ -25,6 +25,9 @@
     <loc>https://jthomasmock.github.io/gtExtras/reference/add_badge_color.html</loc>
   </url>
   <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/add_pcttile_plot.html</loc>
+  </url>
+  <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/add_text_img.html</loc>
   </url>
   <url>
@@ -122,6 +125,9 @@
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_dot.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_percentile.html</loc>
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_winloss.html</loc>

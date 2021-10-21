@@ -21,11 +21,11 @@ add_pcttile_plot <- function(data, palette, add_label, width){
     geom_vline(xintercept = 50, color = "black", size = 0.5) +
     geom_vline(xintercept = c(0,25,75,100), color = "grey", size = 0.25) +
     geom_hline(yintercept = 1, color = "lightgrey", size = 0.25, linetype = "dotted") +
-    geom_point(aes(x = x, y = y, fill = I(color)), color = "black", size = 2, stroke = 0.5,
+    geom_point(aes(x = x, y = y, fill = I(color)), color = "black", size = 3, stroke = 0.5,
                shape = 21) +
     theme_void() +
     coord_cartesian(xlim = c(0,100),
-                    ylim = c(0.6, 1.4), clip = "off")
+                    ylim = c(0.6, 1.2), clip = "off")
 
   if(isTRUE(add_label)){
     out_pct_plt <- out_pct_plt +
@@ -66,7 +66,7 @@ add_pcttile_plot <- function(data, palette, add_label, width){
 #' alternative for a bar plot. Con
 #' @param gt_object An existing gt table
 #' @param column The column to transform to the percentile dot plot. Accepts `tidyeval`. All values must be end up being between 0 and 100.
-#' @param palette A vector of strings of length 3. Defaults to `c('green', 'lightgrey', 'purple')` as hex so `c('#1b7837', 'lightgrey', '#762a83')`
+#' @param palette A vector of strings of length 3. Defaults to `c('blue', 'lightgrey', 'red')` as hex so `c("#007ad6", "#f0f0f0", "#f72e2e")`
 #' @param width A numeric, indicating the width of the plot in `mm`, defaults to 25
 #' @param scale A number to multiply/scale the values in the column by. Defaults to 1, but can also be 100 if you have decimals.
 #' @import gt
@@ -79,7 +79,7 @@ add_pcttile_plot <- function(data, palette, add_label, width){
 #' dot_plt <- dplyr::tibble(x = c(seq(10, 90, length.out = 5))) %>%
 #'   gt() %>%
 #'   gt_duplicate_column(x,dupe_name = "dot_plot") %>%
-#'   gt_percentile_dots(dot_plot)
+#'   gt_plt_percentile(dot_plot)
 #' @section Figures:
 #' \if{html}{\figure{gt_plt_percentile.png}{options: width=30\%}}
 #'
@@ -87,7 +87,7 @@ add_pcttile_plot <- function(data, palette, add_label, width){
 #' @section Function ID:
 #' 3-8
 gt_plt_percentile <- function(gt_object, column,
-                               palette = c('#1b7837', 'lightgrey', '#762a83'),
+                               palette = c("#007ad6", "#f0f0f0", "#f72e2e"),
                                width = 25, scale = 1) {
   gt_object %>%
     text_transform(
@@ -96,11 +96,11 @@ gt_plt_percentile <- function(gt_object, column,
         x <- as.double(x) * scale
         n_vals <- 1:length(x)
 
-        col_pal = dplyr::case_when(
-          dplyr::between(x, 25, 75) ~ palette[2],
-          x < 25 ~ palette[3],
-          x > 75 ~ palette[1]
-        )
+        stopifnot("Values must be scaled between 0 and 100"= dplyr::between(x, 0, 100))
+
+        col_pal <- scales::col_quantile(
+          palette = palette, domain = c(0:100),
+          reverse = TRUE, alpha = TRUE, n = 5)(x)
 
         add_label <- n_vals %in% c(min(n_vals), max(n_vals))
 

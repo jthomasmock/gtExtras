@@ -86,7 +86,7 @@ alternative for a bar plot. Con" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.2.6</span>
       </span>
     </div>
 
@@ -141,7 +141,7 @@ alternative for a bar plot. Con</p>
     <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>gt_plt_percentile</span><span class='op'>(</span>
   <span class='va'>gt_object</span>,
   <span class='va'>column</span>,
-  palette <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#1b7837"</span>, <span class='st'>"lightgrey"</span>, <span class='st'>"#762a83"</span><span class='op'>)</span>,
+  palette <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#007ad6"</span>, <span class='st'>"#f0f0f0"</span>, <span class='st'>"#f72e2e"</span><span class='op'>)</span>,
   width <span class='op'>=</span> <span class='fl'>25</span>,
   scale <span class='op'>=</span> <span class='fl'>1</span>
 <span class='op'>)</span></code></pre></div>
@@ -159,7 +159,7 @@ alternative for a bar plot. Con</p>
     </tr>
     <tr>
       <th>palette</th>
-      <td><p>A vector of strings of length 3. Defaults to <code>c('green', 'lightgrey', 'purple')</code> as hex so <code>c('#1b7837', 'lightgrey', '#762a83')</code></p></td>
+      <td><p>A vector of strings of length 3. Defaults to <code>c('blue', 'lightgrey', 'red')</code> as hex so <code>c("#007ad6", "#f0f0f0", "#f72e2e")</code></p></td>
     </tr>
     <tr>
       <th>width</th>
@@ -190,6 +190,7 @@ alternative for a bar plot. Con</p>
 <code><a href='gt_plt_bar_pct.html'>gt_plt_bar_pct</a>()</code>,
 <code><a href='gt_plt_bar_stack.html'>gt_plt_bar_stack</a>()</code>,
 <code><a href='gt_plt_bar.html'>gt_plt_bar</a>()</code>,
+<code><a href='gt_plt_point.html'>gt_plt_point</a>()</code>,
 <code><a href='gt_plt_winloss.html'>gt_plt_winloss</a>()</code>,
 <code><a href='gt_sparkline.html'>gt_sparkline</a>()</code></p></div>
 
@@ -198,8 +199,7 @@ alternative for a bar plot. Con</p>
 <span class='r-in'><span class='va'>dot_plt</span> <span class='op'>&lt;-</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>10</span>, <span class='fl'>90</span>, length.out <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://gt.rstudio.com/reference/pipe.html'>%&gt;%</a></span></span>
 <span class='r-in'>  <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://gt.rstudio.com/reference/pipe.html'>%&gt;%</a></span></span>
 <span class='r-in'>  <span class='fu'><a href='gt_duplicate_column.html'>gt_duplicate_column</a></span><span class='op'>(</span><span class='va'>x</span>,dupe_name <span class='op'>=</span> <span class='st'>"dot_plot"</span><span class='op'>)</span> <span class='op'><a href='https://gt.rstudio.com/reference/pipe.html'>%&gt;%</a></span></span>
-<span class='r-in'>  <span class='fu'>gt_percentile_dots</span><span class='op'>(</span><span class='va'>dot_plot</span><span class='op'>)</span></span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in gt_percentile_dots(., dot_plot)</span> could not find function "gt_percentile_dots"</span>
+<span class='r-in'>  <span class='fu'>gt_plt_percentile</span><span class='op'>(</span><span class='va'>dot_plot</span><span class='op'>)</span></span>
 </code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

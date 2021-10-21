@@ -4,18 +4,18 @@ check_suggests <- function() {
   skip_if_not_installed("xml2")
 }
 
-test_that("add_pcttile_plot creates a plot", {
+test_that("add_point_plot creates a plot", {
 
   check_suggests()
 
-  plt15 <- add_pcttile_plot(15, "green", TRUE, 25) %>% #htmltools::browsable()
+  plt15 <- add_point_plot(15, c("blue"), TRUE, 25, c(2,90), .1) %>%
     rvest::read_html()
 
   plt15_text <- plt15 %>%
     rvest::html_elements("svg > g > text") %>%
     rvest::html_text()
 
-  expect_equal(plt15_text, c("0","100","5", "0"))
+  expect_equal(plt15_text, c("2.0", "90.0"))
 
   pt15 <- plt15 %>%
     rvest::html_elements("svg > g") %>%
@@ -26,9 +26,9 @@ test_that("add_pcttile_plot creates a plot", {
     gsub(x = ., ";.*", "") %>%
     unname()
 
-  expect_equal(pt15, c("12.88", "4.94", "3.56", "#00FF00"))
+  expect_equal(pt15, c("12.74", "4.94", "3.56", "#0000FF"))
 
-  plt75 <- add_pcttile_plot(75, "#00FF00", FALSE, 25) %>%
+  plt75 <- add_point_plot(75, c("blue"), FALSE, 25, c(2,90), .1) %>%
     rvest::read_html()
 
   plt75_text <- plt75 %>%
@@ -46,16 +46,16 @@ test_that("add_pcttile_plot creates a plot", {
     gsub(x = ., ";.*", "") %>%
     unname()
 
-  expect_equal(pt75, c("51.54", "4.94", "3.56", "#00FF00"))
+  expect_equal(pt75, c("56.66","4.94","3.56","#0000FF"))
 
-  })
+})
 
-test_that("gt_plt_percentile works as intended", {
+test_that("gt_plt_point works as intended", {
 
-  dot_plt <- dplyr::tibble(x = c(seq(10, 90, length.out = 5))) %>%
+  dot_plt <- dplyr::tibble(x = c(seq(1.2e6, 2e6, length.out = 5))) %>%
     gt::gt() %>%
-    gt_duplicate_column(x,dupe_name = "dot_plot") %>%
-    gt_plt_percentile(dot_plot) %>%
+    gt_duplicate_column(x,dupe_name = "point_plot") %>%
+    gt_plt_point(point_plot, accuracy = .1, width = 25) %>%
     gt::as_raw_html() %>%
     rvest::read_html()
 
@@ -63,7 +63,7 @@ test_that("gt_plt_percentile works as intended", {
     rvest::html_elements("svg > g > text") %>%
     rvest::html_text()
 
-  expect_equal(dot_txt, rep(c("0", "100", "5", "0"), 2))
+  expect_equal(dot_txt, rep(c("1.1M", "2.1M"), 2))
 
   dot_pts <- dot_plt %>%
     rvest::html_elements("svg > g > circle") %>%
@@ -76,8 +76,9 @@ test_that("gt_plt_percentile works as intended", {
     }) %>%
     unlist()
 
-  exp_pts <- c("9.66", "#F72E2E", "22.55", "#FF9C8B", "35.43",
-               "#F0F0F0", "48.32", "#9BB3E4", "61.20", "#007AD6")
+
+exp_pts <- c("8.59", "#F72E2E", "22.01", "#FF9C8B", "35.43",
+             "#F0F0F0", "48.85", "#9BB3E4", "62.28", "#007AD6")
 
   expect_equal(dot_pts, exp_pts)
 

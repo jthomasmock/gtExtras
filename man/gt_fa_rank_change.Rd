@@ -44,9 +44,8 @@ resulting only in colored arrows.
 }
 
 \examples{
-library(gt)
-rank_table <- tibble(x = c(1:3,-1,-2,-5,0)) \%>\%
-  gt() \%>\%
+rank_table <- dplyr::tibble(x = c(1:3,-1,-2,-5,0)) \%>\%
+  gt::gt() \%>\%
   gt_fa_rank_change(x, font_color = "match")
 }
 \seealso{
@@ -54,6 +53,7 @@ Other Utilities:
 \code{\link{add_text_img}()},
 \code{\link{fa_icon_repeat}()},
 \code{\link{fmt_pad_num}()},
+\code{\link{fmt_pct_extra}()},
 \code{\link{fmt_symbol_first}()},
 \code{\link{generate_df}()},
 \code{\link{gt_add_divider}()},

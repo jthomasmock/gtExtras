@@ -31,6 +31,7 @@ reference:
   contents:
   - fmt_symbol_first
   - fmt_pad_num
+  - fmt_pct_extra
   - pad_fn
   - fa_icon_repeat
   - gt_fa_column

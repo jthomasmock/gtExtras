@@ -43,16 +43,14 @@ Create an inline 'bullet chart' in a gt table
 }
 
 \examples{
-library(gt)
 set.seed(37)
-
 bullet_tab <- tibble::rownames_to_column(mtcars) \%>\%
  dplyr::select(rowname, cyl:drat, mpg) \%>\%
  dplyr::group_by(cyl) \%>\%
  dplyr::mutate(target_col = mean(mpg)) \%>\%
  dplyr::slice_sample(n = 3) \%>\%
  dplyr::ungroup() \%>\%
- gt() \%>\%
+ gt::gt() \%>\%
  gt_plt_bullet(column = mpg, target = target_col, width = 45,
                colors = c("lightblue", "black")) \%>\%
  gt_theme_538()

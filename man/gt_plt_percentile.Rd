@@ -28,7 +28,8 @@ a gt table
 }
 \description{
 Creates a percentile dot plot in each row. Can be used as an
-alternative for a bar plot. Con
+alternative for a 0 to 100\% bar plot. Allows for scaling values as well and
+accepts a vector of colors for the range of values.
 }
 \section{Figures}{
 

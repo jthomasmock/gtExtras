@@ -2,7 +2,7 @@
 % Please edit documentation in R/gt_plt_percentile_dot.R
 \name{add_pcttile_plot}
 \alias{add_pcttile_plot}
-\title{Create a dot plot from 0 to 100 - add_pcttile_plot}
+\title{Create a dot plot from 0 to 100}
 \usage{
 add_pcttile_plot(data, palette, add_label, width)
 }
@@ -19,5 +19,5 @@ add_pcttile_plot(data, palette, add_label, width)
 gt table
 }
 \description{
-Create a dot plot from 0 to 100 - add_pcttile_plot
+Create a dot plot from 0 to 100
 }

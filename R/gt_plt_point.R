@@ -65,9 +65,10 @@ add_point_plot <- function(data, palette, add_label, width, vals_range,
 
 }
 
-#' Create a point plot for percentiles - gt_plt_point
+#' Create a point plot in place of each value.
 #' @description Creates a dot/point plot in each row. Can be used as an
-#' alternative for a bar plot. Accepts any range of values
+#' alternative for a bar plot. Accepts any range of values, as opposed to
+#' `gt_plt_percentile` which is intended to be used for values between 0 and 100.
 #' @param gt_object An existing gt table
 #' @param column The column to transform to the percentile dot plot. Accepts `tidyeval`. All values must be end up being between 0 and 100.
 #' @param palette A vector of strings of length 3. Defaults to `c('blue', 'lightgrey', 'red')` as hex so `c("#007ad6", "#f0f0f0", "#f72e2e")`

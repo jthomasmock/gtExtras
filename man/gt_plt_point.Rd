@@ -2,7 +2,7 @@
 % Please edit documentation in R/gt_plt_point.R
 \name{gt_plt_point}
 \alias{gt_plt_point}
-\title{Create a point plot for percentiles - gt_plt_point}
+\title{Create a point plot in place of each value.}
 \usage{
 gt_plt_point(
   gt_object,
@@ -31,7 +31,8 @@ a gt table
 }
 \description{
 Creates a dot/point plot in each row. Can be used as an
-alternative for a bar plot. Accepts any range of values
+alternative for a bar plot. Accepts any range of values, as opposed to
+\code{gt_plt_percentile} which is intended to be used for values between 0 and 100.
 }
 \section{Figures}{
 

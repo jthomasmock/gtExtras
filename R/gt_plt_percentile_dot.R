@@ -1,5 +1,4 @@
-#' Create a dot plot from 0 to 100 - add_pcttile_plot
-#'
+#' Create a dot plot from 0 to 100
 #' @param data The single value that will be used to plot the point.
 #' @param palette A length 3 palette, used to highlight high/med/low
 #' @param add_label A logical indicating whether to add the label or note. This will only be added if it is the first or last row.
@@ -63,7 +62,8 @@ add_pcttile_plot <- function(data, palette, add_label, width){
 
 #' Create a dot plot for percentiles
 #' @description Creates a percentile dot plot in each row. Can be used as an
-#' alternative for a bar plot. Con
+#' alternative for a 0 to 100% bar plot. Allows for scaling values as well and
+#' accepts a vector of colors for the range of values.
 #' @param gt_object An existing gt table
 #' @param column The column to transform to the percentile dot plot. Accepts `tidyeval`. All values must be end up being between 0 and 100.
 #' @param palette A vector of strings of length 3. Defaults to `c('blue', 'lightgrey', 'red')` as hex so `c("#007ad6", "#f0f0f0", "#f72e2e")`

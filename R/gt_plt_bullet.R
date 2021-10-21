@@ -11,16 +11,14 @@
 #' @export
 #'
 #' @examples
-#' library(gt)
 #' set.seed(37)
-#'
 #' bullet_tab <- tibble::rownames_to_column(mtcars) %>%
 #'  dplyr::select(rowname, cyl:drat, mpg) %>%
 #'  dplyr::group_by(cyl) %>%
 #'  dplyr::mutate(target_col = mean(mpg)) %>%
 #'  dplyr::slice_sample(n = 3) %>%
 #'  dplyr::ungroup() %>%
-#'  gt() %>%
+#'  gt::gt() %>%
 #'  gt_plt_bullet(column = mpg, target = target_col, width = 45,
 #'                colors = c("lightblue", "black")) %>%
 #'  gt_theme_538()
@@ -37,46 +35,26 @@ gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
   stopifnot("'colors' must be 2 colors" = length(colors) == 2)
 
-  col_bare <- rlang::enexpr(column) %>% rlang::as_string()
-  raw_data <- gt:::dt_data_get(gt_object)
-
-  all_vals <- raw_data[[col_bare]]
+  # extract the values from specified columns
+  all_vals <- gt_index(gt_object, {{ column }})
   max_val <- max(all_vals, na.rm = TRUE)
   length_val <- length(all_vals)
 
-  tar_col_bare <- rlang::enexpr(target) %>% rlang::as_string()
-  target_vals <- raw_data[[tar_col_bare]]
+  target_vals <- gt_index(gt_object, {{ target }})
 
-  tab_out <- if (isFALSE(keep_column)) {
-    cols_merge(
-      gt_object,
-      columns = c({{ target }}, {{ column }}),
-      pattern = "{1}^split^{2}"
-    )
-  } else if (isTRUE(keep_column)) {
-    gt_object %>%
-      gt_duplicate_column({{column}}, dupe_name = "DUPE_COLUMN_PLT") %>%
-      cols_merge(
-      columns = c({{ target }}, DUPE_COLUMN_PLT),
-      pattern = "{1}^split^{2}"
-    )
-  }
+  col_bare <- gt_index(gt_object, {{column}}, as_vector = FALSE) %>%
+    dplyr::select({{column}}) %>%
+    names()
 
-  tab_out <- tab_out %>%
+  tab_out <- gt_object %>%
     text_transform(
       locations = cells_body({{ target }}),
       fn = function(x) {
-        bar_fx <- function(xz, target_vals) {
+        bar_fx <- function(vals, target_vals) {
 
-          if(xz %in% c("NA", "NULL")){
+          if(is.na(vals) | is.null(vals)){
             return("<div></div>")
           }
-
-          split_cols <- strsplit(xz, "^split^", fixed = TRUE) %>% unlist()
-
-          target_vals <- as.double(split_cols[1])
-          vals <- as.double(split_cols[2])
-
 
           if(is.na(target_vals)) {
             stop("Target Column not coercible to numeric, please create and supply an unformatted column ahead of time with gtExtras::gt_duplicate_columns()",
@@ -118,14 +96,19 @@ gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
           img_plot
         }
 
-        tab_built <- lapply(X = x, FUN = bar_fx)
+        tab_built <- mapply(bar_fx, all_vals, target_vals)
         tab_built
       }
     ) %>%
     gt::cols_align(align = "left", columns = {{ target }}) %>%
     gt::cols_label({{ target }} := col_bare)
 
-  tab_out
+  if(isTRUE(keep_column)){
+    tab_out
+  } else {
+    tab_out %>%
+      cols_hide({{ column }})
+  }
 
 }
 

@@ -253,9 +253,8 @@ gt_fa_rating <- function(gt_object, column, max_rating = 5,...,
 #' @export
 #'
 #' @examples
-#' library(gt)
-#' rank_table <- tibble(x = c(1:3,-1,-2,-5,0)) %>%
-#'   gt() %>%
+#' rank_table <- dplyr::tibble(x = c(1:3,-1,-2,-5,0)) %>%
+#'   gt::gt() %>%
 #'   gt_fa_rank_change(x, font_color = "match")
 #' @section Figures:
 #' \if{html}{\figure{fa_rank_change.png}{options: width=5\%}}

@@ -25,6 +25,9 @@
     <loc>https://jthomasmock.github.io/gtExtras/reference/add_badge_color.html</loc>
   </url>
   <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/add_ci_plot.html</loc>
+  </url>
+  <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/add_pcttile_plot.html</loc>
   </url>
   <url>
@@ -128,6 +131,9 @@
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_bullet.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_conf_int.html</loc>
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_dot.html</loc>

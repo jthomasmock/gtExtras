@@ -66,6 +66,7 @@ reference:
   - gt_plt_dot
   - gt_plt_point
   - gt_plt_percentile
+  - gt_plt_conf_int
 - title: Colors
   desc: Add color to the entire table or to specific locations. Includes wrappers around the `{scales}` and `{paletteer}` packages that provide easier or more succinct applications of palettes and colors inside `{gt}`.
   contents:

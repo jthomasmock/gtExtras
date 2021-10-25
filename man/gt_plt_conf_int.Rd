@@ -9,9 +9,11 @@ gt_plt_conf_int(
   column,
   ci_columns,
   ci = 0.9,
+  ref_line = NULL,
   palette = c("black", "grey", "white", "black"),
   width = 45,
-  text_args = list(accuracy = 1)
+  text_args = list(accuracy = 1),
+  text_size = 1.5
 )
 }
 \arguments{
@@ -28,6 +30,8 @@ gt_plt_conf_int(
 \item{width}{A number indicating the width of the plot in \code{"mm"}, defaults to \code{45}.}
 
 \item{text_args}{A list of named arguments. Optional text arguments passed as a list to \code{scales::label_number_si}.}
+
+\item{text_size}{A number indicating the size of the text indicators in the plot. Defaults to 1.5. Can also be set to \code{0} to "remove" the text itself.}
 }
 \value{
 a gt table

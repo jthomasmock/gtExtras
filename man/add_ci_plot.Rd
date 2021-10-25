@@ -4,7 +4,15 @@
 \alias{add_ci_plot}
 \title{Add a confidence interval plot inside a specific row}
 \usage{
-add_ci_plot(data_in, pal_vals, width, ext_range, text_args)
+add_ci_plot(
+  data_in,
+  pal_vals,
+  width,
+  ext_range,
+  text_args,
+  text_size,
+  ref_line
+)
 }
 \arguments{
 \item{data_in}{A dataframe of length 1}

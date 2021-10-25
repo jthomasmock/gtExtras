@@ -7,7 +7,7 @@
 #' @param palette A vector of color strings of exactly length 4. The colors represent the central point, the color of the range, the color of the stroke around the central point, and the color of the text, in that specific order.
 #' @param width A number indicating the width of the plot in `"mm"`, defaults to `45`.
 #' @param text_args A list of named arguments. Optional text arguments passed as a list to `scales::label_number_si`.
-#'
+#' @param text_size A number indicating the size of the text indicators in the plot. Defaults to 1.5. Can also be set to `0` to "remove" the text itself.
 #' @return a gt table
 #' @export
 #'
@@ -43,9 +43,10 @@
 #' @family Themes
 #' @section Function ID:
 #' 3-10
-gt_plt_conf_int <- function(gt_object, column, ci_columns, ci = 0.9,
+gt_plt_conf_int <- function(gt_object, column, ci_columns, ci=0.9,ref_line=NULL,
                             palette = c("black", "grey", "white", "black"),
-                            width = 45, text_args = list(accuracy = 1)) {
+                            width = 45, text_args = list(accuracy = 1),
+                            text_size = 1.5) {
   all_vals <- gt_index(gt_object, {{ column }}, as_vector = FALSE)
 
   stopifnot("Confidence level must be between 0 and 1" = dplyr::between(ci, 0,1))
@@ -107,6 +108,12 @@ gt_plt_conf_int <- function(gt_object, column, ci_columns, ci = 0.9,
     mul = 0.1, zero_width = 1
   )
 
+  ref_line <- if(is.null(ref_line)){
+    list("none")
+  } else {
+      list(ref_line)
+    }
+
   gt_object %>%
     text_transform(
       locations = cells_body(columns = {{ column }}),
@@ -114,7 +121,7 @@ gt_plt_conf_int <- function(gt_object, column, ci_columns, ci = 0.9,
         tab_built <- mapply(
           FUN = add_ci_plot,
           data_in, list(palette), width, list(ext_range), list(text_args),
-          SIMPLIFY = FALSE
+          text_size, list(ref_line), SIMPLIFY = FALSE
         )
 
         tab_built
@@ -134,10 +141,28 @@ gt_plt_conf_int <- function(gt_object, column, ci_columns, ci = 0.9,
 #' @param text_args A list of optional text arguments passed to `scales::label_number_si()`
 #'
 #' @return SVG/HTML
-add_ci_plot <- function(data_in, pal_vals, width, ext_range, text_args) {
+add_ci_plot <- function(data_in, pal_vals, width, ext_range, text_args, text_size,
+                        ref_line) {
 
-  plot_out <- data_in %>%
-    ggplot(aes(x = mean, y = "1a")) +
+  if(unlist(ref_line) == "none"){
+    base_plot <- data_in %>%
+      ggplot(aes(x = mean, y = "1a"))
+  } else {
+    base_plot <- data_in %>%
+      ggplot(aes(x = mean, y = "1a")) +
+      # geom_text(
+      #   aes(x = unlist(ref_line) * 1.01,
+      #   label = do.call(scales::label_number_si, text_args)(unlist(ref_line))),
+      #   color = pal_vals[4], vjust = 1.1, size = text_size, hjust = 0,
+      #   position = position_nudge(y = -0.25),
+      #   family = "mono", fontface = "bold"
+      #   ) +
+      geom_vline(xintercept = ref_line[[1]], color = pal_vals[4])
+  }
+
+  # browser()
+
+  plot_out <- base_plot +
     geom_segment(aes(x = ci1, xend = ci2, y = y, yend = y),
       lineend = "round",
       size = 1, color = pal_vals[2], alpha = 0.75
@@ -146,15 +171,19 @@ add_ci_plot <- function(data_in, pal_vals, width, ext_range, text_args) {
       size = 2, shape = 21, fill = pal_vals[1],
       color = pal_vals[3], stroke = 0.75
     ) +
-    geom_text(aes(x = ci2, label = do.call(scales::label_number_si, text_args)(ci2)),
-      color = pal_vals[4], hjust = 1.1, size = 1.5, vjust = 0,
-      position = position_nudge(y = 0.25),
-      family = "mono", fontface = "bold"
+    geom_label(aes(x = ci2, label = do.call(scales::label_number_si, text_args)(ci2)),
+      color = pal_vals[4], hjust = 1.1, size = text_size, vjust = 0,
+      fill = "white", position = position_nudge(y = 0.25),
+      family = "mono", fontface = "bold",
+      label.size = unit(0, "lines"), label.padding = unit(0.05, "lines"),
+      label.r = unit(0, "lines")
     ) +
-    geom_text(aes(x = ci1, label = do.call(scales::label_number_si, text_args)(ci1)),
+    geom_label(aes(x = ci1, label = do.call(scales::label_number_si, text_args)(ci1)),
       position = position_nudge(y = 0.25),
-      color = pal_vals[4], hjust = -0.1, size = 1.5, vjust = 0,
-      family = "mono", fontface = "bold"
+      color = pal_vals[4], hjust = -0.1, size = text_size, vjust = 0,
+      fill = "white", family = "mono", fontface = "bold",
+      label.size = unit(0, "lines"), label.padding = unit(0.05, "lines"),
+      label.r = unit(0, "lines")
     ) +
     theme_void() +
     theme(

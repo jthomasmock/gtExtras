@@ -6,19 +6,20 @@
 #' a list column ahead of time. The palette and labels need to be equal length.
 #' The values must either add up to 100 ie as percentage points if using
 #' `position = 'fill'`, or can be raw values with `position = 'stack'`. Note that
-#' the labels can be controlled via the `...` which is passed to `format()`.
+#' the labels can be controlled via the `fmt_fn` argument and the
+#' `scales::label_???()` family of function.
 #'
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param column The column wherein the percent stacked barchart should replace existing data. Note that the data *must* be represented as a list of numeric values ahead of time.
 #' @param palette A color palette of length 2 or 3, represented either by hex colors (`"#ff4343"`) or named colors (`"red"`).
 #' @param labels A vector of strings of length 2 or 3, representing the labels for the bar chart, will be colored according to the palette as well.
 #' @param position An string indicator passed to `ggplot2` indicating if the bar should be a percent of total `"fill"` or stacked as the raw values `"stack"`.
-#' @param ... Additional arguments passe to the `format()` function. Specifically, a combination of `digits` and `nsmall` argument are useful here for rounding non-integers.
 #' @param width An integer representing the width of the bar chart in pixels.
+#' @param fmt_fun A specific function from `scales::label_???` family. Defaults to `scales::label_number_si()`
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
 #' @export
-#' @import gt rlang ggplot2
+#' @import gt rlang ggplot2 scales
 #' @importFrom glue glue
 #' @family Plotting
 #' @section Function ID:
@@ -53,14 +54,11 @@
 #' @section Figures:
 #' \if{html}{\figure{plt-bar-stack.png}{options: width=70\%}}
 
-gt_plt_bar_stack <- function(
-  gt_object,
-  column = NULL,
-  palette = c("#ff4343", "#bfbfbf", "#0a1c2b"),
-  labels = c("Group 1", "Group 2", "Group 3"),
-  position = "fill",
-  ...,
-  width = 70
+gt_plt_bar_stack <- function(gt_object, column = NULL,
+                             palette = c("#ff4343", "#bfbfbf", "#0a1c2b"),
+                             labels = c("Group 1", "Group 2", "Group 3"),
+                             position = "fill", width = 70,
+                             fmt_fn = scales::label_number_si(trim = TRUE)
 ) {
 
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
@@ -114,7 +112,7 @@ gt_plt_bar_stack <- function(
           ggplot(aes(x = x, y = factor(y), fill = I(fill), group = y)) +
           geom_col(position = position, color = "white", size = 1) +
           geom_text(
-            aes(label = format(x, ...)),
+            aes(label = fmt_fn(x)),
             hjust = 0.5,
             size = 3,
             family = "mono",

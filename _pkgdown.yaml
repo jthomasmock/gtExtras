@@ -39,6 +39,7 @@ reference:
   - gt_fa_rating
   - gt_fa_rank_change
   - add_text_img
+  - img_header
   - gt_merge_stack
   - gt_img_rows
   - gt_img_circle

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Count number of decimals — n_decimals • gtExtras</title>
+<title>Add images as the column label for a table — img_header • gtExtras</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Count number of decimals — n_decimals" />
-<meta property="og:description" content="Count number of decimals" />
+<meta property="og:title" content="Add images as the column label for a table — img_header" />
+<meta property="og:description" content="Add images as the column label for a table" />
 <meta property="og:image" content="https://jthomasmock.github.io/gtExtras/reference/figures/opengraph.png" />
 <meta property="og:image:alt" content="Screenshot of a data table that has the win/loss record of the 2020 NFL teams" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -127,30 +127,60 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Count number of decimals</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>n_decimals.Rd</code></div>
+    <h1>Add images as the column label for a table</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jthomasmock/gtExtras/blob/master/R/img_header.R'><code>R/img_header.R</code></a></small>
+    <div class="hidden name"><code>img_header.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Count number of decimals</p>
+    <p>Add images as the column label for a table</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>n_decimals</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></code></pre></div>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>img_header</span><span class='op'>(</span>
+  <span class='va'>label</span>,
+  <span class='va'>img_url</span>,
+  height <span class='op'>=</span> <span class='fl'>60</span>,
+  font_size <span class='op'>=</span> <span class='fl'>12</span>,
+  palette <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"black"</span>, <span class='st'>"black"</span><span class='op'>)</span>
+<span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A value to count decimals from</p></td>
+      <th>label</th>
+      <td><p>A string indicating the label of the column.</p></td>
+    </tr>
+    <tr>
+      <th>img_url</th>
+      <td><p>A string for the image url.</p></td>
+    </tr>
+    <tr>
+      <th>height</th>
+      <td><p>A number indicating the height of the image in pixels.</p></td>
+    </tr>
+    <tr>
+      <th>font_size</th>
+      <td><p>The font size of the label in pixels.</p></td>
+    </tr>
+    <tr>
+      <th>palette</th>
+      <td><p>A vector of two colors, indictating the bottom border color and the text color.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>an integer</p>
+    <p>HTML string</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='va'>example_img</span> <span class='op'>&lt;-</span> <span class='fu'>img_header</span><span class='op'>(</span></span>
+<span class='r-in'>  <span class='st'>"Luka Doncic"</span>,</span>
+<span class='r-in'>  <span class='st'>"https://secure.espn.com/combiner/i?img=/i/headshots/nba/players/full/3945274.png"</span>,</span>
+<span class='r-in'>  height <span class='op'>=</span> <span class='fl'>60</span>,</span>
+<span class='r-in'>  font_size <span class='op'>=</span> <span class='fl'>14</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

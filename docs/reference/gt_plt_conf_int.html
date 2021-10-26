@@ -85,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.2.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.2.10</span>
       </span>
     </div>
 
@@ -141,9 +141,11 @@
   <span class='va'>column</span>,
   <span class='va'>ci_columns</span>,
   ci <span class='op'>=</span> <span class='fl'>0.9</span>,
+  ref_line <span class='op'>=</span> <span class='cn'>NULL</span>,
   palette <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"black"</span>, <span class='st'>"grey"</span>, <span class='st'>"white"</span>, <span class='st'>"black"</span><span class='op'>)</span>,
   width <span class='op'>=</span> <span class='fl'>45</span>,
-  text_args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>accuracy <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+  text_args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>accuracy <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>,
+  text_size <span class='op'>=</span> <span class='fl'>1.5</span>
 <span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -176,6 +178,10 @@
     <tr>
       <th>text_args</th>
       <td><p>A list of named arguments. Optional text arguments passed as a list to <code><a href='https://scales.r-lib.org/reference/label_number_si.html'>scales::label_number_si</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>text_size</th>
+      <td><p>A number indicating the size of the text indicators in the plot. Defaults to 1.5. Can also be set to <code>0</code> to "remove" the text itself.</p></td>
     </tr>
     </table>
 

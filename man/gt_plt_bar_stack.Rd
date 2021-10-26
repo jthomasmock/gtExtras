@@ -10,8 +10,8 @@ gt_plt_bar_stack(
   palette = c("#ff4343", "#bfbfbf", "#0a1c2b"),
   labels = c("Group 1", "Group 2", "Group 3"),
   position = "fill",
-  ...,
-  width = 70
+  width = 70,
+  fmt_fn = scales::label_number_si(trim = TRUE)
 )
 }
 \arguments{
@@ -25,9 +25,9 @@ gt_plt_bar_stack(
 
 \item{position}{An string indicator passed to \code{ggplot2} indicating if the bar should be a percent of total \code{"fill"} or stacked as the raw values \code{"stack"}.}
 
-\item{...}{Additional arguments passe to the \code{format()} function. Specifically, a combination of \code{digits} and \code{nsmall} argument are useful here for rounding non-integers.}
-
 \item{width}{An integer representing the width of the bar chart in pixels.}
+
+\item{fmt_fun}{A specific function from \verb{scales::label_???} family. Defaults to \code{scales::label_number_si()}}
 }
 \value{
 An object of class \code{gt_tbl}.
@@ -39,7 +39,8 @@ will represent either 2 or 3 user-specified values per row, and requires
 a list column ahead of time. The palette and labels need to be equal length.
 The values must either add up to 100 ie as percentage points if using
 \code{position = 'fill'}, or can be raw values with \code{position = 'stack'}. Note that
-the labels can be controlled via the \code{...} which is passed to \code{format()}.
+the labels can be controlled via the \code{fmt_fn} argument and the
+\verb{scales::label_???()} family of function.
 }
 \section{Function ID}{
 

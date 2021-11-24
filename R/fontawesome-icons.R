@@ -124,6 +124,7 @@ gt_fa_column <- function(gt_object, column, ..., palette = NULL,
   align = "left", direction = 1) {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
 
+
   text_transform(
     gt_object,
     locations = cells_body(columns = {{ column }}),
@@ -141,20 +142,16 @@ gt_fa_column <- function(gt_object, column, ..., palette = NULL,
 
       # pass arguments into anonymous function
 
-      lapply(x, function(xy) {
-        fct_lvl <- unique(x)
-        stopifnot(
-          "The length of the unique elements must match the palette length" =
-            length(fct_lvl) == length(pal_filler)
-        )
+      lapply(X = x, FUN = function(xy) {
 
-        # conditionals to check for named palette
-        # applying colors correctly to specific items
+        # drop missing levels
+        x <- x[x!=""]
+
+        fct_lvl <- unique(x)
+        stopifnot("The length of the unique elements must match the palette length" = length(fct_lvl) == length(pal_filler))
+
         if (!is.null(names(pal_filler))) {
-          fct_x <- factor(xy,
-            levels = names(pal_filler),
-            labels = pal_filler
-          ) %>%
+          fct_x <- factor(xy, levels = names(pal_filler), labels = pal_filler) %>%
             as.character()
         } else {
           fct_x <- factor(xy, levels = fct_lvl, labels = pal_filler) %>%
@@ -163,10 +160,8 @@ gt_fa_column <- function(gt_object, column, ..., palette = NULL,
 
         # conditional to return blanks if the passed element
         # is missing, NA, NULL, or blank
-        if (any(is.na(xy)) || any(is.null(xy)) ||
-            any(xy %in% c("NA", "NULL", ""))
-        ) {
-          return(" ")
+        if (xy == "") {
+          gt::html("&nbsp;")
         } else {
           my_fa <- list(
             fontawesome::fa(xy, ...,
@@ -184,6 +179,7 @@ gt_fa_column <- function(gt_object, column, ..., palette = NULL,
   ) %>%
     cols_align(align = align, columns = {{ column }})
 }
+
 
 
 

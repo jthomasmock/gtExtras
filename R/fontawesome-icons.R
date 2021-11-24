@@ -121,46 +121,71 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
 #' 2-15
 
 gt_fa_column <- function(gt_object, column, ..., palette = NULL,
-                         align = "left", direction = 1){
-
+  align = "left", direction = 1) {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
 
   text_transform(
     gt_object,
     locations = cells_body(columns = {{ column }}),
-    fn = function(x){
-
-      if(is.null(palette)){
-        pal_filler <- rev(c("#CC79A7", "#D55E00", "#0072B2",
-                        "#F0E442", "#009E73", "#56B4E9",
-                        "#E69F00", "#000000"))[seq_along(unique(x))]
-      } else if(length(palette) == 1){
+    fn = function(x) {
+      if (is.null(palette)) {
+        pal_filler <- c(
+          "#000000", "#E69F00", "#56B4E9", "#009E73",
+          "#F0E442", "#0072B2", "#D55E00", "#CC79A7"
+        )[seq_along(unique(x))]
+      } else if (length(palette) == 1) {
         pal_filler <- palette %>% rep(length(unique(x)))
       } else {
         pal_filler <- palette
       }
 
-      lapply(X = x, FUN = function(xy){
+      # pass arguments into anonymous function
 
+      lapply(x, function(xy) {
         fct_lvl <- unique(x)
-        stopifnot("The length of the unique elements must match the palette length" = length(fct_lvl) == length(pal_filler))
+        stopifnot(
+          "The length of the unique elements must match the palette length" =
+            length(fct_lvl) == length(pal_filler)
+        )
 
-        if(!is.null(names(pal_filler))){
-          fct_x <- factor(xy, levels = names(pal_filler), labels = pal_filler) %>%
+        # conditionals to check for named palette
+        # applying colors correctly to specific items
+        if (!is.null(names(pal_filler))) {
+          fct_x <- factor(xy,
+            levels = names(pal_filler),
+            labels = pal_filler
+          ) %>%
             as.character()
         } else {
           fct_x <- factor(xy, levels = fct_lvl, labels = pal_filler) %>%
             as.character()
         }
 
-        my_fa <- list(fontawesome::fa(xy, ..., fill = fct_x, height = "20px", a11y = "sem") %>% gt::html())
-        htmltools::div(title = xy, "aria-label" = xy, role = "img", my_fa, style = "padding:0px")
+        # conditional to return blanks if the passed element
+        # is missing, NA, NULL, or blank
+        if (any(is.na(xy)) || any(is.null(xy)) ||
+            any(xy %in% c("NA", "NULL", ""))
+        ) {
+          return(" ")
+        } else {
+          my_fa <- list(
+            fontawesome::fa(xy, ...,
+              fill = fct_x,
+              height = "20px", a11y = "sem"
+            ) %>% gt::html()
+          )
+          htmltools::div(
+            title = xy, "aria-label" = xy, role = "img",
+            my_fa, style = "padding:0px"
+          )
+        }
       })
     }
   ) %>%
     cols_align(align = align, columns = {{ column }})
-
 }
+
+
 
 #' Add rating "stars" to a gt column
 #'

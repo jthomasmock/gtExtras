@@ -53,7 +53,9 @@ Other Plotting:
 \code{\link{gt_plt_bar_pct}()},
 \code{\link{gt_plt_bar_stack}()},
 \code{\link{gt_plt_bar}()},
+\code{\link{gt_plt_dist}()},
 \code{\link{gt_plt_point}()},
+\code{\link{gt_plt_sparkline}()},
 \code{\link{gt_plt_winloss}()},
 \code{\link{gt_sparkline}()}
 }

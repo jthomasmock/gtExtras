@@ -60,6 +60,8 @@ reference:
   contents:
   - gt_plt_winloss
   - gt_sparkline
+  - gt_plt_sparkline
+  - gt_plt_dist
   - gt_plt_bar
   - gt_plt_bar_pct
   - gt_plt_bar_stack

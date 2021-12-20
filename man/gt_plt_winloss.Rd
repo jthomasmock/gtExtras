@@ -10,7 +10,7 @@ gt_plt_winloss(
   max_wins = 17,
   colors = c("#013369", "#D50A0A", "gray"),
   type = "pill",
-  width = 23
+  width = max_wins/0.83
 )
 }
 \arguments{
@@ -68,8 +68,10 @@ Other Plotting:
 \code{\link{gt_plt_bar_pct}()},
 \code{\link{gt_plt_bar_stack}()},
 \code{\link{gt_plt_bar}()},
+\code{\link{gt_plt_dist}()},
 \code{\link{gt_plt_percentile}()},
 \code{\link{gt_plt_point}()},
+\code{\link{gt_plt_sparkline}()},
 \code{\link{gt_sparkline}()}
 }
 \concept{Plotting}

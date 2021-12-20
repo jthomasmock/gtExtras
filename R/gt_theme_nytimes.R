@@ -37,11 +37,11 @@ gt_theme_nytimes <- function(gt_object, ...){
       table_body.border.bottom.color = "white",
       heading.border.bottom.style = "none",
       data_row.padding = px(7),
+      column_labels.font.size = px(12),
       ...
     ) %>%
     tab_style(
       style = cell_text(
-        size = px(12),
         color = "darkgrey",
         font = google_font("Source Sans Pro"),
         transform = "uppercase"

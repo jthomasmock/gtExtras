@@ -42,28 +42,22 @@
 
 gt_plt_winloss <- function(gt_object, column, max_wins = 17,
                            colors = c("#013369", "#D50A0A", "gray"),
-                           type = "pill", width = 23) {
+                           type = "pill", width = max_wins/0.83) {
 
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
   stopifnot("type must be on of 'pill' or 'square'" = {type %in% c("pill", "square")})
   stopifnot("There must be 3 colors" = length(colors) == 3L)
 
-  test_vals <- gt_object[["_data"]] %>%
-    dplyr::select({{ column }}) %>%
-    dplyr::pull()
+  list_vals <- gt_index(gt_object = gt_object, {{ column }}, as_vector = TRUE)
 
-  stopifnot("The column must be a list-column" = is.list(test_vals))
-  stopifnot("All values must be 1, 0 or 0.5" = unlist(test_vals) %in% c(1, 0, 0.5))
+  stopifnot("The column must be a list-column" = is.list(list_vals))
+  stopifnot("All values must be 1, 0 or 0.5" = unlist(list_vals) %in% c(NA, NULL, 1, 0, 0.5))
 
-  plot_fn_pill <- function(x){
+  plot_fn_pill <- function(vals){
 
-    if(x %in% c("NA", "NULL")){
+    if(all(is.na(vals) | is.null(vals))){
       return("<div></div>")
     }
-
-    vals <- strsplit(x, split = ", ") %>%
-      unlist() %>%
-      as.double()
 
     input_data <- data.frame(
       x = 1:length(vals),
@@ -99,11 +93,11 @@ gt_plt_winloss <- function(gt_object, column, max_wins = 17,
 
   }
 
-  plot_fn_square <- function(x){
+  plot_fn_square <- function(vals){
 
-    vals <- strsplit(x, split = ", ") %>%
-      unlist() %>%
-      as.double()
+    if(all(is.na(vals) | is.null(vals))){
+      return("<div></div>")
+    }
 
     input_data <- data.frame(
       x = 1:length(vals),
@@ -145,7 +139,7 @@ gt_plt_winloss <- function(gt_object, column, max_wins = 17,
     locations = cells_body(columns = {{ column }}),
     fn = function(x){
       lapply(
-        x,
+        list_vals,
         if(type == "pill"){plot_fn_pill} else {plot_fn_square}
       )
     }

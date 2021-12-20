@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.2.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
       </span>
     </div>
 
@@ -83,16 +83,16 @@
       <h1 data-toc-skip>Graphing in gt</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/jthomasmock/gtExtras/blob/master/vignettes/plots-in-gt.Rmd" class="external-link"><code>vignettes/plots-in-gt.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/jthomasmock/gtExtras/blob/HEAD/vignettes/plots-in-gt.Rmd" class="external-link"><code>vignettes/plots-in-gt.Rmd</code></a></small>
       <div class="hidden name"><code>plots-in-gt.Rmd</code></div>
 
     </div>
 
     
     
-<div id="graphs-vs-tables" class="section level2">
-<h2 class="hasAnchor">
-<a href="#graphs-vs-tables" class="anchor" aria-hidden="true"></a>Graphs vs Tables</h2>
+<div class="section level2">
+<h2 id="graphs-vs-tables">Graphs vs Tables<a class="anchor" aria-label="anchor" href="#graphs-vs-tables"></a>
+</h2>
 <p>Per Stephen Few in his book, <a href="http://www.stephen-few.com/smtn.php" class="external-link"><em>Show Me the Numbers</em></a>:</p>
 <p>The difference between Tables and Graphs:</p>
 <blockquote>
@@ -103,18 +103,18 @@
 </blockquote>
 <p>While we typically reach for our graphing tools whenever we want to tell a story with data, we are likely underutilizing tables. We can merge graphs and tables to often get the best of both worlds.</p>
 </div>
-<div id="get-started" class="section level2">
-<h2 class="hasAnchor">
-<a href="#get-started" class="anchor" aria-hidden="true"></a>Get started</h2>
+<div class="section level2">
+<h2 id="get-started">Get started<a class="anchor" aria-label="anchor" href="#get-started"></a>
+</h2>
 <p>We can first load our libraries.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/" class="external-link">gt</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jthomasmock/gtExtras" class="external-link">gtExtras</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span>, warn.conflicts <span class="op">=</span>  <span class="cn">FALSE</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></code></pre></div>
-<div id="sparklines" class="section level3">
-<h3 class="hasAnchor">
-<a href="#sparklines" class="anchor" aria-hidden="true"></a>Sparklines</h3>
+<div class="section level3">
+<h3 id="sparklines">Sparklines<a class="anchor" aria-label="anchor" href="#sparklines"></a>
+</h3>
 <p>Per <a href="https://en.wikipedia.org/wiki/Sparkline" class="external-link">Wikipedia</a>:</p>
 <blockquote>
 <p>A sparkline is a very small line chart, typically drawn without axes or coordinates. It presents the general shape of the variation (typically over time) in some measurement, such as temperature or stock market price, in a simple and highly condensed way.</p>
@@ -159,12 +159,12 @@
   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu">gtExtras</span><span class="fu">::</span><span class="fu"><a href="../reference/gt_sparkline.html">gt_sparkline</a></span><span class="op">(</span><span class="va">mpg_data</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://gt.rstudio.com/reference/fmt_number.html" class="external-link">fmt_number</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="va">mean</span><span class="op">:</span><span class="va">sd</span>, decimals <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
-<div id="fllraznras" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="phsgxcqftk" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#fllraznras .gt_table {
+#phsgxcqftk .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -189,7 +189,7 @@
   border-left-color: #D3D3D3;
 }
 
-#fllraznras .gt_heading {
+#phsgxcqftk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -201,7 +201,7 @@
   border-right-color: #D3D3D3;
 }
 
-#fllraznras .gt_title {
+#phsgxcqftk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -211,7 +211,7 @@
   border-bottom-width: 0;
 }
 
-#fllraznras .gt_subtitle {
+#phsgxcqftk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -221,13 +221,13 @@
   border-top-width: 0;
 }
 
-#fllraznras .gt_bottom_border {
+#phsgxcqftk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fllraznras .gt_col_headings {
+#phsgxcqftk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -242,7 +242,7 @@
   border-right-color: #D3D3D3;
 }
 
-#fllraznras .gt_col_heading {
+#phsgxcqftk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -262,7 +262,7 @@
   overflow-x: hidden;
 }
 
-#fllraznras .gt_column_spanner_outer {
+#phsgxcqftk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -274,15 +274,15 @@
   padding-right: 4px;
 }
 
-#fllraznras .gt_column_spanner_outer:first-child {
+#phsgxcqftk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fllraznras .gt_column_spanner_outer:last-child {
+#phsgxcqftk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fllraznras .gt_column_spanner {
+#phsgxcqftk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -294,7 +294,7 @@
   width: 100%;
 }
 
-#fllraznras .gt_group_heading {
+#phsgxcqftk .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -316,7 +316,7 @@
   vertical-align: middle;
 }
 
-#fllraznras .gt_empty_group_heading {
+#phsgxcqftk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -331,15 +331,15 @@
   vertical-align: middle;
 }
 
-#fllraznras .gt_from_md > :first-child {
+#phsgxcqftk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fllraznras .gt_from_md > :last-child {
+#phsgxcqftk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fllraznras .gt_row {
+#phsgxcqftk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -358,7 +358,7 @@
   overflow-x: hidden;
 }
 
-#fllraznras .gt_stub {
+#phsgxcqftk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -370,7 +370,7 @@
   padding-left: 12px;
 }
 
-#fllraznras .gt_summary_row {
+#phsgxcqftk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -380,7 +380,7 @@
   padding-right: 5px;
 }
 
-#fllraznras .gt_first_summary_row {
+#phsgxcqftk .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -390,7 +390,7 @@
   border-top-color: #D3D3D3;
 }
 
-#fllraznras .gt_grand_summary_row {
+#phsgxcqftk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -400,7 +400,7 @@
   padding-right: 5px;
 }
 
-#fllraznras .gt_first_grand_summary_row {
+#phsgxcqftk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -410,11 +410,11 @@
   border-top-color: #D3D3D3;
 }
 
-#fllraznras .gt_striped {
+#phsgxcqftk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fllraznras .gt_table_body {
+#phsgxcqftk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -423,7 +423,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#fllraznras .gt_footnotes {
+#phsgxcqftk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -437,13 +437,13 @@
   border-right-color: #D3D3D3;
 }
 
-#fllraznras .gt_footnote {
+#phsgxcqftk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#fllraznras .gt_sourcenotes {
+#phsgxcqftk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -457,41 +457,41 @@
   border-right-color: #D3D3D3;
 }
 
-#fllraznras .gt_sourcenote {
+#phsgxcqftk .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#fllraznras .gt_left {
+#phsgxcqftk .gt_left {
   text-align: left;
 }
 
-#fllraznras .gt_center {
+#phsgxcqftk .gt_center {
   text-align: center;
 }
 
-#fllraznras .gt_right {
+#phsgxcqftk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fllraznras .gt_font_normal {
+#phsgxcqftk .gt_font_normal {
   font-weight: normal;
 }
 
-#fllraznras .gt_font_bold {
+#phsgxcqftk .gt_font_bold {
   font-weight: bold;
 }
 
-#fllraznras .gt_font_italic {
+#phsgxcqftk .gt_font_italic {
   font-style: italic;
 }
 
-#fllraznras .gt_super {
+#phsgxcqftk .gt_super {
   font-size: 65%;
 }
 
-#fllraznras .gt_footnote_marks {
+#phsgxcqftk .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -533,9 +533,9 @@
 </table>
 </div>
 </div>
-<div id="sparkline-alternatives" class="section level3">
-<h3 class="hasAnchor">
-<a href="#sparkline-alternatives" class="anchor" aria-hidden="true"></a>Sparkline alternatives</h3>
+<div class="section level3">
+<h3 id="sparkline-alternatives">Sparkline alternatives<a class="anchor" aria-label="anchor" href="#sparkline-alternatives"></a>
+</h3>
 <p>You can also plot a density-plot or a histogram instead of just a line plot.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">car_summary</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span>
@@ -544,12 +544,12 @@
   <span class="fu">gtExtras</span><span class="fu">::</span><span class="fu"><a href="../reference/gt_sparkline.html">gt_sparkline</a></span><span class="op">(</span><span class="va">mpg_data</span>, type <span class="op">=</span> <span class="st">"density"</span>, line_color <span class="op">=</span> <span class="st">"blue"</span>, 
                          fill_color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://gt.rstudio.com/reference/fmt_number.html" class="external-link">fmt_number</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="va">mean</span><span class="op">:</span><span class="va">sd</span>, decimals <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
-<div id="ijqauzqznr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="pmhzddiqej" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ijqauzqznr .gt_table {
+#pmhzddiqej .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -574,7 +574,7 @@
   border-left-color: #D3D3D3;
 }
 
-#ijqauzqznr .gt_heading {
+#pmhzddiqej .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -586,7 +586,7 @@
   border-right-color: #D3D3D3;
 }
 
-#ijqauzqznr .gt_title {
+#pmhzddiqej .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -596,7 +596,7 @@
   border-bottom-width: 0;
 }
 
-#ijqauzqznr .gt_subtitle {
+#pmhzddiqej .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -606,13 +606,13 @@
   border-top-width: 0;
 }
 
-#ijqauzqznr .gt_bottom_border {
+#pmhzddiqej .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ijqauzqznr .gt_col_headings {
+#pmhzddiqej .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -627,7 +627,7 @@
   border-right-color: #D3D3D3;
 }
 
-#ijqauzqznr .gt_col_heading {
+#pmhzddiqej .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -647,7 +647,7 @@
   overflow-x: hidden;
 }
 
-#ijqauzqznr .gt_column_spanner_outer {
+#pmhzddiqej .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -659,15 +659,15 @@
   padding-right: 4px;
 }
 
-#ijqauzqznr .gt_column_spanner_outer:first-child {
+#pmhzddiqej .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ijqauzqznr .gt_column_spanner_outer:last-child {
+#pmhzddiqej .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ijqauzqznr .gt_column_spanner {
+#pmhzddiqej .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -679,7 +679,7 @@
   width: 100%;
 }
 
-#ijqauzqznr .gt_group_heading {
+#pmhzddiqej .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -701,7 +701,7 @@
   vertical-align: middle;
 }
 
-#ijqauzqznr .gt_empty_group_heading {
+#pmhzddiqej .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -716,15 +716,15 @@
   vertical-align: middle;
 }
 
-#ijqauzqznr .gt_from_md > :first-child {
+#pmhzddiqej .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ijqauzqznr .gt_from_md > :last-child {
+#pmhzddiqej .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ijqauzqznr .gt_row {
+#pmhzddiqej .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -743,7 +743,7 @@
   overflow-x: hidden;
 }
 
-#ijqauzqznr .gt_stub {
+#pmhzddiqej .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -755,7 +755,7 @@
   padding-left: 12px;
 }
 
-#ijqauzqznr .gt_summary_row {
+#pmhzddiqej .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -765,7 +765,7 @@
   padding-right: 5px;
 }
 
-#ijqauzqznr .gt_first_summary_row {
+#pmhzddiqej .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -775,7 +775,7 @@
   border-top-color: #D3D3D3;
 }
 
-#ijqauzqznr .gt_grand_summary_row {
+#pmhzddiqej .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -785,7 +785,7 @@
   padding-right: 5px;
 }
 
-#ijqauzqznr .gt_first_grand_summary_row {
+#pmhzddiqej .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -795,11 +795,11 @@
   border-top-color: #D3D3D3;
 }
 
-#ijqauzqznr .gt_striped {
+#pmhzddiqej .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ijqauzqznr .gt_table_body {
+#pmhzddiqej .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -808,7 +808,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#ijqauzqznr .gt_footnotes {
+#pmhzddiqej .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -822,13 +822,13 @@
   border-right-color: #D3D3D3;
 }
 
-#ijqauzqznr .gt_footnote {
+#pmhzddiqej .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#ijqauzqznr .gt_sourcenotes {
+#pmhzddiqej .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -842,41 +842,41 @@
   border-right-color: #D3D3D3;
 }
 
-#ijqauzqznr .gt_sourcenote {
+#pmhzddiqej .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#ijqauzqznr .gt_left {
+#pmhzddiqej .gt_left {
   text-align: left;
 }
 
-#ijqauzqznr .gt_center {
+#pmhzddiqej .gt_center {
   text-align: center;
 }
 
-#ijqauzqznr .gt_right {
+#pmhzddiqej .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ijqauzqznr .gt_font_normal {
+#pmhzddiqej .gt_font_normal {
   font-weight: normal;
 }
 
-#ijqauzqznr .gt_font_bold {
+#pmhzddiqej .gt_font_bold {
   font-weight: bold;
 }
 
-#ijqauzqznr .gt_font_italic {
+#pmhzddiqej .gt_font_italic {
   font-style: italic;
 }
 
-#ijqauzqznr .gt_super {
+#pmhzddiqej .gt_super {
   font-size: 65%;
 }
 
-#ijqauzqznr .gt_footnote_marks {
+#pmhzddiqej .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -924,12 +924,12 @@
   <span class="fu">gtExtras</span><span class="fu">::</span><span class="fu"><a href="../reference/gt_sparkline.html">gt_sparkline</a></span><span class="op">(</span><span class="va">mpg_data</span>, type <span class="op">=</span> <span class="st">"histogram"</span>, line_color <span class="op">=</span> <span class="st">"black"</span>, 
                          fill_color <span class="op">=</span> <span class="st">"grey"</span>, bw <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://gt.rstudio.com/reference/fmt_number.html" class="external-link">fmt_number</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="va">mean</span><span class="op">:</span><span class="va">sd</span>, decimals <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
-<div id="uvuuruvchj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="fsujnepajb" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#uvuuruvchj .gt_table {
+#fsujnepajb .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -954,7 +954,7 @@
   border-left-color: #D3D3D3;
 }
 
-#uvuuruvchj .gt_heading {
+#fsujnepajb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -966,7 +966,7 @@
   border-right-color: #D3D3D3;
 }
 
-#uvuuruvchj .gt_title {
+#fsujnepajb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -976,7 +976,7 @@
   border-bottom-width: 0;
 }
 
-#uvuuruvchj .gt_subtitle {
+#fsujnepajb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -986,13 +986,13 @@
   border-top-width: 0;
 }
 
-#uvuuruvchj .gt_bottom_border {
+#fsujnepajb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#uvuuruvchj .gt_col_headings {
+#fsujnepajb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1007,7 +1007,7 @@
   border-right-color: #D3D3D3;
 }
 
-#uvuuruvchj .gt_col_heading {
+#fsujnepajb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1027,7 +1027,7 @@
   overflow-x: hidden;
 }
 
-#uvuuruvchj .gt_column_spanner_outer {
+#fsujnepajb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1039,15 +1039,15 @@
   padding-right: 4px;
 }
 
-#uvuuruvchj .gt_column_spanner_outer:first-child {
+#fsujnepajb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#uvuuruvchj .gt_column_spanner_outer:last-child {
+#fsujnepajb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#uvuuruvchj .gt_column_spanner {
+#fsujnepajb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1059,7 +1059,7 @@
   width: 100%;
 }
 
-#uvuuruvchj .gt_group_heading {
+#fsujnepajb .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1081,7 +1081,7 @@
   vertical-align: middle;
 }
 
-#uvuuruvchj .gt_empty_group_heading {
+#fsujnepajb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1096,15 +1096,15 @@
   vertical-align: middle;
 }
 
-#uvuuruvchj .gt_from_md > :first-child {
+#fsujnepajb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#uvuuruvchj .gt_from_md > :last-child {
+#fsujnepajb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#uvuuruvchj .gt_row {
+#fsujnepajb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1123,7 +1123,7 @@
   overflow-x: hidden;
 }
 
-#uvuuruvchj .gt_stub {
+#fsujnepajb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1135,7 +1135,7 @@
   padding-left: 12px;
 }
 
-#uvuuruvchj .gt_summary_row {
+#fsujnepajb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1145,7 +1145,7 @@
   padding-right: 5px;
 }
 
-#uvuuruvchj .gt_first_summary_row {
+#fsujnepajb .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1155,7 +1155,7 @@
   border-top-color: #D3D3D3;
 }
 
-#uvuuruvchj .gt_grand_summary_row {
+#fsujnepajb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1165,7 +1165,7 @@
   padding-right: 5px;
 }
 
-#uvuuruvchj .gt_first_grand_summary_row {
+#fsujnepajb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1175,11 +1175,11 @@
   border-top-color: #D3D3D3;
 }
 
-#uvuuruvchj .gt_striped {
+#fsujnepajb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#uvuuruvchj .gt_table_body {
+#fsujnepajb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1188,7 +1188,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#uvuuruvchj .gt_footnotes {
+#fsujnepajb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1202,13 +1202,13 @@
   border-right-color: #D3D3D3;
 }
 
-#uvuuruvchj .gt_footnote {
+#fsujnepajb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#uvuuruvchj .gt_sourcenotes {
+#fsujnepajb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1222,41 +1222,41 @@
   border-right-color: #D3D3D3;
 }
 
-#uvuuruvchj .gt_sourcenote {
+#fsujnepajb .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#uvuuruvchj .gt_left {
+#fsujnepajb .gt_left {
   text-align: left;
 }
 
-#uvuuruvchj .gt_center {
+#fsujnepajb .gt_center {
   text-align: center;
 }
 
-#uvuuruvchj .gt_right {
+#fsujnepajb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#uvuuruvchj .gt_font_normal {
+#fsujnepajb .gt_font_normal {
   font-weight: normal;
 }
 
-#uvuuruvchj .gt_font_bold {
+#fsujnepajb .gt_font_bold {
   font-weight: bold;
 }
 
-#uvuuruvchj .gt_font_italic {
+#fsujnepajb .gt_font_italic {
   font-style: italic;
 }
 
-#uvuuruvchj .gt_super {
+#fsujnepajb .gt_super {
   font-size: 65%;
 }
 
-#uvuuruvchj .gt_footnote_marks {
+#fsujnepajb .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -1298,9 +1298,9 @@
 </table>
 </div>
 </div>
-<div id="inline-bars" class="section level3">
-<h3 class="hasAnchor">
-<a href="#inline-bars" class="anchor" aria-hidden="true"></a>Inline bars</h3>
+<div class="section level3">
+<h3 id="inline-bars">Inline bars<a class="anchor" aria-label="anchor" href="#inline-bars"></a>
+</h3>
 <p>You can also generate <code>ggplot2</code> created bar plots inline. Note that <code>keep_column</code> allows you to keep the raw values and the plot inline.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mtcars</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span>
@@ -1308,12 +1308,12 @@
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/gt_plt_bar.html">gt_plt_bar</a></span><span class="op">(</span>column <span class="op">=</span> <span class="va">mpg</span>, keep_column <span class="op">=</span> <span class="cn">TRUE</span>, width <span class="op">=</span> <span class="fl">35</span><span class="op">)</span></code></pre></div>
-<div id="cpilozcdyh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="fhyaxyvkyf" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#cpilozcdyh .gt_table {
+#fhyaxyvkyf .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1338,7 +1338,7 @@
   border-left-color: #D3D3D3;
 }
 
-#cpilozcdyh .gt_heading {
+#fhyaxyvkyf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1350,7 +1350,7 @@
   border-right-color: #D3D3D3;
 }
 
-#cpilozcdyh .gt_title {
+#fhyaxyvkyf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1360,7 +1360,7 @@
   border-bottom-width: 0;
 }
 
-#cpilozcdyh .gt_subtitle {
+#fhyaxyvkyf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1370,13 +1370,13 @@
   border-top-width: 0;
 }
 
-#cpilozcdyh .gt_bottom_border {
+#fhyaxyvkyf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cpilozcdyh .gt_col_headings {
+#fhyaxyvkyf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1391,7 +1391,7 @@
   border-right-color: #D3D3D3;
 }
 
-#cpilozcdyh .gt_col_heading {
+#fhyaxyvkyf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1411,7 +1411,7 @@
   overflow-x: hidden;
 }
 
-#cpilozcdyh .gt_column_spanner_outer {
+#fhyaxyvkyf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1423,15 +1423,15 @@
   padding-right: 4px;
 }
 
-#cpilozcdyh .gt_column_spanner_outer:first-child {
+#fhyaxyvkyf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cpilozcdyh .gt_column_spanner_outer:last-child {
+#fhyaxyvkyf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cpilozcdyh .gt_column_spanner {
+#fhyaxyvkyf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1443,7 +1443,7 @@
   width: 100%;
 }
 
-#cpilozcdyh .gt_group_heading {
+#fhyaxyvkyf .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1465,7 +1465,7 @@
   vertical-align: middle;
 }
 
-#cpilozcdyh .gt_empty_group_heading {
+#fhyaxyvkyf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1480,15 +1480,15 @@
   vertical-align: middle;
 }
 
-#cpilozcdyh .gt_from_md > :first-child {
+#fhyaxyvkyf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cpilozcdyh .gt_from_md > :last-child {
+#fhyaxyvkyf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cpilozcdyh .gt_row {
+#fhyaxyvkyf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1507,7 +1507,7 @@
   overflow-x: hidden;
 }
 
-#cpilozcdyh .gt_stub {
+#fhyaxyvkyf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1519,7 +1519,7 @@
   padding-left: 12px;
 }
 
-#cpilozcdyh .gt_summary_row {
+#fhyaxyvkyf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1529,7 +1529,7 @@
   padding-right: 5px;
 }
 
-#cpilozcdyh .gt_first_summary_row {
+#fhyaxyvkyf .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1539,7 +1539,7 @@
   border-top-color: #D3D3D3;
 }
 
-#cpilozcdyh .gt_grand_summary_row {
+#fhyaxyvkyf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1549,7 +1549,7 @@
   padding-right: 5px;
 }
 
-#cpilozcdyh .gt_first_grand_summary_row {
+#fhyaxyvkyf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1559,11 +1559,11 @@
   border-top-color: #D3D3D3;
 }
 
-#cpilozcdyh .gt_striped {
+#fhyaxyvkyf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cpilozcdyh .gt_table_body {
+#fhyaxyvkyf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1572,7 +1572,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#cpilozcdyh .gt_footnotes {
+#fhyaxyvkyf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1586,13 +1586,13 @@
   border-right-color: #D3D3D3;
 }
 
-#cpilozcdyh .gt_footnote {
+#fhyaxyvkyf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#cpilozcdyh .gt_sourcenotes {
+#fhyaxyvkyf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1606,41 +1606,41 @@
   border-right-color: #D3D3D3;
 }
 
-#cpilozcdyh .gt_sourcenote {
+#fhyaxyvkyf .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#cpilozcdyh .gt_left {
+#fhyaxyvkyf .gt_left {
   text-align: left;
 }
 
-#cpilozcdyh .gt_center {
+#fhyaxyvkyf .gt_center {
   text-align: center;
 }
 
-#cpilozcdyh .gt_right {
+#fhyaxyvkyf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cpilozcdyh .gt_font_normal {
+#fhyaxyvkyf .gt_font_normal {
   font-weight: normal;
 }
 
-#cpilozcdyh .gt_font_bold {
+#fhyaxyvkyf .gt_font_bold {
   font-weight: bold;
 }
 
-#cpilozcdyh .gt_font_italic {
+#fhyaxyvkyf .gt_font_italic {
   font-style: italic;
 }
 
-#cpilozcdyh .gt_super {
+#fhyaxyvkyf .gt_super {
   font-size: 65%;
 }
 
-#cpilozcdyh .gt_footnote_marks {
+#fhyaxyvkyf .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -1727,9 +1727,9 @@
 </table>
 </div>
 </div>
-<div id="percent-bars" class="section level3">
-<h3 class="hasAnchor">
-<a href="#percent-bars" class="anchor" aria-hidden="true"></a>Percent bars</h3>
+<div class="section level3">
+<h3 id="percent-bars">Percent bars<a class="anchor" aria-label="anchor" href="#percent-bars"></a>
+</h3>
 <p>Alternatively, you may prefer the HTML-generated bar plotsfrom <code><a href="../reference/gt_plt_bar_pct.html">gt_plt_bar_pct()</a></code>. Note that the bars represent a percentage of max, so the largest value will indicate 100% of the row. You can pass raw values that are scaled to a 0-100% range, or pass values between 0 and 100 that represent an existing percent.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mtcars</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span>
@@ -1745,12 +1745,12 @@
    <span class="fu"><a href="https://gt.rstudio.com/reference/cols_align.html" class="external-link">cols_align</a></span><span class="op">(</span><span class="st">"center"</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">contains</a></span><span class="op">(</span><span class="st">"scale"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span>
    <span class="fu"><a href="https://gt.rstudio.com/reference/cols_width.html" class="external-link">cols_width</a></span><span class="op">(</span><span class="fl">4</span> <span class="op">~</span> <span class="fu"><a href="https://gt.rstudio.com/reference/px.html" class="external-link">px</a></span><span class="op">(</span><span class="fl">125</span><span class="op">)</span>,
               <span class="fl">5</span> <span class="op">~</span> <span class="fu"><a href="https://gt.rstudio.com/reference/px.html" class="external-link">px</a></span><span class="op">(</span><span class="fl">125</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div id="yzitqyrwib" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="lvqfbmhpxa" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#yzitqyrwib .gt_table {
+#lvqfbmhpxa .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1775,7 +1775,7 @@
   border-left-color: #D3D3D3;
 }
 
-#yzitqyrwib .gt_heading {
+#lvqfbmhpxa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1787,7 +1787,7 @@
   border-right-color: #D3D3D3;
 }
 
-#yzitqyrwib .gt_title {
+#lvqfbmhpxa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1797,7 +1797,7 @@
   border-bottom-width: 0;
 }
 
-#yzitqyrwib .gt_subtitle {
+#lvqfbmhpxa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1807,13 +1807,13 @@
   border-top-width: 0;
 }
 
-#yzitqyrwib .gt_bottom_border {
+#lvqfbmhpxa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#yzitqyrwib .gt_col_headings {
+#lvqfbmhpxa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1828,7 +1828,7 @@
   border-right-color: #D3D3D3;
 }
 
-#yzitqyrwib .gt_col_heading {
+#lvqfbmhpxa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1848,7 +1848,7 @@
   overflow-x: hidden;
 }
 
-#yzitqyrwib .gt_column_spanner_outer {
+#lvqfbmhpxa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1860,15 +1860,15 @@
   padding-right: 4px;
 }
 
-#yzitqyrwib .gt_column_spanner_outer:first-child {
+#lvqfbmhpxa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#yzitqyrwib .gt_column_spanner_outer:last-child {
+#lvqfbmhpxa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#yzitqyrwib .gt_column_spanner {
+#lvqfbmhpxa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1880,7 +1880,7 @@
   width: 100%;
 }
 
-#yzitqyrwib .gt_group_heading {
+#lvqfbmhpxa .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1902,7 +1902,7 @@
   vertical-align: middle;
 }
 
-#yzitqyrwib .gt_empty_group_heading {
+#lvqfbmhpxa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1917,15 +1917,15 @@
   vertical-align: middle;
 }
 
-#yzitqyrwib .gt_from_md > :first-child {
+#lvqfbmhpxa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#yzitqyrwib .gt_from_md > :last-child {
+#lvqfbmhpxa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#yzitqyrwib .gt_row {
+#lvqfbmhpxa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1944,7 +1944,7 @@
   overflow-x: hidden;
 }
 
-#yzitqyrwib .gt_stub {
+#lvqfbmhpxa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1956,7 +1956,7 @@
   padding-left: 12px;
 }
 
-#yzitqyrwib .gt_summary_row {
+#lvqfbmhpxa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1966,7 +1966,7 @@
   padding-right: 5px;
 }
 
-#yzitqyrwib .gt_first_summary_row {
+#lvqfbmhpxa .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1976,7 +1976,7 @@
   border-top-color: #D3D3D3;
 }
 
-#yzitqyrwib .gt_grand_summary_row {
+#lvqfbmhpxa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1986,7 +1986,7 @@
   padding-right: 5px;
 }
 
-#yzitqyrwib .gt_first_grand_summary_row {
+#lvqfbmhpxa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1996,11 +1996,11 @@
   border-top-color: #D3D3D3;
 }
 
-#yzitqyrwib .gt_striped {
+#lvqfbmhpxa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#yzitqyrwib .gt_table_body {
+#lvqfbmhpxa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2009,7 +2009,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#yzitqyrwib .gt_footnotes {
+#lvqfbmhpxa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2023,13 +2023,13 @@
   border-right-color: #D3D3D3;
 }
 
-#yzitqyrwib .gt_footnote {
+#lvqfbmhpxa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#yzitqyrwib .gt_sourcenotes {
+#lvqfbmhpxa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2043,41 +2043,41 @@
   border-right-color: #D3D3D3;
 }
 
-#yzitqyrwib .gt_sourcenote {
+#lvqfbmhpxa .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#yzitqyrwib .gt_left {
+#lvqfbmhpxa .gt_left {
   text-align: left;
 }
 
-#yzitqyrwib .gt_center {
+#lvqfbmhpxa .gt_center {
   text-align: center;
 }
 
-#yzitqyrwib .gt_right {
+#lvqfbmhpxa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#yzitqyrwib .gt_font_normal {
+#lvqfbmhpxa .gt_font_normal {
   font-weight: normal;
 }
 
-#yzitqyrwib .gt_font_bold {
+#lvqfbmhpxa .gt_font_bold {
   font-weight: bold;
 }
 
-#yzitqyrwib .gt_font_italic {
+#lvqfbmhpxa .gt_font_italic {
   font-style: italic;
 }
 
-#yzitqyrwib .gt_super {
+#lvqfbmhpxa .gt_super {
   font-size: 65%;
 }
 
-#yzitqyrwib .gt_footnote_marks {
+#lvqfbmhpxa .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -2145,17 +2145,17 @@
 </table>
 </div>
 </div>
-<div id="inline-win-loss-plots" class="section level3">
-<h3 class="hasAnchor">
-<a href="#inline-win-loss-plots" class="anchor" aria-hidden="true"></a>Inline Win Loss plots</h3>
+<div class="section level3">
+<h3 id="inline-win-loss-plots">Inline Win Loss plots<a class="anchor" aria-label="anchor" href="#inline-win-loss-plots"></a>
+</h3>
 <p>You can also generate really nice looking “Win Loss” plots, similar to the ones used by <a href="https://www.theguardian.com/football/premierleague/table" class="external-link">The Guardian</a> for Soccer outcomes. The code to bring in the data via the <a href="https://nflreadr.nflverse.com" class="external-link">nflreadr</a> package is hidden in an expandable tab below.</p>
 <details><summary><p>Bring data in</p>
 </summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span>
 <span class="co">#&gt; ── <span style="font-weight: bold;">Attaching packages</span> ─────────────────────────────────────── tidyverse 1.3.1 ──</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">tibble </span> 3.1.5          <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">purrr  </span> 0.3.4     </span>
-<span class="co">#&gt; <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">tidyr  </span> 1.1.4          <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">stringr</span> 1.4.0.<span style="color: #BB0000;">9000</span></span>
-<span class="co">#&gt; <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">readr  </span> 2.0.2          <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">forcats</span> 0.5.1</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">tibble </span> 3.1.5     <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">purrr  </span> 0.3.4</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">tidyr  </span> 1.1.4     <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">stringr</span> 1.4.0</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">readr  </span> 2.0.2     <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">forcats</span> 0.5.1</span>
 <span class="co">#&gt; ── <span style="font-weight: bold;">Conflicts</span> ────────────────────────────────────────── tidyverse_conflicts() ──</span>
 <span class="co">#&gt; <span style="color: #BB0000;">x</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">filter()</span> masks <span style="color: #0000BB;">stats</span>::filter()</span>
 <span class="co">#&gt; <span style="color: #BB0000;">x</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">lag()</span>    masks <span style="color: #0000BB;">stats</span>::lag()</span>
@@ -2231,13 +2231,13 @@
     <span class="op">)</span>
   <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://gt.rstudio.com/reference/tab_options.html" class="external-link">tab_options</a></span><span class="op">(</span>data_row.padding <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/px.html" class="external-link">px</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div id="dvccoizgbp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="peeyftqars" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 html {
   font-family: Chivo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#dvccoizgbp .gt_table {
+#peeyftqars .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2262,7 +2262,7 @@ html {
   border-left-color: #D3D3D3;
 }
 
-#dvccoizgbp .gt_heading {
+#peeyftqars .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -2274,7 +2274,7 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#dvccoizgbp .gt_title {
+#peeyftqars .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2284,7 +2284,7 @@ html {
   border-bottom-width: 0;
 }
 
-#dvccoizgbp .gt_subtitle {
+#peeyftqars .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2294,13 +2294,13 @@ html {
   border-top-width: 0;
 }
 
-#dvccoizgbp .gt_bottom_border {
+#peeyftqars .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dvccoizgbp .gt_col_headings {
+#peeyftqars .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2315,7 +2315,7 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#dvccoizgbp .gt_col_heading {
+#peeyftqars .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -2335,7 +2335,7 @@ html {
   overflow-x: hidden;
 }
 
-#dvccoizgbp .gt_column_spanner_outer {
+#peeyftqars .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -2347,15 +2347,15 @@ html {
   padding-right: 4px;
 }
 
-#dvccoizgbp .gt_column_spanner_outer:first-child {
+#peeyftqars .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dvccoizgbp .gt_column_spanner_outer:last-child {
+#peeyftqars .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dvccoizgbp .gt_column_spanner {
+#peeyftqars .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #000000;
@@ -2367,7 +2367,7 @@ html {
   width: 100%;
 }
 
-#dvccoizgbp .gt_group_heading {
+#peeyftqars .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2389,7 +2389,7 @@ html {
   vertical-align: middle;
 }
 
-#dvccoizgbp .gt_empty_group_heading {
+#peeyftqars .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2404,15 +2404,15 @@ html {
   vertical-align: middle;
 }
 
-#dvccoizgbp .gt_from_md > :first-child {
+#peeyftqars .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dvccoizgbp .gt_from_md > :last-child {
+#peeyftqars .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dvccoizgbp .gt_row {
+#peeyftqars .gt_row {
   padding-top: 2px;
   padding-bottom: 2px;
   padding-left: 5px;
@@ -2431,7 +2431,7 @@ html {
   overflow-x: hidden;
 }
 
-#dvccoizgbp .gt_stub {
+#peeyftqars .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -2443,7 +2443,7 @@ html {
   padding-left: 12px;
 }
 
-#dvccoizgbp .gt_summary_row {
+#peeyftqars .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2453,7 +2453,7 @@ html {
   padding-right: 5px;
 }
 
-#dvccoizgbp .gt_first_summary_row {
+#peeyftqars .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2463,7 +2463,7 @@ html {
   border-top-color: #D3D3D3;
 }
 
-#dvccoizgbp .gt_grand_summary_row {
+#peeyftqars .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2473,7 +2473,7 @@ html {
   padding-right: 5px;
 }
 
-#dvccoizgbp .gt_first_grand_summary_row {
+#peeyftqars .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2483,11 +2483,11 @@ html {
   border-top-color: #D3D3D3;
 }
 
-#dvccoizgbp .gt_striped {
+#peeyftqars .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dvccoizgbp .gt_table_body {
+#peeyftqars .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2496,7 +2496,7 @@ html {
   border-bottom-color: #D3D3D3;
 }
 
-#dvccoizgbp .gt_footnotes {
+#peeyftqars .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2510,13 +2510,13 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#dvccoizgbp .gt_footnote {
+#peeyftqars .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#dvccoizgbp .gt_sourcenotes {
+#peeyftqars .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2530,41 +2530,41 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#dvccoizgbp .gt_sourcenote {
+#peeyftqars .gt_sourcenote {
   font-size: 12px;
   padding: 4px;
 }
 
-#dvccoizgbp .gt_left {
+#peeyftqars .gt_left {
   text-align: left;
 }
 
-#dvccoizgbp .gt_center {
+#peeyftqars .gt_center {
   text-align: center;
 }
 
-#dvccoizgbp .gt_right {
+#peeyftqars .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dvccoizgbp .gt_font_normal {
+#peeyftqars .gt_font_normal {
   font-weight: normal;
 }
 
-#dvccoizgbp .gt_font_bold {
+#peeyftqars .gt_font_bold {
   font-weight: bold;
 }
 
-#dvccoizgbp .gt_font_italic {
+#peeyftqars .gt_font_italic {
   font-style: italic;
 }
 
-#dvccoizgbp .gt_super {
+#peeyftqars .gt_super {
   font-size: 65%;
 }
 
-#dvccoizgbp .gt_footnote_marks {
+#peeyftqars .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -2596,7 +2596,7 @@ tbody tr:last-child {
 <td class="gt_row gt_right">12</td>
 <td class="gt_row gt_right">4</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="65.20pt" height="10.80pt" viewbox="0 0 65.20 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="65.20" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw)"><line x1="4.82" y1="1.89" x2="4.82" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="8.52" y1="1.89" x2="8.52" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="12.22" y1="1.89" x2="12.22" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="15.93" y1="1.89" x2="15.93" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="19.63" y1="1.89" x2="19.63" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="23.34" y1="1.89" x2="23.34" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="27.04" y1="1.89" x2="27.04" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="30.75" y1="1.89" x2="30.75" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="34.45" y1="1.89" x2="34.45" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="38.15" y1="1.89" x2="38.15" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="41.86" y1="1.89" x2="41.86" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="45.56" y1="8.91" x2="45.56" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="49.27" y1="8.91" x2="49.27" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="52.97" y1="8.91" x2="52.97" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="56.68" y1="1.89" x2="56.68" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="60.38" y1="8.91" x2="60.38" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="54.64pt" height="10.80pt" viewbox="0 0 54.64 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw1NC42NHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="54.64" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw1NC42NHwwLjAwfDEwLjgw)"><line x1="4.04" y1="1.89" x2="4.04" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="7.14" y1="1.89" x2="7.14" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="10.25" y1="1.89" x2="10.25" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="13.35" y1="1.89" x2="13.35" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="16.46" y1="1.89" x2="16.46" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="19.56" y1="1.89" x2="19.56" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="22.66" y1="1.89" x2="22.66" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="25.77" y1="1.89" x2="25.77" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="28.87" y1="1.89" x2="28.87" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="31.98" y1="1.89" x2="31.98" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="35.08" y1="1.89" x2="35.08" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="38.19" y1="8.91" x2="38.19" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="41.29" y1="8.91" x2="41.29" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="44.40" y1="8.91" x2="44.40" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="47.50" y1="1.89" x2="47.50" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="50.61" y1="8.91" x2="50.61" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line></g></svg>
 </td>
 </tr>
 <tr>
@@ -2604,7 +2604,7 @@ tbody tr:last-child {
 <td class="gt_row gt_right">11</td>
 <td class="gt_row gt_right">5</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="65.20pt" height="10.80pt" viewbox="0 0 65.20 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="65.20" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw)"><line x1="4.82" y1="1.89" x2="4.82" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="8.52" y1="1.89" x2="8.52" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="12.22" y1="8.91" x2="12.22" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="15.93" y1="1.89" x2="15.93" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="19.63" y1="1.89" x2="19.63" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="23.34" y1="1.89" x2="23.34" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="27.04" y1="8.91" x2="27.04" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="30.75" y1="1.89" x2="30.75" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="34.45" y1="8.91" x2="34.45" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="38.15" y1="8.91" x2="38.15" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="41.86" y1="8.91" x2="41.86" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="45.56" y1="1.89" x2="45.56" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="49.27" y1="1.89" x2="49.27" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="52.97" y1="1.89" x2="52.97" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="56.68" y1="1.89" x2="56.68" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="60.38" y1="1.89" x2="60.38" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="54.64pt" height="10.80pt" viewbox="0 0 54.64 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw1NC42NHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="54.64" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw1NC42NHwwLjAwfDEwLjgw)"><line x1="4.04" y1="1.89" x2="4.04" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="7.14" y1="1.89" x2="7.14" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="10.25" y1="8.91" x2="10.25" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="13.35" y1="1.89" x2="13.35" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="16.46" y1="1.89" x2="16.46" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="19.56" y1="1.89" x2="19.56" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="22.66" y1="8.91" x2="22.66" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="25.77" y1="1.89" x2="25.77" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="28.87" y1="8.91" x2="28.87" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="31.98" y1="8.91" x2="31.98" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="35.08" y1="8.91" x2="35.08" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="38.19" y1="1.89" x2="38.19" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="41.29" y1="1.89" x2="41.29" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="44.40" y1="1.89" x2="44.40" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="47.50" y1="1.89" x2="47.50" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="50.61" y1="1.89" x2="50.61" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line></g></svg>
 </td>
 </tr>
 <tr>
@@ -2612,7 +2612,7 @@ tbody tr:last-child {
 <td class="gt_row gt_right">11</td>
 <td class="gt_row gt_right">5</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="65.20pt" height="10.80pt" viewbox="0 0 65.20 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="65.20" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw)"><line x1="4.82" y1="8.91" x2="4.82" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="8.52" y1="1.89" x2="8.52" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="12.22" y1="1.89" x2="12.22" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="15.93" y1="1.89" x2="15.93" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="19.63" y1="1.89" x2="19.63" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="23.34" y1="8.91" x2="23.34" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="27.04" y1="1.89" x2="27.04" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="30.75" y1="8.91" x2="30.75" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="34.45" y1="1.89" x2="34.45" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="38.15" y1="1.89" x2="38.15" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="41.86" y1="1.89" x2="41.86" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="45.56" y1="1.89" x2="45.56" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="49.27" y1="8.91" x2="49.27" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="52.97" y1="1.89" x2="52.97" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="56.68" y1="8.91" x2="56.68" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="60.38" y1="1.89" x2="60.38" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="54.64pt" height="10.80pt" viewbox="0 0 54.64 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw1NC42NHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="54.64" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw1NC42NHwwLjAwfDEwLjgw)"><line x1="4.04" y1="8.91" x2="4.04" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="7.14" y1="1.89" x2="7.14" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="10.25" y1="1.89" x2="10.25" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="13.35" y1="1.89" x2="13.35" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="16.46" y1="1.89" x2="16.46" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="19.56" y1="8.91" x2="19.56" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="22.66" y1="1.89" x2="22.66" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="25.77" y1="8.91" x2="25.77" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="28.87" y1="1.89" x2="28.87" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="31.98" y1="1.89" x2="31.98" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="35.08" y1="1.89" x2="35.08" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="38.19" y1="1.89" x2="38.19" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="41.29" y1="8.91" x2="41.29" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="44.40" y1="1.89" x2="44.40" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="47.50" y1="8.91" x2="47.50" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="50.61" y1="1.89" x2="50.61" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line></g></svg>
 </td>
 </tr>
 <tr>
@@ -2620,7 +2620,7 @@ tbody tr:last-child {
 <td class="gt_row gt_right">4</td>
 <td class="gt_row gt_right">11</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="65.20pt" height="10.80pt" viewbox="0 0 65.20 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="65.20" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw)"><line x1="4.82" y1="8.91" x2="4.82" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="8.52" y1="8.91" x2="8.52" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="12.22" y1="6.10" x2="12.22" y2="4.70" style="stroke-width: 2.13; stroke: #BEBEBE;"></line><line x1="15.93" y1="1.89" x2="15.93" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="19.63" y1="8.91" x2="19.63" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="23.34" y1="8.91" x2="23.34" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="27.04" y1="8.91" x2="27.04" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="30.75" y1="1.89" x2="30.75" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="34.45" y1="8.91" x2="34.45" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="38.15" y1="8.91" x2="38.15" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="41.86" y1="8.91" x2="41.86" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="45.56" y1="8.91" x2="45.56" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="49.27" y1="8.91" x2="49.27" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="52.97" y1="1.89" x2="52.97" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="56.68" y1="1.89" x2="56.68" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="60.38" y1="8.91" x2="60.38" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="54.64pt" height="10.80pt" viewbox="0 0 54.64 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw1NC42NHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="54.64" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw1NC42NHwwLjAwfDEwLjgw)"><line x1="4.04" y1="8.91" x2="4.04" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="7.14" y1="8.91" x2="7.14" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="10.25" y1="6.10" x2="10.25" y2="4.70" style="stroke-width: 2.13; stroke: #BEBEBE;"></line><line x1="13.35" y1="1.89" x2="13.35" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="16.46" y1="8.91" x2="16.46" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="19.56" y1="8.91" x2="19.56" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="22.66" y1="8.91" x2="22.66" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="25.77" y1="1.89" x2="25.77" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="28.87" y1="8.91" x2="28.87" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="31.98" y1="8.91" x2="31.98" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="35.08" y1="8.91" x2="35.08" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="38.19" y1="8.91" x2="38.19" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="41.29" y1="8.91" x2="41.29" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="44.40" y1="1.89" x2="44.40" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="47.50" y1="1.89" x2="47.50" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="50.61" y1="8.91" x2="50.61" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line></g></svg>
 </td>
 </tr>
 <tr class="gt_group_heading_row">
@@ -2631,7 +2631,7 @@ tbody tr:last-child {
 <td class="gt_row gt_right">11</td>
 <td class="gt_row gt_right">5</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="65.20pt" height="10.80pt" viewbox="0 0 65.20 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="65.20" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw)"><line x1="4.82" y1="8.91" x2="4.82" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="8.52" y1="1.89" x2="8.52" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="12.22" y1="1.89" x2="12.22" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="15.93" y1="1.89" x2="15.93" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="19.63" y1="8.91" x2="19.63" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="23.34" y1="1.89" x2="23.34" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="27.04" y1="1.89" x2="27.04" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="30.75" y1="8.91" x2="30.75" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="34.45" y1="1.89" x2="34.45" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="38.15" y1="1.89" x2="38.15" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="41.86" y1="8.91" x2="41.86" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="45.56" y1="1.89" x2="45.56" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="49.27" y1="1.89" x2="49.27" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="52.97" y1="1.89" x2="52.97" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="56.68" y1="8.91" x2="56.68" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="60.38" y1="1.89" x2="60.38" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="54.64pt" height="10.80pt" viewbox="0 0 54.64 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw1NC42NHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="54.64" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw1NC42NHwwLjAwfDEwLjgw)"><line x1="4.04" y1="8.91" x2="4.04" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="7.14" y1="1.89" x2="7.14" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="10.25" y1="1.89" x2="10.25" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="13.35" y1="1.89" x2="13.35" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="16.46" y1="8.91" x2="16.46" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="19.56" y1="1.89" x2="19.56" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="22.66" y1="1.89" x2="22.66" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="25.77" y1="8.91" x2="25.77" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="28.87" y1="1.89" x2="28.87" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="31.98" y1="1.89" x2="31.98" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="35.08" y1="8.91" x2="35.08" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="38.19" y1="1.89" x2="38.19" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="41.29" y1="1.89" x2="41.29" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="44.40" y1="1.89" x2="44.40" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="47.50" y1="8.91" x2="47.50" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="50.61" y1="1.89" x2="50.61" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line></g></svg>
 </td>
 </tr>
 <tr>
@@ -2639,7 +2639,7 @@ tbody tr:last-child {
 <td class="gt_row gt_right">11</td>
 <td class="gt_row gt_right">5</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="65.20pt" height="10.80pt" viewbox="0 0 65.20 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="65.20" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw)"><line x1="4.82" y1="1.89" x2="4.82" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="8.52" y1="1.89" x2="8.52" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="12.22" y1="1.89" x2="12.22" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="15.93" y1="1.89" x2="15.93" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="19.63" y1="1.89" x2="19.63" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="23.34" y1="8.91" x2="23.34" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="27.04" y1="8.91" x2="27.04" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="30.75" y1="1.89" x2="30.75" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="34.45" y1="8.91" x2="34.45" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="38.15" y1="1.89" x2="38.15" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="41.86" y1="1.89" x2="41.86" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="45.56" y1="8.91" x2="45.56" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="49.27" y1="1.89" x2="49.27" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="52.97" y1="1.89" x2="52.97" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="56.68" y1="8.91" x2="56.68" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="60.38" y1="1.89" x2="60.38" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="54.64pt" height="10.80pt" viewbox="0 0 54.64 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw1NC42NHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="54.64" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw1NC42NHwwLjAwfDEwLjgw)"><line x1="4.04" y1="1.89" x2="4.04" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="7.14" y1="1.89" x2="7.14" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="10.25" y1="1.89" x2="10.25" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="13.35" y1="1.89" x2="13.35" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="16.46" y1="1.89" x2="16.46" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="19.56" y1="8.91" x2="19.56" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="22.66" y1="8.91" x2="22.66" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="25.77" y1="1.89" x2="25.77" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="28.87" y1="8.91" x2="28.87" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="31.98" y1="1.89" x2="31.98" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="35.08" y1="1.89" x2="35.08" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="38.19" y1="8.91" x2="38.19" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="41.29" y1="1.89" x2="41.29" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="44.40" y1="1.89" x2="44.40" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="47.50" y1="8.91" x2="47.50" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="50.61" y1="1.89" x2="50.61" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line></g></svg>
 </td>
 </tr>
 <tr>
@@ -2647,7 +2647,7 @@ tbody tr:last-child {
 <td class="gt_row gt_right">4</td>
 <td class="gt_row gt_right">12</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="65.20pt" height="10.80pt" viewbox="0 0 65.20 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="65.20" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw)"><line x1="4.82" y1="8.91" x2="4.82" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="8.52" y1="8.91" x2="8.52" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="12.22" y1="8.91" x2="12.22" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="15.93" y1="8.91" x2="15.93" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="19.63" y1="1.89" x2="19.63" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="23.34" y1="8.91" x2="23.34" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="27.04" y1="8.91" x2="27.04" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="30.75" y1="1.89" x2="30.75" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="34.45" y1="8.91" x2="34.45" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="38.15" y1="1.89" x2="38.15" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="41.86" y1="1.89" x2="41.86" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="45.56" y1="8.91" x2="45.56" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="49.27" y1="8.91" x2="49.27" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="52.97" y1="8.91" x2="52.97" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="56.68" y1="8.91" x2="56.68" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="60.38" y1="8.91" x2="60.38" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="54.64pt" height="10.80pt" viewbox="0 0 54.64 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw1NC42NHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="54.64" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw1NC42NHwwLjAwfDEwLjgw)"><line x1="4.04" y1="8.91" x2="4.04" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="7.14" y1="8.91" x2="7.14" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="10.25" y1="8.91" x2="10.25" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="13.35" y1="8.91" x2="13.35" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="16.46" y1="1.89" x2="16.46" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="19.56" y1="8.91" x2="19.56" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="22.66" y1="8.91" x2="22.66" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="25.77" y1="1.89" x2="25.77" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="28.87" y1="8.91" x2="28.87" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="31.98" y1="1.89" x2="31.98" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="35.08" y1="1.89" x2="35.08" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="38.19" y1="8.91" x2="38.19" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="41.29" y1="8.91" x2="41.29" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="44.40" y1="8.91" x2="44.40" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="47.50" y1="8.91" x2="47.50" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="50.61" y1="8.91" x2="50.61" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line></g></svg>
 </td>
 </tr>
 <tr>
@@ -2655,7 +2655,7 @@ tbody tr:last-child {
 <td class="gt_row gt_right">1</td>
 <td class="gt_row gt_right">15</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="65.20pt" height="10.80pt" viewbox="0 0 65.20 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="65.20" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw)"><line x1="4.82" y1="1.89" x2="4.82" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="8.52" y1="8.91" x2="8.52" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="12.22" y1="8.91" x2="12.22" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="15.93" y1="8.91" x2="15.93" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="19.63" y1="8.91" x2="19.63" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="23.34" y1="8.91" x2="23.34" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="27.04" y1="8.91" x2="27.04" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="30.75" y1="8.91" x2="30.75" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="34.45" y1="8.91" x2="34.45" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="38.15" y1="8.91" x2="38.15" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="41.86" y1="8.91" x2="41.86" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="45.56" y1="8.91" x2="45.56" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="49.27" y1="8.91" x2="49.27" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="52.97" y1="8.91" x2="52.97" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="56.68" y1="8.91" x2="56.68" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="60.38" y1="8.91" x2="60.38" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="54.64pt" height="10.80pt" viewbox="0 0 54.64 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw1NC42NHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="54.64" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw1NC42NHwwLjAwfDEwLjgw)"><line x1="4.04" y1="1.89" x2="4.04" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="7.14" y1="8.91" x2="7.14" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="10.25" y1="8.91" x2="10.25" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="13.35" y1="8.91" x2="13.35" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="16.46" y1="8.91" x2="16.46" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="19.56" y1="8.91" x2="19.56" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="22.66" y1="8.91" x2="22.66" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="25.77" y1="8.91" x2="25.77" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="28.87" y1="8.91" x2="28.87" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="31.98" y1="8.91" x2="31.98" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="35.08" y1="8.91" x2="35.08" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="38.19" y1="8.91" x2="38.19" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="41.29" y1="8.91" x2="41.29" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="44.40" y1="8.91" x2="44.40" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="47.50" y1="8.91" x2="47.50" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="50.61" y1="8.91" x2="50.61" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line></g></svg>
 </td>
 </tr>
 <tr class="gt_group_heading_row">
@@ -2666,7 +2666,7 @@ tbody tr:last-child {
 <td class="gt_row gt_right">13</td>
 <td class="gt_row gt_right">3</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="65.20pt" height="10.80pt" viewbox="0 0 65.20 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="65.20" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw)"><line x1="4.82" y1="1.89" x2="4.82" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="8.52" y1="1.89" x2="8.52" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="12.22" y1="1.89" x2="12.22" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="15.93" y1="1.89" x2="15.93" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="19.63" y1="8.91" x2="19.63" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="23.34" y1="8.91" x2="23.34" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="27.04" y1="1.89" x2="27.04" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="30.75" y1="1.89" x2="30.75" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="34.45" y1="1.89" x2="34.45" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="38.15" y1="8.91" x2="38.15" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="41.86" y1="1.89" x2="41.86" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="45.56" y1="1.89" x2="45.56" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="49.27" y1="1.89" x2="49.27" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="52.97" y1="1.89" x2="52.97" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="56.68" y1="1.89" x2="56.68" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="60.38" y1="1.89" x2="60.38" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="54.64pt" height="10.80pt" viewbox="0 0 54.64 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw1NC42NHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="54.64" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw1NC42NHwwLjAwfDEwLjgw)"><line x1="4.04" y1="1.89" x2="4.04" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="7.14" y1="1.89" x2="7.14" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="10.25" y1="1.89" x2="10.25" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="13.35" y1="1.89" x2="13.35" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="16.46" y1="8.91" x2="16.46" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="19.56" y1="8.91" x2="19.56" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="22.66" y1="1.89" x2="22.66" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="25.77" y1="1.89" x2="25.77" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="28.87" y1="1.89" x2="28.87" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="31.98" y1="8.91" x2="31.98" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="35.08" y1="1.89" x2="35.08" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="38.19" y1="1.89" x2="38.19" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="41.29" y1="1.89" x2="41.29" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="44.40" y1="1.89" x2="44.40" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="47.50" y1="1.89" x2="47.50" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="50.61" y1="1.89" x2="50.61" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line></g></svg>
 </td>
 </tr>
 <tr>
@@ -2674,7 +2674,7 @@ tbody tr:last-child {
 <td class="gt_row gt_right">10</td>
 <td class="gt_row gt_right">6</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="65.20pt" height="10.80pt" viewbox="0 0 65.20 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="65.20" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw)"><line x1="4.82" y1="8.91" x2="4.82" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="8.52" y1="8.91" x2="8.52" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="12.22" y1="1.89" x2="12.22" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="15.93" y1="8.91" x2="15.93" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="19.63" y1="1.89" x2="19.63" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="23.34" y1="1.89" x2="23.34" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="27.04" y1="1.89" x2="27.04" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="30.75" y1="1.89" x2="30.75" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="34.45" y1="1.89" x2="34.45" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="38.15" y1="8.91" x2="38.15" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="41.86" y1="1.89" x2="41.86" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="45.56" y1="1.89" x2="45.56" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="49.27" y1="8.91" x2="49.27" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="52.97" y1="1.89" x2="52.97" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="56.68" y1="1.89" x2="56.68" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="60.38" y1="8.91" x2="60.38" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="54.64pt" height="10.80pt" viewbox="0 0 54.64 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw1NC42NHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="54.64" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw1NC42NHwwLjAwfDEwLjgw)"><line x1="4.04" y1="8.91" x2="4.04" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="7.14" y1="8.91" x2="7.14" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="10.25" y1="1.89" x2="10.25" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="13.35" y1="8.91" x2="13.35" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="16.46" y1="1.89" x2="16.46" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="19.56" y1="1.89" x2="19.56" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="22.66" y1="1.89" x2="22.66" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="25.77" y1="1.89" x2="25.77" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="28.87" y1="1.89" x2="28.87" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="31.98" y1="8.91" x2="31.98" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="35.08" y1="1.89" x2="35.08" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="38.19" y1="1.89" x2="38.19" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="41.29" y1="8.91" x2="41.29" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="44.40" y1="1.89" x2="44.40" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="47.50" y1="1.89" x2="47.50" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="50.61" y1="8.91" x2="50.61" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line></g></svg>
 </td>
 </tr>
 <tr>
@@ -2682,7 +2682,7 @@ tbody tr:last-child {
 <td class="gt_row gt_right">7</td>
 <td class="gt_row gt_right">9</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="65.20pt" height="10.80pt" viewbox="0 0 65.20 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="65.20" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw)"><line x1="4.82" y1="1.89" x2="4.82" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="8.52" y1="8.91" x2="8.52" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="12.22" y1="1.89" x2="12.22" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="15.93" y1="8.91" x2="15.93" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="19.63" y1="8.91" x2="19.63" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="23.34" y1="8.91" x2="23.34" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="27.04" y1="8.91" x2="27.04" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="30.75" y1="1.89" x2="30.75" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="34.45" y1="1.89" x2="34.45" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="38.15" y1="8.91" x2="38.15" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="41.86" y1="1.89" x2="41.86" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="45.56" y1="1.89" x2="45.56" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="49.27" y1="8.91" x2="49.27" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="52.97" y1="8.91" x2="52.97" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="56.68" y1="8.91" x2="56.68" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="60.38" y1="1.89" x2="60.38" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="54.64pt" height="10.80pt" viewbox="0 0 54.64 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw1NC42NHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="54.64" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw1NC42NHwwLjAwfDEwLjgw)"><line x1="4.04" y1="1.89" x2="4.04" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="7.14" y1="8.91" x2="7.14" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="10.25" y1="1.89" x2="10.25" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="13.35" y1="8.91" x2="13.35" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="16.46" y1="8.91" x2="16.46" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="19.56" y1="8.91" x2="19.56" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="22.66" y1="8.91" x2="22.66" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="25.77" y1="1.89" x2="25.77" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="28.87" y1="1.89" x2="28.87" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="31.98" y1="8.91" x2="31.98" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="35.08" y1="1.89" x2="35.08" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="38.19" y1="1.89" x2="38.19" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="41.29" y1="8.91" x2="41.29" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="44.40" y1="8.91" x2="44.40" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="47.50" y1="8.91" x2="47.50" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="50.61" y1="1.89" x2="50.61" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line></g></svg>
 </td>
 </tr>
 <tr>
@@ -2690,7 +2690,7 @@ tbody tr:last-child {
 <td class="gt_row gt_right">2</td>
 <td class="gt_row gt_right">14</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="65.20pt" height="10.80pt" viewbox="0 0 65.20 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="65.20" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw)"><line x1="4.82" y1="8.91" x2="4.82" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="8.52" y1="8.91" x2="8.52" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="12.22" y1="8.91" x2="12.22" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="15.93" y1="8.91" x2="15.93" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="19.63" y1="8.91" x2="19.63" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="23.34" y1="8.91" x2="23.34" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="27.04" y1="8.91" x2="27.04" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="30.75" y1="8.91" x2="30.75" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="34.45" y1="8.91" x2="34.45" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="38.15" y1="8.91" x2="38.15" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="41.86" y1="8.91" x2="41.86" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="45.56" y1="8.91" x2="45.56" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="49.27" y1="8.91" x2="49.27" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="52.97" y1="1.89" x2="52.97" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="56.68" y1="1.89" x2="56.68" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="60.38" y1="8.91" x2="60.38" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="54.64pt" height="10.80pt" viewbox="0 0 54.64 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw1NC42NHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="54.64" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw1NC42NHwwLjAwfDEwLjgw)"><line x1="4.04" y1="8.91" x2="4.04" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="7.14" y1="8.91" x2="7.14" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="10.25" y1="8.91" x2="10.25" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="13.35" y1="8.91" x2="13.35" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="16.46" y1="8.91" x2="16.46" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="19.56" y1="8.91" x2="19.56" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="22.66" y1="8.91" x2="22.66" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="25.77" y1="8.91" x2="25.77" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="28.87" y1="8.91" x2="28.87" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="31.98" y1="8.91" x2="31.98" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="35.08" y1="8.91" x2="35.08" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="38.19" y1="8.91" x2="38.19" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="41.29" y1="8.91" x2="41.29" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="44.40" y1="1.89" x2="44.40" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="47.50" y1="1.89" x2="47.50" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="50.61" y1="8.91" x2="50.61" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line></g></svg>
 </td>
 </tr>
 <tr class="gt_group_heading_row">
@@ -2701,7 +2701,7 @@ tbody tr:last-child {
 <td class="gt_row gt_right">14</td>
 <td class="gt_row gt_right">2</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="65.20pt" height="10.80pt" viewbox="0 0 65.20 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="65.20" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw)"><line x1="4.82" y1="1.89" x2="4.82" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="8.52" y1="1.89" x2="8.52" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="12.22" y1="1.89" x2="12.22" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="15.93" y1="1.89" x2="15.93" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="19.63" y1="8.91" x2="19.63" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="23.34" y1="1.89" x2="23.34" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="27.04" y1="1.89" x2="27.04" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="30.75" y1="1.89" x2="30.75" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="34.45" y1="1.89" x2="34.45" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="38.15" y1="1.89" x2="38.15" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="41.86" y1="1.89" x2="41.86" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="45.56" y1="1.89" x2="45.56" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="49.27" y1="1.89" x2="49.27" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="52.97" y1="1.89" x2="52.97" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="56.68" y1="1.89" x2="56.68" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="60.38" y1="8.91" x2="60.38" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="54.64pt" height="10.80pt" viewbox="0 0 54.64 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw1NC42NHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="54.64" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw1NC42NHwwLjAwfDEwLjgw)"><line x1="4.04" y1="1.89" x2="4.04" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="7.14" y1="1.89" x2="7.14" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="10.25" y1="1.89" x2="10.25" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="13.35" y1="1.89" x2="13.35" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="16.46" y1="8.91" x2="16.46" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="19.56" y1="1.89" x2="19.56" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="22.66" y1="1.89" x2="22.66" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="25.77" y1="1.89" x2="25.77" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="28.87" y1="1.89" x2="28.87" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="31.98" y1="1.89" x2="31.98" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="35.08" y1="1.89" x2="35.08" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="38.19" y1="1.89" x2="38.19" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="41.29" y1="1.89" x2="41.29" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="44.40" y1="1.89" x2="44.40" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="47.50" y1="1.89" x2="47.50" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="50.61" y1="8.91" x2="50.61" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line></g></svg>
 </td>
 </tr>
 <tr>
@@ -2709,7 +2709,7 @@ tbody tr:last-child {
 <td class="gt_row gt_right">8</td>
 <td class="gt_row gt_right">8</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="65.20pt" height="10.80pt" viewbox="0 0 65.20 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="65.20" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw)"><line x1="4.82" y1="1.89" x2="4.82" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="8.52" y1="1.89" x2="8.52" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="12.22" y1="8.91" x2="12.22" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="15.93" y1="8.91" x2="15.93" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="19.63" y1="1.89" x2="19.63" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="23.34" y1="8.91" x2="23.34" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="27.04" y1="1.89" x2="27.04" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="30.75" y1="1.89" x2="30.75" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="34.45" y1="1.89" x2="34.45" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="38.15" y1="8.91" x2="38.15" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="41.86" y1="8.91" x2="41.86" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="45.56" y1="1.89" x2="45.56" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="49.27" y1="8.91" x2="49.27" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="52.97" y1="8.91" x2="52.97" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="56.68" y1="8.91" x2="56.68" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="60.38" y1="1.89" x2="60.38" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="54.64pt" height="10.80pt" viewbox="0 0 54.64 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw1NC42NHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="54.64" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw1NC42NHwwLjAwfDEwLjgw)"><line x1="4.04" y1="1.89" x2="4.04" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="7.14" y1="1.89" x2="7.14" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="10.25" y1="8.91" x2="10.25" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="13.35" y1="8.91" x2="13.35" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="16.46" y1="1.89" x2="16.46" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="19.56" y1="8.91" x2="19.56" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="22.66" y1="1.89" x2="22.66" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="25.77" y1="1.89" x2="25.77" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="28.87" y1="1.89" x2="28.87" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="31.98" y1="8.91" x2="31.98" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="35.08" y1="8.91" x2="35.08" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="38.19" y1="1.89" x2="38.19" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="41.29" y1="8.91" x2="41.29" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="44.40" y1="8.91" x2="44.40" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="47.50" y1="8.91" x2="47.50" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="50.61" y1="1.89" x2="50.61" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line></g></svg>
 </td>
 </tr>
 <tr>
@@ -2717,7 +2717,7 @@ tbody tr:last-child {
 <td class="gt_row gt_right">7</td>
 <td class="gt_row gt_right">9</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="65.20pt" height="10.80pt" viewbox="0 0 65.20 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="65.20" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw)"><line x1="4.82" y1="1.89" x2="4.82" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="8.52" y1="8.91" x2="8.52" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="12.22" y1="8.91" x2="12.22" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="15.93" y1="8.91" x2="15.93" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="19.63" y1="8.91" x2="19.63" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="23.34" y1="1.89" x2="23.34" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="27.04" y1="8.91" x2="27.04" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="30.75" y1="8.91" x2="30.75" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="34.45" y1="8.91" x2="34.45" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="38.15" y1="1.89" x2="38.15" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="41.86" y1="8.91" x2="41.86" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="45.56" y1="8.91" x2="45.56" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="49.27" y1="1.89" x2="49.27" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="52.97" y1="1.89" x2="52.97" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="56.68" y1="1.89" x2="56.68" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="60.38" y1="1.89" x2="60.38" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="54.64pt" height="10.80pt" viewbox="0 0 54.64 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw1NC42NHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="54.64" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw1NC42NHwwLjAwfDEwLjgw)"><line x1="4.04" y1="1.89" x2="4.04" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="7.14" y1="8.91" x2="7.14" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="10.25" y1="8.91" x2="10.25" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="13.35" y1="8.91" x2="13.35" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="16.46" y1="8.91" x2="16.46" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="19.56" y1="1.89" x2="19.56" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="22.66" y1="8.91" x2="22.66" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="25.77" y1="8.91" x2="25.77" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="28.87" y1="8.91" x2="28.87" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="31.98" y1="1.89" x2="31.98" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="35.08" y1="8.91" x2="35.08" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="38.19" y1="8.91" x2="38.19" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="41.29" y1="1.89" x2="41.29" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="44.40" y1="1.89" x2="44.40" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="47.50" y1="1.89" x2="47.50" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="50.61" y1="1.89" x2="50.61" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line></g></svg>
 </td>
 </tr>
 <tr>
@@ -2725,16 +2725,16 @@ tbody tr:last-child {
 <td class="gt_row gt_right">5</td>
 <td class="gt_row gt_right">11</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="65.20pt" height="10.80pt" viewbox="0 0 65.20 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="65.20" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw2NS4yMHwwLjAwfDEwLjgw)"><line x1="4.82" y1="8.91" x2="4.82" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="8.52" y1="8.91" x2="8.52" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="12.22" y1="8.91" x2="12.22" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="15.93" y1="1.89" x2="15.93" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="19.63" y1="1.89" x2="19.63" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="23.34" y1="8.91" x2="23.34" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="27.04" y1="1.89" x2="27.04" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="30.75" y1="8.91" x2="30.75" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="34.45" y1="8.91" x2="34.45" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="38.15" y1="1.89" x2="38.15" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="41.86" y1="8.91" x2="41.86" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="45.56" y1="8.91" x2="45.56" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="49.27" y1="1.89" x2="49.27" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="52.97" y1="8.91" x2="52.97" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="56.68" y1="8.91" x2="56.68" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="60.38" y1="8.91" x2="60.38" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="54.64pt" height="10.80pt" viewbox="0 0 54.64 10.80"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw1NC42NHwwLjAwfDEwLjgw"><rect x="0.00" y="0.00" width="54.64" height="10.80"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw1NC42NHwwLjAwfDEwLjgw)"><line x1="4.04" y1="8.91" x2="4.04" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="7.14" y1="8.91" x2="7.14" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="10.25" y1="8.91" x2="10.25" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="13.35" y1="1.89" x2="13.35" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="16.46" y1="1.89" x2="16.46" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="19.56" y1="8.91" x2="19.56" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="22.66" y1="1.89" x2="22.66" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="25.77" y1="8.91" x2="25.77" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="28.87" y1="8.91" x2="28.87" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="31.98" y1="1.89" x2="31.98" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="35.08" y1="8.91" x2="35.08" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="38.19" y1="8.91" x2="38.19" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="41.29" y1="1.89" x2="41.29" y2="6.10" style="stroke-width: 2.13; stroke: #013369;"></line><line x1="44.40" y1="8.91" x2="44.40" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="47.50" y1="8.91" x2="47.50" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line><line x1="50.61" y1="8.91" x2="50.61" y2="4.70" style="stroke-width: 2.13; stroke: #D50A0A;"></line></g></svg>
 </td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<div id="inline-bar-plots" class="section level3">
-<h3 class="hasAnchor">
-<a href="#inline-bar-plots" class="anchor" aria-hidden="true"></a>Inline bar plots</h3>
+<div class="section level3">
+<h3 id="inline-bar-plots">Inline bar plots<a class="anchor" aria-label="anchor" href="#inline-bar-plots"></a>
+</h3>
 <p>We can also do inline bar plots, purely via HTML! You can customize the colors, and have the option to scale or use unscaled values.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gt_bar_plot_tab</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
@@ -2755,12 +2755,12 @@ tbody tr:last-child {
   <span class="op">)</span>
 
 <span class="va">gt_bar_plot_tab</span></code></pre></div>
-<div id="qwnffybzek" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="ozdyqaefwh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#qwnffybzek .gt_table {
+#ozdyqaefwh .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2785,7 +2785,7 @@ tbody tr:last-child {
   border-left-color: #D3D3D3;
 }
 
-#qwnffybzek .gt_heading {
+#ozdyqaefwh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2797,7 +2797,7 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#qwnffybzek .gt_title {
+#ozdyqaefwh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2807,7 +2807,7 @@ tbody tr:last-child {
   border-bottom-width: 0;
 }
 
-#qwnffybzek .gt_subtitle {
+#ozdyqaefwh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2817,13 +2817,13 @@ tbody tr:last-child {
   border-top-width: 0;
 }
 
-#qwnffybzek .gt_bottom_border {
+#ozdyqaefwh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qwnffybzek .gt_col_headings {
+#ozdyqaefwh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2838,7 +2838,7 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#qwnffybzek .gt_col_heading {
+#ozdyqaefwh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2858,7 +2858,7 @@ tbody tr:last-child {
   overflow-x: hidden;
 }
 
-#qwnffybzek .gt_column_spanner_outer {
+#ozdyqaefwh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2870,15 +2870,15 @@ tbody tr:last-child {
   padding-right: 4px;
 }
 
-#qwnffybzek .gt_column_spanner_outer:first-child {
+#ozdyqaefwh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qwnffybzek .gt_column_spanner_outer:last-child {
+#ozdyqaefwh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qwnffybzek .gt_column_spanner {
+#ozdyqaefwh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2890,7 +2890,7 @@ tbody tr:last-child {
   width: 100%;
 }
 
-#qwnffybzek .gt_group_heading {
+#ozdyqaefwh .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2912,7 +2912,7 @@ tbody tr:last-child {
   vertical-align: middle;
 }
 
-#qwnffybzek .gt_empty_group_heading {
+#ozdyqaefwh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2927,15 +2927,15 @@ tbody tr:last-child {
   vertical-align: middle;
 }
 
-#qwnffybzek .gt_from_md > :first-child {
+#ozdyqaefwh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qwnffybzek .gt_from_md > :last-child {
+#ozdyqaefwh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qwnffybzek .gt_row {
+#ozdyqaefwh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2954,7 +2954,7 @@ tbody tr:last-child {
   overflow-x: hidden;
 }
 
-#qwnffybzek .gt_stub {
+#ozdyqaefwh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2966,7 +2966,7 @@ tbody tr:last-child {
   padding-left: 12px;
 }
 
-#qwnffybzek .gt_summary_row {
+#ozdyqaefwh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2976,7 +2976,7 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#qwnffybzek .gt_first_summary_row {
+#ozdyqaefwh .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2986,7 +2986,7 @@ tbody tr:last-child {
   border-top-color: #D3D3D3;
 }
 
-#qwnffybzek .gt_grand_summary_row {
+#ozdyqaefwh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2996,7 +2996,7 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#qwnffybzek .gt_first_grand_summary_row {
+#ozdyqaefwh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3006,11 +3006,11 @@ tbody tr:last-child {
   border-top-color: #D3D3D3;
 }
 
-#qwnffybzek .gt_striped {
+#ozdyqaefwh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qwnffybzek .gt_table_body {
+#ozdyqaefwh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3019,7 +3019,7 @@ tbody tr:last-child {
   border-bottom-color: #D3D3D3;
 }
 
-#qwnffybzek .gt_footnotes {
+#ozdyqaefwh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3033,13 +3033,13 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#qwnffybzek .gt_footnote {
+#ozdyqaefwh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#qwnffybzek .gt_sourcenotes {
+#ozdyqaefwh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3053,41 +3053,41 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#qwnffybzek .gt_sourcenote {
+#ozdyqaefwh .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#qwnffybzek .gt_left {
+#ozdyqaefwh .gt_left {
   text-align: left;
 }
 
-#qwnffybzek .gt_center {
+#ozdyqaefwh .gt_center {
   text-align: center;
 }
 
-#qwnffybzek .gt_right {
+#ozdyqaefwh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qwnffybzek .gt_font_normal {
+#ozdyqaefwh .gt_font_normal {
   font-weight: normal;
 }
 
-#qwnffybzek .gt_font_bold {
+#ozdyqaefwh .gt_font_bold {
   font-weight: bold;
 }
 
-#qwnffybzek .gt_font_italic {
+#ozdyqaefwh .gt_font_italic {
   font-style: italic;
 }
 
-#qwnffybzek .gt_super {
+#ozdyqaefwh .gt_super {
   font-size: 65%;
 }
 
-#qwnffybzek .gt_footnote_marks {
+#ozdyqaefwh .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -3155,9 +3155,9 @@ tbody tr:last-child {
 </table>
 </div>
 </div>
-<div id="stacked-percent-bar-charts" class="section level3">
-<h3 class="hasAnchor">
-<a href="#stacked-percent-bar-charts" class="anchor" aria-hidden="true"></a>Stacked Percent bar charts</h3>
+<div class="section level3">
+<h3 id="stacked-percent-bar-charts">Stacked Percent bar charts<a class="anchor" aria-label="anchor" href="#stacked-percent-bar-charts"></a>
+</h3>
 <p>We can create a horizontal stacked percent bar chart inline like so. The data can be prepped as seen in the expandable section below.</p>
 <details><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span>
@@ -3237,13 +3237,13 @@ tbody tr:last-child {
                    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"DUNKS"</span>, <span class="st">"HOOKS/FLOATS"</span>, <span class="st">"JUMPERS"</span><span class="op">)</span>,
                    palette<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#ff4343"</span>, <span class="st">"#bfbfbf"</span>, <span class="st">"#0a1c2b"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/gt_theme_538.html">gt_theme_538</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div id="xfrugupjnj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="tszcycxian" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 html {
   font-family: Chivo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#xfrugupjnj .gt_table {
+#tszcycxian .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -3268,7 +3268,7 @@ html {
   border-left-color: #D3D3D3;
 }
 
-#xfrugupjnj .gt_heading {
+#tszcycxian .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -3280,7 +3280,7 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#xfrugupjnj .gt_title {
+#tszcycxian .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3290,7 +3290,7 @@ html {
   border-bottom-width: 0;
 }
 
-#xfrugupjnj .gt_subtitle {
+#tszcycxian .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3300,13 +3300,13 @@ html {
   border-top-width: 0;
 }
 
-#xfrugupjnj .gt_bottom_border {
+#tszcycxian .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xfrugupjnj .gt_col_headings {
+#tszcycxian .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3321,7 +3321,7 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#xfrugupjnj .gt_col_heading {
+#tszcycxian .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -3341,7 +3341,7 @@ html {
   overflow-x: hidden;
 }
 
-#xfrugupjnj .gt_column_spanner_outer {
+#tszcycxian .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -3353,15 +3353,15 @@ html {
   padding-right: 4px;
 }
 
-#xfrugupjnj .gt_column_spanner_outer:first-child {
+#tszcycxian .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xfrugupjnj .gt_column_spanner_outer:last-child {
+#tszcycxian .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xfrugupjnj .gt_column_spanner {
+#tszcycxian .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #000000;
@@ -3373,7 +3373,7 @@ html {
   width: 100%;
 }
 
-#xfrugupjnj .gt_group_heading {
+#tszcycxian .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3395,7 +3395,7 @@ html {
   vertical-align: middle;
 }
 
-#xfrugupjnj .gt_empty_group_heading {
+#tszcycxian .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3410,15 +3410,15 @@ html {
   vertical-align: middle;
 }
 
-#xfrugupjnj .gt_from_md > :first-child {
+#tszcycxian .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xfrugupjnj .gt_from_md > :last-child {
+#tszcycxian .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xfrugupjnj .gt_row {
+#tszcycxian .gt_row {
   padding-top: 3px;
   padding-bottom: 3px;
   padding-left: 5px;
@@ -3437,7 +3437,7 @@ html {
   overflow-x: hidden;
 }
 
-#xfrugupjnj .gt_stub {
+#tszcycxian .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -3449,7 +3449,7 @@ html {
   padding-left: 12px;
 }
 
-#xfrugupjnj .gt_summary_row {
+#tszcycxian .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3459,7 +3459,7 @@ html {
   padding-right: 5px;
 }
 
-#xfrugupjnj .gt_first_summary_row {
+#tszcycxian .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3469,7 +3469,7 @@ html {
   border-top-color: #D3D3D3;
 }
 
-#xfrugupjnj .gt_grand_summary_row {
+#tszcycxian .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3479,7 +3479,7 @@ html {
   padding-right: 5px;
 }
 
-#xfrugupjnj .gt_first_grand_summary_row {
+#tszcycxian .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3489,11 +3489,11 @@ html {
   border-top-color: #D3D3D3;
 }
 
-#xfrugupjnj .gt_striped {
+#tszcycxian .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xfrugupjnj .gt_table_body {
+#tszcycxian .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3502,7 +3502,7 @@ html {
   border-bottom-color: #D3D3D3;
 }
 
-#xfrugupjnj .gt_footnotes {
+#tszcycxian .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3516,13 +3516,13 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#xfrugupjnj .gt_footnote {
+#tszcycxian .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#xfrugupjnj .gt_sourcenotes {
+#tszcycxian .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3536,41 +3536,41 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#xfrugupjnj .gt_sourcenote {
+#tszcycxian .gt_sourcenote {
   font-size: 12px;
   padding: 4px;
 }
 
-#xfrugupjnj .gt_left {
+#tszcycxian .gt_left {
   text-align: left;
 }
 
-#xfrugupjnj .gt_center {
+#tszcycxian .gt_center {
   text-align: center;
 }
 
-#xfrugupjnj .gt_right {
+#tszcycxian .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xfrugupjnj .gt_font_normal {
+#tszcycxian .gt_font_normal {
   font-weight: normal;
 }
 
-#xfrugupjnj .gt_font_bold {
+#tszcycxian .gt_font_bold {
   font-weight: bold;
 }
 
-#xfrugupjnj .gt_font_italic {
+#tszcycxian .gt_font_italic {
   font-style: italic;
 }
 
-#xfrugupjnj .gt_super {
+#tszcycxian .gt_super {
   font-size: 65%;
 }
 
-#xfrugupjnj .gt_footnote_marks {
+#tszcycxian .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -3649,9 +3649,9 @@ tbody tr:last-child {
 </table>
 </div>
 </div>
-<div id="bullet-chart" class="section level3">
-<h3 class="hasAnchor">
-<a href="#bullet-chart" class="anchor" aria-hidden="true"></a>Bullet chart</h3>
+<div class="section level3">
+<h3 id="bullet-chart">Bullet chart<a class="anchor" aria-label="anchor" href="#bullet-chart"></a>
+</h3>
 <p>There’s also an option to create <a href="https://en.wikipedia.org/wiki/Bullet_graph" class="external-link">bullet charts</a> which represent a core value and a target metric.</p>
 <div class="figure">
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Labelled_Bullet_Graph_Example.svg/500px-Labelled_Bullet_Graph_Example.svg.png" alt=""><p class="caption">A representative diagram of a bullet chart, where there’s a specific target value represented by a vertical line and a core value represented as a thin bar plot.</p>
@@ -5046,7 +5046,7 @@ tbody tr:last-child {
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.9000.9000.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>

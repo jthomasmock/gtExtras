@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.2.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
       </span>
     </div>
 
@@ -62,7 +62,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/jthomasmock/gtExtras/">
+  <a href="https://github.com/jthomasmock/gtExtras/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -79,24 +79,24 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="gtextras" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#gtextras" class="anchor" aria-hidden="true"></a>gtExtras</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="gtextras">gtExtras<a class="anchor" aria-label="anchor" href="#gtextras"></a>
+</h1></div>
 <!-- badges: start -->
 
 <p>The goal of <a href="https://github.com/jthomasmock/gtExtras" class="external-link">gtExtras</a> is to provide some additional helper functions to assist in creating beautiful tables with <a href="https://gt.rstudio.com/" class="external-link">gt</a>.</p>
 <p>The functions are generally wrappers around boilerplate or adding capabilities that are currently not <em>yet</em> built into <a href="https://gt.rstudio.com/" class="external-link">gt</a>. The <a href="https://gt.rstudio.com/" class="external-link"><code>{gt}</code> package</a> is amazing, make sure to go read the official documentation.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor" aria-hidden="true"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>Full disclosure, <code>gtExtras</code> is under extremely active development. I appreciate any bug reports as issues, and I highly recommend updating frequently at least until an initial CRAN release.</p>
 <p>You can install the dev version of gtExtras from <a href="https://github.com/jthomasmock/gtExtra" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># if needed install.packages("remotes")</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"jthomasmock/gtExtras"</span><span class="op">)</span></code></pre></div>
-<div id="fmt_symbol_first" class="section level3">
-<h3 class="hasAnchor">
-<a href="#fmt_symbol_first" class="anchor" aria-hidden="true"></a><code>fmt_symbol_first</code>
+<div class="section level3">
+<h3 id="fmt_symbol_first">
+<code>fmt_symbol_first</code><a class="anchor" aria-label="anchor" href="#fmt_symbol_first"></a>
 </h3>
 <p>This function allows you to format your columns only on the first row, where remaining rows in that column have whitespace added to the end to maintain proper alignment.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -116,11 +116,11 @@
 <p align="center">
 <img src="reference/figures/gt_fmt_first.png" width="700px"></p>
 </div>
-<div id="pad_fn" class="section level3">
-<h3 class="hasAnchor">
-<a href="#pad_fn" class="anchor" aria-hidden="true"></a><code>pad_fn</code>
+<div class="section level3">
+<h3 id="pad_fn">
+<code>pad_fn</code><a class="anchor" aria-label="anchor" href="#pad_fn"></a>
 </h3>
-<p>You can use <code><a href="reference/pad_fn.html">pad_fn()</a></code> with <code><a href="https://gt.rstudio.com/reference/fmt.html" class="external-link">gt::fmt()</a></code> to pad specific columns that contain numeric values. You will use it when you want to âdecimal alignâ the values in the column, but not require printing extra trailing zeroes.</p>
+<p>You can use <code><a href="reference/pad_fn.html">pad_fn()</a></code> with <code><a href="https://gt.rstudio.com/reference/fmt.html" class="external-link">gt::fmt()</a></code> to pad specific columns that contain numeric values. You will use it when you want to “decimal align” the values in the column, but not require printing extra trailing zeroes.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.2345</span>, <span class="fl">12.345</span>, <span class="fl">123.45</span>, <span class="fl">1234.5</span>, <span class="fl">12345</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span>
@@ -133,9 +133,9 @@
 <p align="center">
 <img src="reference/figures/gt_pad_fn.png" width="200px"></p>
 </div>
-<div id="themes" class="section level3">
-<h3 class="hasAnchor">
-<a href="#themes" class="anchor" aria-hidden="true"></a>Themes</h3>
+<div class="section level3">
+<h3 id="themes">Themes<a class="anchor" aria-label="anchor" href="#themes"></a>
+</h3>
 <p>The package includes two different themes, the <code><a href="reference/gt_theme_538.html">gt_theme_538()</a></code> styled after FiveThirtyEight style tables, and <code><a href="reference/gt_theme_espn.html">gt_theme_espn()</a></code> styled after ESPN style tables.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span>
@@ -157,9 +157,9 @@
 <p align="center">
 <img src="reference/figures/gt_nyt.png" width="700px"></p>
 </div>
-<div id="hulk-data_color" class="section level3">
-<h3 class="hasAnchor">
-<a href="#hulk-data_color" class="anchor" aria-hidden="true"></a>Hulk data_color</h3>
+<div class="section level3">
+<h3 id="hulk-data_color">Hulk data_color<a class="anchor" aria-label="anchor" href="#hulk-data_color"></a>
+</h3>
 <p>This is an opinionated diverging color palette. It diverges from low to high as purple to green. It is a good alternative to a red-green diverging palette as a color-blind friendly palette. The specific colors come from <a href="https://colorbrewer2.org/#type=diverging&amp;scheme=PRGn&amp;n=7" class="external-link">colorbrewer2</a>.</p>
 <p>Basic usage below, where a specific column is passed.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -190,11 +190,11 @@
 <p align="center">
 <img src="reference/figures/hulk_reverse.png" width="700px"></p>
 </div>
-<div id="gt_color_rows" class="section level3">
-<h3 class="hasAnchor">
-<a href="#gt_color_rows" class="anchor" aria-hidden="true"></a><code>gt_color_rows()</code>
+<div class="section level3">
+<h3 id="gt_color_rows">
+<code>gt_color_rows()</code><a class="anchor" aria-label="anchor" href="#gt_color_rows"></a>
 </h3>
-<p>The <code><a href="reference/gt_color_rows.html">gt_color_rows()</a></code> function is a thin boilerplate wrapper around <code><a href="https://gt.rstudio.com/reference/data_color.html" class="external-link">gt::data_color()</a></code>. Itâs simpler to use but still provides rich color choices thanks to the inclusion of <code><a href="https://rdrr.io/pkg/paletteer/man/paletteer_d.html" class="external-link">paletteer::paletteer_d()</a></code>. This can provide 100s of discrete (ie categorical) or continuous color palettes.</p>
+<p>The <code><a href="reference/gt_color_rows.html">gt_color_rows()</a></code> function is a thin boilerplate wrapper around <code><a href="https://gt.rstudio.com/reference/data_color.html" class="external-link">gt::data_color()</a></code>. It’s simpler to use but still provides rich color choices thanks to the inclusion of <code><a href="https://rdrr.io/pkg/paletteer/man/paletteer_d.html" class="external-link">paletteer::paletteer_d()</a></code>. This can provide 100s of discrete (ie categorical) or continuous color palettes.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># basic use</span>
 <span class="va">mtcars</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span>
@@ -238,9 +238,9 @@
 <p align="center">
 <img src="reference/figures/discrete-pal.png" width="700px"></p>
 </div>
-<div id="gt_highlight_rows" class="section level3">
-<h3 class="hasAnchor">
-<a href="#gt_highlight_rows" class="anchor" aria-hidden="true"></a><code>gt_highlight_rows()</code>
+<div class="section level3">
+<h3 id="gt_highlight_rows">
+<code>gt_highlight_rows()</code><a class="anchor" aria-label="anchor" href="#gt_highlight_rows"></a>
 </h3>
 <p>This provides the ability to highlight and optionally bold entire rows within an existing <code>gt</code> table. Basic use defaults to a light-blue highlight which can be changed with the <code>fill</code> argument.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
@@ -250,7 +250,7 @@
   <span class="fu"><a href="reference/gt_highlight_rows.html">gt_highlight_rows</a></span><span class="op">(</span>rows <span class="op">=</span> <span class="fl">2</span>, font_weight <span class="op">=</span> <span class="st">"normal"</span><span class="op">)</span> </code></pre></div>
 <p align="center">
 <img src="reference/figures/highlight-basic.png" width="500px"></p>
-<p>You can optionally specify a target column with <code>target_col</code> that will be bold, while the rest of the rowâs text will be default weight.</p>
+<p>You can optionally specify a target column with <code>target_col</code> that will be bold, while the rest of the row’s text will be default weight.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html" class="external-link">rownames_to_column</a></span><span class="op">(</span><span class="st">"car"</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span> 
@@ -264,9 +264,9 @@
 <p align="center">
 <img src="reference/figures/highlight-target.png" width="500px"></p>
 </div>
-<div id="gt_sparkline" class="section level3">
-<h3 class="hasAnchor">
-<a href="#gt_sparkline" class="anchor" aria-hidden="true"></a><code>gt_sparkline()</code>
+<div class="section level3">
+<h3 id="gt_sparkline">
+<code>gt_sparkline()</code><a class="anchor" aria-label="anchor" href="#gt_sparkline"></a>
 </h3>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gt_sparkline_tab</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span>
@@ -278,9 +278,9 @@
 <p align="center">
 <img src="reference/figures/ggplot2-sparkline.png" width="200px"></p>
 </div>
-<div id="gt_bar_plot" class="section level3">
-<h3 class="hasAnchor">
-<a href="#gt_bar_plot" class="anchor" aria-hidden="true"></a><code>gt_bar_plot()</code>
+<div class="section level3">
+<h3 id="gt_bar_plot">
+<code>gt_bar_plot()</code><a class="anchor" aria-label="anchor" href="#gt_bar_plot"></a>
 </h3>
 <p>The <code>gt_bar_plot</code> function takes an existing <code>gt_tbl</code> object and adds horizontal barplots via native HTML. This is a wrapper around raw HTML strings, <code><a href="https://gt.rstudio.com/reference/text_transform.html" class="external-link">gt::text_transform()</a></code> and <code><a href="https://gt.rstudio.com/reference/cols_align.html" class="external-link">gt::cols_align()</a></code>. Note that values default to being normalized to the percent of the maximum observed value in the specified column. You can turn this off if the values already represent a percentage value representing 0-100.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
@@ -299,11 +299,11 @@
 <p align="center">
 <img src="reference/figures/gt_bar_plot.png" width="700px"></p>
 </div>
-<div id="gt_merge_stack" class="section level3">
-<h3 class="hasAnchor">
-<a href="#gt_merge_stack" class="anchor" aria-hidden="true"></a><code>gt_merge_stack()</code>
+<div class="section level3">
+<h3 id="gt_merge_stack">
+<code>gt_merge_stack()</code><a class="anchor" aria-label="anchor" href="#gt_merge_stack"></a>
 </h3>
-<p>The <code><a href="reference/gt_merge_stack.html">gt_merge_stack()</a></code> function takes an existing <code>gt</code> table and merges column 1 and column 2, stacking column 1âs text on top of column 2âs. Top text is in all caps with black bold text, while the lower text is smaller and dark grey.</p>
+<p>The <code><a href="reference/gt_merge_stack.html">gt_merge_stack()</a></code> function takes an existing <code>gt</code> table and merges column 1 and column 2, stacking column 1’s text on top of column 2’s. Top text is in all caps with black bold text, while the lower text is smaller and dark grey.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">team_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">url</a></span><span class="op">(</span><span class="st">"https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"</span><span class="op">)</span><span class="op">)</span>
 
@@ -316,9 +316,9 @@
 <p align="center">
 <img src="reference/figures/merge-stack.png" width="500px"></p>
 </div>
-<div id="gt_plt_winloss" class="section level3">
-<h3 class="hasAnchor">
-<a href="#gt_plt_winloss" class="anchor" aria-hidden="true"></a><code>gt_plt_winloss()</code>
+<div class="section level3">
+<h3 id="gt_plt_winloss">
+<code>gt_plt_winloss()</code><a class="anchor" aria-label="anchor" href="#gt_plt_winloss"></a>
 </h3>
 <p>This function takes a list-column of win loss values (ie, 0=loss, 0.5 = tie, 1 = win) and ouputs an inline plot representing the win/loss squares with blue = win, red = loss, grey = tie. Points are also also redundantly coded with height, where wins are highest, ties are middle, and losses are at the bottom.</p>
 <p>The example below generates an example dataset and then embeds a plot.</p>
@@ -363,7 +363,7 @@
   <span class="fu"><a href="https://gt.rstudio.com/reference/tab_options.html" class="external-link">tab_options</a></span><span class="op">(</span>data_row.padding <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/px.html" class="external-link">px</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p align="center">
 <img src="reference/figures/wl-1.png" width="500px"></p>
-<p>And moving to 12 games, we can see that the scale is unchanged, and âemptyâ points are replaced with outcomes once the values are present in the data.</p>
+<p>And moving to 12 games, we can see that the scale is unchanged, and “empty” points are replaced with outcomes once the values are present in the data.</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">create_input_df</span><span class="op">(</span><span class="fl">4</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span> 
@@ -372,7 +372,7 @@
   <span class="fu"><a href="https://gt.rstudio.com/reference/gtsave.html" class="external-link">gtsave</a></span><span class="op">(</span><span class="st">"man/figures/wl-4.png"</span><span class="op">)</span></code></pre></div>
 <p align="center">
 <img src="reference/figures/wl-4.png" width="500px"></p>
-<p>You can also switch over to âsquaresâ instead of âpillsâ by changing the <code>type</code> argument.</p>
+<p>You can also switch over to ‘squares’ instead of ‘pills’ by changing the <code>type</code> argument.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">create_input_df</span><span class="op">(</span><span class="fl">4</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span> 
@@ -439,10 +439,8 @@
     <div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/jthomasmock/gtExtras/">https://​github.com/​jthomasmock/​gtExtras/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/jthomasmock/gtExtras/issues">https://​github.com/​jthomasmock/​gtExtras/​issues</a>
-</li>
+<li><a href="https://github.com/jthomasmock/gtExtras/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/jthomasmock/gtExtras/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
@@ -450,10 +448,17 @@
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
 
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing gtExtras</a></li>
+</ul>
+</div>
 
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
@@ -480,7 +485,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>

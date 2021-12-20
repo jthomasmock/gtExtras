@@ -85,19 +85,19 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
          scale_x_continuous(expand = expansion(mult = 0.05)) +
          coord_cartesian(
            clip = "off", xlim = grDevices::extendrange(total_rng, f = c(0,0.01)),
-           ylim = c(0.85, 1.05)
+           ylim = c(0.9, 1.15)
          )
      } else {
        plot_base <- plot_base +
          scale_x_continuous(expand = expansion(mult = 0.05)) +
          coord_cartesian(
            clip = "off", xlim = grDevices::extendrange(vals, f = 0.09),
-           ylim = c(0.85, 1.05)
+           ylim = c(0.9, 1.15)
          )
      }
 
       plot_out <- plot_base +
-        geom_boxplot(aes(x = y, y = 1), width = 0.25, color = line_color,
+        geom_boxplot(aes(x = y, y = 1), width = 0.15, color = line_color,
           fill = fill_color, outlier.size = 0.3, size = 0.3)
 
     } else if (type == "rug_strip") {

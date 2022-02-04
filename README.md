@@ -81,9 +81,10 @@ data.frame(x = c(1.2345, 12.345, 123.45, 1234.5, 12345)) %>%
 
 ### Themes
 
-The package includes two different themes, the `gt_theme_538()` styled
-after FiveThirtyEight style tables, and `gt_theme_espn()` styled after
-ESPN style tables.
+The package includes three different themes, the `gt_theme_538()` styled
+after FiveThirtyEight style tables, the `gt_theme_espn()` styled after
+ESPN style tables, and the `gt_theme_nytimes()` styled after The New
+York Times tables.
 
 ``` r
 head(mtcars) %>%
@@ -116,7 +117,7 @@ head(mtcars) %>%
 <img src="man/figures/gt_nyt.png" width="700px">
 </p>
 
-### Hulk data_color
+### Hulk data\_color
 
 This is an opinionated diverging color palette. It diverges from low to
 high as purple to green. It is a good alternative to a red-green

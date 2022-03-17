@@ -6,7 +6,7 @@
 #'
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param column The column wherein the sparkline plot should replace existing data. Note that the data *must* be represented as a list of numeric values ahead of time.
-#' @param type A string indicating the type of plot to generate, accepts `"default"`, `"shaded"`, `"ref_median"`, `'ref_mean'`, `"ref_iqr"`, `"ref_grid"`
+#' @param type A string indicating the type of plot to generate, accepts `"default"`, `"shaded"`, `"ref_median"`, `'ref_mean'`, `"ref_iqr"`, `"ref_last"`
 #' @param fig_dim A vector of two numbers indicating the height/width of the plot in mm at a DPI of 25.4, defaults to `c(5,30)`
 #' @param pal A character string indicating the colors of various components. Order matters, and pal = sparkline color, final value color, range color low, range color high, and 'type' color (eg shading or reference lines).
 #' @param same_limit A logical indicating that the plots will use the same axis range (`TRUE`) or have individual axis ranges (`FALSE`).
@@ -50,8 +50,7 @@ gt_plt_sparkline <- function(gt_object, column, type = "default",
 
   stopifnot("Specified column must contain list of values" = class(list_data_in) %in% "list")
   stopifnot("You must supply five colors for the palette." = length(pal) == 5L)
-  stopifnot("You must indicate the `type` of plot as one of 'default', 'shaded', 'ref_median', 'ref_mean', 'points', or 'ref_iqr'." = isTRUE(type %in% c("default", "shaded", "ref_median",
-    "ref_mean", "ref_iqr", "points")))
+  stopifnot("You must indicate the `type` of plot as one of 'default', 'shaded', 'ref_median', 'ref_mean', 'points', 'ref_last' or 'ref_iqr'." = isTRUE(type %in% c("default", "shaded", "ref_median", "ref_mean", "ref_iqr", "points", "ref_last")))
 
   # range to be used for plotting if same axis
   total_rng <- grDevices::extendrange(data_in, r = range(data_in, na.rm = TRUE), f = 0.02)
@@ -165,6 +164,13 @@ gt_plt_sparkline <- function(gt_object, column, type = "default",
       } else if (type == "ref_mean") {
         plot_out$layers <- c(
           geom_segment(aes(x=min(x),y=mean(y),xend = max(x),yend=mean(y)),
+            color = pal[5], size = 0.1),
+          plot_out$layers
+        )
+        ### Horizontal ref line at last point
+      } else if (type == "ref_last") {
+        plot_out$layers <- c(
+          geom_segment(aes(x=min(x),y=last(y),xend = max(x),yend=last(y)),
             color = pal[5], size = 0.1),
           plot_out$layers
         )

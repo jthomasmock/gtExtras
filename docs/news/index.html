@@ -66,10 +66,14 @@
 package.</li>
 </ul><div class="section level3">
 <h3 id="bug-fixes-0-2-4">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-2-4"></a></h3>
-<ul><li>Use <code>gt_index</code> to prevent incorrect ordering of rows with
-<code><a href="../reference/gt_plt_bar_pct.html">gt_plt_bar_pct()</a></code> per <a href="https://stackoverflow.com/questions/71313688/gtextras-column-showing-in-wrong-order-in-gt-table-when-grouped?noredirect=1#comment126232993_71313688" class="external-link">StackOverflow
-report</a>
-</li>
+<ul><li><p>Use <code>gt_index</code> to prevent incorrect ordering of rows
+with <code><a href="../reference/gt_plt_bar_pct.html">gt_plt_bar_pct()</a></code> per <a href="https://stackoverflow.com/questions/71313688/gtextras-column-showing-in-wrong-order-in-gt-table-when-grouped?noredirect=1#comment126232993_71313688" class="external-link">StackOverflow
+report</a></p></li>
+<li><p>Remove <code>keep_column</code> argument for
+<code>gt_plt_bullet</code>, this functionality is able to be achieved
+with <code><a href="../reference/gt_duplicate_column.html">gt_duplicate_column()</a></code> upstream. This also solves
+naming confusion as seen in <a href="https://github.com/jthomasmock/gtExtras/issues/37" class="external-link">issue
+37</a></p></li>
 </ul></div>
 </div>
   </div>

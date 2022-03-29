@@ -1,5 +1,9 @@
 # gtExtras (development version)
 
+# gtExtras 0.2.5
+
+* Updated `gt_theme_guardian()` to work with zero-length tables per [Issue 41](https://github.com/jthomasmock/gtExtras/issues/41)
+
 # gtExtras 0.2.4
 
 * Added a `NEWS.md` file to track changes to the package.

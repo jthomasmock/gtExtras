@@ -34,7 +34,7 @@ gt_theme_guardian <- function(gt_object,...) {
       style = cell_borders(
         sides = "top", color = "white", weight = px(0)
       ),
-      locations = cells_body(rows = 1)
+      locations = cells_body(rows = ifelse(nrow(gt_object[["_data"]])> 0, 1, NA))
     ) %>%
     tab_style(
       style = cell_text(color = "#005689", size = px(22), weight = 700),

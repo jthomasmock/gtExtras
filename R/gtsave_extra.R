@@ -8,7 +8,7 @@
 #' @param expand A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order.
 #'
 #' @return Prints the HTML content to the RStudio viewer and saves a `.png` file to disk
-#' @importFrom webshot webshot
+#' @importFrom webshot2 webshot
 #' @importFrom htmltools browsable
 #' @export
 #' @family Utilities
@@ -38,14 +38,24 @@ gtsave_extra <- function(data,
     filename = tempfile_,
     path = NULL
   )
-  # Save the image in the working directory
-  webshot::webshot(
-    url = paste0("file:///", tempfile_),
-    file = filename,
-    zoom = zoom,
-    expand = expand,
-    ...
-  )
+
+  # Saving an image requires the webshot package; if it's
+  # not present, stop with a message
+  if (!requireNamespace("webshot2", quietly = TRUE)) {
+
+    stop("The `webshot2` package is required for saving images of gt tables. Install it from remotes::install_github('rstudio/webshot2')",
+      call. = FALSE)
+
+  } else {
+    # Save the image in the working directory
+    webshot2::webshot(
+      url = paste0("file:///", tempfile_),
+      file = filename,
+      zoom = zoom,
+      expand = expand,
+      ...
+    )
+  }
 
   htmltools::browsable(data)
 }

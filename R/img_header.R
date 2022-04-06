@@ -5,7 +5,7 @@
 #' @param height A number indicating the height of the image in pixels.
 #' @param font_size The font size of the label in pixels.
 #' @param palette A vector of two colors, indictating the bottom border color and the text color.
-#'
+#' @import htmltools gt glue
 #' @return HTML string
 #' @export
 #' @examples
@@ -19,15 +19,15 @@
 img_header <- function(label, img_url, height = 60, font_size = 12,
                        palette = c("black", "black")) {
 
-  html_content <- div(
+  html_content <- htmltools::div(
     style = "text-align: center;",
-    img(
-      src = img_url, height = gt::html(px(height)),
+    htmltools::img(
+      src = img_url, height = gt::html(gt::px(as.integer(height))),
       style = glue::glue(
         "border-bottom: 2px solid {palette[1]};"
       )
     ),
-    div(
+    htmltools::div(
       style = glue::glue(
         "font-size:{font_size}px;color: {palette[2]};",
         "text-align: center;width:100%;font-weight:bold;"

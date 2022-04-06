@@ -1,5 +1,9 @@
 # gtExtras (development version)
 
+# gtExtras 0.2.6
+
+* Exchange `webshot` for `webshot2` to enhance capabilities. Note that `webshot2` is GitHub only, install via: `remotes::install_github("rstudio/webshot2")`. This solves [issue #42](https://github.com/jthomasmock/gtExtras/issues/42).
+
 # gtExtras 0.2.5
 
 * Updated `gt_theme_guardian()` to work with zero-length tables per [Issue 41](https://github.com/jthomasmock/gtExtras/issues/41)

@@ -61,7 +61,7 @@ gt_plt_sparkline <- function(gt_object, column, type = "default",
       return("<div></div>")
     }
 
-    vals <- as.double(na.omit(list_data_in))
+    vals <- as.double(stats::na.omit(list_data_in))
 
     max_val <- max(vals, na.rm = TRUE)
     min_val <- min(vals, na.rm = TRUE)
@@ -87,7 +87,7 @@ gt_plt_sparkline <- function(gt_object, column, type = "default",
       plot_base <- ggplot(input_data) +
         theme_void()
 
-      med_y_rnd <- round(median(input_data$y))
+      med_y_rnd <- round(stats::median(input_data$y))
       last_val_label <- input_data[nrow(vals), 2]
 
       if (isTRUE(same_limit) && isFALSE(label)) {
@@ -150,7 +150,7 @@ gt_plt_sparkline <- function(gt_object, column, type = "default",
         ### Horizontal ref line at median
       } else if (type == "ref_median") {
         plot_out$layers <- c(
-          geom_segment(aes(x=min(x),y=median(y),xend = max(x),yend=median(y)),
+          geom_segment(aes(x=min(x),y=stats::median(y),xend = max(x),yend=stats::median(y)),
             color = pal[5], size = 0.1),
           plot_out$layers
         )
@@ -177,12 +177,12 @@ gt_plt_sparkline <- function(gt_object, column, type = "default",
         ### Horizontal area/ribbon for 25/75 interquantile range
       } else if (type == "ref_iqr") {
         ribbon_df <- input_data %>%
-          summarise(q25 = quantile(y, 0.25), q75 = quantile(y, 0.75))
+          summarise(q25 = stats::quantile(y, 0.25), q75 = stats::quantile(y, 0.75))
         plot_out$layers <- c(
           geom_ribbon(aes(x=x, ymin = ribbon_df$q25, ymax = ribbon_df$q75),
             fill = pal[5], alpha = 0.5
           ),
-          geom_segment(aes(x=min(x),y=median(y),xend = max(x),yend=median(y)),
+          geom_segment(aes(x=min(x),y=stats::median(y),xend = max(x),yend=stats::median(y)),
             color = pal[5], size = 0.1),
           plot_out$layers
         )

@@ -63,7 +63,7 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
       return("<div></div>")
     }
 
-    vals <- as.double(na.omit(list_data_in))
+    vals <- as.double(stats::na.omit(list_data_in))
 
     max_val <- max(vals, na.rm = TRUE)
     min_val <- min(vals, na.rm = TRUE)
@@ -134,7 +134,7 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
       if (isTRUE(same_limit)) {
 
         if(is.null(bw)){
-          bw <- 2 * IQR(data_in, na.rm = TRUE) / length(data_in)^(1 / 3)
+          bw <- 2 * stats::IQR(data_in, na.rm = TRUE) / length(data_in)^(1 / 3)
         } else {
           bw <- bw
         }
@@ -155,7 +155,7 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
 
       } else {
         if(is.null(bw)){
-          bw <- 2 * IQR(vals, na.rm = TRUE) / length(vals)^(1 / 3)
+          bw <- 2 * stats::IQR(vals, na.rm = TRUE) / length(vals)^(1 / 3)
         } else {
           bw <- bw
         }
@@ -176,14 +176,14 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
 
       if (isTRUE(same_limit)) {
         if(is.null(bw)){
-          bw <- bw.nrd0(na.omit(data_in))
+          bw <- stats::bw.nrd0(stats::na.omit(data_in))
         } else {
           bw <- bw
         }
 
-        total_rng_dens <- density(na.omit(data_in), bw = bw)[["x"]]
+        total_rng_dens <- stats::density(stats::na.omit(data_in), bw = bw)[["x"]]
 
-        density_calc <- density(input_data[["y"]], bw = bw)
+        density_calc <- stats::density(input_data[["y"]], bw = bw)
         density_range <- density_calc[["x"]]
 
         density_df <- dplyr::tibble(
@@ -214,14 +214,14 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
             expand = TRUE, clip = "off")
       } else {
         if(is.null(bw)){
-          bw <- bw.nrd0(vals)
+          bw <- stats::bw.nrd0(vals)
         } else {
           bw <- bw
         }
 
-        total_rng_dens <- density(data_in, bw = bw)[["x"]]
+        total_rng_dens <- stats::density(data_in, bw = bw)[["x"]]
 
-        density_calc <- density(input_data[["y"]], bw = bw)
+        density_calc <- stats::density(input_data[["y"]], bw = bw)
         density_range <- density_calc[["x"]]
 
         density_df <- dplyr::tibble(

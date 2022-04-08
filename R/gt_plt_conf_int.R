@@ -78,12 +78,12 @@ gt_plt_conf_int <- function(gt_object, column, ci_columns, ci=0.9,ref_line=NULL,
     # create a list of dataframes with
     # roughly calculated confidence intervals
     data_in <- lapply(column_vals, function(x) {
-      dplyr::tibble(x = na.omit(x), y = "1a") %>%
+      dplyr::tibble(x = stats::na.omit(x), y = "1a") %>%
         dplyr::summarise(
           mean = mean(x, na.rm = TRUE),
           y = unique(y, na.rm = TRUE),
-          lm_out = list(lm(x ~ 1)),
-          ci = list(confint(lm_out[[1]], level = level)),
+          lm_out = list(stats::lm(x ~ 1)),
+          ci = list(stats::confint(lm_out[[1]], level = level)),
           ci1 = ci[[1]][1],
           ci2 = ci[[1]][2]
         ) %>%

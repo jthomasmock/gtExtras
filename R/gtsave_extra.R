@@ -1,9 +1,9 @@
 #' Use webshot to save a gt table as a PNG
-#' @description Takes existing HTML content, typically additional HTML including a gt table as a PNG via the `{webshot}` package.
+#' @description Takes existing HTML content, typically additional HTML including a gt table as a PNG via the `{webshot2}` package.
 #' @param data HTML content to be saved temporarily to disk
 #' @param filename The name of the file, should end in `.png`
 #' @param path An optional path
-#' @param ... Additional arguments to `webshot::webshot()`
+#' @param ... Additional arguments to `webshot2::webshot()`
 #' @param zoom A number specifying the zoom factor. A zoom factor of 2 will result in twice as many pixels vertically and horizontally. Note that using 2 is not exactly the same as taking a screenshot on a HiDPI (Retina) device: it is like increasing the zoom to 200 doubling the height and width of the browser window.
 #' @param expand A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order.
 #'
@@ -39,7 +39,7 @@ gtsave_extra <- function(data,
     path = NULL
   )
 
-  # Saving an image requires the webshot package; if it's
+  # Saving an image requires the webshot2 package; if it's
   # not present, stop with a message
   if (!requireNamespace("webshot2", quietly = TRUE)) {
 

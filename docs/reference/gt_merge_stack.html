@@ -20,7 +20,7 @@ and dark grey."><meta property="og:image" content="https://jthomasmock.github.io
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.7</span>
       </span>
     </div>
 
@@ -133,11 +133,11 @@ and dark grey.</p>
 <span class="r-in"><span class="va">teams</span> <span class="op">&lt;-</span> <span class="st">"https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"</span></span>
 <span class="r-in"><span class="va">team_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">url</a></span><span class="op">(</span><span class="va">teams</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="va">stacked_tab</span> <span class="op">&lt;-</span> <span class="va">team_df</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in"> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">team_nick</span>, <span class="va">team_abbr</span>, <span class="va">team_conf</span>, <span class="va">team_division</span>, <span class="va">team_wordmark</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in"> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">8</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in"> <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span>groupname_col <span class="op">=</span> <span class="st">"team_conf"</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in"> <span class="fu">gt_merge_stack</span><span class="op">(</span>col1 <span class="op">=</span> <span class="va">team_nick</span>, col2 <span class="op">=</span> <span class="va">team_division</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span class="r-in"><span class="va">stacked_tab</span> <span class="op">&lt;-</span> <span class="va">team_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span class="r-in"> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">team_nick</span>, <span class="va">team_abbr</span>, <span class="va">team_conf</span>, <span class="va">team_division</span>, <span class="va">team_wordmark</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span class="r-in"> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">8</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span class="r-in"> <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span>groupname_col <span class="op">=</span> <span class="st">"team_conf"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span class="r-in"> <span class="fu">gt_merge_stack</span><span class="op">(</span>col1 <span class="op">=</span> <span class="va">team_nick</span>, col2 <span class="op">=</span> <span class="va">team_division</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span class="r-in"> <span class="fu"><a href="gt_img_rows.html">gt_img_rows</a></span><span class="op">(</span><span class="va">team_wordmark</span><span class="op">)</span></span>
 <span class="r-in"></span>
 </code></pre></div>

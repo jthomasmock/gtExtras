@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.7</span>
       </span>
     </div>
 
@@ -61,6 +61,15 @@
 <h2 class="page-header" data-toc-text="development version" id="gtextras-development-version">gtExtras (development version)<a class="anchor" aria-label="anchor" href="#gtextras-development-version"></a></h2>
 </div>
     <div class="section level2">
+<h2 class="page-header" data-toc-text="0.2.7" id="gtextras-027">gtExtras 0.2.7<a class="anchor" aria-label="anchor" href="#gtextras-027"></a></h2>
+<ul><li><p>Bring in <code>webshot2</code> as a remote dependency suggest and
+minor changes to clean up some R checks, thanks to a PR from the great
+<a href="https://github.com/jthomasmock/gtExtras/pull/43" class="external-link">Daniel
+Sjoberg</a>.</p></li>
+<li><p>Correct an internal bug in <code><a href="../reference/gt_plt_dist.html">gt_plt_dist()</a></code> which was
+failing for plotting integers.</p></li>
+</ul></div>
+    <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.6" id="gtextras-026">gtExtras 0.2.6<a class="anchor" aria-label="anchor" href="#gtextras-026"></a></h2>
 <ul><li>Exchange <code>webshot</code> for <code>webshot2</code> to enhance
 capabilities. Note that <code>webshot2</code> is GitHub only, install
@@ -80,7 +89,7 @@ tables per <a href="https://github.com/jthomasmock/gtExtras/issues/41" class="ex
 <ul><li>Added a <code>NEWS.md</code> file to track changes to the
 package.</li>
 </ul><div class="section level3">
-<h3 id="bug-fixes-0-2-4">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-2-4"></a></h3>
+<h3 id="bug-fixes-prior-to-0-2-4">Bug Fixes prior to 0.2.4<a class="anchor" aria-label="anchor" href="#bug-fixes-prior-to-0-2-4"></a></h3>
 <ul><li><p>Use <code>gt_index</code> to prevent incorrect ordering of rows
 with <code><a href="../reference/gt_plt_bar_pct.html">gt_plt_bar_pct()</a></code> per <a href="https://stackoverflow.com/questions/71313688/gtextras-column-showing-in-wrong-order-in-gt-table-when-grouped?noredirect=1#comment126232993_71313688" class="external-link">StackOverflow
 report</a></p></li>

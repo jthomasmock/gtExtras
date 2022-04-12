@@ -1,4 +1,5 @@
 .Rproj.user
+.covrignore
 .Rhistory
 .RData
 .Ruserdata

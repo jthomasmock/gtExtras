@@ -7,3 +7,4 @@
 ^Meta$
 ^codecov\.yml$
 ^_pkgdown\.yaml$
+^.covrignore$

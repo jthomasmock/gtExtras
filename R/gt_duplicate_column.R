@@ -26,7 +26,7 @@ gt_duplicate_column <- function(gt_object, column, after = dplyr::last_col(), ap
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
 
   columns <-
-    gt:::resolve_cols_c(
+    resolve_cols_c(
       expr = {{ column }},
       data = gt_object
     )

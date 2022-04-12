@@ -157,7 +157,7 @@ gt_two_column_layout <- function(tables = NULL, output = "viewer",
 
   stopifnot("Two 'gt' tables must be provided like `list(table1, table2)`" = !is.null(tables))
   stopifnot("Two 'gt' tables must be provided like `list(table1, table2)`" = is.list(tables))
-  stopifnot("Both tables in the list must be a 'gt_tbl' object" = isTRUE(gt:::is_gt(tables[[1]]) && gt:::is_gt(tables[[2]])))
+  stopifnot("Both tables in the list must be a 'gt_tbl' object" = all(c(class(tables[[1]])[1], class(tables[[2]])[1]) == "gt_tbl"))
 
   double_tables <- htmltools::div(
     htmltools::div(tables[1], style = "display: inline-block;float:left;"),
@@ -170,7 +170,7 @@ gt_two_column_layout <- function(tables = NULL, output = "viewer",
 
   } else if(output == "save"){
 
-    filename <- gt:::gtsave_filename(path = path, filename = filename)
+    filename <- gtsave_filename(path = path, filename = filename)
 
     # Create a temporary file with the `html` extension
     tempfile_ <- tempfile(fileext = ".html")
@@ -178,7 +178,7 @@ gt_two_column_layout <- function(tables = NULL, output = "viewer",
     # Reverse slashes on Windows filesystems
     tempfile_ <-
       tempfile_ %>%
-      gt:::tidy_gsub("\\\\", "/")
+      tidy_gsub("\\\\", "/")
 
     htmltools::save_html(html = double_tables, file = tempfile_)
 

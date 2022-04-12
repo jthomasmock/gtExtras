@@ -188,7 +188,7 @@ gt_plt_bar_stack <- function(gt_object, column = NULL,
 
   # Get the columns supplied in `columns` as a character vector
   tab_out <-
-    gt:::dt_boxhead_edit_column_label(
+    dt_boxhead_edit_column_label(
       data = tab_out,
       var = var_bare,
       column_label = label_built

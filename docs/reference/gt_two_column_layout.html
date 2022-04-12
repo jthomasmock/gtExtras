@@ -5,10 +5,10 @@ two tables like list(table1, table2), or passes the output of gt_double_table()
 into this function. The user should indicate whether they want to return the
 HTML to R's viewer with output = &quot;viewer&quot; to &quot;view&quot; the final output, or to
 save to disk as a .png via output = &quot;save&quot;. Note that this is a relatively
-complex wrapper around htmltools::div() + webshot::webshot(). Additional
-arguments can be passed to webshot::webshot() if the automatic output is not
+complex wrapper around htmltools::div() + webshot2::webshot(). Additional
+arguments can be passed to webshot2::webshot() if the automatic output is not
 satisfactory. In most situations, modifying the vwidth argument is sufficient
-to get the desired output, but all arguments to webshot::webshot() are
+to get the desired output, but all arguments to webshot2::webshot() are
 available by their original name via the passed ...."><meta property="og:image" content="https://jthomasmock.github.io/gtExtras/reference/figures/opengraph.png"><meta property="og:image:alt" content="Screenshot of a data table that has the win/loss record of the 2020 NFL teams"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:creator" content="@thomas_mock"><meta name="twitter:site" content="https://jthomasmock.github.io/gtExtras"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -27,7 +27,7 @@ available by their original name via the passed ...."><meta property="og:image" 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3</span>
       </span>
     </div>
 
@@ -75,10 +75,10 @@ two tables like <code>list(table1, table2)</code>, or passes the output of <code
 into this function. The user should indicate whether they want to return the
 HTML to R's viewer with <code>output = "viewer"</code> to "view" the final output, or to
 save to disk as a <code>.png</code> via <code>output = "save".</code> Note that this is a relatively
-complex wrapper around <code><a href="https://rdrr.io/pkg/htmltools/man/builder.html" class="external-link">htmltools::div()</a></code> + <code><a href="https://rdrr.io/pkg/webshot/man/webshot.html" class="external-link">webshot::webshot()</a></code>. Additional
-arguments can be passed to <code><a href="https://rdrr.io/pkg/webshot/man/webshot.html" class="external-link">webshot::webshot()</a></code> if the automatic output is not
+complex wrapper around <code><a href="https://rdrr.io/pkg/htmltools/man/builder.html" class="external-link">htmltools::div()</a></code> + <code><a href="https://rdrr.io/pkg/webshot2/man/webshot.html" class="external-link">webshot2::webshot()</a></code>. Additional
+arguments can be passed to <code><a href="https://rdrr.io/pkg/webshot2/man/webshot.html" class="external-link">webshot2::webshot()</a></code> if the automatic output is not
 satisfactory. In most situations, modifying the <code>vwidth</code> argument is sufficient
-to get the desired output, but all arguments to <code><a href="https://rdrr.io/pkg/webshot/man/webshot.html" class="external-link">webshot::webshot()</a></code> are
+to get the desired output, but all arguments to <code><a href="https://rdrr.io/pkg/webshot2/man/webshot.html" class="external-link">webshot2::webshot()</a></code> are
 available by their original name via the passed <code>...</code>.</p>
     </div>
 
@@ -101,21 +101,21 @@ available by their original name via the passed <code>...</code>.</p>
     <dl><dt>tables</dt>
 <dd><p>A <code><a href="https://rdrr.io/r/base/list.html" class="external-link">list()</a></code> of two tables, typically supplied by <code><a href="gt_double_table.html">gt_double_table()</a></code></p></dd>
 <dt>output</dt>
-<dd><p>A character string indicating the desired output, either <code>"save"</code> to save it to disk via <code>webshot</code>, <code>"viewer"</code> to return it to the RStudio Viewer, or <code>"html"</code> to return the raw HTML.</p></dd>
+<dd><p>A character string indicating the desired output, either <code>"save"</code> to save it to disk via <code>webshot2</code>, <code>"viewer"</code> to return it to the RStudio Viewer, or <code>"html"</code> to return the raw HTML.</p></dd>
 <dt>filename</dt>
 <dd><p>The filename of the table, must contain <code>.png</code> and only used if <code>output = "save"</code></p></dd>
 <dt>path</dt>
 <dd><p>An optional path of where to save the printed <code>.png</code>, used in conjunction with <code>filename</code>.</p></dd>
 <dt>vwidth</dt>
-<dd><p>Viewport width. This is the width of the browser "window" when passed to <code><a href="https://rdrr.io/pkg/webshot/man/webshot.html" class="external-link">webshot::webshot()</a></code>.</p></dd>
+<dd><p>Viewport width. This is the width of the browser "window" when passed to <code><a href="https://rdrr.io/pkg/webshot2/man/webshot.html" class="external-link">webshot2::webshot()</a></code>.</p></dd>
 <dt>vheight</dt>
-<dd><p>Viewport height This is the height of the browser "window" when passed to <code><a href="https://rdrr.io/pkg/webshot/man/webshot.html" class="external-link">webshot::webshot()</a></code>.</p></dd>
+<dd><p>Viewport height This is the height of the browser "window" when passed to <code><a href="https://rdrr.io/pkg/webshot2/man/webshot.html" class="external-link">webshot2::webshot()</a></code>.</p></dd>
 <dt>...</dt>
-<dd><p>Additional arguments passed to <code><a href="https://rdrr.io/pkg/webshot/man/webshot.html" class="external-link">webshot::webshot()</a></code>, only to be used if <code>output = "save"</code>, saving the two-column layout tables to disk as a <code>.png</code>.</p></dd>
+<dd><p>Additional arguments passed to <code><a href="https://rdrr.io/pkg/webshot2/man/webshot.html" class="external-link">webshot2::webshot()</a></code>, only to be used if <code>output = "save"</code>, saving the two-column layout tables to disk as a <code>.png</code>.</p></dd>
 <dt>zoom</dt>
-<dd><p>Argument to <code><a href="https://rdrr.io/pkg/webshot/man/webshot.html" class="external-link">webshot::webshot()</a></code>. A number specifying the zoom factor. A zoom factor of 2 will result in twice as many pixels vertically and horizontally. Note that using 2 is not exactly the same as taking a screenshot on a HiDPI (Retina) device: it is like increasing the zoom to 200 doubling the height and width of the browser window. This differs from using a HiDPI device because some web pages load different, higher-resolution images when they know they will be displayed on a HiDPI device (but using zoom will not report that there is a HiDPI device).</p></dd>
+<dd><p>Argument to <code><a href="https://rdrr.io/pkg/webshot2/man/webshot.html" class="external-link">webshot2::webshot()</a></code>. A number specifying the zoom factor. A zoom factor of 2 will result in twice as many pixels vertically and horizontally. Note that using 2 is not exactly the same as taking a screenshot on a HiDPI (Retina) device: it is like increasing the zoom to 200 doubling the height and width of the browser window. This differs from using a HiDPI device because some web pages load different, higher-resolution images when they know they will be displayed on a HiDPI device (but using zoom will not report that there is a HiDPI device).</p></dd>
 <dt>expand</dt>
-<dd><p>Argument to <code><a href="https://rdrr.io/pkg/webshot/man/webshot.html" class="external-link">webshot::webshot()</a></code>. A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order. When taking screenshots of multiple URLs, this parameter can also be a list with same length as url with each element of the list containing a single number or four numbers to use for the corresponding URL.</p></dd>
+<dd><p>Argument to <code><a href="https://rdrr.io/pkg/webshot2/man/webshot.html" class="external-link">webshot2::webshot()</a></code>. A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order. When taking screenshots of multiple URLs, this parameter can also be a list with same length as url with each element of the list containing a single number or four numbers to use for the corresponding URL.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>

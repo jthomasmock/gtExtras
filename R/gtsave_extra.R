@@ -20,7 +20,7 @@ gtsave_extra <- function(data,
                          zoom = 2,
                          expand = 5) {
 
-  filename <- gt:::gtsave_filename(path = path, filename = filename)
+  filename <- gtsave_filename(path = path, filename = filename)
 
   # Create a temporary file with the `html` extension
   tempfile_ <- tempfile(fileext = ".html")
@@ -28,10 +28,10 @@ gtsave_extra <- function(data,
   # Reverse slashes on Windows filesystems
   tempfile_ <-
     tempfile_ %>%
-    gt:::tidy_gsub("\\\\", "/")
+    tidy_gsub("\\\\", "/")
 
   # Save gt table as HTML using the `gt_save_html()` function
-  gt:::gt_save_html(
+  gt_save_html(
     data = data,
     filename = tempfile_,
     path = NULL

@@ -1,5 +1,11 @@
 # gtExtras (development version)
 
+# gtExtras 0.3
+
+* Add [Daniel Sjoberg](https://github.com/ddsjoberg) as a contributor in honor of their major assistance with preparation towards CRAN
+* Move past 0.2 release into a "next stop CRAN"... hopefully
+* Vendor additional unexported functions from `{gt}` with attribution
+
 # gtExtras 0.2.7
 
 * Bring in `webshot2` as a remote dependency suggest and minor changes to clean up some R checks, thanks to a PR from the great [Daniel Sjoberg](https://github.com/jthomasmock/gtExtras/pull/43). 

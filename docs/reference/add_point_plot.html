@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gtExtras</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3</span>
       </span>
     </div>
 
@@ -76,6 +76,14 @@
 <dd><p>A logical indicating whether to add the label or note. This will only be added if it is the first or last row.</p></dd>
 <dt>width</dt>
 <dd><p>A numeric indicating the</p></dd>
+<dt>vals_range</dt>
+<dd><p>vector of length two indicating range</p></dd>
+<dt>accuracy</dt>
+<dd><p>A number to round to. Use (e.g.) <code>0.01</code> to show 2 decimal
+places of precision. If <code>NULL</code>, the default, uses a heuristic that should
+ensure breaks have the minimum number of digits needed to show the
+difference between adjacent values.</p>
+<p>Applied to rescaled data.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>

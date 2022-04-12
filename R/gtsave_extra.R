@@ -8,7 +8,6 @@
 #' @param expand A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order.
 #'
 #' @return Prints the HTML content to the RStudio viewer and saves a `.png` file to disk
-#' @importFrom webshot2 webshot
 #' @importFrom htmltools browsable
 #' @export
 #' @family Utilities

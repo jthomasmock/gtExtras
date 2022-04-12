@@ -14,8 +14,6 @@
 #' @param type A character string representing the type of plot, either a 'pill' or 'square'
 #' @param width A numeric indicating the width of the plot in `mm`, this can help with larger datasets where data points are overlapping.
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
-#' @import gt rlang
 #' @export
 #' @examples
 #' library(gt)
@@ -69,7 +67,7 @@ gt_plt_winloss <- function(gt_object, column, max_wins = 17,
 
     plot_out <- ggplot(input_data) +
       geom_segment(
-        aes(x = x, xend = xend, y = y, yend = yend, color = I(color)),
+        aes(x = .data$x, xend = .data$xend, y = .data$y, yend = .data$yend, color = I(.data$color)),
         size = 1, lineend = "round") +
       scale_x_continuous(limits = c(0.5, max_wins + 0.5)) +
       scale_y_continuous(limits = c(-.2, 1.2)) +
@@ -109,7 +107,7 @@ gt_plt_winloss <- function(gt_object, column, max_wins = 17,
 
     plot_out <- ggplot(input_data) +
       geom_point(
-        aes(x = x, y = y, color = I(color)),
+        aes(x = .data$x, y = .data$y, color = I(.data$color)),
         size = 1, shape = 15) +
       scale_x_continuous(limits = c(0.5, max_wins + 0.5)) +
       scale_y_continuous(limits = c(-.2, 1.2)) +

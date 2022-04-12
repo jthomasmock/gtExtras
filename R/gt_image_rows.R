@@ -11,10 +11,7 @@
 #' @inheritParams gt::web_image
 #' @inheritParams gt::local_image
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
-#' @importFrom dplyr mutate
 #' @export
-#' @import gt
 #' @examples
 #' library(gt)
 #' teams <- "https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"

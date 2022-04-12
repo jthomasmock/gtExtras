@@ -3,9 +3,7 @@
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param ... Optional additional arguments to `gt::table_options()`
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
 #' @export
-#' @import gt
 #' @examples
 #'
 #' library(gt)

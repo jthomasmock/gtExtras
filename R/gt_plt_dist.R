@@ -10,15 +10,12 @@
 #' @param type A string indicating the type of plot to generate, accepts `"boxplot"`, `"histogram"`, `"rug_strip"` or `"density"`.
 #' @param fig_dim A vector of two numbers indicating the height/width of the plot in mm at a DPI of 25.4, defaults to `c(5,30)`
 #' @param line_color Color for the line, defaults to `"black"`. Accepts a named color (eg 'blue') or a hex color.
-#' @param range_colors A vector of two valid color names or hex codes, the first color represents the min values and the second color represents the highest point per plot. Defaults to `c("blue", "blue")`. Accepts a named color (eg `'blue'`) or a hex color like `"#fafafa"`.
 #' @param fill_color Color for the fill of histograms/density plots, defaults to `"grey"`. Accepts a named color (eg `'blue'`) or a hex color.
 #' @param bw The bandwidth or binwidth, passed to `density()` or `ggplot2::geom_histogram()`. If `type = "density"`, then `bw` is passed to the `bw` argument, if `type = "histogram"`, then `bw` is passed to the `binwidth` argument.
 #' @param trim A logical indicating whether to trim the values in `type = "density"` to a slight expansion beyond the observable range. Can help with long tails in `density` plots.
 #' @param same_limit A logical indicating that the plots will use the same axis range (`TRUE`) or have individual axis ranges (`FALSE`).
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
 #' @export
-#' @import gt ggplot2 dplyr
 #' @examples
 #'  library(gt)
 #'  gt_sparkline_tab <- mtcars %>%
@@ -97,7 +94,7 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
      }
 
       plot_out <- plot_base +
-        geom_boxplot(aes(x = y, y = 1), width = 0.15, color = line_color,
+        geom_boxplot(aes(x = .data$y, y = 1), width = 0.15, color = line_color,
           fill = fill_color, outlier.size = 0.3, size = 0.3)
 
     } else if (type == "rug_strip") {
@@ -122,9 +119,9 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
 
       plot_out <- plot_base +
         geom_point(
-          aes(x = y, y = 1), alpha = 0.2, size = 0.3, color = line_color,
+          aes(x = .data$y, y = 1), alpha = 0.2, size = 0.3, color = line_color,
           position = position_jitter(height = 0.15, seed = 37)) +
-        geom_rug(aes(x = y), length = unit(0.2, "npc"), alpha = 0.5, size = 0.2)
+        geom_rug(aes(x = .data$y), length = unit(0.2, "npc"), alpha = 0.5, size = 0.2)
 
     } else if (type == "histogram") {
 
@@ -141,7 +138,7 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
 
         plot_out <- plot_base +
           geom_histogram(
-            aes(x = y),
+            aes(x = .data$y),
             color = line_color,
             fill = fill_color,
             binwidth = bw,
@@ -162,7 +159,7 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
 
         plot_out <- plot_base +
           geom_histogram(
-            aes(x = y),
+            aes(x = .data$y),
             color = line_color,
             fill = fill_color,
             binwidth = bw
@@ -198,7 +195,7 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
 
           density_df <- dplyr::filter(
             density_df,
-            dplyr::between(x, filter_range[1], filter_range[2]))
+            dplyr::between(.data$x, filter_range[1], filter_range[2]))
         }
 
         plot_base <- ggplot(density_df) +
@@ -206,7 +203,7 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
 
 
         plot_out <- plot_base +
-          geom_area(aes(x = x, y = y),
+          geom_area(aes(x = .data$x, y = .data$y),
             color = line_color,
             fill = fill_color) +
           xlim(range(density_range)) +
@@ -236,14 +233,14 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
 
           density_df <- dplyr::filter(
             density_df,
-            dplyr::between(x, filter_range[1], filter_range[2]))
+            dplyr::between(.data$x, filter_range[1], filter_range[2]))
         }
 
         plot_base <- ggplot(density_df) +
           theme_void()
 
         plot_out <- plot_base +
-          geom_area(aes(x = x, y = y),
+          geom_area(aes(x = .data$x, y = .data$y),
             color = line_color,
             fill = fill_color) +
           xlim(range(density_range)) +

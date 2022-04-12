@@ -5,7 +5,6 @@
 #' @param height A number indicating the height of the image in pixels.
 #' @param font_size The font size of the label in pixels.
 #' @param palette A vector of two colors, indictating the bottom border color and the text color.
-#' @import htmltools gt glue
 #' @return HTML string
 #' @export
 #' @examples

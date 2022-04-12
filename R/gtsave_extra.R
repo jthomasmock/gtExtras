@@ -1,4 +1,4 @@
-#' Use webshot to save a gt table as a PNG
+#' Use webshot2 to save a gt table as a PNG
 #' @description Takes existing HTML content, typically additional HTML including a gt table as a PNG via the `{webshot2}` package.
 #' @param data HTML content to be saved temporarily to disk
 #' @param filename The name of the file, should end in `.png`
@@ -8,8 +8,6 @@
 #' @param expand A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order.
 #'
 #' @return Prints the HTML content to the RStudio viewer and saves a `.png` file to disk
-#' @importFrom webshot2 webshot
-#' @importFrom htmltools browsable
 #' @export
 #' @family Utilities
 #' @section Function ID:

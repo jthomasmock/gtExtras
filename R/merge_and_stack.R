@@ -11,10 +11,7 @@
 #' @param col2 The column to merge and place below. Will be smaller and dark grey.
 #' @param colors The colors for the text, where the first color is the top , ie `col1` and the second color is the bottom, ie `col2`. Defaults to `c("black","grey")`
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
-#' @importFrom glue glue
 #' @export
-#' @import gt
 #' @examples
 #' library(gt)
 #' teams <- "https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"

@@ -13,10 +13,7 @@
 #' @param scale_type A string indicating additional text formatting and the addition of numeric labels to the plotted bars if not `'none'`. If `'none'`, no numbers will be added to the bar, but if `"number"` or `"percent"` are used, then the numbers in the plotted column will be added as a bar-label and formatted according to `scales::label_percent()` or `scales::label_number()`.
 #' @param text_color A string indicating the color of text if `scale_type` is used. Defaults to `"white"`
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
-#' @importFrom scales label_number label_percent
 #' @export
-#' @import gt ggplot2 rlang dplyr
 #' @examples
 #' library(gt)
 #'  gt_plt_bar_tab <- mtcars %>%
@@ -89,7 +86,7 @@ gt_plt_bar <- function(gt_object, column = NULL, color = "purple",...,
       )
 
       plot_out <- df_in %>%
-        ggplot(aes(x = x, y = factor(y), fill = I(fill), group = y)) +
+        ggplot(aes(x = .data$x, y = factor(.data$y), fill = I(.data$fill), group = .data$y)) +
         geom_col(color = "transparent", width = 0.3) +
         scale_x_continuous(
           limits = total_rng,
@@ -104,13 +101,13 @@ gt_plt_bar <- function(gt_object, column = NULL, color = "purple",...,
       if(scale_type != "none"){
         plot_out <- plot_out +
           geom_text(
-            aes(x = x,
+            aes(x = .data$x,
                 label = if(scale_type == "number"){
-                  scales::label_number(...)(x)
+                  scales::label_number(...)(.data$x)
                 } else if (scale_type == "percent"){
-                  scales::label_percent(...)(x)
+                  scales::label_percent(...)(.data$x)
                 },
-                hjust = ifelse(x >= 0, 1, 0)
+                hjust = ifelse(.data$x >= 0, 1, 0)
                 ),
             nudge_x = sign(df_in$x)*(-1)/80, vjust = 0.5,
             size = 3,
@@ -144,7 +141,7 @@ gt_plt_bar <- function(gt_object, column = NULL, color = "purple",...,
   tab_out <- text_transform(
     gt_object,
     locations = if(isTRUE(keep_column)){
-      cells_body(columns = DUPE_COLUMN_PLT)
+      cells_body(columns = .data$DUPE_COLUMN_PLT)
     } else {
       cells_body(columns = {{ column }} )
     },
@@ -156,7 +153,7 @@ gt_plt_bar <- function(gt_object, column = NULL, color = "purple",...,
   if(isTRUE(keep_column)){
     tab_out %>%
       cols_label(DUPE_COLUMN_PLT = col_bare) %>%
-      cols_align("left", columns = DUPE_COLUMN_PLT)
+      cols_align("left", columns = .data$DUPE_COLUMN_PLT)
   } else {
     tab_out %>%
       cols_align("left", columns = {{ column }})

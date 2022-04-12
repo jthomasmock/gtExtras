@@ -13,9 +13,7 @@
 #' @param scale_by A numeric value to multiply the values by. Useful for scaling percentages from 0 to 1 to 0 to 100.
 #' @param gfont A string passed to `gt::google_font()` - defaults to "Fira Mono" and requires a Monospaced font for alignment purposes. Existing Google Monospaced fonts are available at: [fonts.google.com](https://fonts.google.com/?category=Monospace&preview.text=0123456789&preview.text_type=custom)
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
 #' @export
-#' @import gt
 #' @examples
 #' library(gt)
 #' fmted_tab <- gtcars %>%

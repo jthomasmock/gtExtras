@@ -7,8 +7,6 @@
 #' @param mean A number indicating the mean of the randomly generated values, must be a vector of equal length to the `n_grps`
 #' @param sd A number indicating the standard deviation of the randomly generated values, must be a vector of equal length to the `n_grps`
 #' @param with_seed A seed to make the randomization reproducible
-#' @importFrom gt %>%
-#' @import dplyr
 #' @return a tibble/dataframe
 #' @export
 #'

@@ -27,7 +27,7 @@ gt_plt_bar_stack(
 
 \item{width}{An integer representing the width of the bar chart in pixels.}
 
-\item{fmt_fun}{A specific function from \verb{scales::label_???} family. Defaults to \code{scales::label_number_si()}}
+\item{fmt_fn}{A specific function from \verb{scales::label_???} family. Defaults to \code{scales::label_number_si()}}
 }
 \value{
 An object of class \code{gt_tbl}.

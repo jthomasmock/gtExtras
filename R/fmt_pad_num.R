@@ -11,9 +11,7 @@
 #' @param nsmall The max number of decimal places to round at/display
 #' @param gfont The complete name of a font available in Google Fonts. For the `fmt_pad_num` function this requires a monospaced font, where Google has many available at [fonts.google.com](https://fonts.google.com/?category=Monospace&preview.text=1234567890&preview.text_type=custom)
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
 #' @export
-#' @import gt
 #' @seealso [gtExtras::pad_fn()]
 #' @examples
 #' library(gt)

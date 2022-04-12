@@ -9,10 +9,7 @@
 #' @inheritParams gt::web_image
 #' @param left A logical TRUE/FALSE indicating if text should be on the left (TRUE) or right (FALSE)
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
 #' @export
-#' @import gt
-#' @importFrom glue glue
 #'
 #' @family Utilities
 #' @section Function ID:

@@ -362,7 +362,7 @@ create_input_df(4) %>%
 A more realistic use case is seen below with data from `{nflreadr}`:
 
 ```{r}
-library(tidyverse)
+library(dplyr)
 library(nflreadr)
 
 games_df <- nflreadr::load_schedules() %>% 

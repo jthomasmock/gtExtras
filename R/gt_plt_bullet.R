@@ -6,7 +6,6 @@
 #' @param width Width of the plot in pixels
 #' @param colors Color of the bar and target line, defaults to `c("grey", "red")`, can use named colors or hex colors. Must be of length two, and the first color will always be used as the bar color.
 #' @return An object of class `gt_tbl`.
-#' @import gt ggplot2 rlang dplyr
 #' @export
 #'
 #' @examples

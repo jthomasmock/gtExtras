@@ -2,7 +2,7 @@
 % Please edit documentation in R/gtsave_extra.R
 \name{gtsave_extra}
 \alias{gtsave_extra}
-\title{Use webshot to save a gt table as a PNG}
+\title{Use webshot2 to save a gt table as a PNG}
 \usage{
 gtsave_extra(data, filename, path = NULL, ..., zoom = 2, expand = 5)
 }

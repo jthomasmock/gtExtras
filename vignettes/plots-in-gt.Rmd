@@ -43,7 +43,7 @@ Per [Wikipedia](https://en.wikipedia.org/wiki/Sparkline):
 
 > A sparkline is a very small line chart, typically drawn without axes or coordinates. It presents the general shape of the variation (typically over time) in some measurement, such as temperature or stock market price, in a simple and highly condensed way.
 
-![A 1999 screenshot of an implementation of sparklines developed around January 1998. The concept was developed by interaction designer Peter Zelchenko in conversation with programmer Michael Medved, while Medved was developing the QuoteTracker application. The product was later sold to Ameritrade.](https://upload.wikimedia.org/wikipedia/commons/9/95/Screenshot_of_Sparklines_in_Medved_QuoteTracker%252C_1998.png)
+![A 1999 screenshot of an implementation of sparklines developed around January 1998. The concept was developed by interaction designer Peter Zelchenko in conversation with programmer Michael Medved, while Medved was developing the QuoteTracker application. The product was later sold to Ameritrade.](https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Screenshot_of_Sparklines_in_Medved_QuoteTracker%2C_1998.png/330px-Screenshot_of_Sparklines_in_Medved_QuoteTracker%2C_1998.png)
 
 We can use `gtExtras::gt_sparkline()` to add an inline sparkline very quickly. A necessary prep step is to first convert from a long data format to a summarized data format, where each row represents one "group" and the data column is now a vector of the values.
 
@@ -144,7 +144,7 @@ Bring data in
 
 </summary>
 
-```{r}
+```{r, eval = FALSE}
 library(dplyr)
 
 games_df <- nflreadr::load_schedules() %>%
@@ -192,6 +192,29 @@ final_df <- joined_df %>%
     ) %>%
   arrange(team_division)
 ```
+
+```{r, echo = FALSE}
+final_df <- tibble::tribble(
+                                                            ~team_wordmark, ~team_division, ~Wins, ~Losses,                                           ~outcomes,
+  "https://github.com/nflverse/nflfastR-data/raw/master/wordmarks/PIT.png",        "North",   12L,      4L,   c(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0),
+  "https://github.com/nflverse/nflfastR-data/raw/master/wordmarks/BAL.png",        "North",   11L,      5L,   c(1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1),
+  "https://github.com/nflverse/nflfastR-data/raw/master/wordmarks/CLE.png",        "North",   11L,      5L,   c(0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1),
+  "https://github.com/nflverse/nflfastR-data/raw/master/wordmarks/CIN.png",        "North",    4L,     11L, c(0, 0, 0.5, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0),
+  "https://github.com/nflverse/nflfastR-data/raw/master/wordmarks/IND.png",        "South",   11L,      5L,   c(0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1),
+  "https://github.com/nflverse/nflfastR-data/raw/master/wordmarks/TEN.png",        "South",   11L,      5L,   c(1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1),
+  "https://github.com/nflverse/nflfastR-data/raw/master/wordmarks/HOU.png",        "South",    4L,     12L,   c(0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0),
+  "https://github.com/nflverse/nflfastR-data/raw/master/wordmarks/JAX.png",        "South",    1L,     15L,   c(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+  "https://github.com/nflverse/nflfastR-data/raw/master/wordmarks/BUF.png",         "East",   13L,      3L,   c(1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1),
+  "https://github.com/nflverse/nflfastR-data/raw/master/wordmarks/MIA.png",         "East",   10L,      6L,   c(0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0),
+   "https://github.com/nflverse/nflfastR-data/raw/master/wordmarks/NE.png",         "East",    7L,      9L,   c(1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1),
+  "https://github.com/nflverse/nflfastR-data/raw/master/wordmarks/NYJ.png",         "East",    2L,     14L,   c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0),
+   "https://github.com/nflverse/nflfastR-data/raw/master/wordmarks/KC.png",         "West",   14L,      2L,   c(1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0),
+   "https://github.com/nflverse/nflfastR-data/raw/master/wordmarks/LV.png",         "West",    8L,      8L,   c(1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1),
+  "https://github.com/nflverse/nflfastR-data/raw/master/wordmarks/LAC.png",         "West",    7L,      9L,   c(1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1),
+  "https://github.com/nflverse/nflfastR-data/raw/master/wordmarks/DEN.png",         "West",    5L,     11L,   c(0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0)
+  )
+```
+
 
 </details>
 

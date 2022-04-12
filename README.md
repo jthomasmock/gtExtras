@@ -7,6 +7,7 @@
 
 [![Codecov test
 coverage](https://codecov.io/gh/jthomasmock/gtExtras/branch/master/graph/badge.svg)](https://codecov.io/gh/jthomasmock/gtExtras?branch=master)
+[![R-CMD-check](https://github.com/jthomasmock/gtExtras/workflows/R-CMD-check/badge.svg)](https://github.com/jthomasmock/gtExtras/actions)
 <!-- badges: end -->
 
 The goal of `{gtExtras}` is to provide some additional helper functions

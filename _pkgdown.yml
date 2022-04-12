@@ -4,8 +4,9 @@ home:
   title: Additional features for creating beautiful tables with gt
   description: An easy to use and powerful package for creating tables that will blow your mind
 
-
 template:
+  bootstrap: 5
+  bootswatch: materia
   opengraph:
     image:
       src: man/figures/opengraph.png

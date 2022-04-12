@@ -31,28 +31,28 @@ test_that("gt_index has correct inputs, correct ouput index, and can affect corr
   expect_equal(c(6,4,8), unique_order)
   expect_equal(c(6, 6, 6, 4, 8, 4, 8, 8, 4), raw_order)
 
-#   # creating a standalone basic table
-#   test_tab <- sliced_data %>%
-#     gt::gt(groupname_col = "cyl")
-#
-#   # can style a specific column based on the contents of another column
-#   tab_out_styled <- test_tab %>%
-#     gt::tab_style(locations = cells_body(mpg, rows = gt_index(., am) == 0),
-#               style = cell_fill("red")
-#     ) %>%
-#     gt::as_raw_html() %>%
-#     rvest::read_html()
-#
-#   tab_styled <- tab_out_styled %>%
-#     rvest::html_elements("td:nth-child(1)") %>%
-#     .[c(2:4, 6:8, 10:12)] %>%
-#     rvest::html_attr("style")
-#
-#   tab_pattern <- "background-color: \\s*(.*?)\\s*;"
-#   reg_matches <- regmatches(tab_styled, regexec(tab_pattern, tab_styled)) %>%
-#     lapply(function(x){x[2]}) %>%
-#     unlist()
-#
+  # creating a standalone basic table
+  test_tab <- sliced_data %>%
+    gt::gt(groupname_col = "cyl")
+
+  # can style a specific column based on the contents of another column
+  tab_out_styled <- test_tab %>%
+    gt::tab_style(locations = cells_body(mpg, rows = gt_index(., am) == 0),
+              style = cell_fill("red")
+    ) %>%
+    gt::as_raw_html() %>%
+    rvest::read_html()
+
+  tab_styled <- tab_out_styled %>%
+    rvest::html_elements("td:nth-child(1)") %>%
+    .[c(2:4, 6:8, 10:12)] %>%
+    rvest::html_attr("style")
+
+  tab_pattern <- "background-color: \\s*(.*?)\\s*;"
+  reg_matches <- regmatches(tab_styled, regexec(tab_pattern, tab_styled)) %>%
+    lapply(function(x){x[2]}) %>%
+    unlist()
+
 #
 # # Expect color backgrounds to match ---------------------------------------
 #

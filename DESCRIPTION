@@ -42,6 +42,5 @@ Suggests:
     tidyr,
     covr,
     webshot2
-Remotes: rstudio/webshot2
 VignetteBuilder: knitr
 Config/testthat/edition: 3

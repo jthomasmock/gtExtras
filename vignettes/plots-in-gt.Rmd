@@ -2,7 +2,7 @@
 title: "Graphing in gt"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Plotting in gt}
+  %\VignetteIndexEntry{Graphing in gt}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

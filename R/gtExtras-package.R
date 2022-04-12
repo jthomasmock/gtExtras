@@ -1,12 +1,5 @@
 #' @keywords internal
-#' @import gt
-#' @import dplyr
-#' @import rlang
-#' @import ggplot2
-#' @import htmltools
-#' @import glue
-#' @import scales
-#' @import paletteer
+#' @import dplyr glue ggplot2 gt htmltools paletteer rlang scales
 #' @importFrom dplyr %>% between case_when slice
 #' @importFrom fontawesome fa
 #' @importFrom paletteer paletteer_d

@@ -35,7 +35,6 @@ Suggests:
     testthat (>= 3.0.0),
     tibble (>= 3.0.0),
     tidyselect (>= 1.0.0),
-    tidyverse,
     RColorBrewer,
     rmarkdown,
     rvest,

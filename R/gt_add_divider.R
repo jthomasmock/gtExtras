@@ -8,9 +8,7 @@
 #' @param color,style,weight The border color, style, and weight. The `color` can be defined with a color name or with a hexadecimal color code. The default `color` value is `"#00FFFFFF"` (black). The `style` can be one of either `"solid"` (the default), `"dashed"`, or `"dotted"`. The `weight` of the border lines is to be given in pixel values (the `px()` helper function is useful for this. The default value for `weight` is `"1px"`.
 #' @param include_labels A logical, either `TRUE` or `FALSE` indicating whether to also add dividers through the column labels.
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
 #' @export
-#' @import gt
 #' @examples
 #' library(gt)
 #' basic_divider <- head(mtcars) %>%

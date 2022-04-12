@@ -2,7 +2,7 @@
 title: "Graphing in gt"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Plotting in gt}
+  %\VignetteIndexEntry{Graphing in gt}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -145,12 +145,12 @@ Bring data in
 </summary>
 
 ```{r}
-library(tidyverse)
+library(dplyr)
 
 games_df <- nflreadr::load_schedules() %>%
   filter(season == 2020, game_type == "REG") %>%
   select(game_id, team_home = home_team, team_away = away_team, result, week) %>%
-  pivot_longer(contains('team'), names_to = 'home_away', values_to = 'team', names_prefix = 'team_') %>%
+  tidyr::pivot_longer(contains('team'), names_to = 'home_away', values_to = 'team', names_prefix = 'team_') %>%
   mutate(
     result = ifelse(home_away == 'home', result, -result),
     win = ifelse(result == 0 , 0.5, ifelse(result > 0, 1, 0))
@@ -184,7 +184,7 @@ final_df <- joined_df %>%
   ungroup() %>%
   arrange(team_division) %>%
   select(-team_conf) %>%
-  mutate(team_division = str_remove(team_division, "AFC |NFC ")) %>%
+  mutate(team_division = stringr::str_remove(team_division, "AFC |NFC ")) %>%
   mutate(
     team_division = factor(team_division,
       levels = c("North", "South", "East", "West")
@@ -253,7 +253,8 @@ We can create a horizontal stacked percent bar chart inline like so. The data ca
 <details>
 
 ```{r}
-library(tidyverse)
+library(dplyr)
+library(tidyr)
 library(gt)
 
 player_df <- tibble(

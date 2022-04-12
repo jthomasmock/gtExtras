@@ -12,11 +12,7 @@
 #' @param ... Additional arguments passed to `scales::label_number()`, primarily used to format the numbers inside the color box
 #'
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
-#' @importFrom scales col_numeric label_number
-#' @importFrom htmltools div
 #' @export
-#' @import gt paletteer
 #'
 #' @examples
 #' library(gt)

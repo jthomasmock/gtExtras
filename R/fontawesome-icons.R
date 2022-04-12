@@ -12,12 +12,7 @@
 #' @param align Character string indicating alignment of the column, defaults to "left"
 #' @param direction The direction of the `paletteer` palette, should be either `-1` for reversed or the default of `1` for the existing direction.
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
-#' @importFrom fontawesome fa
-#' @importFrom paletteer paletteer_d
-#' @importFrom htmltools div
 #' @export
-#' @import gt
 #' @examples
 #'
 #' library(gt)
@@ -44,7 +39,7 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
     fn = function(x){
       int_x <- as.integer(x)
 
-      if(is.null(palette) && unique(int_x) >= 8){
+      if(is.null(palette) && length(unique(int_x)) >= 8){
         stop("Please add your own palette that is equal to the number of unique counts", call. = FALSE)
       }
 
@@ -97,12 +92,7 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
 #' @param direction The direction of the `paletteer` palette, should be either `-1` for reversed or the default of `1` for the existing direction.
 
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
-#' @importFrom paletteer paletteer_d
-#' @importFrom fontawesome fa
-#' @importFrom htmltools div
 #' @export
-#' @import gt
 #' @examples
 #'
 #' library(gt)
@@ -193,11 +183,7 @@ gt_fa_column <- function(gt_object, column, ..., palette = NULL,
 #' @param icon The icon name, passed to `fontawesome::fa()`
 #'
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
-#' @importFrom htmltools div
-#' @importFrom fontawesome fa
 #' @export
-#' @import gt
 #'
 #' @examples
 #' library(gt)
@@ -264,12 +250,6 @@ gt_fa_rating <- function(gt_object, column, max_rating = 5,...,
 #' @param fa_type The name of the Fontawesome icon, limited to 6 types of various arrows.
 #' @param font_color A string, indicating the color of the font, can also be returned as `'match'` to match the font color to the arrow palette.
 #' @param show_text A logical indicating whether to show/hide the values in the column.
-#' @importFrom htmltools div
-#' @import gt
-#' @importFrom gt %>%
-#' @importFrom dplyr case_when
-#' @importFrom glue glue
-#' @importFrom fontawesome fa
 #' @return a `gt` table
 #' @export
 #'

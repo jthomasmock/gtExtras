@@ -12,9 +12,6 @@
 #' @param title An option for populating the SVG 'title' attribute, which provides on-hover text for the icon. By default, no title text is given to the icon. If a11y == "semantic" then title text will be automatically given to the rendered icon, however, providing text here will override that.
 #' @param a11y Cases that distinguish the role of the icon and inform which accessibility attributes to be used. Icons can either be "deco" (decorative, the default case) or "sem" (semantic). Using "none" will result in no accessibility features for the icon.
 #' @return A character string of class HTML, representing repeated SVG logos
-#' @importFrom gt %>%
-#' @importFrom fontawesome fa
-#'
 #'
 #' @family Utilities
 #' @section Function ID:

@@ -25,6 +25,8 @@ gt_plt_conf_int(
 
 \item{ci}{The confidence interval, representing the percentage, ie \code{0.9} which represents \code{10-90} for the two tails.}
 
+\item{ref_line}{A number indicating where to place reference line on x-axis.}
+
 \item{palette}{A vector of color strings of exactly length 4. The colors represent the central point, the color of the range, the color of the stroke around the central point, and the color of the text, in that specific order.}
 
 \item{width}{A number indicating the width of the plot in \code{"mm"}, defaults to \code{45}.}

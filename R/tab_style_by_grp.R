@@ -9,9 +9,7 @@
 #' @param fn The name of a summarizing function (ie `max()`, `min()`)
 #' @param ... Arguments passed to `tab_style(style = ...)`
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
 #' @export
-#' @import gt dplyr
 #' @examples
 #' library(gt)
 #' df_in <- mtcars %>%
@@ -44,7 +42,7 @@ tab_style_by_grp <- function(gt_object, column, fn, ...){
     mutate(row_id = row_number()) %>%
     group_by(!!grp_col) %>%
     filter({{column}} == do.call(what = fn, args = list({{column}}))) %>%
-    pull(row_id)
+    pull(.data$row_id)
 
   gt_object %>%
     tab_style(

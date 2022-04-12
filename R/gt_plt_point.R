@@ -4,10 +4,9 @@
 #' @param palette A length 3 palette, used to highlight high/med/low
 #' @param add_label A logical indicating whether to add the label or note. This will only be added if it is the first or last row.
 #' @param width A numeric indicating the
-#' @import ggplot2
-#' @import gt
-#' @importFrom dplyr %>% mutate tibble
-#' @importFrom scales label_number_si
+#' @param vals_range vector of length two indicating range
+#' @inheritParams scales::label_number_si
+#'
 #' @return gt table
 add_point_plot <- function(data, palette, add_label, width, vals_range,
                            accuracy){
@@ -26,7 +25,7 @@ add_point_plot <- function(data, palette, add_label, width, vals_range,
                    color = "grey", size = 0.25) +
         geom_hline(yintercept = 1, color = "lightgrey", size = 0.25,
                    linetype = "dotted") +
-        geom_point(aes(x = x, y = y, fill = I(color)), color = "black",
+        geom_point(aes(x = .data$x, y = .data$y, fill = I(.data$color)), color = "black",
                    size = 3, stroke = 0.5, shape = 21) +
         theme_void() +
         coord_cartesian(xlim = vals_range,
@@ -75,9 +74,6 @@ add_point_plot <- function(data, palette, add_label, width, vals_range,
 #' @param width A numeric, indicating the width of the plot in `mm`, defaults to 25
 #' @param scale A number to multiply/scale the values in the column by. Defaults to 1, but can also be 100 if you have decimals.
 #' @param accuracy Accuracy of the number labels in the plot, passed to `scales::label_number_si()`
-#' @import gt
-#' @importFrom dplyr %>% between case_when
-#' @importFrom scales expand_range
 #' @return a gt table
 #' @export
 #'

@@ -23,7 +23,7 @@ RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
 URL: https://github.com/jthomasmock/gtExtras
 BugReports: https://github.com/jthomasmock/gtExtras/issues
-Additional_repositories: https://jthomasmock .r-universe.dev
+Additional_repositories: https://jthomasmock.r-universe.dev
 Imports: 
     dplyr (>= 0.8.5),
     ggplot2 (>= 3.3.0),

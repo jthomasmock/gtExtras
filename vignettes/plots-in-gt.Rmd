@@ -146,12 +146,11 @@ Bring data in
 
 ```{r}
 library(dplyr)
-library(tidyr)
 
 games_df <- nflreadr::load_schedules() %>%
   filter(season == 2020, game_type == "REG") %>%
   select(game_id, team_home = home_team, team_away = away_team, result, week) %>%
-  pivot_longer(contains('team'), names_to = 'home_away', values_to = 'team', names_prefix = 'team_') %>%
+  tidyr::pivot_longer(contains('team'), names_to = 'home_away', values_to = 'team', names_prefix = 'team_') %>%
   mutate(
     result = ifelse(home_away == 'home', result, -result),
     win = ifelse(result == 0 , 0.5, ifelse(result > 0, 1, 0))

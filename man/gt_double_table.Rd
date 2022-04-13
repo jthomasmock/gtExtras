@@ -37,7 +37,7 @@ it to the viewer, saving it to a \code{.png}, or returning the raw HTML.
 \examples{
 library(gt)
 # define your own function
-my_gt_function <- function(x){
+my_gt_function <- function(x) {
   gt(x) \%>\%
     gtExtras::gt_color_rows(columns = mpg, domain = range(mtcars$mpg)) \%>\%
     tab_options(data_row.padding = px(3))

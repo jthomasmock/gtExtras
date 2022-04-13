@@ -1,6 +1,6 @@
 Type: Package
 Package: gtExtras
-Title: A Collection of Helper Functions for the 'gt' Package
+Title: Extending 'gt' for Beautiful HTML Tables
 Version: 0.3
 Authors@R: c(
     person("Thomas", "Mock", , "j.thomasmock@gmail.com", role = c("aut", "cre", "cph")),
@@ -44,7 +44,6 @@ Suggests:
     tibble (>= 3.0.0),
     tidyr (>= 1.0.0),
     tidyselect (>= 1.0.0),
-    webshot2,
     xml2
 VignetteBuilder: 
     knitr

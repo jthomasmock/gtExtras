@@ -46,12 +46,14 @@ gtsave_extra <- function(data,
 
   } else {
     # Save the image in the working directory
-    webshot2::webshot(
-      url = paste0("file:///", tempfile_),
-      file = filename,
-      zoom = zoom,
-      expand = expand,
-      ...
+    do.call(eval(parse(text="webshot2::webshot")),
+      list(
+        url = paste0("file:///", tempfile_),
+        file = filename,
+        zoom = zoom,
+        expand = expand,
+        ...
+      )
     )
   }
 

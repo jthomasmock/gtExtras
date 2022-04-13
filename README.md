@@ -484,6 +484,7 @@ final_df %>%
   gt_img_rows(columns = team_wordmark) %>% 
   gt_theme_538() %>% 
   tab_header(title = "2020 Results by Division for the AFC")
+  
 ```
 
 <p align="center">

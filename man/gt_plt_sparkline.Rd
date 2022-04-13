@@ -19,7 +19,7 @@ gt_plt_sparkline(
 
 \item{column}{The column wherein the sparkline plot should replace existing data. Note that the data \emph{must} be represented as a list of numeric values ahead of time.}
 
-\item{type}{A string indicating the type of plot to generate, accepts \code{"default"}, \code{"shaded"}, \code{"ref_median"}, \code{'ref_mean'}, \code{"ref_iqr"}, \code{"ref_grid"}}
+\item{type}{A string indicating the type of plot to generate, accepts \code{"default"}, \code{"shaded"}, \code{"ref_median"}, \code{'ref_mean'}, \code{"ref_iqr"}, \code{"ref_last"}}
 
 \item{fig_dim}{A vector of two numbers indicating the height/width of the plot in mm at a DPI of 25.4, defaults to \code{c(5,30)}}
 

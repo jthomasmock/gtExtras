@@ -6,9 +6,7 @@
 #' @param x A vector of numbers to pad/align at the decimal point
 #' @param nsmall The max number of decimal places to round at/display
 #' @return Returns a vector of equal length to the input vector
-#' @importFrom gt %>%
 #' @export
-#' @import gt
 #' @examples
 #'
 #' library(gt)

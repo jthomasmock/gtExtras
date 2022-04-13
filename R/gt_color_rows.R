@@ -13,10 +13,7 @@
 #' @inheritParams scales::col_numeric
 #' @inheritParams paletteer::paletteer_d
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
-#' @importFrom scales col_numeric
 #' @export
-#' @import gt paletteer
 #' @examples
 #'  library(gt)
 #'  # basic use

@@ -1,45 +1,56 @@
-Package: gtExtras
 Type: Package
-Title: A Collection of Helper Functions for the gt Package
-Version: 0.2.3.9000
-Author: Thomas Mock
-Maintainer: Thomas Mock <j.thomasmock@gmail.com>
-Description: Provides utility functions and common use-cases applied via the gt package.
+Package: gtExtras
+Title: A Collection of Helper Functions for the 'gt' Package
+Version: 0.3
+Authors@R: c(
+    person("Thomas", "Mock", , "j.thomasmock@gmail.com", role = c("aut", "cre", "cph")),
+    person("Daniel D.", "Sjoberg", , "danield.sjoberg@gmail.com", role = "ctb",
+           comment = c(ORCID = "0000-0003-0862-2018"))
+  )
+Description: Provides additional functions for creating beautiful tables
+    with 'gt'. The functions are generally wrappers around boilerplate or
+    adding capabilities that are currently not built into 'gt'.
 License: MIT + file LICENSE
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.1.2
-Roxygen: list(markdown = TRUE)
-URL: https://github.com/jthomasmock/gtExtras
+URL: https://github.com/jthomasmock/gtExtras,
+    https://jthomasmock.github.io/gtExtras/
 BugReports: https://github.com/jthomasmock/gtExtras/issues
 Imports: 
-    dplyr (>= 0.8.5),
+    commonmark,
+    dplyr (>= 1.0.0),
+    fontawesome,
     ggplot2 (>= 3.3.0),
     glue (>= 1.3.2),
     gt (>= 0.3),
     htmltools (>= 0.5.0),
-    rlang (>= 0.4.5),
-    scales (>= 1.1.0),
-    svglite (>= 1.2.0.9001),
     paletteer,
-    fontawesome,
-    webshot
+    rlang (>= 0.4.5),
+    scales (>= 1.1.0)
 Suggests: 
     base64enc (>= 0.1-3),
-    fs (>= 1.3.2),
     bitops (>= 1.0.6),
     checkmate (>= 2.0.0),
+    covr,
+    fs (>= 1.3.2),
+    knitr,
     magrittr (>= 1.5),
-    sass (>= 0.1.1),
-    stringr (>= 1.3.1),
-    testthat (>= 3.0.0),
-    tibble (>= 3.0.0),
-    tidyselect (>= 1.0.0),
+    nflreadr,
     RColorBrewer,
     rmarkdown,
     rvest,
-    knitr,
-    tidyr,
-    covr
-VignetteBuilder: knitr
+    sass (>= 0.1.1),
+    stringr (>= 1.3.1),
+    svglite (>= 1.2.0.9001),
+    testthat (>= 3.0.0),
+    tibble (>= 3.0.0),
+    tidyr (>= 1.0.0),
+    tidyselect (>= 1.0.0),
+    webshot2,
+    xml2
+VignetteBuilder: 
+    knitr
+Additional_repositories: https://jthomasmock.r-universe.dev
 Config/testthat/edition: 3
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2

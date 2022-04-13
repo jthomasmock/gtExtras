@@ -14,10 +14,7 @@
 #'   For more information on built-in color names, see [colors()].
 #' @inheritDotParams scales::col2hcl -colour
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
-#' @importFrom glue glue
 #' @export
-#' @import gt
 #' @examples
 #' library(gt)
 #' teams <- "https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"

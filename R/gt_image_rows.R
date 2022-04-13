@@ -11,10 +11,7 @@
 #' @inheritParams gt::web_image
 #' @inheritParams gt::local_image
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
-#' @importFrom dplyr mutate
 #' @export
-#' @import gt
 #' @examples
 #' library(gt)
 #' teams <- "https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"
@@ -39,7 +36,7 @@ gt_img_rows <- function(gt_object, columns, img_source = "web", height = 30){
 
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
   # convert tidyeval column to bare strings
-  column_names <- gt:::resolve_cols_c(
+  column_names <- resolve_cols_c(
     expr = {{ columns }},
     data = gt_object
   )

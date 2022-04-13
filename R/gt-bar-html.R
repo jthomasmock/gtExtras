@@ -15,9 +15,7 @@
 #' @param background A character representing the background filling out the 100% mark of the bar, defaults to light grey. Accepts a named color (eg 'white') or a hex color.
 #' @param scaled `TRUE`/`FALSE` logical indicating if the value is already scaled to a percent of max (`TRUE`) or if it needs to be scaled (`FALSE`). Defaults to `FALSE`, meaning the value will be divided by the max value in that column and then multiplied by 100.
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
 #' @export
-#' @import gt
 #' @examples
 #' library(gt)
 #'  gt_bar_plot_tab <- mtcars %>%
@@ -49,7 +47,7 @@ gt_plt_bar_pct <- function(gt_object, column, height = 16, fill = "purple",
   # convert tidyeval column to bare string
   col_bare <- rlang::enexpr(column) %>% rlang::as_string()
   # segment data with bare string column name
-  data_in = gt_object[["_data"]][[col_bare]]
+  data_in <- gt_index(gt_object, column = {{ column }})
 
   col_number <- which(colnames(gt_object[["_data"]])==col_bare)
 

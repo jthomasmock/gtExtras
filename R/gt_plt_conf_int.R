@@ -8,6 +8,8 @@
 #' @param width A number indicating the width of the plot in `"mm"`, defaults to `45`.
 #' @param text_args A list of named arguments. Optional text arguments passed as a list to `scales::label_number_si`.
 #' @param text_size A number indicating the size of the text indicators in the plot. Defaults to 1.5. Can also be set to `0` to "remove" the text itself.
+#' @param ref_line A number indicating where to place reference line on x-axis.
+#'
 #' @return a gt table
 #' @export
 #'
@@ -78,12 +80,12 @@ gt_plt_conf_int <- function(gt_object, column, ci_columns, ci=0.9,ref_line=NULL,
     # create a list of dataframes with
     # roughly calculated confidence intervals
     data_in <- lapply(column_vals, function(x) {
-      dplyr::tibble(x = na.omit(x), y = "1a") %>%
+      dplyr::tibble(x = stats::na.omit(x), y = "1a") %>%
         dplyr::summarise(
-          mean = mean(x, na.rm = TRUE),
-          y = unique(y, na.rm = TRUE),
-          lm_out = list(lm(x ~ 1)),
-          ci = list(confint(lm_out[[1]], level = level)),
+          mean = mean(.data$x, na.rm = TRUE),
+          y = unique(.data$y, na.rm = TRUE),
+          lm_out = list(stats::lm(x ~ 1)),
+          ci = list(stats::confint(.data$lm_out[[1]], level = level)),
           ci1 = ci[[1]][1],
           ci2 = ci[[1]][2]
         ) %>%
@@ -139,6 +141,8 @@ gt_plt_conf_int <- function(gt_object, column, ci_columns, ci=0.9,ref_line=NULL,
 #' @param width Width of the output plot in `'mm'`
 #' @param ext_range A length two vector of the full range across all values
 #' @param text_args A list of optional text arguments passed to `scales::label_number_si()`
+#' @inheritParams gt_plt_conf_int
+#' @noRd
 #'
 #' @return SVG/HTML
 add_ci_plot <- function(data_in, pal_vals, width, ext_range, text_args, text_size,
@@ -146,10 +150,10 @@ add_ci_plot <- function(data_in, pal_vals, width, ext_range, text_args, text_siz
 
   if(unlist(ref_line) == "none"){
     base_plot <- data_in %>%
-      ggplot(aes(x = mean, y = "1a"))
+      ggplot(aes(x = .data$mean, y = "1a"))
   } else {
     base_plot <- data_in %>%
-      ggplot(aes(x = mean, y = "1a")) +
+      ggplot(aes(x = .data$mean, y = "1a")) +
       # geom_text(
       #   aes(x = unlist(ref_line) * 1.01,
       #   label = do.call(scales::label_number_si, text_args)(unlist(ref_line))),
@@ -163,22 +167,22 @@ add_ci_plot <- function(data_in, pal_vals, width, ext_range, text_args, text_siz
   # browser()
 
   plot_out <- base_plot +
-    geom_segment(aes(x = ci1, xend = ci2, y = y, yend = y),
+    geom_segment(aes(x = .data$ci1, xend = .data$ci2, y = .data$y, yend = .data$y),
       lineend = "round",
       size = 1, color = pal_vals[2], alpha = 0.75
     ) +
-    geom_point(aes(x = mean, y = y),
+    geom_point(aes(x = .data$mean, y = .data$y),
       size = 2, shape = 21, fill = pal_vals[1],
       color = pal_vals[3], stroke = 0.75
     ) +
-    geom_label(aes(x = ci2, label = do.call(scales::label_number_si, text_args)(ci2)),
+    geom_label(aes(x = .data$ci2, label = do.call(scales::label_number_si, text_args)(.data$ci2)),
       color = pal_vals[4], hjust = 1.1, size = text_size, vjust = 0,
       fill = "white", position = position_nudge(y = 0.25),
       family = "mono", fontface = "bold",
       label.size = unit(0, "lines"), label.padding = unit(0.05, "lines"),
       label.r = unit(0, "lines")
     ) +
-    geom_label(aes(x = ci1, label = do.call(scales::label_number_si, text_args)(ci1)),
+    geom_label(aes(x = .data$ci1, label = do.call(scales::label_number_si, text_args)(.data$ci1)),
       position = position_nudge(y = 0.25),
       color = pal_vals[4], hjust = -0.1, size = text_size, vjust = 0,
       fill = "white", family = "mono", fontface = "bold",

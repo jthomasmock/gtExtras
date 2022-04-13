@@ -4,8 +4,6 @@
 #' @param height The height in pixels of the circle
 #' @param border_color A string indicating the color of the border
 #' @param border_weight The weight of the border in pixels
-#' @importFrom htmltools div
-#' @importFrom glue glue
 #'
 #' @return HTML
 
@@ -29,8 +27,6 @@ img_circle <- function(value, height, border_color, border_weight) {
 #' @param height A number indicating the height of the image in pixels.
 #' @param border_color The color of the circular border, can either be a single value ie (`white` or `#FF0000`) or a vector where the lenght of the vector is equal to the number of rows.
 #' @param border_weight A number indicating the weight of the border in pixels.
-#' @import gt
-#' @importFrom gt %>%
 #' @return a gt object
 #' @export
 #'

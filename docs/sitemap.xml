@@ -22,6 +22,9 @@
     <loc>https://jthomasmock.github.io/gtExtras/index.html</loc>
   </url>
   <url>
+    <loc>https://jthomasmock.github.io/gtExtras/news/index.html</loc>
+  </url>
+  <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/add_badge_color.html</loc>
   </url>
   <url>
@@ -50,6 +53,9 @@
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/generate_df.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/gtExtras-package.html</loc>
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_add_divider.html</loc>
@@ -200,6 +206,9 @@
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/pad_fn.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/reexports.html</loc>
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/tab_style_by_grp.html</loc>

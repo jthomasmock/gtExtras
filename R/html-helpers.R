@@ -2,8 +2,6 @@
 #'
 #' @param label A string representing the label for the details expansion section.
 #' @param content A named list
-#' @importFrom glue glue
-#' @importFrom gt %>% html
 #'
 #' @return HTML text
 #' @export
@@ -40,8 +38,6 @@ gt_label_details <- function(label, content){
 #'
 #' @return HTML text
 #' @export
-#' @import htmltools
-#' @importFrom gt %>% html
 with_tooltip <- function(label, tooltip) {
   tags$abbr(style = paste0(
     "text-decoration: underline; text-decoration-style: solid;","
@@ -57,8 +53,6 @@ with_tooltip <- function(label, tooltip) {
 #' a `gt` table.
 #' @param text The text displayed for the hyperlink
 #' @param url The url for the hyperlink
-#' @importFrom gt %>% html
-#' @import htmltools
 #' @return HTML text
 #' @export
 gt_hyperlink <- function(text, url){
@@ -72,9 +66,6 @@ gt_hyperlink <- function(text, url){
 #' @param add_color A color to add to the badge
 #' @param add_label The label to add to the badge
 #' @param alpha_lvl The alpha level
-#' @importFrom htmltools div
-#' @importFrom scales alpha
-#' @importFrom gt html %>%
 #'
 #' @return HTML character
 add_badge_color <- function(add_color, add_label, alpha_lvl){
@@ -99,8 +90,6 @@ add_badge_color <- function(add_color, add_label, alpha_lvl){
 #' @param column The column to convert to badges, accepts `tidyeval`
 #' @param palette Name of palette as a string. Must be either length of 1 or a vector of valid color names/hex values of equal length to the unique levels of the column (ie if there are 4 names, there need to be 4x colors). Note that if you would like to specify a specific color to match a specific icon, you can also use a named vector like: `c("angle-double-up" = "#009E73", "angle-double-down" = "#D55E00","sort" = "#000000")`
 #' @param alpha A numeric indicating the alpha/transparency. Range from 0 to 1
-#' @import gt
-#' @importFrom gt %>%
 #' @export
 #' @return `gt` table
 #' @examples

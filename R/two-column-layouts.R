@@ -15,9 +15,6 @@
 #' @param nrows The number of rows to split at, defaults to `NULL` and will attempt to split approximately 50/50 in the left vs right table.
 #' @param noisy A logical indicating whether to return the warning about not supplying `nrows` argument.
 #' @return a `list()` of two `gt` tables
-#' @importFrom gt %>%
-#' @importFrom dplyr slice
-#' @import gt
 #' @export
 #'
 #' @examples
@@ -79,25 +76,22 @@ gt_double_table <- function(data, gt_fn, nrows = NULL, noisy = TRUE){
 #' into this function. The user should indicate whether they want to return the
 #' HTML to R's viewer with `output = "viewer"` to "view" the final output, or to
 #' save to disk as a `.png` via `output = "save".` Note that this is a relatively
-#' complex wrapper around `htmltools::div()` + `webshot::webshot()`. Additional
-#' arguments can be passed to `webshot::webshot()` if the automatic output is not
+#' complex wrapper around `htmltools::div()` + `webshot2::webshot()`. Additional
+#' arguments can be passed to `webshot2::webshot()` if the automatic output is not
 #' satisfactory. In most situations, modifying the `vwidth` argument is sufficient
-#' to get the desired output, but all arguments to `webshot::webshot()` are
+#' to get the desired output, but all arguments to `webshot2::webshot()` are
 #' available by their original name via the passed `...`.
 #'
 #' @param tables A `list()` of two tables, typically supplied by `gt_double_table()`
-#' @param output A character string indicating the desired output, either `"save"` to save it to disk via `webshot`, `"viewer"` to return it to the RStudio Viewer, or `"html"` to return the raw HTML.
+#' @param output A character string indicating the desired output, either `"save"` to save it to disk via `webshot2`, `"viewer"` to return it to the RStudio Viewer, or `"html"` to return the raw HTML.
 #' @param filename The filename of the table, must contain `.png` and only used if `output = "save"`
 #' @param path An optional path of where to save the printed `.png`, used in conjunction with `filename`.
-#' @param vwidth Viewport width. This is the width of the browser "window" when passed to `webshot::webshot()`.
-#' @param vheight Viewport height This is the height of the browser "window" when passed to `webshot::webshot()`.
-#' @param ... Additional arguments passed to `webshot::webshot()`, only to be used if `output = "save"`, saving the two-column layout tables to disk as a `.png`.
-#' @param zoom Argument to `webshot::webshot()`. A number specifying the zoom factor. A zoom factor of 2 will result in twice as many pixels vertically and horizontally. Note that using 2 is not exactly the same as taking a screenshot on a HiDPI (Retina) device: it is like increasing the zoom to 200 doubling the height and width of the browser window. This differs from using a HiDPI device because some web pages load different, higher-resolution images when they know they will be displayed on a HiDPI device (but using zoom will not report that there is a HiDPI device).
-#' @param expand Argument to `webshot::webshot()`. A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order. When taking screenshots of multiple URLs, this parameter can also be a list with same length as url with each element of the list containing a single number or four numbers to use for the corresponding URL.
+#' @param vwidth Viewport width. This is the width of the browser "window" when passed to `webshot2::webshot()`.
+#' @param vheight Viewport height This is the height of the browser "window" when passed to `webshot2::webshot()`.
+#' @param ... Additional arguments passed to `webshot2::webshot()`, only to be used if `output = "save"`, saving the two-column layout tables to disk as a `.png`.
+#' @param zoom Argument to `webshot2::webshot()`. A number specifying the zoom factor. A zoom factor of 2 will result in twice as many pixels vertically and horizontally. Note that using 2 is not exactly the same as taking a screenshot on a HiDPI (Retina) device: it is like increasing the zoom to 200 doubling the height and width of the browser window. This differs from using a HiDPI device because some web pages load different, higher-resolution images when they know they will be displayed on a HiDPI device (but using zoom will not report that there is a HiDPI device).
+#' @param expand Argument to `webshot2::webshot()`. A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order. When taking screenshots of multiple URLs, this parameter can also be a list with same length as url with each element of the list containing a single number or four numbers to use for the corresponding URL.
 #' @return Saves a `.png` to disk if `output = "save"`, returns HTML to the viewer via `htmltools::browsable()` when `output = "viewer"`, or returns raw HTML if `output = "html"`.
-#' @import gt
-#' @importFrom gt %>%
-#' @importFrom htmltools div browsable save_html
 #' @export
 #' @section Figures:
 #' \if{html}{\figure{basic-two-col.png}{options: width=60\%}}
@@ -163,7 +157,7 @@ gt_two_column_layout <- function(tables = NULL, output = "viewer",
 
   stopifnot("Two 'gt' tables must be provided like `list(table1, table2)`" = !is.null(tables))
   stopifnot("Two 'gt' tables must be provided like `list(table1, table2)`" = is.list(tables))
-  stopifnot("Both tables in the list must be a 'gt_tbl' object" = isTRUE(gt:::is_gt(tables[[1]]) && gt:::is_gt(tables[[2]])))
+  stopifnot("Both tables in the list must be a 'gt_tbl' object" = all(c(class(tables[[1]])[1], class(tables[[2]])[1]) == "gt_tbl"))
 
   double_tables <- htmltools::div(
     htmltools::div(tables[1], style = "display: inline-block;float:left;"),
@@ -176,7 +170,7 @@ gt_two_column_layout <- function(tables = NULL, output = "viewer",
 
   } else if(output == "save"){
 
-    filename <- gt:::gtsave_filename(path = path, filename = filename)
+    filename <- gtsave_filename(path = path, filename = filename)
 
     # Create a temporary file with the `html` extension
     tempfile_ <- tempfile(fileext = ".html")
@@ -184,19 +178,19 @@ gt_two_column_layout <- function(tables = NULL, output = "viewer",
     # Reverse slashes on Windows filesystems
     tempfile_ <-
       tempfile_ %>%
-      gt:::tidy_gsub("\\\\", "/")
+      tidy_gsub("\\\\", "/")
 
     htmltools::save_html(html = double_tables, file = tempfile_)
 
-    if (!requireNamespace("webshot", quietly = TRUE)) {
+    if (!requireNamespace("webshot2", quietly = TRUE)) {
 
-      stop("The `webshot` package is required for saving images of gt tables.",
+      stop("The `webshot2` package is required for saving images of gt tables. Install it from remotes::install_github('rstudio/webshot2')",
            call. = FALSE)
 
     } else {
 
       # Save the image in the working directory
-      webshot::webshot(
+      webshot2::webshot(
         url = paste0("file:///", tempfile_),
         file = filename,
         vwidth = vwidth,

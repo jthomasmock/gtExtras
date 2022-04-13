@@ -7,9 +7,6 @@
 #' @param after The column to place the duplicate column after
 #' @param append_text The text to add to the column name to differentiate it from the original column name
 #' @param dupe_name A full name for the "new" duplicated column, will override `append_text`
-#' @import gt
-#' @importFrom gt %>%
-#' @importFrom dplyr mutate filter bind_rows
 #' @return An object of class `gt_tbl`.
 #' @export
 #' @examples
@@ -29,7 +26,7 @@ gt_duplicate_column <- function(gt_object, column, after = dplyr::last_col(), ap
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
 
   columns <-
-    gt:::resolve_cols_c(
+    resolve_cols_c(
       expr = {{ column }},
       data = gt_object
     )
@@ -47,7 +44,7 @@ gt_duplicate_column <- function(gt_object, column, after = dplyr::last_col(), ap
     dplyr::mutate(!!col_dupe_name := {{column}})
 
   added_row <- gt_object[["_boxhead"]] %>%
-    dplyr::filter(var == columns) %>%
+    dplyr::filter(.data$var == columns) %>%
     dplyr::mutate(var = !!col_dupe_name,
                   column_label = list(!!col_dupe_name))
 

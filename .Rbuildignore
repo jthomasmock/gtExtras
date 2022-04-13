@@ -3,5 +3,11 @@
 ^README\.Rmd$
 ^LICENSE\.md$
 ^doc$
+^docs$
 ^Meta$
 ^codecov\.yml$
+^_pkgdown\.yaml$
+^.covrignore$
+^_pkgdown\.yml$
+^pkgdown$
+^\.github$

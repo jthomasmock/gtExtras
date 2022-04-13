@@ -85,7 +85,7 @@ test_that("svg is created and has specific values", {
   expect_equal(hist_vals, c("39.43", "27.88", "4.79"))
   expect_equal(dens_vals,"26.03,13.47 26.14,13.46 26.25,13.4")
 
-  })
+})
 
 
 test_that("svg is created and has specific values, same_limit = FALSE", {

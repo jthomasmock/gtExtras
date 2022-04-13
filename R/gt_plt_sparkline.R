@@ -6,16 +6,13 @@
 #'
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param column The column wherein the sparkline plot should replace existing data. Note that the data *must* be represented as a list of numeric values ahead of time.
-#' @param type A string indicating the type of plot to generate, accepts `"default"`, `"shaded"`, `"ref_median"`, `'ref_mean'`, `"ref_iqr"`, `"ref_grid"`
+#' @param type A string indicating the type of plot to generate, accepts `"default"`, `"shaded"`, `"ref_median"`, `'ref_mean'`, `"ref_iqr"`, `"ref_last"`
 #' @param fig_dim A vector of two numbers indicating the height/width of the plot in mm at a DPI of 25.4, defaults to `c(5,30)`
 #' @param pal A character string indicating the colors of various components. Order matters, and pal = sparkline color, final value color, range color low, range color high, and 'type' color (eg shading or reference lines).
 #' @param same_limit A logical indicating that the plots will use the same axis range (`TRUE`) or have individual axis ranges (`FALSE`).
 #' @param label A logical indicating whether the sparkline will have a numeric label at the end of the plot.
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
-#' @importFrom scales label_number_si
 #' @export
-#' @import gt ggplot2 dplyr
 #' @examples
 #'  library(gt)
 #'  gt_sparkline_tab <- mtcars %>%
@@ -50,8 +47,7 @@ gt_plt_sparkline <- function(gt_object, column, type = "default",
 
   stopifnot("Specified column must contain list of values" = class(list_data_in) %in% "list")
   stopifnot("You must supply five colors for the palette." = length(pal) == 5L)
-  stopifnot("You must indicate the `type` of plot as one of 'default', 'shaded', 'ref_median', 'ref_mean', 'points', or 'ref_iqr'." = isTRUE(type %in% c("default", "shaded", "ref_median",
-    "ref_mean", "ref_iqr", "points")))
+  stopifnot("You must indicate the `type` of plot as one of 'default', 'shaded', 'ref_median', 'ref_mean', 'points', 'ref_last' or 'ref_iqr'." = isTRUE(type %in% c("default", "shaded", "ref_median", "ref_mean", "ref_iqr", "points", "ref_last")))
 
   # range to be used for plotting if same axis
   total_rng <- grDevices::extendrange(data_in, r = range(data_in, na.rm = TRUE), f = 0.02)
@@ -62,7 +58,7 @@ gt_plt_sparkline <- function(gt_object, column, type = "default",
       return("<div></div>")
     }
 
-    vals <- as.double(na.omit(list_data_in))
+    vals <- as.double(stats::na.omit(list_data_in))
 
     max_val <- max(vals, na.rm = TRUE)
     min_val <- min(vals, na.rm = TRUE)
@@ -88,7 +84,7 @@ gt_plt_sparkline <- function(gt_object, column, type = "default",
       plot_base <- ggplot(input_data) +
         theme_void()
 
-      med_y_rnd <- round(median(input_data$y))
+      med_y_rnd <- round(stats::median(input_data$y))
       last_val_label <- input_data[nrow(vals), 2]
 
       if (isTRUE(same_limit) && isFALSE(label)) {
@@ -106,15 +102,15 @@ gt_plt_sparkline <- function(gt_object, column, type = "default",
       } else if(isTRUE(label)) {
         plot_base <- plot_base +
           geom_text(
-            data = filter(input_data, x == max(x)),
-            aes(x = x, y=y,
+            data = filter(input_data, .data$x == max(.data$x)),
+            aes(x = .data$x, y = .data$y,
               label = scales::label_number_si(
                 accuracy = if(med_y_rnd > 0){
                   .1
                 } else if(med_y_rnd == 0) {
                   .01
                 }
-              )(y)
+              )(.data$y)
             ),
             size = 2, family = "mono", hjust = 0, vjust = 0.5,
             position = position_nudge(x = max(input_data$x)*0.05),
@@ -128,15 +124,15 @@ gt_plt_sparkline <- function(gt_object, column, type = "default",
       }
 
       plot_out <- plot_base +
-        geom_line(aes(x = x, y = y, group = 1), size = 0.5,
+        geom_line(aes(x = .data$x, y = .data$y, group = 1), size = 0.5,
           color = pal[1]) +
         geom_point(
-          data = filter(input_data, x == max(x)),
-          aes(x = x, y=y), size = 0.5,  color = pal[2]
+          data = filter(input_data, .data$x == max(.data$x)),
+          aes(x = .data$x, y = .data$y), size = 0.5,  color = pal[2]
         ) +
         geom_point(
           data = point_data,
-          aes(x = x, y = y, color = I(colors), group = 1),
+          aes(x = .data$x, y = .data$y, color = I(.data$colors), group = 1),
           size = 0.5
         )
 
@@ -144,39 +140,46 @@ gt_plt_sparkline <- function(gt_object, column, type = "default",
       if (type == "shaded") {
 
         plot_out$layers <- c(
-          geom_area(aes(x=x,y=y),fill = pal[5], alpha = 0.75),
+          geom_area(aes(x = .data$x, y = .data$y), fill = pal[5], alpha = 0.75),
           plot_out$layers
         )
 
         ### Horizontal ref line at median
       } else if (type == "ref_median") {
         plot_out$layers <- c(
-          geom_segment(aes(x=min(x),y=median(y),xend = max(x),yend=median(y)),
+          geom_segment(aes(x = min(.data$x),y = stats::median(.data$y), xend = max(.data$x), yend=stats::median(.data$y)),
             color = pal[5], size = 0.1),
           plot_out$layers
         )
         ### dots on all points
       } else if(type == "points"){
         plot_out$layers <- c(
-          geom_point(aes(x = x,y=y), color = pal[5], size = 0.4),
+          geom_point(aes(x = .data$x, y = .data$y), color = pal[5], size = 0.4),
           plot_out$layers
         )
         ### Horizontal ref line at mean
       } else if (type == "ref_mean") {
         plot_out$layers <- c(
-          geom_segment(aes(x=min(x),y=mean(y),xend = max(x),yend=mean(y)),
+          geom_segment(aes(x = min(.data$x), y = mean(.data$y), xend = max(.data$x), yend = mean(.data$y)),
+            color = pal[5], size = 0.1),
+          plot_out$layers
+        )
+        ### Horizontal ref line at last point
+      } else if (type == "ref_last") {
+        plot_out$layers <- c(
+          geom_segment(aes(x = min(.data$x), y = last(.data$y), xend = max(.data$x), yend = last(.data$y)),
             color = pal[5], size = 0.1),
           plot_out$layers
         )
         ### Horizontal area/ribbon for 25/75 interquantile range
       } else if (type == "ref_iqr") {
         ribbon_df <- input_data %>%
-          summarise(q25 = quantile(y, 0.25), q75 = quantile(y, 0.75))
+          summarise(q25 = stats::quantile(.data$y, 0.25), q75 = stats::quantile(.data$y, 0.75))
         plot_out$layers <- c(
-          geom_ribbon(aes(x=x, ymin = ribbon_df$q25, ymax = ribbon_df$q75),
+          geom_ribbon(aes(x = .data$x, ymin = ribbon_df$q25, ymax = ribbon_df$q75),
             fill = pal[5], alpha = 0.5
           ),
-          geom_segment(aes(x=min(x),y=median(y),xend = max(x),yend=median(y)),
+          geom_segment(aes(x = min(.data$x), y = stats::median(.data$y), xend = max(.data$x), yend = stats::median(.data$y)),
             color = pal[5], size = 0.1),
           plot_out$layers
         )

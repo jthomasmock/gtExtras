@@ -3,9 +3,6 @@
 #' @param palette A length 3 palette, used to highlight high/med/low
 #' @param add_label A logical indicating whether to add the label or note. This will only be added if it is the first or last row.
 #' @param width A numeric indicating the
-#' @import ggplot2
-#' @import gt
-#' @importFrom dplyr %>% mutate tibble between
 #' @return gt table
 add_pcttile_plot <- function(data, palette, add_label, width){
 
@@ -20,7 +17,7 @@ add_pcttile_plot <- function(data, palette, add_label, width){
     geom_vline(xintercept = 50, color = "black", size = 0.5) +
     geom_vline(xintercept = c(0,25,75,100), color = "grey", size = 0.25) +
     geom_hline(yintercept = 1, color = "lightgrey", size = 0.25, linetype = "dotted") +
-    geom_point(aes(x = x, y = y, fill = I(color)), color = "black", size = 3, stroke = 0.5,
+    geom_point(aes(x = .data$x, y = .data$y, fill = I(.data$color)), color = "black", size = 3, stroke = 0.5,
                shape = 21) +
     theme_void() +
     coord_cartesian(xlim = c(0,100),
@@ -69,8 +66,6 @@ add_pcttile_plot <- function(data, palette, add_label, width){
 #' @param palette A vector of strings of length 3. Defaults to `c('blue', 'lightgrey', 'red')` as hex so `c("#007ad6", "#f0f0f0", "#f72e2e")`
 #' @param width A numeric, indicating the width of the plot in `mm`, defaults to 25
 #' @param scale A number to multiply/scale the values in the column by. Defaults to 1, but can also be 100 if you have decimals.
-#' @import gt
-#' @importFrom dplyr %>% between case_when
 #' @return a gt table
 #' @export
 #'

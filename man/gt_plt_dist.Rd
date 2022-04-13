@@ -34,8 +34,6 @@ gt_plt_dist(
 \item{trim}{A logical indicating whether to trim the values in \code{type = "density"} to a slight expansion beyond the observable range. Can help with long tails in \code{density} plots.}
 
 \item{same_limit}{A logical indicating that the plots will use the same axis range (\code{TRUE}) or have individual axis ranges (\code{FALSE}).}
-
-\item{range_colors}{A vector of two valid color names or hex codes, the first color represents the min values and the second color represents the highest point per plot. Defaults to \code{c("blue", "blue")}. Accepts a named color (eg \code{'blue'}) or a hex color like \code{"#fafafa"}.}
 }
 \value{
 An object of class \code{gt_tbl}.

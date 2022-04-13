@@ -9,7 +9,6 @@ gt_plt_bullet(
   column = NULL,
   target = NULL,
   width = 65,
-  keep_column = FALSE,
   colors = c("grey", "red")
 )
 }
@@ -21,8 +20,6 @@ gt_plt_bullet(
 \item{target}{The column indicating the target values that will be represented by a vertical line}
 
 \item{width}{Width of the plot in pixels}
-
-\item{keep_column}{Logical indicating whether to keep a copy of the \code{column} as raw values, in addition to the bullet chart}
 
 \item{colors}{Color of the bar and target line, defaults to \code{c("grey", "red")}, can use named colors or hex colors. Must be of length two, and the first color will always be used as the bar color.}
 }

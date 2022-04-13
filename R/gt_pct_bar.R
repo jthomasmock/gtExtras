@@ -15,12 +15,9 @@
 #' @param labels A vector of strings of length 2 or 3, representing the labels for the bar chart, will be colored according to the palette as well.
 #' @param position An string indicator passed to `ggplot2` indicating if the bar should be a percent of total `"fill"` or stacked as the raw values `"stack"`.
 #' @param width An integer representing the width of the bar chart in pixels.
-#' @param fmt_fun A specific function from `scales::label_???` family. Defaults to `scales::label_number_si()`
+#' @param fmt_fn A specific function from `scales::label_???` family. Defaults to `scales::label_number_si()`
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
 #' @export
-#' @import gt rlang ggplot2 scales
-#' @importFrom glue glue
 #' @family Plotting
 #' @section Function ID:
 #' 3-6
@@ -109,7 +106,7 @@ gt_plt_bar_stack <- function(gt_object, column = NULL,
         )
 
         plot_out <- df_in %>%
-          ggplot(aes(x = x, y = factor(y), fill = I(fill), group = y)) +
+          ggplot(aes(x = .data$x, y = factor(.data$y), fill = I(.data$fill), group = .data$y)) +
           geom_col(position = position, color = "white", size = 1) +
           geom_text(
             aes(label = fmt_fn(x)),
@@ -191,7 +188,7 @@ gt_plt_bar_stack <- function(gt_object, column = NULL,
 
   # Get the columns supplied in `columns` as a character vector
   tab_out <-
-    gt:::dt_boxhead_edit_column_label(
+    dt_boxhead_edit_column_label(
       data = tab_out,
       var = var_bare,
       column_label = label_built

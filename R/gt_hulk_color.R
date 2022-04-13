@@ -11,10 +11,7 @@
 #' @inheritParams scales::col_numeric
 #' @param ... Additional arguments passed to `scales::col_numeric()`
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
-#' @importFrom scales col_numeric
 #' @export
-#' @import gt paletteer
 #' @examples
 #'  library(gt)
 #'  # basic use

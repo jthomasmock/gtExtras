@@ -13,9 +13,7 @@
 #' @param bold_target_only A logical of TRUE/FALSE indicating whether to apply bold to only the specific `target_col`. You must indicate a specific column with `target_col`.
 #' @param target_col A specific `tidyeval` column to apply bold text to, which allows for normal weight text for the remaining highlighted columns.
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
 #' @export
-#' @import gt
 #' @examples
 #' library(gt)
 #' basic_use <- head(mtcars[,1:5]) %>%

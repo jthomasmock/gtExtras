@@ -1,4 +1,5 @@
 .Rproj.user
+.covrignore
 .Rhistory
 .RData
 .Ruserdata
@@ -9,3 +10,4 @@ gtExtras.Rproj
 inst/doc
 /doc/
 /Meta/
+docs

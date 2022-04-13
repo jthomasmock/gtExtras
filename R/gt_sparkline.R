@@ -16,10 +16,7 @@
 #' @param same_limit A logical indicating that the plots will use the same axis range (`TRUE`) or have individual axis ranges (`FALSE`).
 #' @param label A logical indicating whether the sparkline will have a numeric label at the end of the plot.
 #' @return An object of class `gt_tbl`.
-#' @importFrom gt %>%
-#' @importFrom scales label_number_si
 #' @export
-#' @import gt ggplot2 dplyr
 #' @examples
 #'  library(gt)
 #'  gt_sparkline_tab <- mtcars %>%
@@ -105,19 +102,19 @@ gt_sparkline <- function(gt_object, column, type = "sparkline", width = 30,
                           xlim = c(0.25, length(vals)*1.25))
       }
 
-      med_y_rnd <- round(median(input_data$y))
+      med_y_rnd <- round(stats::median(input_data$y))
       last_val_label <- input_data[nrow(vals), 2]
 
         plot_out <- plot_base +
-          geom_line(aes(x = x, y = y, group = 1), size = 0.5,
+          geom_line(aes(x = .data$x, y = .data$y, group = 1), size = 0.5,
                   color = line_color) +
           geom_point(
-            data = filter(input_data, x == max(x)),
-            aes(x = x, y=y), size = 0.5,  color = "black"
+            data = filter(input_data, x == max(.data$x)),
+            aes(x = .data$x, y = .data$y), size = 0.5,  color = "black"
           ) +
           geom_point(
             data = point_data,
-            aes(x = x, y = y, color = I(colors), group = 1),
+            aes(x = .data$x, y = .data$y, color = I(.data$colors), group = 1),
             size = 0.5
             )
 
@@ -125,14 +122,14 @@ gt_sparkline <- function(gt_object, column, type = "sparkline", width = 30,
           plot_out <- plot_out +
             geom_text(
               data = filter(input_data, x == max(x)),
-              aes(x = x, y=y, color = "black",
+              aes(x = .data$x, y = .data$y, color = "black",
                   label = scales::label_number_si(
                     accuracy = if(med_y_rnd > 0){
                       .1
                     } else if(med_y_rnd == 0) {
                       .01
                     }
-                  )(y)
+                  )(.data$y)
               ),
               size = 2, family = "mono", hjust = 0, vjust = 0.5,
               position = position_nudge(x = max(input_data$x)*0.05)
@@ -149,14 +146,14 @@ gt_sparkline <- function(gt_object, column, type = "sparkline", width = 30,
       if (isTRUE(same_limit)) {
 
         if(is.null(bw)){
-          bw <- 2 * IQR(data_in, na.rm = TRUE) / length(data_in)^(1 / 3)
+          bw <- 2 * stats::IQR(data_in, na.rm = TRUE) / length(data_in)^(1 / 3)
         } else {
           bw <- bw
         }
 
         plot_out <- plot_base +
           geom_histogram(
-            aes(x = y),
+            aes(x = .data$y),
             color = line_color,
             fill = fill_color,
             binwidth = bw
@@ -169,14 +166,14 @@ gt_sparkline <- function(gt_object, column, type = "sparkline", width = 30,
 
       } else {
         if(is.null(bw)){
-          bw <- 2 * IQR(vals, na.rm = TRUE) / length(vals)^(1 / 3)
+          bw <- 2 * stats::IQR(vals, na.rm = TRUE) / length(vals)^(1 / 3)
         } else {
           bw <- bw
         }
 
         plot_out <- plot_base +
           geom_histogram(
-            aes(x = y),
+            aes(x = .data$y),
             color = line_color,
             fill = fill_color,
             binwidth = bw
@@ -190,14 +187,14 @@ gt_sparkline <- function(gt_object, column, type = "sparkline", width = 30,
 
       if (isTRUE(same_limit)) {
         if(is.null(bw)){
-          bw <- bw.nrd0(na.omit(data_in))
+          bw <- stats::bw.nrd0(stats::na.omit(data_in))
         } else {
           bw <- bw
         }
 
-        total_rng_dens <- density(na.omit(data_in), bw = bw)[["x"]]
+        total_rng_dens <- stats::density(stats::na.omit(data_in), bw = bw)[["x"]]
 
-        density_calc <- density(input_data[["y"]], bw = bw)
+        density_calc <- stats::density(input_data[["y"]], bw = bw)
         density_range <- density_calc[["x"]]
 
         density_df <- dplyr::tibble(
@@ -220,7 +217,7 @@ gt_sparkline <- function(gt_object, column, type = "sparkline", width = 30,
 
 
         plot_out <- plot_base +
-          geom_area(aes(x = x, y = y),
+          geom_area(aes(x = .data$x, y = .data$y),
                     color = line_color,
                     fill = fill_color) +
           xlim(range(density_range)) +
@@ -228,14 +225,14 @@ gt_sparkline <- function(gt_object, column, type = "sparkline", width = 30,
                           expand = TRUE, clip = "off")
       } else {
         if(is.null(bw)){
-          bw <- bw.nrd0(vals)
+          bw <- stats::bw.nrd0(vals)
         } else {
           bw <- bw
         }
 
-        total_rng_dens <- density(data_in, bw = bw)[["x"]]
+        total_rng_dens <- stats::density(data_in, bw = bw)[["x"]]
 
-        density_calc <- density(input_data[["y"]], bw = bw)
+        density_calc <- stats::density(input_data[["y"]], bw = bw)
         density_range <- density_calc[["x"]]
 
         density_df <- dplyr::tibble(
@@ -250,14 +247,14 @@ gt_sparkline <- function(gt_object, column, type = "sparkline", width = 30,
 
           density_df <- dplyr::filter(
             density_df,
-            dplyr::between(x, filter_range[1], filter_range[2]))
+            dplyr::between(.data$x, filter_range[1], filter_range[2]))
         }
 
         plot_base <- ggplot(density_df) +
           theme_void()
 
         plot_out <- plot_base +
-          geom_area(aes(x = x, y = y),
+          geom_area(aes(x = .data$x, y = .data$y),
                     color = line_color,
                     fill = fill_color) +
           xlim(range(density_range)) +

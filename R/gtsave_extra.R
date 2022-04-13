@@ -39,7 +39,7 @@ gtsave_extra <- function(data,
 
   # Saving an image requires the webshot2 package; if it's
   # not present, stop with a message
-  if (!requireNamespace("webshot2", quietly = TRUE)) {
+  if (!rlang::is_installed("webshot2")) {
 
     stop("The `webshot2` package is required for saving images of gt tables. Install it from remotes::install_github('rstudio/webshot2')",
       call. = FALSE)

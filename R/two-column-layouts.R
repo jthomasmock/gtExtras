@@ -182,7 +182,7 @@ gt_two_column_layout <- function(tables = NULL, output = "viewer",
 
     htmltools::save_html(html = double_tables, file = tempfile_)
 
-    if (!requireNamespace("webshot2", quietly = TRUE)) {
+    if (!rlang::is_installed("webshot2")) {
 
       stop("The `webshot2` package is required for saving images of gt tables. Install it from remotes::install_github('rstudio/webshot2')",
            call. = FALSE)
@@ -207,4 +207,9 @@ gt_two_column_layout <- function(tables = NULL, output = "viewer",
   } else if(output == "html"){
     double_tables
   }
+}
+
+my_fun <- function(a, b) {
+  rlang::check_installed("pkg", reason = "to use `my_fun()`")
+  # code that includes calls such as pkg::f()
 }

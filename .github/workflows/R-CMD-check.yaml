@@ -31,7 +31,7 @@ jobs:
     steps:
       - name: Add extra repo
         run: |
-          cat("\noptions(repos = c(getOption("repos"), extra = "https://jthomasmock.r-universe.dev"))\n", file = "~/.Rprofile", append = TRUE)
+          cat("\noptions(repos = c(getOption('repos'), extra = 'https://jthomasmock.r-universe.dev'))\n", file = "~/.Rprofile", append = TRUE)
         shell: Rscript {0}
       - uses: actions/checkout@v2
 

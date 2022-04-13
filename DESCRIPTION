@@ -45,6 +45,7 @@ Suggests:
     tidyr (>= 1.0.0),
     tidyselect (>= 1.0.0),
     webshot,
+    pkgdown,
     xml2
 VignetteBuilder: 
     knitr

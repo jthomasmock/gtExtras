@@ -2,7 +2,7 @@
 check_suggests <- function() {
   skip_if_not_installed("rvest")
   skip_if_not_installed("xml2")
-
+  skip_on_cran()
 }
 
 test_that("two_column_layout, two gt_tbl objects", {

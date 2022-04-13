@@ -2,12 +2,10 @@
 check_suggests <- function() {
   skip_if_not_installed("rvest")
   skip_if_not_installed("xml2")
-
+  skip_on_cran()
 }
 
 test_that("gtsave_extra, file out works", {
-  check_suggests()
-
   check_suggests()
 
   # Create a filename with path, having the

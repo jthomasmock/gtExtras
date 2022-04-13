@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![Codecov test
-coverage](https://codecov.io/gh/jthomasmock/gtExtras/branch/master/graph/badge.svg)](https://codecov.io/gh/jthomasmock/gtExtras?branch=master)
+coverage](https://codecov.io/gh/jthomasmock/gtExtras/branch/master/graph/badge.svg)](https://app.codecov.io/gh/jthomasmock/gtExtras?branch=master)
 [![R-CMD-check](https://github.com/jthomasmock/gtExtras/workflows/R-CMD-check/badge.svg)](https://github.com/jthomasmock/gtExtras/actions)
 <!-- badges: end -->
 
@@ -25,7 +25,7 @@ appreciate any bug reports as issues, and I highly recommend updating
 frequently at least until an initial CRAN release.
 
 You can install the dev version of gtExtras from
-[GitHub](https://github.com/jthomasmock/gtExtra) with:
+[GitHub](https://github.com/jthomasmock/gtExtras) with:
 
 ``` r
 # if needed install.packages("remotes")

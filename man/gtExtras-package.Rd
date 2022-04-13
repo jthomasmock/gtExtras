@@ -4,20 +4,21 @@
 \name{gtExtras-package}
 \alias{gtExtras}
 \alias{gtExtras-package}
-\title{gtExtras: A Collection of Helper Functions for the gt Package}
+\title{gtExtras: A Collection of Helper Functions for the 'gt' Package}
 \description{
-Provides utility functions and common use-cases applied via the gt package.
+Provides additional functions for creating beautiful tables with 'gt'. The functions are generally wrappers around boilerplate or adding capabilities that are currently not built into 'gt'.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/jthomasmock/gtExtras}
+  \item \url{https://jthomasmock.github.io/gtExtras/}
   \item Report bugs at \url{https://github.com/jthomasmock/gtExtras/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: Thomas Mock \email{j.thomasmock@gmail.com}
+\strong{Maintainer}: Thomas Mock \email{j.thomasmock@gmail.com} [copyright holder]
 
 Other contributors:
 \itemize{

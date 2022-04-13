@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 # gtExtras
 
 <!-- badges: start -->
-[![Codecov test coverage](https://codecov.io/gh/jthomasmock/gtExtras/branch/master/graph/badge.svg)](https://codecov.io/gh/jthomasmock/gtExtras?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/jthomasmock/gtExtras/branch/master/graph/badge.svg)](https://app.codecov.io/gh/jthomasmock/gtExtras?branch=master)
 [![R-CMD-check](https://github.com/jthomasmock/gtExtras/workflows/R-CMD-check/badge.svg)](https://github.com/jthomasmock/gtExtras/actions)
 <!-- badges: end -->
 
@@ -28,7 +28,7 @@ The functions are generally wrappers around boilerplate or adding capabilities t
 
 Full disclosure, `gtExtras` is under extremely active development. I appreciate any bug reports as issues, and I highly recommend updating frequently at least until an initial CRAN release.
 
-You can install the dev version of gtExtras from [GitHub](https://github.com/jthomasmock/gtExtra) with:
+You can install the dev version of gtExtras from [GitHub](https://github.com/jthomasmock/gtExtras) with:
 
 ``` r
 # if needed install.packages("remotes")

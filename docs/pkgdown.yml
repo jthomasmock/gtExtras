@@ -3,7 +3,7 @@ pkgdown: 2.0.1
 pkgdown_sha: ~
 articles:
   plots-in-gt: plots-in-gt.html
-last_built: 2022-04-13T16:57Z
+last_built: 2022-04-13T18:44Z
 urls:
   reference: https://jthomasmock.github.io/gtExtras/reference
   article: https://jthomasmock.github.io/gtExtras/articles

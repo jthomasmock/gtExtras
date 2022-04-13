@@ -6,7 +6,6 @@ home:
 
 template:
   bootstrap: 5
-  bootswatch: materia
   opengraph:
     image:
       src: man/figures/opengraph.png
@@ -17,71 +16,75 @@ template:
       card: summary_large_image
 
 reference:
-- title: Themes
-  desc: Full blown `{gt}` themes that affect most if not all visual components of the table. Similar in spirit to `{ggplot2}` themes like `ggplot2::theme_minimal()` or `{ggthemes}` like `ggthemes::theme_fivethirtyeight()`.
-  contents:
-  - gt_theme_538
-  - gt_theme_espn
-  - gt_theme_nytimes
-  - gt_theme_guardian
-  - gt_theme_dot_matrix
-  - gt_theme_dark
-  - gt_theme_excel
-- title: Utilities
-  desc: Helper functions and utilities with features not _yet_ built into `{gt}`.
-  contents:
-  - fmt_symbol_first
-  - fmt_pad_num
-  - fmt_pct_extra
-  - pad_fn
-  - fa_icon_repeat
-  - gt_fa_column
-  - gt_fa_repeats
-  - gt_fa_rating
-  - gt_fa_rank_change
-  - add_text_img
-  - img_header
-  - gt_merge_stack
-  - gt_img_rows
-  - gt_img_circle
-  - gt_highlight_rows
-  - gt_highlight_cols
-  - gt_add_divider
-  - tab_style_by_grp
-  - gt_double_table
-  - gt_two_column_layout
-  - gtsave_extra
-  - gt_duplicate_column
-  - gt_index
-  - gt_label_details
-  - with_tooltip
-  - gt_hyperlink
-  - generate_df
-- title: Plotting
-  desc: Add plots to specific rows of an existing table
-  contents:
-  - gt_plt_winloss
-  - gt_sparkline
-  - gt_plt_sparkline
-  - gt_plt_dist
-  - gt_plt_bar
-  - gt_plt_bar_pct
-  - gt_plt_bar_stack
-  - gt_plt_bullet
-  - gt_plt_dot
-  - gt_plt_point
-  - gt_plt_percentile
-  - gt_plt_conf_int
-- title: Colors
-  desc: Add color to the entire table or to specific locations. Includes wrappers around the `{scales}` and `{paletteer}` packages that provide easier or more succinct applications of palettes and colors inside `{gt}`.
-  contents:
-  - gt_hulk_col_numeric
-  - gt_color_rows
-  - gt_color_box
-- title: internal
-  - add_badge_color
-  - add_pcttile_plot
-  - add_point_plot
-  - gt_badge
-  - img_circle
-  - n_decimals
+  - title: Themes
+    desc: Full blown `{gt}` themes that affect most if not all visual components of the table. Similar in spirit to `{ggplot2}` themes like `ggplot2::theme_minimal()` or `{ggthemes}` like `ggthemes::theme_fivethirtyeight()`.
+    contents:
+    - gt_theme_538
+    - gt_theme_espn
+    - gt_theme_nytimes
+    - gt_theme_guardian
+    - gt_theme_dot_matrix
+    - gt_theme_dark
+    - gt_theme_excel
+
+  - title: Utilities
+    desc: Helper functions and utilities with features not _yet_ built into `{gt}`.
+    contents:
+    - fmt_symbol_first
+    - fmt_pad_num
+    - fmt_pct_extra
+    - pad_fn
+    - fa_icon_repeat
+    - gt_fa_column
+    - gt_fa_repeats
+    - gt_fa_rating
+    - gt_fa_rank_change
+    - add_text_img
+    - img_header
+    - gt_merge_stack
+    - gt_img_rows
+    - gt_img_circle
+    - gt_highlight_rows
+    - gt_highlight_cols
+    - gt_add_divider
+    - tab_style_by_grp
+    - gt_double_table
+    - gt_two_column_layout
+    - gtsave_extra
+    - gt_duplicate_column
+    - gt_index
+    - gt_label_details
+    - with_tooltip
+    - gt_hyperlink
+    - generate_df
+  - title: Plotting
+    desc: Add plots to specific rows of an existing table
+    contents:
+    - gt_plt_winloss
+    - gt_sparkline
+    - gt_plt_sparkline
+    - gt_plt_dist
+    - gt_plt_bar
+    - gt_plt_bar_pct
+    - gt_plt_bar_stack
+    - gt_plt_bullet
+    - gt_plt_dot
+    - gt_plt_point
+    - gt_plt_percentile
+    - gt_plt_conf_int
+
+  - title: Colors
+    desc: Add color to the entire table or to specific locations. Includes wrappers around the `{scales}` and `{paletteer}` packages that provide easier or more succinct applications of palettes and colors inside `{gt}`.
+    contents:
+    - gt_hulk_col_numeric
+    - gt_color_rows
+    - gt_color_box
+
+  - title: internal
+    contents:
+    - add_badge_color
+    - add_pcttile_plot
+    - add_point_plot
+    - gt_badge
+    - img_circle
+    - n_decimals

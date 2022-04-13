@@ -4,6 +4,7 @@
 #' @param add_label A logical indicating whether to add the label or note. This will only be added if it is the first or last row.
 #' @param width A numeric indicating the
 #' @return gt table
+#'
 add_pcttile_plot <- function(data, palette, add_label, width){
 
   if(data %in% c("NA", "NULL", NA, NULL)){ return("<div></div>")}

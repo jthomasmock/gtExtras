@@ -56,6 +56,7 @@ reference:
   - gt_label_details
   - with_tooltip
   - gt_hyperlink
+  - generate_df
 - title: Plotting
   desc: Add plots to specific rows of an existing table
   contents:
@@ -77,4 +78,10 @@ reference:
   - gt_hulk_col_numeric
   - gt_color_rows
   - gt_color_box
-
+- title: internal
+  - add_badge_color
+  - add_pcttile_plot
+  - add_point_plot
+  - gt_badge
+  - img_circle
+  - n_decimals

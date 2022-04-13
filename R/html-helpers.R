@@ -68,6 +68,7 @@ gt_hyperlink <- function(text, url){
 #' @param alpha_lvl The alpha level
 #'
 #' @return HTML character
+#'
 add_badge_color <- function(add_color, add_label, alpha_lvl){
 
   add_color <- paste0("background:", scales::alpha(add_color, alpha_lvl), ";")

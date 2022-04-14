@@ -11,7 +11,7 @@ template:
     twitter:
       creator: '@thomas_mock'
       site: https://jthomasmock.github.io/gtExtras
-      card: summary_large_image
+      card: summary
 reference:
 - title: Themes
   desc: Full blown `{gt}` themes that affect most if not all visual components of

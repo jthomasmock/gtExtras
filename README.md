@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# gtExtras
+# gtExtras <a href="https://jthomasmock.github.io/gtExtras/"><img src="man/figures/logo.png" align="right" height="120" /></a>
 
 <!-- badges: start -->
 
@@ -484,7 +484,6 @@ final_df %>%
   gt_img_rows(columns = team_wordmark) %>% 
   gt_theme_538() %>% 
   tab_header(title = "2020 Results by Division for the AFC")
-  
 ```
 
 <p align="center">

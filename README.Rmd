@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# gtExtras
+# gtExtras <a href="https://jthomasmock.github.io/gtExtras/"><img src="man/figures/logo.png" align="right" height="120" /></a>
 
 <!-- badges: start -->
 [![Codecov test coverage](https://codecov.io/gh/jthomasmock/gtExtras/branch/master/graph/badge.svg)](https://app.codecov.io/gh/jthomasmock/gtExtras?branch=master)
@@ -23,6 +23,8 @@ knitr::opts_chunk$set(
 The goal of `{gtExtras}` is to provide some additional helper functions to assist in creating beautiful tables with `{gt}`.
 
 The functions are generally wrappers around boilerplate or adding capabilities that are currently not *yet* built into `{gt}`. The [`{gt}` package](https://gt.rstudio.com/) is amazing, make sure to go read the official documentation.
+
+
 
 ## Installation
 

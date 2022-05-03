@@ -1,9 +1,9 @@
 pandoc: 2.14.2
-pkgdown: 2.0.2
+pkgdown: 2.0.3
 pkgdown_sha: ~
 articles:
-  plots-in-gt: plots-in-gt.html
-last_built: 2022-04-14T17:27Z
+  plotting-with-gtExtras: plotting-with-gtExtras.html
+last_built: 2022-05-03T18:50Z
 urls:
   reference: https://jthomasmock.github.io/gtExtras/reference
   article: https://jthomasmock.github.io/gtExtras/articles

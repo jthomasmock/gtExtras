@@ -30,7 +30,7 @@ available by their original name via the passed ...."><meta property="og:image" 
     
     <a class="navbar-brand me-2" href="../index.html">gtExtras</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +44,7 @@ available by their original name via the passed ...."><meta property="og:image" 
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/plots-in-gt.html">Graphing in gt</a>
+    <a class="dropdown-item" href="../articles/plotting-with-gtExtras.html">Plotting with gtExtras</a>
   </div>
 </li>
 <li class="nav-item">
@@ -78,10 +78,10 @@ two tables like <code>list(table1, table2)</code>, or passes the output of <code
 into this function. The user should indicate whether they want to return the
 HTML to R's viewer with <code>output = "viewer"</code> to "view" the final output, or to
 save to disk as a <code>.png</code> via <code>output = "save".</code> Note that this is a relatively
-complex wrapper around <code><a href="https://rdrr.io/pkg/htmltools/man/builder.html" class="external-link">htmltools::div()</a></code> + <code><a href="https://rdrr.io/pkg/webshot/man/webshot.html" class="external-link">webshot::webshot()</a></code>. Additional
-arguments can be passed to <code><a href="https://rdrr.io/pkg/webshot/man/webshot.html" class="external-link">webshot::webshot()</a></code> if the automatic output is not
+complex wrapper around <code><a href="https://rdrr.io/pkg/htmltools/man/builder.html" class="external-link">htmltools::div()</a></code> + <code><a href="http://wch.github.io/webshot/reference/webshot.html" class="external-link">webshot::webshot()</a></code>. Additional
+arguments can be passed to <code><a href="http://wch.github.io/webshot/reference/webshot.html" class="external-link">webshot::webshot()</a></code> if the automatic output is not
 satisfactory. In most situations, modifying the <code>vwidth</code> argument is sufficient
-to get the desired output, but all arguments to <code><a href="https://rdrr.io/pkg/webshot/man/webshot.html" class="external-link">webshot::webshot()</a></code> are
+to get the desired output, but all arguments to <code><a href="http://wch.github.io/webshot/reference/webshot.html" class="external-link">webshot::webshot()</a></code> are
 available by their original name via the passed <code>...</code>.</p>
     </div>
 
@@ -111,15 +111,15 @@ available by their original name via the passed <code>...</code>.</p>
 <dt>path</dt>
 <dd><p>An optional path of where to save the printed <code>.png</code>, used in conjunction with <code>filename</code>.</p></dd>
 <dt>vwidth</dt>
-<dd><p>Viewport width. This is the width of the browser "window" when passed to <code><a href="https://rdrr.io/pkg/webshot/man/webshot.html" class="external-link">webshot::webshot()</a></code>.</p></dd>
+<dd><p>Viewport width. This is the width of the browser "window" when passed to <code><a href="http://wch.github.io/webshot/reference/webshot.html" class="external-link">webshot::webshot()</a></code>.</p></dd>
 <dt>vheight</dt>
-<dd><p>Viewport height This is the height of the browser "window" when passed to <code><a href="https://rdrr.io/pkg/webshot/man/webshot.html" class="external-link">webshot::webshot()</a></code>.</p></dd>
+<dd><p>Viewport height This is the height of the browser "window" when passed to <code><a href="http://wch.github.io/webshot/reference/webshot.html" class="external-link">webshot::webshot()</a></code>.</p></dd>
 <dt>...</dt>
-<dd><p>Additional arguments passed to <code><a href="https://rdrr.io/pkg/webshot/man/webshot.html" class="external-link">webshot::webshot()</a></code>, only to be used if <code>output = "save"</code>, saving the two-column layout tables to disk as a <code>.png</code>.</p></dd>
+<dd><p>Additional arguments passed to <code><a href="http://wch.github.io/webshot/reference/webshot.html" class="external-link">webshot::webshot()</a></code>, only to be used if <code>output = "save"</code>, saving the two-column layout tables to disk as a <code>.png</code>.</p></dd>
 <dt>zoom</dt>
-<dd><p>Argument to <code><a href="https://rdrr.io/pkg/webshot/man/webshot.html" class="external-link">webshot::webshot()</a></code>. A number specifying the zoom factor. A zoom factor of 2 will result in twice as many pixels vertically and horizontally. Note that using 2 is not exactly the same as taking a screenshot on a HiDPI (Retina) device: it is like increasing the zoom to 200 doubling the height and width of the browser window. This differs from using a HiDPI device because some web pages load different, higher-resolution images when they know they will be displayed on a HiDPI device (but using zoom will not report that there is a HiDPI device).</p></dd>
+<dd><p>Argument to <code><a href="http://wch.github.io/webshot/reference/webshot.html" class="external-link">webshot::webshot()</a></code>. A number specifying the zoom factor. A zoom factor of 2 will result in twice as many pixels vertically and horizontally. Note that using 2 is not exactly the same as taking a screenshot on a HiDPI (Retina) device: it is like increasing the zoom to 200 doubling the height and width of the browser window. This differs from using a HiDPI device because some web pages load different, higher-resolution images when they know they will be displayed on a HiDPI device (but using zoom will not report that there is a HiDPI device).</p></dd>
 <dt>expand</dt>
-<dd><p>Argument to <code><a href="https://rdrr.io/pkg/webshot/man/webshot.html" class="external-link">webshot::webshot()</a></code>. A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order. When taking screenshots of multiple URLs, this parameter can also be a list with same length as url with each element of the list containing a single number or four numbers to use for the corresponding URL.</p></dd>
+<dd><p>Argument to <code><a href="http://wch.github.io/webshot/reference/webshot.html" class="external-link">webshot::webshot()</a></code>. A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order. When taking screenshots of multiple URLs, this parameter can also be a list with same length as url with each element of the list containing a single number or four numbers to use for the corresponding URL.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -562,6 +562,15 @@ available by their original name via the passed <code>...</code>.</p>
 
 #wfjmqtuirp .gt_super {
   font-size: 65%;
+}
+
+#wfjmqtuirp .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
 }
 
 #wfjmqtuirp .gt_footnote_marks {
@@ -1055,6 +1064,15 @@ available by their original name via the passed <code>...</code>.</p>
   font-size: 65%;
 }
 
+#ufyhtqgbwh .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
 #ufyhtqgbwh .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
@@ -1200,7 +1218,7 @@ available by their original name via the passed <code>...</code>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
     </footer></div>

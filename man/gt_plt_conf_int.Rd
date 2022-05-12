@@ -31,7 +31,7 @@ gt_plt_conf_int(
 
 \item{width}{A number indicating the width of the plot in \code{"mm"}, defaults to \code{45}.}
 
-\item{text_args}{A list of named arguments. Optional text arguments passed as a list to \code{scales::label_number_si}.}
+\item{text_args}{A list of named arguments. Optional text arguments passed as a list to \code{scales::label_number}.}
 
 \item{text_size}{A number indicating the size of the text indicators in the plot. Defaults to 1.5. Can also be set to \code{0} to "remove" the text itself.}
 }
@@ -56,22 +56,27 @@ Plot a confidence interval around a point
 # gtExtras can calculate basic conf int
 # using confint() function
 
-ci_table <- generate_df(n = 50, n_grps = 3,
+ci_table <- generate_df(
+  n = 50, n_grps = 3,
   mean = c(10, 15, 20), sd = c(10, 10, 10),
-  with_seed = 37) \%>\%
-    dplyr::group_by(grp) \%>\%
-    dplyr::summarise(n = dplyr::n(),
-              avg = mean(values),
-              sd = sd(values),
-              list_data = list(values)) \%>\%
-    gt::gt() \%>\%
-    gt_plt_conf_int(list_data, ci = 0.9)
+  with_seed = 37
+) \%>\%
+  dplyr::group_by(grp) \%>\%
+  dplyr::summarise(
+    n = dplyr::n(),
+    avg = mean(values),
+    sd = sd(values),
+    list_data = list(values)
+  ) \%>\%
+  gt::gt() \%>\%
+  gt_plt_conf_int(list_data, ci = 0.9)
 
 # You can also provide your own values
 # based on your own algorithm/calculations
 pre_calc_ci_tab <- dplyr::tibble(
-  mean = c(12,10), ci1 = c(8,5), ci2 = c(16,15),
-  ci_plot = c(12,10)) \%>\%
+  mean = c(12, 10), ci1 = c(8, 5), ci2 = c(16, 15),
+  ci_plot = c(12, 10)
+) \%>\%
   gt::gt() \%>\%
   gt_plt_conf_int(
     ci_plot, c(ci1, ci2),

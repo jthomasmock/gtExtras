@@ -5,7 +5,7 @@
 #' @param add_label A logical indicating whether to add the label or note. This will only be added if it is the first or last row.
 #' @param width A numeric indicating the
 #' @param vals_range vector of length two indicating range
-#' @inheritParams scales::label_number_si
+#' @inheritParams scales::label_number
 #'
 #' @return gt table
 add_point_plot <- function(data, palette, add_label, width, vals_range,
@@ -18,7 +18,9 @@ add_point_plot <- function(data, palette, add_label, width, vals_range,
       )
 
       val_breaks <- seq(from = vals_range[1], to = vals_range[2], length.out = 4)
-      break_labs <- scales::label_number_si(accuracy = accuracy)(val_breaks[c(1,4)])
+      break_labs <- scales::label_number(
+        accuracy = accuracy, scale_cut = cut_short_scale()
+        )(val_breaks[c(1,4)])
 
       out_pt_plt <- ggplot(df_in) +
         geom_vline(xintercept = val_breaks,
@@ -73,7 +75,7 @@ add_point_plot <- function(data, palette, add_label, width, vals_range,
 #' @param palette A vector of strings of length 3. Defaults to `c('blue', 'lightgrey', 'red')` as hex so `c("#007ad6", "#f0f0f0", "#f72e2e")`
 #' @param width A numeric, indicating the width of the plot in `mm`, defaults to 25
 #' @param scale A number to multiply/scale the values in the column by. Defaults to 1, but can also be 100 if you have decimals.
-#' @param accuracy Accuracy of the number labels in the plot, passed to `scales::label_number_si()`
+#' @param accuracy Accuracy of the number labels in the plot, passed to `scales::label_number()`
 #' @return a gt table
 #' @export
 #'

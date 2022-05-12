@@ -11,7 +11,7 @@ gt_plt_bar_stack(
   labels = c("Group 1", "Group 2", "Group 3"),
   position = "fill",
   width = 70,
-  fmt_fn = scales::label_number_si(trim = TRUE)
+  fmt_fn = scales::label_number(scale_cut = cut_short_scale(), trim = TRUE)
 )
 }
 \arguments{
@@ -27,7 +27,7 @@ gt_plt_bar_stack(
 
 \item{width}{An integer representing the width of the bar chart in pixels.}
 
-\item{fmt_fn}{A specific function from \verb{scales::label_???} family. Defaults to \code{scales::label_number_si()}}
+\item{fmt_fn}{A specific function from \verb{scales::label_???} family. Defaults to \code{scales::label_number()}}
 }
 \value{
 An object of class \code{gt_tbl}.

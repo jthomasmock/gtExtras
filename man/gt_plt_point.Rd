@@ -24,7 +24,7 @@ gt_plt_point(
 
 \item{scale}{A number to multiply/scale the values in the column by. Defaults to 1, but can also be 100 if you have decimals.}
 
-\item{accuracy}{Accuracy of the number labels in the plot, passed to \code{scales::label_number_si()}}
+\item{accuracy}{Accuracy of the number labels in the plot, passed to \code{scales::label_number()}}
 }
 \value{
 a gt table

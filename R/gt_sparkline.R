@@ -123,7 +123,8 @@ gt_sparkline <- function(gt_object, column, type = "sparkline", width = 30,
             geom_text(
               data = filter(input_data, x == max(x)),
               aes(x = .data$x, y = .data$y, color = "black",
-                  label = scales::label_number_si(
+                  label = scales::label_number(
+                    scale_cut = cut_short_scale(),
                     accuracy = if(med_y_rnd > 0){
                       .1
                     } else if(med_y_rnd == 0) {

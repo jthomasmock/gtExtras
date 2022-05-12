@@ -104,7 +104,8 @@ gt_plt_sparkline <- function(gt_object, column, type = "default",
           geom_text(
             data = filter(input_data, .data$x == max(.data$x)),
             aes(x = .data$x, y = .data$y,
-              label = scales::label_number_si(
+              label = scales::label_number(
+                scale_cut = cut_short_scale(),
                 accuracy = if(med_y_rnd > 0){
                   .1
                 } else if(med_y_rnd == 0) {

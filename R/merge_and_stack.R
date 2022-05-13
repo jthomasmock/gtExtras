@@ -9,7 +9,10 @@
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param col1 The column to stack on top. Will be converted to all caps, with black and bold text.
 #' @param col2 The column to merge and place below. Will be smaller and dark grey.
-#' @param colors The colors for the text, where the first color is the top , ie `col1` and the second color is the bottom, ie `col2`. Defaults to `c("black","grey")`
+#' @param colors The colors for the text, where the first color is the top ,
+#'   ie `col1` and the second color is the bottom, ie `col2`. Defaults to `c("black","grey")`.
+#'   For more information on built-in color names, see [colors()].
+#' @inheritDotParams scales::col2hcl -colour
 #' @return An object of class `gt_tbl`.
 #' @export
 #' @examples
@@ -31,10 +34,13 @@
 #' @section Function ID:
 #' 2-6
 
-gt_merge_stack <- function(gt_object, col1, col2, colors = c("black","grey")) {
+gt_merge_stack <- function(gt_object, col1, col2, colors = c("black","grey"), ...) {
 
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
   stopifnot("There must be two colors" = length(colors) == 2)
+
+  # translate colors to hcl. Allows R color names like "grey30".
+  colors <- scales::col2hcl(colors, ...)
 
   col1_bare <- rlang::enexpr(col1) %>% rlang::as_string()
 

@@ -4,7 +4,7 @@
 \alias{gt_merge_stack}
 \title{Merge and stack text from two columns in \code{gt}}
 \usage{
-gt_merge_stack(gt_object, col1, col2, colors = c("black", "grey"))
+gt_merge_stack(gt_object, col1, col2, colors = c("black", "grey"), ...)
 }
 \arguments{
 \item{gt_object}{An existing gt table object of class \code{gt_tbl}}
@@ -13,7 +13,18 @@ gt_merge_stack(gt_object, col1, col2, colors = c("black", "grey"))
 
 \item{col2}{The column to merge and place below. Will be smaller and dark grey.}
 
-\item{colors}{The colors for the text, where the first color is the top , ie \code{col1} and the second color is the bottom, ie \code{col2}. Defaults to \code{c("black","grey")}}
+\item{colors}{The colors for the text, where the first color is the top ,
+ie \code{col1} and the second color is the bottom, ie \code{col2}. Defaults to \code{c("black","grey")}.
+For more information on built-in color names, see \code{\link[=colors]{colors()}}.}
+
+\item{...}{
+  Arguments passed on to \code{\link[scales:col2hcl]{scales::col2hcl}}
+  \describe{
+    \item{\code{h}}{Hue, \verb{[0, 360]}}
+    \item{\code{c}}{Chroma, \verb{[0, 100]}}
+    \item{\code{l}}{Luminance, \verb{[0, 100]}}
+    \item{\code{alpha}}{Alpha, \verb{[0, 1]}.}
+  }}
 }
 \value{
 An object of class \code{gt_tbl}.

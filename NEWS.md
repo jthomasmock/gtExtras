@@ -1,4 +1,4 @@
-# gtExtras (development version)
+# gtExtras 0.3.3
 
 # gtExtras 0.3.2
 

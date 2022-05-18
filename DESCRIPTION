@@ -44,7 +44,7 @@ Suggests:
     tibble (>= 3.0.0),
     tidyr (>= 1.0.0),
     tidyselect (>= 1.0.0),
-    webshot,
+    webshot2 (>= 0.1.0),
     xml2
 VignetteBuilder: 
     knitr

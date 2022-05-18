@@ -73,21 +73,21 @@ gt_double_table <- function(data, gt_fn, nrows = NULL, noisy = TRUE) {
 #' into this function. The user should indicate whether they want to return the
 #' HTML to R's viewer with `output = "viewer"` to "view" the final output, or to
 #' save to disk as a `.png` via `output = "save".` Note that this is a relatively
-#' complex wrapper around `htmltools::div()` + `webshot::webshot()`. Additional
-#' arguments can be passed to `webshot::webshot()` if the automatic output is not
+#' complex wrapper around `htmltools::div()` + `webshot2::webshot()`. Additional
+#' arguments can be passed to `webshot2::webshot()` if the automatic output is not
 #' satisfactory. In most situations, modifying the `vwidth` argument is sufficient
-#' to get the desired output, but all arguments to `webshot::webshot()` are
+#' to get the desired output, but all arguments to `webshot2::webshot()` are
 #' available by their original name via the passed `...`.
 #'
 #' @param tables A `list()` of two tables, typically supplied by `gt_double_table()`
 #' @param output A character string indicating the desired output, either `"save"` to save it to disk via `webshot`, `"viewer"` to return it to the RStudio Viewer, or `"html"` to return the raw HTML.
 #' @param filename The filename of the table, must contain `.png` and only used if `output = "save"`
 #' @param path An optional path of where to save the printed `.png`, used in conjunction with `filename`.
-#' @param vwidth Viewport width. This is the width of the browser "window" when passed to `webshot::webshot()`.
-#' @param vheight Viewport height This is the height of the browser "window" when passed to `webshot::webshot()`.
-#' @param ... Additional arguments passed to `webshot::webshot()`, only to be used if `output = "save"`, saving the two-column layout tables to disk as a `.png`.
-#' @param zoom Argument to `webshot::webshot()`. A number specifying the zoom factor. A zoom factor of 2 will result in twice as many pixels vertically and horizontally. Note that using 2 is not exactly the same as taking a screenshot on a HiDPI (Retina) device: it is like increasing the zoom to 200 doubling the height and width of the browser window. This differs from using a HiDPI device because some web pages load different, higher-resolution images when they know they will be displayed on a HiDPI device (but using zoom will not report that there is a HiDPI device).
-#' @param expand Argument to `webshot::webshot()`. A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order. When taking screenshots of multiple URLs, this parameter can also be a list with same length as url with each element of the list containing a single number or four numbers to use for the corresponding URL.
+#' @param vwidth Viewport width. This is the width of the browser "window" when passed to `webshot2::webshot()`.
+#' @param vheight Viewport height This is the height of the browser "window" when passed to `webshot2::webshot()`.
+#' @param ... Additional arguments passed to `webshot2::webshot()`, only to be used if `output = "save"`, saving the two-column layout tables to disk as a `.png`.
+#' @param zoom Argument to `webshot2::webshot()`. A number specifying the zoom factor. A zoom factor of 2 will result in twice as many pixels vertically and horizontally. Note that using 2 is not exactly the same as taking a screenshot on a HiDPI (Retina) device: it is like increasing the zoom to 200 doubling the height and width of the browser window. This differs from using a HiDPI device because some web pages load different, higher-resolution images when they know they will be displayed on a HiDPI device (but using zoom will not report that there is a HiDPI device).
+#' @param expand Argument to `webshot2::webshot()`. A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order. When taking screenshots of multiple URLs, this parameter can also be a list with same length as url with each element of the list containing a single number or four numbers to use for the corresponding URL.
 #' @return Saves a `.png` to disk if `output = "save"`, returns HTML to the viewer via `htmltools::browsable()` when `output = "viewer"`, or returns raw HTML if `output = "html"`.
 #' @export
 #' @section Figures:
@@ -183,7 +183,7 @@ gt_two_column_layout <- function(tables = NULL, output = "viewer",
     } else {
 
       # Save the image in the working directory
-      webshot::webshot(
+      webshot2::webshot(
         url = paste0("file:///", tempfile_),
         file = filename,
         vwidth = vwidth,

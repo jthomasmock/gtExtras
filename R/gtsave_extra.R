@@ -3,10 +3,9 @@
 #' @param data HTML content to be saved temporarily to disk
 #' @param filename The name of the file, should end in `.png`
 #' @param path An optional path
-#' @param ... Additional arguments to `webshot::webshot()`
+#' @param ... Additional arguments to `webshot2::webshot()`
 #' @param zoom A number specifying the zoom factor. A zoom factor of 2 will result in twice as many pixels vertically and horizontally. Note that using 2 is not exactly the same as taking a screenshot on a HiDPI (Retina) device: it is like increasing the zoom to 200 doubling the height and width of the browser window.
 #' @param expand A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order.
-#'
 #' @return Prints the HTML content to the RStudio viewer and saves a `.png` file to disk
 #' @export
 #' @family Utilities
@@ -39,14 +38,14 @@ gtsave_extra <- function(data,
 
   # Saving an image requires the webshot package; if it's
   # not present, stop with a message
-  if (!rlang::is_installed("webshot")) {
+  if (!rlang::is_installed("webshot2")) {
 
-    stop("The `webshot` package is required for saving images of gt tables.)",
+    stop("The 'webshot2' package is required for saving images of gt tables.)",
       call. = FALSE)
 
   } else {
     # Save the image in the working directory
-    webshot::webshot(
+    webshot2::webshot(
       url = paste0("file:///", tempfile_),
       file = filename,
       zoom = zoom,
@@ -56,6 +55,4 @@ gtsave_extra <- function(data,
   }
 
   htmltools::browsable(data)
-
-  message("If all HTML is not captured, you can try using the 'webshot2' package directly.")
 }

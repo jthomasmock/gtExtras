@@ -1,5 +1,7 @@
 # gtExtras 0.3.3
 
+- Add `webshot2` as a dependency now that it's on CRAN!
+
 # gtExtras 0.3.2
 
 * Remove `scales::scales_label_si()` in favor of `scales::label_number(scale_cut = cut_scale_short())` as the previous function was deprecated. Thanks to [@mrcaseb](https://github.com/mrcaseb) for pointing out in [Issue 48](https://github.com/jthomasmock/gtExtras/issues/48)

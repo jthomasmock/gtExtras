@@ -37,6 +37,9 @@
     <loc>https://jthomasmock.github.io/gtExtras/reference/add_text_img.html</loc>
   </url>
   <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/create_sum_table.html</loc>
+  </url>
+  <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/fa_icon_repeat.html</loc>
   </url>
   <url>
@@ -142,6 +145,9 @@
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_sparkline.html</loc>
   </url>
   <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_summary.html</loc>
+  </url>
+  <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_winloss.html</loc>
   </url>
   <url>
@@ -188,6 +194,9 @@
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/pad_fn.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/plot_data.html</loc>
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/reexports.html</loc>

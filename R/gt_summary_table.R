@@ -9,7 +9,10 @@
 #' @return a gt table
 #' @export
 
-gt_plt_summary <- function(df, title){
+gt_plt_summary <- function(df, title = NULL){
+
+  # if no title, return name of dataframe
+  if(is.null(title)) title <- deparse(substitute(df))
 
   sum_table <- create_sum_table(df)
 

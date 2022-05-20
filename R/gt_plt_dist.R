@@ -173,12 +173,12 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
 
       if (isTRUE(same_limit)) {
         if(is.null(bw)){
-          bw <- stats::bw.nrd0(stats::na.omit(data_in))
+          bw <- stats::bw.nrd0(stats::na.omit(as.vector(data_in)))
         } else {
           bw <- bw
         }
 
-        total_rng_dens <- stats::density(stats::na.omit(data_in), bw = bw)[["x"]]
+        total_rng_dens <- stats::density(as.vector(stats::na.omit(data_in)), bw = bw)[["x"]]
 
         density_calc <- stats::density(input_data[["y"]], bw = bw)
         density_range <- density_calc[["x"]]
@@ -211,7 +211,7 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
             expand = TRUE, clip = "off")
       } else {
         if(is.null(bw)){
-          bw <- stats::bw.nrd0(vals)
+          bw <- stats::bw.nrd0(stats::na.omit(as.vector(data_in)))
         } else {
           bw <- bw
         }

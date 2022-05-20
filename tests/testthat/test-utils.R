@@ -10,3 +10,37 @@ test_that("n_decimals are expected", {
   expect_equal(n_decimals(.001), 3)
 
 })
+
+
+test_that("bw calc is appropriate", {
+
+  expect_equal(round(bw_calc(mtcars$mpg), digits = 3), 4.646)
+  expect_equal(round(bw_calc(c(mtcars$mpg, NA)), digits = 3), 4.599)
+
+
+})
+
+# Function to skip tests if Suggested packages not available on system
+check_suggests <- function() {
+  skip_if_not_installed("rvest")
+  skip_if_not_installed("xml2")
+}
+
+
+test_that("save_svg exports and imports SVG", {
+  check_suggests()
+
+  base_plot <- ggplot2::qplot(mpg, wt, data = mtcars)
+
+  out_plot <- save_svg(base_plot)
+
+  expect_true("html" %in% class(out_plot))
+
+  out_svg <- out_plot %>%
+    rvest::read_html() %>%
+    rvest::html_nodes("svg") %>%
+    length()
+
+  expect_equal(out_svg, 1)
+
+})

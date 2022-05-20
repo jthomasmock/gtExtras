@@ -125,7 +125,10 @@ plot_data <- function(col, ...) {
       guides(fill = "none") +
       scale_fill_manual(values = rev(cc)) +
       theme_void() +
-      theme(axis.title.x = element_text(hjust = 0, size = 6)) +
+      theme(
+        axis.title.x = element_text(hjust = 0, size = 8),
+        plot.margin = margin(3, 1, 3, 1)
+        ) +
       scale_x_continuous(expand = c(0, 0)) +
       labs(x = paste(n_unique, "categories"))
   } else {
@@ -135,9 +138,12 @@ plot_data <- function(col, ...) {
 
     rng_vals <- scales::expand_range(range(col, na.rm = TRUE), mul = 0.01)
 
+    # auto binwidth per Rob Hyndman
+    # https://stats.stackexchange.com/questions/798/calculating-optimal-number-of-bins-in-a-histogram
+    bw <- 2 * IQR(col, na.rm = TRUE) / length(col)^(1/3)
+
     plot_out <- ggplot(df_in, aes(x = x)) +
-      geom_histogram(color = "white", fill = "#f8bb87",
-        bins = 30) +
+      geom_histogram(color = "white", fill = "#f8bb87", binwidth = bw) +
       scale_x_continuous(
         breaks = range(col),
         labels = scales::label_number(big.mark = ",", ...)(range(col))

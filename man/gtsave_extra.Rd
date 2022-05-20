@@ -13,7 +13,7 @@ gtsave_extra(data, filename, path = NULL, ..., zoom = 2, expand = 5)
 
 \item{path}{An optional path}
 
-\item{...}{Additional arguments to \code{webshot::webshot()}}
+\item{...}{Additional arguments to \code{webshot2::webshot()}}
 
 \item{zoom}{A number specifying the zoom factor. A zoom factor of 2 will result in twice as many pixels vertically and horizontally. Note that using 2 is not exactly the same as taking a screenshot on a HiDPI (Retina) device: it is like increasing the zoom to 200 doubling the height and width of the browser window.}
 

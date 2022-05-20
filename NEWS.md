@@ -1,3 +1,8 @@
+# gtExtras 0.3.4
+
+- Add initial version of a `gt_plt_summary()` function, as inspired by the [Observable/SummaryTable function](https://observablehq.com/d/d8d2929832202050).
+- `gt_sparkline()` will be removed soon now that [`bstfun`/`gtsummary`](https://github.com/ddsjoberg/bstfun/pull/102) are no longer depending on it. `gt_plt_dist()` and `gt_plt_sparkline()` will be the new preferred and enhanced versions of `gt_sparkline()`.
+
 # gtExtras 0.3.3
 
 - Add `webshot2` as a dependency now that it's on CRAN!

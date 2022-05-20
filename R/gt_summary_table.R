@@ -112,7 +112,7 @@ plot_data <- function(col, ...) {
   if (col_type %in% c("factor", "character")) {
     n_unique <- length(unique(col))
 
-    cc <- scales::seq_gradient_pal("#3181bd", "#9ecae0", "#ddeaf7")(seq(0, 1, length.out = n_unique))
+    cc <- scales::seq_gradient_pal(low = "#3181bd", high ="#ddeaf7", space = "Lab")(seq(0, 1, length.out = n_unique))
 
     plot_out <- dplyr::tibble(vals = as.character(col)) |>
       dplyr::group_by(vals) |>

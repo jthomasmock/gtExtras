@@ -88,4 +88,4 @@ reference:
   - img_circle
   - n_decimals
   - create_sum_table
-
+  - plot_data

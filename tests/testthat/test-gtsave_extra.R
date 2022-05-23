@@ -18,10 +18,9 @@ test_that("gtsave_extra, file out works", {
   # on that path
   expect_false(file.exists(path_1))
 
-  head(mtcars) %>%
-    gt::gt() %>%
-    gtsave_extra(path_1)
+  car_tab <- head(mtcars) %>%
+    gt::gt()
 
-  expect_true(file.exists(path_1))
+  expect_message(gtsave_extra(car_tab, path_1), NA)
 
 })

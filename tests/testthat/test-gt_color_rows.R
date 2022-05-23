@@ -36,8 +36,7 @@ test_that("gt_color_rows palettes are created and have appropriate hex values", 
     gt::gt() %>%
     gt_color_rows(
       mpg, palette = c("#ffffff", "#00FF00"),
-      domain = range(mtcars$mpg[1:6]),
-      use_paletteer = FALSE) %>%
+      domain = range(mtcars$mpg[1:6])) %>%
     gt::as_raw_html() %>%
     rvest::read_html()
 
@@ -50,7 +49,7 @@ test_that("gt_color_rows palettes are created and have appropriate hex values", 
   discrete_pal <- head(mtcars) %>%
     gt::gt() %>%
     gt_color_rows(
-      cyl, type = "discrete",
+      cyl, pal_type = "discrete",
       palette = "ggthemes::colorblind", domain = range(mtcars$cyl)
     ) %>%
     gt::as_raw_html() %>%

@@ -8,7 +8,7 @@
 #'
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param columns The columns wherein changes to cell data colors should occur.
-#' @param use_paletteer Should the palette be passed as a "package::palette_name" to `paletteer` or should the palette be treated as a raw character string of colors. Defaults to `TRUE`. Note that if `FALSE`, that the "n", "direction", and "type" arguments are ignored, as they are passed only to `paletter::paletteer_d()`.
+#' @param pal_type A string indicating the palette type (one of `c("discrete", "continuous")`)
 #' @param ... Additional arguments passed to `scales::col_numeric()`
 #' @inheritParams scales::col_numeric
 #' @inheritParams paletteer::paletteer_d
@@ -31,16 +31,15 @@
 #'    head(15) %>%
 #'    gt() %>%
 #'    gt_color_rows(
-#'      mpg:disp, palette = c("white", "green"),
+#'      mpg:disp, palette = c("white", "green"))
 #'      # could also use palette = c("#ffffff", "##00FF00")
-#'      use_paletteer = FALSE)
 #'
 #'  # use discrete instead of continuous palette
 #'  discrete_pal <- mtcars %>%
 #'   head(15) %>%
 #'   gt() %>%
 #'   gt_color_rows(
-#'   cyl, type = "discrete",
+#'   cyl, pal_type = "discrete",
 #'   palette = "ggthemes::colorblind", domain = range(mtcars$cyl)
 #'     )
 #'  # use discrete and manually define range
@@ -49,7 +48,7 @@
 #'    head(15) %>%
 #'    gt() %>%
 #'    gt_color_rows(
-#'    gear, type = "discrete", direction = -1,
+#'    gear, pal_type = "discrete", direction = -1,
 #'    palette = "colorblindr::OkabeIto_black", domain = c(3,4,5))
 #' @section Figures:
 #' \if{html}{\figure{basic-pal.png}{options: width=100\%}}
@@ -69,9 +68,8 @@ gt_color_rows <- function(
   palette = "ggsci::red_material",
   direction = 1,
   domain = NULL,
-  type = c("discrete", "continuous"),
-  ...,
-  use_paletteer = TRUE
+  pal_type = c("discrete", "continuous"),
+  ...
 ) {
 
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
@@ -86,14 +84,18 @@ gt_color_rows <- function(
     data_color(
       columns = {{ columns }},
       colors = scales::col_numeric(
-        palette = if(isTRUE(use_paletteer)){
+        palette = if(grepl(x = palette[1], pattern = "::")){
           paletteer::paletteer_d(
             palette = palette,
             direction = direction,
-            type = type
+            type = pal_type
           ) %>% as.character()
         } else {
-          palette
+          if(direction == -1){
+            rev(palette)
+          } else {
+            palette
+          }
         },
         ...,
         domain = domain

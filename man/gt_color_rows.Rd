@@ -10,9 +10,8 @@ gt_color_rows(
   palette = "ggsci::red_material",
   direction = 1,
   domain = NULL,
-  type = c("discrete", "continuous"),
-  ...,
-  use_paletteer = TRUE
+  pal_type = c("discrete", "continuous"),
+  ...
 )
 }
 \arguments{
@@ -36,12 +35,9 @@ is invoked multiple times, the encoding between values and colours may not
 be consistent; if consistency is needed, you must provide a non-\code{NULL}
 domain.}
 
-\item{type}{Either "discrete" or "continuous". Colors are interpolated if
-"continuous" is picked. Defaults to "discrete".}
+\item{pal_type}{A string indicating the palette type (one of \code{c("discrete", "continuous")})}
 
 \item{...}{Additional arguments passed to \code{scales::col_numeric()}}
-
-\item{use_paletteer}{Should the palette be passed as a "package::palette_name" to \code{paletteer} or should the palette be treated as a raw character string of colors. Defaults to \code{TRUE}. Note that if \code{FALSE}, that the "n", "direction", and "type" arguments are ignored, as they are passed only to \code{paletter::paletteer_d()}.}
 }
 \value{
 An object of class \code{gt_tbl}.
@@ -86,16 +82,15 @@ is simpler than \code{data_color()}.
    head(15) \%>\%
    gt() \%>\%
    gt_color_rows(
-     mpg:disp, palette = c("white", "green"),
+     mpg:disp, palette = c("white", "green"))
      # could also use palette = c("#ffffff", "##00FF00")
-     use_paletteer = FALSE)
 
  # use discrete instead of continuous palette
  discrete_pal <- mtcars \%>\%
   head(15) \%>\%
   gt() \%>\%
   gt_color_rows(
-  cyl, type = "discrete",
+  cyl, pal_type = "discrete",
   palette = "ggthemes::colorblind", domain = range(mtcars$cyl)
     )
  # use discrete and manually define range
@@ -104,7 +99,7 @@ is simpler than \code{data_color()}.
    head(15) \%>\%
    gt() \%>\%
    gt_color_rows(
-   gear, type = "discrete", direction = -1,
+   gear, pal_type = "discrete", direction = -1,
    palette = "colorblindr::OkabeIto_black", domain = c(3,4,5))
 }
 \seealso{

@@ -1,11 +1,13 @@
-# gtExtras 0.3.4
+# gtExtras 0.3.6
 
-- Add tests for `gt_plt_summary()`
+- Remove `use_paletteer` arg from `gt_color_rows()` in favor of a hopefully more user friendly detection of `::`
+- Convert `gt_color_rows()` 'type' argument to 'pal_type' to prevent an edge-case where a column named type conflicts with the `paletteer` "type" argument per [issue #50](https://github.com/jthomasmock/gtExtras/issues/50)
 
 # gtExtras 0.3.4
 
 - Add initial version of a `gt_plt_summary()` function, as inspired by the [Observable/SummaryTable function](https://observablehq.com/d/d8d2929832202050).
 - `gt_sparkline()` will be removed soon now that [`bstfun`/`gtsummary`](https://github.com/ddsjoberg/bstfun/pull/102) are no longer depending on it. `gt_plt_dist()` and `gt_plt_sparkline()` will be the new preferred and enhanced versions of `gt_sparkline()`.
+- Add tests for `gt_plt_summary()`
 
 # gtExtras 0.3.3
 

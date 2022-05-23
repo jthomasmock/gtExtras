@@ -6,6 +6,7 @@
 #' @param title a character string to be used in the table title
 #' @importFrom stats median sd
 #' @import gt
+#' @importFrom stats IQR
 #' @return a gt table
 #' @export
 

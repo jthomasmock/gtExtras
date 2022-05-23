@@ -4,7 +4,7 @@
 \alias{gt_plt_summary}
 \title{Create a summary table from a dataframe}
 \usage{
-gt_plt_summary(df, title)
+gt_plt_summary(df, title = NULL)
 }
 \arguments{
 \item{df}{a dataframe or tibble}

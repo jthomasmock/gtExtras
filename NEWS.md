@@ -1,3 +1,6 @@
+# gtExtras 0.3.8
+- Renamed `colors` argument in `gt_win_loss() to `palette`
+
 # gtExtras 0.3.7
 - Added basic support in `gt_plt_summary()` for dates/times. 
 - Updated tests for `gt_plt_summary()` to include dates/times

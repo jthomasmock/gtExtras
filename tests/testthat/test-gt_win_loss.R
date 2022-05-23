@@ -76,14 +76,14 @@ test_that("SVG exists and has expected colors", {
 
   pill_table <- data_in %>%
     gt::gt() %>%
-    gt_plt_winloss(wins, colors = c("green", "purple", "black")) %>%
+    gt_plt_winloss(wins, palette = c("green", "purple", "black")) %>%
     gt::as_raw_html() %>%
     rvest::read_html()
 
   box_table <- data_in %>%
     gt::gt() %>%
     gt_plt_winloss(wins, type = "square",
-                   colors = c("green", "purple", "black")) %>%
+                   palette = c("green", "purple", "black")) %>%
     gt::as_raw_html() %>%
     rvest::read_html()
 

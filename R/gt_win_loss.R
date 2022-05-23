@@ -10,13 +10,13 @@
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param column The column wherein the winloss plot should replace existing data. Note that the data *must* be represented as a list of numeric values ahead of time.
 #' @param max_wins An integer indicating the max possible wins, this will be used to add padding if the total wins/losses observed is less than the max. This is useful for mid-season reporting. Defaults to a red, blue, grey palette.
-#' @param colors A character vector of length 3, specifying the colors for win, loss, tie in that exact order.
+#' @param palette A character vector of length 3, specifying the colors for win, loss, tie in that exact order.
 #' @param type A character string representing the type of plot, either a 'pill' or 'square'
 #' @param width A numeric indicating the width of the plot in `mm`, this can help with larger datasets where data points are overlapping.
 #' @return An object of class `gt_tbl`.
 #' @export
-#' @examples
-#' library(gt)
+#' @section Examples:
+#' #' library(gt)
 #'
 #' set.seed(37)
 #' data_in <- dplyr::tibble(
@@ -31,20 +31,21 @@
 #' win_table <- data_in %>%
 #'   gt() %>%
 #'   gt_plt_winloss(wins)
-#' @section Figures:
-#' \if{html}{\figure{gt_plt_winloss-ex.png}{options: width=60\%}}
+#' \if{html}{\out{
+#' `r man_get_image_tag(file = "gt_plt_winloss-ex.png", width = 60)`
+#' }}
 #'
 #' @family Plotting
 #' @section Function ID:
 #' 3-1
 
 gt_plt_winloss <- function(gt_object, column, max_wins = 17,
-                           colors = c("#013369", "#D50A0A", "gray"),
+                           palette = c("#013369", "#D50A0A", "gray"),
                            type = "pill", width = max_wins/0.83) {
 
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
   stopifnot("type must be on of 'pill' or 'square'" = {type %in% c("pill", "square")})
-  stopifnot("There must be 3 colors" = length(colors) == 3L)
+  stopifnot("There must be 3 colors" = length(palette) == 3L)
 
   list_vals <- gt_index(gt_object = gt_object, {{ column }}, as_vector = TRUE)
 
@@ -54,24 +55,26 @@ gt_plt_winloss <- function(gt_object, column, max_wins = 17,
   plot_fn_pill <- function(vals){
 
     if(all(is.na(vals) | is.null(vals))){
-      return("<div></div>")
+      plot_out <- ggplot() + theme_void()
+    } else {
+      input_data <- data.frame(
+        x = 1:length(vals),
+        xend = 1:length(vals),
+        y = ifelse(vals == 0.5, 0.4, vals),
+        yend = ifelse(vals == 0, 0.6, ifelse(vals > 0.5, 0.4, 0.6)),
+        color = ifelse(vals == 0, palette[2], ifelse(vals == 1, palette[1], palette[3]))
+      )
+
+      plot_out <- ggplot(input_data) +
+        geom_segment(
+          aes(x = .data$x, xend = .data$xend, y = .data$y, yend = .data$yend, color = I(.data$color)),
+          size = 1, lineend = "round") +
+        scale_x_continuous(limits = c(0.5, max_wins + 0.5)) +
+        scale_y_continuous(limits = c(-.2, 1.2)) +
+        theme_void()
+
+
     }
-
-    input_data <- data.frame(
-      x = 1:length(vals),
-      xend = 1:length(vals),
-      y = ifelse(vals == 0.5, 0.4, vals),
-      yend = ifelse(vals == 0, 0.6, ifelse(vals > 0.5, 0.4, 0.6)),
-      color = ifelse(vals == 0, colors[2], ifelse(vals == 1, colors[1], colors[3]))
-    )
-
-    plot_out <- ggplot(input_data) +
-      geom_segment(
-        aes(x = .data$x, xend = .data$xend, y = .data$y, yend = .data$yend, color = I(.data$color)),
-        size = 1, lineend = "round") +
-      scale_x_continuous(limits = c(0.5, max_wins + 0.5)) +
-      scale_y_continuous(limits = c(-.2, 1.2)) +
-      theme_void()
 
     out_name <- file.path(
       tempfile(pattern = "file", tmpdir = tempdir(), fileext = ".svg")
@@ -94,15 +97,15 @@ gt_plt_winloss <- function(gt_object, column, max_wins = 17,
   plot_fn_square <- function(vals){
 
     if(all(is.na(vals) | is.null(vals))){
-      return("<div></div>")
-    }
+      plot_out <- ggplot() + theme_void()
+    } else {
 
     input_data <- data.frame(
       x = 1:length(vals),
       xend = 1:length(vals),
       y = ifelse(vals == 0.5, 0.4, vals),
       yend = ifelse(vals == 0, 0.6, ifelse(vals > 0.5, 0.4, 0.6)),
-      color = ifelse(vals == 0, colors[2], ifelse(vals == 1, colors[1], colors[3]))
+      color = ifelse(vals == 0, palette[2], ifelse(vals == 1, palette[1], palette[3]))
     )
 
     plot_out <- ggplot(input_data) +
@@ -112,6 +115,8 @@ gt_plt_winloss <- function(gt_object, column, max_wins = 17,
       scale_x_continuous(limits = c(0.5, max_wins + 0.5)) +
       scale_y_continuous(limits = c(-.2, 1.2)) +
       theme_void()
+
+    }
 
     out_name <- file.path(
       tempfile(pattern = "file", tmpdir = tempdir(), fileext = ".svg")

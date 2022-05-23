@@ -26,7 +26,7 @@ Create a summary table from a \code{data.frame} or \code{tibble}.\if{html}{\out{
 }\if{html}{\out{</div>}}
 
 \if{html}{\out{
-<img src="https://raw.githubusercontent.com/rstudio/gtExtras/master/images/man_info_date_style_1.png" style="width:100\%;">
+<img src="https://raw.githubusercontent.com/rstudio/gtExtras/master/images/gt_plt_summary-chicks.png" style="width:100\%;">
 }}
 }
 

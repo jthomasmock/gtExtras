@@ -55,3 +55,14 @@ save_svg <- function(plot, ..., dpi = 25.4){
   img_plot
 
 }
+
+# vendored from gt
+# https://github.com/rstudio/gt/blob/04c34936a9d09e96b339dea8da07e414730ec17d/R/utils.R#L1654-L1661
+man_get_image_tag <- function(file, dir = "images") {
+
+  repo_url <- "https://raw.githubusercontent.com/rstudio/gtExtras/master"
+
+  image_url <- file.path(repo_url, dir, file)
+
+  paste0("<img src=\"", image_url, "\" style=\"width:100\\%;\">")
+}

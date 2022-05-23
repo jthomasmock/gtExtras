@@ -19,3 +19,14 @@ Create a summary table from a dataframe with inline
 histograms or area bar charts. Inspired by the Observable team and
 the observablehq/SummaryTable function: https://observablehq.com/d/d8d2929832202050
 }
+\section{Examples}{
+
+
+Create a summary table from a \code{data.frame} or \code{tibble}.\if{html}{\out{<div class="sourceCode r">}}\preformatted{gt_plt_summary(datasets::ChickWeight)
+}\if{html}{\out{</div>}}
+
+\if{html}{\out{
+<img src="https://raw.githubusercontent.com/rstudio/gtExtras/master/images/man_info_date_style_1.png" style="width:100\%;">
+}}
+}
+

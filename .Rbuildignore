@@ -4,6 +4,7 @@
 ^LICENSE\.md$
 ^doc$
 ^docs$
+^images$
 ^Meta$
 ^codecov\.yml$
 ^_pkgdown\.yaml$

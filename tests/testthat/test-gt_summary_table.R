@@ -60,7 +60,13 @@ test_that("svg is created", {
 test_that("table is created with expected output", {
   check_suggests()
 
-  ex_tab <- gt_plt_summary(gt::exibble)
+  my_exibble <- gt::exibble |>
+    mutate(date = as.Date(date),
+      time = hms::parse_hm(time),
+      datetime = as.POSIXct(datetime,tz=Sys.timezone())
+    )
+
+  ex_tab <- gt_plt_summary(my_exibble)
 
   vec_miss <- ex_tab[["_data"]][["n_missing"]]
   vec_miss_out <- c(0.125, 0.125, 0, 0.125, 0.125, 0.125, 0.125, 0, 0)
@@ -81,9 +87,12 @@ test_that("table is created with expected output", {
     rvest::html_nodes("text") %>%
     rvest::html_text()
 
-  ex_svg_text_out <- c("0", "8,880,000", "7 categories", "8 categories",
-    "7 categories", "7 categories", "7 categories", "0", "65,100",
-    "8 categories", "2 categories")
+  ex_svg_text_out <- c(
+    "0", "9M", "7 categories", "8 categories", "2015-01-15",
+    "2015-08-15", "13:35:00", "20:20:00", "2018-01-01",
+    "2018-07-07", "0", "65K", "8 categories", "2 categories"
+    )
+
 
   expect_equal(ex_svg_text, ex_svg_text_out)
 

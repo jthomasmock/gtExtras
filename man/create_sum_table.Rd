@@ -16,14 +16,16 @@ A summary dataframe as a tibble
 Create a summary table from a dataframe
 }
 \examples{
-\dontrun{create_sum_table(iris)
- #>   # A tibble: 5 × 7
- #>   type    name         value       n_missing  Mean Median     SD
- #>   <chr>   <chr>        <list>          <dbl> <dbl>  <dbl>  <dbl>
- #> 1 numeric Sepal.Length <dbl [150]>         0  5.84   5.8   0.828
- #> 2 numeric Sepal.Width  <dbl [150]>         0  3.06   3     0.436
- #> 3 numeric Petal.Length <dbl [150]>         0  3.76   4.35  1.77
- #> 4 numeric Petal.Width  <dbl [150]>         0  1.20   1.3   0.762
- #> 5 factor  Species      <fct [150]>         0 NA     NA    NA
+\dontrun{
+create_sum_table(iris)
+#>   # A tibble: 5 × 7
+#>   type    name         value       n_missing  Mean Median     SD
+#>   <chr>   <chr>        <list>          <dbl> <dbl>  <dbl>  <dbl>
+#> 1 numeric Sepal.Length <dbl [150]>         0  5.84   5.8   0.828
+#> 2 numeric Sepal.Width  <dbl [150]>         0  3.06   3     0.436
+#> 3 numeric Petal.Length <dbl [150]>         0  3.76   4.35  1.77
+#> 4 numeric Petal.Width  <dbl [150]>         0  1.20   1.3   0.762
+#> 5 factor  Species      <fct [150]>         0 NA     NA    NA
 }
+
 }

@@ -1,3 +1,7 @@
+# gtExtras 0.3.7
+- Added basic support in `gt_plt_summary()` for dates/times. 
+- Updated tests for `gt_plt_summary()` to include dates/times
+
 # gtExtras 0.3.6
 
 - Remove `use_paletteer` arg from `gt_color_rows()` in favor of a hopefully more user friendly detection of `::`

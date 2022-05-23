@@ -4,10 +4,12 @@
 \alias{plot_data}
 \title{Create inline plots for a summary table}
 \usage{
-plot_data(col, ...)
+plot_data(col, col_name, ...)
 }
 \arguments{
 \item{col}{The column of data to be used for plotting}
+
+\item{col_name}{the name of the column - use for reporting warnings}
 
 \item{...}{additional arguments passed to scales::label_number()}
 }

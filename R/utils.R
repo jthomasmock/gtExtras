@@ -66,3 +66,12 @@ man_get_image_tag <- function(file, width = 100, dir = "images") {
 
   paste0("<img src=\"", image_url, "\" style=\"width:", width, "\\%;\">")
 }
+
+# https://stackoverflow.com/questions/19655579/a-function-that-returns-true-on-na-null-nan-in-r
+is_blank <- function(x){
+  if (missing(x) || is.null(x) || length(x) == 0 || is.na(x)) {
+  return(TRUE)
+  } else {
+    return(FALSE)
+  }
+}

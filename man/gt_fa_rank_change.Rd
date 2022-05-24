@@ -44,7 +44,7 @@ resulting only in colored arrows.
 }
 
 \examples{
-rank_table <- dplyr::tibble(x = c(1:3,-1,-2,-5,0)) \%>\%
+rank_table <- dplyr::tibble(x = c(1:3, -1, -2, -5, 0)) \%>\%
   gt::gt() \%>\%
   gt_fa_rank_change(x, font_color = "match")
 }

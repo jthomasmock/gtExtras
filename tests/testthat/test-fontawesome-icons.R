@@ -10,6 +10,7 @@ test_that("fontawesome, test repeats", {
   check_suggests()
 
   fa_rep_html <- mtcars[1:5,1:4] %>%
+    dplyr::add_row(mpg = 20.09, cyl = NA, disp = 200, hp = 108) %>%
     gt::gt() %>%
     gt_fa_repeats(cyl, name = "car") %>%
     gt::as_raw_html() %>%
@@ -27,6 +28,7 @@ test_that("fontawesome, test repeats", {
   expect_equal(row_counter(3), rep("Car", 3))
   expect_equal(row_counter(4), rep("Car", 5))
   expect_equal(row_counter(5), rep("Car", 7))
+  expect_equal(row_counter(6), character(0))
 
 })
 
@@ -36,7 +38,8 @@ test_that("fontawesome, test column, name and colors", {
 
   fa_car_html <- head(mtcars) %>%
     dplyr::select(cyl, mpg, am, gear) %>%
-    dplyr::mutate(man = ifelse(am == 1, "cog", "cogs")) %>%
+    dplyr::add_row(cyl = 6, mpg = mean(mtcars$mpg), am = NA, gear = 3) %>%
+    dplyr::mutate(man = dplyr::case_when(am == 1 ~ "cog", am == 0 ~ "cogs", TRUE ~ NA_character_)) %>%
     gt::gt() %>%
     gt_fa_column(man) %>%
     gt::as_raw_html() %>%
@@ -63,23 +66,24 @@ test_that("fontawesome, test ratings all R and colors/numbers match", {
   check_suggests()
 
   rate_html <- mtcars %>%
-    dplyr::select(mpg:wt) %>%
+    dplyr::select(mpg:hp) %>%
     dplyr::slice(1:5) %>%
     dplyr::mutate(rating = c(2,3,5,4,1)) %>%
+    dplyr::add_row(mpg = mean(mtcars$mpg), cyl = 6, disp = 190, rating = NA) %>%
     gt::gt() %>%
     gt_fa_rating(rating, icon = "r-project") %>%
     gt::as_raw_html() %>%
     rvest::read_html()
 
   fa_stars <- rate_html %>%
-    rvest::html_nodes("td:nth-child(7)") %>%
+    rvest::html_nodes("td:nth-child(5)") %>%
     rvest::html_nodes("svg") %>%
     rvest::html_attr("aria-label")
 
   star_color_fn <- function(row_n){
     rate_html %>%
       rvest::html_nodes(paste0("tr:nth-child(", row_n,")")) %>%
-      rvest::html_nodes("td:nth-child(7)") %>%
+      rvest::html_nodes("td:nth-child(5)") %>%
       rvest::html_nodes("svg") %>%
       rvest::html_attr("style") %>%
       gsub(x = ., pattern = ".*fill:", "") %>%

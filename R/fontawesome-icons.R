@@ -16,9 +16,9 @@
 #' @examples
 #'
 #' library(gt)
-#' fa_cars <- mtcars[1:5,1:4] %>%
-#'     gt() %>%
-#'     gt_fa_repeats(cyl, name = "car")
+#' fa_cars <- mtcars[1:5, 1:4] %>%
+#'   gt() %>%
+#'   gt_fa_repeats(cyl, name = "car")
 #'
 #' @section Figures:
 #' \if{html}{\figure{fa-cars.png}{options: width=50\%}}
@@ -29,36 +29,45 @@
 
 gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
                           palette = NULL, align = "left",
-                          direction = 1){
-
+                          direction = 1) {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
 
   text_transform(
     gt_object,
     locations = cells_body(columns = {{ column }}),
-    fn = function(x){
-      int_x <- as.integer(x)
 
-      if(is.null(palette) && length(unique(int_x)) >= 8){
+    fn = function(x) {
+      int_conv <- suppressWarnings(as.integer(x))
+      int_x <- int_conv[!is.na(int_conv)]
+
+      if (is.null(palette) && length(unique(int_x)) >= 8) {
         stop("Please add your own palette that is equal to the number of unique counts", call. = FALSE)
       }
 
-      if(is.null(palette)){
-        pal_filler <- rev(c("#CC79A7", "#D55E00", "#0072B2",
-                        "#F0E442", "#009E73", "#56B4E9",
-                        "#E69F00", "#000000"))[seq_along(unique(int_x))]
-      } else if(length(palette) == 1){
-          pal_filler <- palette %>% rep(length(unique(int_x)))
-        } else {
-          pal_filler <- palette
-        }
+      if (is.null(palette)) {
+        pal_filler <- rev(c(
+          "#CC79A7", "#D55E00", "#0072B2",
+          "#F0E442", "#009E73", "#56B4E9",
+          "#E69F00", "#000000"
+        ))[seq_along(unique(int_x))]
+      } else if (length(palette) == 1) {
+        pal_filler <- palette %>% rep(length(unique(int_x)))
+      } else {
+        pal_filler <- palette
+      }
 
-      lapply(X = int_x, FUN = function(xy){
+      lapply(X = int_conv, FUN = function(xy) {
+        # handle missing values
+        if(is_blank(xy) || is.na(xy)){
+          return(gt::html("&nbsp;"))
+        }
 
         fct_x <- factor(xy, levels = unique(int_x), labels = pal_filler) %>%
           as.character()
 
-        fct_lvl <- unique(x)
+
+        fct_lvl <- suppressWarnings(unique(x[!is.na(as.integer(x))]))
+
         stopifnot("The length of the unique elements must match the palette length" = length(fct_lvl) == length(pal_filler))
 
         fa_repeats <- fontawesome::fa(name, ..., fill = fct_x, height = "20px", a11y = "sem") %>%
@@ -68,13 +77,14 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
 
         label <- paste(xy, name)
 
-        htmltools::div(title = label, "aria-label" = label, role = "img",
-                       list(fa_repeats))
+        htmltools::div(
+          title = label, "aria-label" = label, role = "img",
+          list(fa_repeats)
+        )
       })
     }
   ) %>%
     cols_align(align = align, columns = {{ column }})
-
 }
 
 #' Add `{fontawesome}` icons inside a `{gt}` column.
@@ -111,7 +121,7 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
 #' 2-15
 
 gt_fa_column <- function(gt_object, column, ..., palette = NULL,
-  align = "left", direction = 1) {
+                         align = "left", direction = 1) {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
 
 
@@ -119,11 +129,12 @@ gt_fa_column <- function(gt_object, column, ..., palette = NULL,
     gt_object,
     locations = cells_body(columns = {{ column }}),
     fn = function(x) {
+
       if (is.null(palette)) {
         pal_filler <- c(
           "#000000", "#E69F00", "#56B4E9", "#009E73",
           "#F0E442", "#0072B2", "#D55E00", "#CC79A7"
-        )[seq_along(unique(x))]
+        )[seq_along(unique(x[!(x %in% c("", "NA", NA))]))]
       } else if (length(palette) == 1) {
         pal_filler <- palette %>% rep(length(unique(x)))
       } else {
@@ -131,11 +142,12 @@ gt_fa_column <- function(gt_object, column, ..., palette = NULL,
       }
 
       # pass arguments into anonymous function
-
       lapply(X = x, FUN = function(xy) {
 
+        if(xy %in% c("", "NA", NA)) return(gt::html("&nbsp;"))
+
         # drop missing levels
-        x <- x[x!=""]
+        x <- x[!(x %in% c("", "NA", NA))]
 
         fct_lvl <- unique(x)
         stopifnot("The length of the unique elements must match the palette length" = length(fct_lvl) == length(pal_filler))
@@ -150,7 +162,7 @@ gt_fa_column <- function(gt_object, column, ..., palette = NULL,
 
         # conditional to return blanks if the passed element
         # is missing, NA, NULL, or blank
-        if (xy == "") {
+        if (!nzchar(xy) || is_blank(xy)) {
           gt::html("&nbsp;")
         } else {
           my_fa <- list(
@@ -202,25 +214,28 @@ gt_fa_column <- function(gt_object, column, ..., palette = NULL,
 #' @section Function ID:
 #' 2-16
 
-gt_fa_rating <- function(gt_object, column, max_rating = 5,...,
-                         color = "orange", icon = "star"){
-
+gt_fa_rating <- function(gt_object, column, max_rating = 5, ...,
+                         color = "orange", icon = "star") {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
 
   text_transform(
     gt_object,
     locations = cells_body(columns = {{ column }}),
-    fn = function(x){
-      num_x <- as.numeric(x)
+    fn = function(x) {
+      num_x <- suppressWarnings(as.numeric(x))
 
-      lapply(X = num_x, FUN = function(rating){
+      lapply(X = num_x, FUN = function(rating) {
+        # handle missing values
+        if(is_blank(rating) || rating %in% c(NA, "NA", "")){
+          return(gt::html("&nbsp;"))
+        }
         # adapted from: glin.github.io/reactable/articles/cookbook/cookbook.html#rating-stars
-        rounded_rating <- floor(rating + 0.5)  # always round up
+        rounded_rating <- floor(rating + 0.5) # always round up
         stars <- lapply(seq_len(max_rating), function(i) {
-          if (i <= rounded_rating){
-            fontawesome::fa(icon, fill= color, height = "20px", a11y = "sem")
-          }  else {
-            fontawesome::fa(icon, fill= "grey", height = "20px", a11y = "sem")
+          if (i <= rounded_rating) {
+            fontawesome::fa(icon, fill = color, height = "20px", a11y = "sem")
+          } else {
+            fontawesome::fa(icon, fill = "grey", height = "20px", a11y = "sem")
           }
         })
         label <- sprintf("%s out of %s", rating, max_rating)
@@ -232,7 +247,6 @@ gt_fa_rating <- function(gt_object, column, max_rating = 5,...,
     }
   ) %>%
     cols_align(align = "left", columns = {{ column }})
-
 }
 
 
@@ -254,39 +268,44 @@ gt_fa_rating <- function(gt_object, column, max_rating = 5,...,
 #' @export
 #'
 #' @examples
-#' rank_table <- dplyr::tibble(x = c(1:3,-1,-2,-5,0)) %>%
+#' rank_table <- dplyr::tibble(x = c(1:3, -1, -2, -5, 0)) %>%
 #'   gt::gt() %>%
 #'   gt_fa_rank_change(x, font_color = "match")
 #' @section Figures:
 #' \if{html}{\figure{fa_rank_change.png}{options: width=5\%}}
 #'
 #' @family Utilities
-gt_fa_rank_change <- function(gt_object, column, palette=c("#1b7837","lightgrey","#762a83"),
-                        fa_type = c("angle-double", "arrow", "level", "chevron", "caret", "long-arrow-alt"),
-                        font_color = "black", show_text = TRUE){
-
-  vals <- gt_index(gt_object, {{column}})
+gt_fa_rank_change <- function(gt_object, column, palette = c("#1b7837", "lightgrey", "#762a83"),
+                              fa_type = c("angle-double", "arrow", "level", "chevron", "caret", "long-arrow-alt"),
+                              font_color = "black", show_text = TRUE) {
+  vals <- gt_index(gt_object, {{ column }})
 
   stopifnot("Column must be integers" = is.integer(as.integer(vals)))
   stopifnot("Palette must be length 3, in order of increase, no change, decrease" = length(palette) == 3)
-  stopifnot('fa_type must be one of "angle-double", "arrow", "level", "chevron", "caret", "long-arrow-alt"' =
-              fa_type %in% c("angle-double", "arrow", "level", "chevron", "caret", "long-arrow-alt"))
+  stopifnot(
+    'fa_type must be one of "angle-double", "arrow", "level", "chevron", "caret", "long-arrow-alt"' =
+      fa_type %in% c("angle-double", "arrow", "level", "chevron", "caret", "long-arrow-alt")
+  )
 
-  fa_rank_chg <- function(fa_name, color, font_color, text){
-
-    if(font_color == "match"){
+  fa_rank_chg <- function(fa_name, color, font_color, text) {
+    if (font_color == "match") {
       font_color <- color
     }
 
-    if(text == ""){
+    if (is_blank(text)){
+      return(gt::html("<bold style='color:#d3d3d3;'>--</bold>"))
+    } else if(!nzchar(text) & !is_blank(text)) {
       fa_height <- "20px"
-    } else {
+    } else if(nzchar(text) & !is_blank(text)) {
       fa_height <- "12px"
     }
 
     my_fa <- list(
-      fontawesome::fa(name = fa_name, fill = color, height = fa_height,
-                      a11y = "sem") %>% gt::html())
+      fontawesome::fa(
+        name = fa_name, fill = color, height = fa_height,
+        a11y = "sem"
+      ) %>% gt::html()
+    )
 
     htmltools::div(
       "aria-label" = text, role = "img",
@@ -296,27 +315,27 @@ gt_fa_rank_change <- function(gt_object, column, palette=c("#1b7837","lightgrey"
     ) %>%
       as.character() %>%
       gt::html()
-
   }
 
   gt_object %>%
     text_transform(
-      locations = cells_body({{column}}),
-      fn = function(x){
-
-        vals <- gt_index(gt_object, {{column}})
+      locations = cells_body({{ column }}),
+      fn = function(x) {
+        vals <- gt_index(gt_object, {{ column }})
 
         color_vals <- dplyr::case_when(
           vals > 0 ~ palette[1],
           vals == 0 ~ palette[2],
-          vals < 0 ~ palette[3]
+          vals < 0 ~ palette[3],
+          TRUE ~ palette[2]
         )
 
-        if(fa_type[1] == "level"){
+        if (fa_type[1] == "level") {
           fa_vals <- dplyr::case_when(
             vals > 0 ~ "level-up-alt",
             vals < 0 ~ "level-down-alt",
-            vals == 0 ~ "equals"
+            vals == 0 ~ "equals",
+            TRUE ~ "question"
           )
         } else {
           fa_vals <- dplyr::case_when(
@@ -326,17 +345,13 @@ gt_fa_rank_change <- function(gt_object, column, palette=c("#1b7837","lightgrey"
           )
         }
 
-        if(isFALSE(show_text)){
+        if (isFALSE(show_text)) {
           vals <- ""
         }
 
         mapply(fa_rank_chg, fa_vals, color_vals, font_color, vals,
-               SIMPLIFY = FALSE)
-
+          SIMPLIFY = FALSE
+        )
       }
     )
-
 }
-
-
-

@@ -50,9 +50,9 @@ integer that the column contains.
 \examples{
 
 library(gt)
-fa_cars <- mtcars[1:5,1:4] \%>\%
-    gt() \%>\%
-    gt_fa_repeats(cyl, name = "car")
+fa_cars <- mtcars[1:5, 1:4] \%>\%
+  gt() \%>\%
+  gt_fa_repeats(cyl, name = "car")
 
 }
 \seealso{

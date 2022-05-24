@@ -1,5 +1,6 @@
 # gtExtras 0.3.8
 - Renamed `colors` argument in `gt_win_loss() to `palette`
+- Added NA handling to all `fontawesome::fa()` functions, ie `gt_fa_rank_change()`, `gt_fa_repeats()`, `gt_fa_column()`
 
 # gtExtras 0.3.7
 - Added basic support in `gt_plt_summary()` for dates/times. 

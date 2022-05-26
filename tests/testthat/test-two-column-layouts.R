@@ -4,6 +4,7 @@ check_suggests <- function() {
   skip_if_not_installed("xml2")
   skip_if_not_installed("webshot2")
   skip_on_cran()
+  skip_on_ci()
 }
 
 test_that("two_column_layout, two gt_tbl objects", {

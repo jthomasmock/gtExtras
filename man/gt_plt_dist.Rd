@@ -72,7 +72,6 @@ Other Plotting:
 \code{\link{gt_plt_percentile}()},
 \code{\link{gt_plt_point}()},
 \code{\link{gt_plt_sparkline}()},
-\code{\link{gt_plt_winloss}()},
-\code{\link{gt_sparkline}()}
+\code{\link{gt_plt_winloss}()}
 }
 \concept{Plotting}

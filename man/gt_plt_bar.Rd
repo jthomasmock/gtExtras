@@ -40,7 +40,13 @@ The \code{gt_plt_bar} function takes an existing \code{gt_tbl} object and
 adds horizontal barplots via \code{ggplot2}. Note that values are plotted on a
 shared x-axis, and a vertical black bar is added at x = zero.
 }
-\section{Figures}{
+\section{Examples}{
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
+gt_plt_bar_tab <- mtcars \%>\%
+  head() \%>\%
+  gt() \%>\%
+  gt_plt_bar(column = mpg, keep_column = TRUE)
+}\if{html}{\out{</div>}}
 
 \if{html}{\figure{gt_plt_bar.png}{options: width=100\%}}
 }
@@ -50,14 +56,6 @@ shared x-axis, and a vertical black bar is added at x = zero.
 3-4
 }
 
-\examples{
-library(gt)
- gt_plt_bar_tab <- mtcars \%>\%
-   head() \%>\%
-   gt() \%>\%
-   gt_plt_bar(column = mpg, keep_column = TRUE)
-
-}
 \seealso{
 Other Plotting: 
 \code{\link{gt_plt_bar_pct}()},
@@ -66,7 +64,6 @@ Other Plotting:
 \code{\link{gt_plt_percentile}()},
 \code{\link{gt_plt_point}()},
 \code{\link{gt_plt_sparkline}()},
-\code{\link{gt_plt_winloss}()},
-\code{\link{gt_sparkline}()}
+\code{\link{gt_plt_winloss}()}
 }
 \concept{Plotting}

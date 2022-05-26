@@ -1,6 +1,9 @@
 # gtExtras 0.3.8
 - Renamed `colors` argument in `gt_win_loss() to `palette`
 - Added NA handling to all `fontawesome::fa()` functions, ie `gt_fa_rank_change()`, `gt_fa_repeats()`, `gt_fa_column()`
+- Add missing data handling to more plotting functions
+- Refactor testing to use `webshot2::webshot()` over `webshot::webshot()`
+- Remove `gt_sparkline()` - functions separated into `gt_plt_sparkline()` and `gt_plt_dist()`
 
 # gtExtras 0.3.7
 - Added basic support in `gt_plt_summary()` for dates/times. 

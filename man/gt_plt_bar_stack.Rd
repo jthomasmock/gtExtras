@@ -42,18 +42,8 @@ The values must either add up to 100 ie as percentage points if using
 the labels can be controlled via the \code{fmt_fn} argument and the
 \verb{scales::label_???()} family of function.
 }
-\section{Function ID}{
-
-3-6
-}
-
-\section{Figures}{
-
-\if{html}{\figure{plt-bar-stack.png}{options: width=70\%}}
-}
-
-\examples{
-library(gt)
+\section{Examples}{
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
 library(dplyr)
 
 ex_df <- dplyr::tibble(
@@ -78,8 +68,11 @@ tab_df
 ex_tab <- tab_df \%>\%
   gt() \%>\%
   gt_plt_bar_stack(column = list_data)
+}\if{html}{\out{</div>}}
 
+\if{html}{\figure{plt-bar-stack.png}{options: width=70\%}}
 }
+
 \seealso{
 Other Plotting: 
 \code{\link{gt_plt_bar_pct}()},
@@ -88,7 +81,6 @@ Other Plotting:
 \code{\link{gt_plt_percentile}()},
 \code{\link{gt_plt_point}()},
 \code{\link{gt_plt_sparkline}()},
-\code{\link{gt_plt_winloss}()},
-\code{\link{gt_sparkline}()}
+\code{\link{gt_plt_winloss}()}
 }
 \concept{Plotting}

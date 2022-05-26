@@ -8,7 +8,9 @@
 #' @return An object of class `gt_tbl`.
 #' @export
 #'
-#' @examples
+#' @section Examples:
+#'
+#' ```r
 #' set.seed(37)
 #' bullet_tab <- tibble::rownames_to_column(mtcars) %>%
 #'  dplyr::select(rowname, cyl:drat, mpg) %>%
@@ -20,8 +22,7 @@
 #'  gt_plt_bullet(column = mpg, target = target_col, width = 45,
 #'                colors = c("lightblue", "black")) %>%
 #'  gt_theme_538()
-#'
-#' @section Figures:
+#' ```
 #' \if{html}{\figure{gt_bullet.png}{options: width=100\%}}
 #'
 #' @family Themes
@@ -34,6 +35,11 @@ gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
 
   # extract the values from specified columns
   all_vals <- gt_index(gt_object, {{ column }})
+
+  if (length(all_vals) == 0) {
+    return(gt_object)
+  }
+
   max_val <- max(all_vals, na.rm = TRUE)
   length_val <- length(all_vals)
 

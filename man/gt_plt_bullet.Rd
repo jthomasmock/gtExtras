@@ -29,18 +29,8 @@ An object of class \code{gt_tbl}.
 \description{
 Create an inline 'bullet chart' in a gt table
 }
-\section{Figures}{
-
-\if{html}{\figure{gt_bullet.png}{options: width=100\%}}
-}
-
-\section{Function ID}{
-
-3-7
-}
-
-\examples{
-set.seed(37)
+\section{Examples}{
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{set.seed(37)
 bullet_tab <- tibble::rownames_to_column(mtcars) \%>\%
  dplyr::select(rowname, cyl:drat, mpg) \%>\%
  dplyr::group_by(cyl) \%>\%
@@ -51,8 +41,16 @@ bullet_tab <- tibble::rownames_to_column(mtcars) \%>\%
  gt_plt_bullet(column = mpg, target = target_col, width = 45,
                colors = c("lightblue", "black")) \%>\%
  gt_theme_538()
+}\if{html}{\out{</div>}}
 
+\if{html}{\figure{gt_bullet.png}{options: width=100\%}}
 }
+
+\section{Function ID}{
+
+3-7
+}
+
 \seealso{
 Other Themes: 
 \code{\link{gt_plt_conf_int}()},

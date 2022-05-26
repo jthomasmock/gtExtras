@@ -176,8 +176,8 @@ gt_two_column_layout <- function(tables = NULL, output = "viewer",
 
     # Saving an image requires the webshot package; if it's
     # not present, stop with a message
-    if (!rlang::is_installed("webshot")) {
-      stop("The `webshot` package is required for saving images of gt tables.)",
+    if (!rlang::is_installed("webshot2")) {
+      stop("The `webshot2` package is required for saving images of gt tables.)",
         call. = FALSE
       )
     } else {

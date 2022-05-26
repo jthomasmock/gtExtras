@@ -222,10 +222,13 @@ gt_fa_rating <- function(gt_object, column, max_rating = 5, ...,
     gt_object,
     locations = cells_body(columns = {{ column }}),
     fn = function(x) {
+
+      # convert the raw text to numeric
       num_x <- suppressWarnings(as.numeric(x))
 
       lapply(X = num_x, FUN = function(rating) {
-        # handle missing values
+
+        # handle missing values & return a blank space if missing
         if(is_blank(rating) || rating %in% c(NA, "NA", "")){
           return(gt::html("&nbsp;"))
         }
@@ -241,6 +244,7 @@ gt_fa_rating <- function(gt_object, column, max_rating = 5, ...,
         label <- sprintf("%s out of %s", rating, max_rating)
         div_out <- htmltools::div(title = label, "aria-label" = label, role = "img", stars, style = "padding:0px")
 
+        # need to convert from text to html
         as.character(div_out) %>%
           gt::html()
       })
@@ -287,6 +291,8 @@ gt_fa_rank_change <- function(gt_object, column, palette = c("#1b7837", "lightgr
       fa_type %in% c("angle-double", "arrow", "level", "chevron", "caret", "long-arrow-alt")
   )
 
+  # internal function
+  # could possibly pull out to standalone function
   fa_rank_chg <- function(fa_name, color, font_color, text) {
     if (font_color == "match") {
       font_color <- color
@@ -300,6 +306,7 @@ gt_fa_rank_change <- function(gt_object, column, palette = c("#1b7837", "lightgr
       fa_height <- "12px"
     }
 
+    # fill the Fontawesome call
     my_fa <- list(
       fontawesome::fa(
         name = fa_name, fill = color, height = fa_height,
@@ -307,6 +314,7 @@ gt_fa_rank_change <- function(gt_object, column, palette = c("#1b7837", "lightgr
       ) %>% gt::html()
     )
 
+    # hardcode some HTML/CSS styling
     htmltools::div(
       "aria-label" = text, role = "img",
       htmltools::div(my_fa, style = "float: left;margin-right:1px;"),

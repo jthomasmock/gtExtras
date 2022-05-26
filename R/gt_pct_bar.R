@@ -19,9 +19,9 @@
 #' @return An object of class `gt_tbl`.
 #' @export
 #' @family Plotting
-#' @section Function ID:
-#' 3-6
-#' @examples
+#' @section Examples:
+#'
+#' ```r
 #' library(gt)
 #' library(dplyr)
 #'
@@ -47,9 +47,8 @@
 #' ex_tab <- tab_df %>%
 #'   gt() %>%
 #'   gt_plt_bar_stack(column = list_data)
-#'
-#' @section Figures:
-#' \if{html}{\figure{plt-bar-stack.png}{options: width=70\%}}
+#' ```
+#'\if{html}{\figure{plt-bar-stack.png}{options: width=70\%}}
 
 gt_plt_bar_stack <- function(gt_object, column = NULL,
                              palette = c("#ff4343", "#bfbfbf", "#0a1c2b"),
@@ -66,12 +65,15 @@ gt_plt_bar_stack <- function(gt_object, column = NULL,
   var_sym <- rlang::enquo(column)
   var_bare <- rlang::as_label(var_sym)
 
-  all_vals <- gt_object[["_data"]] %>%
-    pull({{ column }}) %>%
+  all_vals <- gt_index(gt_object, {{ column }}) %>%
     lapply(X = ., FUN = sum, na.rm = TRUE) %>%
     unlist()
 
-  total_rng <- max(all_vals)
+  if (length(all_vals) == 0) {
+    return(gt_object)
+  }
+
+  total_rng <- max(all_vals, na.rm = TRUE)
 
   tab_out <- text_transform(
     gt_object,

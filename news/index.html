@@ -55,6 +55,11 @@
 <ul><li>Renamed <code>colors</code> argument in <code>gt_win_loss() to</code>palette`</li>
 <li>Added NA handling to all <code><a href="https://rdrr.io/pkg/fontawesome/man/fa.html" class="external-link">fontawesome::fa()</a></code> functions, ie <code><a href="../reference/gt_fa_rank_change.html">gt_fa_rank_change()</a></code>, <code><a href="../reference/gt_fa_repeats.html">gt_fa_repeats()</a></code>, <code><a href="../reference/gt_fa_column.html">gt_fa_column()</a></code>
 </li>
+<li>Add missing data handling to more plotting functions</li>
+<li>Refactor testing to use <code><a href="https://rdrr.io/pkg/webshot2/man/webshot.html" class="external-link">webshot2::webshot()</a></code> over <code><a href="http://wch.github.io/webshot/reference/webshot.html" class="external-link">webshot::webshot()</a></code>
+</li>
+<li>Remove <code>gt_sparkline()</code> - functions separated into <code><a href="../reference/gt_plt_sparkline.html">gt_plt_sparkline()</a></code> and <code><a href="../reference/gt_plt_dist.html">gt_plt_dist()</a></code>
+</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.7" id="gtextras-037">gtExtras 0.3.7<a class="anchor" aria-label="anchor" href="#gtextras-037"></a></h2>
@@ -72,7 +77,7 @@
 <h2 class="pkg-version" data-toc-text="0.3.4" id="gtextras-034">gtExtras 0.3.4<a class="anchor" aria-label="anchor" href="#gtextras-034"></a></h2>
 <ul><li>Add initial version of a <code><a href="../reference/gt_plt_summary.html">gt_plt_summary()</a></code> function, as inspired by the <a href="https://observablehq.com/d/d8d2929832202050" class="external-link">Observable/SummaryTable function</a>.</li>
 <li>
-<code><a href="../reference/gt_sparkline.html">gt_sparkline()</a></code> will be removed soon now that <a href="https://github.com/ddsjoberg/bstfun/pull/102" class="external-link"><code>bstfun</code>/<code>gtsummary</code></a> are no longer depending on it. <code><a href="../reference/gt_plt_dist.html">gt_plt_dist()</a></code> and <code><a href="../reference/gt_plt_sparkline.html">gt_plt_sparkline()</a></code> will be the new preferred and enhanced versions of <code><a href="../reference/gt_sparkline.html">gt_sparkline()</a></code>.</li>
+<code>gt_sparkline()</code> will be removed soon now that <a href="https://github.com/ddsjoberg/bstfun/pull/102" class="external-link"><code>bstfun</code>/<code>gtsummary</code></a> are no longer depending on it. <code><a href="../reference/gt_plt_dist.html">gt_plt_dist()</a></code> and <code><a href="../reference/gt_plt_sparkline.html">gt_plt_sparkline()</a></code> will be the new preferred and enhanced versions of <code>gt_sparkline()</code>.</li>
 <li>Add tests for <code><a href="../reference/gt_plt_summary.html">gt_plt_summary()</a></code>
 </li>
 </ul></div>

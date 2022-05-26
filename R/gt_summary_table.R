@@ -6,6 +6,7 @@
 #' @param title a character string to be used in the table title
 #' @importFrom stats median sd
 #' @import gt
+#' @importFrom gt %>%
 #' @importFrom stats IQR
 #' @return a gt table
 #' @export
@@ -22,14 +23,15 @@
 
 gt_plt_summary <- function(df, title = NULL) {
 
-  # if no title, return name of dataframe
+  # if no title, return name of input dataframe
+  # returns a . for df %>% gt_plt_summary()
   if (is.null(title)) title <- deparse(substitute(df))
 
   sum_table <- create_sum_table(df)
 
   dim_df <- dim(df)
 
-  sum_table %>%
+  tab_out <- sum_table %>%
     gt() %>%
     text_transform(cells_body(value),
       fn = function(x) {
@@ -43,7 +45,6 @@ gt_plt_summary <- function(df, title = NULL) {
         )
       }
     ) %>%
-    fmt_missing(Mean:SD) %>%
     # add number formatting to numeric cols
     fmt_number(
       Mean:SD,
@@ -85,6 +86,12 @@ gt_plt_summary <- function(df, title = NULL) {
       column_labels.border.top.width = px(0),
       heading.border.bottom.width = px(0)
     )
+
+  {if(packageVersion("gt")$minor >= 6){
+    tab_out %>% sub_missing(Mean:SD)
+  } else {
+    tab_out %>% fmt_missing(Mean:SD)
+  }}
 }
 
 
@@ -105,7 +112,7 @@ gt_plt_summary <- function(df, title = NULL) {
 #' #> 2 numeric Sepal.Width  <dbl [150]>         0  3.06   3     0.436
 #' #> 3 numeric Petal.Length <dbl [150]>         0  3.76   4.35  1.77
 #' #> 4 numeric Petal.Width  <dbl [150]>         0  1.20   1.3   0.762
-#' #> 5 factor  Species      <fct [150]>         0 NA     NA    NA
+#' #> 5 factor  Species      <fct [150]>         0  NA     NA    NA
 #' }
 #'
 create_sum_table <- function(df) {

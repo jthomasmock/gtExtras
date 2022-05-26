@@ -25,7 +25,7 @@ create_sum_table(iris)
 #> 2 numeric Sepal.Width  <dbl [150]>         0  3.06   3     0.436
 #> 3 numeric Petal.Length <dbl [150]>         0  3.76   4.35  1.77
 #> 4 numeric Petal.Width  <dbl [150]>         0  1.20   1.3   0.762
-#> 5 factor  Species      <fct [150]>         0 NA     NA    NA
+#> 5 factor  Species      <fct [150]>         0  NA     NA    NA
 }
 
 }

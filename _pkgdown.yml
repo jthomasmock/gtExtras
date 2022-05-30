@@ -89,3 +89,4 @@ reference:
   - n_decimals
   - create_sum_table
   - plot_data
+  - last_row_id

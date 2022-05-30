@@ -14,7 +14,7 @@ distributions (ie density/histograms) you can instead use: gtExtras::gt_plt_dist
     
     <a class="navbar-brand me-2" href="../index.html">gtExtras</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.9</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,7 +68,7 @@ distributions (ie density/histograms) you can instead use: <code><a href="gt_plt
   <span class="va">column</span>,
   type <span class="op">=</span> <span class="st">"default"</span>,
   fig_dim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">30</span><span class="op">)</span>,
-  pal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"black"</span>, <span class="st">"black"</span>, <span class="st">"purple"</span>, <span class="st">"green"</span>, <span class="st">"lightgrey"</span><span class="op">)</span>,
+  palette <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"black"</span>, <span class="st">"black"</span>, <span class="st">"purple"</span>, <span class="st">"green"</span>, <span class="st">"lightgrey"</span><span class="op">)</span>,
   same_limit <span class="op">=</span> <span class="cn">TRUE</span>,
   label <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span></code></pre></div>
@@ -84,8 +84,8 @@ distributions (ie density/histograms) you can instead use: <code><a href="gt_plt
 <dd><p>A string indicating the type of plot to generate, accepts <code>"default"</code>, <code>"shaded"</code>, <code>"ref_median"</code>, <code>'ref_mean'</code>, <code>"ref_iqr"</code>, <code>"ref_last"</code></p></dd>
 <dt>fig_dim</dt>
 <dd><p>A vector of two numbers indicating the height/width of the plot in mm at a DPI of 25.4, defaults to <code>c(5,30)</code></p></dd>
-<dt>pal</dt>
-<dd><p>A character string indicating the colors of various components. Order matters, and pal = sparkline color, final value color, range color low, range color high, and 'type' color (eg shading or reference lines).</p></dd>
+<dt>palette</dt>
+<dd><p>A character string indicating the colors of various components. Order matters, and palette = sparkline color, final value color, range color low, range color high, and 'type' color (eg shading or reference lines).</p></dd>
 <dt>same_limit</dt>
 <dd><p>A logical indicating that the plots will use the same axis range (<code>TRUE</code>) or have individual axis ranges (<code>FALSE</code>).</p></dd>
 <dt>label</dt>

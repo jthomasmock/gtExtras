@@ -19,23 +19,20 @@ An object of class \code{gt_tbl}.
 \description{
 Apply dot matrix theme to a gt table
 }
+\section{Examples}{
+
+library(gt)
+themed_tab <- head(mtcars) \%>\%
+gt() \%>\%
+gt_theme_dot_matrix() \%>\%
+tab_header(title = "Styled like dot matrix printer paper")
+}
+
 \section{Figures}{
 
 \if{html}{\figure{gt_dot_matrix.png}{options: width=100\%}}
 }
 
-\section{Function ID}{
-
-1-5
-}
-
-\examples{
-library(gt)
-themed_tab <- head(mtcars) \%>\%
-  gt() \%>\%
-  gt_theme_dot_matrix() \%>\%
-  tab_header(title = "Styled like dot matrix printer paper")
-}
 \seealso{
 Other Themes: 
 \code{\link{gt_plt_bullet}()},

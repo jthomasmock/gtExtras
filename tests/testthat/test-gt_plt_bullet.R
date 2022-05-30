@@ -15,7 +15,7 @@ test_that("gt_plt_bullet SVG is created and has specific values", {
     dplyr::ungroup() %>%
     gt::gt() %>%
     gt_plt_bullet(column = mpg, target = target_col, width = 45,
-                  colors = c("lightblue", "black")) %>%
+                  palette = c("lightblue", "black")) %>%
     gt::as_raw_html() %>%
     rvest::read_html()
 

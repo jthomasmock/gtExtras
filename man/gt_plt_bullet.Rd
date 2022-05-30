@@ -9,7 +9,7 @@ gt_plt_bullet(
   column = NULL,
   target = NULL,
   width = 65,
-  colors = c("grey", "red")
+  palette = c("grey", "red")
 )
 }
 \arguments{
@@ -21,7 +21,7 @@ gt_plt_bullet(
 
 \item{width}{Width of the plot in pixels}
 
-\item{colors}{Color of the bar and target line, defaults to \code{c("grey", "red")}, can use named colors or hex colors. Must be of length two, and the first color will always be used as the bar color.}
+\item{palette}{Color of the bar and target line, defaults to \code{c("grey", "red")}, can use named colors or hex colors. Must be of length two, and the first color will always be used as the bar color.}
 }
 \value{
 An object of class \code{gt_tbl}.
@@ -39,7 +39,7 @@ bullet_tab <- tibble::rownames_to_column(mtcars) \%>\%
  dplyr::ungroup() \%>\%
  gt::gt() \%>\%
  gt_plt_bullet(column = mpg, target = target_col, width = 45,
-               colors = c("lightblue", "black")) \%>\%
+               palette = c("lightblue", "black")) \%>\%
  gt_theme_538()
 }\if{html}{\out{</div>}}
 

@@ -4,7 +4,7 @@
 #' @param column The column where a 'bullet chart' will replace the inline values.
 #' @param target The column indicating the target values that will be represented by a vertical line
 #' @param width Width of the plot in pixels
-#' @param colors Color of the bar and target line, defaults to `c("grey", "red")`, can use named colors or hex colors. Must be of length two, and the first color will always be used as the bar color.
+#' @param palette Color of the bar and target line, defaults to `c("grey", "red")`, can use named colors or hex colors. Must be of length two, and the first color will always be used as the bar color.
 #' @return An object of class `gt_tbl`.
 #' @export
 #'
@@ -20,7 +20,7 @@
 #'  dplyr::ungroup() %>%
 #'  gt::gt() %>%
 #'  gt_plt_bullet(column = mpg, target = target_col, width = 45,
-#'                colors = c("lightblue", "black")) %>%
+#'                palette = c("lightblue", "black")) %>%
 #'  gt_theme_538()
 #' ```
 #' \if{html}{\figure{gt_bullet.png}{options: width=100\%}}
@@ -29,9 +29,9 @@
 #' @section Function ID:
 #' 3-7
 gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
-                          colors = c("grey", "red")) {
+                          palette = c("grey", "red")) {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
-  stopifnot("'colors' must be 2 colors" = length(colors) == 2)
+  stopifnot("'palette' must be 2 colors" = length(palette) == 2)
 
   # extract the values from specified columns
   all_vals <- gt_index(gt_object, {{ column }})
@@ -71,9 +71,9 @@ gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
           }
 
           plot_out <- ggplot(data = NULL, aes(x = vals, y = factor("1"))) +
-            geom_col(width = 0.1, color = colors[1], fill = colors[1]) +
+            geom_col(width = 0.1, color = palette[1], fill = palette[1]) +
             geom_vline(
-              xintercept = target_vals, color = colors[2], size = 1.5,
+              xintercept = target_vals, color = palette[2], size = 1.5,
               alpha = 0.7
             ) +
             geom_vline(xintercept = 0, color = "black", size = 1) +

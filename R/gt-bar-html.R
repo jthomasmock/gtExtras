@@ -49,7 +49,7 @@ gt_plt_bar_pct <- function(gt_object, column, height = 16, fill = "purple",
   # segment data with bare string column name
   data_in <- gt_index(gt_object, column = {{ column }})
 
-  col_number <- which(colnames(gt_object[["_data"]])==col_bare)
+  col_number <- which(colnames(gt_object[["_data"]]) == col_bare)
 
   gt_object %>%
     text_transform(

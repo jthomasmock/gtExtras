@@ -2,7 +2,7 @@
 % Please edit documentation in R/gtsave_extra.R
 \name{gtsave_extra}
 \alias{gtsave_extra}
-\title{Use webshot to save a gt table as a PNG}
+\title{Use webshot2 to save a gt table as a PNG}
 \usage{
 gtsave_extra(data, filename, path = NULL, ..., zoom = 2, expand = 5)
 }
@@ -23,7 +23,7 @@ gtsave_extra(data, filename, path = NULL, ..., zoom = 2, expand = 5)
 Prints the HTML content to the RStudio viewer and saves a \code{.png} file to disk
 }
 \description{
-Takes existing HTML content, typically additional HTML including a gt table as a PNG via the \code{{webshot}} package.
+Takes existing HTML content, typically additional HTML including a gt table as a PNG via the \code{{webshot2}} package.
 }
 \section{Function ID}{
 

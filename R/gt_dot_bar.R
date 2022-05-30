@@ -7,10 +7,10 @@
 #' @param category_column The category column, where a colored dot and bar will be added
 #' @param palette The colors or color function that values will be mapped to. Can be a character vector (eg `c("white", "red")` or hex colors) or a named palette from the `{paletteer}` package.
 #' @param max_value A single numeric value indicating the max value, if left as `NULL` then the range of the `column` values will be used
-#'
+#' @import gt
 #' @return a `gt_tbl`
 #' @export
-#' @examples
+#' @section Examples:
 #' library(gt)
 #' dot_bar_tab <- mtcars %>%
 #'   head() %>%
@@ -23,22 +23,18 @@
 #' \if{html}{\figure{gt_dot_bar.png}{options: width=50\%}}
 #'
 #' @family Themes
-#' @section Function ID:
-#' 3-8
+
 gt_plt_dot <- function(gt_object, column, category_column , palette = NULL,
                        max_value = NULL){
 
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
 
-  # convert tidyeval column to bare string
-  cat_col_bare <- rlang::enexpr(category_column) %>% rlang::as_string()
   # segment data with bare string column name
-  cat_data_in <- gt_object[["_data"]][[cat_col_bare]]
+  cat_data_in <- gt_index(gt_object, {{ category_column }})
 
   cat_levels <- unique(cat_data_in)
 
-  col_bare <- rlang::enexpr(column) %>% rlang::as_string()
-  data_in <- gt_object[["_data"]][[col_bare]]
+  data_in <- gt_index(gt_object, {{ column }})
 
   total_max <- max(data_in, na.rm = TRUE)
 
@@ -112,7 +108,6 @@ gt_plt_dot <- function(gt_object, column, category_column , palette = NULL,
           )
         ),
         htmltools::div(
-          # format(val_x, nsmall = 1L, digits = 1L),
           style = paste0(
             "display: inline-block;float:right;line-height:20px;",
             "padding: 0px 2.5px;"
@@ -127,12 +122,12 @@ gt_plt_dot <- function(gt_object, column, category_column , palette = NULL,
   }
 
   gt_object %>%
-    cols_merge(
+    gt::cols_merge(
       c({{ category_column }}, {{ column }}),
       pattern = "{1}^split^{2}",
       hide_columns = FALSE
     ) %>%
-    text_transform(
+    gt::text_transform(
       locations = cells_body({{ category_column }}),
       fn = function(xz) {
         lapply(xz, color_dots)

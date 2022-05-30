@@ -118,7 +118,7 @@ head(mtcars) %>%
 <img src="man/figures/gt_nyt.png" width="700px">
 </p>
 
-### Hulk data\_color
+### Hulk data_color
 
 This is an opinionated diverging color palette. It diverges from low to
 high as purple to green. It is a good alternative to a red-green

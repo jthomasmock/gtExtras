@@ -131,7 +131,7 @@ head(mtcars) %>%
 ```
 
 <p align="center"><img src="man/figures/hulk_trim.png" width="700px"></p>
- <!-- width="1200px" -->
+ <!-- width="1200px" --> 
 
 Reverse makes higher values represented by purple and lower by green. The default is to have high = green, low = purple.
 

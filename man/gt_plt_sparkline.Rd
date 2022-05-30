@@ -9,7 +9,7 @@ gt_plt_sparkline(
   column,
   type = "default",
   fig_dim = c(5, 30),
-  pal = c("black", "black", "purple", "green", "lightgrey"),
+  palette = c("black", "black", "purple", "green", "lightgrey"),
   same_limit = TRUE,
   label = TRUE
 )
@@ -23,7 +23,7 @@ gt_plt_sparkline(
 
 \item{fig_dim}{A vector of two numbers indicating the height/width of the plot in mm at a DPI of 25.4, defaults to \code{c(5,30)}}
 
-\item{pal}{A character string indicating the colors of various components. Order matters, and pal = sparkline color, final value color, range color low, range color high, and 'type' color (eg shading or reference lines).}
+\item{palette}{A character string indicating the colors of various components. Order matters, and palette = sparkline color, final value color, range color low, range color high, and 'type' color (eg shading or reference lines).}
 
 \item{same_limit}{A logical indicating that the plots will use the same axis range (\code{TRUE}) or have individual axis ranges (\code{FALSE}).}
 

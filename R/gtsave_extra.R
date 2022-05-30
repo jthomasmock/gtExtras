@@ -1,5 +1,5 @@
-#' Use webshot to save a gt table as a PNG
-#' @description Takes existing HTML content, typically additional HTML including a gt table as a PNG via the `{webshot}` package.
+#' Use webshot2 to save a gt table as a PNG
+#' @description Takes existing HTML content, typically additional HTML including a gt table as a PNG via the `{webshot2}` package.
 #' @param data HTML content to be saved temporarily to disk
 #' @param filename The name of the file, should end in `.png`
 #' @param path An optional path
@@ -36,7 +36,7 @@ gtsave_extra <- function(data,
     path = NULL
   )
 
-  # Saving an image requires the webshot package; if it's
+  # Saving an image requires the webshot2 package; if it's
   # not present, stop with a message
   if (!rlang::is_installed("webshot2")) {
 

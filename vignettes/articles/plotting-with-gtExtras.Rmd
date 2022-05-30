@@ -376,7 +376,7 @@ bullet_df <- tibble::rownames_to_column(mtcars) %>%
 bullet_df %>%
  gt() %>%
  gt_plt_bullet(column = mpg, target = target_col, width = 45,
-               colors = c("lightblue", "black"))
+               palette = c("lightblue", "black"))
 ```
 
 Note that for now, if you want to use any of the `gt::fmt_` functions on your `column` of interest, you'll need to create a duplicate column ahead of time.

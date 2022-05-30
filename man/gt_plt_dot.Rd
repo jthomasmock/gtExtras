@@ -31,26 +31,23 @@ This function takes a data column and a categorical column and
 adds a colored dot and a colored dot to the categorical column. You can supply
 a specific palette or a palette from the \code{{paletteer}} package.
 }
+\section{Examples}{
+
+library(gt)
+dot_bar_tab <- mtcars \%>\%
+head() \%>\%
+dplyr::mutate(cars = sapply(strsplit(rownames(.)," "), \code{[}, 1)) \%>\%
+dplyr::select(cars, mpg, disp) \%>\%
+gt() \%>\%
+gt_plt_dot(disp, cars, palette = "ggthemes::fivethirtyeight") \%>\%
+cols_width(cars ~ px(125))
+}
+
 \section{Figures}{
 
 \if{html}{\figure{gt_dot_bar.png}{options: width=50\%}}
 }
 
-\section{Function ID}{
-
-3-8
-}
-
-\examples{
-library(gt)
-dot_bar_tab <- mtcars \%>\%
-  head() \%>\%
-  dplyr::mutate(cars = sapply(strsplit(rownames(.)," "), `[`, 1)) \%>\%
-  dplyr::select(cars, mpg, disp) \%>\%
-  gt() \%>\%
-  gt_plt_dot(disp, cars, palette = "ggthemes::fivethirtyeight") \%>\%
-  cols_width(cars ~ px(125))
-}
 \seealso{
 Other Themes: 
 \code{\link{gt_plt_bullet}()},

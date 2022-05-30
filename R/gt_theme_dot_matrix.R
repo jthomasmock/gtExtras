@@ -5,7 +5,7 @@
 #' @param color A string indicating the color of the row striping, defaults to a light green. Accepts either named colors or hex colors.
 #' @return An object of class `gt_tbl`.
 #' @export
-#' @examples
+#' @section Examples:
 #' library(gt)
 #' themed_tab <- head(mtcars) %>%
 #'   gt() %>%
@@ -15,8 +15,6 @@
 #' \if{html}{\figure{gt_dot_matrix.png}{options: width=100\%}}
 #'
 #' @family Themes
-#' @section Function ID:
-#' 1-5
 
 gt_theme_dot_matrix <- function(gt_object, ..., color = "#b5dbb6"){
 
@@ -24,12 +22,6 @@ gt_theme_dot_matrix <- function(gt_object, ..., color = "#b5dbb6"){
 
   gt_object %>%
     opt_row_striping() %>%
-    tab_style(
-      style = cell_borders(sides = "bottom", weight = px(3), color = "white"),
-      locations = list(
-        cells_body(rows = nrow(gt_object[["_data"]]))
-      )
-    ) %>%
     opt_table_font(font = "Courier") %>%
     tab_options(
       ...,
@@ -48,5 +40,12 @@ gt_theme_dot_matrix <- function(gt_object, ..., color = "#b5dbb6"){
       table_body.hlines.style = "none",
       table_body.vlines.style = "none",
       data_row.padding = px(1)
+    ) %>% opt_css(
+      "tbody tr:last-child {
+    border-bottom: 2px solid #ffffff00;
+      }
+
+    ",
+    add = TRUE
     )
 }

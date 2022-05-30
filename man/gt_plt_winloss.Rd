@@ -37,22 +37,23 @@ a list-column as seen in the example code. The column should also only contain
 values of 0 (loss), 0.5 (tie), and 1 (win).
 }
 \section{Examples}{
-
-#' library(gt)
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{#' library(gt)
 
 set.seed(37)
 data_in <- dplyr::tibble(
-grp = rep(c("A", "B", "C"), each = 10),
-wins = sample(c(0,1,.5), size = 30, prob = c(0.45, 0.45, 0.1), replace = TRUE)
+  grp = rep(c("A", "B", "C"), each = 10),
+  wins = sample(c(0,1,.5), size = 30, prob = c(0.45, 0.45, 0.1), replace = TRUE)
 ) \%>\%
-dplyr::group_by(grp) \%>\%
-dplyr::summarize(wins=list(wins), .groups = "drop")
+  dplyr::group_by(grp) \%>\%
+  dplyr::summarize(wins=list(wins), .groups = "drop")
 
 data_in
 
 win_table <- data_in \%>\%
-gt() \%>\%
-gt_plt_winloss(wins)
+  gt() \%>\%
+  gt_plt_winloss(wins)
+}\if{html}{\out{</div>}}
+
 \if{html}{\out{
 <img src="https://raw.githubusercontent.com/jthomasmock/gtExtras/master/images/gt_plt_winloss-ex.png" style="width:60\%;">
 }}

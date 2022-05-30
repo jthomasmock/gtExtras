@@ -20,12 +20,12 @@ An object of class \code{gt_tbl}.
 Apply dot matrix theme to a gt table
 }
 \section{Examples}{
-
-library(gt)
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
 themed_tab <- head(mtcars) \%>\%
-gt() \%>\%
-gt_theme_dot_matrix() \%>\%
-tab_header(title = "Styled like dot matrix printer paper")
+  gt() \%>\%
+  gt_theme_dot_matrix() \%>\%
+  tab_header(title = "Styled like dot matrix printer paper")
+}\if{html}{\out{</div>}}
 }
 
 \section{Figures}{

@@ -6,11 +6,13 @@
 #' @return An object of class `gt_tbl`.
 #' @export
 #' @section Examples:
+#' ```r
 #' library(gt)
 #' themed_tab <- head(mtcars) %>%
 #'   gt() %>%
 #'   gt_theme_dot_matrix() %>%
 #'   tab_header(title = "Styled like dot matrix printer paper")
+#' ```
 #' @section Figures:
 #' \if{html}{\figure{gt_dot_matrix.png}{options: width=100\%}}
 #'

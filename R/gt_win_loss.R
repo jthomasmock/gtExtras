@@ -16,6 +16,7 @@
 #' @return An object of class `gt_tbl`.
 #' @export
 #' @section Examples:
+#' ```r
 #' #' library(gt)
 #'
 #' set.seed(37)
@@ -31,6 +32,7 @@
 #' win_table <- data_in %>%
 #'   gt() %>%
 #'   gt_plt_winloss(wins)
+#' ```
 #' \if{html}{\out{
 #' `r man_get_image_tag(file = "gt_plt_winloss-ex.png", width = 60)`
 #' }}

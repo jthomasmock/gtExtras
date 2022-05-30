@@ -11,6 +11,7 @@
 #' @return a `gt_tbl`
 #' @export
 #' @section Examples:
+#' ```r
 #' library(gt)
 #' dot_bar_tab <- mtcars %>%
 #'   head() %>%
@@ -19,6 +20,7 @@
 #'   gt() %>%
 #'   gt_plt_dot(disp, cars, palette = "ggthemes::fivethirtyeight") %>%
 #'   cols_width(cars ~ px(125))
+#' ```
 #' @section Figures:
 #' \if{html}{\figure{gt_dot_bar.png}{options: width=50\%}}
 #'

@@ -32,15 +32,15 @@ adds a colored dot and a colored dot to the categorical column. You can supply
 a specific palette or a palette from the \code{{paletteer}} package.
 }
 \section{Examples}{
-
-library(gt)
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
 dot_bar_tab <- mtcars \%>\%
-head() \%>\%
-dplyr::mutate(cars = sapply(strsplit(rownames(.)," "), \code{[}, 1)) \%>\%
-dplyr::select(cars, mpg, disp) \%>\%
-gt() \%>\%
-gt_plt_dot(disp, cars, palette = "ggthemes::fivethirtyeight") \%>\%
-cols_width(cars ~ px(125))
+  head() \%>\%
+  dplyr::mutate(cars = sapply(strsplit(rownames(.)," "), `[`, 1)) \%>\%
+  dplyr::select(cars, mpg, disp) \%>\%
+  gt() \%>\%
+  gt_plt_dot(disp, cars, palette = "ggthemes::fivethirtyeight") \%>\%
+  cols_width(cars ~ px(125))
+}\if{html}{\out{</div>}}
 }
 
 \section{Figures}{

@@ -1,3 +1,7 @@
+# gtExtras 0.4.0
+
+- Prep for and submit initial CRAN release :fingers-crossed:.
+
 # gtExtras 0.3.9
 - Renamed colors arg in `merge_and_stack()` to be 'palette'
 - Renamed colors arg in `gt_plt_bullet()` to be 'palette'

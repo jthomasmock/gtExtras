@@ -8,6 +8,7 @@
 #' @import gt
 #' @importFrom gt %>%
 #' @importFrom stats IQR
+#' @importFrom utils packageVersion
 #' @return a gt table
 #' @export
 #' @section Examples:
@@ -87,7 +88,7 @@ gt_plt_summary <- function(df, title = NULL) {
       heading.border.bottom.width = px(0)
     )
 
-  {if(packageVersion("gt")$minor >= 6){
+  {if(utils::packageVersion("gt")$minor >= 6){
     tab_out %>% sub_missing(Mean:SD)
   } else {
     tab_out %>% fmt_missing(Mean:SD)

@@ -8,6 +8,8 @@
 [![Codecov test
 coverage](https://codecov.io/gh/jthomasmock/gtExtras/branch/master/graph/badge.svg)](https://app.codecov.io/gh/jthomasmock/gtExtras?branch=master)
 [![R-CMD-check](https://github.com/jthomasmock/gtExtras/workflows/R-CMD-check/badge.svg)](https://github.com/jthomasmock/gtExtras/actions)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/gtExtras)](https://CRAN.R-project.org/package=gtExtras)
 <!-- badges: end -->
 
 The goal of `{gtExtras}` is to provide some additional helper functions
@@ -20,17 +22,22 @@ official documentation.
 
 ## Installation
 
-Full disclosure, `gtExtras` is under extremely active development. I
-appreciate any bug reports as issues, and I highly recommend updating
-frequently at least until an initial CRAN release.
+``` r
+install.packages("gtExtras")
+```
 
-You can install the dev version of gtExtras from
-[GitHub](https://github.com/jthomasmock/gtExtras) with:
+## Development version
+
+To get a bug fix or to use a feature from the development version, you
+can install the development version of gtExtras from
+[GitHub](https://github.com/jthomasmock/gtExtras)
 
 ``` r
 # if needed install.packages("remotes")
 remotes::install_github("jthomasmock/gtExtras")
 ```
+
+You can install
 
 ### `fmt_symbol_first`
 

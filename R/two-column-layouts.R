@@ -90,13 +90,10 @@ gt_double_table <- function(data, gt_fn, nrows = NULL, noisy = TRUE) {
 #' @param expand Argument to `webshot2::webshot()`. A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order. When taking screenshots of multiple URLs, this parameter can also be a list with same length as url with each element of the list containing a single number or four numbers to use for the corresponding URL.
 #' @return Saves a `.png` to disk if `output = "save"`, returns HTML to the viewer via `htmltools::browsable()` when `output = "viewer"`, or returns raw HTML if `output = "html"`.
 #' @export
-#' @section Figures:
-#' \if{html}{\figure{basic-two-col.png}{options: width=60\%}}
-#'
 #' @family Utilities
-#' @section Function ID:
-#' 2-14
-#' @examples
+#' @section Examples:
+#'
+#' ``` r
 #' library(gt)
 #' # add row numbers and drop some columns
 #' my_cars <- mtcars %>%
@@ -136,6 +133,10 @@ gt_double_table <- function(data, gt_fn, nrows = NULL, noisy = TRUE) {
 #' # gt_two_column_layout(my_tables, output = "save",
 #' #                      filename = "basic-two-col.png",
 #' #                      vwidth = 550, vheight = 620)
+#' ```
+#' @section Figures:
+#' \if{html}{\figure{basic-two-col.png}{options: width=60\%}}
+#'
 gt_two_column_layout <- function(tables = NULL, output = "viewer",
                                  filename = NULL, path = NULL,
                                  vwidth = 992, vheight = 600, ...,

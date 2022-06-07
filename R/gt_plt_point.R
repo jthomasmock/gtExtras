@@ -59,7 +59,7 @@ add_point_plot <- function(data, palette, add_label, width, vals_range,
         paste0(collapse = "") %>%
         gt::html()
 
-      on.exit(file.remove(out_name))
+      on.exit(file.remove(out_name), add=TRUE)
 
       img_plot
   }

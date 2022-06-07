@@ -90,7 +90,7 @@ gt_plt_winloss <- function(gt_object, column, max_wins = 17,
       paste0(collapse = "") %>%
       gt::html()
 
-    on.exit(file.remove(out_name))
+    on.exit(file.remove(out_name), add=TRUE)
 
     img_plot
 
@@ -132,7 +132,7 @@ gt_plt_winloss <- function(gt_object, column, max_wins = 17,
       paste0(collapse = "") %>%
       gt::html()
 
-    on.exit(file.remove(out_name))
+    on.exit(file.remove(out_name), add=TRUE)
 
     img_plot
 

@@ -103,7 +103,7 @@ gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
             paste0(collapse = "") %>%
             gt::html()
 
-          on.exit(file.remove(out_name))
+          on.exit(file.remove(out_name), add=TRUE)
 
           img_plot
         }

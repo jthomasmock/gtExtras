@@ -147,7 +147,7 @@ gt_plt_bar_stack <- function(gt_object, column = NULL,
           paste0(collapse = "") %>%
           gt::html()
 
-        on.exit(file.remove(out_name))
+        on.exit(file.remove(out_name), add=TRUE)
 
         img_plot
       }

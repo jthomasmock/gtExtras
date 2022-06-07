@@ -204,7 +204,7 @@ gt_plt_sparkline <- function(gt_object, column, type = "default",
       paste0(collapse = "") %>%
       gt::html()
 
-    on.exit(file.remove(out_name))
+    on.exit(file.remove(out_name), add=TRUE)
 
     img_plot
   }

@@ -1,5 +1,6 @@
 test_that("fontawesome, test repeats", {
   check_suggests()
+  skip_on_cran()
 
   fa_rep_html <- mtcars[1:5,1:4] %>%
     dplyr::add_row(mpg = 20.09, cyl = NA, disp = 200, hp = 108) %>%
@@ -27,6 +28,7 @@ test_that("fontawesome, test repeats", {
 
 test_that("fontawesome, test column, name and colors", {
   check_suggests()
+  skip_on_cran()
 
   fa_car_html <- head(mtcars) %>%
     dplyr::select(cyl, mpg, am, gear) %>%
@@ -56,6 +58,7 @@ test_that("fontawesome, test column, name and colors", {
 
 test_that("fontawesome, test ratings all R and colors/numbers match", {
   check_suggests()
+  skip_on_cran()
 
   rate_html <- mtcars %>%
     dplyr::select(mpg:hp) %>%
@@ -95,6 +98,7 @@ test_that("fontawesome, test ratings all R and colors/numbers match", {
 
 test_that("fontawesome, test repeats", {
   check_suggests()
+  skip_on_cran()
 
   color_fn <- function(pal= "#FF0000"){
     mtcars[1:5,1:4] %>%
@@ -125,6 +129,7 @@ test_that("fontawesome, test repeats", {
 
 test_that("fontawesome, test column, name and colors", {
   check_suggests()
+  skip_on_cran()
 
   col_cog_fn <- function(pal){
     head(mtcars) %>%
@@ -151,6 +156,7 @@ test_that("fontawesome, test column, name and colors", {
 
 test_that("fontawesome, test rank change", {
   check_suggests()
+  skip_on_cran()
 
   base_tab <- dplyr::tibble(x = c(1:3,-1,-2,-5,0)) %>%
     gt::gt()

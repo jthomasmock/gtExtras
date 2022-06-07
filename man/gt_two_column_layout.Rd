@@ -51,18 +51,10 @@ satisfactory. In most situations, modifying the \code{vwidth} argument is suffic
 to get the desired output, but all arguments to \code{webshot2::webshot()} are
 available by their original name via the passed \code{...}.
 }
-\section{Figures}{
+\section{Examples}{
 
-\if{html}{\figure{basic-two-col.png}{options: width=60\%}}
-}
 
-\section{Function ID}{
-
-2-14
-}
-
-\examples{
-library(gt)
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
 # add row numbers and drop some columns
 my_cars <- mtcars \%>\%
   dplyr::mutate(row_n = dplyr::row_number(), .before = mpg) \%>\%
@@ -87,10 +79,10 @@ gt_two_column_layout(listed_tables)
 
 # better option!
 # create a one-argument function, passing data to `gt::gt()`
-my_gt_fn <- function(x) {
+my_gt_fn <- function(x) \{
   gt(x) \%>\%
     gtExtras::gt_color_rows(columns = row_n, domain = 1:32)
-}
+\}
 
 # pass data, your function and the nrows
 my_tables <- gt_double_table(my_cars, my_gt_fn, nrows = nrow(my_cars) / 2)
@@ -101,7 +93,14 @@ my_output <- gt_two_column_layout(my_tables)
 # gt_two_column_layout(my_tables, output = "save",
 #                      filename = "basic-two-col.png",
 #                      vwidth = 550, vheight = 620)
+}\if{html}{\out{</div>}}
 }
+
+\section{Figures}{
+
+\if{html}{\figure{basic-two-col.png}{options: width=60\%}}
+}
+
 \seealso{
 Other Utilities: 
 \code{\link{add_text_img}()},

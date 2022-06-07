@@ -50,7 +50,7 @@ save_svg <- function(plot, ..., dpi = 25.4){
     paste0(collapse = "") %>%
     gt::html()
 
-  on.exit(file.remove(out_name))
+  on.exit(file.remove(out_name), add=TRUE)
 
   img_plot
 

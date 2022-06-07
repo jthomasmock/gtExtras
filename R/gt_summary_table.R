@@ -264,7 +264,7 @@ plot_data <- function(col, col_name, ...) {
     paste0(collapse = "") %>%
     gt::html()
 
-  on.exit(file.remove(out_name))
+  on.exit(file.remove(out_name), add=TRUE)
 
   img_plot
 }

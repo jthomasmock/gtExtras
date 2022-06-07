@@ -137,7 +137,7 @@ gt_plt_bar <- function(gt_object, column = NULL, color = "purple", ...,
       paste0(collapse = "") %>%
       gt::html()
 
-    on.exit(file.remove(out_name))
+    on.exit(file.remove(out_name), add=TRUE)
 
     img_plot
   }

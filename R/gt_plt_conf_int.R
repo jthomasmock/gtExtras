@@ -221,7 +221,7 @@ add_ci_plot <- function(data_in, pal_vals, width, ext_range,
     paste0(collapse = "") %>%
     gt::html()
 
-  on.exit(file.remove(out_name))
+  on.exit(file.remove(out_name), add=TRUE)
 
   img_plot
 }

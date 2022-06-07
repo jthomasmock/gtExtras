@@ -267,7 +267,7 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
       paste0(collapse = "") %>%
       gt::html()
 
-    on.exit(file.remove(out_name))
+    on.exit(file.remove(out_name), add=TRUE)
 
     img_plot
   }

@@ -1,12 +1,8 @@
-check_suggests3 <- function() {
+test_that("gtsave_extra, file out works", {
   check_suggests()
   skip_if_not_installed("webshot2")
   skip_on_cran()
   skip_on_ci()
-}
-
-test_that("gtsave_extra, file out works", {
-  check_suggests3()
 
   # Create a filename with path, having the
   # .html extension

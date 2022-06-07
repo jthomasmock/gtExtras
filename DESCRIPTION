@@ -31,7 +31,6 @@ Suggests:
     checkmate (>= 2.0.0),
     covr,
     fs (>= 1.5.2),
-    knitr,
     hms,
     magrittr (>= 1.5),
     RColorBrewer,
@@ -45,10 +44,7 @@ Suggests:
     tidyselect (>= 1.0.0),
     webshot2 (>= 0.1.0),
     xml2
-VignetteBuilder: 
-    knitr
 Config/testthat/edition: 3
 Encoding: UTF-8
-LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0

@@ -2,7 +2,11 @@
 check_suggests <- function() {
   skip_if_not_installed("rvest")
   skip_if_not_installed("xml2")
+  skip_on_cran()
 }
+
+check_suggests()
+
 
 ex_gt <- gt::gtcars %>%
   head() %>%
@@ -53,6 +57,7 @@ test_that("fmt_symbol_first works with escaped characters", {
 testthat::test_that(
   "fmt_symbol_first, Raw percent character works",
   {
+    check_suggests()
     test_gt_by_col(2, expectation = "2017%")
     test_gt_by_col(2, row_first = FALSE, expectation = "201[4-7]&nbsp")
   }
@@ -61,6 +66,7 @@ testthat::test_that(
 testthat::test_that(
   "fmt_symbol_first, HTML symbol for percent works",
   {
+    check_suggests()
     test_gt_by_col(4, expectation = "20.2%")
     test_gt_by_col(4, row_first = FALSE, expectation = "[0-9]+&nbsp")
   }

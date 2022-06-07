@@ -41,6 +41,8 @@ adds horizontal barplots via \code{ggplot2}. Note that values are plotted on a
 shared x-axis, and a vertical black bar is added at x = zero.
 }
 \section{Examples}{
+
+
 \if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
 gt_plt_bar_tab <- mtcars \%>\%
   head() \%>\%

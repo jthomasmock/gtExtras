@@ -43,6 +43,8 @@ the labels can be controlled via the \code{fmt_fn} argument and the
 \verb{scales::label_???()} family of function.
 }
 \section{Examples}{
+
+
 \if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
 library(dplyr)
 

@@ -32,6 +32,8 @@ adds a colored dot and a colored dot to the categorical column. You can supply
 a specific palette or a palette from the \code{{paletteer}} package.
 }
 \section{Examples}{
+
+
 \if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
 dot_bar_tab <- mtcars \%>\%
   head() \%>\%

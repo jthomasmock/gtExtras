@@ -30,6 +30,8 @@ An object of class \code{gt_tbl}.
 Create an inline 'bullet chart' in a gt table
 }
 \section{Examples}{
+
+
 \if{html}{\out{<div class="sourceCode r">}}\preformatted{set.seed(37)
 bullet_tab <- tibble::rownames_to_column(mtcars) \%>\%
  dplyr::select(rowname, cyl:drat, mpg) \%>\%

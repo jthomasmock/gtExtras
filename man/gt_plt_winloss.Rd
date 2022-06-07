@@ -37,6 +37,8 @@ a list-column as seen in the example code. The column should also only contain
 values of 0 (loss), 0.5 (tie), and 1 (win).
 }
 \section{Examples}{
+
+
 \if{html}{\out{<div class="sourceCode r">}}\preformatted{#' library(gt)
 
 set.seed(37)

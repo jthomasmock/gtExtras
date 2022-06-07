@@ -22,7 +22,9 @@ the observablehq/SummaryTable function: https://observablehq.com/d/d8d2929832202
 \section{Examples}{
 
 
-Create a summary table from a \code{data.frame} or \code{tibble}.\if{html}{\out{<div class="sourceCode r">}}\preformatted{gt_plt_summary(datasets::ChickWeight)
+Create a summary table from a \code{data.frame} or \code{tibble}.
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{gt_plt_summary(datasets::ChickWeight)
 }\if{html}{\out{</div>}}
 
 \if{html}{\out{

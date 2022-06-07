@@ -1,14 +1,12 @@
-# Function to skip tests if Suggested packages not available on system
-check_suggests <- function() {
-  skip_if_not_installed("rvest")
-  skip_if_not_installed("xml2")
+check_suggests3 <- function() {
+  check_suggests()
   skip_if_not_installed("webshot2")
   skip_on_cran()
   skip_on_ci()
 }
 
 test_that("gtsave_extra, file out works", {
-  check_suggests()
+  check_suggests3()
 
   # Create a filename with path, having the
   # .html extension

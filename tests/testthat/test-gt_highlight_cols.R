@@ -1,11 +1,3 @@
-# Function to skip tests if Suggested packages not available on system
-check_suggests <- function() {
-  skip_if_not_installed("rvest")
-  skip_if_not_installed("xml2")
-
-}
-
-
 test_that("gt_highlight_row correct row is highlighted and is blue", {
   check_suggests()
 

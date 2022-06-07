@@ -1,10 +1,3 @@
-# Function to skip tests if Suggested packages not available on system
-check_suggests <- function() {
-  skip_if_not_installed("rvest")
-  skip_if_not_installed("xml2")
-
-}
-
 test_that("fmt_pct_extra generates expected output and colors", {
   pct_tab <- dplyr::tibble(x = c(.001,.05,.008,.1,.2,.5,.9)) %>%
     gt::gt() %>%

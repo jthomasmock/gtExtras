@@ -20,13 +20,6 @@ test_that("bw calc is appropriate", {
 
 })
 
-# Function to skip tests if Suggested packages not available on system
-check_suggests <- function() {
-  skip_if_not_installed("rvest")
-  skip_if_not_installed("xml2")
-}
-
-
 test_that("save_svg exports and imports SVG", {
   check_suggests()
 

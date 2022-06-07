@@ -1,14 +1,12 @@
-# Function to skip tests if Suggested packages not available on system
-check_suggests <- function() {
-  skip_if_not_installed("rvest")
-  skip_if_not_installed("xml2")
+check_suggests2 <- function() {
+  check_suggests()
   skip_if_not_installed("webshot2")
   skip_on_cran()
   skip_on_ci()
 }
 
 test_that("two_column_layout, two gt_tbl objects", {
-  check_suggests()
+  check_suggests2()
 
   # define your own function
   my_gt_function <- function(x){
@@ -29,7 +27,7 @@ test_that("two_column_layout, two gt_tbl objects", {
 
 test_that("two_column_layout saving works", {
 
-  check_suggests()
+  check_suggests2()
 
   # Create a filename with path, having the
   # .html extension

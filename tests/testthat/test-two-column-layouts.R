@@ -30,7 +30,7 @@ test_that("two_column_layout saving works", {
   # Create a filename with path, having the
   # .html extension
   path_1 <- tempfile(fileext = ".html")
-  on.exit(unlink(path_1))
+  on.exit(unlink(path_1), add = TRUE)
 
   # Expect that a file does not yet exist
   # on that path
@@ -53,7 +53,7 @@ test_that("two_column_layout saving works", {
   my_output <- gt_two_column_layout(my_tables)
 
   path_2 <- tempfile(fileext = ".png")
-  on.exit(unlink(path_2))
+  on.exit(unlink(path_2), add = TRUE)
 
   # Expect that a file does not yet exist
   # on that path

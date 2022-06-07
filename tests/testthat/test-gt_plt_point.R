@@ -45,6 +45,7 @@ test_that("add_point_plot creates a plot", {
 })
 
 test_that("gt_plt_point works as intended", {
+  check_suggests()
 
   dot_plt <- dplyr::tibble(x = c(seq(1.2e6, 2e6, length.out = 5))) %>%
     gt::gt() %>%

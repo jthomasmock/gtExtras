@@ -1,4 +1,6 @@
 test_that("img_header generates img", {
+  check_suggests()
+
   example_img <- img_header(
     "Luka Doncic",
     "https://secure.espn.com/combiner/i?img=/i/headshots/nba/players/full/3945274.png",

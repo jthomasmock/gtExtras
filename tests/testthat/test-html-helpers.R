@@ -46,6 +46,7 @@ test_that("badge color is created",{
 })
 
 test_that("badge color is created and accurate in gt", {
+  check_suggests()
 
   badge_tab <- head(mtcars) %>%
     dplyr::mutate(cyl = paste(cyl, "Cyl")) %>%

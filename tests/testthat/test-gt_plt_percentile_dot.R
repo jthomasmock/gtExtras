@@ -1,9 +1,3 @@
-# Function to skip tests if Suggested packages not available on system
-check_suggests <- function() {
-  skip_if_not_installed("rvest")
-  skip_if_not_installed("xml2")
-}
-
 test_that("add_pcttile_plot creates a plot", {
 
   check_suggests()
@@ -51,6 +45,7 @@ test_that("add_pcttile_plot creates a plot", {
   })
 
 test_that("gt_plt_percentile works as intended", {
+  check_suggests()
 
   dot_plt <- dplyr::tibble(x = c(seq(10, 90, length.out = 5))) %>%
     gt::gt() %>%

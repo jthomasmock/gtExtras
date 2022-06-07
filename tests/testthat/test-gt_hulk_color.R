@@ -1,15 +1,3 @@
-# Function to skip tests if Suggested packages not available on system
-check_suggests <- function() {
-  skip_if_not_installed("rvest")
-  skip_if_not_installed("xml2")
-}
-
-
-check_suggests <- function() {
-  skip_if_not_installed("rvest")
-  skip_if_not_installed("xml2")
-}
-
 # Gets the HTML attr value from a single key
 selection_value <- function(html, key) {
 

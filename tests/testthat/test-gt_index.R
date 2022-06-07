@@ -1,9 +1,3 @@
-# Function to skip tests if Suggested packages not available on system
-check_suggests <- function() {
-  skip_if_not_installed("rvest")
-  skip_if_not_installed("xml2")
-}
-
 test_that("gt_index has correct inputs, correct ouput index, and can affect correct rows", {
   check_suggests()
 

@@ -1,10 +1,3 @@
-# Function to skip tests if Suggested packages not available on system
-check_suggests <- function() {
-  skip_if_not_installed("rvest")
-  skip_if_not_installed("xml2")
-}
-
-
 test_that("details tag is created", {
 
   check_suggests()
@@ -53,6 +46,7 @@ test_that("badge color is created",{
 })
 
 test_that("badge color is created and accurate in gt", {
+  check_suggests()
 
   badge_tab <- head(mtcars) %>%
     dplyr::mutate(cyl = paste(cyl, "Cyl")) %>%

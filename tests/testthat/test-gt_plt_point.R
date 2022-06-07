@@ -1,9 +1,3 @@
-# Function to skip tests if Suggested packages not available on system
-check_suggests <- function() {
-  skip_if_not_installed("rvest")
-  skip_if_not_installed("xml2")
-}
-
 test_that("add_point_plot creates a plot", {
 
   check_suggests()
@@ -51,6 +45,7 @@ test_that("add_point_plot creates a plot", {
 })
 
 test_that("gt_plt_point works as intended", {
+  check_suggests()
 
   dot_plt <- dplyr::tibble(x = c(seq(1.2e6, 2e6, length.out = 5))) %>%
     gt::gt() %>%

@@ -1,10 +1,3 @@
-# Function to skip tests if Suggested packages not available on system
-check_suggests <- function() {
-  skip_if_not_installed("rvest")
-  skip_if_not_installed("xml2")
-
-}
-
 my_car <- head(mtcars[,1:5]) %>%
   tibble::rownames_to_column("car")
 

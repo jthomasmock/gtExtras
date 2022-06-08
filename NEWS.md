@@ -1,8 +1,9 @@
 # gtExtras (development version)
+- Add NA handling to `gt_plt_conf_int()` - closes [#52](https://github.com/jthomasmock/gtExtras/issues/52)
 
 # gtExtras 0.4.0
 
-- Prep for and submit initial CRAN release :fingers-crossed:.
+- Prep for and submit initial CRAN release :fingers-crossed:
 
 # gtExtras 0.3.9
 - Renamed colors arg in `merge_and_stack()` to be 'palette'

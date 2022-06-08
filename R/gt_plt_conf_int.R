@@ -13,7 +13,8 @@
 #' @return a gt table
 #' @export
 #'
-#' @examples
+#' @section Examples:
+#' ```r
 #' # gtExtras can calculate basic conf int
 #' # using confint() function
 #'
@@ -42,7 +43,7 @@
 #'   gt_plt_conf_int(
 #'     ci_plot, c(ci1, ci2),
 #'     palette = c("red", "lightgrey", "black", "red")
-#'   )
+#' ```
 #' @section Figures:
 #' \if{html}{\figure{gt_plt_ci_calc.png}{options: width=70\%}}
 #' \if{html}{\figure{gt_plt_ci_vals.png}{options: width=70\%}}
@@ -106,14 +107,14 @@ gt_plt_conf_int <- function(gt_object, column, ci_columns, ci = 0.9, ref_line = 
     data_in <- dplyr::tibble(mean = column_vals, y = "1a") %>%
       dplyr::mutate(
         ci1 = ci_val1, ci2 = ci_val2,
-        row_n = row_number()
+        row_n = dplyr::row_number()
       ) %>%
       split(.$row_n)
   }
 
   # calculate the total range so the x-axis can be shared across rows
-  all_ci_min <- min(dplyr::bind_rows(data_in)$ci1)
-  all_ci_max <- max(dplyr::bind_rows(data_in)$ci2)
+  all_ci_min <- min(dplyr::bind_rows(data_in)$ci1, na.rm = TRUE)
+  all_ci_max <- max(dplyr::bind_rows(data_in)$ci2, na.rm = TRUE)
 
   ext_range <- scales::expand_range(c(all_ci_min, all_ci_max),
     mul = 0.1, zero_width = 1
@@ -157,6 +158,11 @@ gt_plt_conf_int <- function(gt_object, column, ci_columns, ci = 0.9, ref_line = 
 add_ci_plot <- function(data_in, pal_vals, width, ext_range,
                         text_args = list(scale_cut = cut_short_scale()), text_size,
                         ref_line) {
+
+  if(NA %in% unlist(data_in)){
+    return("&nbsp;")
+  }
+
   if (unlist(ref_line) == "none") {
     base_plot <- data_in %>%
       ggplot(aes(x = .data$mean, y = "1a"))

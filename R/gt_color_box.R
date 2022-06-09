@@ -6,7 +6,7 @@
 #'
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param columns The columns wherein changes to cell data colors should occur.
-#' @param palette The colours or colour function that values will be mapped to. Can be a character vector (eg `c("white", "red")` or hex colors) or if `use_paletteer = TRUE`, a named palette from the `{paletteer}` package.
+#' @param palette The colours or colour function that values will be mapped to. Can be a character vector (eg `c("white", "red")` or hex colors) or a named palette from the `{paletteer}` package in the `package::palette_name` structure.
 #' @param domain The possible values that can be mapped. This should be a simple numeric range (e.g. `c(0, 100)`)
 #' @param width The width of the entire coloring area in pixels.
 #' @param ... Additional arguments passed to `scales::label_number()`, primarily used to format the numbers inside the color box

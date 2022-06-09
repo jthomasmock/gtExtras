@@ -18,7 +18,7 @@ gt_color_box(
 
 \item{columns}{The columns wherein changes to cell data colors should occur.}
 
-\item{palette}{The colours or colour function that values will be mapped to. Can be a character vector (eg \code{c("white", "red")} or hex colors) or if \code{use_paletteer = TRUE}, a named palette from the \code{{paletteer}} package.}
+\item{palette}{The colours or colour function that values will be mapped to. Can be a character vector (eg \code{c("white", "red")} or hex colors) or a named palette from the \code{{paletteer}} package in the \code{package::palette_name} structure.}
 
 \item{...}{Additional arguments passed to \code{scales::label_number()}, primarily used to format the numbers inside the color box}
 

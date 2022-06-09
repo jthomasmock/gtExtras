@@ -1,5 +1,7 @@
 # gtExtras (development version)
 - Add NA handling to `gt_plt_conf_int()` - closes [#52](https://github.com/jthomasmock/gtExtras/issues/52)
+- Update readme content to reflect latest documentation
+- Remove `use_paletteer` argument from documentation (inline operation in function)
 
 # gtExtras 0.4.0
 

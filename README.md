@@ -37,8 +37,6 @@ can install the development version of gtExtras from
 remotes::install_github("jthomasmock/gtExtras")
 ```
 
-You can install
-
 ### `fmt_symbol_first`
 
 This function allows you to format your columns only on the first row,

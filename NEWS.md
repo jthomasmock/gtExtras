@@ -6,12 +6,12 @@
 - Prep for and submit initial CRAN release :fingers-crossed:
 
 # gtExtras 0.3.9
-- Renamed colors arg in `merge_and_stack()` to be 'palette'
+- Renamed colors arg in `gt_merge_stack()` to be 'palette'
 - Renamed colors arg in `gt_plt_bullet()` to be 'palette'
 - Renamed pal arg in `gt_plt_sparkline()` to be 'palette'
 
 # gtExtras 0.3.8
-- Renamed `colors` argument in `gt_win_loss() to `palette`
+- Renamed `colors` argument in `gt_win_loss()` to `palette`
 - Added NA handling to all `fontawesome::fa()` functions, ie `gt_fa_rank_change()`, `gt_fa_repeats()`, `gt_fa_column()`
 - Add missing data handling to more plotting functions
 - Refactor testing to use `webshot2::webshot()` over `webshot::webshot()`

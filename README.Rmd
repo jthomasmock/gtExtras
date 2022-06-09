@@ -40,8 +40,6 @@ To get a bug fix or to use a feature from the development version, you can insta
 remotes::install_github("jthomasmock/gtExtras")
 ```
 
-You can install 
-
 ### `fmt_symbol_first`
 
 This function allows you to format your columns only on the first row, where remaining rows in that column have whitespace added to the end to maintain proper alignment.

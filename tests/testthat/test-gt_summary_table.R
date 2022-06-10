@@ -76,18 +76,4 @@ test_that("table is created with expected output", {
 
   expect_equal(ex_svg_len, 9)
 
-  ex_svg_text <- ex_html %>%
-    rvest::html_nodes("svg") %>%
-    rvest::html_nodes("text") %>%
-    rvest::html_text()
-
-  ex_svg_text_out <- c(
-    "0", "9M", "7 categories", "8 categories", "2015-01-15",
-    "2015-08-15", "13:35:00", "20:20:00", "2018-01-01",
-    "2018-07-07", "0", "65K", "8 categories", "2 categories"
-    )
-
-
-  expect_equal(ex_svg_text, ex_svg_text_out)
-
 })

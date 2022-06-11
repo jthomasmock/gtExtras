@@ -59,7 +59,7 @@ test_that("table is created with expected output", {
   my_exibble <- gt::exibble %>%
     dplyr::mutate(date = as.Date(date),
       time = hms::parse_hm(time),
-      datetime = as.POSIXct(datetime,tz=Sys.timezone())
+      datetime = as.POSIXct(datetime,tz="America/Chicago")
     )
 
   ex_tab <- gt_plt_summary(my_exibble)

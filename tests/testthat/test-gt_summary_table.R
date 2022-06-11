@@ -68,6 +68,7 @@ test_that("table is created with expected output", {
   vec_miss_out <- c(0.125, 0.125, 0, 0.125, 0.125, 0.125, 0.125, 0, 0)
 
   expect_equal(vec_miss, vec_miss_out)
+
   ex_html <- ex_tab %>%
     gt::as_raw_html() %>%
     rvest::read_html()

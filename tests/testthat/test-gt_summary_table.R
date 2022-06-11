@@ -56,8 +56,8 @@ test_that("table is created with expected output", {
   check_suggests()
   skip_on_cran()
 
-  my_exibble <- gt::exibble |>
-    mutate(date = as.Date(date),
+  my_exibble <- gt::exibble %>%
+    dplyr::mutate(date = as.Date(date),
       time = hms::parse_hm(time),
       datetime = as.POSIXct(datetime,tz=Sys.timezone())
     )

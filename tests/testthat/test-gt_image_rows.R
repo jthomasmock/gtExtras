@@ -1,5 +1,6 @@
 test_that("img_rows, images exist", {
   check_suggests()
+  skip_on_cran()
 
   teams <- "https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"
   team_df <- readRDS(url(teams))

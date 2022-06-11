@@ -1,6 +1,6 @@
 test_that("gt_text_img is created and matches", {
   check_suggests()
-
+  skip_on_cran()
   temp_nm <- tempfile(fileext = ".html")
 
   in_title <- "https://www.r-project.org/logo/Rlogo.png"

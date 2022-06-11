@@ -21,6 +21,7 @@ test_that("tooltip is created", {
 
 test_that("hyperlink is created", {
   check_suggests()
+  skip_on_cran()
 
   out_hyperlink <- gt_hyperlink("rstudio.com", "https://rstudio.com") %>%
     as.character()

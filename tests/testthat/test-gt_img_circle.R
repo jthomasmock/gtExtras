@@ -1,6 +1,6 @@
 test_that("svg is created and has specific values", {
   check_suggests()
-
+  skip_on_cran()
   base_table <- dplyr::tibble(
     x = 1:4,
     names = c("Rich Iannone",  "Katie Masiello", "Tom Mock","Hadley Wickham"),

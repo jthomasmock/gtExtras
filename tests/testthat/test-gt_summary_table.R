@@ -1,4 +1,5 @@
 test_that("summary_table created", {
+
   # basic summary
   exibble <- gt::exibble
   exibble$int <- as.integer(1:8)
@@ -53,6 +54,7 @@ test_that("svg is created", {
 
 test_that("table is created with expected output", {
   check_suggests()
+  skip_on_cran()
 
   my_exibble <- gt::exibble |>
     mutate(date = as.Date(date),

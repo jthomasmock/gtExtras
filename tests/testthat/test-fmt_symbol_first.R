@@ -2,6 +2,7 @@ test_gt_by_col <- function(col_n, row_first = TRUE, expectation) {
   check_suggests()
   skip_on_cran()
 
+
   ex_gt <- gt::gtcars %>%
     head() %>%
     dplyr::select(mfr, year, bdy_style, mpg_h, hp) %>%
@@ -33,29 +34,41 @@ test_gt_by_col <- function(col_n, row_first = TRUE, expectation) {
   # grab the column by number
   # get the rows by selection
   # test the expectation
-  ex_html_tab %>%
-    rvest::html_nodes(paste0("td:nth-child(",col_n , ")")) %>%
+  tested_out <- ex_html_tab %>%
+    rvest::html_nodes(paste0("td:nth-child(", col_n , ")")) %>%
     rvest::html_text() %>%
-    .[row_sel] %>%
-    testthat::expect_match(expectation)
+    .[row_sel]
+
+
+  if(row_first){
+    testthat::expect_match(tested_out, expectation)
+  } else {
+
+    n_spaces <- stringr::str_count(tested_out, "\\s")
+    testthat::expect_equal(n_spaces, expectation)
+  }
+
 }
+
+
 
 test_that("fmt_symbol_first works with escaped characters", {
   test_gt_by_col(1, expectation = "Ford \\$")
-  test_gt_by_col(1, row_first = FALSE, expectation = "Ferrari&nbsp&nbsp")
+  test_gt_by_col(1, row_first = FALSE, expectation = rep(2, 5))
 })
 
 testthat::test_that("fmt_symbol_first, Raw percent character works", {
   test_gt_by_col(2, expectation = "2017%")
-  test_gt_by_col(2, row_first = FALSE, expectation = "201[4-7]&nbsp")
+  test_gt_by_col(2, row_first = FALSE, expectation = rep(1, 5))
 })
 
 testthat::test_that("fmt_symbol_first, HTML symbol for percent works", {
   test_gt_by_col(4, expectation = "20.2%")
-  test_gt_by_col(4, row_first = FALSE, expectation = "[0-9]+&nbsp")
+  test_gt_by_col(4, row_first = FALSE, expectation = rep(1, 5))
 })
 
 testthat::test_that("fmt_symbol_first, A combined suffix + symbol work", {
   test_gt_by_col(5, expectation = "647°F")
-  test_gt_by_col(5, row_first = FALSE, expectation = "[0-9]+&nbsp&nbsp")
+  test_gt_by_col(5, row_first = FALSE, expectation = rep(2, 5))
 })
+

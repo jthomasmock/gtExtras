@@ -83,11 +83,11 @@ fmt_symbol_first <- function(
   # logic is based on is a NULL passed or not
   if (!is.null(symbol) | !identical(as.character(symbol), character(0))) {
     suffix <- ifelse(identical(as.character(suffix), character(0)), "", suffix)
-    length_nbsp <- c("&nbsp", rep("&nbsp", nchar(suffix))) %>%
+    length_nbsp <- c("&nbsp;", rep("&nbsp;", nchar(suffix))) %>%
       paste0(collapse = "")
   } else {
     suffix <- ifelse(identical(as.character(suffix), character(0)), "", suffix)
-    length_nbsp <- rep("&nbsp", nchar(suffix)) %>%
+    length_nbsp <- rep("&nbsp;", nchar(suffix)) %>%
       paste0(collapse = "")
   }
 

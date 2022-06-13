@@ -38,7 +38,7 @@ pad_fn <- function(x, nsmall = 2){
   nbsp_len <- nchar(fmt_x) - nchar(sub("0*$", "", fmt_x))
 
   # create string of non-breaking spaces
-  rep_nbsp <- strrep("&nbsp", nbsp_len)
+  rep_nbsp <- strrep("&nbsp;", nbsp_len)
 
   # remove traililng zeros by position
   fmt_out <- substr(fmt_x, 1, nchar(fmt_x) - nbsp_len)

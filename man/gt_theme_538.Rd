@@ -17,6 +17,16 @@ An object of class \code{gt_tbl}.
 \description{
 Apply FiveThirtyEight theme to a gt table
 }
+\section{Examples}{
+
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
+themed_tab <- head(mtcars) \%>\%
+  gt() \%>\%
+  gt_theme_538()
+}\if{html}{\out{</div>}}
+}
+
 \section{Figures}{
 
 \if{html}{\figure{gt_538.png}{options: width=100\%}}
@@ -27,13 +37,6 @@ Apply FiveThirtyEight theme to a gt table
 1-1
 }
 
-\examples{
-
-library(gt)
-themed_tab <- head(mtcars) \%>\%
-  gt() \%>\%
-  gt_theme_538()
-}
 \seealso{
 Other Themes: 
 \code{\link{gt_plt_bullet}()},
@@ -44,6 +47,7 @@ Other Themes:
 \code{\link{gt_theme_espn}()},
 \code{\link{gt_theme_excel}()},
 \code{\link{gt_theme_guardian}()},
-\code{\link{gt_theme_nytimes}()}
+\code{\link{gt_theme_nytimes}()},
+\code{\link{gt_theme_pff}()}
 }
 \concept{Themes}

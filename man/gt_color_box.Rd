@@ -10,7 +10,8 @@ gt_color_box(
   palette = NULL,
   ...,
   domain = NULL,
-  width = 70
+  width = 70,
+  font_weight = "bold"
 )
 }
 \arguments{
@@ -18,13 +19,15 @@ gt_color_box(
 
 \item{columns}{The columns wherein changes to cell data colors should occur.}
 
-\item{palette}{The colours or colour function that values will be mapped to. Can be a character vector (eg \code{c("white", "red")} or hex colors) or a named palette from the \code{{paletteer}} package in the \code{package::palette_name} structure.}
+\item{palette}{The colours or colour function that values will be mapped to. Can be a character vector (eg \code{c("white", "red")} or hex colors) or a named palette from the \code{{paletteer}} package in the \code{package::palette_name} structure. Note that \code{'pff'} will fill in a blue -> green -> yellow -> orange -> red palette.}
 
 \item{...}{Additional arguments passed to \code{scales::label_number()}, primarily used to format the numbers inside the color box}
 
 \item{domain}{The possible values that can be mapped. This should be a simple numeric range (e.g. \code{c(0, 100)})}
 
 \item{width}{The width of the entire coloring area in pixels.}
+
+\item{font_weight}{A string indicating the font weight, defaults to \code{"bold"}, change to \code{"normal"} for default weight.}
 }
 \value{
 An object of class \code{gt_tbl}.

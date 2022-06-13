@@ -44,6 +44,7 @@ Other Themes:
 \code{\link{gt_theme_dot_matrix}()},
 \code{\link{gt_theme_excel}()},
 \code{\link{gt_theme_guardian}()},
-\code{\link{gt_theme_nytimes}()}
+\code{\link{gt_theme_nytimes}()},
+\code{\link{gt_theme_pff}()}
 }
 \concept{Themes}

@@ -6,11 +6,11 @@
 #'
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param columns The columns wherein changes to cell data colors should occur.
-#' @param palette The colours or colour function that values will be mapped to. Can be a character vector (eg `c("white", "red")` or hex colors) or a named palette from the `{paletteer}` package in the `package::palette_name` structure.
+#' @param palette The colours or colour function that values will be mapped to. Can be a character vector (eg `c("white", "red")` or hex colors) or a named palette from the `{paletteer}` package in the `package::palette_name` structure. Note that `'pff'` will fill in a blue -> green -> yellow -> orange -> red palette.
 #' @param domain The possible values that can be mapped. This should be a simple numeric range (e.g. `c(0, 100)`)
 #' @param width The width of the entire coloring area in pixels.
 #' @param ... Additional arguments passed to `scales::label_number()`, primarily used to format the numbers inside the color box
-#'
+#' @param font_weight A string indicating the font weight, defaults to `"bold"`, change to `"normal"` for default weight.
 #' @return An object of class `gt_tbl`.
 #' @export
 #'
@@ -33,7 +33,7 @@
 
 
 gt_color_box <- function(gt_object, columns, palette = NULL, ..., domain = NULL,
-                         width = 70){
+                         width = 70, font_weight = "bold"){
 
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
 
@@ -56,6 +56,8 @@ gt_color_box <- function(gt_object, columns, palette = NULL, ..., domain = NULL,
       palette <- palette
     }
 
+    if(palette[1] == "pff") palette <- c("#cd2624", "#fd9701", "#ffd000", "#3bae24", "#0c5ea0")
+
     colors <- scales::col_numeric(palette = palette, domain = domain)(x)
 
     background_col <- scales::alpha(colors, alpha = 0.2)
@@ -65,20 +67,20 @@ gt_color_box <- function(gt_object, columns, palette = NULL, ..., domain = NULL,
         style = paste0(
           glue::glue(
             "height: 20px;width:{width}px; background-color: {background_col};"
-            ),
+          ),
           "border-radius:5px;)"
         ),
         div(
           style = paste0(
-            glue::glue("height: 15px;width: 15px;background-color: {colors};"),
-            "display: inline-block;border-radius:5px;float:left;",
-            "position:relative;top:13%;left:5%;" # top 12%-15%
+            glue::glue("height: 13px;width: 13px;background-color: {colors};"),
+            "display: inline-block;border-radius:4px;float:left;",
+            "position:relative;top:17%;left:6%;" # top 12%-15%
           )
         ),
         div(
           scales::label_number(...)(x),
           style = paste0(
-            "display: inline-block;float:right;line-height:20px;",
+            glue::glue("display: inline-block;float:right;line-height:20px; font-weight: {font_weight};"),
             "padding: 0px 2.5px;"
           )
         )

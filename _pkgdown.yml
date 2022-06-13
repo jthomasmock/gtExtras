@@ -25,6 +25,7 @@ reference:
   - gt_theme_dot_matrix
   - gt_theme_dark
   - gt_theme_excel
+  - gt_theme_pff
 - title: Utilities
   desc: Helper functions and utilities with features not _yet_ built into `{gt}`.
   contents:

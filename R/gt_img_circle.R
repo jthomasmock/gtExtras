@@ -30,16 +30,16 @@ img_circle <- function(value, height, border_color, border_weight) {
 #' @return a gt object
 #' @export
 #'
-#' @examples
+#' @section Examples:
 #' library(gt)
 #' gt_img_tab <- dplyr::tibble(
 #'   x = 1:4,
 #'   names = c("Rich Iannone",  "Katie Masiello", "Tom Mock","Hadley Wickham"),
 #'   img = c(
-#'     "https://pbs.twimg.com/profile_images/961326215792533504/Ih6EsvtF_400x400.jpg",
-#'     "https://pbs.twimg.com/profile_images/1123066272718049281/23XnoFUV_400x400.png",
-#'     "https://pbs.twimg.com/profile_images/1344725315684282371/R9k8sgna_400x400.jpg",
-#'     "https://pbs.twimg.com/profile_images/905186381995147264/7zKAG5sY_400x400.jpg"
+#'      "https://pbs.twimg.com/profile_images/961326215792533504/Ih6EsvtF_400x400.jpg",
+#'      "https://pbs.twimg.com/profile_images/1471188460220260354/rHhoIXkZ_400x400.jpg",
+#'      "https://pbs.twimg.com/profile_images/1467219661121064965/Lfondr9M_400x400.jpg",
+#'      "https://pbs.twimg.com/profile_images/905186381995147264/7zKAG5sY_400x400.jpg"
 #'   )
 #' ) %>%
 #'   gt() %>%

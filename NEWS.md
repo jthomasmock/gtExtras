@@ -1,7 +1,12 @@
 # gtExtras (development version)
+
 - Add NA handling to `gt_plt_conf_int()` - closes [#52](https://github.com/jthomasmock/gtExtras/issues/52)
 - Update readme content to reflect latest documentation
 - Remove `use_paletteer` argument from documentation (inline operation in function)
+- Convert `&nbsp` to `&nbsp;` in `fmt_symbol_first()` and `fmt_pad_num()`, convert tests to match
+- Update documentation for `gt_img_circle()`
+- Add `gt_theme_pff()` for Pro Football Focus style tables
+- Add a `"pff"` palette option to `gt_color_box()`
 
 # gtExtras 0.4.0
 

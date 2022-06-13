@@ -4,12 +4,13 @@
 #' @param ... Optional additional arguments to `gt::table_options()`
 #' @return An object of class `gt_tbl`.
 #' @export
-#' @examples
-#'
+#' @section Examples:
+#' ```r
 #' library(gt)
 #' themed_tab <- head(mtcars) %>%
 #'   gt() %>%
 #'   gt_theme_538()
+#' ```
 #' @section Figures:
 #' \if{html}{\figure{gt_538.png}{options: width=100\%}}
 #'

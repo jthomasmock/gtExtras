@@ -12,9 +12,13 @@ test_that("gt_fmt_pad_num test that padding is correct", {
     rvest::html_nodes("td:nth-child(1)") %>%
     rvest::html_text()
 
-  pad_vec <- c("    1.2345", "   12.345&nbsp", "  123.45&nbsp&nbsp",
-               " 1234.5&nbsp&nbsp&nbsp", "12345.&nbsp&nbsp&nbsp&nbsp")
+  pad_html <- gsub(x = pad_html, pattern = "^.*\\.", replacement = "")
 
-  expect_equal(pad_html, pad_vec)
+  len_space <- stringr::str_count(pad_html, "\\s")
+
+  expect_equal(len_space, c(0, 1, 2, 3, 4))
 
 })
+
+
+

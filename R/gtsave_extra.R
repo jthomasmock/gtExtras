@@ -54,5 +54,7 @@ gtsave_extra <- function(data,
     )
   }
 
-  htmltools::browsable(data)
+  if(interactive()){
+    htmltools::browsable(data)
+  }
 }

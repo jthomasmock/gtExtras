@@ -60,7 +60,6 @@ reference:
   desc: Add plots to specific rows of an existing table
   contents:
   - gt_plt_winloss
-  - gt_sparkline
   - gt_plt_sparkline
   - gt_plt_dist
   - gt_plt_summary

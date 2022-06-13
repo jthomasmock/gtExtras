@@ -93,22 +93,37 @@ the labels can be controlled via the <code>fmt_fn</code> argument and the
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>gt_object</dt>
 <dd><p>An existing gt table object of class <code>gt_tbl</code></p></dd>
+
+
 <dt>column</dt>
 <dd><p>The column wherein the percent stacked barchart should replace existing data. Note that the data <em>must</em> be represented as a list of numeric values ahead of time.</p></dd>
+
+
 <dt>palette</dt>
 <dd><p>A color palette of length 2 or 3, represented either by hex colors (<code>"#ff4343"</code>) or named colors (<code>"red"</code>).</p></dd>
+
+
 <dt>labels</dt>
 <dd><p>A vector of strings of length 2 or 3, representing the labels for the bar chart, will be colored according to the palette as well.</p></dd>
+
+
 <dt>position</dt>
 <dd><p>An string indicator passed to <code>ggplot2</code> indicating if the bar should be a percent of total <code>"fill"</code> or stacked as the raw values <code>"stack"</code>.</p></dd>
+
+
 <dt>width</dt>
 <dd><p>An integer representing the width of the bar chart in pixels.</p></dd>
+
+
 <dt>fmt_fn</dt>
 <dd><p>A specific function from <code>scales::label_???</code> family. Defaults to <code><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">scales::label_number()</a></code></p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>An object of class <code>gt_tbl</code>.</p>
+    
+
+<p>An object of class <code>gt_tbl</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
@@ -163,7 +178,7 @@ the labels can be controlled via the <code>fmt_fn</code> argument and the
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
     </footer></div>

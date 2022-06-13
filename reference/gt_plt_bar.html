@@ -79,24 +79,41 @@ shared x-axis, and a vertical black bar is added at x = zero.</p>
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>gt_object</dt>
 <dd><p>An existing gt table object of class <code>gt_tbl</code></p></dd>
+
+
 <dt>column</dt>
 <dd><p>A single column wherein the bar plot should replace existing data.</p></dd>
+
+
 <dt>color</dt>
 <dd><p>A character representing the color for the bar, defaults to purple. Accepts a named color (eg <code>'purple'</code>) or a hex color.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Additional arguments passed to <code><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">scales::label_number()</a></code> or <code><a href="https://scales.r-lib.org/reference/label_percent.html" class="external-link">scales::label_percent()</a></code>, depending on what was specified in <code>scale_type</code></p></dd>
+
+
 <dt>keep_column</dt>
 <dd><p><code>TRUE</code>/<code>FALSE</code> logical indicating if you want to keep a copy of the "plotted" column as raw values next to the plot itself..</p></dd>
+
+
 <dt>width</dt>
 <dd><p>An integer indicating the width of the plot in pixels.</p></dd>
+
+
 <dt>scale_type</dt>
 <dd><p>A string indicating additional text formatting and the addition of numeric labels to the plotted bars if not <code>'none'</code>. If <code>'none'</code>, no numbers will be added to the bar, but if <code>"number"</code> or <code>"percent"</code> are used, then the numbers in the plotted column will be added as a bar-label and formatted according to <code><a href="https://scales.r-lib.org/reference/label_percent.html" class="external-link">scales::label_percent()</a></code> or <code><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">scales::label_number()</a></code>.</p></dd>
+
+
 <dt>text_color</dt>
 <dd><p>A string indicating the color of text if <code>scale_type</code> is used. Defaults to <code>"white"</code></p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>An object of class <code>gt_tbl</code>.</p>
+    
+
+<p>An object of class <code>gt_tbl</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
@@ -137,7 +154,7 @@ shared x-axis, and a vertical black bar is added at x = zero.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
     </footer></div>

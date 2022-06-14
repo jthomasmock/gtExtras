@@ -44,6 +44,19 @@ adds summary distribution sparklines via \code{ggplot2}. Note that these sparkli
 are limited to density, histogram, boxplot or rug/strip charts. If you're
 wanting to plot more traditional spark\strong{lines}, you can use \code{gtExtras::gt_plt_sparkline()}.
 }
+\section{Examples}{
+
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{ library(gt)
+ gt_sparkline_tab <- mtcars \%>\%
+    dplyr::group_by(cyl) \%>\%
+    # must end up with list of data for each row in the input dataframe
+    dplyr::summarize(mpg_data = list(mpg), .groups = "drop") \%>\%
+    gt() \%>\%
+    gt_plt_dist(mpg_data)
+}\if{html}{\out{</div>}}
+}
+
 \section{Figures}{
 
 \if{html}{\figure{ggplot2-sparkline.png}{options: width=50\%}}
@@ -54,16 +67,6 @@ wanting to plot more traditional spark\strong{lines}, you can use \code{gtExtras
 1-4
 }
 
-\examples{
- library(gt)
- gt_sparkline_tab <- mtcars \%>\%
-    dplyr::group_by(cyl) \%>\%
-    # must end up with list of data for each row in the input dataframe
-    dplyr::summarize(mpg_data = list(mpg), .groups = "drop") \%>\%
-    gt() \%>\%
-    gt_plt_dist(mpg_data)
-
-}
 \seealso{
 Other Plotting: 
 \code{\link{gt_plt_bar_pct}()},

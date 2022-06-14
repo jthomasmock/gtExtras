@@ -4,12 +4,14 @@
 \alias{gt_label_details}
 \title{Add a simple table with column names and matching labels}
 \usage{
-gt_label_details(label, content)
+gt_label_details(label, content, names = c("Column", "Description"))
 }
 \arguments{
 \item{label}{A string representing the label for the details expansion section.}
 
-\item{content}{A named list}
+\item{content}{A named list or wide data.frame with 2 rows}
+
+\item{names}{a string indicating the name of the two columns inside the details tag}
 }
 \value{
 HTML text

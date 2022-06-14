@@ -4,7 +4,16 @@
 \alias{gt_merge_stack}
 \title{Merge and stack text from two columns in \code{gt}}
 \usage{
-gt_merge_stack(gt_object, col1, col2, palette = c("black", "grey"), ...)
+gt_merge_stack(
+  gt_object,
+  col1,
+  col2,
+  palette = c("black", "grey"),
+  ...,
+  small_cap = TRUE,
+  font_size = c("14px", "10px"),
+  font_weight = c("bold", "bold")
+)
 }
 \arguments{
 \item{gt_object}{An existing gt table object of class \code{gt_tbl}}
@@ -25,6 +34,12 @@ For more information on built-in color names, see \code{\link[=colors]{colors()}
     \item{\code{l}}{Luminance, \verb{[0, 100]}}
     \item{\code{alpha}}{Alpha, \verb{[0, 1]}.}
   }}
+
+\item{small_cap}{a logical indicating whether to use 'small-cap' on the top line of text}
+
+\item{font_size}{a string of length 2 indicating the font-size in px of the top and bottom text}
+
+\item{font_weight}{a string of length 2 indicating the 'font-weight' of the top and bottom text. Must be one of 'bold', 'normal', 'lighter'}
 }
 \value{
 An object of class \code{gt_tbl}.
@@ -35,6 +50,22 @@ column 1 and column 2, stacking column 1's text on top of column 2's.
 Top text is in all caps with black bold text, while the lower text is smaller
 and dark grey.
 }
+\section{Examples}{
+
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
+teams <- "https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"
+team_df <- readRDS(url(teams))
+
+stacked_tab <- team_df \%>\%
+ dplyr::select(team_nick, team_abbr, team_conf, team_division, team_wordmark) \%>\%
+ head(8) \%>\%
+ gt(groupname_col = "team_conf") \%>\%
+ gt_merge_stack(col1 = team_nick, col2 = team_division) \%>\%
+ gt_img_rows(team_wordmark)
+}\if{html}{\out{</div>}}
+}
+
 \section{Figures}{
 
 \if{html}{\figure{merge-stack.png}{options: width=50\%}}
@@ -45,19 +76,6 @@ and dark grey.
 2-6
 }
 
-\examples{
-library(gt)
-teams <- "https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"
-team_df <- readRDS(url(teams))
-
-stacked_tab <- team_df \%>\%
- dplyr::select(team_nick, team_abbr, team_conf, team_division, team_wordmark) \%>\%
- head(8) \%>\%
- gt(groupname_col = "team_conf") \%>\%
- gt_merge_stack(col1 = team_nick, col2 = team_division) \%>\%
- gt_img_rows(team_wordmark)
-
-}
 \seealso{
 Other Utilities: 
 \code{\link{add_text_img}()},

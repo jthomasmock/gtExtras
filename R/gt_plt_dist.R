@@ -16,7 +16,8 @@
 #' @param same_limit A logical indicating that the plots will use the same axis range (`TRUE`) or have individual axis ranges (`FALSE`).
 #' @return An object of class `gt_tbl`.
 #' @export
-#' @examples
+#' @section Examples:
+#' ```r
 #'  library(gt)
 #'  gt_sparkline_tab <- mtcars %>%
 #'     dplyr::group_by(cyl) %>%
@@ -24,7 +25,7 @@
 #'     dplyr::summarize(mpg_data = list(mpg), .groups = "drop") %>%
 #'     gt() %>%
 #'     gt_plt_dist(mpg_data)
-#'
+#' ```
 #' @section Figures:
 #' \if{html}{\figure{ggplot2-sparkline.png}{options: width=50\%}}
 #'

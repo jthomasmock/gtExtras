@@ -148,15 +148,13 @@ available by their original name via the passed <code>...</code>.</p>
     <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
     
 
-
+<p>Add row numbers and drop some columns</p>
 <p></p><div class="sourceCode r"><pre><code><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/" class="external-link">gt</a></span><span class="op">)</span>
-<span class="co"># add row numbers and drop some columns</span>
 <span class="va">my_cars</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>row_n <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/ranking.html" class="external-link">row_number</a></span><span class="op">(</span><span class="op">)</span>, .before <span class="op">=</span> <span class="va">mpg</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">row_n</span>, <span class="va">mpg</span><span class="op">:</span><span class="va">drat</span><span class="op">)</span>
-
-<span class="co"># create two tables, just split half/half</span>
-<span class="va">tab1</span> <span class="op">&lt;-</span> <span class="va">my_cars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">row_n</span>, <span class="va">mpg</span><span class="op">:</span><span class="va">drat</span><span class="op">)</span></code></pre><p></p></div>
+<p>Create two tables, just split half/half</p>
+<p></p><div class="sourceCode r"><pre><code><span class="va">tab1</span> <span class="op">&lt;-</span> <span class="va">my_cars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">16</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu">gtExtras</span><span class="fu">::</span><span class="fu"><a href="../reference/gt_color_rows.html">gt_color_rows</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="va">row_n</span>, domain <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">32</span><span class="op">)</span>
@@ -164,30 +162,25 @@ available by their original name via the passed <code>...</code>.</p>
 <span class="va">tab2</span> <span class="op">&lt;-</span> <span class="va">my_cars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">17</span><span class="op">:</span><span class="fl">32</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">gtExtras</span><span class="fu">::</span><span class="fu"><a href="../reference/gt_color_rows.html">gt_color_rows</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="va">row_n</span>, domain <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">32</span><span class="op">)</span>
+  <span class="fu">gtExtras</span><span class="fu">::</span><span class="fu"><a href="../reference/gt_color_rows.html">gt_color_rows</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="va">row_n</span>, domain <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">32</span><span class="op">)</span></code></pre><p></p></div>
+<p>Put the tables in a list and then pass list to the <code>gt_two_column_layout</code> function.</p>
+<p></p><div class="sourceCode r"><pre><code><span class="va">listed_tables</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">tab1</span>, <span class="va">tab2</span><span class="op">)</span>
 
-<span class="co"># put the tables in a list</span>
-<span class="va">listed_tables</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">tab1</span>, <span class="va">tab2</span><span class="op">)</span>
-
-<span class="co"># pass list to the gt_two_column_layout function</span>
-<span class="fu"><a href="../reference/gt_two_column_layout.html">gt_two_column_layout</a></span><span class="op">(</span><span class="va">listed_tables</span><span class="op">)</span>
-
-<span class="co"># better option!</span>
-<span class="co"># create a one-argument function, passing data to `gt::gt()`</span>
-<span class="va">my_gt_fn</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
+<span class="fu"><a href="../reference/gt_two_column_layout.html">gt_two_column_layout</a></span><span class="op">(</span><span class="va">listed_tables</span><span class="op">)</span></code></pre><p></p></div>
+<p>A better option - write a small function, use <code><a href="gt_double_table.html">gt_double_table()</a></code> to generate
+the tables and then pass it to <code><a href="gt_double_table.html">gt_double_table()</a></code></p>
+<p></p><div class="sourceCode r"><pre><code><span class="va">my_gt_fn</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
     <span class="fu">gtExtras</span><span class="fu">::</span><span class="fu"><a href="../reference/gt_color_rows.html">gt_color_rows</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="va">row_n</span>, domain <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">32</span><span class="op">)</span>
 <span class="op">}</span>
 
-<span class="co"># pass data, your function and the nrows</span>
-<span class="va">my_tables</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gt_double_table.html">gt_double_table</a></span><span class="op">(</span><span class="va">my_cars</span>, <span class="va">my_gt_fn</span>, nrows <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">my_cars</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span>
-
-<span class="co"># boom, this will return it to the viewer</span>
-<span class="va">my_output</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gt_two_column_layout.html">gt_two_column_layout</a></span><span class="op">(</span><span class="va">my_tables</span><span class="op">)</span>
-<span class="co"># if you wanted to save it out instead, could use the code below</span>
-<span class="co"># gt_two_column_layout(my_tables, output = "save",</span>
-<span class="co">#                      filename = "basic-two-col.png",</span>
-<span class="co">#                      vwidth = 550, vheight = 620)</span></code></pre><p></p></div>
+<span class="va">my_tables</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gt_double_table.html">gt_double_table</a></span><span class="op">(</span><span class="va">my_cars</span>, <span class="va">my_gt_fn</span>, nrows <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">my_cars</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span></code></pre><p></p></div>
+<p>This will return it to the viewer</p>
+<p></p><div class="sourceCode r"><pre><code><span class="fu"><a href="../reference/gt_two_column_layout.html">gt_two_column_layout</a></span><span class="op">(</span><span class="va">my_tables</span><span class="op">)</span></code></pre><p></p></div>
+<p>If you wanted to save it out instead, could use the code below</p>
+<p></p><div class="sourceCode r"><pre><code><span class="fu"><a href="../reference/gt_two_column_layout.html">gt_two_column_layout</a></span><span class="op">(</span><span class="va">my_tables</span>, output <span class="op">=</span> <span class="st">"save"</span>,
+                     filename <span class="op">=</span> <span class="st">"basic-two-col.png"</span>,
+                      vwidth <span class="op">=</span> <span class="fl">550</span>, vheight <span class="op">=</span> <span class="fl">620</span><span class="op">)</span></code></pre><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="figures">Figures<a class="anchor" aria-label="anchor" href="#figures"></a></h2>
@@ -219,6 +212,7 @@ available by their original name via the passed <code>...</code>.</p>
 <code><a href="gt_index.html">gt_index</a>()</code>,
 <code><a href="gt_merge_stack.html">gt_merge_stack</a>()</code>,
 <code><a href="gtsave_extra.html">gtsave_extra</a>()</code>,
+<code><a href="img_header.html">img_header</a>()</code>,
 <code><a href="pad_fn.html">pad_fn</a>()</code>,
 <code><a href="tab_style_by_grp.html">tab_style_by_grp</a>()</code></p></div>
     </div>

@@ -37,18 +37,10 @@ default to being normalized to the percent of the maximum observed value
 in the specified column. You can turn this off if the values already
 represent a percentage value representing 0-100.
 }
-\section{Figures}{
+\section{Examples}{
 
-\if{html}{\figure{gt_bar_plot.png}{options: width=100\%}}
-}
 
-\section{Function ID}{
-
-3-5
-}
-
-\examples{
-library(gt)
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
  gt_bar_plot_tab <- mtcars \%>\%
    head() \%>\%
    dplyr::select(cyl, mpg) \%>\%
@@ -62,8 +54,19 @@ library(gt)
    cols_align("center", contains("scale")) \%>\%
    cols_width(4 ~ px(125),
               5 ~ px(125))
-
+}\if{html}{\out{</div>}}
 }
+
+\section{Figures}{
+
+\if{html}{\figure{gt_bar_plot.png}{options: width=100\%}}
+}
+
+\section{Function ID}{
+
+3-5
+}
+
 \seealso{
 Other Plotting: 
 \code{\link{gt_plt_bar_stack}()},

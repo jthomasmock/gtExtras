@@ -53,6 +53,7 @@ Other Utilities:
 \code{\link{gt_index}()},
 \code{\link{gt_merge_stack}()},
 \code{\link{gt_two_column_layout}()},
+\code{\link{img_header}()},
 \code{\link{pad_fn}()},
 \code{\link{tab_style_by_grp}()}
 }

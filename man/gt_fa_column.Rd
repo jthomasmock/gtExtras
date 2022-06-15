@@ -35,6 +35,19 @@ adds specific \code{fontawesome} icons based on what the names in the column are
 The icons are colored according to a palette that the user supplies, either
 a vector of valid colors/hex colors of length equal to the unique levels.
 }
+\section{Examples}{
+
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
+fa_cars <- mtcars \%>\%
+  head() \%>\%
+  dplyr::select(cyl, mpg, am, gear) \%>\%
+  dplyr::mutate(man = ifelse(am == 1, "cog", "cogs")) \%>\%
+  gt() \%>\%
+  gt_fa_column(man)
+}\if{html}{\out{</div>}}
+}
+
 \section{Figures}{
 
 \if{html}{\figure{fa-column-cars.png}{options: width=50\%}}
@@ -45,17 +58,6 @@ a vector of valid colors/hex colors of length equal to the unique levels.
 2-15
 }
 
-\examples{
-
-library(gt)
-fa_cars <- mtcars \%>\%
-  head() \%>\%
-  dplyr::select(cyl, mpg, am, gear) \%>\%
-  dplyr::mutate(man = ifelse(am == 1, "cog", "cogs")) \%>\%
-  gt() \%>\%
-  gt_fa_column(man)
-
-}
 \seealso{
 Other Utilities: 
 \code{\link{add_text_img}()},
@@ -79,6 +81,7 @@ Other Utilities:
 \code{\link{gt_merge_stack}()},
 \code{\link{gt_two_column_layout}()},
 \code{\link{gtsave_extra}()},
+\code{\link{img_header}()},
 \code{\link{pad_fn}()},
 \code{\link{tab_style_by_grp}()}
 }

@@ -94,12 +94,14 @@ add_badge_color <- function(add_color, add_label, alpha_lvl){
 #' @param alpha A numeric indicating the alpha/transparency. Range from 0 to 1
 #' @export
 #' @return `gt` table
-#' @examples
+#' @section Examples:
+#' ```r
 #' library(gt)
-#' badge_tab <- head(mtcars) %>%
+#' head(mtcars) %>%
 #'   dplyr::mutate(cyl = paste(cyl, "Cyl")) %>%
 #'   gt() %>%
 #'   gt_badge(cyl, palette = c("4 Cyl"="red","6 Cyl"="blue","8 Cyl"="green"))
+#' ```
 #' @section Figures:
 #' \if{html}{\figure{gt_badge.png}{options: width=50\%}}
 #'

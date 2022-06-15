@@ -16,7 +16,8 @@
 #' @param scaled `TRUE`/`FALSE` logical indicating if the value is already scaled to a percent of max (`TRUE`) or if it needs to be scaled (`FALSE`). Defaults to `FALSE`, meaning the value will be divided by the max value in that column and then multiplied by 100.
 #' @return An object of class `gt_tbl`.
 #' @export
-#' @examples
+#' @section Examples:
+#' ```r
 #' library(gt)
 #'  gt_bar_plot_tab <- mtcars %>%
 #'    head() %>%
@@ -31,7 +32,7 @@
 #'    cols_align("center", contains("scale")) %>%
 #'    cols_width(4 ~ px(125),
 #'               5 ~ px(125))
-#'
+#' ```
 #' @section Figures:
 #' \if{html}{\figure{gt_bar_plot.png}{options: width=100\%}}
 #'

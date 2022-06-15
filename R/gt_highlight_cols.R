@@ -10,12 +10,13 @@
 #' @param font_weight A string or number indicating the weight of the font. Can be a text-based keyword such as "normal", "bold", "lighter", "bolder", or, a numeric value between 1 and 1000, inclusive. Note that only variable fonts may support the numeric mapping of weight.
 #' @return An object of class `gt_tbl`.
 #' @export
-#' @examples
+#' @section Examples:
+#' ```r
 #' library(gt)
 #' basic_col <- head(mtcars) %>%
 #'   gt() %>%
 #'   gt_highlight_cols(cyl, fill = "red", alpha = 0.5)
-#'
+#' ```
 #' @section Figures:
 #' \if{html}{\figure{highlight-col.png}{options: width=70\%}}
 #'

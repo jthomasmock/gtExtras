@@ -32,6 +32,20 @@ An object of class \code{gt_tbl}.
 \description{
 Add rating "stars" to a gt column
 }
+\section{Examples}{
+
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
+set.seed(37)
+rating_table <- mtcars \%>\%
+  dplyr::select(mpg:wt) \%>\%
+  dplyr::slice(1:5) \%>\%
+  dplyr::mutate(rating = sample(1:5, size = 5, TRUE)) \%>\%
+  gt() \%>\%
+  gt_fa_rating(rating, icon = "r-project")
+}\if{html}{\out{</div>}}
+}
+
 \section{Figures}{
 
 \if{html}{\figure{fa-stars.png}{options: width=60\%}}
@@ -42,17 +56,6 @@ Add rating "stars" to a gt column
 2-16
 }
 
-\examples{
-library(gt)
-set.seed(37)
-rating_table <- mtcars \%>\%
-  dplyr::select(mpg:wt) \%>\%
-  dplyr::slice(1:5) \%>\%
-  dplyr::mutate(rating = sample(1:5, size = 5, TRUE)) \%>\%
-  gt() \%>\%
-  gt_fa_rating(rating, icon = "r-project")
-
-}
 \seealso{
 Other Utilities: 
 \code{\link{add_text_img}()},
@@ -76,6 +79,7 @@ Other Utilities:
 \code{\link{gt_merge_stack}()},
 \code{\link{gt_two_column_layout}()},
 \code{\link{gtsave_extra}()},
+\code{\link{img_header}()},
 \code{\link{pad_fn}()},
 \code{\link{tab_style_by_grp}()}
 }

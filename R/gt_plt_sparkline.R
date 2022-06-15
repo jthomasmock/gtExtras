@@ -13,7 +13,8 @@
 #' @param label A logical indicating whether the sparkline will have a numeric label at the end of the plot.
 #' @return An object of class `gt_tbl`.
 #' @export
-#' @examples
+#' @section Examples:
+#' ```r
 #'  library(gt)
 #'  gt_sparkline_tab <- mtcars %>%
 #'     dplyr::group_by(cyl) %>%
@@ -21,7 +22,7 @@
 #'     dplyr::summarize(mpg_data = list(mpg), .groups = "drop") %>%
 #'     gt() %>%
 #'     gt_plt_sparkline(mpg_data)
-#'
+#' ```
 #' @section Figures:
 #' \if{html}{\figure{gt_plt_sparkline.png}{options: width=50\%}}
 #'

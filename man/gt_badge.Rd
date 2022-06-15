@@ -21,18 +21,22 @@ gt_badge(gt_object, column, palette = NULL, alpha = 0.2)
 \description{
 Add a 'badge' based on values and palette
 }
+\section{Examples}{
+
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
+head(mtcars) \%>\%
+  dplyr::mutate(cyl = paste(cyl, "Cyl")) \%>\%
+  gt() \%>\%
+  gt_badge(cyl, palette = c("4 Cyl"="red","6 Cyl"="blue","8 Cyl"="green"))
+}\if{html}{\out{</div>}}
+}
+
 \section{Figures}{
 
 \if{html}{\figure{gt_badge.png}{options: width=50\%}}
 }
 
-\examples{
-library(gt)
-badge_tab <- head(mtcars) \%>\%
-  dplyr::mutate(cyl = paste(cyl, "Cyl")) \%>\%
-  gt() \%>\%
-  gt_badge(cyl, palette = c("4 Cyl"="red","6 Cyl"="blue","8 Cyl"="green"))
-}
 \seealso{
 Other Utilities: 
 \code{\link{add_text_img}()},
@@ -56,6 +60,7 @@ Other Utilities:
 \code{\link{gt_merge_stack}()},
 \code{\link{gt_two_column_layout}()},
 \code{\link{gtsave_extra}()},
+\code{\link{img_header}()},
 \code{\link{pad_fn}()},
 \code{\link{tab_style_by_grp}()}
 }

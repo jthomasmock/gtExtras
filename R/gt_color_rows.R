@@ -14,7 +14,8 @@
 #' @inheritParams paletteer::paletteer_d
 #' @return An object of class `gt_tbl`.
 #' @export
-#' @examples
+#' @section Examples:
+#' ```r
 #'  library(gt)
 #'  # basic use
 #'  basic_use <- mtcars %>%
@@ -50,6 +51,7 @@
 #'    gt_color_rows(
 #'    gear, pal_type = "discrete", direction = -1,
 #'    palette = "colorblindr::OkabeIto_black", domain = c(3,4,5))
+#' ```
 #' @section Figures:
 #' \if{html}{\figure{basic-pal.png}{options: width=100\%}}
 #'

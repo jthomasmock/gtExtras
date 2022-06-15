@@ -37,6 +37,16 @@ The \code{gt_fa_repeats} function takes an existing \code{gt_tbl} object and
 adds specific \code{fontawesome} to the cells. The icons are repeated according to the
 integer that the column contains.
 }
+\section{Examples}{
+
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
+mtcars[1:5, 1:4] \%>\%
+  gt() \%>\%
+  gt_fa_repeats(cyl, name = "car")
+}\if{html}{\out{</div>}}
+}
+
 \section{Figures}{
 
 \if{html}{\figure{fa-cars.png}{options: width=50\%}}
@@ -47,14 +57,6 @@ integer that the column contains.
 2-8
 }
 
-\examples{
-
-library(gt)
-fa_cars <- mtcars[1:5, 1:4] \%>\%
-  gt() \%>\%
-  gt_fa_repeats(cyl, name = "car")
-
-}
 \seealso{
 Other Utilities: 
 \code{\link{add_text_img}()},
@@ -78,6 +80,7 @@ Other Utilities:
 \code{\link{gt_merge_stack}()},
 \code{\link{gt_two_column_layout}()},
 \code{\link{gtsave_extra}()},
+\code{\link{img_header}()},
 \code{\link{pad_fn}()},
 \code{\link{tab_style_by_grp}()}
 }

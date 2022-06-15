@@ -14,7 +14,8 @@
 #' @param target_col A specific `tidyeval` column to apply bold text to, which allows for normal weight text for the remaining highlighted columns.
 #' @return An object of class `gt_tbl`.
 #' @export
-#' @examples
+#' @section Examples:
+#' ```r
 #' library(gt)
 #' basic_use <- head(mtcars[,1:5]) %>%
 #'  tibble::rownames_to_column("car") %>%
@@ -30,7 +31,7 @@
 #'      bold_target_only = TRUE,
 #'      target_col = car
 #'    )
-#'
+#' ```
 #' @section Figures:
 #' \if{html}{\figure{highlight-basic.png}{options: width=70\%}}
 #' \if{html}{\figure{highlight-target.png}{options: width=70\%}}

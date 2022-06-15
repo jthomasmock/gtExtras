@@ -29,11 +29,55 @@ HTML string
 \description{
 Add images as the column label for a table
 }
-\examples{
-example_img <- img_header(
-  "Luka Doncic",
-  "https://secure.espn.com/combiner/i?img=/i/headshots/nba/players/full/3945274.png",
-  height = 60,
-  font_size = 14
-)
+\section{Examples}{
+
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
+dplyr::tibble(
+  x = 1:5, y = 6:10
+) \%>\%
+  gt() \%>\%
+  cols_label(
+    x = img_header(
+      "Luka Doncic",
+      "https://secure.espn.com/combiner/i?img=/i/headshots/nba/players/full/3945274.png",
+      height = 60,
+      font_size = 14
+    )
+  )
+}\if{html}{\out{</div>}}
 }
+
+\section{Figures}{
+
+\if{html}{\figure{img_header.png}{options: width=80\%}}
+}
+
+\seealso{
+Other Utilities: 
+\code{\link{add_text_img}()},
+\code{\link{fa_icon_repeat}()},
+\code{\link{fmt_pad_num}()},
+\code{\link{fmt_pct_extra}()},
+\code{\link{fmt_symbol_first}()},
+\code{\link{generate_df}()},
+\code{\link{gt_add_divider}()},
+\code{\link{gt_badge}()},
+\code{\link{gt_double_table}()},
+\code{\link{gt_duplicate_column}()},
+\code{\link{gt_fa_column}()},
+\code{\link{gt_fa_rank_change}()},
+\code{\link{gt_fa_rating}()},
+\code{\link{gt_fa_repeats}()},
+\code{\link{gt_highlight_cols}()},
+\code{\link{gt_highlight_rows}()},
+\code{\link{gt_img_circle}()},
+\code{\link{gt_img_rows}()},
+\code{\link{gt_index}()},
+\code{\link{gt_merge_stack}()},
+\code{\link{gt_two_column_layout}()},
+\code{\link{gtsave_extra}()},
+\code{\link{pad_fn}()},
+\code{\link{tab_style_by_grp}()}
+}
+\concept{Utilities}

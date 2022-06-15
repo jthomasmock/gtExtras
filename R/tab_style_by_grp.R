@@ -10,7 +10,8 @@
 #' @param ... Arguments passed to `tab_style(style = ...)`
 #' @return An object of class `gt_tbl`.
 #' @export
-#' @examples
+#' @section Examples:
+#' ```r
 #' library(gt)
 #' df_in <- mtcars %>%
 #'   dplyr::select(cyl:hp, mpg) %>%
@@ -23,9 +24,9 @@
 #'   gt(groupname_col = "cyl") %>%
 #'   tab_style_by_grp(mpg, fn = max,
 #'                    cell_fill(color = "red", alpha = 0.5))
-#'
+#' ```
 #' @section Figures:
-#' \if{html}{\figure{grp-tab-style.png}{options: width=20\%}}
+#' \if{html}{\figure{grp-tab-style.png}{options: width=40\%}}
 #'
 #' @family Utilities
 #' @section Function ID:

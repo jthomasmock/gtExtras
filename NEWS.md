@@ -8,6 +8,7 @@
 - Add `gt_theme_pff()` for Pro Football Focus style tables
 - Add a `"pff"` palette option to `gt_color_box()`
 - Add new arguments to `gt_merge_stack()`  per [issue 53](https://github.com/jthomasmock/gtExtras/issues/53)
+- Bulk update of examples sections and updated images
 
 # gtExtras 0.4.0
 

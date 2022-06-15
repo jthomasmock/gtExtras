@@ -14,7 +14,8 @@
 #' @return An object of class `gt_tbl`.
 #' @export
 #'
-#' @examples
+#' @section Examples:
+#' ```r
 #' library(gt)
 #' test_data <- dplyr::tibble(x = letters[1:10],
 #'                     y = seq(100, 10, by = -10),
@@ -24,6 +25,7 @@
 #'   gt_color_box(columns = y, domain = 0:100, palette = "ggsci::blue_material") %>%
 #'   gt_color_box(columns = z, domain = 0:100,
 #'                palette = c("purple", "lightgrey", "green"))
+#' ```
 #' @section Figures:
 #' \if{html}{\figure{color_box.png}{options: width=30\%}}
 #'

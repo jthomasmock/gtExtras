@@ -53,15 +53,17 @@ available by their original name via the passed \code{...}.
 }
 \section{Examples}{
 
+Add row numbers and drop some columns
 
 \if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
-# add row numbers and drop some columns
 my_cars <- mtcars \%>\%
   dplyr::mutate(row_n = dplyr::row_number(), .before = mpg) \%>\%
   dplyr::select(row_n, mpg:drat)
+}\if{html}{\out{</div>}}
 
-# create two tables, just split half/half
-tab1 <- my_cars \%>\%
+Create two tables, just split half/half
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{tab1 <- my_cars \%>\%
   dplyr::slice(1:16) \%>\%
   gt() \%>\%
   gtExtras::gt_color_rows(columns = row_n, domain = 1:32)
@@ -70,29 +72,36 @@ tab2 <- my_cars \%>\%
   dplyr::slice(17:32) \%>\%
   gt() \%>\%
   gtExtras::gt_color_rows(columns = row_n, domain = 1:32)
+}\if{html}{\out{</div>}}
 
-# put the tables in a list
-listed_tables <- list(tab1, tab2)
+Put the tables in a list and then pass list to the \code{gt_two_column_layout} function.
 
-# pass list to the gt_two_column_layout function
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{listed_tables <- list(tab1, tab2)
+
 gt_two_column_layout(listed_tables)
+}\if{html}{\out{</div>}}
 
-# better option!
-# create a one-argument function, passing data to `gt::gt()`
-my_gt_fn <- function(x) \{
+A better option - write a small function, use \code{gt_double_table()} to generate
+the tables and then pass it to \code{gt_double_table()}
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{my_gt_fn <- function(x) \{
   gt(x) \%>\%
     gtExtras::gt_color_rows(columns = row_n, domain = 1:32)
 \}
 
-# pass data, your function and the nrows
 my_tables <- gt_double_table(my_cars, my_gt_fn, nrows = nrow(my_cars) / 2)
+}\if{html}{\out{</div>}}
 
-# boom, this will return it to the viewer
-my_output <- gt_two_column_layout(my_tables)
-# if you wanted to save it out instead, could use the code below
-# gt_two_column_layout(my_tables, output = "save",
-#                      filename = "basic-two-col.png",
-#                      vwidth = 550, vheight = 620)
+This will return it to the viewer
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{gt_two_column_layout(my_tables)
+}\if{html}{\out{</div>}}
+
+If you wanted to save it out instead, could use the code below
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{gt_two_column_layout(my_tables, output = "save",
+                     filename = "basic-two-col.png",
+                      vwidth = 550, vheight = 620)
 }\if{html}{\out{</div>}}
 }
 
@@ -124,6 +133,7 @@ Other Utilities:
 \code{\link{gt_index}()},
 \code{\link{gt_merge_stack}()},
 \code{\link{gtsave_extra}()},
+\code{\link{img_header}()},
 \code{\link{pad_fn}()},
 \code{\link{tab_style_by_grp}()}
 }

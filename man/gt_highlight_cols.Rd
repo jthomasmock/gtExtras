@@ -30,6 +30,16 @@ An object of class \code{gt_tbl}.
 The \code{gt_highlight_cols} function takes an existing \code{gt_tbl} object and
 adds highlighting color to the cell background of a specific column(s).
 }
+\section{Examples}{
+
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
+basic_col <- head(mtcars) \%>\%
+  gt() \%>\%
+  gt_highlight_cols(cyl, fill = "red", alpha = 0.5)
+}\if{html}{\out{</div>}}
+}
+
 \section{Figures}{
 
 \if{html}{\figure{highlight-col.png}{options: width=70\%}}
@@ -40,13 +50,6 @@ adds highlighting color to the cell background of a specific column(s).
 2-9
 }
 
-\examples{
-library(gt)
-basic_col <- head(mtcars) \%>\%
-  gt() \%>\%
-  gt_highlight_cols(cyl, fill = "red", alpha = 0.5)
-
-}
 \seealso{
 Other Utilities: 
 \code{\link{add_text_img}()},
@@ -70,6 +73,7 @@ Other Utilities:
 \code{\link{gt_merge_stack}()},
 \code{\link{gt_two_column_layout}()},
 \code{\link{gtsave_extra}()},
+\code{\link{img_header}()},
 \code{\link{pad_fn}()},
 \code{\link{tab_style_by_grp}()}
 }

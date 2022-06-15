@@ -15,4 +15,5 @@
 ^vignettes/articles$
 ^cran-comments\.md$
 ^CRAN-SUBMISSION$
-^meta_fns
+^meta_fns$
+^data-raw$

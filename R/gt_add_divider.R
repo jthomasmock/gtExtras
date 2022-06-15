@@ -9,13 +9,13 @@
 #' @param include_labels A logical, either `TRUE` or `FALSE` indicating whether to also add dividers through the column labels.
 #' @return An object of class `gt_tbl`.
 #' @export
-#' @examples
+#' @section Examples:
+#' ```r
 #' library(gt)
 #' basic_divider <- head(mtcars) %>%
 #'   gt() %>%
 #'   gt_add_divider(columns = "cyl", style = "dashed")
-#'
-#'
+#' ```
 #' @section Figures:
 #' \if{html}{\figure{add-divider.png}{options: width=70\%}}
 #'

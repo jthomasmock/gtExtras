@@ -40,19 +40,10 @@ The \code{gt_highlight_rows} function takes an existing \code{gt_tbl} object and
 adds highlighting color to the cell background of a specific row. The function
 accepts rows only by number (not by logical expression) for now.
 }
-\section{Figures}{
+\section{Examples}{
 
-\if{html}{\figure{highlight-basic.png}{options: width=70\%}}
-\if{html}{\figure{highlight-target.png}{options: width=70\%}}
-}
 
-\section{Function ID}{
-
-2-10
-}
-
-\examples{
-library(gt)
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
 basic_use <- head(mtcars[,1:5]) \%>\%
  tibble::rownames_to_column("car") \%>\%
    gt() \%>\%
@@ -67,8 +58,20 @@ target_bold_column <- head(mtcars[,1:5]) \%>\%
      bold_target_only = TRUE,
      target_col = car
    )
-
+}\if{html}{\out{</div>}}
 }
+
+\section{Figures}{
+
+\if{html}{\figure{highlight-basic.png}{options: width=70\%}}
+\if{html}{\figure{highlight-target.png}{options: width=70\%}}
+}
+
+\section{Function ID}{
+
+2-10
+}
+
 \seealso{
 Other Utilities: 
 \code{\link{add_text_img}()},
@@ -92,6 +95,7 @@ Other Utilities:
 \code{\link{gt_merge_stack}()},
 \code{\link{gt_two_column_layout}()},
 \code{\link{gtsave_extra}()},
+\code{\link{img_header}()},
 \code{\link{pad_fn}()},
 \code{\link{tab_style_by_grp}()}
 }

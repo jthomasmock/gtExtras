@@ -79,12 +79,14 @@ add_point_plot <- function(data, palette, add_label, width, vals_range,
 #' @return a gt table
 #' @export
 #'
-#' @examples
+#' @section Examples:
+#' ```r
 #' point_tab <- dplyr::tibble(x = c(seq(1.2e6, 2e6, length.out = 5))) %>%
 #'   gt::gt() %>%
 #'   gt_duplicate_column(x,dupe_name = "point_plot") %>%
 #'   gt_plt_point(point_plot, accuracy = .1, width = 25) %>%
 #'   gt::fmt_number(x, suffixing = TRUE, decimals = 1)
+#' ```
 #' @section Figures:
 #' \if{html}{\figure{gt_plt_point.png}{options: width=30\%}}
 #'

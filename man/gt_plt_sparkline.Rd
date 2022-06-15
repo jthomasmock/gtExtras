@@ -37,6 +37,19 @@ The \code{gt_plt_sparkline} function takes an existing \code{gt_tbl} object and
 adds sparklines via the \code{ggplot2}. Note that if you'd rather plot summary
 distributions (ie density/histograms) you can instead use: \code{gtExtras::gt_plt_dist()}
 }
+\section{Examples}{
+
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{ library(gt)
+ gt_sparkline_tab <- mtcars \%>\%
+    dplyr::group_by(cyl) \%>\%
+    # must end up with list of data for each row in the input dataframe
+    dplyr::summarize(mpg_data = list(mpg), .groups = "drop") \%>\%
+    gt() \%>\%
+    gt_plt_sparkline(mpg_data)
+}\if{html}{\out{</div>}}
+}
+
 \section{Figures}{
 
 \if{html}{\figure{gt_plt_sparkline.png}{options: width=50\%}}
@@ -47,16 +60,6 @@ distributions (ie density/histograms) you can instead use: \code{gtExtras::gt_pl
 1-4
 }
 
-\examples{
- library(gt)
- gt_sparkline_tab <- mtcars \%>\%
-    dplyr::group_by(cyl) \%>\%
-    # must end up with list of data for each row in the input dataframe
-    dplyr::summarize(mpg_data = list(mpg), .groups = "drop") \%>\%
-    gt() \%>\%
-    gt_plt_sparkline(mpg_data)
-
-}
 \seealso{
 Other Plotting: 
 \code{\link{gt_plt_bar_pct}()},

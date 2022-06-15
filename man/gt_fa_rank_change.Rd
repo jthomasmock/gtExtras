@@ -38,16 +38,20 @@ Note that you can use \code{font_color = 'match'} to match the palette across
 arrows and text. \code{show_text = FALSE} will remove the text from the column,
 resulting only in colored arrows.
 }
+\section{Examples}{
+
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{rank_table <- dplyr::tibble(x = c(1:3, -1, -2, -5, 0)) \%>\%
+  gt::gt() \%>\%
+  gt_fa_rank_change(x, font_color = "match")
+}\if{html}{\out{</div>}}
+}
+
 \section{Figures}{
 
 \if{html}{\figure{fa_rank_change.png}{options: width=5\%}}
 }
 
-\examples{
-rank_table <- dplyr::tibble(x = c(1:3, -1, -2, -5, 0)) \%>\%
-  gt::gt() \%>\%
-  gt_fa_rank_change(x, font_color = "match")
-}
 \seealso{
 Other Utilities: 
 \code{\link{add_text_img}()},
@@ -71,6 +75,7 @@ Other Utilities:
 \code{\link{gt_merge_stack}()},
 \code{\link{gt_two_column_layout}()},
 \code{\link{gtsave_extra}()},
+\code{\link{img_header}()},
 \code{\link{pad_fn}()},
 \code{\link{tab_style_by_grp}()}
 }

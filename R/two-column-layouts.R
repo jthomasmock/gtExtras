@@ -17,7 +17,8 @@
 #' @return a `list()` of two `gt` tables
 #' @export
 #'
-#' @examples
+#' @section Examples:
+#' ```r
 #' library(gt)
 #' # define your own function
 #' my_gt_function <- function(x) {
@@ -31,6 +32,13 @@
 #' # list of two gt_tbl objects
 #' # ready to pass to gtExtras::gt_two_column_layout()
 #' str(two_tables, max.level = 1)
+#'
+#' #> List of 2
+#' #> $ :List of 16
+#' #> ..- attr(*, "class")= chr [1:2] "gt_tbl" "list"
+#' #> $ :List of 16
+#' #> ..- attr(*, "class")= chr [1:2] "gt_tbl" "list"
+#' ```
 #' @family Utilities
 #' @section Function ID:
 #' 2-13
@@ -92,15 +100,16 @@ gt_double_table <- function(data, gt_fn, nrows = NULL, noisy = TRUE) {
 #' @export
 #' @family Utilities
 #' @section Examples:
-#'
+#' Add row numbers and drop some columns
 #' ``` r
 #' library(gt)
-#' # add row numbers and drop some columns
 #' my_cars <- mtcars %>%
 #'   dplyr::mutate(row_n = dplyr::row_number(), .before = mpg) %>%
 #'   dplyr::select(row_n, mpg:drat)
+#' ```
+#' Create two tables, just split half/half
 #'
-#' # create two tables, just split half/half
+#' ```r
 #' tab1 <- my_cars %>%
 #'   dplyr::slice(1:16) %>%
 #'   gt() %>%
@@ -110,29 +119,37 @@ gt_double_table <- function(data, gt_fn, nrows = NULL, noisy = TRUE) {
 #'   dplyr::slice(17:32) %>%
 #'   gt() %>%
 #'   gtExtras::gt_color_rows(columns = row_n, domain = 1:32)
-#'
-#' # put the tables in a list
+#' ```
+#'  Put the tables in a list and then pass list to the `gt_two_column_layout` function.
+#' ```r
 #' listed_tables <- list(tab1, tab2)
 #'
-#' # pass list to the gt_two_column_layout function
 #' gt_two_column_layout(listed_tables)
+#' ```
 #'
-#' # better option!
-#' # create a one-argument function, passing data to `gt::gt()`
+#' A better option - write a small function, use `gt_double_table()` to generate
+#' the tables and then pass it to `gt_double_table()`
+#'
+#' ```r
 #' my_gt_fn <- function(x) {
 #'   gt(x) %>%
 #'     gtExtras::gt_color_rows(columns = row_n, domain = 1:32)
 #' }
 #'
-#' # pass data, your function and the nrows
 #' my_tables <- gt_double_table(my_cars, my_gt_fn, nrows = nrow(my_cars) / 2)
+#' ```
 #'
-#' # boom, this will return it to the viewer
-#' my_output <- gt_two_column_layout(my_tables)
-#' # if you wanted to save it out instead, could use the code below
-#' # gt_two_column_layout(my_tables, output = "save",
-#' #                      filename = "basic-two-col.png",
-#' #                      vwidth = 550, vheight = 620)
+#' This will return it to the viewer
+#'
+#' ```r
+#' gt_two_column_layout(my_tables)
+#' ```
+#' If you wanted to save it out instead, could use the code below
+#'
+#' ```r
+#' gt_two_column_layout(my_tables, output = "save",
+#'                      filename = "basic-two-col.png",
+#'                       vwidth = 550, vheight = 620)
 #' ```
 #' @section Figures:
 #' \if{html}{\figure{basic-two-col.png}{options: width=60\%}}

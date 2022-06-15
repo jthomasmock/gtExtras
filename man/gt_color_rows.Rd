@@ -49,24 +49,10 @@ palettes defined by the user. This function is a custom wrapper around
 \code{gt::data_color()}, and uses some of the boilerplate code. Basic use
 is simpler than \code{data_color()}.
 }
-\section{Figures}{
+\section{Examples}{
 
-\if{html}{\figure{basic-pal.png}{options: width=100\%}}
 
-\if{html}{\figure{blue-pal.png}{options: width=100\%}}
-
-\if{html}{\figure{custom-pal.png}{options: width=100\%}}
-
-\if{html}{\figure{discrete-pal.png}{options: width=100\%}}
-}
-
-\section{Function ID}{
-
-4-2
-}
-
-\examples{
- library(gt)
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{ library(gt)
  # basic use
  basic_use <- mtcars \%>\%
    head(15) \%>\%
@@ -101,7 +87,25 @@ is simpler than \code{data_color()}.
    gt_color_rows(
    gear, pal_type = "discrete", direction = -1,
    palette = "colorblindr::OkabeIto_black", domain = c(3,4,5))
+}\if{html}{\out{</div>}}
 }
+
+\section{Figures}{
+
+\if{html}{\figure{basic-pal.png}{options: width=100\%}}
+
+\if{html}{\figure{blue-pal.png}{options: width=100\%}}
+
+\if{html}{\figure{custom-pal.png}{options: width=100\%}}
+
+\if{html}{\figure{discrete-pal.png}{options: width=100\%}}
+}
+
+\section{Function ID}{
+
+4-2
+}
+
 \seealso{
 Other Colors: 
 \code{\link{gt_color_box}()},

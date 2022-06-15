@@ -13,13 +13,13 @@
 #' @param direction The direction of the `paletteer` palette, should be either `-1` for reversed or the default of `1` for the existing direction.
 #' @return An object of class `gt_tbl`.
 #' @export
-#' @examples
-#'
+#' @section Examples:
+#' ```r
 #' library(gt)
-#' fa_cars <- mtcars[1:5, 1:4] %>%
+#' mtcars[1:5, 1:4] %>%
 #'   gt() %>%
 #'   gt_fa_repeats(cyl, name = "car")
-#'
+#' ```
 #' @section Figures:
 #' \if{html}{\figure{fa-cars.png}{options: width=50\%}}
 #'
@@ -103,8 +103,8 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
 
 #' @return An object of class `gt_tbl`.
 #' @export
-#' @examples
-#'
+#' @section Examples:
+#' ```r
 #' library(gt)
 #' fa_cars <- mtcars %>%
 #'   head() %>%
@@ -112,7 +112,7 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
 #'   dplyr::mutate(man = ifelse(am == 1, "cog", "cogs")) %>%
 #'   gt() %>%
 #'   gt_fa_column(man)
-#'
+#' ```
 #' @section Figures:
 #' \if{html}{\figure{fa-column-cars.png}{options: width=50\%}}
 #'
@@ -197,7 +197,8 @@ gt_fa_column <- function(gt_object, column, ..., palette = NULL,
 #' @return An object of class `gt_tbl`.
 #' @export
 #'
-#' @examples
+#' @section Examples:
+#' ```r
 #' library(gt)
 #' set.seed(37)
 #' rating_table <- mtcars %>%
@@ -206,7 +207,7 @@ gt_fa_column <- function(gt_object, column, ..., palette = NULL,
 #'   dplyr::mutate(rating = sample(1:5, size = 5, TRUE)) %>%
 #'   gt() %>%
 #'   gt_fa_rating(rating, icon = "r-project")
-#'
+#' ```
 #' @section Figures:
 #' \if{html}{\figure{fa-stars.png}{options: width=60\%}}
 #'
@@ -271,10 +272,12 @@ gt_fa_rating <- function(gt_object, column, max_rating = 5, ...,
 #' @return a `gt` table
 #' @export
 #'
-#' @examples
+#' @section Examples:
+#' ```r
 #' rank_table <- dplyr::tibble(x = c(1:3, -1, -2, -5, 0)) %>%
 #'   gt::gt() %>%
 #'   gt_fa_rank_change(x, font_color = "match")
+#' ```
 #' @section Figures:
 #' \if{html}{\figure{fa_rank_change.png}{options: width=5\%}}
 #'

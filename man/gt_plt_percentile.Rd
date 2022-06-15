@@ -31,6 +31,17 @@ Creates a percentile dot plot in each row. Can be used as an
 alternative for a 0 to 100\% bar plot. Allows for scaling values as well and
 accepts a vector of colors for the range of values.
 }
+\section{Examples}{
+
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
+dot_plt <- dplyr::tibble(x = c(seq(10, 90, length.out = 5))) \%>\%
+  gt() \%>\%
+  gt_duplicate_column(x,dupe_name = "dot_plot") \%>\%
+  gt_plt_percentile(dot_plot)
+}\if{html}{\out{</div>}}
+}
+
 \section{Figures}{
 
 \if{html}{\figure{gt_plt_percentile.png}{options: width=30\%}}
@@ -41,13 +52,6 @@ accepts a vector of colors for the range of values.
 3-8
 }
 
-\examples{
-library(gt)
-dot_plt <- dplyr::tibble(x = c(seq(10, 90, length.out = 5))) \%>\%
-  gt() \%>\%
-  gt_duplicate_column(x,dupe_name = "dot_plot") \%>\%
-  gt_plt_percentile(dot_plot)
-}
 \seealso{
 Other Plotting: 
 \code{\link{gt_plt_bar_pct}()},

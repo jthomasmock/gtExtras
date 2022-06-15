@@ -70,12 +70,14 @@ add_pcttile_plot <- function(data, palette, add_label, width){
 #' @return a gt table
 #' @export
 #'
-#' @examples
+#' @section Examples:
+#' ```r
 #' library(gt)
 #' dot_plt <- dplyr::tibble(x = c(seq(10, 90, length.out = 5))) %>%
 #'   gt() %>%
 #'   gt_duplicate_column(x,dupe_name = "dot_plot") %>%
 #'   gt_plt_percentile(dot_plot)
+#' ```
 #' @section Figures:
 #' \if{html}{\figure{gt_plt_percentile.png}{options: width=30\%}}
 #'

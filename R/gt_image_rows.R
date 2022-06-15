@@ -12,7 +12,8 @@
 #' @inheritParams gt::local_image
 #' @return An object of class `gt_tbl`.
 #' @export
-#' @examples
+#' @section Examples:
+#' ```r
 #' library(gt)
 #' teams <- "https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"
 #' team_df <- readRDS(url(teams))
@@ -24,7 +25,7 @@
 #'    gt_img_rows(columns = team_wordmark, height = 25) %>%
 #'    gt_img_rows(columns = logo, img_source = "web", height = 30) %>%
 #'    tab_options(data_row.padding = px(1))
-#'
+#' ```
 #' @section Figures:
 #' \if{html}{\figure{img-rows.png}{options: width=100\%}}
 #'

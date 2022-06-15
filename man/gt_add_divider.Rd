@@ -32,6 +32,16 @@ An object of class \code{gt_tbl}.
 The \code{gt_add_divider} function takes an existing \code{gt_tbl} object and
 adds borders or dividers to specific columns.
 }
+\section{Examples}{
+
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
+basic_divider <- head(mtcars) \%>\%
+  gt() \%>\%
+  gt_add_divider(columns = "cyl", style = "dashed")
+}\if{html}{\out{</div>}}
+}
+
 \section{Figures}{
 
 \if{html}{\figure{add-divider.png}{options: width=70\%}}
@@ -42,14 +52,6 @@ adds borders or dividers to specific columns.
 2-11
 }
 
-\examples{
-library(gt)
-basic_divider <- head(mtcars) \%>\%
-  gt() \%>\%
-  gt_add_divider(columns = "cyl", style = "dashed")
-
-
-}
 \seealso{
 Other Utilities: 
 \code{\link{add_text_img}()},
@@ -73,6 +75,7 @@ Other Utilities:
 \code{\link{gt_merge_stack}()},
 \code{\link{gt_two_column_layout}()},
 \code{\link{gtsave_extra}()},
+\code{\link{img_header}()},
 \code{\link{pad_fn}()},
 \code{\link{tab_style_by_grp}()}
 }

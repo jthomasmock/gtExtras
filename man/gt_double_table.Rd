@@ -29,26 +29,36 @@ to be supplied directly into the \code{gt::gt()} function. This function is
 intended to be passed directly into \code{gt_two_column_layout()}, for printing
 it to the viewer, saving it to a \code{.png}, or returning the raw HTML.
 }
-\section{Function ID}{
+\section{Examples}{
 
-2-13
-}
 
-\examples{
-library(gt)
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
 # define your own function
-my_gt_function <- function(x) {
+my_gt_function <- function(x) \{
   gt(x) \%>\%
     gtExtras::gt_color_rows(columns = mpg, domain = range(mtcars$mpg)) \%>\%
     tab_options(data_row.padding = px(3))
-}
+\}
 
 two_tables <- gt_double_table(mtcars, my_gt_function, nrows = 16)
 
 # list of two gt_tbl objects
 # ready to pass to gtExtras::gt_two_column_layout()
 str(two_tables, max.level = 1)
+
+#> List of 2
+#> $ :List of 16
+#> ..- attr(*, "class")= chr [1:2] "gt_tbl" "list"
+#> $ :List of 16
+#> ..- attr(*, "class")= chr [1:2] "gt_tbl" "list"
+}\if{html}{\out{</div>}}
 }
+
+\section{Function ID}{
+
+2-13
+}
+
 \seealso{
 Other Utilities: 
 \code{\link{add_text_img}()},
@@ -72,6 +82,7 @@ Other Utilities:
 \code{\link{gt_merge_stack}()},
 \code{\link{gt_two_column_layout}()},
 \code{\link{gtsave_extra}()},
+\code{\link{img_header}()},
 \code{\link{pad_fn}()},
 \code{\link{tab_style_by_grp}()}
 }

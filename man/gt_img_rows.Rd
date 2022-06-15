@@ -24,18 +24,10 @@ converts filenames or urls to images into inline images. This is a wrapper
 around \code{gt::text_transform()} + \code{gt::web_image()}/\code{gt::local_image()} with
 the necessary boilerplate already applied.
 }
-\section{Figures}{
+\section{Examples}{
 
-\if{html}{\figure{img-rows.png}{options: width=100\%}}
-}
 
-\section{Function ID}{
-
-2-7
-}
-
-\examples{
-library(gt)
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
 teams <- "https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"
 team_df <- readRDS(url(teams))
 
@@ -46,8 +38,19 @@ team_df <- readRDS(url(teams))
    gt_img_rows(columns = team_wordmark, height = 25) \%>\%
    gt_img_rows(columns = logo, img_source = "web", height = 30) \%>\%
    tab_options(data_row.padding = px(1))
-
+}\if{html}{\out{</div>}}
 }
+
+\section{Figures}{
+
+\if{html}{\figure{img-rows.png}{options: width=100\%}}
+}
+
+\section{Function ID}{
+
+2-7
+}
+
 \seealso{
 Other Utilities: 
 \code{\link{add_text_img}()},
@@ -71,6 +74,7 @@ Other Utilities:
 \code{\link{gt_merge_stack}()},
 \code{\link{gt_two_column_layout}()},
 \code{\link{gtsave_extra}()},
+\code{\link{img_header}()},
 \code{\link{pad_fn}()},
 \code{\link{tab_style_by_grp}()}
 }

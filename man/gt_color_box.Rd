@@ -38,6 +38,21 @@ Note that rather than using \code{gt::fmt_} functions on this column, you can se
 numeric formatting arguments via \code{...}. All arguments should be named
 and are passed to \code{scales::label_number()}.
 }
+\section{Examples}{
+
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
+test_data <- dplyr::tibble(x = letters[1:10],
+                    y = seq(100, 10, by = -10),
+                    z = seq(10, 100, by = 10))
+color_box_tab <- test_data \%>\%
+  gt() \%>\%
+  gt_color_box(columns = y, domain = 0:100, palette = "ggsci::blue_material") \%>\%
+  gt_color_box(columns = z, domain = 0:100,
+               palette = c("purple", "lightgrey", "green"))
+}\if{html}{\out{</div>}}
+}
+
 \section{Figures}{
 
 \if{html}{\figure{color_box.png}{options: width=30\%}}
@@ -48,17 +63,6 @@ and are passed to \code{scales::label_number()}.
 4-3
 }
 
-\examples{
-library(gt)
-test_data <- dplyr::tibble(x = letters[1:10],
-                    y = seq(100, 10, by = -10),
-                    z = seq(10, 100, by = 10))
-color_box_tab <- test_data \%>\%
-  gt() \%>\%
-  gt_color_box(columns = y, domain = 0:100, palette = "ggsci::blue_material") \%>\%
-  gt_color_box(columns = z, domain = 0:100,
-               palette = c("purple", "lightgrey", "green"))
-}
 \seealso{
 Other Colors: 
 \code{\link{gt_color_rows}()},

@@ -12,7 +12,8 @@
 #' @param ... Additional arguments passed to `scales::col_numeric()`
 #' @return An object of class `gt_tbl`.
 #' @export
-#' @examples
+#' @section Examples:
+#' ```r
 #'  library(gt)
 #'  # basic use
 #'  hulk_basic <- mtcars %>%
@@ -32,7 +33,7 @@
 #'    gt::gt() %>%
 #'    # trim gives small range of colors
 #'    gt_hulk_col_numeric(mpg:disp, reverse = TRUE)
-#'
+#' ```
 #' @section Figures:
 #' \if{html}{\figure{hulk_basic.png}{options: width=100\%}}
 #'

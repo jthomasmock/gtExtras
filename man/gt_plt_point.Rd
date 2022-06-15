@@ -34,6 +34,17 @@ Creates a dot/point plot in each row. Can be used as an
 alternative for a bar plot. Accepts any range of values, as opposed to
 \code{gt_plt_percentile} which is intended to be used for values between 0 and 100.
 }
+\section{Examples}{
+
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{point_tab <- dplyr::tibble(x = c(seq(1.2e6, 2e6, length.out = 5))) \%>\%
+  gt::gt() \%>\%
+  gt_duplicate_column(x,dupe_name = "point_plot") \%>\%
+  gt_plt_point(point_plot, accuracy = .1, width = 25) \%>\%
+  gt::fmt_number(x, suffixing = TRUE, decimals = 1)
+}\if{html}{\out{</div>}}
+}
+
 \section{Figures}{
 
 \if{html}{\figure{gt_plt_point.png}{options: width=30\%}}
@@ -44,13 +55,6 @@ alternative for a bar plot. Accepts any range of values, as opposed to
 3-9
 }
 
-\examples{
-point_tab <- dplyr::tibble(x = c(seq(1.2e6, 2e6, length.out = 5))) \%>\%
-  gt::gt() \%>\%
-  gt_duplicate_column(x,dupe_name = "point_plot") \%>\%
-  gt_plt_point(point_plot, accuracy = .1, width = 25) \%>\%
-  gt::fmt_number(x, suffixing = TRUE, decimals = 1)
-}
 \seealso{
 Other Plotting: 
 \code{\link{gt_plt_bar_pct}()},

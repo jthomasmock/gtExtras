@@ -42,22 +42,10 @@ that is colorblind safe and visually appealing.
 It is a useful alternative to the red/green palette where purple typically
 can indicate low or "bad" value, and green can indicate a high or "good" value.
 }
-\section{Figures}{
+\section{Examples}{
 
-\if{html}{\figure{hulk_basic.png}{options: width=100\%}}
 
-\if{html}{\figure{hulk_trim.png}{options: width=100\%}}
-
-\if{html}{\figure{hulk_reverse.png}{options: width=100\%}}
-}
-
-\section{Function ID}{
-
-4-1
-}
-
-\examples{
- library(gt)
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{ library(gt)
  # basic use
  hulk_basic <- mtcars \%>\%
    head() \%>\%
@@ -76,8 +64,23 @@ can indicate low or "bad" value, and green can indicate a high or "good" value.
    gt::gt() \%>\%
    # trim gives small range of colors
    gt_hulk_col_numeric(mpg:disp, reverse = TRUE)
-
+}\if{html}{\out{</div>}}
 }
+
+\section{Figures}{
+
+\if{html}{\figure{hulk_basic.png}{options: width=100\%}}
+
+\if{html}{\figure{hulk_trim.png}{options: width=100\%}}
+
+\if{html}{\figure{hulk_reverse.png}{options: width=100\%}}
+}
+
+\section{Function ID}{
+
+4-1
+}
+
 \seealso{
 Other Colors: 
 \code{\link{gt_color_box}()},

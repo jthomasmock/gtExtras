@@ -23,18 +23,10 @@ The \code{tab_style_by_grp} function takes an existing \code{gt_tbl} object and
 styling according to each group. Currently it support styling the \code{max()}/\code{min()}
 for each group.
 }
-\section{Figures}{
+\section{Examples}{
 
-\if{html}{\figure{grp-tab-style.png}{options: width=20\%}}
-}
 
-\section{Function ID}{
-
-2-12
-}
-
-\examples{
-library(gt)
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
 df_in <- mtcars \%>\%
   dplyr::select(cyl:hp, mpg) \%>\%
   tibble::rownames_to_column() \%>\%
@@ -46,8 +38,19 @@ test_tab <- df_in \%>\%
   gt(groupname_col = "cyl") \%>\%
   tab_style_by_grp(mpg, fn = max,
                    cell_fill(color = "red", alpha = 0.5))
-
+}\if{html}{\out{</div>}}
 }
+
+\section{Figures}{
+
+\if{html}{\figure{grp-tab-style.png}{options: width=40\%}}
+}
+
+\section{Function ID}{
+
+2-12
+}
+
 \seealso{
 Other Utilities: 
 \code{\link{add_text_img}()},
@@ -72,6 +75,7 @@ Other Utilities:
 \code{\link{gt_merge_stack}()},
 \code{\link{gt_two_column_layout}()},
 \code{\link{gtsave_extra}()},
+\code{\link{img_header}()},
 \code{\link{pad_fn}()}
 }
 \concept{Utilities}

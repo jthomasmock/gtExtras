@@ -43,6 +43,7 @@
 #'   gt_plt_conf_int(
 #'     ci_plot, c(ci1, ci2),
 #'     palette = c("red", "lightgrey", "black", "red")
+#'     )
 #' ```
 #' @section Figures:
 #' \if{html}{\figure{gt_plt_ci_calc.png}{options: width=70\%}}
@@ -192,7 +193,7 @@ add_ci_plot <- function(data_in, pal_vals, width, ext_range,
     ) +
     geom_label(aes(x = .data$ci2, label = do.call(scales::label_number, text_args)(.data$ci2)),
       color = pal_vals[4], hjust = 1.1, size = text_size, vjust = 0,
-      fill = "white", position = position_nudge(y = 0.25),
+      fill = "transparent", position = position_nudge(y = 0.25),
       family = "mono", fontface = "bold",
       label.size = unit(0, "lines"), label.padding = unit(0.05, "lines"),
       label.r = unit(0, "lines")
@@ -200,7 +201,7 @@ add_ci_plot <- function(data_in, pal_vals, width, ext_range,
     geom_label(aes(x = .data$ci1, label = do.call(scales::label_number, text_args)(.data$ci1)),
       position = position_nudge(y = 0.25),
       color = pal_vals[4], hjust = -0.1, size = text_size, vjust = 0,
-      fill = "white", family = "mono", fontface = "bold",
+      fill = "transparent", family = "mono", fontface = "bold",
       label.size = unit(0, "lines"), label.padding = unit(0.05, "lines"),
       label.r = unit(0, "lines")
     ) +

@@ -72,6 +72,7 @@ pre_calc_ci_tab <- dplyr::tibble(
   gt_plt_conf_int(
     ci_plot, c(ci1, ci2),
     palette = c("red", "lightgrey", "black", "red")
+    )
 }\if{html}{\out{</div>}}
 }
 

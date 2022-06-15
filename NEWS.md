@@ -9,6 +9,7 @@
 - Add a `"pff"` palette option to `gt_color_box()`
 - Add new arguments to `gt_merge_stack()`  per [issue 53](https://github.com/jthomasmock/gtExtras/issues/53)
 - Bulk update of examples sections and updated images
+- Remove background color from label in `gt_plt_conf_int()` - closes [#54](https://github.com/jthomasmock/gtExtras/issues/54)
 
 # gtExtras 0.4.0
 

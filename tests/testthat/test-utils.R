@@ -37,3 +37,4 @@ test_that("save_svg exports and imports SVG", {
   expect_equal(out_svg, 1)
 
 })
+

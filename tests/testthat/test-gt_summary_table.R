@@ -20,6 +20,35 @@ test_that("summary_table created", {
 
 })
 
+test_that("table is created with expected output", {
+  check_suggests()
+  skip_on_cran()
+
+  my_exibble <- gt::exibble %>%
+    dplyr::mutate(date = as.Date(date),
+                  time = hms::parse_hm(time),
+                  datetime = as.POSIXct(datetime,tz="America/Chicago")
+    )
+
+  ex_tab <- gt_plt_summary(my_exibble)
+
+  vec_miss <- ex_tab[["_data"]][["n_missing"]]
+  vec_miss_out <- c(0.125, 0.125, 0, 0.125, 0.125, 0.125, 0.125, 0, 0)
+
+  expect_equal(vec_miss, vec_miss_out)
+
+  ex_html <- ex_tab %>%
+    gt::as_raw_html() %>%
+    rvest::read_html()
+
+  ex_svg_len <- ex_html %>%
+    rvest::html_nodes("svg") %>%
+    length()
+
+  expect_equal(ex_svg_len, 9)
+
+})
+
 
 test_that("svg is created", {
   check_suggests()
@@ -52,31 +81,4 @@ test_that("svg is created", {
 })
 
 
-test_that("table is created with expected output", {
-  check_suggests()
-  skip_on_cran()
 
-  my_exibble <- gt::exibble %>%
-    dplyr::mutate(date = as.Date(date),
-      time = hms::parse_hm(time),
-      datetime = as.POSIXct(datetime,tz="America/Chicago")
-    )
-
-  ex_tab <- gt_plt_summary(my_exibble)
-
-  vec_miss <- ex_tab[["_data"]][["n_missing"]]
-  vec_miss_out <- c(0.125, 0.125, 0, 0.125, 0.125, 0.125, 0.125, 0, 0)
-
-  expect_equal(vec_miss, vec_miss_out)
-
-  ex_html <- ex_tab %>%
-    gt::as_raw_html() %>%
-    rvest::read_html()
-
-  ex_svg_len <- ex_html %>%
-    rvest::html_nodes("svg") %>%
-    length()
-
-  expect_equal(ex_svg_len, 9)
-
-})

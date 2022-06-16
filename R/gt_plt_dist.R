@@ -48,7 +48,7 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
   # convert to a single vector
   data_in <- unlist(list_data_in)
 
-  stopifnot("Specified column must contain list of values" = class(list_data_in) %in% "list")
+  stopifnot("Specified column must contain list of values" = any(class(list_data_in) %in% "list"))
   stopifnot("Specified column must be numeric" = is.numeric(data_in))
   stopifnot("You must indicate the `type` of plot as one of 'boxplot', 'histogram', 'rug_strip' or 'density'." = isTRUE(type %in% c("boxplot", "rug_strip", "histogram", "density")))
 

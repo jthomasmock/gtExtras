@@ -26,5 +26,4 @@ test_that("img_header generates img", {
 
   expect_equal(exp_div, act_div)
 
-
 })

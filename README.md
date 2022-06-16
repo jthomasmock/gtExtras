@@ -10,6 +10,9 @@ coverage](https://codecov.io/gh/jthomasmock/gtExtras/branch/master/graph/badge.s
 [![R-CMD-check](https://github.com/jthomasmock/gtExtras/workflows/R-CMD-check/badge.svg)](https://github.com/jthomasmock/gtExtras/actions)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/gtExtras)](https://CRAN.R-project.org/package=gtExtras)
+[![R-CMD-check](https://github.com/jthomasmock/gtExtras/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jthomasmock/gtExtras/actions/workflows/R-CMD-check.yaml)
+![gtExtras Total
+Downloads](https://cranlogs.r-pkg.org/badges/grand-total/gtExtras)
 <!-- badges: end -->
 
 The goal of `{gtExtras}` is to provide some additional helper functions

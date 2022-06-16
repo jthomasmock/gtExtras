@@ -56,9 +56,10 @@ gt_merge_stack <- function(gt_object, col1, col2, palette = c("black", "grey"), 
 
   row_name_var <- gt_object[["_boxhead"]][["var"]][which(gt_object[["_boxhead"]][["type"]] == "stub")]
 
-  col2_bare <- rlang::enexpr(col2) %>% rlang::as_string()
   # segment data with bare string column name
-  data_in <- gt_object[["_data"]][[col2_bare]]
+  # col2_bare <- rlang::enexpr(col2) %>% rlang::as_string()
+  # data_in <- gt_object[["_data"]][[col2_bare]]
+  data_in <- gt_index(gt_object, column = {{ col2 }})
 
   gt_object %>%
     text_transform(

@@ -100,7 +100,7 @@ gt_plt_sparkline <- function(gt_object, column, type = "default",
           coord_cartesian(
             clip = "off",
             ylim = grDevices::extendrange(vals, f = 0.09))
-      } else if(isTRUE(label)) {
+      } else if(isFALSE(same_limit) && isTRUE(label)) {
         plot_base <- plot_base +
           geom_text(
             data = filter(input_data, .data$x == max(.data$x)),
@@ -122,6 +122,29 @@ gt_plt_sparkline <- function(gt_object, column, type = "default",
           coord_cartesian(
             clip = "off",
             ylim = grDevices::extendrange(vals, f = 0.09),
+            xlim = c(0.25, length(vals)*1.25))
+      } else if (isTRUE(same_limit) && isTRUE(label)){
+        plot_base <- plot_base +
+          geom_text(
+            data = filter(input_data, .data$x == max(.data$x)),
+            aes(x = .data$x, y = .data$y,
+                label = scales::label_number(
+                  scale_cut = cut_short_scale(),
+                  accuracy = if(med_y_rnd > 0){
+                    .1
+                  } else if(med_y_rnd == 0) {
+                    .01
+                  }
+                )(.data$y)
+            ),
+            size = 2, family = "mono", hjust = 0, vjust = 0.5,
+            position = position_nudge(x = max(input_data$x)*0.05),
+            color = palette[2]
+          )  +
+          scale_y_continuous(expand = expansion(mult = 0.05)) +
+          coord_cartesian(
+            clip = "off",
+            ylim = grDevices::extendrange(total_rng, f = 0.09),
             xlim = c(0.25, length(vals)*1.25))
       }
 

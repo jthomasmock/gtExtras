@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">gtExtras</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.9002</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,10 +51,67 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="development version" id="gtextras-development-version">gtExtras (development version)<a class="anchor" aria-label="anchor" href="#gtextras-development-version"></a></h2>
+<ul><li>Add NA handling to <code><a href="../reference/gt_plt_conf_int.html">gt_plt_conf_int()</a></code> - closes <a href="https://github.com/jthomasmock/gtExtras/issues/52" class="external-link">#52</a>
+</li>
+<li>Update readme content to reflect latest documentation</li>
+<li>Remove <code>use_paletteer</code> argument from documentation (inline operation in function)</li>
+<li>Convert <code>&amp;nbsp</code> to <code>&amp;nbsp;</code> in <code><a href="../reference/fmt_symbol_first.html">fmt_symbol_first()</a></code> and <code><a href="../reference/fmt_pad_num.html">fmt_pad_num()</a></code>, convert tests to match</li>
+<li>Update documentation for <code><a href="../reference/gt_img_circle.html">gt_img_circle()</a></code>
+</li>
+<li>Add <code><a href="../reference/gt_theme_pff.html">gt_theme_pff()</a></code> for Pro Football Focus style tables</li>
+<li>Add a <code>"pff"</code> palette option to <code><a href="../reference/gt_color_box.html">gt_color_box()</a></code>
+</li>
+<li>Add new arguments to <code><a href="../reference/gt_merge_stack.html">gt_merge_stack()</a></code> per <a href="https://github.com/jthomasmock/gtExtras/issues/53" class="external-link">issue 53</a>
+</li>
+<li>Bulk update of examples sections and updated images</li>
+<li>Remove background color from label in <code><a href="../reference/gt_plt_conf_int.html">gt_plt_conf_int()</a></code> - closes <a href="https://github.com/jthomasmock/gtExtras/issues/54" class="external-link">#54</a>
+</li>
+<li>Add <code><a href="../reference/gt_index.html">gt_index()</a></code> to internals of <code><a href="../reference/gt_merge_stack.html">gt_merge_stack()</a></code> to prevent incorrect arrangement when grouping data - closes <a href="https://github.com/jthomasmock/gtExtras/issues/55" class="external-link">issue </a><a href="https://github.com/jthomasmock/gtExtras/issues/55" class="external-link">#55</a>
+</li>
+<li>Correct situation in <code><a href="../reference/gt_plt_sparkline.html">gt_plt_sparkline()</a></code> where inline plots weren’t respecting shared limits.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.4.0" id="gtextras-040">gtExtras 0.4.0<a class="anchor" aria-label="anchor" href="#gtextras-040"></a></h2><p class="text-muted">CRAN release: 2022-06-09</p>
+<ul><li>Prep for and submit initial CRAN release :fingers-crossed:</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.3.9" id="gtextras-039">gtExtras 0.3.9<a class="anchor" aria-label="anchor" href="#gtextras-039"></a></h2>
+<ul><li>Renamed colors arg in <code><a href="../reference/gt_merge_stack.html">gt_merge_stack()</a></code> to be ‘palette’</li>
+<li>Renamed colors arg in <code><a href="../reference/gt_plt_bullet.html">gt_plt_bullet()</a></code> to be ‘palette’</li>
+<li>Renamed pal arg in <code><a href="../reference/gt_plt_sparkline.html">gt_plt_sparkline()</a></code> to be ‘palette’</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.3.8" id="gtextras-038">gtExtras 0.3.8<a class="anchor" aria-label="anchor" href="#gtextras-038"></a></h2>
+<ul><li>Renamed <code>colors</code> argument in <code>gt_win_loss()</code> to <code>palette</code>
+</li>
+<li>Added NA handling to all <code><a href="https://rdrr.io/pkg/fontawesome/man/fa.html" class="external-link">fontawesome::fa()</a></code> functions, ie <code><a href="../reference/gt_fa_rank_change.html">gt_fa_rank_change()</a></code>, <code><a href="../reference/gt_fa_repeats.html">gt_fa_repeats()</a></code>, <code><a href="../reference/gt_fa_column.html">gt_fa_column()</a></code>
+</li>
+<li>Add missing data handling to more plotting functions</li>
+<li>Refactor testing to use <code><a href="https://rdrr.io/pkg/webshot2/man/webshot.html" class="external-link">webshot2::webshot()</a></code> over <code><a href="http://wch.github.io/webshot/reference/webshot.html" class="external-link">webshot::webshot()</a></code>
+</li>
+<li>Remove <code>gt_sparkline()</code> - functions separated into <code><a href="../reference/gt_plt_sparkline.html">gt_plt_sparkline()</a></code> and <code><a href="../reference/gt_plt_dist.html">gt_plt_dist()</a></code>
+</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.3.7" id="gtextras-037">gtExtras 0.3.7<a class="anchor" aria-label="anchor" href="#gtextras-037"></a></h2>
+<ul><li>Added basic support in <code><a href="../reference/gt_plt_summary.html">gt_plt_summary()</a></code> for dates/times.</li>
+<li>Updated tests for <code><a href="../reference/gt_plt_summary.html">gt_plt_summary()</a></code> to include dates/times</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.3.6" id="gtextras-036">gtExtras 0.3.6<a class="anchor" aria-label="anchor" href="#gtextras-036"></a></h2>
+<ul><li>Remove <code>use_paletteer</code> arg from <code><a href="../reference/gt_color_rows.html">gt_color_rows()</a></code> in favor of a hopefully more user friendly detection of <code>::</code>
+</li>
+<li>Convert <code><a href="../reference/gt_color_rows.html">gt_color_rows()</a></code> ‘type’ argument to ‘pal_type’ to prevent an edge-case where a column named type conflicts with the <code>paletteer</code> “type” argument per <a href="https://github.com/jthomasmock/gtExtras/issues/50" class="external-link">issue </a><a href="https://github.com/jthomasmock/gtExtras/issues/50" class="external-link">#50</a>
+</li>
+</ul></div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.4" id="gtextras-034">gtExtras 0.3.4<a class="anchor" aria-label="anchor" href="#gtextras-034"></a></h2>
-<ul><li>Add initial version of a <code><a href="../reference/gt_plt_summary.html">gt_plt_summary()</a></code> function, as inspired by the <a href="https://observablehq.com/d/d8d2929832202050" class="external-link">Observable/SummaryTable function</a>.</li>
+<ul><li>Add initial version of a <code><a href="../reference/gt_plt_summary.html">gt_plt_summary()</a></code> function, as inspired by the <a href="https://observablehq.com/@observablehq/summary-table" class="external-link">Observable/SummaryTable function</a>.</li>
 <li>
-<code><a href="../reference/gt_sparkline.html">gt_sparkline()</a></code> will be removed soon now that <a href="https://github.com/ddsjoberg/bstfun/pull/102" class="external-link"><code>bstfun</code>/<code>gtsummary</code></a> are no longer depending on it. <code><a href="../reference/gt_plt_dist.html">gt_plt_dist()</a></code> and <code><a href="../reference/gt_plt_sparkline.html">gt_plt_sparkline()</a></code> will be the new preferred and enhanced versions of <code><a href="../reference/gt_sparkline.html">gt_sparkline()</a></code>.</li>
+<code>gt_sparkline()</code> will be removed soon now that <a href="https://github.com/ddsjoberg/bstfun/pull/102" class="external-link"><code>bstfun</code>/<code>gtsummary</code></a> are no longer depending on it. <code><a href="../reference/gt_plt_dist.html">gt_plt_dist()</a></code> and <code><a href="../reference/gt_plt_sparkline.html">gt_plt_sparkline()</a></code> will be the new preferred and enhanced versions of <code>gt_sparkline()</code>.</li>
+<li>Add tests for <code><a href="../reference/gt_plt_summary.html">gt_plt_summary()</a></code>
+</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.3" id="gtextras-033">gtExtras 0.3.3<a class="anchor" aria-label="anchor" href="#gtextras-033"></a></h2>

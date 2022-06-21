@@ -64,5 +64,5 @@ test_that("svg is created and has specific values", {
     rvest::html_attr("points") %>%
     substr(1, 34)
 
-  expect_equal(spark_vals, "8.16,11.32 13.89,9.93 19.61,11.32 ")
+  expect_equal(spark_vals, "8.16,6.80 13.89,6.08 19.61,6.80 25")
   })

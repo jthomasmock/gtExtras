@@ -11,6 +11,7 @@
 - Bulk update of examples sections and updated images
 - Remove background color from label in `gt_plt_conf_int()` - closes [#54](https://github.com/jthomasmock/gtExtras/issues/54)
 - Add `gt_index()` to internals of `gt_merge_stack()` to prevent incorrect arrangement when grouping data - closes [issue #55](https://github.com/jthomasmock/gtExtras/issues/55)
+- Corrected `gt_plt_sparkline()` where in some cases inline plots weren't respecting shared limits.
 
 # gtExtras 0.4.0
 

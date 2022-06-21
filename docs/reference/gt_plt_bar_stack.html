@@ -24,7 +24,7 @@ scales::label_???() family of function."><meta property="og:image" content="http
     
     <a class="navbar-brand me-2" href="../index.html">gtExtras</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.9002</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -111,15 +111,35 @@ the labels can be controlled via the <code>fmt_fn</code> argument and the
     <p>An object of class <code>gt_tbl</code>.</p>
     </div>
     <div class="section level2">
-    <h2 id="function-id">Function ID<a class="anchor" aria-label="anchor" href="#function-id"></a></h2>
+    <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
     
 
-<p>3-6</p>
-    </div>
-    <div class="section level2">
-    <h2 id="figures">Figures<a class="anchor" aria-label="anchor" href="#figures"></a></h2>
-    
 
+<p></p><div class="sourceCode r"><pre><code><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/" class="external-link">gt</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
+
+<span class="va">ex_df</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>
+  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Example 1"</span>,<span class="st">"Example 1"</span>,
+        <span class="st">"Example 1"</span>,<span class="st">"Example 2"</span>,<span class="st">"Example 2"</span>,<span class="st">"Example 2"</span>,
+        <span class="st">"Example 3"</span>,<span class="st">"Example 3"</span>,<span class="st">"Example 3"</span>,<span class="st">"Example 4"</span>,<span class="st">"Example 4"</span>,
+        <span class="st">"Example 4"</span><span class="op">)</span>,
+  measure <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Measure 1"</span>,<span class="st">"Measure 2"</span>,
+              <span class="st">"Measure 3"</span>,<span class="st">"Measure 1"</span>,<span class="st">"Measure 2"</span>,<span class="st">"Measure 3"</span>,
+              <span class="st">"Measure 1"</span>,<span class="st">"Measure 2"</span>,<span class="st">"Measure 3"</span>,<span class="st">"Measure 1"</span>,<span class="st">"Measure 2"</span>,
+              <span class="st">"Measure 3"</span><span class="op">)</span>,
+  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">20</span>, <span class="fl">50</span>, <span class="fl">30</span>, <span class="fl">30</span>, <span class="fl">40</span>, <span class="fl">30</span>, <span class="fl">40</span>, <span class="fl">30</span>, <span class="fl">30</span>, <span class="fl">50</span>, <span class="fl">20</span><span class="op">)</span>
+<span class="op">)</span>
+
+
+<span class="va">tab_df</span> <span class="op">&lt;-</span> <span class="va">ex_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>list_data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">tab_df</span>
+
+<span class="va">ex_tab</span> <span class="op">&lt;-</span> <span class="va">tab_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/gt_plt_bar_stack.html">gt_plt_bar_stack</a></span><span class="op">(</span>column <span class="op">=</span> <span class="va">list_data</span><span class="op">)</span></code></pre><p></p></div>
 <p><img src="figures/plt-bar-stack.png" width="70%"></p>
     </div>
     <div class="section level2">
@@ -131,47 +151,9 @@ the labels can be controlled via the <code>fmt_fn</code> argument and the
 <code><a href="gt_plt_percentile.html">gt_plt_percentile</a>()</code>,
 <code><a href="gt_plt_point.html">gt_plt_point</a>()</code>,
 <code><a href="gt_plt_sparkline.html">gt_plt_sparkline</a>()</code>,
-<code><a href="gt_plt_winloss.html">gt_plt_winloss</a>()</code>,
-<code><a href="gt_sparkline.html">gt_sparkline</a>()</code></p></div>
+<code><a href="gt_plt_winloss.html">gt_plt_winloss</a>()</code></p></div>
     </div>
 
-    <div class="section level2">
-    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/" class="external-link">gt</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">ex_df</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
-<span class="r-in">  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Example 1"</span>,<span class="st">"Example 1"</span>,</span>
-<span class="r-in">        <span class="st">"Example 1"</span>,<span class="st">"Example 2"</span>,<span class="st">"Example 2"</span>,<span class="st">"Example 2"</span>,</span>
-<span class="r-in">        <span class="st">"Example 3"</span>,<span class="st">"Example 3"</span>,<span class="st">"Example 3"</span>,<span class="st">"Example 4"</span>,<span class="st">"Example 4"</span>,</span>
-<span class="r-in">        <span class="st">"Example 4"</span><span class="op">)</span>,</span>
-<span class="r-in">  measure <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Measure 1"</span>,<span class="st">"Measure 2"</span>,</span>
-<span class="r-in">              <span class="st">"Measure 3"</span>,<span class="st">"Measure 1"</span>,<span class="st">"Measure 2"</span>,<span class="st">"Measure 3"</span>,</span>
-<span class="r-in">              <span class="st">"Measure 1"</span>,<span class="st">"Measure 2"</span>,<span class="st">"Measure 3"</span>,<span class="st">"Measure 1"</span>,<span class="st">"Measure 2"</span>,</span>
-<span class="r-in">              <span class="st">"Measure 3"</span><span class="op">)</span>,</span>
-<span class="r-in">  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">20</span>, <span class="fl">50</span>, <span class="fl">30</span>, <span class="fl">30</span>, <span class="fl">40</span>, <span class="fl">30</span>, <span class="fl">40</span>, <span class="fl">30</span>, <span class="fl">30</span>, <span class="fl">50</span>, <span class="fl">20</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">tab_df</span> <span class="op">&lt;-</span> <span class="va">ex_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>list_data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">tab_df</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   x         list_data</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Example 1 <span style="color: #949494;">&lt;dbl [3]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Example 2 <span style="color: #949494;">&lt;dbl [3]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Example 3 <span style="color: #949494;">&lt;dbl [3]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Example 4 <span style="color: #949494;">&lt;dbl [3]&gt;</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">ex_tab</span> <span class="op">&lt;-</span> <span class="va">tab_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">gt_plt_bar_stack</span><span class="op">(</span>column <span class="op">=</span> <span class="va">list_data</span><span class="op">)</span></span>
-<span class="r-in"></span>
-</code></pre></div>
-    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 

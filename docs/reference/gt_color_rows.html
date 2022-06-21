@@ -18,7 +18,7 @@ is simpler than data_color()."><meta property="og:image" content="https://jthoma
     
     <a class="navbar-brand me-2" href="../index.html">gtExtras</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.9002</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,9 +75,8 @@ is simpler than <code><a href="https://gt.rstudio.com/reference/data_color.html"
   palette <span class="op">=</span> <span class="st">"ggsci::red_material"</span>,
   direction <span class="op">=</span> <span class="fl">1</span>,
   domain <span class="op">=</span> <span class="cn">NULL</span>,
-  type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"discrete"</span>, <span class="st">"continuous"</span><span class="op">)</span>,
-  <span class="va">...</span>,
-  use_paletteer <span class="op">=</span> <span class="cn">TRUE</span>
+  pal_type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"discrete"</span>, <span class="st">"continuous"</span><span class="op">)</span>,
+  <span class="va">...</span>
 <span class="op">)</span></code></pre></div>
     </div>
 
@@ -101,17 +100,55 @@ numeric data; and <code>col_factor</code> needs categorical data.</p>
 is invoked multiple times, the encoding between values and colours may not
 be consistent; if consistency is needed, you must provide a non-<code>NULL</code>
 domain.</p></dd>
-<dt>type</dt>
-<dd><p>Either "discrete" or "continuous". Colors are interpolated if
-"continuous" is picked. Defaults to "discrete".</p></dd>
+<dt>pal_type</dt>
+<dd><p>A string indicating the palette type (one of <code>c("discrete", "continuous")</code>)</p></dd>
 <dt>...</dt>
 <dd><p>Additional arguments passed to <code><a href="https://scales.r-lib.org/reference/col_numeric.html" class="external-link">scales::col_numeric()</a></code></p></dd>
-<dt>use_paletteer</dt>
-<dd><p>Should the palette be passed as a "package::palette_name" to <code>paletteer</code> or should the palette be treated as a raw character string of colors. Defaults to <code>TRUE</code>. Note that if <code>FALSE</code>, that the "n", "direction", and "type" arguments are ignored, as they are passed only to <code>paletter::paletteer_d()</code>.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>An object of class <code>gt_tbl</code>.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
+    
+
+
+<p></p><div class="sourceCode r"><pre><code><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/" class="external-link">gt</a></span><span class="op">)</span>
+ <span class="co"># basic use</span>
+ <span class="va">basic_use</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+   <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+   <span class="fu"><a href="../reference/gt_color_rows.html">gt_color_rows</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">:</span><span class="va">disp</span><span class="op">)</span>
+ <span class="co"># change palette to one that paletteer recognizes</span>
+ <span class="va">change_pal</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+   <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+   <span class="fu"><a href="../reference/gt_color_rows.html">gt_color_rows</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">:</span><span class="va">disp</span>, palette <span class="op">=</span> <span class="st">"ggsci::blue_material"</span><span class="op">)</span>
+ <span class="co"># change palette to raw values</span>
+ <span class="va">vector_pal</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+   <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+   <span class="fu"><a href="../reference/gt_color_rows.html">gt_color_rows</a></span><span class="op">(</span>
+     <span class="va">mpg</span><span class="op">:</span><span class="va">disp</span>, palette <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"white"</span>, <span class="st">"green"</span><span class="op">)</span><span class="op">)</span>
+     <span class="co"># could also use palette = c("#ffffff", "##00FF00")</span>
+
+ <span class="co"># use discrete instead of continuous palette</span>
+ <span class="va">discrete_pal</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/gt_color_rows.html">gt_color_rows</a></span><span class="op">(</span>
+  <span class="va">cyl</span>, pal_type <span class="op">=</span> <span class="st">"discrete"</span>,
+  palette <span class="op">=</span> <span class="st">"ggthemes::colorblind"</span>, domain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">$</span><span class="va">cyl</span><span class="op">)</span>
+    <span class="op">)</span>
+ <span class="co"># use discrete and manually define range</span>
+ <span class="va">range_pal</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">gear</span>, <span class="va">mpg</span><span class="op">:</span><span class="va">hp</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+   <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+   <span class="fu"><a href="../reference/gt_color_rows.html">gt_color_rows</a></span><span class="op">(</span>
+   <span class="va">gear</span>, pal_type <span class="op">=</span> <span class="st">"discrete"</span>, direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>,
+   palette <span class="op">=</span> <span class="st">"colorblindr::OkabeIto_black"</span>, domain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span></code></pre><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="figures">Figures<a class="anchor" aria-label="anchor" href="#figures"></a></h2>
@@ -135,49 +172,6 @@ domain.</p></dd>
 <code><a href="gt_hulk_col_numeric.html">gt_hulk_col_numeric</a>()</code></p></div>
     </div>
 
-    <div class="section level2">
-    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/" class="external-link">gt</a></span><span class="op">)</span></span>
-<span class="r-in"> <span class="co"># basic use</span></span>
-<span class="r-in"> <span class="va">basic_use</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu">gt_color_rows</span><span class="op">(</span><span class="va">mpg</span><span class="op">:</span><span class="va">disp</span><span class="op">)</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Domain not specified, defaulting to observed range within each specified column.</span>
-<span class="r-in"> <span class="co"># change palette to one that paletteer recognizes</span></span>
-<span class="r-in"> <span class="va">change_pal</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu">gt_color_rows</span><span class="op">(</span><span class="va">mpg</span><span class="op">:</span><span class="va">disp</span>, palette <span class="op">=</span> <span class="st">"ggsci::blue_material"</span><span class="op">)</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Domain not specified, defaulting to observed range within each specified column.</span>
-<span class="r-in"> <span class="co"># change palette to raw values</span></span>
-<span class="r-in"> <span class="va">vector_pal</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu">gt_color_rows</span><span class="op">(</span></span>
-<span class="r-in">     <span class="va">mpg</span><span class="op">:</span><span class="va">disp</span>, palette <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"white"</span>, <span class="st">"green"</span><span class="op">)</span>,</span>
-<span class="r-in">     <span class="co"># could also use palette = c("#ffffff", "##00FF00")</span></span>
-<span class="r-in">     use_paletteer <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Domain not specified, defaulting to observed range within each specified column.</span>
-<span class="r-in"></span>
-<span class="r-in"> <span class="co"># use discrete instead of continuous palette</span></span>
-<span class="r-in"> <span class="va">discrete_pal</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">gt_color_rows</span><span class="op">(</span></span>
-<span class="r-in">  <span class="va">cyl</span>, type <span class="op">=</span> <span class="st">"discrete"</span>,</span>
-<span class="r-in">  palette <span class="op">=</span> <span class="st">"ggthemes::colorblind"</span>, domain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">$</span><span class="va">cyl</span><span class="op">)</span></span>
-<span class="r-in">    <span class="op">)</span></span>
-<span class="r-in"> <span class="co"># use discrete and manually define range</span></span>
-<span class="r-in"> <span class="va">range_pal</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">gear</span>, <span class="va">mpg</span><span class="op">:</span><span class="va">hp</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu">gt_color_rows</span><span class="op">(</span></span>
-<span class="r-in">   <span class="va">gear</span>, type <span class="op">=</span> <span class="st">"discrete"</span>, direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>,</span>
-<span class="r-in">   palette <span class="op">=</span> <span class="st">"colorblindr::OkabeIto_black"</span>, domain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
-</code></pre></div>
-    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 

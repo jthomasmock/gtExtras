@@ -10,6 +10,9 @@
     <loc>https://jthomasmock.github.io/gtExtras/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://jthomasmock.github.io/gtExtras/articles/articles/plotting-with-gtExtras.html</loc>
+  </url>
+  <url>
     <loc>https://jthomasmock.github.io/gtExtras/articles/index.html</loc>
   </url>
   <url>
@@ -196,6 +199,9 @@
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_theme_nytimes.html</loc>
   </url>
   <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_theme_pff.html</loc>
+  </url>
+  <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_two_column_layout.html</loc>
   </url>
   <url>
@@ -209,6 +215,9 @@
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/last_row_id.html</loc>
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/n_decimals.html</loc>

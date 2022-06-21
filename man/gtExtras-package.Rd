@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Provides additional functions for creating beautiful tables with 'gt'. The functions are generally wrappers around boilerplate or adding capabilities that are currently not built into 'gt'.
+Provides additional functions for creating beautiful tables with 'gt'. The functions are generally wrappers around boilerplate or adding opinionated niche capabilities and helpers functions.
 }
 \seealso{
 Useful links:

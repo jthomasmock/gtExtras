@@ -500,11 +500,6 @@ tidy_gsub <- function(x, pattern, replacement, fixed = FALSE) {
   }
 }
 
-is_gt <- function(data) {
-
-  checkmate::test_class(data, "gt_tbl")
-}
-
 #' Process text based on rendering context any applied classes
 #'
 #' If the incoming text has the class `from_markdown` (applied by the `md()`

@@ -47,6 +47,10 @@ save_svg <- function(plot, ..., dpi = 25.4){
 
   img_plot <- out_name %>%
     readLines() %>%
+    # potentially required as PANDOC turns 4 spaces into pre code block
+    # https://github.com/jthomasmock/gtExtras/issues/56
+    # https://stackoverflow.com/questions/40730902/r-markdown-asis-breaks-valid-html-code
+    tidy_gsub(pattern = "\\s+", replacement = " ") %>%
     paste0(collapse = "") %>%
     gt::html()
 
@@ -54,6 +58,17 @@ save_svg <- function(plot, ..., dpi = 25.4){
 
   img_plot
 
+}
+
+# check if gt
+#' @noRd
+is_gt <- function(gt_object){
+  any("gt_tbl" %in% class(gt_object))
+}
+# check if stop gt
+#' @noRd
+is_gt_stop <- function(gt_object){
+  stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = any("gt_tbl" %in% class(gt_object)))
 }
 
 # vendored from gt

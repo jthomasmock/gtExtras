@@ -271,12 +271,13 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
     on.exit(file.remove(out_name), add=TRUE)
 
     img_plot
+
   }
 
   text_transform(
   gt_object,
   locations = cells_body(columns = {{ column }}),
-  fn = function(x) {mapply(plot_fn_spark, trim, list_data_in)}
+  fn = function(x) {mapply(plot_fn_spark, trim, list_data_in, SIMPLIFY = FALSE)}
 )
 }
 

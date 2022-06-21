@@ -31,26 +31,24 @@ Create circular border around an image
 }
 \section{Examples}{
 
-
-\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
+library(gt)
 gt_img_tab <- dplyr::tibble(
-  x = 1:4,
-  names = c("Rich Iannone",  "Katie Masiello", "Tom Mock","Hadley Wickham"),
-  img = c(
-     "https://pbs.twimg.com/profile_images/961326215792533504/Ih6EsvtF_400x400.jpg",
-     "https://pbs.twimg.com/profile_images/1471188460220260354/rHhoIXkZ_400x400.jpg",
-     "https://pbs.twimg.com/profile_images/1467219661121064965/Lfondr9M_400x400.jpg",
-     "https://pbs.twimg.com/profile_images/905186381995147264/7zKAG5sY_400x400.jpg"
-  )
+x = 1:4,
+names = c("Rich Iannone",  "Katie Masiello", "Tom Mock","Hadley Wickham"),
+img = c(
+"https://pbs.twimg.com/profile_images/961326215792533504/Ih6EsvtF_400x400.jpg",
+"https://pbs.twimg.com/profile_images/1471188460220260354/rHhoIXkZ_400x400.jpg",
+"https://pbs.twimg.com/profile_images/1467219661121064965/Lfondr9M_400x400.jpg",
+"https://pbs.twimg.com/profile_images/905186381995147264/7zKAG5sY_400x400.jpg"
+)
 ) \%>\%
-  gt() \%>\%
-  gt_img_circle(img)
-}\if{html}{\out{</div>}}
+gt() \%>\%
+gt_img_circle(img)
 }
 
 \section{Figures}{
 
-\if{html}{\figure{gt_img_circle.png}{options: width=50\%}}
+\if{html}{\figure{gt_img_circle.png}{options: width=80\%}}
 }
 
 \section{Function ID}{

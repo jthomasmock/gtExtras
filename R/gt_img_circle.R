@@ -31,7 +31,6 @@ img_circle <- function(value, height, border_color, border_weight) {
 #' @export
 #'
 #' @section Examples:
-#' ```r
 #' library(gt)
 #' gt_img_tab <- dplyr::tibble(
 #'   x = 1:4,
@@ -45,9 +44,8 @@ img_circle <- function(value, height, border_color, border_weight) {
 #' ) %>%
 #'   gt() %>%
 #'   gt_img_circle(img)
-#' ```
 #' @section Figures:
-#' \if{html}{\figure{gt_img_circle.png}{options: width=50\%}}
+#' \if{html}{\figure{gt_img_circle.png}{options: width=80\%}}
 #'
 #' @family Utilities
 #' @section Function ID:

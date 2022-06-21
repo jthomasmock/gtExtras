@@ -27,7 +27,7 @@
 #'     gt_plt_dist(mpg_data)
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{ggplot2-sparkline.png}{options: width=50\%}}
+#' \if{html}{\figure{gt_plt_dist.png}{options: width=50\%}}
 #'
 #' @family Plotting
 #' @section Function ID:
@@ -38,7 +38,7 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
   same_limit = TRUE
 ) {
 
-  stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
+  is_gt_stop(gt_object)
   # convert tidyeval column to bare string
   col_bare <- dplyr::select(gt_object[["_data"]], {{ column }}) %>% names()
 

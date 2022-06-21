@@ -26,36 +26,6 @@ reference:
   - gt_theme_dark
   - gt_theme_excel
   - gt_theme_pff
-- title: Utilities
-  desc: Helper functions and utilities with features not _yet_ built into `{gt}`.
-  contents:
-  - fmt_symbol_first
-  - fmt_pad_num
-  - fmt_pct_extra
-  - pad_fn
-  - fa_icon_repeat
-  - gt_fa_column
-  - gt_fa_repeats
-  - gt_fa_rating
-  - gt_fa_rank_change
-  - add_text_img
-  - img_header
-  - gt_merge_stack
-  - gt_img_rows
-  - gt_img_circle
-  - gt_highlight_rows
-  - gt_highlight_cols
-  - gt_add_divider
-  - tab_style_by_grp
-  - gt_double_table
-  - gt_two_column_layout
-  - gtsave_extra
-  - gt_duplicate_column
-  - gt_index
-  - gt_label_details
-  - with_tooltip
-  - gt_hyperlink
-  - generate_df
 - title: Plotting
   desc: Add plots to specific rows of an existing table
   contents:
@@ -71,6 +41,41 @@ reference:
   - gt_plt_point
   - gt_plt_percentile
   - gt_plt_conf_int
+- title: Images and icons
+  desc: Add fontawesome icons or web images to a table
+  contents:
+  - fa_icon_repeat
+  - gt_fa_column
+  - gt_fa_repeats
+  - gt_fa_rating
+  - gt_fa_rank_change
+  - add_text_img
+  - img_header
+  - gt_img_rows
+  - gt_img_circle
+- title: Utilities
+  desc: Helper functions and utilities with features not _yet_ built into `{gt}`.
+  contents:
+  - fmt_symbol_first
+  - fmt_pad_num
+  - fmt_pct_extra
+  - pad_fn
+  - gt_merge_stack
+  - gt_highlight_rows
+  - gt_highlight_cols
+  - gt_add_divider
+  - tab_style_by_grp
+  - gt_double_table
+  - gt_two_column_layout
+  - gtsave_extra
+  - gt_duplicate_column
+  - gt_index
+  - generate_df
+- title: HTML Helpers
+  desc: Various HTML helpers to avoid repeated boilerplate
+  - gt_label_details
+  - with_tooltip
+  - gt_hyperlink
 - title: Colors
   desc: Add color to the entire table or to specific locations. Includes wrappers
     around the `{scales}` and `{paletteer}` packages that provide easier or more succinct
@@ -80,6 +85,7 @@ reference:
   - gt_color_rows
   - gt_color_box
 - title: internal
+  desc: Internally used functions
   contents:
   - add_badge_color
   - add_pcttile_plot

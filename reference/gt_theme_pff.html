@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">gtExtras</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.9002</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.9003</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,7 +57,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">gt_theme_pff</span><span class="op">(</span><span class="va">gt_object</span>, <span class="va">...</span>, <span class="va">divider</span>, <span class="va">blank_span</span>, <span class="va">spanners</span>, <span class="va">rank_col</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">gt_theme_pff</span><span class="op">(</span><span class="va">gt_object</span>, <span class="va">...</span>, <span class="va">divider</span>, <span class="va">spanners</span>, <span class="va">rank_col</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -72,10 +72,6 @@
 
 <dt>divider</dt>
 <dd><p>A column name to add a divider to the left of - accepts tidy-eval column names.</p></dd>
-
-
-<dt>blank_span</dt>
-<dd><p>Columns names to add a blank spanner to - this is necessary to style the table like PFF. Accepts tidy-eval column names.</p></dd>
 
 
 <dt>spanners</dt>
@@ -97,37 +93,47 @@
     
 
 
-<p></p><div class="sourceCode r"><pre><code><span class="va">out_df</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html" class="external-link">tribble</a></span><span class="op">(</span>
-   <span class="op">~</span><span class="va">rank</span>,            <span class="op">~</span><span class="va">player</span>, <span class="op">~</span><span class="va">jersey</span>, <span class="op">~</span><span class="va">team</span>,  <span class="op">~</span><span class="va">g</span>, <span class="op">~</span><span class="va">pass</span>, <span class="op">~</span><span class="va">pr_snaps</span>, <span class="op">~</span><span class="va">rsh_pct</span>, <span class="op">~</span><span class="va">prp</span>, <span class="op">~</span><span class="va">prsh</span>,
-   <span class="fl">1L</span>, <span class="st">"Trey Hendrickson"</span>,    <span class="st">"91"</span>, <span class="st">"CIN"</span>, <span class="fl">16</span>,  <span class="fl">495</span>,      <span class="fl">454</span>,     <span class="fl">91.7</span>, <span class="fl">10.8</span>,  <span class="fl">83.9</span>,
-   <span class="fl">2L</span>,        <span class="st">"T.J. Watt"</span>,    <span class="st">"90"</span>, <span class="st">"PIT"</span>, <span class="fl">15</span>,  <span class="fl">461</span>,      <span class="fl">413</span>,     <span class="fl">89.6</span>, <span class="fl">10.7</span>,  <span class="fl">90.6</span>,
-   <span class="fl">3L</span>,      <span class="st">"Rashan Gary"</span>,    <span class="st">"52"</span>,  <span class="st">"GB"</span>, <span class="fl">16</span>,  <span class="fl">471</span>,      <span class="fl">463</span>,     <span class="fl">98.3</span>, <span class="fl">10.4</span>,  <span class="fl">88.9</span>,
-   <span class="fl">4L</span>,      <span class="st">"Maxx Crosby"</span>,    <span class="st">"98"</span>,  <span class="st">"LV"</span>, <span class="fl">17</span>,  <span class="fl">599</span>,      <span class="fl">597</span>,     <span class="fl">99.7</span>,   <span class="fl">10</span>,  <span class="fl">91.8</span>,
-   <span class="fl">5L</span>,    <span class="st">"Matthew Judon"</span>,    <span class="st">"09"</span>,  <span class="st">"NE"</span>, <span class="fl">17</span>,  <span class="fl">510</span>,      <span class="fl">420</span>,     <span class="fl">82.4</span>,  <span class="fl">9.7</span>,  <span class="fl">73.2</span>,
-   <span class="fl">6L</span>,    <span class="st">"Myles Garrett"</span>,    <span class="st">"95"</span>, <span class="st">"CLV"</span>, <span class="fl">17</span>,  <span class="fl">554</span>,      <span class="fl">543</span>,       <span class="fl">98</span>,  <span class="fl">9.5</span>,  <span class="fl">92.7</span>,
-   <span class="fl">7L</span>,  <span class="st">"Shaquil Barrett"</span>,    <span class="st">"58"</span>,  <span class="st">"TB"</span>, <span class="fl">15</span>,  <span class="fl">563</span>,      <span class="fl">485</span>,     <span class="fl">86.1</span>,  <span class="fl">9.3</span>,  <span class="fl">81.5</span>,
-   <span class="fl">8L</span>,        <span class="st">"Nick Bosa"</span>,    <span class="st">"97"</span>,  <span class="st">"SF"</span>, <span class="fl">17</span>,  <span class="fl">529</span>,      <span class="fl">525</span>,     <span class="fl">99.2</span>,  <span class="fl">9.2</span>,  <span class="fl">89.8</span>,
-   <span class="fl">9L</span>, <span class="st">"Marcus Davenport"</span>,    <span class="st">"92"</span>,  <span class="st">"NO"</span>, <span class="fl">11</span>,  <span class="fl">302</span>,      <span class="fl">297</span>,     <span class="fl">98.3</span>,  <span class="fl">9.1</span>,    <span class="fl">82</span>,
-   <span class="fl">10L</span>,       <span class="st">"Joey Bosa"</span>,    <span class="st">"97"</span>, <span class="st">"LAC"</span>, <span class="fl">16</span>,  <span class="fl">495</span>,      <span class="fl">468</span>,     <span class="fl">94.5</span>,  <span class="fl">8.9</span>,  <span class="fl">90.3</span>,
-   <span class="fl">11L</span>,    <span class="st">"Robert Quinn"</span>,    <span class="st">"94"</span>, <span class="st">"CHI"</span>, <span class="fl">16</span>,  <span class="fl">445</span>,      <span class="fl">402</span>,     <span class="fl">90.3</span>,  <span class="fl">8.6</span>,  <span class="fl">79.7</span>,
-   <span class="fl">12L</span>,   <span class="st">"Randy Gregory"</span>,    <span class="st">"94"</span>, <span class="st">"DAL"</span>, <span class="fl">12</span>,  <span class="fl">315</span>,      <span class="fl">308</span>,     <span class="fl">97.8</span>,  <span class="fl">8.6</span>,  <span class="fl">84.4</span>
- <span class="op">)</span>
-
-<span class="va">out_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_spanner.html" class="external-link">tab_spanner</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="va">pass</span><span class="op">:</span><span class="va">rsh_pct</span>, label <span class="op">=</span> <span class="st">"snaps"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_spanner.html" class="external-link">tab_spanner</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="va">prp</span><span class="op">:</span><span class="va">prsh</span>, label <span class="op">=</span> <span class="st">"grade"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-    <span class="fu"><a href="../reference/gt_theme_pff.html">gt_theme_pff</a></span><span class="op">(</span>
-      spanners <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"snaps"</span>, <span class="st">"grade"</span><span class="op">)</span>,
-      blank_span <span class="op">=</span> <span class="va">rank</span><span class="op">:</span><span class="va">g</span>,
-      divider <span class="op">=</span> <span class="va">jersey</span>, rank_col <span class="op">=</span> <span class="va">rank</span>
-    <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-    <span class="fu"><a href="../reference/gt_color_box.html">gt_color_box</a></span><span class="op">(</span>
-      columns <span class="op">=</span> <span class="va">prsh</span>, domain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">95</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">50</span>, accuracy <span class="op">=</span> <span class="fl">0.1</span>,
-      palette <span class="op">=</span> <span class="st">"pff"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-    <span class="fu"><a href="https://gt.rstudio.com/reference/cols_label.html" class="external-link">cols_label</a></span><span class="op">(</span>jersey <span class="op">=</span> <span class="st">"#"</span>, g <span class="op">=</span> <span class="st">"#G"</span>, rsh_pct <span class="op">=</span> <span class="st">"RSH%"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html" class="external-link">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Pass Rush Grades"</span>,
-               subtitle <span class="op">=</span> <span class="st">"Grades and pass rush stats"</span><span class="op">)</span></code></pre><p></p></div>
+<p></p><div class="sourceCode r"><pre><code>library(gt)
+ out_df &lt;- tibble::tribble(
+   ~rank,            ~player, ~jersey, ~team,  ~g, ~pass, ~pr_snaps, ~rsh_pct, ~prp, ~prsh,
+   1L, "Trey Hendrickson",    "91", "CIN", 16,  495,      454,     91.7, 10.8,  83.9,
+   2L,        "T.J. Watt",    "90", "PIT", 15,  461,      413,     89.6, 10.7,  90.6,
+   3L,      "Rashan Gary",    "52",  "GB", 16,  471,      463,     98.3, 10.4,  88.9,
+   4L,      "Maxx Crosby",    "98",  "LV", 17,  599,      597,     99.7,   10,  91.8,
+   5L,    "Matthew Judon",    "09",  "NE", 17,  510,      420,     82.4,  9.7,  73.2,
+   6L,    "Myles Garrett",    "95", "CLV", 17,  554,      543,       98,  9.5,  92.7,
+   7L,  "Shaquil Barrett",    "58",  "TB", 15,  563,      485,     86.1,  9.3,  81.5,
+   8L,        "Nick Bosa",    "97",  "SF", 17,  529,      525,     99.2,  9.2,  89.8,
+   9L, "Marcus Davenport",    "92",  "NO", 11,  302,      297,     98.3,  9.1,    82,
+   10L,       "Joey Bosa",    "97", "LAC", 16,  495,      468,     94.5,  8.9,  90.3,
+   11L,    "Robert Quinn",    "94", "CHI", 16,  445,      402,     90.3,  8.6,  79.7,
+   12L,   "Randy Gregory",    "94", "DAL", 12,  315,      308,     97.8,  8.6,  84.4
+ )
+ out_df %&gt;%
+   gt() %&gt;%
+     tab_spanner(columns = pass:rsh_pct, label = "snaps") %&gt;%
+     tab_spanner(columns = prp:prsh, label = "grade") %&gt;%
+     gt_theme_pff(
+       spanners = c("snaps", "grade"),
+       divider = jersey, rank_col = rank
+     ) %&gt;%
+     gt_color_box(
+       columns = prsh, domain = c(0, 95), width = 50, accuracy = 0.1,
+       palette = "pff"
+     ) %&gt;%
+     cols_label(jersey = "#", g = "#G", rsh_pct = "RSH%") %&gt;%
+     tab_header(
+       title = "Pass Rush Grades",
+       subtitle = "Grades and pass rush stats"
+     ) %&gt;%
+     gt_highlight_cols(columns = prp, fill = "#e4e8ec") %&gt;%
+     tab_style(
+       style = list(
+         cell_borders("bottom", "white"),
+         cell_fill(color = "#393c40")
+       ),
+       locations = cells_column_labels(prp)
+</code></pre><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="figures">Figures<a class="anchor" aria-label="anchor" href="#figures"></a></h2>

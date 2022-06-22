@@ -33,7 +33,8 @@ gt_highlight_cols <- function(gt_object, columns, fill = "#80bcd8", alpha = 1,
       tab_style(
         style = list(
           cell_fill(color = fill, alpha = alpha),
-          cell_text(weight = font_weight)
+          cell_text(weight = font_weight),
+          cell_borders(sides = c("top", "bottom"), color = fill)
         ),
         locations = cells_body(
           columns = {{ columns }},

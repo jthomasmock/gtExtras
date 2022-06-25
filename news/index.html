@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">gtExtras</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.9003</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.9004</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +52,14 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="gtextras-development-version">gtExtras (development version)<a class="anchor" aria-label="anchor" href="#gtextras-development-version"></a></h2>
-<ul><li>Add NA handling to <code><a href="../reference/gt_plt_conf_int.html">gt_plt_conf_int()</a></code> - closes <a href="https://github.com/jthomasmock/gtExtras/issues/52" class="external-link"></a><a href="https://github.com/jthomasmock/gtExtras/issues/52" class="external-link">#52</a>
+<div class="section level4">
+<h4 id="0409004-development-version">0.4.0.9004<a class="anchor" aria-label="anchor" href="#0409004-development-version"></a></h4>
+<ul><li>Refactor <code><a href="../reference/gt_index.html">gt_index()</a></code> to respect multiple groups - closes <a href="https://github.com/jthomasmock/gtExtras/issues/58" class="external-link">Issue </a><a href="https://github.com/jthomasmock/gtExtras/issues/58" class="external-link">#58</a> - thanks <a href="https://github.com/jmbarbone" class="external-link">@jmbarbone</a> !</li>
+<li>Refactor <code><a href="../reference/tab_style_by_grp.html">tab_style_by_grp()</a></code> to respect multiple groups</li>
+</ul></div>
+<div class="section level4">
+<h4 id="0409003-development-version">0.4.0.9003<a class="anchor" aria-label="anchor" href="#0409003-development-version"></a></h4>
+<ul><li>Add NA handling to <code><a href="../reference/gt_plt_conf_int.html">gt_plt_conf_int()</a></code> - closes <a href="https://github.com/jthomasmock/gtExtras/issues/52" class="external-link">#52</a>
 </li>
 <li>Update readme content to reflect latest documentation</li>
 <li>Remove <code>use_paletteer</code> argument from documentation (inline operation in function)</li>
@@ -65,12 +72,13 @@
 <li>Add new arguments to <code><a href="../reference/gt_merge_stack.html">gt_merge_stack()</a></code> per <a href="https://github.com/jthomasmock/gtExtras/issues/53" class="external-link">issue 53</a>
 </li>
 <li>Bulk update of examples sections and updated images</li>
-<li>Remove background color from label in <code><a href="../reference/gt_plt_conf_int.html">gt_plt_conf_int()</a></code> - closes <a href="https://github.com/jthomasmock/gtExtras/issues/54" class="external-link"></a><a href="https://github.com/jthomasmock/gtExtras/issues/54" class="external-link">#54</a>
+<li>Remove background color from label in <code><a href="../reference/gt_plt_conf_int.html">gt_plt_conf_int()</a></code> - closes <a href="https://github.com/jthomasmock/gtExtras/issues/54" class="external-link">#54</a>
 </li>
 <li>Add <code><a href="../reference/gt_index.html">gt_index()</a></code> to internals of <code><a href="../reference/gt_merge_stack.html">gt_merge_stack()</a></code> to prevent incorrect arrangement when grouping data - closes <a href="https://github.com/jthomasmock/gtExtras/issues/55" class="external-link">issue </a><a href="https://github.com/jthomasmock/gtExtras/issues/55" class="external-link">#55</a>
 </li>
 <li>Corrected <code><a href="../reference/gt_plt_sparkline.html">gt_plt_sparkline()</a></code> where in some cases inline plots weren’t respecting shared limits.</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.0" id="gtextras-040">gtExtras 0.4.0<a class="anchor" aria-label="anchor" href="#gtextras-040"></a></h2><p class="text-muted">CRAN release: 2022-06-09</p>
 <ul><li>Prep for and submit initial CRAN release :fingers-crossed:</li></ul></div>
@@ -117,7 +125,7 @@
 <ul><li>Add <code>webshot2</code> as a dependency now that it’s on CRAN!</li></ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.2" id="gtextras-032">gtExtras 0.3.2<a class="anchor" aria-label="anchor" href="#gtextras-032"></a></h2>
-<ul><li>Remove <code>scales::scales_label_si()</code> in favor of <code>scales::label_number(scale_cut = cut_scale_short())</code> as the previous function was deprecated. Thanks to <a href="https://github.com/mrcaseb" class="external-link"></a><a href="https://github.com/mrcaseb" class="external-link">@mrcaseb</a> for pointing out in <a href="https://github.com/jthomasmock/gtExtras/issues/48" class="external-link">Issue 48</a>
+<ul><li>Remove <code>scales::scales_label_si()</code> in favor of <code>scales::label_number(scale_cut = cut_scale_short())</code> as the previous function was deprecated. Thanks to <a href="https://github.com/mrcaseb" class="external-link">@mrcaseb</a> for pointing out in <a href="https://github.com/jthomasmock/gtExtras/issues/48" class="external-link">Issue 48</a>
 </li></ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3" id="gtextras-03">gtExtras 0.3<a class="anchor" aria-label="anchor" href="#gtextras-03"></a></h2>
@@ -154,7 +162,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer></div>

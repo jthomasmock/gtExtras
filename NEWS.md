@@ -1,5 +1,11 @@
 # gtExtras (development version)
 
+### 0.4.0.9004
+
+- Refactor `gt_index()` to respect multiple groups - closes [Issue #58](https://github.com/jthomasmock/gtExtras/issues/58) - thanks @jmbarbone !
+- Refactor `tab_style_by_grp()` to respect multiple groups
+
+### 0.4.0.9003
 - Add NA handling to `gt_plt_conf_int()` - closes [#52](https://github.com/jthomasmock/gtExtras/issues/52)
 - Update readme content to reflect latest documentation
 - Remove `use_paletteer` argument from documentation (inline operation in function)

@@ -67,12 +67,7 @@ gt_index <- function(gt_object, column, as_vector = TRUE){
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
   stopifnot("'as_vector' must be a TRUE or FALSE" = is.logical(as_vector))
 
-  if(isTRUE(identical(gt_object[["_row_groups"]],character(0)))){
-
-    # if the data is not grouped, then it will just "work"
-    df_ordered <- gt_object[["_data"]]
-
-  } else {
+  if(length(gt_object[["_row_groups"]]) >= 1){
 
     # if the data is grouped you need to identify the group column
     # and arrange by that column. I convert to a factor so that the
@@ -80,21 +75,18 @@ gt_index <- function(gt_object, column, as_vector = TRUE){
     #  (ie alphabetical or numerical)
     gt_row_grps <- gt_object[["_row_groups"]]
 
-    gt_boxhead <- gt_object[["_boxhead"]]
+    grp_vec_ord <- gt_object[["_stub_df"]] %>%
+      dplyr::mutate(group_id = factor(group_id, levels = gt_row_grps)) %>%
+      dplyr::arrange(group_id) %>%
+      dplyr::pull(rownum_i)
 
-    # slice index to only the row_group variable
-    grp_col_name <- gt_boxhead[["var"]][gt_boxhead[["type"]]=="row_group"]
-
-    # get this as a tidyeval column
-    grp_col_sym <- rlang::sym(grp_col_name)
-
-    #  now it's "just" a df with tidyeval
     df_ordered <- gt_object[["_data"]] %>%
-      # need to use walrus equal to get the !! semantics to work
-      dplyr::mutate(!!grp_col_sym := factor(!!grp_col_sym,
-                                            levels = gt_row_grps)) %>%
-      dplyr::arrange(!!grp_col_sym) %>%
-      dplyr::mutate(!!grp_col_sym := as.character(!!grp_col_sym))
+      dplyr::slice(grp_vec_ord)
+
+  } else {
+    # if the data is not grouped, then it will just "work"
+    df_ordered <- gt_object[["_data"]]
+
   }
 
   # return as vector or tibble in correct, gt-indexed ordered

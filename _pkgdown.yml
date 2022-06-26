@@ -96,5 +96,6 @@ reference:
   - gtsave_extra
   - gt_duplicate_column
   - gt_index
+  - get_row_index
   - generate_df
 

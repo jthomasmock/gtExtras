@@ -1,5 +1,9 @@
 # gtExtras (development version)
 
+### 0.4.0.0005
+- Add `get_row_index()` to assist in applying styles to specific rows visually
+- Refactor `last_row_id()` to use `get_row_index()` internally.
+
 ### 0.4.0.9004
 
 - Refactor `gt_index()` to respect multiple groups - closes [Issue #58](https://github.com/jthomasmock/gtExtras/issues/58) - thanks @jmbarbone !

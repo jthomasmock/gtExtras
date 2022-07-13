@@ -16,7 +16,7 @@ output index for subsetting or targetting rows.'><meta property="og:image" conte
     
     <a class="navbar-brand me-2" href="../index.html">gtExtras</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.9005</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.9006</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +66,7 @@ output index for subsetting or targetting rows.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_row_index</span><span class="op">(</span><span class="va">gt_object</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_row_index</span><span class="op">(</span><span class="va">gt_object</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -91,18 +91,18 @@ output index for subsetting or targetting rows.</p>
 
 <p>This helper functions lets us be a bit more efficient when showing the row
 numbers/colors.</p>
-<p></p><div class="sourceCode r"><pre><code><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/" class="external-link">gt</a></span><span class="op">)</span>
-
-<span class="va">row_sty</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">tab</span>, <span class="va">row</span><span class="op">)</span><span class="op">{</span>
-
-  <span class="va">OkabeIto</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#E69F00"</span>, <span class="st">"#56B4E9"</span>, <span class="st">"#009E73"</span>, <span class="st">"#F0E442"</span>,
-                <span class="st">"#0072B2"</span>, <span class="st">"#D55E00"</span>, <span class="st">"#CC79A7"</span>, <span class="st">"#999999"</span><span class="op">)</span>
-  <span class="va">tab</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_style.html" class="external-link">tab_style</a></span><span class="op">(</span>
-      <span class="fu"><a href="https://gt.rstudio.com/reference/cell_fill.html" class="external-link">cell_fill</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">OkabeIto</span><span class="op">[</span><span class="va">row</span><span class="op">]</span><span class="op">)</span>,
-      locations <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/cells_body.html" class="external-link">cells_body</a></span><span class="op">(</span>rows <span class="op">=</span> <span class="va">row</span><span class="op">)</span>
-    <span class="op">)</span>
-<span class="op">}</span></code></pre><p></p></div>
+<p></p><div class="sourceCode r"><pre><code><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/" class="external-link">gt</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">row_sty</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">tab</span>, <span class="va">row</span><span class="op">)</span><span class="op">{</span></span>
+<span></span>
+<span>  <span class="va">OkabeIto</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#E69F00"</span>, <span class="st">"#56B4E9"</span>, <span class="st">"#009E73"</span>, <span class="st">"#F0E442"</span>,</span>
+<span>                <span class="st">"#0072B2"</span>, <span class="st">"#D55E00"</span>, <span class="st">"#CC79A7"</span>, <span class="st">"#999999"</span><span class="op">)</span></span>
+<span>  <span class="va">tab</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_style.html" class="external-link">tab_style</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="https://gt.rstudio.com/reference/cell_fill.html" class="external-link">cell_fill</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">OkabeIto</span><span class="op">[</span><span class="va">row</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>      locations <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/cells_body.html" class="external-link">cells_body</a></span><span class="op">(</span>rows <span class="op">=</span> <span class="va">row</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre><p></p></div>
 </div>
 
 <div class="section">
@@ -110,24 +110,24 @@ numbers/colors.</p>
 
 
 <p>We will randomly sample the data to get it in a specific order.</p>
-<p></p><div class="sourceCode r"><pre><code><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">37</span><span class="op">)</span>
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_sample</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_sample</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">6</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>row_id <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/ranking.html" class="external-link">row_number</a></span><span class="op">(</span><span class="op">)</span>, .before <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
-
-<span class="co">#&gt; df</span>
-<span class="co">#&gt; A tibble: 6 × 12</span>
-<span class="co">#&gt; row_id  mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb</span>
-<span class="co">#&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;   1    10.4   8    472    205  2.93  5.25  18.0     0     0     3     4</span>
-<span class="co">#&gt;   2    18.1   6    225    105  2.76  3.46  20.2     1     0     3     1</span>
-<span class="co">#&gt;   3    21.4   6    258    110  3.08  3.22  19.4     1     0     3     1</span>
-<span class="co">#&gt;   4    13.3   8    350    245  3.73  3.84  15.4     0     0     3     4</span>
-<span class="co">#&gt;   5    33.9   4     71.1  65   4.22  1.84  19.9     1     1     4     1</span>
-<span class="co">#&gt;   6    22.8   4    108    93   3.85  2.32  18.6     1     1     4     1</span></code></pre><p></p></div>
+<p></p><div class="sourceCode r"><pre><code><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">37</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_sample</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_sample</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">6</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>row_id <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/ranking.html" class="external-link">row_number</a></span><span class="op">(</span><span class="op">)</span>, .before <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#&gt; df</span></span>
+<span><span class="co">#&gt; A tibble: 6 × 12</span></span>
+<span><span class="co">#&gt; row_id  mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb</span></span>
+<span><span class="co">#&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;   1    10.4   8    472    205  2.93  5.25  18.0     0     0     3     4</span></span>
+<span><span class="co">#&gt;   2    18.1   6    225    105  2.76  3.46  20.2     1     0     3     1</span></span>
+<span><span class="co">#&gt;   3    21.4   6    258    110  3.08  3.22  19.4     1     0     3     1</span></span>
+<span><span class="co">#&gt;   4    13.3   8    350    245  3.73  3.84  15.4     0     0     3     4</span></span>
+<span><span class="co">#&gt;   5    33.9   4     71.1  65   4.22  1.84  19.9     1     1     4     1</span></span>
+<span><span class="co">#&gt;   6    22.8   4    108    93   3.85  2.32  18.6     1     1     4     1</span></span></code></pre><p></p></div>
 </div>
 
 <div class="section">
@@ -136,10 +136,10 @@ numbers/colors.</p>
 
 <p>Ungrouped data works just fine, and the row indices are identical between
 the visual representation and the output.</p>
-<p></p><div class="sourceCode r"><pre><code><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">row_sty</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">row_sty</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">row_sty</span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></code></pre><p></p></div>
+<p></p><div class="sourceCode r"><pre><code><span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">row_sty</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">row_sty</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">row_sty</span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></code></pre><p></p></div>
 <p><img src="figures/ungrouped-tab.png" width="40%"></p>
 </div>
 
@@ -149,25 +149,25 @@ the visual representation and the output.</p>
 
 <p>However, for grouped data, the row indices are representative of the underlying
 data before grouping, leading to some potential confusion.</p>
-<p></p><div class="sourceCode r"><pre><code><span class="va">tab2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="va">df</span>, groupname_col <span class="op">=</span> <span class="st">"cyl"</span><span class="op">)</span>
-
-<span class="va">tab2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">row_sty</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="co">## actually row 1</span>
-  <span class="fu">row_sty</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="co">## actually row 5</span>
-  <span class="fu">row_sty</span><span class="op">(</span><span class="fl">5</span><span class="op">)</span>     <span class="co">## actually row 2</span></code></pre><p></p></div>
+<p></p><div class="sourceCode r"><pre><code><span><span class="va">tab2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="va">df</span>, groupname_col <span class="op">=</span> <span class="st">"cyl"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">tab2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">row_sty</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="co">## actually row 1</span></span>
+<span>  <span class="fu">row_sty</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="co">## actually row 5</span></span>
+<span>  <span class="fu">row_sty</span><span class="op">(</span><span class="fl">5</span><span class="op">)</span>     <span class="co">## actually row 2</span></span></code></pre><p></p></div>
 <p><img src="figures/grouped-tab.png" width="40%"></p>
 <p>The <code>get_row_index()</code> function gives ability to create an index of the final
 output, so you can reference specific rows by number.</p>
-<p></p><div class="sourceCode r"><pre><code><span class="va">tab_index</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_row_index.html">get_row_index</a></span><span class="op">(</span><span class="va">tab2</span><span class="op">)</span>
-
-<span class="va">tab2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">row_sty</span><span class="op">(</span><span class="fl">4</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="co">## wrong row, actually row 6 visually</span>
-  <span class="fu">row_sty</span><span class="op">(</span><span class="va">tab_index</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span> <span class="co">## correct row, actually row 4</span></code></pre><p></p></div>
+<p></p><div class="sourceCode r"><pre><code><span><span class="va">tab_index</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_row_index.html">get_row_index</a></span><span class="op">(</span><span class="va">tab2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">tab2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">row_sty</span><span class="op">(</span><span class="fl">4</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="co">## wrong row, actually row 6 visually</span></span>
+<span>  <span class="fu">row_sty</span><span class="op">(</span><span class="va">tab_index</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span> <span class="co">## correct row, actually row 4</span></span></code></pre><p></p></div>
 <p><img src="figures/grouped-tab-row4.png" width="40%"></p>
-<p></p><div class="sourceCode r"><pre><code><span class="va">tab2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">row_sty</span><span class="op">(</span><span class="va">tab_index</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">row_sty</span><span class="op">(</span><span class="va">tab_index</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">row_sty</span><span class="op">(</span><span class="va">tab_index</span><span class="op">[</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></code></pre><p></p></div>
+<p></p><div class="sourceCode r"><pre><code><span><span class="va">tab2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">row_sty</span><span class="op">(</span><span class="va">tab_index</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">row_sty</span><span class="op">(</span><span class="va">tab_index</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">row_sty</span><span class="op">(</span><span class="va">tab_index</span><span class="op">[</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span></code></pre><p></p></div>
 <p><img src="figures/grouped-tab-index.png" width="40%"></p>
 </div>
 

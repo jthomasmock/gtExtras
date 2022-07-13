@@ -100,7 +100,7 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
 #' @param palette Name of palette as a string. Must be either length of 1 or a vector of valid color names/hex values of equal length to the unique levels of the column (ie if there are 4 names, there need to be 4x colors). Note that if you would like to specify a specific color to match a specific icon, you can also use a named vector like: `c("angle-double-up" = "#009E73", "angle-double-down" = "#D55E00","sort" = "#000000")`
 #' @param align Character string indicating alignment of the column, defaults to "left"
 #' @param direction The direction of the `paletteer` palette, should be either `-1` for reversed or the default of `1` for the existing direction.
-
+#' @param height A character string indicating the height of the icon, defaults to "20px"
 #' @return An object of class `gt_tbl`.
 #' @export
 #' @section Examples:
@@ -121,7 +121,7 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
 #' 2-15
 
 gt_fa_column <- function(gt_object, column, ..., palette = NULL,
-                         align = "left", direction = 1) {
+                         align = "left", direction = 1, height = "20px") {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
 
 
@@ -168,7 +168,7 @@ gt_fa_column <- function(gt_object, column, ..., palette = NULL,
           my_fa <- list(
             fontawesome::fa(xy, ...,
               fill = fct_x,
-              height = "20px", a11y = "sem"
+              height = height, a11y = "sem"
             ) %>% gt::html()
           )
           htmltools::div(

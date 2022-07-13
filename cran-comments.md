@@ -1,12 +1,8 @@
-## Resubmission
+## R CMD check results
 
-This is a resubmission based on notes in the automated test phase. In this version I have:
-- Added a more strict temp-file removal to avoid note on temp files left behind.
-- Updated license to 2022
-- Removed LazyData since I don't have package data
-- Removed VignetteBuilder: knitr since I do not have vignettes at this time
+There were no ERRORs, WARNINGs or NOTEs
 
-Checked against test environments and WinBuilder (oldrel/devel/release) with 1 expected note (new submission)
+Checked against automated test environments, RHub, MacBuilder, and WinBuilder (oldrel/devel/release)
 
 ## Automated Test environments
 
@@ -22,5 +18,3 @@ on R-universe
 ## R CMD check results
 
 0 errors | 0 warnings | 0 note
-
-* This is a new release.

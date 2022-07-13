@@ -1,5 +1,8 @@
 # gtExtras (development version)
 
+### 0.4.0.0006
+- Add explicit height argument to `gt_fa_column()`
+
 ### 0.4.0.0005
 - Add `get_row_index()` to assist in applying styles to specific rows visually
 - Refactor `last_row_id()` to use `get_row_index()` internally.

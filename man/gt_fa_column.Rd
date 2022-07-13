@@ -10,7 +10,8 @@ gt_fa_column(
   ...,
   palette = NULL,
   align = "left",
-  direction = 1
+  direction = 1,
+  height = "20px"
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ gt_fa_column(
 \item{align}{Character string indicating alignment of the column, defaults to "left"}
 
 \item{direction}{The direction of the \code{paletteer} palette, should be either \code{-1} for reversed or the default of \code{1} for the existing direction.}
+
+\item{height}{A character string indicating the height of the icon, defaults to "20px"}
 }
 \value{
 An object of class \code{gt_tbl}.

@@ -1,18 +1,12 @@
 # gtExtras (development version)
 
-### 0.4.0.0006
-- Add explicit height argument to `gt_fa_column()`
+# gtExtras 0.4.1
 
-### 0.4.0.0005
+- Add explicit height argument to `gt_fa_column()`
 - Add `get_row_index()` to assist in applying styles to specific rows visually
 - Refactor `last_row_id()` to use `get_row_index()` internally.
-
-### 0.4.0.9004
-
 - Refactor `gt_index()` to respect multiple groups - closes [Issue #58](https://github.com/jthomasmock/gtExtras/issues/58) - thanks @jmbarbone !
 - Refactor `tab_style_by_grp()` to respect multiple groups
-
-### 0.4.0.9003
 - Add NA handling to `gt_plt_conf_int()` - closes [#52](https://github.com/jthomasmock/gtExtras/issues/52)
 - Update readme content to reflect latest documentation
 - Remove `use_paletteer` argument from documentation (inline operation in function)

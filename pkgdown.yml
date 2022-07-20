@@ -3,7 +3,7 @@ pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   plotting-with-gtExtras: plotting-with-gtExtras.html
-last_built: 2022-07-19T17:54Z
+last_built: 2022-07-20T21:08Z
 urls:
   reference: https://jthomasmock.github.io/gtExtras/reference
   article: https://jthomasmock.github.io/gtExtras/articles

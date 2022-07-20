@@ -23,7 +23,7 @@ test_that("summary_table created", {
 test_that("table is created with expected output", {
   check_suggests()
   skip_on_cran()
-
+  skip_on_ci()
   my_exibble <- gt::exibble %>%
     dplyr::mutate(date = as.Date(date),
                   time = hms::parse_hm(time),

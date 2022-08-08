@@ -16,7 +16,7 @@ a vector of valid colors/hex colors of length equal to the unique levels."><meta
     
     <a class="navbar-brand me-2" href="../index.html">gtExtras</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1.9002</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1.9004</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,7 +88,7 @@ a vector of valid colors/hex colors of length equal to the unique levels.</p>
 
 
 <dt>...</dt>
-<dd><p>Additional arguments passed to <code><a href="https://rdrr.io/pkg/fontawesome/man/fa.html" class="external-link">fontawesome::fa()</a></code></p></dd>
+<dd><p>Additional arguments passed to <code><a href="https://rstudio.github.io/fontawesome/reference/fa.html" class="external-link">fontawesome::fa()</a></code></p></dd>
 
 
 <dt>palette</dt>
@@ -122,7 +122,7 @@ a vector of valid colors/hex colors of length equal to the unique levels.</p>
 <span><span class="va">fa_cars</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">mpg</span>, <span class="va">am</span>, <span class="va">gear</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>man <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">am</span> <span class="op">==</span> <span class="fl">1</span>, <span class="st">"cog"</span>, <span class="st">"cogs"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>man <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">am</span> <span class="op">==</span> <span class="fl">1</span>, <span class="st">"gear"</span>, <span class="st">"gears"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/gt_fa_column.html">gt_fa_column</a></span><span class="op">(</span><span class="va">man</span><span class="op">)</span></span></code></pre><p></p></div>
     </div>
@@ -157,6 +157,7 @@ a vector of valid colors/hex colors of length equal to the unique levels.</p>
 <code><a href="gt_highlight_cols.html">gt_highlight_cols</a>()</code>,
 <code><a href="gt_highlight_rows.html">gt_highlight_rows</a>()</code>,
 <code><a href="gt_img_circle.html">gt_img_circle</a>()</code>,
+<code><a href="gt_img_multi_rows.html">gt_img_multi_rows</a>()</code>,
 <code><a href="gt_img_rows.html">gt_img_rows</a>()</code>,
 <code><a href="gt_index.html">gt_index</a>()</code>,
 <code><a href="gt_merge_stack.html">gt_merge_stack</a>()</code>,

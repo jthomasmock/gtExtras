@@ -33,7 +33,7 @@ test_that("fontawesome, test column, name and colors", {
   fa_car_html <- head(mtcars) %>%
     dplyr::select(cyl, mpg, am, gear) %>%
     dplyr::add_row(cyl = 6, mpg = mean(mtcars$mpg), am = NA, gear = 3) %>%
-    dplyr::mutate(man = dplyr::case_when(am == 1 ~ "cog", am == 0 ~ "cogs", TRUE ~ NA_character_)) %>%
+    dplyr::mutate(man = dplyr::case_when(am == 1 ~ "gear", am == 0 ~ "gears", TRUE ~ NA_character_)) %>%
     gt::gt() %>%
     gt_fa_column(man) %>%
     gt::as_raw_html() %>%
@@ -51,7 +51,7 @@ test_that("fontawesome, test column, name and colors", {
     gsub(x = ., pattern = ".*fill:", "") %>%
     substr(1, 7)
 
-  expect_equal(fa_cogs, rep(c("cog", "cogs"), each = 3))
+  expect_equal(fa_cogs, rep(c("Gear", "Gears"), each = 3))
   expect_equal(cog_colors, rep(c("#000000", "#E69F00"), each = 3))
 })
 
@@ -134,7 +134,7 @@ test_that("fontawesome, test column, name and colors", {
   col_cog_fn <- function(pal){
     head(mtcars) %>%
       dplyr::select(cyl, mpg, am, gear) %>%
-      dplyr::mutate(man = ifelse(am == 1, "cog", "cogs")) %>%
+      dplyr::mutate(man = ifelse(am == 1, "gear", "gears")) %>%
       gt::gt() %>%
       gt_fa_column(man, palette = pal) %>%
       gt::as_raw_html() %>%
@@ -149,7 +149,7 @@ test_that("fontawesome, test column, name and colors", {
 
   expect_equal(col_cog_fn(c("red", "green")), rep(c("red", "green"), each = 3))
   expect_equal(col_cog_fn(c("red")), rep(c("red"), each = 6))
-  expect_equal(col_cog_fn(c("cog" = "red", "cogs" = "green")), rep(c("red", "green"), each = 3))
+  expect_equal(col_cog_fn(c("gear" = "red", "gears" = "green")), rep(c("red", "green"), each = 3))
 })
 
 # Check for palette -------------------------------------------------------
@@ -177,7 +177,7 @@ test_that("fontawesome, test rank change", {
 
   expect_equal(
     sapply(rank_tab_items, function(x)x[1]) %>% unname(),
-    c(rep("Angle Double Up", 3), rep("Angle Double Down", 3), "Equals")
+    c(rep("Angles up", 3), rep("Angles down", 3), "Equals")
   )
 
   expect_equal(

@@ -45,7 +45,7 @@ a vector of valid colors/hex colors of length equal to the unique levels.
 fa_cars <- mtcars \%>\%
   head() \%>\%
   dplyr::select(cyl, mpg, am, gear) \%>\%
-  dplyr::mutate(man = ifelse(am == 1, "cog", "cogs")) \%>\%
+  dplyr::mutate(man = ifelse(am == 1, "gear", "gears")) \%>\%
   gt() \%>\%
   gt_fa_column(man)
 }\if{html}{\out{</div>}}
@@ -79,6 +79,7 @@ Other Utilities:
 \code{\link{gt_highlight_cols}()},
 \code{\link{gt_highlight_rows}()},
 \code{\link{gt_img_circle}()},
+\code{\link{gt_img_multi_rows}()},
 \code{\link{gt_img_rows}()},
 \code{\link{gt_index}()},
 \code{\link{gt_merge_stack}()},

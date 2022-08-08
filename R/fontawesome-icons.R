@@ -109,7 +109,7 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
 #' fa_cars <- mtcars %>%
 #'   head() %>%
 #'   dplyr::select(cyl, mpg, am, gear) %>%
-#'   dplyr::mutate(man = ifelse(am == 1, "cog", "cogs")) %>%
+#'   dplyr::mutate(man = ifelse(am == 1, "gear", "gears")) %>%
 #'   gt() %>%
 #'   gt_fa_column(man)
 #' ```
@@ -283,15 +283,15 @@ gt_fa_rating <- function(gt_object, column, max_rating = 5, ...,
 #'
 #' @family Utilities
 gt_fa_rank_change <- function(gt_object, column, palette = c("#1b7837", "lightgrey", "#762a83"),
-                              fa_type = c("angle-double", "arrow", "level", "chevron", "caret", "long-arrow-alt"),
+                              fa_type = c("angles", "arrow", "turn", "chevron", "caret"),
                               font_color = "black", show_text = TRUE) {
   vals <- gt_index(gt_object, {{ column }})
 
   stopifnot("Column must be integers" = is.integer(as.integer(vals)))
   stopifnot("Palette must be length 3, in order of increase, no change, decrease" = length(palette) == 3)
   stopifnot(
-    'fa_type must be one of "angle-double", "arrow", "level", "chevron", "caret", "long-arrow-alt"' =
-      fa_type %in% c("angle-double", "arrow", "level", "chevron", "caret", "long-arrow-alt")
+    'fa_type must be one of "angles", "arrow", "turn", "chevron", "caret"' =
+      fa_type %in% c("angles", "arrow", "turn", "chevron", "caret")
   )
 
   # internal function

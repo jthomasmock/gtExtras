@@ -8,7 +8,7 @@ gt_fa_rank_change(
   gt_object,
   column,
   palette = c("#1b7837", "lightgrey", "#762a83"),
-  fa_type = c("angle-double", "arrow", "level", "chevron", "caret", "long-arrow-alt"),
+  fa_type = c("angles", "arrow", "turn", "chevron", "caret"),
   font_color = "black",
   show_text = TRUE
 )
@@ -70,6 +70,7 @@ Other Utilities:
 \code{\link{gt_highlight_cols}()},
 \code{\link{gt_highlight_rows}()},
 \code{\link{gt_img_circle}()},
+\code{\link{gt_img_multi_rows}()},
 \code{\link{gt_img_rows}()},
 \code{\link{gt_index}()},
 \code{\link{gt_merge_stack}()},

@@ -28,7 +28,7 @@ Create a summary table from a \code{data.frame} or \code{tibble}.
 }\if{html}{\out{</div>}}
 
 \if{html}{\out{
-<img src="https://raw.githubusercontent.com/jthomasmock/gtExtras/master/images/gt_plt_summary-chicks.png" style="width:100\%;">
+<img src="https://raw.githubusercontent.com/jthomasmock/gtExtras/master/images/gt_plt_summary-chicks.png" style="width:100\%;" alt="A summary table of the chicks dataset.">
 }}
 }
 

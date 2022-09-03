@@ -57,7 +57,7 @@ win_table <- data_in \%>\%
 }\if{html}{\out{</div>}}
 
 \if{html}{\out{
-<img src="https://raw.githubusercontent.com/jthomasmock/gtExtras/master/images/gt_plt_winloss-ex.png" style="width:60\%;">
+<img src="https://raw.githubusercontent.com/jthomasmock/gtExtras/master/images/gt_plt_winloss-ex.png" style="width:60\%;" alt="A table of various win/loss outcomes">
 }}
 }
 

@@ -34,7 +34,7 @@
 #'   gt_plt_winloss(wins)
 #' ```
 #' \if{html}{\out{
-#' `r man_get_image_tag(file = "gt_plt_winloss-ex.png", width = 60)`
+#' `r man_get_image_tag(file = "gt_plt_winloss-ex.png", width = 60, alt="A table of various win/loss outcomes")`
 #' }}
 #'
 #' @family Plotting

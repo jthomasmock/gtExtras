@@ -19,7 +19,7 @@
 #' gt_plt_summary(datasets::ChickWeight)
 #' ```
 #' \if{html}{\out{
-#' `r man_get_image_tag(file = "gt_plt_summary-chicks.png")`
+#' `r man_get_image_tag(file = "gt_plt_summary-chicks.png", alt = "A summary table of the chicks dataset.")`
 #' }}
 
 gt_plt_summary <- function(df, title = NULL) {

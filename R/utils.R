@@ -73,13 +73,13 @@ is_gt_stop <- function(gt_object){
 
 # vendored from gt
 # https://github.com/rstudio/gt/blob/04c34936a9d09e96b339dea8da07e414730ec17d/R/utils.R#L1654-L1661
-man_get_image_tag <- function(file, width = 100, dir = "images") {
+man_get_image_tag <- function(file, width = 100, dir = "images", alt = NULL) {
 
   repo_url <- "https://raw.githubusercontent.com/jthomasmock/gtExtras/master"
 
   image_url <- file.path(repo_url, dir, file)
 
-  paste0("<img src=\"", image_url, "\" style=\"width:", width, "\\%;\">")
+  paste0("<img src=\"", image_url, "\" style=\"width:", width, "\\%;\" alt=\"", alt, "\"", ">")
 }
 
 # https://stackoverflow.com/questions/19655579/a-function-that-returns-true-on-na-null-nan-in-r

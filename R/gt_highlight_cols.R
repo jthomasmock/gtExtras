@@ -8,6 +8,7 @@
 #' @param fill A character string indicating the fill color. If nothing is provided, then "#80bcd8" (light blue) will be used as a default.
 #' @param alpha An optional alpha transparency value for the color as single value in the range of 0 (fully transparent) to 1 (fully opaque). If not provided the fill color will either be fully opaque or use alpha information from the color value if it is supplied in the #RRGGBBAA format.
 #' @param font_weight A string or number indicating the weight of the font. Can be a text-based keyword such as "normal", "bold", "lighter", "bolder", or, a numeric value between 1 and 1000, inclusive. Note that only variable fonts may support the numeric mapping of weight.
+#' @param font_color A character string indicating the text color. If nothing is provided, then "#000000" (black) will be used as a default.
 #' @return An object of class `gt_tbl`.
 #' @export
 #' @section Examples:

@@ -42,7 +42,7 @@
 
 gt_highlight_rows <- function(
   gt_object, columns = gt::everything(), rows = TRUE, fill = "#80bcd8",
-  alpha = 0.8, font_weight = "bold", bold_target_only = FALSE, target_col = c()){
+  alpha = 0.8, font_weight = "bold", font_color = '#000000', bold_target_only = FALSE, target_col = c()){
 
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
 
@@ -58,7 +58,7 @@ gt_highlight_rows <- function(
       ) %>%
       tab_style(
         style = list(
-          cell_text(weight = font_weight)
+          cell_text(weight = font_weight, color = font_color)
         ),
         locations = cells_body(
           columns = {{ target_col }},
@@ -70,7 +70,7 @@ gt_highlight_rows <- function(
       tab_style(
         style = list(
           cell_fill(color = fill, alpha = alpha),
-          cell_text(weight = font_weight)
+          cell_text(weight = font_weight, color = font_color)
         ),
         locations = cells_body(
           columns = {{ columns }},

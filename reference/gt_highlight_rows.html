@@ -70,6 +70,7 @@ accepts rows only by number (not by logical expression) for now.</p>
 <span>  fill <span class="op">=</span> <span class="st">"#80bcd8"</span>,</span>
 <span>  alpha <span class="op">=</span> <span class="fl">0.8</span>,</span>
 <span>  font_weight <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>  font_color <span class="op">=</span> <span class="st">"#000000"</span>,</span>
 <span>  bold_target_only <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  target_col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -99,6 +100,10 @@ accepts rows only by number (not by logical expression) for now.</p>
 
 <dt>font_weight</dt>
 <dd><p>A string or number indicating the weight of the font. Can be a text-based keyword such as "normal", "bold", "lighter", "bolder", or, a numeric value between 1 and 1000, inclusive. Note that only variable fonts may support the numeric mapping of weight.</p></dd>
+
+
+<dt>font_color</dt>
+<dd><p>A character string indicating the text color. If nothing is provided, then "#000000" (black) will be used as a default.</p></dd>
 
 
 <dt>bold_target_only</dt>

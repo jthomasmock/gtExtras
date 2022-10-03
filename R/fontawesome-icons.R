@@ -124,20 +124,26 @@ gt_fa_column <- function(gt_object, column, ..., palette = NULL,
                          align = "left", direction = 1, height = "20px") {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
 
-
   text_transform(
     gt_object,
     locations = cells_body(columns = {{ column }}),
     fn = function(x) {
 
       if (is.null(palette)) {
+        # if no palette use categorical colorblind palette
         pal_filler <- c(
           "#000000", "#E69F00", "#56B4E9", "#009E73",
           "#F0E442", "#0072B2", "#D55E00", "#CC79A7"
         )[seq_along(unique(x[!(x %in% c("", "NA", NA))]))]
+        # if single color, then repeat to match length
       } else if (length(palette) == 1) {
         pal_filler <- palette %>% rep(length(unique(x)))
+      } else if (all(unique(x) %in% names(palette))) {
+        # palette is superset of values,
+        # so reduce palette to just what's needed
+        pal_filler = palette[unique(x)]
       } else {
+        # palette is the palette
         pal_filler <- palette
       }
 

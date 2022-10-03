@@ -1,4 +1,5 @@
-# gtExtras (development version)
+# gtExtras 0.4.3
+- Modify internals of `gt_fa_column()` to accept factors with levels not present in the data, ignoring unneeded levels. Thank you to @mikedolanfliss for the suggestion.
 
 # gtExtras 0.4.2
 

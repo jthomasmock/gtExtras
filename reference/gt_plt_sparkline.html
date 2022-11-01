@@ -85,7 +85,7 @@ distributions (ie density/histograms) you can instead use: <code><a href="gt_plt
 
 
 <dt>type</dt>
-<dd><p>A string indicating the type of plot to generate, accepts <code>"default"</code>, <code>"shaded"</code>, <code>"ref_median"</code>, <code>'ref_mean'</code>, <code>"ref_iqr"</code>, <code>"ref_last"</code></p></dd>
+<dd><p>A string indicating the type of plot to generate, accepts <code>"default"</code>, <code>"points"</code>, <code>"shaded"</code>, <code>"ref_median"</code>, <code>'ref_mean'</code>, <code>"ref_iqr"</code>, <code>"ref_last"</code>. "points" will add points to every observation instead of just the high/low and final. "shaded" will add shading below the sparkline. The "ref_" options add a thin reference line based off the summary statistic chosen</p></dd>
 
 
 <dt>fig_dim</dt>
@@ -93,7 +93,7 @@ distributions (ie density/histograms) you can instead use: <code><a href="gt_plt
 
 
 <dt>palette</dt>
-<dd><p>A character string indicating the colors of various components. Order matters, and palette = sparkline color, final value color, range color low, range color high, and 'type' color (eg shading or reference lines).</p></dd>
+<dd><p>A character string with 5 elements indicating the colors of various components. Order matters, and palette = sparkline color, final value color, range color low, range color high, and 'type' color (eg shading or reference lines). To show a plot with no points (only the line itself), use: <code>palette = c("black", rep("transparent", 4))</code>.</p></dd>
 
 
 <dt>same_limit</dt>

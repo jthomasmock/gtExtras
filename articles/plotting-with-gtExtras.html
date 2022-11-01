@@ -94,15 +94,19 @@
 <div class="section level2">
 <h2 id="graphs-vs-tables">Graphs vs Tables<a class="anchor" aria-label="anchor" href="#graphs-vs-tables"></a>
 </h2>
-<p>Per Stephen Few in his book, <a href="http://www.stephen-few.com/smtn.php" class="external-link"><em>Show Me the Numbers</em></a>:</p>
+<p>Per Stephen Few in his book, <a href="http://www.stephen-few.com/smtn.php" class="external-link"><em>Show Me the
+Numbers</em></a>:</p>
 <p>The difference between Tables and Graphs:</p>
 <blockquote>
 <p>Tables: Display used to look up and compare individual values</p>
 </blockquote>
 <blockquote>
-<p>Graphs: Display used to reveal relationships among whole sets of values and their overall shape</p>
+<p>Graphs: Display used to reveal relationships among whole sets of
+values and their overall shape</p>
 </blockquote>
-<p>While we typically reach for our graphing tools whenever we want to tell a story with data, we are likely underutilizing tables. We can merge graphs and tables to often get the best of both worlds.</p>
+<p>While we typically reach for our graphing tools whenever we want to
+tell a story with data, we are likely underutilizing tables. We can
+merge graphs and tables to often get the best of both worlds.</p>
 </div>
 <div class="section level2">
 <h2 id="get-started">Get started<a class="anchor" aria-label="anchor" href="#get-started"></a>
@@ -118,12 +122,22 @@
 </h3>
 <p>Per <a href="https://en.wikipedia.org/wiki/Sparkline" class="external-link">Wikipedia</a>:</p>
 <blockquote>
-<p>A sparkline is a very small line chart, typically drawn without axes or coordinates. It presents the general shape of the variation (typically over time) in some measurement, such as temperature or stock market price, in a simple and highly condensed way.</p>
+<p>A sparkline is a very small line chart, typically drawn without axes
+or coordinates. It presents the general shape of the variation
+(typically over time) in some measurement, such as temperature or stock
+market price, in a simple and highly condensed way.</p>
 </blockquote>
 <div class="figure">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Screenshot_of_Sparklines_in_Medved_QuoteTracker%2C_1998.png/330px-Screenshot_of_Sparklines_in_Medved_QuoteTracker%2C_1998.png" alt=""><p class="caption">A 1999 screenshot of an implementation of sparklines developed around January 1998. The concept was developed by interaction designer Peter Zelchenko in conversation with programmer Michael Medved, while Medved was developing the QuoteTracker application. The product was later sold to Ameritrade.</p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Screenshot_of_Sparklines_in_Medved_QuoteTracker%2C_1998.png/330px-Screenshot_of_Sparklines_in_Medved_QuoteTracker%2C_1998.png" alt=""><p class="caption">A 1999 screenshot of an implementation of sparklines
+developed around January 1998. The concept was developed by interaction
+designer Peter Zelchenko in conversation with programmer Michael Medved,
+while Medved was developing the QuoteTracker application. The product
+was later sold to Ameritrade.</p>
 </div>
-<p>We can use <code><a href="../reference/gt_plt_sparkline.html">gtExtras::gt_plt_sparkline()</a></code> to add an inline sparkline very quickly. A necessary prep step is to first convert from a long data format to a summarized data format, where each row represents one “group” and the data column is now a vector of the values.</p>
+<p>We can use <code><a href="../reference/gt_plt_sparkline.html">gtExtras::gt_plt_sparkline()</a></code> to add an inline
+sparkline very quickly. A necessary prep step is to first convert from a
+long data format to a summarized data format, where each row represents
+one “group” and the data column is now a vector of the values.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -134,7 +148,8 @@
 <span><span class="co">#&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1</span></span>
 <span><span class="co">#&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</span></span>
 <span><span class="co">#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</span></span></code></pre></div>
-<p>By using <code>summarize(list_data = list(col_name))</code> we can create a list-column of ALL the data for that group.</p>
+<p>By using <code>summarize(list_data = list(col_name))</code> we can
+create a list-column of ALL the data for that group.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">car_summary</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -160,12 +175,12 @@
 <span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">gtExtras</span><span class="fu">::</span><span class="fu"><a href="../reference/gt_plt_sparkline.html">gt_plt_sparkline</a></span><span class="op">(</span><span class="va">mpg_data</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://gt.rstudio.com/reference/fmt_number.html" class="external-link">fmt_number</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="va">mean</span><span class="op">:</span><span class="va">sd</span>, decimals <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
-<div id="lrqcthpjkf" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="kcwmwlznab" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#lrqcthpjkf .gt_table {
+#kcwmwlznab .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -190,7 +205,7 @@
   border-left-color: #D3D3D3;
 }
 
-#lrqcthpjkf .gt_heading {
+#kcwmwlznab .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -202,7 +217,7 @@
   border-right-color: #D3D3D3;
 }
 
-#lrqcthpjkf .gt_title {
+#kcwmwlznab .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -214,7 +229,7 @@
   border-bottom-width: 0;
 }
 
-#lrqcthpjkf .gt_subtitle {
+#kcwmwlznab .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -226,13 +241,13 @@
   border-top-width: 0;
 }
 
-#lrqcthpjkf .gt_bottom_border {
+#kcwmwlznab .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lrqcthpjkf .gt_col_headings {
+#kcwmwlznab .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -247,7 +262,7 @@
   border-right-color: #D3D3D3;
 }
 
-#lrqcthpjkf .gt_col_heading {
+#kcwmwlznab .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -267,7 +282,7 @@
   overflow-x: hidden;
 }
 
-#lrqcthpjkf .gt_column_spanner_outer {
+#kcwmwlznab .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -279,15 +294,15 @@
   padding-right: 4px;
 }
 
-#lrqcthpjkf .gt_column_spanner_outer:first-child {
+#kcwmwlznab .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lrqcthpjkf .gt_column_spanner_outer:last-child {
+#kcwmwlznab .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lrqcthpjkf .gt_column_spanner {
+#kcwmwlznab .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -299,7 +314,7 @@
   width: 100%;
 }
 
-#lrqcthpjkf .gt_group_heading {
+#kcwmwlznab .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -324,7 +339,7 @@
   vertical-align: middle;
 }
 
-#lrqcthpjkf .gt_empty_group_heading {
+#kcwmwlznab .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -339,15 +354,15 @@
   vertical-align: middle;
 }
 
-#lrqcthpjkf .gt_from_md > :first-child {
+#kcwmwlznab .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lrqcthpjkf .gt_from_md > :last-child {
+#kcwmwlznab .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lrqcthpjkf .gt_row {
+#kcwmwlznab .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -366,7 +381,7 @@
   overflow-x: hidden;
 }
 
-#lrqcthpjkf .gt_stub {
+#kcwmwlznab .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -379,7 +394,7 @@
   padding-right: 5px;
 }
 
-#lrqcthpjkf .gt_stub_row_group {
+#kcwmwlznab .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -393,11 +408,11 @@
   vertical-align: top;
 }
 
-#lrqcthpjkf .gt_row_group_first td {
+#kcwmwlznab .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lrqcthpjkf .gt_summary_row {
+#kcwmwlznab .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -407,16 +422,16 @@
   padding-right: 5px;
 }
 
-#lrqcthpjkf .gt_first_summary_row {
+#kcwmwlznab .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lrqcthpjkf .gt_first_summary_row.thick {
+#kcwmwlznab .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lrqcthpjkf .gt_last_summary_row {
+#kcwmwlznab .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -426,7 +441,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#lrqcthpjkf .gt_grand_summary_row {
+#kcwmwlznab .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -436,7 +451,7 @@
   padding-right: 5px;
 }
 
-#lrqcthpjkf .gt_first_grand_summary_row {
+#kcwmwlznab .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -446,11 +461,11 @@
   border-top-color: #D3D3D3;
 }
 
-#lrqcthpjkf .gt_striped {
+#kcwmwlznab .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lrqcthpjkf .gt_table_body {
+#kcwmwlznab .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -459,7 +474,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#lrqcthpjkf .gt_footnotes {
+#kcwmwlznab .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -473,7 +488,7 @@
   border-right-color: #D3D3D3;
 }
 
-#lrqcthpjkf .gt_footnote {
+#kcwmwlznab .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -482,7 +497,7 @@
   padding-right: 5px;
 }
 
-#lrqcthpjkf .gt_sourcenotes {
+#kcwmwlznab .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -496,7 +511,7 @@
   border-right-color: #D3D3D3;
 }
 
-#lrqcthpjkf .gt_sourcenote {
+#kcwmwlznab .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -504,64 +519,64 @@
   padding-right: 5px;
 }
 
-#lrqcthpjkf .gt_left {
+#kcwmwlznab .gt_left {
   text-align: left;
 }
 
-#lrqcthpjkf .gt_center {
+#kcwmwlznab .gt_center {
   text-align: center;
 }
 
-#lrqcthpjkf .gt_right {
+#kcwmwlznab .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lrqcthpjkf .gt_font_normal {
+#kcwmwlznab .gt_font_normal {
   font-weight: normal;
 }
 
-#lrqcthpjkf .gt_font_bold {
+#kcwmwlznab .gt_font_bold {
   font-weight: bold;
 }
 
-#lrqcthpjkf .gt_font_italic {
+#kcwmwlznab .gt_font_italic {
   font-style: italic;
 }
 
-#lrqcthpjkf .gt_super {
+#kcwmwlznab .gt_super {
   font-size: 65%;
 }
 
-#lrqcthpjkf .gt_footnote_marks {
+#kcwmwlznab .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#lrqcthpjkf .gt_asterisk {
+#kcwmwlznab .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lrqcthpjkf .gt_indent_1 {
+#kcwmwlznab .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lrqcthpjkf .gt_indent_2 {
+#kcwmwlznab .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lrqcthpjkf .gt_indent_3 {
+#kcwmwlznab .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lrqcthpjkf .gt_indent_4 {
+#kcwmwlznab .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lrqcthpjkf .gt_indent_5 {
+#kcwmwlznab .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -578,7 +593,7 @@
 <td class="gt_row gt_right">15.1</td>
 <td class="gt_row gt_right">2.6</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3"><rect x="0.00" y="0.00" width="85.04" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><text x="68.63" y="12.35" style='font-size: 5.69px; font-family: "Liberation Mono";' textlength="13.71px" lengthadjust="spacingAndGlyphs">15.0</text><polyline points="7.23,8.63 11.71,10.59 16.19,9.66 20.67,9.25 25.15,10.19 29.63,12.34 34.12,12.34 38.60,10.42 43.08,10.06 47.56,10.19 52.04,11.04 56.52,8.40 61.01,9.92 65.49,10.28 " style="stroke-width: 1.07; stroke-linecap: butt;"></polyline><circle cx="65.49" cy="10.28" r="0.89" style="stroke-width: 0.71; fill: #000000;"></circle><circle cx="29.63" cy="12.34" r="0.89" style="stroke-width: 0.71; stroke: #A020F0; fill: #A020F0;"></circle><circle cx="34.12" cy="12.34" r="0.89" style="stroke-width: 0.71; stroke: #A020F0; fill: #A020F0;"></circle><circle cx="56.52" cy="8.40" r="0.89" style="stroke-width: 0.71; stroke: #00FF00; fill: #00FF00;"></circle></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3"><rect x="0.00" y="0.00" width="85.04" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><text x="68.63" y="12.35" style='font-size: 5.69px; font-family: "Nimbus Mono PS";' textlength="13.71px" lengthadjust="spacingAndGlyphs">15.0</text><polyline points="7.23,8.63 11.71,10.59 16.19,9.66 20.67,9.25 25.15,10.19 29.63,12.34 34.12,12.34 38.60,10.42 43.08,10.06 47.56,10.19 52.04,11.04 56.52,8.40 61.01,9.92 65.49,10.28 " style="stroke-width: 1.07; stroke-linecap: butt;"></polyline><circle cx="65.49" cy="10.28" r="0.89" style="stroke-width: 0.71; fill: #000000;"></circle><circle cx="29.63" cy="12.34" r="0.89" style="stroke-width: 0.71; stroke: #A020F0; fill: #A020F0;"></circle><circle cx="34.12" cy="12.34" r="0.89" style="stroke-width: 0.71; stroke: #A020F0; fill: #A020F0;"></circle><circle cx="56.52" cy="8.40" r="0.89" style="stroke-width: 0.71; stroke: #00FF00; fill: #00FF00;"></circle></g></svg>
 </td>
 </tr>
 <tr>
@@ -586,7 +601,7 @@
 <td class="gt_row gt_right">19.7</td>
 <td class="gt_row gt_right">1.5</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3"><rect x="0.00" y="0.00" width="85.04" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><text x="68.44" y="10.25" style='font-size: 5.69px; font-family: "Liberation Mono";' textlength="13.71px" lengthadjust="spacingAndGlyphs">19.7</text><polyline points="10.69,7.60 19.78,7.60 28.88,7.42 37.97,8.90 47.07,8.40 56.16,9.03 65.26,8.18 " style="stroke-width: 1.07; stroke-linecap: butt;"></polyline><circle cx="65.26" cy="8.18" r="0.89" style="stroke-width: 0.71; fill: #000000;"></circle><circle cx="56.16" cy="9.03" r="0.89" style="stroke-width: 0.71; stroke: #A020F0; fill: #A020F0;"></circle><circle cx="28.88" cy="7.42" r="0.89" style="stroke-width: 0.71; stroke: #00FF00; fill: #00FF00;"></circle></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3"><rect x="0.00" y="0.00" width="85.04" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><text x="68.44" y="10.25" style='font-size: 5.69px; font-family: "Nimbus Mono PS";' textlength="13.71px" lengthadjust="spacingAndGlyphs">19.7</text><polyline points="10.69,7.60 19.78,7.60 28.88,7.42 37.97,8.90 47.07,8.40 56.16,9.03 65.26,8.18 " style="stroke-width: 1.07; stroke-linecap: butt;"></polyline><circle cx="65.26" cy="8.18" r="0.89" style="stroke-width: 0.71; fill: #000000;"></circle><circle cx="56.16" cy="9.03" r="0.89" style="stroke-width: 0.71; stroke: #A020F0; fill: #A020F0;"></circle><circle cx="28.88" cy="7.42" r="0.89" style="stroke-width: 0.71; stroke: #00FF00; fill: #00FF00;"></circle></g></svg>
 </td>
 </tr>
 <tr>
@@ -594,7 +609,7 @@
 <td class="gt_row gt_right">26.7</td>
 <td class="gt_row gt_right">4.5</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3"><rect x="0.00" y="0.00" width="85.04" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><text x="68.58" y="9.50" style='font-size: 5.69px; font-family: "Liberation Mono";' textlength="13.71px" lengthadjust="spacingAndGlyphs">21.4</text><polyline points="8.16,6.80 13.89,6.08 19.61,6.80 25.34,2.51 31.07,3.40 36.79,1.84 42.52,7.38 48.25,4.79 53.97,5.37 59.70,3.40 65.43,7.42 " style="stroke-width: 1.07; stroke-linecap: butt;"></polyline><circle cx="65.43" cy="7.42" r="0.89" style="stroke-width: 0.71; fill: #000000;"></circle><circle cx="65.43" cy="7.42" r="0.89" style="stroke-width: 0.71; stroke: #A020F0; fill: #A020F0;"></circle><circle cx="36.79" cy="1.84" r="0.89" style="stroke-width: 0.71; stroke: #00FF00; fill: #00FF00;"></circle></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3"><rect x="0.00" y="0.00" width="85.04" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><text x="68.58" y="9.50" style='font-size: 5.69px; font-family: "Nimbus Mono PS";' textlength="13.71px" lengthadjust="spacingAndGlyphs">21.4</text><polyline points="8.16,6.80 13.89,6.08 19.61,6.80 25.34,2.51 31.07,3.40 36.79,1.84 42.52,7.38 48.25,4.79 53.97,5.37 59.70,3.40 65.43,7.42 " style="stroke-width: 1.07; stroke-linecap: butt;"></polyline><circle cx="65.43" cy="7.42" r="0.89" style="stroke-width: 0.71; fill: #000000;"></circle><circle cx="65.43" cy="7.42" r="0.89" style="stroke-width: 0.71; stroke: #A020F0; fill: #A020F0;"></circle><circle cx="36.79" cy="1.84" r="0.89" style="stroke-width: 0.71; stroke: #00FF00; fill: #00FF00;"></circle></g></svg>
 </td>
 </tr>
 </tbody>
@@ -604,7 +619,9 @@
 <div class="section level3">
 <h3 id="sparkline-alternatives">Sparkline alternatives<a class="anchor" aria-label="anchor" href="#sparkline-alternatives"></a>
 </h3>
-<p>You can also plot a density-plot or a histogram instead of just a line plot, note that we’ve switched to <code><a href="../reference/gt_plt_dist.html">gt_plt_dist()</a></code> since we’re plotting a true distribution now.</p>
+<p>You can also plot a density-plot or a histogram instead of just a
+line plot, note that we’ve switched to <code><a href="../reference/gt_plt_dist.html">gt_plt_dist()</a></code> since
+we’re plotting a true distribution now.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">car_summary</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -612,12 +629,12 @@
 <span>  <span class="fu">gtExtras</span><span class="fu">::</span><span class="fu"><a href="../reference/gt_plt_dist.html">gt_plt_dist</a></span><span class="op">(</span><span class="va">mpg_data</span>, type <span class="op">=</span> <span class="st">"density"</span>, line_color <span class="op">=</span> <span class="st">"blue"</span>, </span>
 <span>                         fill_color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://gt.rstudio.com/reference/fmt_number.html" class="external-link">fmt_number</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="va">mean</span><span class="op">:</span><span class="va">sd</span>, decimals <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
-<div id="pvzyqqsfyr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="brgrgwjyiy" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#pvzyqqsfyr .gt_table {
+#brgrgwjyiy .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -642,7 +659,7 @@
   border-left-color: #D3D3D3;
 }
 
-#pvzyqqsfyr .gt_heading {
+#brgrgwjyiy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -654,7 +671,7 @@
   border-right-color: #D3D3D3;
 }
 
-#pvzyqqsfyr .gt_title {
+#brgrgwjyiy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -666,7 +683,7 @@
   border-bottom-width: 0;
 }
 
-#pvzyqqsfyr .gt_subtitle {
+#brgrgwjyiy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -678,13 +695,13 @@
   border-top-width: 0;
 }
 
-#pvzyqqsfyr .gt_bottom_border {
+#brgrgwjyiy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pvzyqqsfyr .gt_col_headings {
+#brgrgwjyiy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -699,7 +716,7 @@
   border-right-color: #D3D3D3;
 }
 
-#pvzyqqsfyr .gt_col_heading {
+#brgrgwjyiy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -719,7 +736,7 @@
   overflow-x: hidden;
 }
 
-#pvzyqqsfyr .gt_column_spanner_outer {
+#brgrgwjyiy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -731,15 +748,15 @@
   padding-right: 4px;
 }
 
-#pvzyqqsfyr .gt_column_spanner_outer:first-child {
+#brgrgwjyiy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pvzyqqsfyr .gt_column_spanner_outer:last-child {
+#brgrgwjyiy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pvzyqqsfyr .gt_column_spanner {
+#brgrgwjyiy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -751,7 +768,7 @@
   width: 100%;
 }
 
-#pvzyqqsfyr .gt_group_heading {
+#brgrgwjyiy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -776,7 +793,7 @@
   vertical-align: middle;
 }
 
-#pvzyqqsfyr .gt_empty_group_heading {
+#brgrgwjyiy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -791,15 +808,15 @@
   vertical-align: middle;
 }
 
-#pvzyqqsfyr .gt_from_md > :first-child {
+#brgrgwjyiy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pvzyqqsfyr .gt_from_md > :last-child {
+#brgrgwjyiy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pvzyqqsfyr .gt_row {
+#brgrgwjyiy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -818,7 +835,7 @@
   overflow-x: hidden;
 }
 
-#pvzyqqsfyr .gt_stub {
+#brgrgwjyiy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -831,7 +848,7 @@
   padding-right: 5px;
 }
 
-#pvzyqqsfyr .gt_stub_row_group {
+#brgrgwjyiy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -845,11 +862,11 @@
   vertical-align: top;
 }
 
-#pvzyqqsfyr .gt_row_group_first td {
+#brgrgwjyiy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pvzyqqsfyr .gt_summary_row {
+#brgrgwjyiy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -859,16 +876,16 @@
   padding-right: 5px;
 }
 
-#pvzyqqsfyr .gt_first_summary_row {
+#brgrgwjyiy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pvzyqqsfyr .gt_first_summary_row.thick {
+#brgrgwjyiy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pvzyqqsfyr .gt_last_summary_row {
+#brgrgwjyiy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -878,7 +895,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#pvzyqqsfyr .gt_grand_summary_row {
+#brgrgwjyiy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -888,7 +905,7 @@
   padding-right: 5px;
 }
 
-#pvzyqqsfyr .gt_first_grand_summary_row {
+#brgrgwjyiy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -898,11 +915,11 @@
   border-top-color: #D3D3D3;
 }
 
-#pvzyqqsfyr .gt_striped {
+#brgrgwjyiy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pvzyqqsfyr .gt_table_body {
+#brgrgwjyiy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -911,7 +928,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#pvzyqqsfyr .gt_footnotes {
+#brgrgwjyiy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -925,7 +942,7 @@
   border-right-color: #D3D3D3;
 }
 
-#pvzyqqsfyr .gt_footnote {
+#brgrgwjyiy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -934,7 +951,7 @@
   padding-right: 5px;
 }
 
-#pvzyqqsfyr .gt_sourcenotes {
+#brgrgwjyiy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -948,7 +965,7 @@
   border-right-color: #D3D3D3;
 }
 
-#pvzyqqsfyr .gt_sourcenote {
+#brgrgwjyiy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -956,64 +973,64 @@
   padding-right: 5px;
 }
 
-#pvzyqqsfyr .gt_left {
+#brgrgwjyiy .gt_left {
   text-align: left;
 }
 
-#pvzyqqsfyr .gt_center {
+#brgrgwjyiy .gt_center {
   text-align: center;
 }
 
-#pvzyqqsfyr .gt_right {
+#brgrgwjyiy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pvzyqqsfyr .gt_font_normal {
+#brgrgwjyiy .gt_font_normal {
   font-weight: normal;
 }
 
-#pvzyqqsfyr .gt_font_bold {
+#brgrgwjyiy .gt_font_bold {
   font-weight: bold;
 }
 
-#pvzyqqsfyr .gt_font_italic {
+#brgrgwjyiy .gt_font_italic {
   font-style: italic;
 }
 
-#pvzyqqsfyr .gt_super {
+#brgrgwjyiy .gt_super {
   font-size: 65%;
 }
 
-#pvzyqqsfyr .gt_footnote_marks {
+#brgrgwjyiy .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#pvzyqqsfyr .gt_asterisk {
+#brgrgwjyiy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pvzyqqsfyr .gt_indent_1 {
+#brgrgwjyiy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pvzyqqsfyr .gt_indent_2 {
+#brgrgwjyiy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pvzyqqsfyr .gt_indent_3 {
+#brgrgwjyiy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pvzyqqsfyr .gt_indent_4 {
+#brgrgwjyiy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pvzyqqsfyr .gt_indent_5 {
+#brgrgwjyiy .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1059,12 +1076,12 @@
 <span>  <span class="fu">gtExtras</span><span class="fu">::</span><span class="fu"><a href="../reference/gt_plt_dist.html">gt_plt_dist</a></span><span class="op">(</span><span class="va">mpg_data</span>, type <span class="op">=</span> <span class="st">"histogram"</span>, line_color <span class="op">=</span> <span class="st">"purple"</span>, </span>
 <span>                         fill_color <span class="op">=</span> <span class="st">"green"</span>, bw <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://gt.rstudio.com/reference/fmt_number.html" class="external-link">fmt_number</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="va">mean</span><span class="op">:</span><span class="va">sd</span>, decimals <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
-<div id="aeoxdqbmhj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="mfugqghlyh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#aeoxdqbmhj .gt_table {
+#mfugqghlyh .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1089,7 +1106,7 @@
   border-left-color: #D3D3D3;
 }
 
-#aeoxdqbmhj .gt_heading {
+#mfugqghlyh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1101,7 +1118,7 @@
   border-right-color: #D3D3D3;
 }
 
-#aeoxdqbmhj .gt_title {
+#mfugqghlyh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1113,7 +1130,7 @@
   border-bottom-width: 0;
 }
 
-#aeoxdqbmhj .gt_subtitle {
+#mfugqghlyh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1125,13 +1142,13 @@
   border-top-width: 0;
 }
 
-#aeoxdqbmhj .gt_bottom_border {
+#mfugqghlyh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#aeoxdqbmhj .gt_col_headings {
+#mfugqghlyh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1146,7 +1163,7 @@
   border-right-color: #D3D3D3;
 }
 
-#aeoxdqbmhj .gt_col_heading {
+#mfugqghlyh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1166,7 +1183,7 @@
   overflow-x: hidden;
 }
 
-#aeoxdqbmhj .gt_column_spanner_outer {
+#mfugqghlyh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1178,15 +1195,15 @@
   padding-right: 4px;
 }
 
-#aeoxdqbmhj .gt_column_spanner_outer:first-child {
+#mfugqghlyh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#aeoxdqbmhj .gt_column_spanner_outer:last-child {
+#mfugqghlyh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#aeoxdqbmhj .gt_column_spanner {
+#mfugqghlyh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1198,7 +1215,7 @@
   width: 100%;
 }
 
-#aeoxdqbmhj .gt_group_heading {
+#mfugqghlyh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1223,7 +1240,7 @@
   vertical-align: middle;
 }
 
-#aeoxdqbmhj .gt_empty_group_heading {
+#mfugqghlyh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1238,15 +1255,15 @@
   vertical-align: middle;
 }
 
-#aeoxdqbmhj .gt_from_md > :first-child {
+#mfugqghlyh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#aeoxdqbmhj .gt_from_md > :last-child {
+#mfugqghlyh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#aeoxdqbmhj .gt_row {
+#mfugqghlyh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1265,7 +1282,7 @@
   overflow-x: hidden;
 }
 
-#aeoxdqbmhj .gt_stub {
+#mfugqghlyh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1278,7 +1295,7 @@
   padding-right: 5px;
 }
 
-#aeoxdqbmhj .gt_stub_row_group {
+#mfugqghlyh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1292,11 +1309,11 @@
   vertical-align: top;
 }
 
-#aeoxdqbmhj .gt_row_group_first td {
+#mfugqghlyh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#aeoxdqbmhj .gt_summary_row {
+#mfugqghlyh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1306,16 +1323,16 @@
   padding-right: 5px;
 }
 
-#aeoxdqbmhj .gt_first_summary_row {
+#mfugqghlyh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#aeoxdqbmhj .gt_first_summary_row.thick {
+#mfugqghlyh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#aeoxdqbmhj .gt_last_summary_row {
+#mfugqghlyh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1325,7 +1342,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#aeoxdqbmhj .gt_grand_summary_row {
+#mfugqghlyh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1335,7 +1352,7 @@
   padding-right: 5px;
 }
 
-#aeoxdqbmhj .gt_first_grand_summary_row {
+#mfugqghlyh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1345,11 +1362,11 @@
   border-top-color: #D3D3D3;
 }
 
-#aeoxdqbmhj .gt_striped {
+#mfugqghlyh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#aeoxdqbmhj .gt_table_body {
+#mfugqghlyh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1358,7 +1375,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#aeoxdqbmhj .gt_footnotes {
+#mfugqghlyh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1372,7 +1389,7 @@
   border-right-color: #D3D3D3;
 }
 
-#aeoxdqbmhj .gt_footnote {
+#mfugqghlyh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1381,7 +1398,7 @@
   padding-right: 5px;
 }
 
-#aeoxdqbmhj .gt_sourcenotes {
+#mfugqghlyh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1395,7 +1412,7 @@
   border-right-color: #D3D3D3;
 }
 
-#aeoxdqbmhj .gt_sourcenote {
+#mfugqghlyh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1403,64 +1420,64 @@
   padding-right: 5px;
 }
 
-#aeoxdqbmhj .gt_left {
+#mfugqghlyh .gt_left {
   text-align: left;
 }
 
-#aeoxdqbmhj .gt_center {
+#mfugqghlyh .gt_center {
   text-align: center;
 }
 
-#aeoxdqbmhj .gt_right {
+#mfugqghlyh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#aeoxdqbmhj .gt_font_normal {
+#mfugqghlyh .gt_font_normal {
   font-weight: normal;
 }
 
-#aeoxdqbmhj .gt_font_bold {
+#mfugqghlyh .gt_font_bold {
   font-weight: bold;
 }
 
-#aeoxdqbmhj .gt_font_italic {
+#mfugqghlyh .gt_font_italic {
   font-style: italic;
 }
 
-#aeoxdqbmhj .gt_super {
+#mfugqghlyh .gt_super {
   font-size: 65%;
 }
 
-#aeoxdqbmhj .gt_footnote_marks {
+#mfugqghlyh .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#aeoxdqbmhj .gt_asterisk {
+#mfugqghlyh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#aeoxdqbmhj .gt_indent_1 {
+#mfugqghlyh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#aeoxdqbmhj .gt_indent_2 {
+#mfugqghlyh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#aeoxdqbmhj .gt_indent_3 {
+#mfugqghlyh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#aeoxdqbmhj .gt_indent_4 {
+#mfugqghlyh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#aeoxdqbmhj .gt_indent_5 {
+#mfugqghlyh .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1503,19 +1520,21 @@
 <div class="section level3">
 <h3 id="inline-bars">Inline bars<a class="anchor" aria-label="anchor" href="#inline-bars"></a>
 </h3>
-<p>You can also generate <code>ggplot2</code> created bar plots inline. Note that <code>keep_column</code> allows you to keep the raw values and the plot inline.</p>
+<p>You can also generate <code>ggplot2</code> created bar plots inline.
+Note that <code>keep_column</code> allows you to keep the raw values and
+the plot inline.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">:</span><span class="va">wt</span>, <span class="va">mpg</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/gt_plt_bar.html">gt_plt_bar</a></span><span class="op">(</span>column <span class="op">=</span> <span class="va">mpg</span>, keep_column <span class="op">=</span> <span class="cn">TRUE</span>, width <span class="op">=</span> <span class="fl">35</span><span class="op">)</span></span></code></pre></div>
-<div id="aojceoeihk" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="fesmoveupm" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#aojceoeihk .gt_table {
+#fesmoveupm .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1540,7 +1559,7 @@
   border-left-color: #D3D3D3;
 }
 
-#aojceoeihk .gt_heading {
+#fesmoveupm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1552,7 +1571,7 @@
   border-right-color: #D3D3D3;
 }
 
-#aojceoeihk .gt_title {
+#fesmoveupm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1564,7 +1583,7 @@
   border-bottom-width: 0;
 }
 
-#aojceoeihk .gt_subtitle {
+#fesmoveupm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1576,13 +1595,13 @@
   border-top-width: 0;
 }
 
-#aojceoeihk .gt_bottom_border {
+#fesmoveupm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#aojceoeihk .gt_col_headings {
+#fesmoveupm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1597,7 +1616,7 @@
   border-right-color: #D3D3D3;
 }
 
-#aojceoeihk .gt_col_heading {
+#fesmoveupm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1617,7 +1636,7 @@
   overflow-x: hidden;
 }
 
-#aojceoeihk .gt_column_spanner_outer {
+#fesmoveupm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1629,15 +1648,15 @@
   padding-right: 4px;
 }
 
-#aojceoeihk .gt_column_spanner_outer:first-child {
+#fesmoveupm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#aojceoeihk .gt_column_spanner_outer:last-child {
+#fesmoveupm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#aojceoeihk .gt_column_spanner {
+#fesmoveupm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1649,7 +1668,7 @@
   width: 100%;
 }
 
-#aojceoeihk .gt_group_heading {
+#fesmoveupm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1674,7 +1693,7 @@
   vertical-align: middle;
 }
 
-#aojceoeihk .gt_empty_group_heading {
+#fesmoveupm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1689,15 +1708,15 @@
   vertical-align: middle;
 }
 
-#aojceoeihk .gt_from_md > :first-child {
+#fesmoveupm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#aojceoeihk .gt_from_md > :last-child {
+#fesmoveupm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#aojceoeihk .gt_row {
+#fesmoveupm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1716,7 +1735,7 @@
   overflow-x: hidden;
 }
 
-#aojceoeihk .gt_stub {
+#fesmoveupm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1729,7 +1748,7 @@
   padding-right: 5px;
 }
 
-#aojceoeihk .gt_stub_row_group {
+#fesmoveupm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1743,11 +1762,11 @@
   vertical-align: top;
 }
 
-#aojceoeihk .gt_row_group_first td {
+#fesmoveupm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#aojceoeihk .gt_summary_row {
+#fesmoveupm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1757,16 +1776,16 @@
   padding-right: 5px;
 }
 
-#aojceoeihk .gt_first_summary_row {
+#fesmoveupm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#aojceoeihk .gt_first_summary_row.thick {
+#fesmoveupm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#aojceoeihk .gt_last_summary_row {
+#fesmoveupm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1776,7 +1795,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#aojceoeihk .gt_grand_summary_row {
+#fesmoveupm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1786,7 +1805,7 @@
   padding-right: 5px;
 }
 
-#aojceoeihk .gt_first_grand_summary_row {
+#fesmoveupm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1796,11 +1815,11 @@
   border-top-color: #D3D3D3;
 }
 
-#aojceoeihk .gt_striped {
+#fesmoveupm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#aojceoeihk .gt_table_body {
+#fesmoveupm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1809,7 +1828,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#aojceoeihk .gt_footnotes {
+#fesmoveupm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1823,7 +1842,7 @@
   border-right-color: #D3D3D3;
 }
 
-#aojceoeihk .gt_footnote {
+#fesmoveupm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1832,7 +1851,7 @@
   padding-right: 5px;
 }
 
-#aojceoeihk .gt_sourcenotes {
+#fesmoveupm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1846,7 +1865,7 @@
   border-right-color: #D3D3D3;
 }
 
-#aojceoeihk .gt_sourcenote {
+#fesmoveupm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1854,64 +1873,64 @@
   padding-right: 5px;
 }
 
-#aojceoeihk .gt_left {
+#fesmoveupm .gt_left {
   text-align: left;
 }
 
-#aojceoeihk .gt_center {
+#fesmoveupm .gt_center {
   text-align: center;
 }
 
-#aojceoeihk .gt_right {
+#fesmoveupm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#aojceoeihk .gt_font_normal {
+#fesmoveupm .gt_font_normal {
   font-weight: normal;
 }
 
-#aojceoeihk .gt_font_bold {
+#fesmoveupm .gt_font_bold {
   font-weight: bold;
 }
 
-#aojceoeihk .gt_font_italic {
+#fesmoveupm .gt_font_italic {
   font-style: italic;
 }
 
-#aojceoeihk .gt_super {
+#fesmoveupm .gt_super {
   font-size: 65%;
 }
 
-#aojceoeihk .gt_footnote_marks {
+#fesmoveupm .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#aojceoeihk .gt_asterisk {
+#fesmoveupm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#aojceoeihk .gt_indent_1 {
+#fesmoveupm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#aojceoeihk .gt_indent_2 {
+#fesmoveupm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#aojceoeihk .gt_indent_3 {
+#fesmoveupm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#aojceoeihk .gt_indent_4 {
+#fesmoveupm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#aojceoeihk .gt_indent_5 {
+#fesmoveupm .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1999,7 +2018,11 @@
 <div class="section level3">
 <h3 id="percent-bars">Percent bars<a class="anchor" aria-label="anchor" href="#percent-bars"></a>
 </h3>
-<p>Alternatively, you may prefer the HTML-generated bar plotsfrom <code><a href="../reference/gt_plt_bar_pct.html">gt_plt_bar_pct()</a></code>. Note that the bars represent a percentage of max, so the largest value will indicate 100% of the row. You can pass raw values that are scaled to a 0-100% range, or pass values between 0 and 100 that represent an existing percent.</p>
+<p>Alternatively, you may prefer the HTML-generated bar plotsfrom
+<code><a href="../reference/gt_plt_bar_pct.html">gt_plt_bar_pct()</a></code>. Note that the bars represent a percentage
+of max, so the largest value will indicate 100% of the row. You can pass
+raw values that are scaled to a 0-100% range, or pass values between 0
+and 100 that represent an existing percent.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>   <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -2014,12 +2037,12 @@
 <span>   <span class="fu"><a href="https://gt.rstudio.com/reference/cols_align.html" class="external-link">cols_align</a></span><span class="op">(</span><span class="st">"center"</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">contains</a></span><span class="op">(</span><span class="st">"scale"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>   <span class="fu"><a href="https://gt.rstudio.com/reference/cols_width.html" class="external-link">cols_width</a></span><span class="op">(</span><span class="fl">4</span> <span class="op">~</span> <span class="fu"><a href="https://gt.rstudio.com/reference/px.html" class="external-link">px</a></span><span class="op">(</span><span class="fl">125</span><span class="op">)</span>,</span>
 <span>              <span class="fl">5</span> <span class="op">~</span> <span class="fu"><a href="https://gt.rstudio.com/reference/px.html" class="external-link">px</a></span><span class="op">(</span><span class="fl">125</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div id="ndqnlyaneq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="xkfoynugqa" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ndqnlyaneq .gt_table {
+#xkfoynugqa .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2044,7 +2067,7 @@
   border-left-color: #D3D3D3;
 }
 
-#ndqnlyaneq .gt_heading {
+#xkfoynugqa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2056,7 +2079,7 @@
   border-right-color: #D3D3D3;
 }
 
-#ndqnlyaneq .gt_title {
+#xkfoynugqa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2068,7 +2091,7 @@
   border-bottom-width: 0;
 }
 
-#ndqnlyaneq .gt_subtitle {
+#xkfoynugqa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2080,13 +2103,13 @@
   border-top-width: 0;
 }
 
-#ndqnlyaneq .gt_bottom_border {
+#xkfoynugqa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ndqnlyaneq .gt_col_headings {
+#xkfoynugqa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2101,7 +2124,7 @@
   border-right-color: #D3D3D3;
 }
 
-#ndqnlyaneq .gt_col_heading {
+#xkfoynugqa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2121,7 +2144,7 @@
   overflow-x: hidden;
 }
 
-#ndqnlyaneq .gt_column_spanner_outer {
+#xkfoynugqa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2133,15 +2156,15 @@
   padding-right: 4px;
 }
 
-#ndqnlyaneq .gt_column_spanner_outer:first-child {
+#xkfoynugqa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ndqnlyaneq .gt_column_spanner_outer:last-child {
+#xkfoynugqa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ndqnlyaneq .gt_column_spanner {
+#xkfoynugqa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2153,7 +2176,7 @@
   width: 100%;
 }
 
-#ndqnlyaneq .gt_group_heading {
+#xkfoynugqa .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2178,7 +2201,7 @@
   vertical-align: middle;
 }
 
-#ndqnlyaneq .gt_empty_group_heading {
+#xkfoynugqa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2193,15 +2216,15 @@
   vertical-align: middle;
 }
 
-#ndqnlyaneq .gt_from_md > :first-child {
+#xkfoynugqa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ndqnlyaneq .gt_from_md > :last-child {
+#xkfoynugqa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ndqnlyaneq .gt_row {
+#xkfoynugqa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2220,7 +2243,7 @@
   overflow-x: hidden;
 }
 
-#ndqnlyaneq .gt_stub {
+#xkfoynugqa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2233,7 +2256,7 @@
   padding-right: 5px;
 }
 
-#ndqnlyaneq .gt_stub_row_group {
+#xkfoynugqa .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2247,11 +2270,11 @@
   vertical-align: top;
 }
 
-#ndqnlyaneq .gt_row_group_first td {
+#xkfoynugqa .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ndqnlyaneq .gt_summary_row {
+#xkfoynugqa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2261,16 +2284,16 @@
   padding-right: 5px;
 }
 
-#ndqnlyaneq .gt_first_summary_row {
+#xkfoynugqa .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ndqnlyaneq .gt_first_summary_row.thick {
+#xkfoynugqa .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ndqnlyaneq .gt_last_summary_row {
+#xkfoynugqa .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2280,7 +2303,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#ndqnlyaneq .gt_grand_summary_row {
+#xkfoynugqa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2290,7 +2313,7 @@
   padding-right: 5px;
 }
 
-#ndqnlyaneq .gt_first_grand_summary_row {
+#xkfoynugqa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2300,11 +2323,11 @@
   border-top-color: #D3D3D3;
 }
 
-#ndqnlyaneq .gt_striped {
+#xkfoynugqa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ndqnlyaneq .gt_table_body {
+#xkfoynugqa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2313,7 +2336,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#ndqnlyaneq .gt_footnotes {
+#xkfoynugqa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2327,7 +2350,7 @@
   border-right-color: #D3D3D3;
 }
 
-#ndqnlyaneq .gt_footnote {
+#xkfoynugqa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -2336,7 +2359,7 @@
   padding-right: 5px;
 }
 
-#ndqnlyaneq .gt_sourcenotes {
+#xkfoynugqa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2350,7 +2373,7 @@
   border-right-color: #D3D3D3;
 }
 
-#ndqnlyaneq .gt_sourcenote {
+#xkfoynugqa .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2358,64 +2381,64 @@
   padding-right: 5px;
 }
 
-#ndqnlyaneq .gt_left {
+#xkfoynugqa .gt_left {
   text-align: left;
 }
 
-#ndqnlyaneq .gt_center {
+#xkfoynugqa .gt_center {
   text-align: center;
 }
 
-#ndqnlyaneq .gt_right {
+#xkfoynugqa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ndqnlyaneq .gt_font_normal {
+#xkfoynugqa .gt_font_normal {
   font-weight: normal;
 }
 
-#ndqnlyaneq .gt_font_bold {
+#xkfoynugqa .gt_font_bold {
   font-weight: bold;
 }
 
-#ndqnlyaneq .gt_font_italic {
+#xkfoynugqa .gt_font_italic {
   font-style: italic;
 }
 
-#ndqnlyaneq .gt_super {
+#xkfoynugqa .gt_super {
   font-size: 65%;
 }
 
-#ndqnlyaneq .gt_footnote_marks {
+#xkfoynugqa .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#ndqnlyaneq .gt_asterisk {
+#xkfoynugqa .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ndqnlyaneq .gt_indent_1 {
+#xkfoynugqa .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ndqnlyaneq .gt_indent_2 {
+#xkfoynugqa .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ndqnlyaneq .gt_indent_3 {
+#xkfoynugqa .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ndqnlyaneq .gt_indent_4 {
+#xkfoynugqa .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ndqnlyaneq .gt_indent_5 {
+#xkfoynugqa .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2484,7 +2507,11 @@
 <div class="section level3">
 <h3 id="inline-win-loss-plots">Inline Win Loss plots<a class="anchor" aria-label="anchor" href="#inline-win-loss-plots"></a>
 </h3>
-<p>You can also generate really nice looking “Win Loss” plots, similar to the ones used by <a href="https://www.theguardian.com/football/premierleague/table" class="external-link">The Guardian</a> for Soccer outcomes. The code to bring in the data via the <a href="https://nflreadr.nflverse.com" class="external-link">nflreadr</a> package is hidden in an expandable tab below.</p>
+<p>You can also generate really nice looking “Win Loss” plots, similar
+to the ones used by <a href="https://www.theguardian.com/football/premierleague/table" class="external-link">The
+Guardian</a> for Soccer outcomes. The code to bring in the data via the
+<a href="https://nflreadr.nflverse.com" class="external-link">nflreadr</a> package is hidden in an expandable tab
+below.</p>
 <details><summary><p>Bring data in</p>
 </summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
@@ -2560,13 +2587,13 @@
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://gt.rstudio.com/reference/tab_options.html" class="external-link">tab_options</a></span><span class="op">(</span>data_row.padding <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/px.html" class="external-link">px</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div id="hjrrsbdepy" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="ayuvwkubbh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 html {
   font-family: Chivo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#hjrrsbdepy .gt_table {
+#ayuvwkubbh .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2591,7 +2618,7 @@ html {
   border-left-color: #D3D3D3;
 }
 
-#hjrrsbdepy .gt_heading {
+#ayuvwkubbh .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -2603,7 +2630,7 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#hjrrsbdepy .gt_title {
+#ayuvwkubbh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2615,7 +2642,7 @@ html {
   border-bottom-width: 0;
 }
 
-#hjrrsbdepy .gt_subtitle {
+#ayuvwkubbh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2627,13 +2654,13 @@ html {
   border-top-width: 0;
 }
 
-#hjrrsbdepy .gt_bottom_border {
+#ayuvwkubbh .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hjrrsbdepy .gt_col_headings {
+#ayuvwkubbh .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2648,7 +2675,7 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#hjrrsbdepy .gt_col_heading {
+#ayuvwkubbh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -2668,7 +2695,7 @@ html {
   overflow-x: hidden;
 }
 
-#hjrrsbdepy .gt_column_spanner_outer {
+#ayuvwkubbh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -2680,15 +2707,15 @@ html {
   padding-right: 4px;
 }
 
-#hjrrsbdepy .gt_column_spanner_outer:first-child {
+#ayuvwkubbh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hjrrsbdepy .gt_column_spanner_outer:last-child {
+#ayuvwkubbh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hjrrsbdepy .gt_column_spanner {
+#ayuvwkubbh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #000000;
@@ -2700,7 +2727,7 @@ html {
   width: 100%;
 }
 
-#hjrrsbdepy .gt_group_heading {
+#ayuvwkubbh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2725,7 +2752,7 @@ html {
   vertical-align: middle;
 }
 
-#hjrrsbdepy .gt_empty_group_heading {
+#ayuvwkubbh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2740,15 +2767,15 @@ html {
   vertical-align: middle;
 }
 
-#hjrrsbdepy .gt_from_md > :first-child {
+#ayuvwkubbh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hjrrsbdepy .gt_from_md > :last-child {
+#ayuvwkubbh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hjrrsbdepy .gt_row {
+#ayuvwkubbh .gt_row {
   padding-top: 2px;
   padding-bottom: 2px;
   padding-left: 5px;
@@ -2767,7 +2794,7 @@ html {
   overflow-x: hidden;
 }
 
-#hjrrsbdepy .gt_stub {
+#ayuvwkubbh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -2780,7 +2807,7 @@ html {
   padding-right: 5px;
 }
 
-#hjrrsbdepy .gt_stub_row_group {
+#ayuvwkubbh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2794,11 +2821,11 @@ html {
   vertical-align: top;
 }
 
-#hjrrsbdepy .gt_row_group_first td {
+#ayuvwkubbh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hjrrsbdepy .gt_summary_row {
+#ayuvwkubbh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2808,16 +2835,16 @@ html {
   padding-right: 5px;
 }
 
-#hjrrsbdepy .gt_first_summary_row {
+#ayuvwkubbh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hjrrsbdepy .gt_first_summary_row.thick {
+#ayuvwkubbh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hjrrsbdepy .gt_last_summary_row {
+#ayuvwkubbh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2827,7 +2854,7 @@ html {
   border-bottom-color: #D3D3D3;
 }
 
-#hjrrsbdepy .gt_grand_summary_row {
+#ayuvwkubbh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2837,7 +2864,7 @@ html {
   padding-right: 5px;
 }
 
-#hjrrsbdepy .gt_first_grand_summary_row {
+#ayuvwkubbh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2847,11 +2874,11 @@ html {
   border-top-color: #D3D3D3;
 }
 
-#hjrrsbdepy .gt_striped {
+#ayuvwkubbh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hjrrsbdepy .gt_table_body {
+#ayuvwkubbh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2860,7 +2887,7 @@ html {
   border-bottom-color: #D3D3D3;
 }
 
-#hjrrsbdepy .gt_footnotes {
+#ayuvwkubbh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2874,7 +2901,7 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#hjrrsbdepy .gt_footnote {
+#ayuvwkubbh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -2883,7 +2910,7 @@ html {
   padding-right: 5px;
 }
 
-#hjrrsbdepy .gt_sourcenotes {
+#ayuvwkubbh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2897,7 +2924,7 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#hjrrsbdepy .gt_sourcenote {
+#ayuvwkubbh .gt_sourcenote {
   font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2905,64 +2932,64 @@ html {
   padding-right: 5px;
 }
 
-#hjrrsbdepy .gt_left {
+#ayuvwkubbh .gt_left {
   text-align: left;
 }
 
-#hjrrsbdepy .gt_center {
+#ayuvwkubbh .gt_center {
   text-align: center;
 }
 
-#hjrrsbdepy .gt_right {
+#ayuvwkubbh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hjrrsbdepy .gt_font_normal {
+#ayuvwkubbh .gt_font_normal {
   font-weight: normal;
 }
 
-#hjrrsbdepy .gt_font_bold {
+#ayuvwkubbh .gt_font_bold {
   font-weight: bold;
 }
 
-#hjrrsbdepy .gt_font_italic {
+#ayuvwkubbh .gt_font_italic {
   font-style: italic;
 }
 
-#hjrrsbdepy .gt_super {
+#ayuvwkubbh .gt_super {
   font-size: 65%;
 }
 
-#hjrrsbdepy .gt_footnote_marks {
+#ayuvwkubbh .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#hjrrsbdepy .gt_asterisk {
+#ayuvwkubbh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hjrrsbdepy .gt_indent_1 {
+#ayuvwkubbh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hjrrsbdepy .gt_indent_2 {
+#ayuvwkubbh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hjrrsbdepy .gt_indent_3 {
+#ayuvwkubbh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hjrrsbdepy .gt_indent_4 {
+#ayuvwkubbh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hjrrsbdepy .gt_indent_5 {
+#ayuvwkubbh .gt_indent_5 {
   text-indent: 25px;
 }
 
@@ -3131,7 +3158,8 @@ tbody tr:last-child {
 <div class="section level3">
 <h3 id="inline-bar-plots">Inline bar plots<a class="anchor" aria-label="anchor" href="#inline-bar-plots"></a>
 </h3>
-<p>We can also do inline bar plots, purely via HTML! You can customize the colors, and have the option to scale or use unscaled values.</p>
+<p>We can also do inline bar plots, purely via HTML! You can customize
+the colors, and have the option to scale or use unscaled values.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gt_bar_plot_tab</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -3151,12 +3179,12 @@ tbody tr:last-child {
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">gt_bar_plot_tab</span></span></code></pre></div>
-<div id="iffvtlqdfd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="bsxlvkiwzg" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#iffvtlqdfd .gt_table {
+#bsxlvkiwzg .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -3181,7 +3209,7 @@ tbody tr:last-child {
   border-left-color: #D3D3D3;
 }
 
-#iffvtlqdfd .gt_heading {
+#bsxlvkiwzg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3193,7 +3221,7 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#iffvtlqdfd .gt_title {
+#bsxlvkiwzg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3205,7 +3233,7 @@ tbody tr:last-child {
   border-bottom-width: 0;
 }
 
-#iffvtlqdfd .gt_subtitle {
+#bsxlvkiwzg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3217,13 +3245,13 @@ tbody tr:last-child {
   border-top-width: 0;
 }
 
-#iffvtlqdfd .gt_bottom_border {
+#bsxlvkiwzg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#iffvtlqdfd .gt_col_headings {
+#bsxlvkiwzg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3238,7 +3266,7 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#iffvtlqdfd .gt_col_heading {
+#bsxlvkiwzg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3258,7 +3286,7 @@ tbody tr:last-child {
   overflow-x: hidden;
 }
 
-#iffvtlqdfd .gt_column_spanner_outer {
+#bsxlvkiwzg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3270,15 +3298,15 @@ tbody tr:last-child {
   padding-right: 4px;
 }
 
-#iffvtlqdfd .gt_column_spanner_outer:first-child {
+#bsxlvkiwzg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#iffvtlqdfd .gt_column_spanner_outer:last-child {
+#bsxlvkiwzg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#iffvtlqdfd .gt_column_spanner {
+#bsxlvkiwzg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3290,7 +3318,7 @@ tbody tr:last-child {
   width: 100%;
 }
 
-#iffvtlqdfd .gt_group_heading {
+#bsxlvkiwzg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3315,7 +3343,7 @@ tbody tr:last-child {
   vertical-align: middle;
 }
 
-#iffvtlqdfd .gt_empty_group_heading {
+#bsxlvkiwzg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3330,15 +3358,15 @@ tbody tr:last-child {
   vertical-align: middle;
 }
 
-#iffvtlqdfd .gt_from_md > :first-child {
+#bsxlvkiwzg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#iffvtlqdfd .gt_from_md > :last-child {
+#bsxlvkiwzg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#iffvtlqdfd .gt_row {
+#bsxlvkiwzg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3357,7 +3385,7 @@ tbody tr:last-child {
   overflow-x: hidden;
 }
 
-#iffvtlqdfd .gt_stub {
+#bsxlvkiwzg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3370,7 +3398,7 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#iffvtlqdfd .gt_stub_row_group {
+#bsxlvkiwzg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3384,11 +3412,11 @@ tbody tr:last-child {
   vertical-align: top;
 }
 
-#iffvtlqdfd .gt_row_group_first td {
+#bsxlvkiwzg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#iffvtlqdfd .gt_summary_row {
+#bsxlvkiwzg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3398,16 +3426,16 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#iffvtlqdfd .gt_first_summary_row {
+#bsxlvkiwzg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#iffvtlqdfd .gt_first_summary_row.thick {
+#bsxlvkiwzg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#iffvtlqdfd .gt_last_summary_row {
+#bsxlvkiwzg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3417,7 +3445,7 @@ tbody tr:last-child {
   border-bottom-color: #D3D3D3;
 }
 
-#iffvtlqdfd .gt_grand_summary_row {
+#bsxlvkiwzg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3427,7 +3455,7 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#iffvtlqdfd .gt_first_grand_summary_row {
+#bsxlvkiwzg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3437,11 +3465,11 @@ tbody tr:last-child {
   border-top-color: #D3D3D3;
 }
 
-#iffvtlqdfd .gt_striped {
+#bsxlvkiwzg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#iffvtlqdfd .gt_table_body {
+#bsxlvkiwzg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3450,7 +3478,7 @@ tbody tr:last-child {
   border-bottom-color: #D3D3D3;
 }
 
-#iffvtlqdfd .gt_footnotes {
+#bsxlvkiwzg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3464,7 +3492,7 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#iffvtlqdfd .gt_footnote {
+#bsxlvkiwzg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -3473,7 +3501,7 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#iffvtlqdfd .gt_sourcenotes {
+#bsxlvkiwzg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3487,7 +3515,7 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#iffvtlqdfd .gt_sourcenote {
+#bsxlvkiwzg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3495,64 +3523,64 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#iffvtlqdfd .gt_left {
+#bsxlvkiwzg .gt_left {
   text-align: left;
 }
 
-#iffvtlqdfd .gt_center {
+#bsxlvkiwzg .gt_center {
   text-align: center;
 }
 
-#iffvtlqdfd .gt_right {
+#bsxlvkiwzg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#iffvtlqdfd .gt_font_normal {
+#bsxlvkiwzg .gt_font_normal {
   font-weight: normal;
 }
 
-#iffvtlqdfd .gt_font_bold {
+#bsxlvkiwzg .gt_font_bold {
   font-weight: bold;
 }
 
-#iffvtlqdfd .gt_font_italic {
+#bsxlvkiwzg .gt_font_italic {
   font-style: italic;
 }
 
-#iffvtlqdfd .gt_super {
+#bsxlvkiwzg .gt_super {
   font-size: 65%;
 }
 
-#iffvtlqdfd .gt_footnote_marks {
+#bsxlvkiwzg .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#iffvtlqdfd .gt_asterisk {
+#bsxlvkiwzg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#iffvtlqdfd .gt_indent_1 {
+#bsxlvkiwzg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#iffvtlqdfd .gt_indent_2 {
+#bsxlvkiwzg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#iffvtlqdfd .gt_indent_3 {
+#bsxlvkiwzg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#iffvtlqdfd .gt_indent_4 {
+#bsxlvkiwzg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#iffvtlqdfd .gt_indent_5 {
+#bsxlvkiwzg .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -3621,7 +3649,8 @@ tbody tr:last-child {
 <div class="section level3">
 <h3 id="stacked-percent-bar-charts">Stacked Percent bar charts<a class="anchor" aria-label="anchor" href="#stacked-percent-bar-charts"></a>
 </h3>
-<p>We can create a horizontal stacked percent bar chart inline like so. The data can be prepped as seen in the expandable section below.</p>
+<p>We can create a horizontal stacked percent bar chart inline like so.
+The data can be prepped as seen in the expandable section below.</p>
 <details><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
@@ -3701,13 +3730,13 @@ tbody tr:last-child {
 <span>                   labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"DUNKS"</span>, <span class="st">"HOOKS/FLOATS"</span>, <span class="st">"JUMPERS"</span><span class="op">)</span>,</span>
 <span>                   palette<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#ff4343"</span>, <span class="st">"#bfbfbf"</span>, <span class="st">"#0a1c2b"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/gt_theme_538.html">gt_theme_538</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div id="gagrtmtylg" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="fmddlbjrsl" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 html {
   font-family: Chivo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#gagrtmtylg .gt_table {
+#fmddlbjrsl .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -3732,7 +3761,7 @@ html {
   border-left-color: #D3D3D3;
 }
 
-#gagrtmtylg .gt_heading {
+#fmddlbjrsl .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -3744,7 +3773,7 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#gagrtmtylg .gt_title {
+#fmddlbjrsl .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3756,7 +3785,7 @@ html {
   border-bottom-width: 0;
 }
 
-#gagrtmtylg .gt_subtitle {
+#fmddlbjrsl .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3768,13 +3797,13 @@ html {
   border-top-width: 0;
 }
 
-#gagrtmtylg .gt_bottom_border {
+#fmddlbjrsl .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gagrtmtylg .gt_col_headings {
+#fmddlbjrsl .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3789,7 +3818,7 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#gagrtmtylg .gt_col_heading {
+#fmddlbjrsl .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -3809,7 +3838,7 @@ html {
   overflow-x: hidden;
 }
 
-#gagrtmtylg .gt_column_spanner_outer {
+#fmddlbjrsl .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -3821,15 +3850,15 @@ html {
   padding-right: 4px;
 }
 
-#gagrtmtylg .gt_column_spanner_outer:first-child {
+#fmddlbjrsl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gagrtmtylg .gt_column_spanner_outer:last-child {
+#fmddlbjrsl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gagrtmtylg .gt_column_spanner {
+#fmddlbjrsl .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #000000;
@@ -3841,7 +3870,7 @@ html {
   width: 100%;
 }
 
-#gagrtmtylg .gt_group_heading {
+#fmddlbjrsl .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3866,7 +3895,7 @@ html {
   vertical-align: middle;
 }
 
-#gagrtmtylg .gt_empty_group_heading {
+#fmddlbjrsl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3881,15 +3910,15 @@ html {
   vertical-align: middle;
 }
 
-#gagrtmtylg .gt_from_md > :first-child {
+#fmddlbjrsl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gagrtmtylg .gt_from_md > :last-child {
+#fmddlbjrsl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gagrtmtylg .gt_row {
+#fmddlbjrsl .gt_row {
   padding-top: 3px;
   padding-bottom: 3px;
   padding-left: 5px;
@@ -3908,7 +3937,7 @@ html {
   overflow-x: hidden;
 }
 
-#gagrtmtylg .gt_stub {
+#fmddlbjrsl .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -3921,7 +3950,7 @@ html {
   padding-right: 5px;
 }
 
-#gagrtmtylg .gt_stub_row_group {
+#fmddlbjrsl .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3935,11 +3964,11 @@ html {
   vertical-align: top;
 }
 
-#gagrtmtylg .gt_row_group_first td {
+#fmddlbjrsl .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gagrtmtylg .gt_summary_row {
+#fmddlbjrsl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3949,16 +3978,16 @@ html {
   padding-right: 5px;
 }
 
-#gagrtmtylg .gt_first_summary_row {
+#fmddlbjrsl .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gagrtmtylg .gt_first_summary_row.thick {
+#fmddlbjrsl .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gagrtmtylg .gt_last_summary_row {
+#fmddlbjrsl .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3968,7 +3997,7 @@ html {
   border-bottom-color: #D3D3D3;
 }
 
-#gagrtmtylg .gt_grand_summary_row {
+#fmddlbjrsl .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3978,7 +4007,7 @@ html {
   padding-right: 5px;
 }
 
-#gagrtmtylg .gt_first_grand_summary_row {
+#fmddlbjrsl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3988,11 +4017,11 @@ html {
   border-top-color: #D3D3D3;
 }
 
-#gagrtmtylg .gt_striped {
+#fmddlbjrsl .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gagrtmtylg .gt_table_body {
+#fmddlbjrsl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4001,7 +4030,7 @@ html {
   border-bottom-color: #D3D3D3;
 }
 
-#gagrtmtylg .gt_footnotes {
+#fmddlbjrsl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4015,7 +4044,7 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#gagrtmtylg .gt_footnote {
+#fmddlbjrsl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -4024,7 +4053,7 @@ html {
   padding-right: 5px;
 }
 
-#gagrtmtylg .gt_sourcenotes {
+#fmddlbjrsl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4038,7 +4067,7 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#gagrtmtylg .gt_sourcenote {
+#fmddlbjrsl .gt_sourcenote {
   font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4046,64 +4075,64 @@ html {
   padding-right: 5px;
 }
 
-#gagrtmtylg .gt_left {
+#fmddlbjrsl .gt_left {
   text-align: left;
 }
 
-#gagrtmtylg .gt_center {
+#fmddlbjrsl .gt_center {
   text-align: center;
 }
 
-#gagrtmtylg .gt_right {
+#fmddlbjrsl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gagrtmtylg .gt_font_normal {
+#fmddlbjrsl .gt_font_normal {
   font-weight: normal;
 }
 
-#gagrtmtylg .gt_font_bold {
+#fmddlbjrsl .gt_font_bold {
   font-weight: bold;
 }
 
-#gagrtmtylg .gt_font_italic {
+#fmddlbjrsl .gt_font_italic {
   font-style: italic;
 }
 
-#gagrtmtylg .gt_super {
+#fmddlbjrsl .gt_super {
   font-size: 65%;
 }
 
-#gagrtmtylg .gt_footnote_marks {
+#fmddlbjrsl .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#gagrtmtylg .gt_asterisk {
+#fmddlbjrsl .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gagrtmtylg .gt_indent_1 {
+#fmddlbjrsl .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gagrtmtylg .gt_indent_2 {
+#fmddlbjrsl .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gagrtmtylg .gt_indent_3 {
+#fmddlbjrsl .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gagrtmtylg .gt_indent_4 {
+#fmddlbjrsl .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gagrtmtylg .gt_indent_5 {
+#fmddlbjrsl .gt_indent_5 {
   text-indent: 25px;
 }
 
@@ -4124,56 +4153,56 @@ tbody tr:last-child {
 <td class="gt_row gt_left">Evan Mobley</td>
 <td class="gt_row gt_right">40</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw=="><rect x="0.00" y="0.00" width="184.25" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="74.45" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #FF4343;"></rect><rect x="74.45" y="0.0000000000000018" width="48.39" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #BFBFBF;"></rect><rect x="122.83" y="0.0000000000000018" width="61.42" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #0A1C2B;"></rect><text x="37.22" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">40</text><text x="98.64" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">26</text><text x="153.54" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">33</text></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw=="><rect x="0.00" y="0.00" width="184.25" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="74.45" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #FF4343;"></rect><rect x="74.45" y="0.0000000000000018" width="48.39" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #BFBFBF;"></rect><rect x="122.83" y="0.0000000000000018" width="61.42" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #0A1C2B;"></rect><text x="37.22" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">40</text><text x="98.64" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">26</text><text x="153.54" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">33</text></g></svg>
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_left">Sandro Mamukelashvili</td>
 <td class="gt_row gt_right">48</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw=="><rect x="0.00" y="0.00" width="184.25" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="88.44" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #FF4343;"></rect><rect x="88.44" y="0.0000000000000018" width="18.43" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #BFBFBF;"></rect><rect x="106.87" y="0.0000000000000018" width="77.39" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #0A1C2B;"></rect><text x="44.22" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">48</text><text x="97.65" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">10</text><text x="145.56" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">42</text></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw=="><rect x="0.00" y="0.00" width="184.25" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="88.44" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #FF4343;"></rect><rect x="88.44" y="0.0000000000000018" width="18.43" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #BFBFBF;"></rect><rect x="106.87" y="0.0000000000000018" width="77.39" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #0A1C2B;"></rect><text x="44.22" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">48</text><text x="97.65" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">10</text><text x="145.56" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">42</text></g></svg>
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_left">Charles Bassey</td>
 <td class="gt_row gt_right">50</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw=="><rect x="0.00" y="0.00" width="184.25" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="92.13" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #FF4343;"></rect><rect x="92.13" y="0.0000000000000018" width="35.01" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #BFBFBF;"></rect><rect x="127.13" y="0.0000000000000018" width="57.12" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #0A1C2B;"></rect><text x="46.06" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">50</text><text x="109.63" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">19</text><text x="155.69" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">31</text></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw=="><rect x="0.00" y="0.00" width="184.25" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="92.13" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #FF4343;"></rect><rect x="92.13" y="0.0000000000000018" width="35.01" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #BFBFBF;"></rect><rect x="127.13" y="0.0000000000000018" width="57.12" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #0A1C2B;"></rect><text x="46.06" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">50</text><text x="109.63" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">19</text><text x="155.69" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">31</text></g></svg>
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_left">Luke Garza</td>
 <td class="gt_row gt_right">50</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw=="><rect x="0.00" y="0.00" width="184.25" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="92.13" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #FF4343;"></rect><rect x="92.13" y="0.0000000000000018" width="27.64" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #BFBFBF;"></rect><rect x="119.76" y="0.0000000000000018" width="64.49" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #0A1C2B;"></rect><text x="46.06" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">50</text><text x="105.94" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">15</text><text x="152.01" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">35</text></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw=="><rect x="0.00" y="0.00" width="184.25" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="92.13" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #FF4343;"></rect><rect x="92.13" y="0.0000000000000018" width="27.64" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #BFBFBF;"></rect><rect x="119.76" y="0.0000000000000018" width="64.49" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #0A1C2B;"></rect><text x="46.06" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">50</text><text x="105.94" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">15</text><text x="152.01" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">35</text></g></svg>
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_left">Moses Wright</td>
 <td class="gt_row gt_right">51</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw=="><rect x="0.00" y="0.00" width="184.25" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="93.04" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #FF4343;"></rect><rect x="93.04" y="0.0000000000000018" width="45.61" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #BFBFBF;"></rect><rect x="138.65" y="0.0000000000000018" width="45.61" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #0A1C2B;"></rect><text x="46.52" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">51</text><text x="115.84" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">25</text><text x="161.45" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">25</text></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw=="><rect x="0.00" y="0.00" width="184.25" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="93.04" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #FF4343;"></rect><rect x="93.04" y="0.0000000000000018" width="45.61" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #BFBFBF;"></rect><rect x="138.65" y="0.0000000000000018" width="45.61" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #0A1C2B;"></rect><text x="46.52" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">51</text><text x="115.84" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">25</text><text x="161.45" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">25</text></g></svg>
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_left">Neemias Queta</td>
 <td class="gt_row gt_right">55</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw=="><rect x="0.00" y="0.00" width="184.25" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="101.34" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #FF4343;"></rect><rect x="101.34" y="0.0000000000000018" width="49.75" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #BFBFBF;"></rect><rect x="151.09" y="0.0000000000000018" width="33.17" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #0A1C2B;"></rect><text x="50.67" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">55</text><text x="126.21" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">27</text><text x="167.67" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">18</text></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw=="><rect x="0.00" y="0.00" width="184.25" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="101.34" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #FF4343;"></rect><rect x="101.34" y="0.0000000000000018" width="49.75" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #BFBFBF;"></rect><rect x="151.09" y="0.0000000000000018" width="33.17" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #0A1C2B;"></rect><text x="50.67" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">55</text><text x="126.21" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">27</text><text x="167.67" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">18</text></g></svg>
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_left">Isaiah Jackson</td>
 <td class="gt_row gt_right">60</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw=="><rect x="0.00" y="0.00" width="184.25" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="110.55" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #FF4343;"></rect><rect x="110.55" y="0.0000000000000018" width="27.64" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #BFBFBF;"></rect><rect x="138.19" y="0.0000000000000018" width="46.06" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #0A1C2B;"></rect><text x="55.28" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">60</text><text x="124.37" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">15</text><text x="161.22" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">25</text></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw=="><rect x="0.00" y="0.00" width="184.25" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="110.55" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #FF4343;"></rect><rect x="110.55" y="0.0000000000000018" width="27.64" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #BFBFBF;"></rect><rect x="138.19" y="0.0000000000000018" width="46.06" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #0A1C2B;"></rect><text x="55.28" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">60</text><text x="124.37" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">15</text><text x="161.22" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">25</text></g></svg>
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_left">Day'Ron Sharpe</td>
 <td class="gt_row gt_right">66</td>
 <td class="gt_row gt_center">
-<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw=="><rect x="0.00" y="0.00" width="184.25" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="121.61" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #FF4343;"></rect><rect x="121.61" y="0.0000000000000018" width="44.22" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #BFBFBF;"></rect><rect x="165.83" y="0.0000000000000018" width="18.43" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #0A1C2B;"></rect><text x="60.80" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">66</text><text x="143.72" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">24</text><text x="175.04" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Liberation Mono";' textlength="10.27px" lengthadjust="spacingAndGlyphs">10</text></g></svg>
+<?xml version='1.0' encoding='UTF-8' ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs><style type="text/css"><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw=="><rect x="0.00" y="0.00" width="184.25" height="14.17"></rect></clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="121.61" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #FF4343;"></rect><rect x="121.61" y="0.0000000000000018" width="44.22" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #BFBFBF;"></rect><rect x="165.83" y="0.0000000000000018" width="18.43" height="14.17" style="stroke-width: 2.13; stroke: #FFFFFF; stroke-linecap: square; stroke-linejoin: miter; fill: #0A1C2B;"></rect><text x="60.80" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">66</text><text x="143.72" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">24</text><text x="175.04" y="10.20" text-anchor="middle" style='font-size: 8.54px;fill: #FFFFFF; font-family: "Nimbus Mono PS";' textlength="10.27px" lengthadjust="spacingAndGlyphs">10</text></g></svg>
 </td>
 </tr>
 </tbody>
@@ -4183,9 +4212,12 @@ tbody tr:last-child {
 <div class="section level3">
 <h3 id="bullet-chart">Bullet chart<a class="anchor" aria-label="anchor" href="#bullet-chart"></a>
 </h3>
-<p>There’s also an option to create <a href="https://en.wikipedia.org/wiki/Bullet_graph" class="external-link">bullet charts</a> which represent a core value and a target metric.</p>
+<p>There’s also an option to create <a href="https://en.wikipedia.org/wiki/Bullet_graph" class="external-link">bullet charts</a>
+which represent a core value and a target metric.</p>
 <div class="figure">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Labelled_Bullet_Graph_Example.svg/500px-Labelled_Bullet_Graph_Example.svg.png" alt=""><p class="caption">A representative diagram of a bullet chart, where there’s a specific target value represented by a vertical line and a core value represented as a thin bar plot.</p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Labelled_Bullet_Graph_Example.svg/500px-Labelled_Bullet_Graph_Example.svg.png" alt=""><p class="caption">A representative diagram of a bullet chart, where
+there’s a specific target value represented by a vertical line and a
+core value represented as a thin bar plot.</p>
 </div>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">37</span><span class="op">)</span></span>
@@ -4709,7 +4741,9 @@ tbody tr:last-child {
 </tbody>
 </table>
 </div>
-<p>Note that for now, if you want to use any of the <code>gt::fmt_</code> functions on your <code>column</code> of interest, you’ll need to create a duplicate column ahead of time.</p>
+<p>Note that for now, if you want to use any of the
+<code>gt::fmt_</code> functions on your <code>column</code> of interest,
+you’ll need to create a duplicate column ahead of time.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bullet_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>plot_column <span class="op">=</span> <span class="va">mpg</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>

@@ -52,7 +52,9 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.3" id="gtextras-043">gtExtras 0.4.3<a class="anchor" aria-label="anchor" href="#gtextras-043"></a></h2>
-<ul><li>Modify internals of <code><a href="../reference/gt_fa_column.html">gt_fa_column()</a></code> to accept factors with levels not present in the data, ignoring unneeded levels. Thank you to <a href="https://github.com/mikedolanfliss" class="external-link">@mikedolanfliss</a> for the suggestion.</li></ul></div>
+<ul><li>Modify internals of <code><a href="../reference/gt_fa_column.html">gt_fa_column()</a></code> to accept factors with levels not present in the data, ignoring unneeded levels. Thank you to <a href="https://github.com/mikedolanfliss" class="external-link">@mikedolanfliss</a> for the suggestion.</li>
+<li>Add <code><a href="../reference/gt_merge_stack_color.html">gt_merge_stack_color()</a></code> to create a merge/stack with background color - per <a href="https://github.com/mrcaseb" class="external-link">@mrcaseb</a> and issue <a href="https://github.com/jthomasmock/gtExtras/issues/71" class="external-link">#71</a></li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.2" id="gtextras-042">gtExtras 0.4.2<a class="anchor" aria-label="anchor" href="#gtextras-042"></a></h2><p class="text-muted">CRAN release: 2022-09-03</p>
 <ul><li>Rebuild docs with latest <code>roxygen2</code> to fix HTML documentation issues on CRAN</li>
@@ -91,7 +93,8 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.0" id="gtextras-040">gtExtras 0.4.0<a class="anchor" aria-label="anchor" href="#gtextras-040"></a></h2><p class="text-muted">CRAN release: 2022-06-09</p>
-<ul><li>Prep for and submit initial CRAN release :fingers-crossed:</li></ul></div>
+<ul><li>Prep for and submit initial CRAN release :fingers-crossed:</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.9" id="gtextras-039">gtExtras 0.3.9<a class="anchor" aria-label="anchor" href="#gtextras-039"></a></h2>
 <ul><li>Renamed colors arg in <code><a href="../reference/gt_merge_stack.html">gt_merge_stack()</a></code> to be ‘palette’</li>
@@ -132,11 +135,13 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.3" id="gtextras-033">gtExtras 0.3.3<a class="anchor" aria-label="anchor" href="#gtextras-033"></a></h2>
-<ul><li>Add <code>webshot2</code> as a dependency now that it’s on CRAN!</li></ul></div>
+<ul><li>Add <code>webshot2</code> as a dependency now that it’s on CRAN!</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.2" id="gtextras-032">gtExtras 0.3.2<a class="anchor" aria-label="anchor" href="#gtextras-032"></a></h2>
 <ul><li>Remove <code>scales::scales_label_si()</code> in favor of <code>scales::label_number(scale_cut = cut_scale_short())</code> as the previous function was deprecated. Thanks to <a href="https://github.com/mrcaseb" class="external-link">@mrcaseb</a> for pointing out in <a href="https://github.com/jthomasmock/gtExtras/issues/48" class="external-link">Issue 48</a>
-</li></ul></div>
+</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3" id="gtextras-03">gtExtras 0.3<a class="anchor" aria-label="anchor" href="#gtextras-03"></a></h2>
 <ul><li>Add <a href="https://github.com/ddsjoberg" class="external-link">Daniel Sjoberg</a> as a contributor in honor of their major assistance with preparation towards CRAN</li>
@@ -150,14 +155,17 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.6" id="gtextras-026">gtExtras 0.2.6<a class="anchor" aria-label="anchor" href="#gtextras-026"></a></h2>
-<ul><li>Exchange <code>webshot</code> for <code>webshot2</code> to enhance capabilities. Note that <code>webshot2</code> is GitHub only, install via: <code>remotes::install_github("rstudio/webshot2")</code>. This solves <a href="https://github.com/jthomasmock/gtExtras/issues/42" class="external-link">issue </a><a href="https://github.com/jthomasmock/gtExtras/issues/42" class="external-link">#42</a>.</li></ul></div>
+<ul><li>Exchange <code>webshot</code> for <code>webshot2</code> to enhance capabilities. Note that <code>webshot2</code> is GitHub only, install via: <code>remotes::install_github("rstudio/webshot2")</code>. This solves <a href="https://github.com/jthomasmock/gtExtras/issues/42" class="external-link">issue </a><a href="https://github.com/jthomasmock/gtExtras/issues/42" class="external-link">#42</a>.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.5" id="gtextras-025">gtExtras 0.2.5<a class="anchor" aria-label="anchor" href="#gtextras-025"></a></h2>
 <ul><li>Updated <code><a href="../reference/gt_theme_guardian.html">gt_theme_guardian()</a></code> to work with zero-length tables per <a href="https://github.com/jthomasmock/gtExtras/issues/41" class="external-link">Issue 41</a>
-</li></ul></div>
+</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.4" id="gtextras-024">gtExtras 0.2.4<a class="anchor" aria-label="anchor" href="#gtextras-024"></a></h2>
-<ul><li>Added a <code>NEWS.md</code> file to track changes to the package.</li></ul><div class="section level3">
+<ul><li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
+</ul><div class="section level3">
 <h3 id="bug-fixes-prior-to-0-2-4">Bug Fixes prior to 0.2.4<a class="anchor" aria-label="anchor" href="#bug-fixes-prior-to-0-2-4"></a></h3>
 <ul><li><p>Use <code>gt_index</code> to prevent incorrect ordering of rows with <code><a href="../reference/gt_plt_bar_pct.html">gt_plt_bar_pct()</a></code> per <a href="https://stackoverflow.com/questions/71313688/gtextras-column-showing-in-wrong-order-in-gt-table-when-grouped?noredirect=1#comment126232993_71313688" class="external-link">StackOverflow report</a></p></li>
 <li><p>Remove <code>keep_column</code> argument for <code>gt_plt_bullet</code>, this functionality is able to be achieved with <code><a href="../reference/gt_duplicate_column.html">gt_duplicate_column()</a></code> upstream. This also solves naming confusion as seen in <a href="https://github.com/jthomasmock/gtExtras/issues/37" class="external-link">issue 37</a></p></li>

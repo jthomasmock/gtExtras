@@ -84,6 +84,7 @@
 </h1>
 </div>
 <!-- badges: start -->
+
 <p>The goal of <a href="https://github.com/jthomasmock/gtExtras" class="external-link">gtExtras</a> is to provide some additional helper functions to assist in creating beautiful tables with <a href="https://gt.rstudio.com/" class="external-link">gt</a>.</p>
 <p>The functions are generally wrappers around boilerplate or adding capabilities that are currently not <em>yet</em> built into <a href="https://gt.rstudio.com/" class="external-link">gt</a>. The <a href="https://gt.rstudio.com/" class="external-link"><code>{gt}</code> package</a> is amazing, make sure to go read the official documentation.</p>
 <div class="section level2">
@@ -117,18 +118,21 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">gt</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="reference/gt_theme_538.html">gt_theme_538</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p align="center"><img src="reference/figures/gt_538.png" width="700px"></p>
+<p align="center">
+<img src="reference/figures/gt_538.png" width="700px"></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">gt</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="reference/gt_theme_espn.html">gt_theme_espn</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p align="center"><img src="reference/figures/gt_espn.png" width="700px"></p>
+<p align="center">
+<img src="reference/figures/gt_espn.png" width="700px"></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">gt</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="reference/gt_theme_nytimes.html">gt_theme_nytimes</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">tab_header</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Table styled like the NY Times"</span><span class="op">)</span></span></code></pre></div>
-<p align="center"><img src="reference/figures/gt_nyt.png" width="700px"></p>
+<p align="center">
+<img src="reference/figures/gt_nyt.png" width="700px"></p>
 </div>
 <div class="section level3">
 <h3 id="hulk-data_color">Hulk data_color<a class="anchor" aria-label="anchor" href="#hulk-data_color"></a>
@@ -140,7 +144,8 @@
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="reference/gt_hulk_col_numeric.html">gt_hulk_col_numeric</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span></span></code></pre></div>
-<p align="center"><img src="reference/figures/hulk_basic.png" width="700px"></p>
+<p align="center">
+<img src="reference/figures/hulk_basic.png" width="700px"></p>
 <p>Trim provides a tighter range of purple/green so the colors are less pronounced.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -148,8 +153,10 @@
 <span>  <span class="co"># trim gives smaller range of colors</span></span>
 <span>  <span class="co"># so the green and purples are not as dark</span></span>
 <span>  <span class="fu"><a href="reference/gt_hulk_col_numeric.html">gt_hulk_col_numeric</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">:</span><span class="va">disp</span>, trim <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </span></code></pre></div>
-<p align="center"><img src="reference/figures/hulk_trim.png" width="700px"></p>
-<!-- width="1200px" --><p>Reverse makes higher values represented by purple and lower by green. The default is to have high = green, low = purple.</p>
+<p align="center">
+<img src="reference/figures/hulk_trim.png" width="700px"></p>
+<!-- width="1200px" -->
+<p>Reverse makes higher values represented by purple and lower by green. The default is to have high = green, low = purple.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># option to reverse the color palette</span></span>
 <span><span class="co"># so that purple is higher</span></span>
@@ -157,7 +164,8 @@
 <span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="co"># reverse = green for low, purple for high</span></span>
 <span>  <span class="fu"><a href="reference/gt_hulk_col_numeric.html">gt_hulk_col_numeric</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">:</span><span class="va">disp</span>, reverse <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span></code></pre></div>
-<p align="center"><img src="reference/figures/hulk_reverse.png" width="700px"></p>
+<p align="center">
+<img src="reference/figures/hulk_reverse.png" width="700px"></p>
 </div>
 <div class="section level3">
 <h3 id="gt_color_rows">
@@ -170,7 +178,8 @@
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">gt</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="reference/gt_color_rows.html">gt_color_rows</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">:</span><span class="va">disp</span><span class="op">)</span></span></code></pre></div>
-<p align="center"><img src="reference/figures/basic-pal.png" width="700px"></p>
+<p align="center">
+<img src="reference/figures/basic-pal.png" width="700px"></p>
 <p>You can change the specific palette with <code>palette = "package_name::palette_name"</code></p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># recognizes all of the dynamic palettes from paletteer</span></span>
@@ -178,7 +187,8 @@
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">gt</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="reference/gt_color_rows.html">gt_color_rows</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">:</span><span class="va">disp</span>, palette <span class="op">=</span> <span class="st">"ggsci::blue_material"</span><span class="op">)</span></span></code></pre></div>
-<p align="center"><img src="reference/figures/blue-pal.png" width="700px"></p>
+<p align="center">
+<img src="reference/figures/blue-pal.png" width="700px"></p>
 <p>You can also use custom-defined palettes with named colors in R or hex color values.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -186,7 +196,8 @@
 <span>  <span class="fu">gt</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="reference/gt_color_rows.html">gt_color_rows</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">:</span><span class="va">disp</span>, palette <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"white"</span>, <span class="st">"green"</span><span class="op">)</span><span class="op">)</span></span>
 <span>    <span class="co"># could also use palette = c("#ffffff", "##00FF00")</span></span></code></pre></div>
-<p align="center"><img src="reference/figures/custom-pal.png" width="700px"></p>
+<p align="center">
+<img src="reference/figures/custom-pal.png" width="700px"></p>
 <p>Lastly, you can also provide categorical or discrete data to be colored.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># provide type = "discrete"</span></span>
@@ -200,7 +211,8 @@
 <span>    domain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">$</span><span class="va">cyl</span><span class="op">)</span>,</span>
 <span>    pal_type <span class="op">=</span> <span class="st">"discrete"</span></span>
 <span>   <span class="op">)</span></span></code></pre></div>
-<p align="center"><img src="reference/figures/discrete-pal.png" width="700px"></p>
+<p align="center">
+<img src="reference/figures/discrete-pal.png" width="700px"></p>
 </div>
 <div class="section level3">
 <h3 id="gt_highlight_rows">
@@ -212,7 +224,8 @@
 <span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html" class="external-link">rownames_to_column</a></span><span class="op">(</span><span class="st">"car"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">gt</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="reference/gt_highlight_rows.html">gt_highlight_rows</a></span><span class="op">(</span>rows <span class="op">=</span> <span class="fl">2</span>, font_weight <span class="op">=</span> <span class="st">"normal"</span><span class="op">)</span> </span></code></pre></div>
-<p align="center"><img src="reference/figures/highlight-basic.png" width="500px"></p>
+<p align="center">
+<img src="reference/figures/highlight-basic.png" width="500px"></p>
 <p>You can optionally specify a target column with <code>target_col</code> that will be bold, while the rest of the row’s text will be default weight.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -224,7 +237,8 @@
 <span>    bold_target_only <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    target_col <span class="op">=</span> <span class="va">car</span></span>
 <span>    <span class="op">)</span></span></code></pre></div>
-<p align="center"><img src="reference/figures/highlight-target.png" width="500px"></p>
+<p align="center">
+<img src="reference/figures/highlight-target.png" width="500px"></p>
 </div>
 <div class="section level3">
 <h3 id="gt_sparkline">
@@ -237,7 +251,8 @@
 <span>   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span>mpg_data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>   <span class="fu">gt</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>   <span class="fu"><a href="reference/gt_plt_sparkline.html">gt_plt_sparkline</a></span><span class="op">(</span><span class="va">mpg_data</span><span class="op">)</span></span></code></pre></div>
-<p align="center"><img src="reference/figures/ggplot2-sparkline.png" width="200px"></p>
+<p align="center">
+<img src="reference/figures/ggplot2-sparkline.png" width="200px"></p>
 </div>
 <div class="section level3">
 <h3 id="gt_bar_plot">
@@ -257,7 +272,8 @@
 <span>  <span class="fu">cols_align</span><span class="op">(</span><span class="st">"center"</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">contains</a></span><span class="op">(</span><span class="st">"scale"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">cols_width</span><span class="op">(</span><span class="fl">4</span> <span class="op">~</span> <span class="fu">px</span><span class="op">(</span><span class="fl">125</span><span class="op">)</span>,</span>
 <span>             <span class="fl">5</span> <span class="op">~</span> <span class="fu">px</span><span class="op">(</span><span class="fl">125</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p align="center"><img src="reference/figures/gt_bar_plot.png" width="700px"></p>
+<p align="center">
+<img src="reference/figures/gt_bar_plot.png" width="700px"></p>
 </div>
 <div class="section level3">
 <h3 id="gt_merge_stack">
@@ -273,7 +289,8 @@
 <span>  <span class="fu">gt</span><span class="op">(</span>groupname_col <span class="op">=</span> <span class="st">"team_conf"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="reference/gt_merge_stack.html">gt_merge_stack</a></span><span class="op">(</span>col1 <span class="op">=</span> <span class="va">team_nick</span>, col2 <span class="op">=</span> <span class="va">team_division</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="reference/gt_img_rows.html">gt_img_rows</a></span><span class="op">(</span><span class="va">team_wordmark</span><span class="op">)</span></span></code></pre></div>
-<p align="center"><img src="reference/figures/merge-stack.png" width="500px"></p>
+<p align="center">
+<img src="reference/figures/merge-stack.png" width="500px"></p>
 </div>
 <div class="section level3">
 <h3 id="gt_plt_winloss">
@@ -320,21 +337,24 @@
 <span>  <span class="fu">gt</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="reference/gt_plt_winloss.html">gt_plt_winloss</a></span><span class="op">(</span><span class="va">outcomes</span>, max_wins <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">tab_options</span><span class="op">(</span>data_row.padding <span class="op">=</span> <span class="fu">px</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p align="center"><img src="reference/figures/wl-1.png" width="500px"></p>
+<p align="center">
+<img src="reference/figures/wl-1.png" width="500px"></p>
 <p>And moving to 12 games, we can see that the scale is unchanged, and “empty” points are replaced with outcomes once the values are present in the data.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">create_input_df</span><span class="op">(</span><span class="fl">4</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">gt</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="reference/gt_plt_winloss.html">gt_plt_winloss</a></span><span class="op">(</span><span class="va">outcomes</span>, max_wins <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">tab_options</span><span class="op">(</span>data_row.padding <span class="op">=</span> <span class="fu">px</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p align="center"><img src="reference/figures/wl-4.png" width="500px"></p>
+<p align="center">
+<img src="reference/figures/wl-4.png" width="500px"></p>
 <p>You can also switch over to ‘squares’ instead of ‘pills’ by changing the <code>type</code> argument.</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">create_input_df</span><span class="op">(</span><span class="fl">4</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">gt</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="reference/gt_plt_winloss.html">gt_plt_winloss</a></span><span class="op">(</span><span class="va">outcomes</span>, max_wins <span class="op">=</span> <span class="fl">15</span>, type <span class="op">=</span> <span class="st">"square"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">tab_options</span><span class="op">(</span>data_row.padding <span class="op">=</span> <span class="fu">px</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p align="center"><img src="reference/figures/wl-4-sq.png" width="500px"></p>
+<p align="center">
+<img src="reference/figures/wl-4-sq.png" width="500px"></p>
 <p>A more realistic use case is seen below with data from <a href="https://nflreadr.nflverse.com" class="external-link">nflreadr</a>:</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
@@ -384,7 +404,8 @@
 <span>  <span class="fu"><a href="reference/gt_img_rows.html">gt_img_rows</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="va">team_wordmark</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="reference/gt_theme_538.html">gt_theme_538</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">tab_header</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"2020 Results by Division for the AFC"</span><span class="op">)</span></span></code></pre></div>
-<p align="center"><img src="reference/figures/nfl-outcomes.png" width="500px"></p>
+<p align="center">
+<img src="reference/figures/nfl-outcomes.png" width="500px"></p>
 </div>
 <div class="section level3">
 <h3 id="fmt_symbol_first">
@@ -405,7 +426,8 @@
 <span>  <span class="fu"><a href="reference/fmt_symbol_first.html">fmt_symbol_first</a></span><span class="op">(</span>column <span class="op">=</span> <span class="va">year</span>, suffix <span class="op">=</span> <span class="st">"%"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="reference/fmt_symbol_first.html">fmt_symbol_first</a></span><span class="op">(</span>column <span class="op">=</span> <span class="va">mpg_h</span>, symbol <span class="op">=</span> <span class="st">"&amp;#37;"</span>, decimals <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="reference/fmt_symbol_first.html">fmt_symbol_first</a></span><span class="op">(</span><span class="va">hp</span>, symbol <span class="op">=</span> <span class="st">"&amp;#176;"</span>, suffix <span class="op">=</span> <span class="st">"F"</span>, symbol_first <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p align="center"><img src="reference/figures/gt_fmt_first.png" width="700px"></p>
+<p align="center">
+<img src="reference/figures/gt_fmt_first.png" width="700px"></p>
 </div>
 <div class="section level3">
 <h3 id="pad_fn">
@@ -421,7 +443,8 @@
 <span>    style <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/cell_text.html" class="external-link">cell_text</a></span><span class="op">(</span>font <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/google_font.html" class="external-link">google_font</a></span><span class="op">(</span><span class="st">"Fira Mono"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    locations <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/cells_body.html" class="external-link">cells_body</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="va">x</span><span class="op">)</span></span>
 <span>    <span class="op">)</span></span></code></pre></div>
-<p align="center"><img src="reference/figures/gt_pad_fn.png" width="200px"></p>
+<p align="center">
+<img src="reference/figures/gt_pad_fn.png" width="200px"></p>
 </div>
 </div>
 </div>

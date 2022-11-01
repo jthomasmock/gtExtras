@@ -103,6 +103,9 @@
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_hyperlink.html</loc>
   </url>
   <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_img_border.html</loc>
+  </url>
+  <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_img_circle.html</loc>
   </url>
   <url>
@@ -119,6 +122,9 @@
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_merge_stack.html</loc>
+  </url>
+  <url>
+    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_merge_stack_color.html</loc>
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_bar.html</loc>
@@ -185,9 +191,6 @@
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/gtsave_extra.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/img_circle.html</loc>
   </url>
   <url>
     <loc>https://jthomasmock.github.io/gtExtras/reference/img_header.html</loc>

@@ -20,7 +20,7 @@ Imports:
     fontawesome (>= 0.3.0),
     ggplot2 (>= 3.3.6),
     glue (>= 1.6.1),
-    gt (>= 0.6),
+    gt (>= 0.7),
     htmltools (>= 0.5.3),
     paletteer (>= 1.4.0),
     rlang (>= 1.0.4),

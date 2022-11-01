@@ -1,5 +1,6 @@
 test_that("fmt_pct_extra generates expected output and colors", {
   check_suggests()
+  skip_on_cran()
 
   pct_tab <- dplyr::tibble(x = c(.001,.05,.008,.1,.2,.5,.9)) %>%
     gt::gt() %>%

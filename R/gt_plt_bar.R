@@ -80,6 +80,7 @@ gt_plt_bar <- function(gt_object, column = NULL, color = "purple", ...,
       return("<div></div>")
     }
 
+
     vals <- as.double(x_val)
 
     df_in <- dplyr::tibble(

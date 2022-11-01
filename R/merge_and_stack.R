@@ -57,8 +57,6 @@ gt_merge_stack <- function(gt_object, col1, col2, palette = c("black", "grey"), 
   row_name_var <- gt_object[["_boxhead"]][["var"]][which(gt_object[["_boxhead"]][["type"]] == "stub")]
 
   # segment data with bare string column name
-  # col2_bare <- rlang::enexpr(col2) %>% rlang::as_string()
-  # data_in <- gt_object[["_data"]][[col2_bare]]
   data_in <- gt_index(gt_object, column = {{ col2 }})
 
   gt_object %>%
@@ -82,5 +80,95 @@ gt_merge_stack <- function(gt_object, col1, col2, palette = c("black", "grey"), 
       }
     ) %>%
     cols_hide(columns = {{ col2 }})
+
 }
 
+#' Merge and stack text with background coloring from two columns in `gt`
+#'
+#' @description
+#' The `gt_merge_stack_color()` function takes an existing `gt` table and merges
+#' column 1 and column 2, stacking column 1's text on top of column 2's.
+#' This variant also accepts a palette argument to colorize the background
+#' values.
+#'
+#'
+#' @param gt_object An existing gt table object of class `gt_tbl`
+#' @param top_val The column to stack on top. Will be converted to all caps, with bold text by default.
+#' @param color_val The column to merge and place below, and controls the background color value. Will be smaller by default.
+#' @param palette The colours or colour function that values will be mapped to, accepts a string or named palettes from paletteer.
+#' @param domain The possible values that can be mapped. This can be a simple numeric range (e.g. `c(0, 100)`).
+#' @param small_cap a logical indicating whether to use 'small-cap' on the top line of text, defaults to `TRUE`.
+#' @param font_size a string of length 2 indicating the font-size in px of the top and bottom text
+#' @param font_weight a string of length 2 indicating the 'font-weight' of the top and bottom text. Must be one of 'bold', 'normal', 'lighter'
+#'
+#' @return An object of class `gt_tbl`.
+#' @export
+#'
+#' @section Examples:
+#'
+#' ```r
+#' set.seed(12345)
+#'  dplyr::tibble(
+#'    value = sample(state.name, 5),
+#'    color_by = seq.int(10, 98, length.out = 5)
+#'  ) %>%
+#'    gt::gt() %>%
+#'    gt_merge_stack_color(value, color_by)
+#' ```
+#' @section Figures:
+#' \if{html}{\figure{merge-stack-color.png}{options: width=50\%}}
+#'
+#' @family Utilities
+
+gt_merge_stack_color <- function(
+    gt_object, top_val, color_val,
+    palette = c("#512daa", "white", "#2d6a22"),
+    domain = NULL,
+    small_cap = TRUE,
+    font_size = c("14px", "10px"),
+    font_weight = c("bold", "bold")
+    ){
+
+  stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
+  if(is.null(domain)){
+    warning(
+      "Domain not specified, defaulting to observed range within each specified column.",
+      call. = FALSE
+    )
+  }
+
+  if (small_cap) {
+    font_variant <- "small-caps"
+  } else {
+    font_variant <- "normal"
+  }
+
+  data_in <- gt_index(gt_object, column = {{ top_val }})
+
+  gt_object %>%
+    data_color(
+      columns = {{ color_val }},
+      colors = scales::col_numeric(
+        palette = if(grepl(x = palette[1], pattern = "::")){
+          paletteer::paletteer_d(
+            palette = palette
+          ) %>% as.character()
+        } else {
+         palette
+        },
+        domain = domain
+      )
+    ) %>%
+    text_transform(
+      locations = cells_body({{ color_val }}),
+      fn = function(x){
+
+        merge_pattern <- glue::glue(
+          '<div style="font-size:{font_size[1]}; font-weight:{font_weight[1]};font-variant:{font_variant};">{data_in}<br>',
+          '</div><div style="font-size:{font_size[2]};font-weight:{font_weight[2]};">{x}</div>'
+        )
+      }
+    ) %>%
+    cols_hide(columns = {{ top_val }})
+
+}

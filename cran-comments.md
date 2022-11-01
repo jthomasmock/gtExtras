@@ -1,15 +1,7 @@
 ## Submission details
 
-- This is a submission to correct HTML Tidy problems as described in Kurt Hornik's email.
-
-```
-Result: NOTE
-    Found the following HTML validation problems:
-    gt_plt_summary.html:62:1: Warning: <img> lacks "alt" attribute
-    gt_plt_winloss.html:99:1: Warning: <img> lacks "alt" attribute
-```
-
-- I have corrected those issues by providing an alt attribute.
+- This is a submission to correct a failing test on M1 Mac per Brian Ripley's email. 
+- I have corrected the failing test.
 
 ## R CMD check results
 

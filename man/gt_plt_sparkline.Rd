@@ -19,11 +19,11 @@ gt_plt_sparkline(
 
 \item{column}{The column wherein the sparkline plot should replace existing data. Note that the data \emph{must} be represented as a list of numeric values ahead of time.}
 
-\item{type}{A string indicating the type of plot to generate, accepts \code{"default"}, \code{"shaded"}, \code{"ref_median"}, \code{'ref_mean'}, \code{"ref_iqr"}, \code{"ref_last"}}
+\item{type}{A string indicating the type of plot to generate, accepts \code{"default"}, \code{"points"}, \code{"shaded"}, \code{"ref_median"}, \code{'ref_mean'}, \code{"ref_iqr"}, \code{"ref_last"}. "points" will add points to every observation instead of just the high/low and final. "shaded" will add shading below the sparkline. The "ref_" options add a thin reference line based off the summary statistic chosen}
 
 \item{fig_dim}{A vector of two numbers indicating the height/width of the plot in mm at a DPI of 25.4, defaults to \code{c(5,30)}}
 
-\item{palette}{A character string indicating the colors of various components. Order matters, and palette = sparkline color, final value color, range color low, range color high, and 'type' color (eg shading or reference lines).}
+\item{palette}{A character string with 5 elements indicating the colors of various components. Order matters, and palette = sparkline color, final value color, range color low, range color high, and 'type' color (eg shading or reference lines). To show a plot with no points (only the line itself), use: \code{palette = c("black", rep("transparent", 4))}.}
 
 \item{same_limit}{A logical indicating that the plots will use the same axis range (\code{TRUE}) or have individual axis ranges (\code{FALSE}).}
 

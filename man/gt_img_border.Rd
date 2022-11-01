@@ -20,6 +20,8 @@ gt_img_border(
 
 \item{height}{A number indicating the height of the image in pixels.}
 
+\item{width}{A number indicating the width of the image in pixels.}
+
 \item{border_color}{The color of the circular border, can either be a single value ie (\code{white} or \verb{#FF0000}) or a vector where the length of the vector is equal to the number of rows.}
 
 \item{border_weight}{A number indicating the weight of the border in pixels.}

@@ -1,11 +1,11 @@
-#' Create a circular border around a image
-#'
-#' @param value The source image
-#' @param height The height in pixels of the circle
-#' @param border_color A string indicating the color of the border
-#' @param border_weight The weight of the border in pixels
-#' @keywords internal
-#' @return HTML
+# Create a circular border around a image
+#
+# @param value The source image
+# @param height The height in pixels of the circle
+# @param border_color A string indicating the color of the border
+# @param border_weight The weight of the border in pixels
+# @keywords internal
+# @return HTML
 
 img_circle <- function(value, height, border_color, border_weight) {
   image <- htmltools::div(
@@ -20,14 +20,15 @@ img_circle <- function(value, height, border_color, border_weight) {
   image
 }
 
-#' Create a square colored border around an image
-#'
-#' @param value The source image
-#' @param height The height in pixels of the circle
-#' @param border_color A string indicating the color of the border
-#' @param border_weight The weight of the border in pixels
-#' @keywords internal
-#' @return HTML
+# Create a square colored border around an image
+#
+# @param value The source image
+# @param height The height in pixels of the circle
+# @param width A number indicating the height of the image in pixels.
+# @param border_color A string indicating the color of the border
+# @param border_weight The weight of the border in pixels
+# @keywords internal
+# @return HTML
 
 img_square <- function(value, height, width, border_color, border_weight) {
   image <- htmltools::div(
@@ -48,6 +49,7 @@ img_square <- function(value, height, width, border_color, border_weight) {
 #' @param gt_object An existing gt object
 #' @param column The column to apply the transformation to
 #' @param height A number indicating the height of the image in pixels.
+#' @param width A number indicating the width of the image in pixels.
 #' @param border_color The color of the circular border, can either be a single value ie (`white` or `#FF0000`) or a vector where the length of the vector is equal to the number of rows.
 #' @param border_weight A number indicating the weight of the border in pixels.
 #' @return a gt object

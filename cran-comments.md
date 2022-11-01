@@ -12,7 +12,7 @@ Checked against automated test environments, RHub, MacBuilder, and WinBuilder (o
 ## Automated Test environments
 
 on Github Actions:
-* ubuntu 20.04.04 (devel, release, oldrel)
+* ubuntu (devel, release, oldrel)
 * windows (release)
 * macOS (release)
 

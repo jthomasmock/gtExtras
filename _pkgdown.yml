@@ -63,18 +63,6 @@ reference:
   - gt_hulk_col_numeric
   - gt_color_rows
   - gt_color_box
-- title: internal
-  desc: Internally used functions
-  contents:
-  - add_badge_color
-  - add_pcttile_plot
-  - add_point_plot
-  - gt_badge
-  - img_circle
-  - n_decimals
-  - create_sum_table
-  - plot_data
-  - last_row_id
 - title: HTML Helpers
   desc: Various HTML helpers to avoid repeated boilerplate
   contents:
@@ -101,4 +89,14 @@ reference:
   - gt_index
   - get_row_index
   - generate_df
-
+- title: internal
+  desc: Internally used functions
+  contents:
+  - add_badge_color
+  - add_pcttile_plot
+  - add_point_plot
+  - gt_badge
+  - n_decimals
+  - create_sum_table
+  - plot_data
+  - last_row_id

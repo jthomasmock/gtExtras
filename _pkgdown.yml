@@ -54,6 +54,7 @@ reference:
   - gt_img_rows
   - gt_img_multi_rows
   - gt_img_circle
+  - gt_img_border
 - title: Colors
   desc: Add color to the entire table or to specific locations. Includes wrappers
     around the `{scales}` and `{paletteer}` packages that provide easier or more succinct
@@ -88,6 +89,7 @@ reference:
   - fmt_pct_extra
   - pad_fn
   - gt_merge_stack
+  - gt_merge_stack_color
   - gt_highlight_rows
   - gt_highlight_cols
   - gt_add_divider

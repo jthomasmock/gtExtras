@@ -4,7 +4,7 @@
 #' @param height The height in pixels of the circle
 #' @param border_color A string indicating the color of the border
 #' @param border_weight The weight of the border in pixels
-#'
+#' @keywords internal
 #' @return HTML
 
 img_circle <- function(value, height, border_color, border_weight) {
@@ -26,7 +26,7 @@ img_circle <- function(value, height, border_color, border_weight) {
 #' @param height The height in pixels of the circle
 #' @param border_color A string indicating the color of the border
 #' @param border_weight The weight of the border in pixels
-#'
+#' @keywords internal
 #' @return HTML
 
 img_square <- function(value, height, width, border_color, border_weight) {

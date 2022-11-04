@@ -8,7 +8,11 @@
 #' @param domain The possible values that can be mapped. This should be a simple numeric range (e.g. `c(0, 100)`)
 #' @param align Character string indicating alignment of the column, defaults to "left"
 #' @param v_pad A numeric value indicating the vertical padding, defaults to -5 to aid in centering within the vertical space.
-#'
+#' @importFrom scales col_numeric
+#' @importFrom paletteer paletteer_d
+#' @import gt glue
+#' @importFrom htmltools div
+#' @importFrom fontawesome fa
 #' @return a gt table
 #' @export
 #'

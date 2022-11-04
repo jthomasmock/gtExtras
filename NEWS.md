@@ -1,6 +1,8 @@
 # gtExtras 0.4.3
 - Modify internals of `gt_fa_column()` to accept factors with levels not present in the data, ignoring unneeded levels. Thank you to @mikedolanfliss for the suggestion.
 - Add `gt_merge_stack_color()` to create a merge/stack with background color - per @mrcaseb and issue #71 
+- Add `gt_alert_icon()` to create a colored circle based on the range of values in the column.
+- Fix a CRAN extra check
 
 # gtExtras 0.4.2
 

@@ -97,7 +97,7 @@ gt_plt_bar <- function(gt_object, column = NULL, color = "purple", ...,
         expand = expansion(mult = c(0.05, 0.08)),
       ) +
       scale_y_discrete(expand = expansion(mult = c(0.2, 0.2))) +
-      geom_vline(xintercept = 0, color = "black", size = 1) +
+      geom_vline(xintercept = 0, color = "black", linewidth = 1) +
       coord_cartesian(clip = "off") +
       theme_void() +
       theme(legend.position = "none", plot.margin = unit(rep(0, 4), "pt"))

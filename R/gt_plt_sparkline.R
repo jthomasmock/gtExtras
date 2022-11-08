@@ -149,7 +149,7 @@ gt_plt_sparkline <- function(gt_object, column, type = "default",
       }
 
       plot_out <- plot_base +
-        geom_line(aes(x = .data$x, y = .data$y, group = 1), size = 0.5,
+        geom_line(aes(x = .data$x, y = .data$y, group = 1), linewidth = 0.5,
           color = palette[1]) +
         geom_point(
           data = filter(input_data, .data$x == max(.data$x)),

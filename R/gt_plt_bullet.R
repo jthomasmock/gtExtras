@@ -5,6 +5,7 @@
 #' @param target The column indicating the target values that will be represented by a vertical line
 #' @param width Width of the plot in pixels
 #' @param palette Color of the bar and target line, defaults to `c("grey", "red")`, can use named colors or hex colors. Must be of length two, and the first color will always be used as the bar color.
+#' @param palette_col An additional column that contains specific colors for the bar colors themselves. Defaults to NULL which skips this argument.
 #' @return An object of class `gt_tbl`.
 #' @export
 #'
@@ -28,8 +29,10 @@
 #' @family Themes
 #' @section Function ID:
 #' 3-7
-gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
-                          palette = c("grey", "red")) {
+gt_plt_bullet <- function(
+    gt_object, column = NULL, target = NULL, width = 65,
+    palette = c("grey", "red"), palette_col = NULL
+    ) {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
   stopifnot("'palette' must be 2 colors" = length(palette) == 2)
 
@@ -49,11 +52,19 @@ gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
     dplyr::select({{ column }}) %>%
     names()
 
+  if(!rlang::quo_is_null(rlang::enquo(palette_col))){
+    bar_pal <- gt_index(gt_object, {{ palette_col }})
+    tar_pal = rep(palette[2], length(bar_pal))
+  } else {
+    tar_pal = rep(palette[2], length_val)
+    bar_pal = rep(palette[1], length_val)
+  }
+
   tab_out <- gt_object %>%
     text_transform(
       locations = cells_body({{ column }}),
       fn = function(x) {
-        bar_fx <- function(vals, target_vals) {
+        bar_fx <- function(vals, target_vals, tar_pal, bar_pal) {
           if (is.na(vals) | is.null(vals)) {
             return("<div></div>")
           }
@@ -71,12 +82,12 @@ gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
           }
 
           plot_out <- ggplot(data = NULL, aes(x = vals, y = factor("1"))) +
-            geom_col(width = 0.1, color = palette[1], fill = palette[1]) +
+            geom_col(width = 0.1, color = bar_pal, fill = bar_pal) +
             geom_vline(
-              xintercept = target_vals, color = palette[2], size = 1.5,
+              xintercept = target_vals, color = tar_pal, linewidth = 1.5,
               alpha = 0.7
             ) +
-            geom_vline(xintercept = 0, color = "black", size = 1) +
+            geom_vline(xintercept = 0, color = "black", linewidth = 1) +
             theme_void() +
             coord_cartesian(xlim = c(0, max_val)) +
             scale_x_continuous(expand = expansion(mult = c(0, 0.15))) +
@@ -108,12 +119,17 @@ gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
           img_plot
         }
 
-        tab_built <- mapply(bar_fx, all_vals, target_vals)
+        tab_built <- mapply(bar_fx, all_vals, target_vals, tar_pal, bar_pal)
         tab_built
       }
     ) %>%
     gt::cols_align(align = "left", columns = {{ column }}) %>%
     gt::cols_hide({{ target }})
 
-  tab_out
+  if(!rlang::quo_is_null(rlang::enquo(palette_col))){
+    tab_out %>%
+      gt::cols_hide({{ palette_col }})
+  } else {
+    tab_out
+  }
 }

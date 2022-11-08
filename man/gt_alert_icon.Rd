@@ -7,7 +7,7 @@
 gt_alert_icon(
   gt_object,
   column,
-  palette = "RColorBrewer::PRGn",
+  palette = c("#a962b6", "#f1f1f1", "#378e38"),
   domain = NULL,
   height = "10px",
   direction = 1,
@@ -38,3 +38,15 @@ a gt table
 \description{
 Insert an alert icon to a specific column
 }
+\section{Examples}{
+
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{head(mtcars) \%>\%
+  dplyr::mutate(warn = ifelse(mpg >= 21, 1, 0), .before = mpg) \%>\%
+  gt::gt() \%>\%
+  gt_alert_icon(warn)
+}\if{html}{\out{</div>}}
+
+\if{html}{\figure{man/figures/gt_alert_icon-binary.png}{options: width=100\%}}
+}
+

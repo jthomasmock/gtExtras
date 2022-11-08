@@ -9,7 +9,8 @@ gt_plt_bullet(
   column = NULL,
   target = NULL,
   width = 65,
-  palette = c("grey", "red")
+  palette = c("grey", "red"),
+  palette_col = NULL
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ gt_plt_bullet(
 \item{width}{Width of the plot in pixels}
 
 \item{palette}{Color of the bar and target line, defaults to \code{c("grey", "red")}, can use named colors or hex colors. Must be of length two, and the first color will always be used as the bar color.}
+
+\item{palette_col}{An additional column that contains specific colors for the bar colors themselves. Defaults to NULL which skips this argument.}
 }
 \value{
 An object of class \code{gt_tbl}.

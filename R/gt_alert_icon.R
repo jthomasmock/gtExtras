@@ -16,16 +16,25 @@
 #' @return a gt table
 #' @export
 #'
+#' @section Examples:
 #'
-gt_alert_icon <- function(gt_object,
-                          column,
-                          palette = "RColorBrewer::PRGn",
-                          domain = NULL,
-                          height = "10px",
-                          direction = 1,
-                          align = "center",
-                          v_pad = -5
-                          ) {
+#' ```r
+#' head(mtcars) %>%
+#'   dplyr::mutate(warn = ifelse(mpg >= 21, 1, 0), .before = mpg) %>%
+#'   gt::gt() %>%
+#'   gt_alert_icon(warn)
+#' ```
+#' \if{html}{\figure{man/figures/gt_alert_icon-binary.png}{options: width=100\%}}
+gt_alert_icon <- function(
+    gt_object,
+    column,
+    palette = c("#a962b6", "#f1f1f1", "#378e38"),
+    domain = NULL,
+    height = "10px",
+    direction = 1,
+    align = "center",
+    v_pad = -5
+    ) {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
   stopifnot("align must be one of 'center', 'left', or 'right'" = align %in% c("center", "left", "right"))
 
@@ -69,4 +78,3 @@ gt_alert_icon <- function(gt_object,
   ) %>%
     gt::cols_align(align = align, columns = {{ column }})
 }
-

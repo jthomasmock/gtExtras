@@ -81,11 +81,8 @@ gt_theme_pff <- function(gt_object, ..., divider, spanners, rank_col) {
       heading.title.font.size = px(30),
       heading.title.font.weight = "bold",
       heading.subtitle.font.size = px(16),
+      table.font.size = px(12),
       ...
-    ) %>%
-    tab_style(
-      style = cell_text(size = px(12)),
-      locations = cells_body()
     ) %>%
     # customize font
     opt_table_font(

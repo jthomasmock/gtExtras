@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">gtExtras</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.4.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +51,13 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.4.3" id="gtextras-043">gtExtras 0.4.3<a class="anchor" aria-label="anchor" href="#gtextras-043"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.4.4" id="gtextras-044">gtExtras 0.4.4<a class="anchor" aria-label="anchor" href="#gtextras-044"></a></h2>
+<ul><li>Add a <code>palette_col</code> argument to <code><a href="../reference/gt_plt_bullet.html">gt_plt_bullet()</a></code> to accept a named column of palette colors as present in the data. Fixed <a href="https://github.com/jthomasmock/gtExtras/issues/72" class="external-link">#72</a></li>
+<li>Fix internals of <code><a href="../reference/gt_theme_pff.html">gt_theme_pff()</a></code> to use <code>table.font.size</code> inside <code><a href="https://gt.rstudio.com/reference/tab_options.html" class="external-link">tab_options()</a></code> rather than <code><a href="https://gt.rstudio.com/reference/tab_style.html" class="external-link">tab_style()</a></code>. Fixed <a href="https://github.com/jthomasmock/gtExtras/issues/74" class="external-link">#74</a></li>
+<li>Fix a few instances of <code><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line()</a></code> and <code>geom_v/hline()</code> that were throwing warnings for <code>ggplot2</code> v3.4.0</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.4.3" id="gtextras-043">gtExtras 0.4.3<a class="anchor" aria-label="anchor" href="#gtextras-043"></a></h2><p class="text-muted">CRAN release: 2022-11-05</p>
 <ul><li>Modify internals of <code><a href="../reference/gt_fa_column.html">gt_fa_column()</a></code> to accept factors with levels not present in the data, ignoring unneeded levels. Thank you to <a href="https://github.com/mikedolanfliss" class="external-link">@mikedolanfliss</a> for the suggestion.</li>
 <li>Add <code><a href="../reference/gt_merge_stack_color.html">gt_merge_stack_color()</a></code> to create a merge/stack with background color - per <a href="https://github.com/mrcaseb" class="external-link">@mrcaseb</a> and issue <a href="https://github.com/jthomasmock/gtExtras/issues/71" class="external-link">#71</a></li>
 <li>Add <code><a href="../reference/gt_alert_icon.html">gt_alert_icon()</a></code> to create a colored circle based on the range of values in the column.</li>

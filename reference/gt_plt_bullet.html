@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">gtExtras</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.4.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,7 +62,8 @@
 <span>  column <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  target <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  width <span class="op">=</span> <span class="fl">65</span>,</span>
-<span>  palette <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"grey"</span>, <span class="st">"red"</span><span class="op">)</span></span>
+<span>  palette <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"grey"</span>, <span class="st">"red"</span><span class="op">)</span>,</span>
+<span>  palette_col <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -86,6 +87,10 @@
 
 <dt>palette</dt>
 <dd><p>Color of the bar and target line, defaults to <code>c("grey", "red")</code>, can use named colors or hex colors. Must be of length two, and the first color will always be used as the bar color.</p></dd>
+
+
+<dt>palette_col</dt>
+<dd><p>An additional column that contains specific colors for the bar colors themselves. Defaults to NULL which skips this argument.</p></dd>
 
 </dl></div>
     <div class="section level2">

@@ -48,15 +48,17 @@
 #'   gt() %>%
 #'   gt_plt_bar_stack(column = list_data)
 #' ```
-#'\if{html}{\figure{plt-bar-stack.png}{options: width=70\%}}
+#' \if{html}{\figure{plt-bar-stack.png}{options: width=70\%}}
 
-gt_plt_bar_stack <- function(gt_object, column = NULL,
-                             palette = c("#ff4343", "#bfbfbf", "#0a1c2b"),
-                             labels = c("Group 1", "Group 2", "Group 3"),
-                             position = "fill", width = 70,
-                             fmt_fn = scales::label_number(scale_cut = cut_short_scale(), trim = TRUE)
+gt_plt_bar_stack <- function(
+  gt_object,
+  column = NULL,
+  palette = c("#ff4343", "#bfbfbf", "#0a1c2b"),
+  labels = c("Group 1", "Group 2", "Group 3"),
+  position = "fill",
+  width = 70,
+  fmt_fn = scales::label_number(scale_cut = cut_short_scale(), trim = TRUE)
 ) {
-
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
   stopifnot("There must be 2 or 3 labels" = (length(labels) %in% c(2:3)))
   stopifnot("There must be 2 or 3 colors in the palette" = (length(palette) %in% c(2:3)))
@@ -80,8 +82,7 @@ gt_plt_bar_stack <- function(gt_object, column = NULL,
     locations = cells_body({{ column }}),
     fn = function(x) {
       bar_fx <- function(x_val) {
-
-        if(x_val %in% c("NA", "NULL")){
+        if (x_val %in% c("NA", "NULL")) {
           return("<div></div>")
         }
 
@@ -108,28 +109,43 @@ gt_plt_bar_stack <- function(gt_object, column = NULL,
         )
 
         plot_out <- df_in %>%
-          ggplot(aes(x = .data$x, y = factor(.data$y), fill = I(.data$fill), group = .data$y)) +
-          geom_col(position = position, color = "white", size = 1) +
+          ggplot(
+            aes(
+              x = .data$x,
+              y = factor(.data$y),
+              fill = I(.data$fill),
+              group = .data$y
+            )
+          ) +
+          geom_col(position = position, color = "white", width = 1) +
           geom_text(
             aes(label = fmt_fn(x)),
             hjust = 0.5,
             size = 3,
             family = "mono",
-            position = if(position == "fill"){
+            position = if (position == "fill") {
               position_fill(vjust = .5)
-              } else if (position == "stack"){
-                position_stack(vjust = .5)
+            } else if (position == "stack") {
+              position_stack(vjust = .5)
             },
             color = "white"
           ) +
           scale_x_continuous(
-            expand = if(position == "stack"){expansion(mult = c(0, 0.1))} else {c(0, 0)},
-            limits = if(position == "stack"){c(0, total_rng)} else {NULL}
-            ) +
+            expand = if (position == "stack") {
+              expansion(mult = c(0, 0.1))
+            } else {
+              c(0, 0)
+            },
+            limits = if (position == "stack") {
+              c(0, total_rng)
+            } else {
+              NULL
+            }
+          ) +
           scale_y_discrete(expand = c(0, 0)) +
           coord_cartesian(clip = "off") +
           theme_void() +
-          theme(legend.position = "none", plot.margin = margin(0,0,0,0, "pt"))
+          theme(legend.position = "none", plot.margin = margin(0, 0, 0, 0, "pt"))
 
         out_name <- file.path(tempfile(
           pattern = "file",
@@ -138,8 +154,12 @@ gt_plt_bar_stack <- function(gt_object, column = NULL,
         ))
 
         ggsave(
-          out_name, plot = plot_out, dpi = 25.4,
-          height = 5, width = width, units = "mm",
+          out_name,
+          plot = plot_out,
+          dpi = 25.4,
+          height = 5,
+          width = width,
+          units = "mm",
           device = "svg"
         )
 
@@ -147,7 +167,7 @@ gt_plt_bar_stack <- function(gt_object, column = NULL,
           paste0(collapse = "") %>%
           gt::html()
 
-        on.exit(file.remove(out_name), add=TRUE)
+        on.exit(file.remove(out_name), add = TRUE)
 
         img_plot
       }

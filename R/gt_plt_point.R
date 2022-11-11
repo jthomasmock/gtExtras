@@ -8,62 +8,102 @@
 #' @inheritParams scales::label_number
 #'
 #' @return gt table
-add_point_plot <- function(data, palette, add_label, width, vals_range,
-                           accuracy){
+add_point_plot <- function(
+  data,
+  palette,
+  add_label,
+  width,
+  vals_range,
+  accuracy
+) {
+  if (data %in% c("NA", "NULL", NA, NULL)) {
+    return("<div></div>")
+  } else {
+    df_in <- dplyr::tibble(
+      x = data,
+      y = 1,
+      color = palette
+    )
 
-  if(data %in% c("NA", "NULL", NA, NULL)){ return("<div></div>")
-    } else{
-      df_in <- dplyr::tibble(
-        x = data, y = 1, color = palette
+    val_breaks <- seq(from = vals_range[1], to = vals_range[2], length.out = 4)
+    break_labs <- scales::label_number(
+      accuracy = accuracy,
+      scale_cut = cut_short_scale()
+    )(val_breaks[c(1, 4)])
+
+    out_pt_plt <- ggplot(df_in) +
+      geom_vline(
+        xintercept = val_breaks,
+        color = "grey",
+        linewidth = 0.25
+      ) +
+      geom_hline(
+        yintercept = 1,
+        color = "lightgrey",
+        linewidth = 0.25,
+        linetype = "dotted"
+      ) +
+      geom_point(
+        aes(x = .data$x, y = .data$y, fill = I(.data$color)),
+        color = "black",
+        size = 3,
+        stroke = 0.5,
+        shape = 21
+      ) +
+      theme_void() +
+      coord_cartesian(
+        xlim = vals_range,
+        ylim = c(0.6, 1.2),
+        clip = "off"
       )
 
-      val_breaks <- seq(from = vals_range[1], to = vals_range[2], length.out = 4)
-      break_labs <- scales::label_number(
-        accuracy = accuracy, scale_cut = cut_short_scale()
-        )(val_breaks[c(1,4)])
+    if (isTRUE(add_label)) {
+      out_pt_plt <- out_pt_plt +
+        geom_text(
+          data = NULL,
+          aes(x = val_breaks[1], y = .61, label = break_labs[1]),
+          hjust = -0.1,
+          vjust = 0,
+          size = 1.5,
+          family = "mono",
+          color = "black"
+        ) +
+        geom_text(
+          aes(x = val_breaks[4], y = .61, label = break_labs[2]),
+          hjust = 1.1,
+          vjust = 0,
+          size = 1.5,
+          family = "mono",
+          color = "black"
+        )
+    } else {
+      out_pt_plt <- out_pt_plt
+    }
 
-      out_pt_plt <- ggplot(df_in) +
-        geom_vline(xintercept = val_breaks,
-                   color = "grey", size = 0.25) +
-        geom_hline(yintercept = 1, color = "lightgrey", size = 0.25,
-                   linetype = "dotted") +
-        geom_point(aes(x = .data$x, y = .data$y, fill = I(.data$color)), color = "black",
-                   size = 3, stroke = 0.5, shape = 21) +
-        theme_void() +
-        coord_cartesian(xlim = vals_range,
-                        ylim = c(0.6, 1.2), clip = "off")
+    out_name <- file.path(tempfile(
+      pattern = "file",
+      tmpdir = tempdir(),
+      fileext = ".svg"
+    ))
 
-      if(isTRUE(add_label)){
-        out_pt_plt <- out_pt_plt +
-          geom_text(data = NULL,
-                    aes(x = val_breaks[1], y = .61, label = break_labs[1]),
-                    hjust = -0.1,vjust = 0,
-                    size = 1.5, family = "mono", color = "black") +
-          geom_text(aes(x = val_breaks[4], y = .61, label = break_labs[2]),
-                    hjust = 1.1,vjust = 0,
-                    size = 1.5, family = "mono", color = "black")
-      } else {
-        out_pt_plt <- out_pt_plt
-      }
+    ggsave(
+      out_name,
+      out_pt_plt,
+      height = 5,
+      width = width,
+      dpi = 25.4,
+      units = "mm",
+      device = "svg"
+    )
 
-      out_name <- file.path(tempfile(
-        pattern = "file",
-        tmpdir = tempdir(),
-        fileext = ".svg"
-      ))
+    img_plot <- readLines(out_name) %>%
+      paste0(collapse = "") %>%
+      gt::html()
 
-      ggsave(out_name, out_pt_plt, height = 5, width = width,
-             dpi = 25.4, units = "mm", device = "svg")
+    on.exit(file.remove(out_name), add = TRUE)
 
-      img_plot <- readLines(out_name) %>%
-        paste0(collapse = "") %>%
-        gt::html()
-
-      on.exit(file.remove(out_name), add=TRUE)
-
-      img_plot
+    img_plot
   }
-
 }
 
 #' Create a point plot in place of each value.
@@ -93,14 +133,20 @@ add_point_plot <- function(data, palette, add_label, width, vals_range,
 #' @family Plotting
 #' @section Function ID:
 #' 3-9
-gt_plt_point <- function(gt_object, column,
-                              palette = c("#007ad6", "#f0f0f0", "#f72e2e"),
-                              width = 25, scale = 1, accuracy = 1) {
+gt_plt_point <- function(
+  gt_object,
+  column,
+  palette = c("#007ad6", "#f0f0f0", "#f72e2e"),
+  width = 25,
+  scale = 1,
+  accuracy = 1
+) {
+  col_vals <- gt_index(gt_object, {{ column }})
 
-  col_vals <- gt_index(gt_object, {{column}})
-
-  val_range <- scales::expand_range(range = range(col_vals, na.rm = TRUE),
-                                    mul = 0.1)
+  val_range <- scales::expand_range(
+    range = range(col_vals, na.rm = TRUE),
+    mul = 0.1
+  )
 
   gt_object %>%
     text_transform(
@@ -110,14 +156,25 @@ gt_plt_point <- function(gt_object, column,
         n_vals <- 1:length(x)
 
         col_pal <- scales::col_quantile(
-          palette = palette, domain = val_range,
-          reverse = TRUE, alpha = TRUE, n = 5)(x)
+          palette = palette,
+          domain = val_range,
+          reverse = TRUE,
+          alpha = TRUE,
+          n = 5
+        )(x)
 
         add_label <- n_vals %in% c(min(n_vals), max(n_vals))
 
-        mapply(add_point_plot, x, col_pal, add_label, width,
-               list(val_range), accuracy, SIMPLIFY = FALSE)
+        mapply(
+          add_point_plot,
+          x,
+          col_pal,
+          add_label,
+          width,
+          list(val_range),
+          accuracy,
+          SIMPLIFY = FALSE
+        )
       }
     )
 }
-

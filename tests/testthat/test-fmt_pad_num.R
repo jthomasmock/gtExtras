@@ -16,7 +16,7 @@ test_that("gt_fmt_pad_num test that padding is correct", {
 
   len_space <- stringr::str_count(pad_html, "\\s")
 
-  expect_equal(len_space, c(0, 1, 2, 3, 4))
+  expect_equal(len_space, rep(2, 5))
 
 })
 

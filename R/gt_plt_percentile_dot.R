@@ -15,9 +15,9 @@ add_pcttile_plot <- function(data, palette, add_label, width){
   )
 
   out_pct_plt <- ggplot(df_in) +
-    geom_vline(xintercept = 50, color = "black", size = 0.5) +
-    geom_vline(xintercept = c(0,25,75,100), color = "grey", size = 0.25) +
-    geom_hline(yintercept = 1, color = "lightgrey", size = 0.25, linetype = "dotted") +
+    geom_vline(xintercept = 50, color = "black", linewidth = 0.5) +
+    geom_vline(xintercept = c(0,25,75,100), color = "grey", linewidth = 0.25) +
+    geom_hline(yintercept = 1, color = "lightgrey", linewidth = 0.25, linetype = "dotted") +
     geom_point(aes(x = .data$x, y = .data$y, fill = I(.data$color)), color = "black", size = 3, stroke = 0.5,
                shape = 21) +
     theme_void() +

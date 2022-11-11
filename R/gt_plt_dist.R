@@ -33,11 +33,17 @@
 #' @section Function ID:
 #' 1-4
 
-gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
-  line_color = "black", fill_color = "grey", bw = NULL, trim = FALSE,
+gt_plt_dist <- function(
+  gt_object,
+  column,
+  type = "density",
+  fig_dim = c(5, 30),
+  line_color = "black",
+  fill_color = "grey",
+  bw = NULL,
+  trim = FALSE,
   same_limit = TRUE
 ) {
-
   is_gt_stop(gt_object)
   # convert tidyeval column to bare string
   col_bare <- dplyr::select(gt_object[["_data"]], {{ column }}) %>% names()
@@ -56,8 +62,7 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
   total_rng <- grDevices::extendrange(data_in, r = range(data_in, na.rm = TRUE), f = 0.02)
 
   plot_fn_spark <- function(trim, list_data_in) {
-
-    if(all(list_data_in %in% c(NA, NULL))){
+    if (all(list_data_in %in% c(NA, NULL))) {
       return("<div></div>")
     }
 
@@ -79,25 +84,32 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
         theme_void()
 
       if (isTRUE(same_limit)) {
-       plot_base <- plot_base +
-         scale_x_continuous(expand = expansion(mult = 0.05)) +
-         coord_cartesian(
-           clip = "off", xlim = grDevices::extendrange(total_rng, f = c(0,0.01)),
-           ylim = c(0.9, 1.15)
-         )
-     } else {
-       plot_base <- plot_base +
-         scale_x_continuous(expand = expansion(mult = 0.05)) +
-         coord_cartesian(
-           clip = "off", xlim = grDevices::extendrange(vals, f = 0.09),
-           ylim = c(0.9, 1.15)
-         )
-     }
+        plot_base <- plot_base +
+          scale_x_continuous(expand = expansion(mult = 0.05)) +
+          coord_cartesian(
+            clip = "off",
+            xlim = grDevices::extendrange(total_rng, f = c(0, 0.01)),
+            ylim = c(0.9, 1.15)
+          )
+      } else {
+        plot_base <- plot_base +
+          scale_x_continuous(expand = expansion(mult = 0.05)) +
+          coord_cartesian(
+            clip = "off",
+            xlim = grDevices::extendrange(vals, f = 0.09),
+            ylim = c(0.9, 1.15)
+          )
+      }
 
       plot_out <- plot_base +
-        geom_boxplot(aes(x = .data$y, y = 1), width = 0.15, color = line_color,
-          fill = fill_color, outlier.size = 0.3, size = 0.3)
-
+        geom_boxplot(
+          aes(x = .data$y, y = 1),
+          width = 0.15,
+          color = line_color,
+          fill = fill_color,
+          outlier.size = 0.3,
+          linewidth = 0.3
+        )
     } else if (type == "rug_strip") {
       plot_base <- ggplot(input_data) +
         theme_void()
@@ -106,32 +118,40 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
         plot_base <- plot_base +
           scale_x_continuous(expand = expansion(mult = 0.05)) +
           coord_cartesian(
-            clip = "off", xlim = grDevices::extendrange(total_rng, f = 0.09),
+            clip = "off",
+            xlim = grDevices::extendrange(total_rng, f = 0.09),
             ylim = c(0.75, 1.15)
           )
       } else {
         plot_base <- plot_base +
           scale_x_continuous(expand = expansion(mult = 0.05)) +
           coord_cartesian(
-            clip = "off", xlim = grDevices::extendrange(vals, f = 0.09),
+            clip = "off",
+            xlim = grDevices::extendrange(vals, f = 0.09),
             ylim = c(0.75, 1.15)
           )
       }
 
       plot_out <- plot_base +
         geom_point(
-          aes(x = .data$y, y = 1), alpha = 0.2, size = 0.3, color = line_color,
-          position = position_jitter(height = 0.15, seed = 37)) +
-        geom_rug(aes(x = .data$y), length = unit(0.2, "npc"), alpha = 0.5, size = 0.2)
-
+          aes(x = .data$y, y = 1),
+          alpha = 0.2,
+          size = 0.3,
+          color = line_color,
+          position = position_jitter(height = 0.15, seed = 37)
+        ) +
+        geom_rug(
+          aes(x = .data$y),
+          length = unit(0.2, "npc"),
+          alpha = 0.5,
+          linewidth = 0.2
+        )
     } else if (type == "histogram") {
-
       plot_base <- ggplot(input_data) +
         theme_void()
 
       if (isTRUE(same_limit)) {
-
-        if(is.null(bw)){
+        if (is.null(bw)) {
           bw <- 2 * stats::IQR(data_in, na.rm = TRUE) / length(data_in)^(1 / 3)
         } else {
           bw <- bw
@@ -143,16 +163,19 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
             color = line_color,
             fill = fill_color,
             binwidth = bw,
-            size = 0.2
+            linewidth = 0.2
           ) +
           scale_x_continuous(expand = expansion(mult = 0.2)) +
           coord_cartesian(
             clip = "off",
             xlim = grDevices::extendrange(
-              data_in, r = range(data_in, na.rm = TRUE), f = 0.02))
-
+              data_in,
+              r = range(data_in, na.rm = TRUE),
+              f = 0.02
+            )
+          )
       } else {
-        if(is.null(bw)){
+        if (is.null(bw)) {
           bw <- 2 * stats::IQR(vals, na.rm = TRUE) / length(vals)^(1 / 3)
         } else {
           bw <- bw
@@ -165,21 +188,27 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
             fill = fill_color,
             binwidth = bw
           ) +
-          coord_cartesian(clip = "off",
+          coord_cartesian(
+            clip = "off",
             xlim = grDevices::extendrange(
-              vals, r = range(vals, na.rm = TRUE), f = 0.02
-            ))
+              vals,
+              r = range(vals, na.rm = TRUE),
+              f = 0.02
+            )
+          )
       }
     } else if (type == "density") {
-
       if (isTRUE(same_limit)) {
-        if(is.null(bw)){
+        if (is.null(bw)) {
           bw <- stats::bw.nrd0(stats::na.omit(as.vector(data_in)))
         } else {
           bw <- bw
         }
 
-        total_rng_dens <- stats::density(as.vector(stats::na.omit(data_in)), bw = bw)[["x"]]
+        total_rng_dens <- stats::density(
+          as.vector(
+            stats::na.omit(data_in)), bw = bw
+          )[["x"]]
 
         density_calc <- stats::density(input_data[["y"]], bw = bw)
         density_range <- density_calc[["x"]]
@@ -189,14 +218,15 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
           y = density_calc[["y"]]
         )
 
-        if(trim){ # implementation of filtering values
+        if (trim) { # implementation of filtering values
           # only to actual and slightly outside the range
           filter_range <- range(vals, na.rm = TRUE) %>%
             scales::expand_range(mul = 0.05)
 
           density_df <- dplyr::filter(
             density_df,
-            dplyr::between(.data$x, filter_range[1], filter_range[2]))
+            dplyr::between(.data$x, filter_range[1], filter_range[2])
+          )
         }
 
         plot_base <- ggplot(density_df) +
@@ -204,14 +234,19 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
 
 
         plot_out <- plot_base +
-          geom_area(aes(x = .data$x, y = .data$y),
+          geom_area(
+            aes(x = .data$x, y = .data$y),
             color = line_color,
-            fill = fill_color) +
+            fill = fill_color
+          ) +
           xlim(range(density_range)) +
-          coord_cartesian(xlim = range(total_rng_dens, na.rm = TRUE),
-            expand = TRUE, clip = "off")
+          coord_cartesian(
+            xlim = range(total_rng_dens, na.rm = TRUE),
+            expand = TRUE,
+            clip = "off"
+          )
       } else {
-        if(is.null(bw)){
+        if (is.null(bw)) {
           bw <- stats::bw.nrd0(stats::na.omit(as.vector(data_in)))
         } else {
           bw <- bw
@@ -227,26 +262,32 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
           y = density_calc[["y"]]
         )
 
-        if(trim){ # implementation of filtering values
+        if (trim) { # implementation of filtering values
           # only to actual and slightly outside the range
           filter_range <- range(vals, na.rm = TRUE) %>%
             scales::expand_range(mul = 0.05)
 
           density_df <- dplyr::filter(
             density_df,
-            dplyr::between(.data$x, filter_range[1], filter_range[2]))
+            dplyr::between(.data$x, filter_range[1], filter_range[2])
+          )
         }
 
         plot_base <- ggplot(density_df) +
           theme_void()
 
         plot_out <- plot_base +
-          geom_area(aes(x = .data$x, y = .data$y),
+          geom_area(
+            aes(x = .data$x, y = .data$y),
             color = line_color,
-            fill = fill_color) +
+            fill = fill_color
+          ) +
           xlim(range(density_range)) +
-          coord_cartesian(xlim = range(total_rng_dens, na.rm = TRUE),
-            expand = TRUE, clip = "off")
+          coord_cartesian(
+            xlim = range(total_rng_dens, na.rm = TRUE),
+            expand = TRUE,
+            clip = "off"
+          )
       }
     }
 
@@ -268,17 +309,16 @@ gt_plt_dist <- function(gt_object, column, type = "density", fig_dim = c(5,30),
       paste0(collapse = "") %>%
       gt::html()
 
-    on.exit(file.remove(out_name), add=TRUE)
+    on.exit(file.remove(out_name), add = TRUE)
 
     img_plot
-
   }
 
   text_transform(
-  gt_object,
-  locations = cells_body(columns = {{ column }}),
-  fn = function(x) {mapply(plot_fn_spark, trim, list_data_in, SIMPLIFY = FALSE)}
-)
+    gt_object,
+    locations = cells_body(columns = {{ column }}),
+    fn = function(x) {
+      mapply(plot_fn_spark, trim, list_data_in, SIMPLIFY = FALSE)
+    }
+  )
 }
-
-

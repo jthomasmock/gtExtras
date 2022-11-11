@@ -23,7 +23,7 @@ test_that("bw calc is appropriate", {
 test_that("save_svg exports and imports SVG", {
   check_suggests()
 
-  base_plot <- ggplot2::qplot(mpg, wt, data = mtcars)
+  base_plot <- ggplot2::ggplot(aes(x=mpg, y=wt), data = mtcars)
 
   out_plot <- save_svg(base_plot)
 

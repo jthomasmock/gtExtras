@@ -4,12 +4,14 @@
 \alias{pad_fn}
 \title{Pad a vector of numbers to align on the decimal point.}
 \usage{
-pad_fn(x, nsmall = 2)
+pad_fn(x, nsmall = 2, pad0)
 }
 \arguments{
 \item{x}{A vector of numbers to pad/align at the decimal point}
 
 \item{nsmall}{The max number of decimal places to round at/display}
+
+\item{pad0}{A logical, indicating whether to pad the values with trailing zeros.}
 }
 \value{
 Returns a vector of equal length to the input vector

@@ -4,25 +4,25 @@
 \alias{fmt_pad_num}
 \title{Format numeric columns to align at decimal point without trailing zeroes}
 \usage{
-fmt_pad_num(gt_object, columns, nsmall = 2, gfont = "Fira Mono")
+fmt_pad_num(gt_object, columns, sep = ".", nsmall = 2, pad0 = FALSE)
 }
 \arguments{
 \item{gt_object}{An existing gt table object of class \code{gt_tbl}}
 
 \item{columns}{The columns to format. Can either be a series of column names provided in \code{c()}, a vector of column indices, or a helper function focused on selections. The select helper functions are: \code{starts_with()}, \code{ends_with()}, \code{contains()}, \code{matches()}, \code{one_of()}, \code{num_range()}, and \code{everything()}.}
 
+\item{sep}{A character for the separator, typically \code{"."} or \code{","}}
+
 \item{nsmall}{The max number of decimal places to round at/display}
 
-\item{gfont}{The complete name of a font available in Google Fonts. For the \code{fmt_pad_num} function this requires a monospaced font, where Google has many available at \href{https://fonts.google.com/?category=Monospace&preview.text=1234567890&preview.text_type=custom}{fonts.google.com}}
+\item{pad0}{A logical, indicating whether to pad the values with trailing zeros.}
 }
 \value{
 An object of class \code{gt_tbl}.
 }
 \description{
 This function removes repeating trailing zeroes and adds blank white space
-to align at the decimal point. This requires the use of true monospaced fonts,
-which are supplied via the \code{gt::google_font()} function. This is a wrapper
-around \code{gt::fmt()} and \code{gtExtras::pad_fn()}.
+to align at the decimal point.
 }
 \section{Figures}{
 

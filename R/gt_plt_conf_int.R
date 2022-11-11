@@ -52,10 +52,17 @@
 #' @family Themes
 #' @section Function ID:
 #' 3-10
-gt_plt_conf_int <- function(gt_object, column, ci_columns, ci = 0.9, ref_line = NULL,
-                            palette = c("black", "grey", "white", "black"),
-                            width = 45, text_args = list(accuracy = 1),
-                            text_size = 1.5) {
+gt_plt_conf_int <- function(
+  gt_object,
+  column,
+  ci_columns,
+  ci = 0.9,
+  ref_line = NULL,
+  palette = c("black", "grey", "white", "black"),
+  width = 45,
+  text_args = list(accuracy = 1),
+  text_size = 1.5
+) {
   all_vals <- gt_index(gt_object, {{ column }}, as_vector = FALSE)
 
   stopifnot("Confidence level must be between 0 and 1" = dplyr::between(ci, 0, 1))
@@ -107,7 +114,8 @@ gt_plt_conf_int <- function(gt_object, column, ci_columns, ci = 0.9, ref_line = 
 
     data_in <- dplyr::tibble(mean = column_vals, y = "1a") %>%
       dplyr::mutate(
-        ci1 = ci_val1, ci2 = ci_val2,
+        ci1 = ci_val1,
+        ci2 = ci_val2,
         row_n = dplyr::row_number()
       ) %>%
       split(.$row_n)
@@ -117,8 +125,10 @@ gt_plt_conf_int <- function(gt_object, column, ci_columns, ci = 0.9, ref_line = 
   all_ci_min <- min(dplyr::bind_rows(data_in)$ci1, na.rm = TRUE)
   all_ci_max <- max(dplyr::bind_rows(data_in)$ci2, na.rm = TRUE)
 
-  ext_range <- scales::expand_range(c(all_ci_min, all_ci_max),
-    mul = 0.1, zero_width = 1
+  ext_range <- scales::expand_range(
+    c(all_ci_min, all_ci_max),
+    mul = 0.1,
+    zero_width = 1
   )
 
   ref_line <- if (is.null(ref_line)) {
@@ -133,8 +143,14 @@ gt_plt_conf_int <- function(gt_object, column, ci_columns, ci = 0.9, ref_line = 
       fn = function(x) {
         tab_built <- mapply(
           FUN = add_ci_plot,
-          data_in, list(palette), width, list(ext_range), list(text_args),
-          text_size, list(ref_line), SIMPLIFY = FALSE
+          data_in,
+          list(palette),
+          width,
+          list(ext_range),
+          list(text_args),
+          text_size,
+          list(ref_line),
+          SIMPLIFY = FALSE
         )
 
         tab_built
@@ -156,11 +172,16 @@ gt_plt_conf_int <- function(gt_object, column, ci_columns, ci = 0.9, ref_line = 
 #' @noRd
 #'
 #' @return SVG/HTML
-add_ci_plot <- function(data_in, pal_vals, width, ext_range,
-                        text_args = list(scale_cut = cut_short_scale()), text_size,
-                        ref_line) {
-
-  if(NA %in% unlist(data_in)){
+add_ci_plot <- function(
+  data_in,
+  pal_vals,
+  width,
+  ext_range,
+  text_args = list(scale_cut = cut_short_scale()),
+  text_size,
+  ref_line
+) {
+  if (NA %in% unlist(data_in)) {
     return("&nbsp;")
   }
 
@@ -175,34 +196,62 @@ add_ci_plot <- function(data_in, pal_vals, width, ext_range,
           x = unlist(ref_line) * 1.01,
           label = do.call(scales::label_number, text_args)(unlist(ref_line))
         ),
-        color = pal_vals[4], vjust = 1.1, size = text_size, hjust = 0,
+        color = pal_vals[4],
+        vjust = 1.1,
+        size = text_size,
+        hjust = 0,
         position = position_nudge(y = -0.25),
-        family = "mono", fontface = "bold"
+        family = "mono",
+        fontface = "bold"
       ) +
       geom_vline(xintercept = ref_line[[1]], color = pal_vals[4])
   }
 
   plot_out <- base_plot +
-    geom_segment(aes(x = .data$ci1, xend = .data$ci2, y = .data$y, yend = .data$y),
+    geom_segment(
+      aes(x = .data$ci1, xend = .data$ci2, y = .data$y, yend = .data$y),
       lineend = "round",
-      size = 1, color = pal_vals[2], alpha = 0.75
+      linewidth = 1,
+      color = pal_vals[2],
+      alpha = 0.75
     ) +
-    geom_point(aes(x = .data$mean, y = .data$y),
-      size = 2, shape = 21, fill = pal_vals[1],
-      color = pal_vals[3], stroke = 0.75
+    geom_point(
+      aes(x = .data$mean, y = .data$y),
+      size = 2,
+      shape = 21,
+      fill = pal_vals[1],
+      color = pal_vals[3],
+      stroke = 0.75
     ) +
-    geom_label(aes(x = .data$ci2, label = do.call(scales::label_number, text_args)(.data$ci2)),
-      color = pal_vals[4], hjust = 1.1, size = text_size, vjust = 0,
-      fill = "transparent", position = position_nudge(y = 0.25),
-      family = "mono", fontface = "bold",
-      label.size = unit(0, "lines"), label.padding = unit(0.05, "lines"),
+    geom_label(
+      aes(
+        x = .data$ci2,
+        label = do.call(scales::label_number, text_args)(.data$ci2)
+        ),
+      color = pal_vals[4],
+      hjust = 1.1,
+      size = text_size,
+      vjust = 0,
+      fill = "transparent",
+      position = position_nudge(y = 0.25),
+      family = "mono",
+      fontface = "bold",
+      label.size = unit(0, "lines"),
+      label.padding = unit(0.05, "lines"),
       label.r = unit(0, "lines")
     ) +
-    geom_label(aes(x = .data$ci1, label = do.call(scales::label_number, text_args)(.data$ci1)),
+    geom_label(
+      aes(x = .data$ci1, label = do.call(scales::label_number, text_args)(.data$ci1)),
       position = position_nudge(y = 0.25),
-      color = pal_vals[4], hjust = -0.1, size = text_size, vjust = 0,
-      fill = "transparent", family = "mono", fontface = "bold",
-      label.size = unit(0, "lines"), label.padding = unit(0.05, "lines"),
+      color = pal_vals[4],
+      hjust = -0.1,
+      size = text_size,
+      vjust = 0,
+      fill = "transparent",
+      family = "mono",
+      fontface = "bold",
+      label.size = unit(0, "lines"),
+      label.padding = unit(0.05, "lines"),
       label.r = unit(0, "lines")
     ) +
     theme_void() +
@@ -215,20 +264,26 @@ add_ci_plot <- function(data_in, pal_vals, width, ext_range,
     coord_cartesian(ylim = c(0.9, 1.5), xlim = ext_range)
 
   out_name <- file.path(tempfile(
-    pattern = "file", tmpdir = tempdir(),
+    pattern = "file",
+    tmpdir = tempdir(),
     fileext = ".svg"
   ))
 
-  ggsave(out_name,
-    plot = plot_out, dpi = 25.4, height = 5, width = width,
-    units = "mm", device = "svg"
+  ggsave(
+    out_name,
+    plot = plot_out,
+    dpi = 25.4,
+    height = 5,
+    width = width,
+    units = "mm",
+    device = "svg"
   )
 
   img_plot <- readLines(out_name) %>%
     paste0(collapse = "") %>%
     gt::html()
 
-  on.exit(file.remove(out_name), add=TRUE)
+  on.exit(file.remove(out_name), add = TRUE)
 
   img_plot
 }

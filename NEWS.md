@@ -2,6 +2,8 @@
 - Add a `palette_col` argument to `gt_plt_bullet()` to accept a named column of palette colors as present in the data. Fixed #72
 - Fix internals of `gt_theme_pff()` to use `table.font.size` inside `tab_options()` rather than `tab_style()`. Fixed #74
 - Fix a few instances of `geom_line()` and `geom_v/hline()` that were throwing warnings for `ggplot2` v3.4.0
+- Refactor internals of `fmt_pad_num` to align with @mrcaseb implementation https://gist.github.com/mrcaseb/f0f85b48df7957c27c4205cafccbc5a2
+- Refactor many functions that use lines with size parameter, to avoid ggplot2 v.3.4.0 deprecation warnings (affects `gt_plt_bar`, `gt_pct_bar`, `gt_plt_dist`, `gt_plt_conf_int`, `gt_plt_percentile_dot`, `gt_plt_point`, `gt_plt_sparkline`, `gt_win_loss`)
 
 # gtExtras 0.4.3
 - Modify internals of `gt_fa_column()` to accept factors with levels not present in the data, ignoring unneeded levels. Thank you to @mikedolanfliss for the suggestion.

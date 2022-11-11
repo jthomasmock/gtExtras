@@ -55,6 +55,9 @@
 <ul><li>Add a <code>palette_col</code> argument to <code><a href="../reference/gt_plt_bullet.html">gt_plt_bullet()</a></code> to accept a named column of palette colors as present in the data. Fixed <a href="https://github.com/jthomasmock/gtExtras/issues/72" class="external-link">#72</a></li>
 <li>Fix internals of <code><a href="../reference/gt_theme_pff.html">gt_theme_pff()</a></code> to use <code>table.font.size</code> inside <code><a href="https://gt.rstudio.com/reference/tab_options.html" class="external-link">tab_options()</a></code> rather than <code><a href="https://gt.rstudio.com/reference/tab_style.html" class="external-link">tab_style()</a></code>. Fixed <a href="https://github.com/jthomasmock/gtExtras/issues/74" class="external-link">#74</a></li>
 <li>Fix a few instances of <code><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line()</a></code> and <code>geom_v/hline()</code> that were throwing warnings for <code>ggplot2</code> v3.4.0</li>
+<li>Refactor internals of <code>fmt_pad_num</code> to align with <a href="https://github.com/mrcaseb" class="external-link">@mrcaseb</a> implementation <a href="https://gist.github.com/mrcaseb/f0f85b48df7957c27c4205cafccbc5a2" class="external-link uri">https://gist.github.com/mrcaseb/f0f85b48df7957c27c4205cafccbc5a2</a>
+</li>
+<li>Refactor many functions that use lines with size parameter, to avoid ggplot2 v.3.4.0 deprecation warnings (affects <code>gt_plt_bar</code>, <code>gt_pct_bar</code>, <code>gt_plt_dist</code>, <code>gt_plt_conf_int</code>, <code>gt_plt_percentile_dot</code>, <code>gt_plt_point</code>, <code>gt_plt_sparkline</code>, <code>gt_win_loss</code>)</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.3" id="gtextras-043">gtExtras 0.4.3<a class="anchor" aria-label="anchor" href="#gtextras-043"></a></h2><p class="text-muted">CRAN release: 2022-11-05</p>

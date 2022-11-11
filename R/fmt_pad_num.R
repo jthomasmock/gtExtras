@@ -24,7 +24,7 @@
 #' @section Function ID:
 #' 2-2
 
-fmt_pad_num <- function(gt_object, columns, sep = ".", nsmall = 2,  pad0 = FALSE) {
+fmt_pad_num <- function(gt_object, columns, sep = ".", nsmall = 2, pad0 = FALSE) {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
 
 

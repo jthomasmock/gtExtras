@@ -17,8 +17,7 @@
 #' @section Function ID:
 #' 1-4
 
-gt_theme_guardian <- function(gt_object,...) {
-
+gt_theme_guardian <- function(gt_object, ...) {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
 
   tab_out <- gt_object %>%
@@ -32,17 +31,15 @@ gt_theme_guardian <- function(gt_object,...) {
       style = cell_borders(
         sides = "top", color = "white", weight = px(0)
       ),
-      locations = cells_body(rows = ifelse(nrow(gt_object[["_data"]])> 0, 1, NA))
+      locations = cells_body(rows = ifelse(nrow(gt_object[["_data"]]) > 0, 1, NA))
     ) %>%
     tab_style(
       style = cell_text(color = "#005689", size = px(22), weight = 700),
-      locations = list(cells_title(groups = "title")
-      )
+      locations = list(cells_title(groups = "title"))
     ) %>%
     tab_style(
       style = cell_text(color = "#005689", size = px(16), weight = 700),
-      locations = list(cells_title(groups = "subtitle")
-      )
+      locations = list(cells_title(groups = "subtitle"))
     )
 
   tab_out <- tab_out %>%
@@ -68,10 +65,12 @@ gt_theme_guardian <- function(gt_object,...) {
       row_group.border.bottom.color = "grey",
       row_group.font.weight = "bold",
       column_labels.border.top.width = px(1),
-      column_labels.border.top.color = if(
-        is.null(tab_out[["_heading"]][["title"]])){
+      column_labels.border.top.color = if (
+        is.null(tab_out[["_heading"]][["title"]])) {
         "#40c5ff"
-      } else {"#ececec"},
+      } else {
+        "#ececec"
+      },
       column_labels.border.bottom.width = px(2),
       column_labels.border.bottom.color = "#ececec",
       heading.border.bottom.width = px(0),

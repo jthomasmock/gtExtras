@@ -18,13 +18,13 @@
 #' teams <- "https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"
 #' team_df <- readRDS(url(teams))
 #'
-#' conf_table <- team_df %>% 
-#'   dplyr::select(team_conf, team_division, logo = team_logo_espn) %>% 
-#'   dplyr::distinct() %>% 
-#'   tidyr::nest(data = logo) %>% 
-#'   dplyr::rename(team_logos = data) %>% 
-#'   dplyr::arrange(team_conf, team_division) %>% 
-#'   gt() %>% 
+#' conf_table <- team_df %>%
+#'   dplyr::select(team_conf, team_division, logo = team_logo_espn) %>%
+#'   dplyr::distinct() %>%
+#'   tidyr::nest(data = logo) %>%
+#'   dplyr::rename(team_logos = data) %>%
+#'   dplyr::arrange(team_conf, team_division) %>%
+#'   gt() %>%
 #'   gt_img_multi_rows(columns = team_logos, height = 25)
 #'
 #' ```
@@ -35,8 +35,7 @@
 #' @section Function ID:
 #' 2-9
 
-gt_img_multi_rows <- function(gt_object, columns, img_source = "web", height = 30){
-
+gt_img_multi_rows <- function(gt_object, columns, img_source = "web", height = 30) {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
   # convert tidyeval column to bare strings
   column_names <- resolve_cols_c(
@@ -44,21 +43,21 @@ gt_img_multi_rows <- function(gt_object, columns, img_source = "web", height = 3
     data = gt_object
   )
 
-  stub_var <- gt_object[["_boxhead"]][["var"]][which(gt_object[["_boxhead"]][["type"]]=="stub")]
-  grp_var <- gt_object[["_boxhead"]][["var"]][which(gt_object[["_boxhead"]][["type"]]=="row_group")]
+  stub_var <- gt_object[["_boxhead"]][["var"]][which(gt_object[["_boxhead"]][["type"]] == "stub")]
+  grp_var <- gt_object[["_boxhead"]][["var"]][which(gt_object[["_boxhead"]][["type"]] == "row_group")]
 
   stopifnot("img_source must be 'web' or 'local'" = img_source %in% c("web", "local"))
 
   gt_object %>%
     text_transform(
-      locations = if(isTRUE(grp_var %in% column_names)){
+      locations = if (isTRUE(grp_var %in% column_names)) {
         cells_row_groups()
-      } else if(isTRUE(stub_var %in% column_names)){
-        cells_stub(rows = !is.na({{columns}}))
+      } else if (isTRUE(stub_var %in% column_names)) {
+        cells_stub(rows = !is.na({{ columns }}))
       } else {
-        cells_body({{ columns }}, rows = !is.na({{columns}}))
+        cells_body({{ columns }}, rows = !is.na({{ columns }}))
       },
-      fn = function(x){
+      fn = function(x) {
         lapply(
           x,
           function(x) {
@@ -69,45 +68,44 @@ gt_img_multi_rows <- function(gt_object, columns, img_source = "web", height = 3
     ) %>%
     # NA Handling so doesn't return broken img
     text_transform(
-      locations = if(isTRUE(stub_var %in% column_names)){
-        cells_stub(rows = is.na({{columns}}))
+      locations = if (isTRUE(stub_var %in% column_names)) {
+        cells_stub(rows = is.na({{ columns }}))
       } else {
-        cells_body({{ columns }}, rows = is.na({{columns}}))
+        cells_body({{ columns }}, rows = is.na({{ columns }}))
       },
-      fn = function(x){
+      fn = function(x) {
         # warning("Column has some NA values, returning empty row", call. = FALSE)
         ""
-        }
+      }
     )
-
 }
 
 
-#Not exported function to convert multiple addresses within a cell into separate HTML components.
+# Not exported function to convert multiple addresses within a cell into separate HTML components.
 
-display_fn_image_multi <- function(x, img_source, height){
-  vals <- gsub("c\\(|\\)", "", x, perl=TRUE) %>%  
+display_fn_image_multi <- function(x, img_source, height) {
+  vals <- gsub("c\\(|\\)", "", x, perl = TRUE) %>%
     strsplit(split = ", ")
-  
-  if(img_source == "web" & length(vals[[1]])>0){
-    lapply(vals, function(xx){
+
+  if (img_source == "web" & length(vals[[1]]) > 0) {
+    lapply(vals, function(xx) {
       web_image(url = xx, height = height)
-    }) %>% 
-      unlist()  %>% 
-      paste0()%>% 
-      gt::html() %>% 
+    }) %>%
+      unlist() %>%
+      paste0() %>%
+      gt::html() %>%
       gsub("\"\"", "\"", .) %>%
       gt::html()
-  } else if(img_source == "local" & length(vals[[1]])>0) {
-    lapply(vals, function(xx){
+  } else if (img_source == "local" & length(vals[[1]]) > 0) {
+    lapply(vals, function(xx) {
       local_image(filename = xx, height = height)
-    }) %>% 
-      unlist()  %>% 
-      paste0()%>% 
-      gt::html() %>% 
+    }) %>%
+      unlist() %>%
+      paste0() %>%
+      gt::html() %>%
       gsub("\"\"", "\"", .) %>%
       gt::html()
-  } else if(length(vals[[1]])==0){
+  } else if (length(vals[[1]]) == 0) {
     ""
   }
 }

@@ -21,8 +21,7 @@
 #' 2-15
 #'
 gt_duplicate_column <- function(gt_object, column, after = dplyr::last_col(), append_text = "_dupe",
-                                dupe_name = NULL){
-
+                                dupe_name = NULL) {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
 
   columns <-
@@ -34,19 +33,21 @@ gt_duplicate_column <- function(gt_object, column, after = dplyr::last_col(), ap
   col_dupe_name <- if (is.null(dupe_name)) {
     stopifnot("Appended text must be at least 1 character" = nchar(append_text) > 0)
     paste0(columns, append_text)
-    } else {
+  } else {
     dupe_name
-    }
+  }
 
   # add a duplicate column in the raw data
   gt_object[["_data"]] <-
     gt_object[["_data"]] %>%
-    dplyr::mutate(!!col_dupe_name := {{column}})
+    dplyr::mutate(!!col_dupe_name := {{ column }})
 
   added_row <- gt_object[["_boxhead"]] %>%
     dplyr::filter(.data$var == columns) %>%
-    dplyr::mutate(var = !!col_dupe_name,
-                  column_label = list(!!col_dupe_name))
+    dplyr::mutate(
+      var = !!col_dupe_name,
+      column_label = list(!!col_dupe_name)
+    )
 
   # add metadata for gt about new column
   gt_object[["_boxhead"]] <-
@@ -55,5 +56,4 @@ gt_duplicate_column <- function(gt_object, column, after = dplyr::last_col(), ap
 
   gt_object %>%
     cols_move(!!col_dupe_name, after = {{ after }})
-
 }

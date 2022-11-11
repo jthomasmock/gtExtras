@@ -42,8 +42,9 @@
 #'
 #' # can style a specific column based on the contents of another column
 #' tab_out_styled <- test_tab %>%
-#'   tab_style(locations = cells_body(mpg, rows = gt_index(., am) == 0),
-#'             style = cell_fill("red")
+#'   tab_style(
+#'     locations = cells_body(mpg, rows = gt_index(., am) == 0),
+#'     style = cell_fill("red")
 #'   )
 #'
 #' # OR can extract the underlying data in the "correct order"
@@ -62,13 +63,11 @@
 #' @section Function ID:
 #' 2-20
 
-gt_index <- function(gt_object, column, as_vector = TRUE){
-
+gt_index <- function(gt_object, column, as_vector = TRUE) {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
   stopifnot("'as_vector' must be a TRUE or FALSE" = is.logical(as_vector))
 
-  if(length(gt_object[["_row_groups"]]) >= 1){
-
+  if (length(gt_object[["_row_groups"]]) >= 1) {
     # if the data is grouped you need to identify the group column
     # and arrange by that column. I convert to a factor so that the
     # columns don't default to arrange by other defaults
@@ -82,19 +81,16 @@ gt_index <- function(gt_object, column, as_vector = TRUE){
 
     df_ordered <- gt_object[["_data"]] %>%
       dplyr::slice(grp_vec_ord)
-
   } else {
     # if the data is not grouped, then it will just "work"
     df_ordered <- gt_object[["_data"]]
-
   }
 
   # return as vector or tibble in correct, gt-indexed ordered
-  if(isTRUE(as_vector)){
+  if (isTRUE(as_vector)) {
     df_ordered %>%
-      dplyr::pull({{column}})
+      dplyr::pull({{ column }})
   } else {
     df_ordered
   }
-
 }

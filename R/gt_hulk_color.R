@@ -44,16 +44,17 @@
 #' @family Colors
 #' @section Function ID:
 #' 4-1
-gt_hulk_col_numeric <- function(gt_object, columns = NULL, domain = NULL, ..., trim = FALSE){
-
+gt_hulk_col_numeric <- function(gt_object, columns = NULL, domain = NULL, ..., trim = FALSE) {
   stopifnot("Input must be a gt table" = "gt_tbl" %in% class(gt_object))
 
-  pal_hex <- c("#762a83", "#af8dc3", "#e7d4e8", "#f7f7f7",
-               "#d9f0d3", "#7fbf7b", "#1b7837")
+  pal_hex <- c(
+    "#762a83", "#af8dc3", "#e7d4e8", "#f7f7f7",
+    "#d9f0d3", "#7fbf7b", "#1b7837"
+  )
 
-  if(isTRUE(trim)) pal_hex <- pal_hex[2:6]
+  if (isTRUE(trim)) pal_hex <- pal_hex[2:6]
 
-  hulk_pal <- function(x){
+  hulk_pal <- function(x) {
     scales::col_numeric(
       pal_hex,
       domain = domain,
@@ -65,7 +66,5 @@ gt_hulk_col_numeric <- function(gt_object, columns = NULL, domain = NULL, ..., t
     gt_object,
     columns = {{ columns }},
     colors = hulk_pal
-                 )
-
+  )
 }
-

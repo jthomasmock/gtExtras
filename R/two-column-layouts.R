@@ -199,7 +199,6 @@ gt_two_column_layout <- function(tables = NULL, output = "viewer",
         call. = FALSE
       )
     } else {
-
       # Save the image in the working directory
       webshot2::webshot(
         url = paste0("file:///", tempfile_),

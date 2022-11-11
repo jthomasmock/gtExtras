@@ -13,13 +13,15 @@
 #' library(gt)
 #' padded_tab <- data.frame(x = c(1.2345, 12.345, 123.45, 1234.5, 12345)) %>%
 #'   gt() %>%
-#'   fmt(fns = function(x){pad_fn(x, nsmall = 4)}) %>%
+#'   fmt(fns = function(x) {
+#'     pad_fn(x, nsmall = 4)
+#'   }) %>%
 #'   tab_style(
 #'     # MUST USE A MONO-SPACED FONT
 #'     # https://fonts.google.com/?category=Monospace
 #'     style = cell_text(font = google_font("Fira Mono")),
 #'     locations = cells_body(columns = x)
-#'     )
+#'   )
 #'
 #' @section Figures:
 #' \if{html}{\figure{gt_pad_fn.png}{options: width=20\%}}
@@ -29,8 +31,7 @@
 #' 2-3
 
 
-pad_fn <- function(x, nsmall = 2, pad0){
-
+pad_fn <- function(x, nsmall = 2, pad0) {
   # round and format values as text with specific number of decimals
   round_x <- round(x, digits = nsmall)
   fmt_x <- format(round_x, nsmall = nsmall)
@@ -39,7 +40,7 @@ pad_fn <- function(x, nsmall = 2, pad0){
   zero_len <- nchar(fmt_x) - nchar(sub("0*$", "", fmt_x))
 
   # create string of zero
-  if(pad0){
+  if (pad0) {
     rep_zero <- strrep(0, zero_len)
   } else {
     rep_zero <- ""
@@ -52,5 +53,4 @@ pad_fn <- function(x, nsmall = 2, pad0){
   filled_out <- paste0(fmt_out, rep_zero)
 
   filled_out
-
 }

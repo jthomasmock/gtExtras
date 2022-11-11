@@ -98,17 +98,16 @@
 #' ```
 #' \if{html}{\figure{grouped-tab-index.png}{options: width=40\%}}
 #'
-get_row_index <- function(gt_object){
-
+get_row_index <- function(gt_object) {
   is_gt_stop(gt_object)
 
   # find group_index
-  subset_log <- gt_object[["_boxhead"]][["type"]]=="row_group"
+  subset_log <- gt_object[["_boxhead"]][["type"]] == "row_group"
   ## subset vars by vector
   grp_names <- gt_object[["_boxhead"]][["var"]][subset_log]
   ## create a list of symbols
 
-  if(length(grp_names) >= 1){
+  if (length(grp_names) >= 1) {
     grp_col <- rlang::syms(grp_names)
 
     # ordered levels of the row groups

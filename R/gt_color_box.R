@@ -1,6 +1,6 @@
 #' @title Add a small color box relative to the cell value.
 #' @description Create `PFF`-style colorboxes in a `gt` table.
-#'Note that rather than using `gt::fmt_` functions on this column, you can send
+#' Note that rather than using `gt::fmt_` functions on this column, you can send
 #' numeric formatting arguments via `...`. All arguments should be named
 #' and are passed to `scales::label_number()`.
 #'
@@ -35,30 +35,30 @@
 
 
 gt_color_box <- function(gt_object, columns, palette = NULL, ..., domain = NULL,
-                         width = 70, font_weight = "bold"){
-
+                         width = 70, font_weight = "bold") {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
 
-  color_boxes <- function(x){
-
+  color_boxes <- function(x) {
     stopifnot("Error: 'domain' must be specified." = !is.null(domain))
 
-    if(length(palette) == 1){
-      if(grepl(x = palette, pattern = "::", fixed = TRUE)){
+    if (length(palette) == 1) {
+      if (grepl(x = palette, pattern = "::", fixed = TRUE)) {
         palette <- paletteer::paletteer_d(
           palette = palette
         ) %>% as.character()
       } else {
         palette <- palette
       }
-    } else if(is.null(palette)){
-      palette <- c("#762a83", "#af8dc3", "#e7d4e8", "#f7f7f7",
-                   "#d9f0d3", "#7fbf7b", "#1b7837")
+    } else if (is.null(palette)) {
+      palette <- c(
+        "#762a83", "#af8dc3", "#e7d4e8", "#f7f7f7",
+        "#d9f0d3", "#7fbf7b", "#1b7837"
+      )
     } else {
       palette <- palette
     }
 
-    if(palette[1] == "pff") palette <- c("#cd2624", "#fd9701", "#ffd000", "#3bae24", "#0c5ea0")
+    if (palette[1] == "pff") palette <- c("#cd2624", "#fd9701", "#ffd000", "#3bae24", "#0c5ea0")
 
     colors <- scales::col_numeric(palette = palette, domain = domain)(x)
 
@@ -95,10 +95,9 @@ gt_color_box <- function(gt_object, columns, palette = NULL, ..., domain = NULL,
   text_transform(
     gt_object,
     locations = cells_body({{ columns }}),
-    fn = function(x){
+    fn = function(x) {
       x <- as.double(x)
       lapply(x, color_boxes)
     }
   )
-
 }

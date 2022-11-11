@@ -32,14 +32,13 @@
 #' @section Function ID:
 #' 2-12
 
-tab_style_by_grp <- function(gt_object, column, fn, ...){
-
+tab_style_by_grp <- function(gt_object, column, fn, ...) {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
 
   # extract group names as a character and then turn into sym
   # for later tidyeveal
   ## logical vector
-  subset_log <- gt_object[["_boxhead"]][["type"]]=="row_group"
+  subset_log <- gt_object[["_boxhead"]][["type"]] == "row_group"
   ## subset vars by vector
   grp_names <- gt_object[["_boxhead"]][["var"]][subset_log]
   ## create a list of symbols
@@ -60,13 +59,13 @@ tab_style_by_grp <- function(gt_object, column, fn, ...){
     dplyr::slice(grp_vec_ord) %>%
     ### !!! to evaluate the list of symbols
     dplyr::group_by(!!!grp_col) %>%
-    dplyr::filter({{column}} == do.call(what = fn, args = list({{column}}))) %>%
+    dplyr::filter({{ column }} == do.call(what = fn, args = list({{ column }}))) %>%
     dplyr::ungroup() %>%
     dplyr::pull(row_id)
 
   gt_object %>%
     tab_style(
       style = ...,
-      locations = cells_body(columns = {{column}}, rows = row_ids)
+      locations = cells_body(columns = {{ column }}, rows = row_ids)
     )
 }

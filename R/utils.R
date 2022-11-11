@@ -10,7 +10,7 @@ n_decimals <- function(x) {
   if (abs(x - round(x)) > .Machine$double.eps^0.5) {
     # x <- format(x, drop0trailing = TRUE)
     # nchar(strsplit(x, ".", fixed = TRUE)[[1]][[2]])
-    nchar(strsplit(sub('0+$', '', as.character(x)), ".", fixed = TRUE)[[1]][[2]])
+    nchar(strsplit(sub("0+$", "", as.character(x)), ".", fixed = TRUE)[[1]][[2]])
   } else {
     return(0)
   }
@@ -18,15 +18,14 @@ n_decimals <- function(x) {
 
 # Calculate binwidth for histograms based on good defaults
 
-bw_calc <- function(x){
-  bw <- 2 * IQR(x, na.rm = TRUE) / length(x)^(1/3)
+bw_calc <- function(x) {
+  bw <- 2 * IQR(x, na.rm = TRUE) / length(x)^(1 / 3)
   bw
 }
 
 # save the SVG of a plot out
 
-save_svg <- function(plot, ..., dpi = 25.4){
-
+save_svg <- function(plot, ..., dpi = 25.4) {
   out_name <- file.path(
     tempfile(pattern = "file", tmpdir = tempdir(), fileext = ".svg")
   )
@@ -42,7 +41,6 @@ save_svg <- function(plot, ..., dpi = 25.4){
     # height = fig_dim[1],
     # width = fig_dim[2],
     # units = "mm"
-
   )
 
   img_plot <- out_name %>%
@@ -54,27 +52,25 @@ save_svg <- function(plot, ..., dpi = 25.4){
     paste0(collapse = "") %>%
     gt::html()
 
-  on.exit(file.remove(out_name), add=TRUE)
+  on.exit(file.remove(out_name), add = TRUE)
 
   img_plot
-
 }
 
 # check if gt
 #' @noRd
-is_gt <- function(gt_object){
+is_gt <- function(gt_object) {
   any("gt_tbl" %in% class(gt_object))
 }
 # check if stop gt
 #' @noRd
-is_gt_stop <- function(gt_object){
+is_gt_stop <- function(gt_object) {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = any("gt_tbl" %in% class(gt_object)))
 }
 
 # vendored from gt
 # https://github.com/rstudio/gt/blob/04c34936a9d09e96b339dea8da07e414730ec17d/R/utils.R#L1654-L1661
 man_get_image_tag <- function(file, width = 100, dir = "images", alt = NULL) {
-
   repo_url <- "https://raw.githubusercontent.com/jthomasmock/gtExtras/master"
 
   image_url <- file.path(repo_url, dir, file)
@@ -83,9 +79,9 @@ man_get_image_tag <- function(file, width = 100, dir = "images", alt = NULL) {
 }
 
 # https://stackoverflow.com/questions/19655579/a-function-that-returns-true-on-na-null-nan-in-r
-is_blank <- function(x){
+is_blank <- function(x) {
   if (missing(x) || is.null(x) || length(x) == 0 || is.na(x)) {
-  return(TRUE)
+    return(TRUE)
   } else {
     return(FALSE)
   }

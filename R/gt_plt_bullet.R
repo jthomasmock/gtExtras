@@ -29,10 +29,8 @@
 #' @family Themes
 #' @section Function ID:
 #' 3-7
-gt_plt_bullet <- function(
-    gt_object, column = NULL, target = NULL, width = 65,
-    palette = c("grey", "red"), palette_col = NULL
-    ) {
+gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
+                          palette = c("grey", "red"), palette_col = NULL) {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
   stopifnot("'palette' must be 2 colors" = length(palette) == 2)
 
@@ -52,12 +50,12 @@ gt_plt_bullet <- function(
     dplyr::select({{ column }}) %>%
     names()
 
-  if(!rlang::quo_is_null(rlang::enquo(palette_col))){
+  if (!rlang::quo_is_null(rlang::enquo(palette_col))) {
     bar_pal <- gt_index(gt_object, {{ palette_col }})
-    tar_pal = rep(palette[2], length(bar_pal))
+    tar_pal <- rep(palette[2], length(bar_pal))
   } else {
-    tar_pal = rep(palette[2], length_val)
-    bar_pal = rep(palette[1], length_val)
+    tar_pal <- rep(palette[2], length_val)
+    bar_pal <- rep(palette[1], length_val)
   }
 
   tab_out <- gt_object %>%
@@ -114,7 +112,7 @@ gt_plt_bullet <- function(
             paste0(collapse = "") %>%
             gt::html()
 
-          on.exit(file.remove(out_name), add=TRUE)
+          on.exit(file.remove(out_name), add = TRUE)
 
           img_plot
         }
@@ -126,7 +124,7 @@ gt_plt_bullet <- function(
     gt::cols_align(align = "left", columns = {{ column }}) %>%
     gt::cols_hide({{ target }})
 
-  if(!rlang::quo_is_null(rlang::enquo(palette_col))){
+  if (!rlang::quo_is_null(rlang::enquo(palette_col))) {
     tab_out %>%
       gt::cols_hide({{ palette_col }})
   } else {

@@ -77,16 +77,17 @@ img_square <- function(value, height, width, border_color, border_weight) {
 #'
 #' @family Utilities
 gt_img_border <- function(gt_object, column, height = 25, width = 25,
-                          border_color = "black", border_weight = 2.5){
-
+                          border_color = "black", border_weight = 2.5) {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
 
   gt_object %>%
     text_transform(
-      locations = cells_body({{column}}),
-      fn = function(value){
+      locations = cells_body({{ column }}),
+      fn = function(value) {
         mapply(img_square, value, height, width, border_color,
-               border_weight, SIMPLIFY = FALSE)
+          border_weight,
+          SIMPLIFY = FALSE
+        )
       }
     )
 }
@@ -126,16 +127,17 @@ gt_img_border <- function(gt_object, column, height = 25, width = 25,
 #' @section Function ID:
 #' 2-15
 gt_img_circle <- function(gt_object, column, height = 25,
-                            border_color = "black", border_weight = 1.5){
-
+                          border_color = "black", border_weight = 1.5) {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
 
   gt_object %>%
     text_transform(
-      locations = cells_body({{column}}),
-      fn = function(value){
+      locations = cells_body({{ column }}),
+      fn = function(value) {
         mapply(img_circle, value, height, border_color,
-               border_weight, SIMPLIFY = FALSE)
+          border_weight,
+          SIMPLIFY = FALSE
+        )
       }
     )
 }

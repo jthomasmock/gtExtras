@@ -58,7 +58,6 @@
 #'
 #' @family Themes
 gt_theme_pff <- function(gt_object, ..., divider, spanners, rank_col) {
-
   is_gt_stop(gt_object)
 
   built_table <- gt_object %>%
@@ -89,8 +88,7 @@ gt_theme_pff <- function(gt_object, ..., divider, spanners, rank_col) {
       font = google_font("Roboto")
     )
 
-  if(!missing(spanners)){
-
+  if (!missing(spanners)) {
     span_vars <- unlist(gt_object[["_spanners"]][["vars"]])
 
     # add blank span and modify
@@ -137,13 +135,13 @@ gt_theme_pff <- function(gt_object, ..., divider, spanners, rank_col) {
       )
   }
 
-  if(!missing(rank_col)){
+  if (!missing(rank_col)) {
     built_table <- built_table %>%
       tab_style(
         style = list(
           cell_fill(color = "#e4e8ec"),
           cell_borders(color = "#e4e8ec")
-          ),
+        ),
         locations = cells_body(columns = {{ rank_col }})
       ) %>%
       cols_align("center", {{ rank_col }})
@@ -154,8 +152,10 @@ gt_theme_pff <- function(gt_object, ..., divider, spanners, rank_col) {
       style = list(
         cell_fill(color = "#585d63"),
         cell_text(color = "white", size = px(10), weight = "bold"),
-        cell_borders(sides = c("bottom"), color = "#585d63",
-                     weight = px(2.5))
+        cell_borders(
+          sides = c("bottom"), color = "#585d63",
+          weight = px(2.5)
+        )
       ),
       locations = gt::cells_column_labels()
     )

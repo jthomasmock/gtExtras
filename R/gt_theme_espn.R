@@ -20,18 +20,17 @@
 
 
 
-gt_theme_espn <- function(gt_object, ...){
-
+gt_theme_espn <- function(gt_object, ...) {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
 
   gt_object %>%
-    opt_all_caps()  %>%
+    opt_all_caps() %>%
     opt_table_font(
       font = list(
         google_font("Lato"),
         default_fonts()
       )
-    )  %>%
+    ) %>%
     opt_row_striping() %>%
     tab_options(
       row.striping.background_color = "#fafafa",

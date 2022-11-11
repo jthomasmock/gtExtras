@@ -18,14 +18,14 @@
 #' library(gt)
 #' fmted_tab <- gtcars %>%
 #'   head() %>%
-#'     dplyr::select(mfr, year, bdy_style, mpg_h, hp) %>%
-#'     dplyr::mutate(mpg_h = rnorm(n = dplyr::n(), mean = 22, sd = 1)) %>%
-#'     gt::gt() %>%
-#'     gt::opt_table_lines() %>%
-#'     fmt_symbol_first(column = mfr, symbol = "&#x24;", last_row_n = 6) %>%
-#'     fmt_symbol_first(column = year, suffix = "%") %>%
-#'     fmt_symbol_first(column = mpg_h, symbol = "&#37;", decimals = 1) %>%
-#'     fmt_symbol_first(hp, symbol = "&#176;", suffix = "F", symbol_first = TRUE)
+#'   dplyr::select(mfr, year, bdy_style, mpg_h, hp) %>%
+#'   dplyr::mutate(mpg_h = rnorm(n = dplyr::n(), mean = 22, sd = 1)) %>%
+#'   gt::gt() %>%
+#'   gt::opt_table_lines() %>%
+#'   fmt_symbol_first(column = mfr, symbol = "&#x24;", last_row_n = 6) %>%
+#'   fmt_symbol_first(column = year, suffix = "%") %>%
+#'   fmt_symbol_first(column = mpg_h, symbol = "&#37;", decimals = 1) %>%
+#'   fmt_symbol_first(hp, symbol = "&#176;", suffix = "F", symbol_first = TRUE)
 #'
 #' @section Figures:
 #' \if{html}{\figure{gt_fmt_first.png}{options: width=100\%}}
@@ -35,18 +35,16 @@
 #' 2-1
 
 
-fmt_symbol_first <- function(
-  gt_object,
-  column = NULL,        # column of interest to apply to
-  symbol = NULL,        # symbol to add, optionally
-  suffix = "",          # suffix to add, optionally
-  decimals = NULL,      # number of decimal places to round to
-  last_row_n = NULL,    # what's the last row in data?
-  symbol_first = FALSE, # symbol before or after suffix?,
-  scale_by = NULL,
-  gfont = "Fira Mono"   # Google font with monospacing
+fmt_symbol_first <- function(gt_object,
+                             column = NULL, # column of interest to apply to
+                             symbol = NULL, # symbol to add, optionally
+                             suffix = "", # suffix to add, optionally
+                             decimals = NULL, # number of decimal places to round to
+                             last_row_n = NULL, # what's the last row in data?
+                             symbol_first = FALSE, # symbol before or after suffix?,
+                             scale_by = NULL,
+                             gfont = "Fira Mono" # Google font with monospacing
 ) {
-
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
   # Test and error out if mandatory columns are missing
   stopifnot("`symbol_first` argument must be a logical" = is.logical(symbol_first))
@@ -59,9 +57,9 @@ fmt_symbol_first <- function(
   # as it's converted to character by gt::text_transform
 
   add_to_first <- function(x, suff = suffix, symb = symbol) {
-    if (!is.null(decimals)&&!is.null(scale_by)) {
+    if (!is.null(decimals) && !is.null(scale_by)) {
       # if decimal not null, convert to double
-      x <- suppressWarnings(as.double(x)*scale_by)
+      x <- suppressWarnings(as.double(x) * scale_by)
       fmt_val <- format(x = x, nsmall = decimals, digits = decimals)
     } else if (!is.null(decimals) && is.null(scale_by)) {
       # if decimal not null, convert to double
@@ -93,9 +91,9 @@ fmt_symbol_first <- function(
 
   # affect rows OTHER than the first row
   add_to_remainder <- function(x, length = length_nbsp) {
-    if (!is.null(decimals)&&!is.null(scale_by)) {
+    if (!is.null(decimals) && !is.null(scale_by)) {
       # if decimal not null, convert to double
-      x <- suppressWarnings(as.double(x)*scale_by)
+      x <- suppressWarnings(as.double(x) * scale_by)
       # then round and format ALL to force specific decimals
       fmt_val <- format(x = x, nsmall = decimals, digits = decimals)
     } else if (!is.null(decimals) && is.null(scale_by)) {
@@ -103,7 +101,6 @@ fmt_symbol_first <- function(
       x <- suppressWarnings(as.double(x))
       # then round and format ALL to force specific decimals
       fmt_val <- format(x = x, nsmall = decimals, digits = decimals)
-
     } else if (is.null(decimals) && is.null(scale_by)) {
       fmt_val <- x
     }
@@ -111,7 +108,7 @@ fmt_symbol_first <- function(
   }
 
   # default to nrows in input data
-  if(is.null(last_row_n)){
+  if (is.null(last_row_n)) {
     last_row_n <- nrow(gt_object[["_data"]])
   } else {
     last_row_n <- last_row_n

@@ -5,12 +5,11 @@
 #' @param names a string indicating the name of the two columns inside the details tag
 #' @return HTML text
 #' @export
-gt_label_details <- function(label, content, names = c("Column", "Description")){
-
+gt_label_details <- function(label, content, names = c("Column", "Description")) {
   stopifnot("Must be a named list" = length(names(content)) >= 1)
   stopifnot("'names' must be length 2" = length(names) == 2)
 
-  build_content <- function(lab_item, content_item){
+  build_content <- function(lab_item, content_item) {
     glue::glue(
       "<tr><td>{lab_item}</td><td>{content_item}</td></tr>"
     )
@@ -18,15 +17,19 @@ gt_label_details <- function(label, content, names = c("Column", "Description"))
 
   fill_content <- mapply(
     FUN = build_content, names(content), as.character(content),
-    SIMPLIFY = FALSE) %>%
+    SIMPLIFY = FALSE
+  ) %>%
     unlist() %>%
     as.character() %>%
     paste0(collapse = "")
 
-  c(glue::glue("<details><summary>{label}</summary>"),
+  c(
+    glue::glue("<details><summary>{label}</summary>"),
     glue::glue("<br><table><tr><th>{names[1]}</th><th>{names[2]}</th>"),
     fill_content,
-    "</table></details>") %>% paste0(collapse = "") %>%
+    "</table></details>"
+  ) %>%
+    paste0(collapse = "") %>%
     as.character() %>%
     gt::html()
 }
@@ -40,13 +43,16 @@ gt_label_details <- function(label, content, names = c("Column", "Description"))
 #' @return HTML text
 #' @export
 with_tooltip <- function(label, tooltip) {
-  tags$abbr(style = paste0(
-    "text-decoration: underline; text-decoration-style: solid;","
-    cursor: question; color: blue"),
-    title = tooltip, label) %>%
+  tags$abbr(
+    style = paste0(
+      "text-decoration: underline; text-decoration-style: solid;", "
+    cursor: question; color: blue"
+    ),
+    title = tooltip, label
+  ) %>%
     as.character() %>%
     gt::html()
-    }
+}
 
 
 #' Add a basic hyperlink in a gt table
@@ -56,7 +62,7 @@ with_tooltip <- function(label, tooltip) {
 #' @param url The url for the hyperlink
 #' @return HTML text
 #' @export
-gt_hyperlink <- function(text, url){
+gt_hyperlink <- function(text, url) {
   htmltools::a(href = url, text, target = "_blank") %>%
     as.character() %>%
     gt::html()
@@ -70,8 +76,7 @@ gt_hyperlink <- function(text, url){
 #'
 #' @return HTML character
 #'
-add_badge_color <- function(add_color, add_label, alpha_lvl){
-
+add_badge_color <- function(add_color, add_label, alpha_lvl) {
   add_color <- paste0("background:", scales::alpha(add_color, alpha_lvl), ";")
 
   div_out <- htmltools::div(
@@ -107,30 +112,29 @@ add_badge_color <- function(add_color, add_label, alpha_lvl){
 #'
 #' @family Utilities
 gt_badge <- function(gt_object, column, palette = NULL, alpha = 0.2) {
-
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
 
   text_transform(
     gt_object,
     locations = cells_body(columns = {{ column }}),
-    fn = function(x){
-
-      if(is.null(palette)){
-        pal_filler <- rev(c("#CC79A7", "#D55E00", "#0072B2",
-                            "#F0E442", "#009E73", "#56B4E9",
-                            "#E69F00", "#000000"))[seq_along(unique(x))]
-      } else if(length(palette) == 1){
+    fn = function(x) {
+      if (is.null(palette)) {
+        pal_filler <- rev(c(
+          "#CC79A7", "#D55E00", "#0072B2",
+          "#F0E442", "#009E73", "#56B4E9",
+          "#E69F00", "#000000"
+        ))[seq_along(unique(x))]
+      } else if (length(palette) == 1) {
         pal_filler <- palette %>% rep(length(unique(x)))
       } else {
         pal_filler <- palette
       }
 
-      lapply(X = x, FUN = function(xy){
-
+      lapply(X = x, FUN = function(xy) {
         fct_lvl <- unique(x)
         stopifnot("The length of the unique elements must match the palette length" = length(fct_lvl) == length(pal_filler))
 
-        if(!is.null(names(pal_filler))){
+        if (!is.null(names(pal_filler))) {
           fct_x <- factor(xy, levels = names(pal_filler), labels = pal_filler) %>%
             as.character()
         } else {

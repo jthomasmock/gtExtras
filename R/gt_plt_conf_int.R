@@ -52,17 +52,15 @@
 #' @family Themes
 #' @section Function ID:
 #' 3-10
-gt_plt_conf_int <- function(
-  gt_object,
-  column,
-  ci_columns,
-  ci = 0.9,
-  ref_line = NULL,
-  palette = c("black", "grey", "white", "black"),
-  width = 45,
-  text_args = list(accuracy = 1),
-  text_size = 1.5
-) {
+gt_plt_conf_int <- function(gt_object,
+                            column,
+                            ci_columns,
+                            ci = 0.9,
+                            ref_line = NULL,
+                            palette = c("black", "grey", "white", "black"),
+                            width = 45,
+                            text_args = list(accuracy = 1),
+                            text_size = 1.5) {
   all_vals <- gt_index(gt_object, {{ column }}, as_vector = FALSE)
 
   stopifnot("Confidence level must be between 0 and 1" = dplyr::between(ci, 0, 1))
@@ -172,15 +170,13 @@ gt_plt_conf_int <- function(
 #' @noRd
 #'
 #' @return SVG/HTML
-add_ci_plot <- function(
-  data_in,
-  pal_vals,
-  width,
-  ext_range,
-  text_args = list(scale_cut = cut_short_scale()),
-  text_size,
-  ref_line
-) {
+add_ci_plot <- function(data_in,
+                        pal_vals,
+                        width,
+                        ext_range,
+                        text_args = list(scale_cut = cut_short_scale()),
+                        text_size,
+                        ref_line) {
   if (NA %in% unlist(data_in)) {
     return("&nbsp;")
   }
@@ -227,7 +223,7 @@ add_ci_plot <- function(
       aes(
         x = .data$ci2,
         label = do.call(scales::label_number, text_args)(.data$ci2)
-        ),
+      ),
       color = pal_vals[4],
       hjust = 1.1,
       size = text_size,

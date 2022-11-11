@@ -30,7 +30,6 @@
 
 img_header <- function(label, img_url, height = 60, font_size = 12,
                        palette = c("black", "black")) {
-
   html_content <- htmltools::div(
     style = "text-align: center;",
     htmltools::img(

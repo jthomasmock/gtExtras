@@ -8,14 +8,12 @@
 #' @inheritParams scales::label_number
 #'
 #' @return gt table
-add_point_plot <- function(
-  data,
-  palette,
-  add_label,
-  width,
-  vals_range,
-  accuracy
-) {
+add_point_plot <- function(data,
+                           palette,
+                           add_label,
+                           width,
+                           vals_range,
+                           accuracy) {
   if (data %in% c("NA", "NULL", NA, NULL)) {
     return("<div></div>")
   } else {
@@ -133,14 +131,12 @@ add_point_plot <- function(
 #' @family Plotting
 #' @section Function ID:
 #' 3-9
-gt_plt_point <- function(
-  gt_object,
-  column,
-  palette = c("#007ad6", "#f0f0f0", "#f72e2e"),
-  width = 25,
-  scale = 1,
-  accuracy = 1
-) {
+gt_plt_point <- function(gt_object,
+                         column,
+                         palette = c("#007ad6", "#f0f0f0", "#f72e2e"),
+                         width = 25,
+                         scale = 1,
+                         accuracy = 1) {
   col_vals <- gt_index(gt_object, {{ column }})
 
   val_range <- scales::expand_range(

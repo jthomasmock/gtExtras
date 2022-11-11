@@ -35,7 +35,6 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
   text_transform(
     gt_object,
     locations = cells_body(columns = {{ column }}),
-
     fn = function(x) {
       int_conv <- suppressWarnings(as.integer(x))
       int_x <- int_conv[!is.na(int_conv)]
@@ -58,7 +57,7 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
 
       lapply(X = int_conv, FUN = function(xy) {
         # handle missing values
-        if(is_blank(xy) || is.na(xy)){
+        if (is_blank(xy) || is.na(xy)) {
           return(gt::html("&nbsp;"))
         }
 
@@ -128,7 +127,6 @@ gt_fa_column <- function(gt_object, column, ..., palette = NULL,
     gt_object,
     locations = cells_body(columns = {{ column }}),
     fn = function(x) {
-
       if (is.null(palette)) {
         # if no palette use categorical colorblind palette
         pal_filler <- c(
@@ -141,7 +139,7 @@ gt_fa_column <- function(gt_object, column, ..., palette = NULL,
       } else if (all(unique(x) %in% names(palette))) {
         # palette is superset of values,
         # so reduce palette to just what's needed
-        pal_filler = palette[unique(x)]
+        pal_filler <- palette[unique(x)]
       } else {
         # palette is the palette
         pal_filler <- palette
@@ -149,8 +147,9 @@ gt_fa_column <- function(gt_object, column, ..., palette = NULL,
 
       # pass arguments into anonymous function
       lapply(X = x, FUN = function(xy) {
-
-        if(xy %in% c("", "NA", NA)) return(gt::html("&nbsp;"))
+        if (xy %in% c("", "NA", NA)) {
+          return(gt::html("&nbsp;"))
+        }
 
         # drop missing levels
         x <- x[!(x %in% c("", "NA", NA))]
@@ -229,14 +228,12 @@ gt_fa_rating <- function(gt_object, column, max_rating = 5, ...,
     gt_object,
     locations = cells_body(columns = {{ column }}),
     fn = function(x) {
-
       # convert the raw text to numeric
       num_x <- suppressWarnings(as.numeric(x))
 
       lapply(X = num_x, FUN = function(rating) {
-
         # handle missing values & return a blank space if missing
-        if(is_blank(rating) || rating %in% c(NA, "NA", "")){
+        if (is_blank(rating) || rating %in% c(NA, "NA", "")) {
           return(gt::html("&nbsp;"))
         }
         # adapted from: glin.github.io/reactable/articles/cookbook/cookbook.html#rating-stars
@@ -307,11 +304,11 @@ gt_fa_rank_change <- function(gt_object, column, palette = c("#1b7837", "lightgr
       font_color <- color
     }
 
-    if (is_blank(text)){
+    if (is_blank(text)) {
       return(gt::html("<bold style='color:#d3d3d3;'>--</bold>"))
-    } else if(!nzchar(text) & !is_blank(text)) {
+    } else if (!nzchar(text) & !is_blank(text)) {
       fa_height <- "20px"
-    } else if(nzchar(text) & !is_blank(text)) {
+    } else if (nzchar(text) & !is_blank(text)) {
       fa_height <- "12px"
     }
 

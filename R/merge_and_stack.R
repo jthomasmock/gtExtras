@@ -43,8 +43,8 @@ gt_merge_stack <- function(gt_object, col1, col2, palette = c("black", "grey"), 
                            font_size = c("14px", "10px"), font_weight = c("bold", "bold")) {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
   stopifnot("There must be two colors" = length(palette) == 2)
-  stopifnot("There must be two 'font_size'" = length(font_size)==2)
-  stopifnot("There must be two 'font_weight'" = length(font_weight)==2)
+  stopifnot("There must be two 'font_size'" = length(font_size) == 2)
+  stopifnot("There must be two 'font_weight'" = length(font_weight) == 2)
 
   stopifnot("'font_size' must be a string with 'px'" = all(grepl(x = font_size, pattern = "px")))
   stopifnot("'font_weight' must be a 'bold', 'normal' or 'lighter'" = font_weight %in% c("bold", "normal", "lighter"))
@@ -80,7 +80,6 @@ gt_merge_stack <- function(gt_object, col1, col2, palette = c("black", "grey"), 
       }
     ) %>%
     cols_hide(columns = {{ col2 }})
-
 }
 
 #' Merge and stack text with background coloring from two columns in `gt`
@@ -120,17 +119,14 @@ gt_merge_stack <- function(gt_object, col1, col2, palette = c("black", "grey"), 
 #'
 #' @family Utilities
 
-gt_merge_stack_color <- function(
-    gt_object, top_val, color_val,
-    palette = c("#512daa", "white", "#2d6a22"),
-    domain = NULL,
-    small_cap = TRUE,
-    font_size = c("14px", "10px"),
-    font_weight = c("bold", "bold")
-    ){
-
+gt_merge_stack_color <- function(gt_object, top_val, color_val,
+                                 palette = c("#512daa", "white", "#2d6a22"),
+                                 domain = NULL,
+                                 small_cap = TRUE,
+                                 font_size = c("14px", "10px"),
+                                 font_weight = c("bold", "bold")) {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
-  if(is.null(domain)){
+  if (is.null(domain)) {
     warning(
       "Domain not specified, defaulting to observed range within each specified column.",
       call. = FALSE
@@ -149,20 +145,19 @@ gt_merge_stack_color <- function(
     data_color(
       columns = {{ color_val }},
       colors = scales::col_numeric(
-        palette = if(grepl(x = palette[1], pattern = "::")){
+        palette = if (grepl(x = palette[1], pattern = "::")) {
           paletteer::paletteer_d(
             palette = palette
           ) %>% as.character()
         } else {
-         palette
+          palette
         },
         domain = domain
       )
     ) %>%
     text_transform(
       locations = cells_body({{ color_val }}),
-      fn = function(x){
-
+      fn = function(x) {
         merge_pattern <- glue::glue(
           '<div style="font-size:{font_size[1]}; font-weight:{font_weight[1]};font-variant:{font_variant};">{data_in}<br>',
           '</div><div style="font-size:{font_size[2]};font-weight:{font_weight[2]};">{x}</div>'
@@ -170,5 +165,4 @@ gt_merge_stack_color <- function(
       }
     ) %>%
     cols_hide(columns = {{ top_val }})
-
 }

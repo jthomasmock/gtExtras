@@ -50,15 +50,13 @@
 #' ```
 #' \if{html}{\figure{plt-bar-stack.png}{options: width=70\%}}
 
-gt_plt_bar_stack <- function(
-  gt_object,
-  column = NULL,
-  palette = c("#ff4343", "#bfbfbf", "#0a1c2b"),
-  labels = c("Group 1", "Group 2", "Group 3"),
-  position = "fill",
-  width = 70,
-  fmt_fn = scales::label_number(scale_cut = cut_short_scale(), trim = TRUE)
-) {
+gt_plt_bar_stack <- function(gt_object,
+                             column = NULL,
+                             palette = c("#ff4343", "#bfbfbf", "#0a1c2b"),
+                             labels = c("Group 1", "Group 2", "Group 3"),
+                             position = "fill",
+                             width = 70,
+                             fmt_fn = scales::label_number(scale_cut = cut_short_scale(), trim = TRUE)) {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
   stopifnot("There must be 2 or 3 labels" = (length(labels) %in% c(2:3)))
   stopifnot("There must be 2 or 3 colors in the palette" = (length(palette) %in% c(2:3)))

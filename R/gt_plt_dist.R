@@ -33,17 +33,15 @@
 #' @section Function ID:
 #' 1-4
 
-gt_plt_dist <- function(
-  gt_object,
-  column,
-  type = "density",
-  fig_dim = c(5, 30),
-  line_color = "black",
-  fill_color = "grey",
-  bw = NULL,
-  trim = FALSE,
-  same_limit = TRUE
-) {
+gt_plt_dist <- function(gt_object,
+                        column,
+                        type = "density",
+                        fig_dim = c(5, 30),
+                        line_color = "black",
+                        fill_color = "grey",
+                        bw = NULL,
+                        trim = FALSE,
+                        same_limit = TRUE) {
   is_gt_stop(gt_object)
   # convert tidyeval column to bare string
   col_bare <- dplyr::select(gt_object[["_data"]], {{ column }}) %>% names()
@@ -207,8 +205,10 @@ gt_plt_dist <- function(
 
         total_rng_dens <- stats::density(
           as.vector(
-            stats::na.omit(data_in)), bw = bw
-          )[["x"]]
+            stats::na.omit(data_in)
+          ),
+          bw = bw
+        )[["x"]]
 
         density_calc <- stats::density(input_data[["y"]], bw = bw)
         density_range <- density_calc[["x"]]

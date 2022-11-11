@@ -64,36 +64,33 @@
 #' @family Colors
 #' @section Function ID:
 #' 4-2
-gt_color_rows <- function(
-  gt_object,
-  columns,
-  palette = "ggsci::red_material",
-  direction = 1,
-  domain = NULL,
-  pal_type = c("discrete", "continuous"),
-  ...
-) {
-
+gt_color_rows <- function(gt_object,
+                          columns,
+                          palette = "ggsci::red_material",
+                          direction = 1,
+                          domain = NULL,
+                          pal_type = c("discrete", "continuous"),
+                          ...) {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
-  if(is.null(domain)){
+  if (is.null(domain)) {
     warning(
       "Domain not specified, defaulting to observed range within each specified column.",
       call. = FALSE
-      )
-    }
+    )
+  }
 
   gt_object %>%
     data_color(
       columns = {{ columns }},
       colors = scales::col_numeric(
-        palette = if(grepl(x = palette[1], pattern = "::")){
+        palette = if (grepl(x = palette[1], pattern = "::")) {
           paletteer::paletteer_d(
             palette = palette,
             direction = direction,
             type = pal_type
           ) %>% as.character()
         } else {
-          if(direction == -1){
+          if (direction == -1) {
             rev(palette)
           } else {
             palette

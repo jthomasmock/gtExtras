@@ -23,7 +23,6 @@
 #' }}
 
 gt_plt_summary <- function(df, title = NULL) {
-
   # if no title, return name of input dataframe
   # returns a . for df %>% gt_plt_summary()
   if (is.null(title)) title <- deparse(substitute(df))
@@ -88,11 +87,13 @@ gt_plt_summary <- function(df, title = NULL) {
       heading.border.bottom.width = px(0)
     )
 
-  {if(utils::packageVersion("gt")$minor >= 6){
-    tab_out %>% sub_missing(Mean:SD)
-  } else {
-    tab_out %>% fmt_missing(Mean:SD)
-  }}
+  {
+    if (utils::packageVersion("gt")$minor >= 6) {
+      tab_out %>% sub_missing(Mean:SD)
+    } else {
+      tab_out %>% fmt_missing(Mean:SD)
+    }
+  }
 }
 
 
@@ -218,12 +219,12 @@ plot_data <- function(col, col_name, ...) {
     plot_out <- ggplot(data = df_in, aes(x = x)) +
       geom_histogram(color = "white", fill = "#73a657", binwidth = bw) +
       {
-        if("continuous" %in% ggplot2::scale_type(col)){
+        if ("continuous" %in% ggplot2::scale_type(col)) {
           scale_x_continuous(
             breaks = range(col, na.rm = TRUE),
             labels = scales::label_date()(range(col, na.rm = TRUE))
-            )
-        } else if ("time" %in% ggplot2::scale_type(col)){
+          )
+        } else if ("time" %in% ggplot2::scale_type(col)) {
           scale_x_time(
             breaks = range(col, na.rm = TRUE)
           )
@@ -264,7 +265,7 @@ plot_data <- function(col, col_name, ...) {
     paste0(collapse = "") %>%
     gt::html()
 
-  on.exit(file.remove(out_name), add=TRUE)
+  on.exit(file.remove(out_name), add = TRUE)
 
   img_plot
 }

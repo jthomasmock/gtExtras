@@ -24,11 +24,10 @@
 #' 2-11
 
 gt_add_divider <- function(gt_object, columns, sides = "right", color = "grey",
-                           style = "solid", weight = px(2), include_labels = TRUE){
-
+                           style = "solid", weight = px(2), include_labels = TRUE) {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
 
-  if(isTRUE(include_labels)){
+  if (isTRUE(include_labels)) {
     gt_object %>%
       tab_style(
         style = cell_borders(
@@ -40,7 +39,7 @@ gt_add_divider <- function(gt_object, columns, sides = "right", color = "grey",
         locations = list(
           cells_body(columns = {{ columns }}),
           cells_column_labels(columns = {{ columns }})
-          )
+        )
       )
   } else {
     gt_object %>%
@@ -54,5 +53,4 @@ gt_add_divider <- function(gt_object, columns, sides = "right", color = "grey",
         locations = cells_body(columns = {{ columns }})
       )
   }
-
 }

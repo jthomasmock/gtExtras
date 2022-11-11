@@ -41,13 +41,11 @@
 #' @section Function ID:
 #' 2-10
 
-gt_highlight_rows <- function(
-  gt_object, columns = gt::everything(), rows = TRUE, fill = "#80bcd8",
-  alpha = 0.8, font_weight = "bold", font_color = '#000000', bold_target_only = FALSE, target_col = c()){
-
+gt_highlight_rows <- function(gt_object, columns = gt::everything(), rows = TRUE, fill = "#80bcd8",
+                              alpha = 0.8, font_weight = "bold", font_color = "#000000", bold_target_only = FALSE, target_col = c()) {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
 
-  if(isTRUE(bold_target_only)){
+  if (isTRUE(bold_target_only)) {
     gt_object %>%
       tab_style(
         style = cell_fill(color = fill, alpha = alpha),
@@ -55,7 +53,7 @@ gt_highlight_rows <- function(
           cells_body(
             columns = {{ columns }},
             rows = {{ rows }}
-            )
+          )
       ) %>%
       tab_style(
         style = list(
@@ -66,7 +64,7 @@ gt_highlight_rows <- function(
           rows = {{ rows }}
         )
       )
-  } else{
+  } else {
     gt_object %>%
       tab_style(
         style = list(
@@ -79,5 +77,4 @@ gt_highlight_rows <- function(
         )
       )
   }
-
 }

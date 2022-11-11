@@ -18,8 +18,7 @@
 #' @section Function ID:
 #' 1-7
 
-gt_theme_excel <- function(gt_object, ..., color = "lightgrey"){
-
+gt_theme_excel <- function(gt_object, ..., color = "lightgrey") {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
 
   gt_object %>%

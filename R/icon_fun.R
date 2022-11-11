@@ -18,20 +18,19 @@
 #' 2-4
 
 fa_icon_repeat <- function(name = "star",
-                     repeats = 1,
-                     fill = NULL,
-                     fill_opacity = NULL,
-                     stroke = NULL,
-                     stroke_width = NULL,
-                     stroke_opacity = NULL,
-                     height = NULL,
-                     width = NULL,
-                     margin_left = NULL,
-                     margin_right = NULL,
-                     position = NULL,
-                     title = NULL,
-                     a11y = c("deco", "sem", "none")
-) {
+                           repeats = 1,
+                           fill = NULL,
+                           fill_opacity = NULL,
+                           stroke = NULL,
+                           stroke_width = NULL,
+                           stroke_opacity = NULL,
+                           height = NULL,
+                           width = NULL,
+                           margin_left = NULL,
+                           margin_right = NULL,
+                           position = NULL,
+                           title = NULL,
+                           a11y = c("deco", "sem", "none")) {
   fontawesome::fa(
     name,
     fill,

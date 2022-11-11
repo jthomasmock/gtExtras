@@ -19,12 +19,11 @@
 #' 1-1
 
 
-gt_theme_538 <- function(gt_object,...) {
-
+gt_theme_538 <- function(gt_object, ...) {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
 
   gt_object %>%
-    opt_all_caps()  %>%
+    opt_all_caps() %>%
     opt_table_font(
       font = list(
         google_font("Chivo"),
@@ -50,7 +49,7 @@ gt_theme_538 <- function(gt_object,...) {
       column_labels.background.color = "white",
       heading.border.bottom.style = "none",
       table.border.top.width = px(3),
-      table.border.top.style = "none", #transparent
+      table.border.top.style = "none", # transparent
       table.border.bottom.style = "none",
       column_labels.font.weight = "normal",
       column_labels.border.top.style = "none",
@@ -68,13 +67,13 @@ gt_theme_538 <- function(gt_object,...) {
       table.font.size = 16,
       heading.align = "left",
       ...
-    ) %>% opt_css(
+    ) %>%
+    opt_css(
       "tbody tr:last-child {
     border-bottom: 2px solid #ffffff00;
       }
 
     ",
-    add = TRUE
+      add = TRUE
     )
 }
-

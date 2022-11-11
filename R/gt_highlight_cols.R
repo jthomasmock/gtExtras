@@ -28,19 +28,18 @@
 #'
 
 gt_highlight_cols <- function(gt_object, columns, fill = "#80bcd8", alpha = 1,
-                              font_weight = "normal", font_color = '#000000'){
+                              font_weight = "normal", font_color = "#000000") {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
-    gt_object %>%
-      tab_style(
-        style = list(
-          cell_fill(color = fill, alpha = alpha),
-          cell_text(weight = font_weight, color = font_color),
-          cell_borders(sides = c("top", "bottom"), color = fill)
-        ),
-        locations = cells_body(
-          columns = {{ columns }},
-          rows = TRUE
-        )
+  gt_object %>%
+    tab_style(
+      style = list(
+        cell_fill(color = fill, alpha = alpha),
+        cell_text(weight = font_weight, color = font_color),
+        cell_borders(sides = c("top", "bottom"), color = fill)
+      ),
+      locations = cells_body(
+        columns = {{ columns }},
+        rows = TRUE
       )
-  }
-
+    )
+}

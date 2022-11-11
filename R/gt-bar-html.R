@@ -42,7 +42,6 @@
 
 gt_plt_bar_pct <- function(gt_object, column, height = 16, fill = "purple",
                            background = "#e1e1e1", scaled = FALSE) {
-
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
 
   # convert tidyeval column to bare string
@@ -58,8 +57,11 @@ gt_plt_bar_pct <- function(gt_object, column, height = 16, fill = "purple",
       fn = function(x) {
         max_x <- max(as.double(x), na.rm = TRUE)
         bar <- lapply(data_in, function(x) {
-
-          scaled_value <- if(isFALSE(scaled)){x/max_x*100} else {x}
+          scaled_value <- if (isFALSE(scaled)) {
+            x / max_x * 100
+          } else {
+            x
+          }
 
           glue::glue(
             "<div style='background:{fill};width:{scaled_value}%;height:{height}px;'></div>"

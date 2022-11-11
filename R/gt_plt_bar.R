@@ -29,25 +29,22 @@
 #' @section Function ID:
 #' 3-4
 
-gt_plt_bar <- function(
-  gt_object,
-  column = NULL,
-  color = "purple",
-  ...,
-  keep_column = FALSE,
-  width = 70,
-  scale_type = "none",
-  text_color = "white"
-) {
-
+gt_plt_bar <- function(gt_object,
+                       column = NULL,
+                       color = "purple",
+                       ...,
+                       keep_column = FALSE,
+                       width = 70,
+                       scale_type = "none",
+                       text_color = "white") {
   stopifnot(
     "'gt_object' must be a 'gt_tbl',
             have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object)
-    )
+  )
   stopifnot(
     "`scale_type` must be one of 'number', 'percent' or 'none'" =
       scale_type %in% c("number", "percent", "none")
-    )
+  )
 
   var_sym <- rlang::enquo(column)
   var_bare <- rlang::as_label(var_sym)

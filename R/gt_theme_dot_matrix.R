@@ -18,8 +18,7 @@
 #'
 #' @family Themes
 
-gt_theme_dot_matrix <- function(gt_object, ..., color = "#b5dbb6"){
-
+gt_theme_dot_matrix <- function(gt_object, ..., color = "#b5dbb6") {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
 
   gt_object %>%
@@ -42,12 +41,13 @@ gt_theme_dot_matrix <- function(gt_object, ..., color = "#b5dbb6"){
       table_body.hlines.style = "none",
       table_body.vlines.style = "none",
       data_row.padding = px(1)
-    ) %>% opt_css(
+    ) %>%
+    opt_css(
       "tbody tr:last-child {
     border-bottom: 2px solid #ffffff00;
       }
 
     ",
-    add = TRUE
+      add = TRUE
     )
 }

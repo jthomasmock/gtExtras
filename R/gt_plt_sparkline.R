@@ -29,15 +29,13 @@
 #' @family Plotting
 #' @section Function ID:
 #' 1-4
-gt_plt_sparkline <- function(
-  gt_object,
-  column,
-  type = "default",
-  fig_dim = c(5, 30),
-  palette = c("black", "black", "purple", "green", "lightgrey"),
-  same_limit = TRUE,
-  label = TRUE
-) {
+gt_plt_sparkline <- function(gt_object,
+                             column,
+                             type = "default",
+                             fig_dim = c(5, 30),
+                             palette = c("black", "black", "purple", "green", "lightgrey"),
+                             same_limit = TRUE,
+                             label = TRUE) {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
 
   # convert tidyeval column to bare string

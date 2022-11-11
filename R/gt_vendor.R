@@ -6,17 +6,14 @@
 .dt_boxhead_key <- "_boxhead"
 
 dt_boxhead_get <- function(data) {
-
   dt__get(data, .dt_boxhead_key)
 }
 
 dt_boxhead_set <- function(data, boxh) {
-
   dt__set(data, .dt_boxhead_key, boxh)
 }
 
 dt_boxhead_init <- function(data) {
-
   vars <- colnames(dt_data_get(data = data))
 
   empty_list <- lapply(seq_along(vars), function(x) NULL)
@@ -58,7 +55,6 @@ dt_boxhead_init <- function(data) {
 }
 
 dt_boxhead_edit <- function(data, var, ...) {
-
   dt_boxhead <- data %>% dt_boxhead_get()
 
   var_name <- var
@@ -83,14 +79,13 @@ dt_boxhead_edit <- function(data, var, ...) {
 }
 
 dt_boxhead_add_var <- function(data,
-  var,
-  type,
-  column_label = list(var),
-  column_align = "left",
-  column_width = list(NULL),
-  hidden_px = list(NULL),
-  add_where = "top") {
-
+                               var,
+                               type,
+                               column_label = list(var),
+                               column_align = "left",
+                               column_width = list(NULL),
+                               hidden_px = list(NULL),
+                               add_where = "top") {
   dt_boxhead <- data %>% dt_boxhead_get()
 
   dt_boxhead_row <-
@@ -115,7 +110,6 @@ dt_boxhead_add_var <- function(data,
 }
 
 dt_boxhead_set_hidden <- function(data, vars) {
-
   dt_boxhead <- dt_boxhead_get(data = data)
 
   dt_boxhead[which(dt_boxhead$var %in% vars), "type"] <- "hidden"
@@ -123,7 +117,6 @@ dt_boxhead_set_hidden <- function(data, vars) {
 }
 
 dt_boxhead_set_not_hidden <- function(data, vars) {
-
   dt_boxhead <- dt_boxhead_get(data = data)
 
   dt_boxhead[which(dt_boxhead$var %in% vars), "type"] <- "default"
@@ -131,7 +124,6 @@ dt_boxhead_set_not_hidden <- function(data, vars) {
 }
 
 dt_boxhead_set_stub <- function(data, var) {
-
   dt_boxhead <- dt_boxhead_get(data = data)
 
   dt_boxhead[which(dt_boxhead$var == var), "type"] <- "stub"
@@ -140,7 +132,6 @@ dt_boxhead_set_stub <- function(data, var) {
 }
 
 dt_boxhead_set_row_group <- function(data, vars) {
-
   dt_boxhead <- dt_boxhead_get(data = data)
 
   dt_boxhead[which(dt_boxhead$var %in% vars), "type"] <- "row_group"
@@ -149,7 +140,6 @@ dt_boxhead_set_row_group <- function(data, vars) {
 }
 
 dt_boxhead_edit_column_label <- function(data, var, column_label) {
-
   dt_boxhead_edit(
     data = data,
     var = var,
@@ -158,17 +148,14 @@ dt_boxhead_edit_column_label <- function(data, var, column_label) {
 }
 
 dt_boxhead_get_vars <- function(data) {
-
   dplyr::pull(dt_boxhead_get(data = data), var)
 }
 
 dt_boxhead_get_vars_default <- function(data) {
-
   dplyr::pull(subset(dt_boxhead_get(data = data), type == "default"), var)
 }
 
 dt_boxhead_get_var_stub <- function(data) {
-
   res <- dt_boxhead_get_var_by_type(data = data, type = "stub")
   # FIXME: don't return NA_character_ here, just return res or NULL
   if (length(res) == 0) {
@@ -179,7 +166,6 @@ dt_boxhead_get_var_stub <- function(data) {
 }
 
 dt_boxhead_get_vars_groups <- function(data) {
-
   res <- dt_boxhead_get_var_by_type(data = data, type = "row_group")
   # FIXME: don't return NA_character_ here, just return res or NULL
   if (length(res) == 0) {
@@ -190,13 +176,11 @@ dt_boxhead_get_vars_groups <- function(data) {
 }
 
 dt_boxhead_get_var_by_type <- function(data, type) {
-
   dplyr::filter(dt_boxhead_get(data = data), type == !!type) %>%
     magrittr::extract2("var")
 }
 
 dt_boxhead_get_vars_labels_default <- function(data) {
-
   unlist(
     subset(dt_boxhead_get(data = data), type == "default") %>%
       magrittr::extract2("column_label")
@@ -204,7 +188,6 @@ dt_boxhead_get_vars_labels_default <- function(data) {
 }
 
 dt_boxhead_get_vars_align_default <- function(data) {
-
   unlist(
     subset(dt_boxhead_get(data = data), type == "default") %>%
       magrittr::extract2("column_align")
@@ -212,7 +195,6 @@ dt_boxhead_get_vars_align_default <- function(data) {
 }
 
 dt_boxhead_get_alignment_by_var <- function(data, var) {
-
   data %>%
     dt_boxhead_get() %>%
     dplyr::filter(var == !!var) %>%
@@ -220,25 +202,24 @@ dt_boxhead_get_alignment_by_var <- function(data, var) {
 }
 
 check_names_dt_boxhead_expr <- function(expr) {
-
   if (!all(names(expr) %in% c(
     "type", "column_label", "column_align", "column_width", "hidden_px"
   ))) {
     stop("Expressions must use names available in `dt_boxhead`.",
-      call. = FALSE)
+      call. = FALSE
+    )
   }
 }
 
 check_vars_dt_boxhead <- function(var, dt_boxhead) {
-
   if (!(var %in% dt_boxhead$var)) {
     stop("The `var` value must be value in `dt_boxhead$var`.",
-      call. = FALSE)
+      call. = FALSE
+    )
   }
 }
 
 dt_boxhead_build <- function(data, context) {
-
   boxh <- dt_boxhead_get(data = data)
 
   boxh$column_label <-
@@ -250,17 +231,18 @@ dt_boxhead_build <- function(data, context) {
 }
 
 dt_boxhead_set_var_order <- function(data, vars) {
-
   boxh <- dt_boxhead_get(data = data)
 
   if (length(vars) != nrow(boxh) ||
-      length(unique(vars)) != nrow(boxh) ||
-      !all(vars %in% boxh$var)
+    length(unique(vars)) != nrow(boxh) ||
+    !all(vars %in% boxh$var)
   ) {
     stop("The length of `vars` must be the same the number of rows in `_boxh.")
   }
 
-  order_vars <- vapply(vars, function(x) {which(boxh$var == x)}, numeric(1))
+  order_vars <- vapply(vars, function(x) {
+    which(boxh$var == x)
+  }, numeric(1))
 
   boxh <- boxh[order_vars, ]
 
@@ -274,22 +256,18 @@ dt_boxhead_set_var_order <- function(data, vars) {
 ### https://github.com/rstudio/gt/blob/81694d4c2c9c6cebaea005f04feddda5763fccec/R/export.R
 
 gt_save_html <- function(data,
-  filename,
-  path = NULL,
-  ...,
-  inline_css = FALSE) {
-
+                         filename,
+                         path = NULL,
+                         ...,
+                         inline_css = FALSE) {
   filename <- gtsave_filename(path = path, filename = filename)
 
   if (inline_css) {
-
     data %>%
       as_raw_html(inline_css = inline_css) %>%
       htmltools::HTML() %>%
       htmltools::save_html(filename, ...)
-
   } else {
-
     data %>%
       htmltools::as.tags() %>%
       htmltools::save_html(filename, ...)
@@ -297,7 +275,6 @@ gt_save_html <- function(data,
 }
 
 gtsave_filename <- function(path, filename) {
-
   if (is.null(path)) path <- "."
 
   # The use of `fs::path_abs()` works around
@@ -323,16 +300,15 @@ is_html <- function(x) {
 ### https://github.com/rstudio/gt/blob/ec97f7385166946d7a964ef31b7f6508ccd56550/R/resolver.R
 
 resolve_cols_c <- function(expr,
-  data,
-  strict = TRUE,
-  excl_stub = TRUE,
-  null_means = c("everything", "nothing")) {
-
+                           data,
+                           strict = TRUE,
+                           excl_stub = TRUE,
+                           null_means = c("everything", "nothing")) {
   null_means <- match.arg(null_means)
 
   names(
     resolve_cols_i(
-      expr = {{expr}},
+      expr = {{ expr }},
       data = data,
       strict = strict,
       excl_stub = excl_stub,
@@ -347,7 +323,6 @@ resolve_cols_c <- function(expr,
 utf8_aware_sub <- NULL
 
 .onLoad <- function(libname, pkgname, ...) {
-
   op <- options()
   toset <- !(names(gt_default_options) %in% names(op))
 
@@ -359,21 +334,19 @@ utf8_aware_sub <- NULL
 }
 
 markdown_to_latex <- function(text) {
-
   # Vectorize `commonmark::markdown_latex` and modify output
   # behavior to passthrough NAs
   lapply(text, function(x) {
-
     if (is.na(x)) {
       return(NA_character_)
     }
 
     if (isTRUE(getOption("gt.html_tag_check", TRUE))) {
-
       if (grepl("<[a-zA-Z\\/][^>]*>", x)) {
         warning("HTML tags found, and they will be removed.\n",
           " * set `options(gt.html_tag_check = FALSE)` to disable this check",
-          call. = FALSE)
+          call. = FALSE
+        )
       }
     }
 
@@ -384,7 +357,6 @@ markdown_to_latex <- function(text) {
 }
 
 markdown_to_rtf <- function(text) {
-
   text <-
     text %>%
     as.character() %>%
@@ -405,13 +377,12 @@ markdown_to_rtf <- function(text) {
 
         children <- xml2::xml_children(x)
         if (length(children) == 1 &&
-            xml2::xml_type(children[[1]]) == "element" &&
-            xml2::xml_name(children[[1]]) == "paragraph") {
+          xml2::xml_type(children[[1]]) == "element" &&
+          xml2::xml_name(children[[1]]) == "paragraph") {
           children <- xml2::xml_children(children[[1]])
         }
 
         apply_rules <- function(x) {
-
           if (inherits(x, "xml_nodeset")) {
             len <- length(x)
             results <- character(len) # preallocate vector
@@ -422,7 +393,6 @@ markdown_to_rtf <- function(text) {
             rtf_raw(paste0("", results, collapse = ""))
           } else {
             output <- if (xml2::xml_type(x) == "element") {
-
               rule <- cmark_rules[[xml2::xml_name(x)]]
               if (is.null(rule)) {
                 rlang::warn(
@@ -453,21 +423,19 @@ markdown_to_rtf <- function(text) {
 }
 
 markdown_to_text <- function(text) {
-
   # Vectorize `commonmark::markdown_text` and modify output
   # behavior to passthrough NAs
   lapply(text, function(x) {
-
     if (is.na(x)) {
       return(NA_character_)
     }
 
     if (isTRUE(getOption("gt.html_tag_check", TRUE))) {
-
       if (grepl("<[a-zA-Z\\/][^>]*>", x)) {
         warning("HTML tags found, and they will be removed.\n",
           " * set `options(gt.html_tag_check = FALSE)` to disable this check",
-          call. = FALSE)
+          call. = FALSE
+        )
       }
     }
 
@@ -486,7 +454,6 @@ gt_default_options <- list(
 )
 
 tidy_gsub <- function(x, pattern, replacement, fixed = FALSE) {
-
   if (!utf8_aware_sub) {
     # See variable definition for utf8_aware_sub for more info
     x <- enc2utf8(as.character(x))
@@ -509,8 +476,7 @@ tidy_gsub <- function(x, pattern, replacement, fixed = FALSE) {
 #' sanitization.
 #' @noRd
 process_text <- function(text,
-  context = "html") {
-
+                         context = "html") {
   # If text is marked `AsIs` (by using `I()`) then just
   # return the text unchanged
   if (inherits(text, "AsIs")) {
@@ -524,90 +490,66 @@ process_text <- function(text,
   }
 
   if (context == "html") {
-
     # Text processing for HTML output
 
     if (inherits(text, "from_markdown")) {
-
       text <-
         as.character(text) %>%
         vapply(commonmark::markdown_html, character(1)) %>%
         stringr::str_replace_all(c("^<p>" = "", "</p>\n$" = ""))
 
       return(text)
-
     } else if (is_html(text) || inherits(text, "shiny.tag") || inherits(text, "shiny.tag.list")) {
-
       text <- as.character(text)
 
       return(text)
-
     } else {
-
       text <- htmltools::htmlEscape(as.character(text))
 
       return(text)
     }
   } else if (context == "latex") {
-
     # Text processing for LaTeX output
 
     if (inherits(text, "from_markdown")) {
-
       text <- markdown_to_latex(text = text)
 
       return(text)
-
     } else if (is_html(text)) {
-
       text <- as.character(text)
 
       return(text)
-
     } else {
-
       text <- escape_latex(text = text)
 
       return(text)
     }
   } else if (context == "rtf") {
-
     # Text processing for RTF output
 
     if (inherits(text, "from_markdown")) {
-
       return(markdown_to_rtf(text))
-
     } else if (inherits(text, "rtf_text")) {
-
       text <- as.character(text)
 
       return(text)
-
     } else {
-
       text <- rtf_escape(text)
 
       return(text)
     }
   } else {
-
     # Text processing in the default case
 
     if (inherits(text, "from_markdown")) {
-
       text <- markdown_to_text(text = text)
 
       return(text)
-
     } else if (is_html(text)) {
-
       text <- as.character(text)
 
       return(text)
-
     } else {
-
       text <- htmltools::htmlEscape(as.character(text))
 
       return(text)
@@ -628,8 +570,9 @@ rtf_raw <- function(...) {
 }
 
 rtf_escape <- function(x) {
-
-  if (length(x) < 1) return(x)
+  if (length(x) < 1) {
+    return(x)
+  }
 
   x <- gsub("\\", "\\'5c", x, fixed = TRUE)
   x <- gsub("{", "\\'7b", x, fixed = TRUE)
@@ -649,7 +592,6 @@ rtf_escape <- function(x) {
 .dt_spanners_key <- "_spanners"
 
 dt_spanners_get <- function(data) {
-
   dt__get(data, .dt_spanners_key)
 }
 
@@ -658,7 +600,6 @@ dt_spanners_get <- function(data) {
 .dt_stub_df_key <- "_stub_df"
 
 dt_stub_df_get <- function(data) {
-
   dt__get(data, .dt_stub_df_key)
 }
 
@@ -732,12 +673,9 @@ expand_short_hex <- function(colors) {
 #' output is a single color value in #RRGGBB hexadecimal format
 #'
 #' @noRd
-ideal_fgnd_color <- function(
-    bgnd_color,
-    light = "#FFFFFF",
-    dark = "#000000"
-) {
-
+ideal_fgnd_color <- function(bgnd_color,
+                             light = "#FFFFFF",
+                             dark = "#000000") {
   # Normalize color to hexadecimal color if it is in the 'rgba()' string format
   bgnd_color <- rgba_to_hex(colors = bgnd_color)
 
@@ -760,7 +698,6 @@ ideal_fgnd_color <- function(
 #'
 #' @noRd
 rgba_to_hex <- function(colors) {
-
   colors_vec <- rep(NA_character_, length(colors))
 
   colors_rgba <- is_rgba_col(colors = colors)
@@ -774,7 +711,8 @@ rgba_to_hex <- function(colors) {
     unlist() %>%
     as.numeric() %>%
     matrix(
-      ., ncol = 4,
+      .,
+      ncol = 4,
       dimnames = list(c(), c("r", "g", "b", "alpha")),
       byrow = TRUE
     )
@@ -806,10 +744,8 @@ rgba_to_hex <- function(colors) {
 #'
 #' @noRd
 html_color <- function(colors, alpha = NULL) {
-
   # Stop function if there are any NA values in `colors`
   if (any(is.na(colors))) {
-
     stop("No values supplied in `colors` should be `NA`.", call. = FALSE)
   }
 
@@ -830,7 +766,6 @@ html_color <- function(colors, alpha = NULL) {
   named_colors <- colors[is_named]
 
   if (length(named_colors) > 0) {
-
     # Ensure that all color names are in the set of X11/R color
     # names or CSS color names
     check_named_colors(named_colors)
@@ -845,7 +780,6 @@ html_color <- function(colors, alpha = NULL) {
     is_css_excl_named <- colors %in% names(css_exclusive_colors())
 
     if (any(is_css_excl_named)) {
-
       # The `css_exclusive_colors()` function returns a named vector
       # of the CSS colors not in the X11/R set; the names are the hexadecimal
       # color values
@@ -869,7 +803,6 @@ html_color <- function(colors, alpha = NULL) {
 # from an RGBA color matrix (already subsetted to those
 # rows where alpha < 1)
 col_matrix_to_rgba <- function(color_matrix) {
-
   paste0(
     "rgba(",
     color_matrix[, "red"], ",",
@@ -884,7 +817,6 @@ col_matrix_to_rgba <- function(color_matrix) {
 # compatibility with colors having some transparency) from hexadecimal color
 # values and X11/R color names
 normalize_colors <- function(colors, alpha) {
-
   # Create a color matrix with an `alpha` column
   color_matrix <- t(grDevices::col2rgb(col = colors, alpha = TRUE))
   color_matrix[, "alpha"] <- color_matrix[, "alpha"] / 255
@@ -918,7 +850,6 @@ normalize_colors <- function(colors, alpha) {
 }
 
 css_exclusive_colors <- function() {
-
   color_tbl_subset <- css_colors[!css_colors$is_x11_color, ]
 
   color_values <- color_tbl_subset[["hexadecimal"]]
@@ -937,11 +868,9 @@ valid_color_names <- function() {
 }
 
 check_named_colors <- function(named_colors) {
-
   named_colors <- tolower(named_colors)
 
   if (!all(named_colors %in% valid_color_names())) {
-
     invalid_colors <- base::setdiff(unique(named_colors), valid_color_names())
 
     one_several_invalid <-
@@ -955,6 +884,5 @@ check_named_colors <- function(named_colors) {
       "Only R/X11 color names and CSS 3.0 color names can be used.",
       call. = FALSE
     )
-
   }
 }

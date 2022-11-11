@@ -10,24 +10,23 @@
 #'
 #' @examples
 #' library(gt)
-#' pct_tab <- dplyr::tibble(x = c(.001,.05,.008,.1,.2,.5,.9)) %>%
+#' pct_tab <- dplyr::tibble(x = c(.001, .05, .008, .1, .2, .5, .9)) %>%
 #'   gt::gt() %>%
-#'   fmt_pct_extra(x, scale = 100, accuracy=.1)
+#'   fmt_pct_extra(x, scale = 100, accuracy = .1)
 #' @family Utilities
 
-fmt_pct_extra <- function(gt_object, columns, ..., scale = 1){
-
+fmt_pct_extra <- function(gt_object, columns, ..., scale = 1) {
   gt_object %>%
     text_transform(
       locations = cells_body(columns = {{ columns }}),
-      fn = function(x){
+      fn = function(x) {
         x <- as.double(x)
 
         x <- scales::label_percent(..., scale = scale)(x)
 
-        sapply(x, function(xy){
+        sapply(x, function(xy) {
           xz <- gsub(x = xy, "%", "") %>% as.double()
-          if(xz >= 1){
+          if (xz >= 1) {
             xy
           } else {
             gt::html("<span style='color:grey;'><1%</span>")
@@ -37,6 +36,3 @@ fmt_pct_extra <- function(gt_object, columns, ..., scale = 1){
     ) %>%
     cols_align("right", columns = {{ columns }})
 }
-
-
-

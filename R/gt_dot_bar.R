@@ -26,9 +26,8 @@
 #'
 #' @family Themes
 
-gt_plt_dot <- function(gt_object, column, category_column , palette = NULL,
-                       max_value = NULL){
-
+gt_plt_dot <- function(gt_object, column, category_column, palette = NULL,
+                       max_value = NULL) {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
 
   # segment data with bare string column name
@@ -40,30 +39,31 @@ gt_plt_dot <- function(gt_object, column, category_column , palette = NULL,
 
   total_max <- max(data_in, na.rm = TRUE)
 
-  if(length(palette) == 1){
-    if(grepl(x = palette, pattern = "::", fixed = TRUE)){
+  if (length(palette) == 1) {
+    if (grepl(x = palette, pattern = "::", fixed = TRUE)) {
       palette <- paletteer::paletteer_d(
         palette = palette
       ) %>% as.character()
     } else {
       palette <- palette %>% rep(length(cat_levels))
     }
-  } else if(is.null(palette)){
-    palette <- c("#762a83", "#af8dc3", "#e7d4e8", "#f7f7f7",
-                 "#d9f0d3", "#7fbf7b", "#1b7837")
+  } else if (is.null(palette)) {
+    palette <- c(
+      "#762a83", "#af8dc3", "#e7d4e8", "#f7f7f7",
+      "#d9f0d3", "#7fbf7b", "#1b7837"
+    )
   } else {
     palette <- palette
   }
 
   bar_chart <- function(value, fill = "red") {
-    max_x <- if(is.null(max_value)){
+    max_x <- if (is.null(max_value)) {
       max(as.double(data_in), na.rm = TRUE)
     } else {
       max_value
     }
     bar <- lapply(value, function(x) {
-
-      scaled_value <- as.double(x)/max_x*100
+      scaled_value <- as.double(x) / max_x * 100
 
       glue::glue(
         "<div style='background:{fill};width:{scaled_value}%;height:4px;border-radius: 2px'></div>"
@@ -74,15 +74,15 @@ gt_plt_dot <- function(gt_object, column, category_column , palette = NULL,
       glue::glue(
         "<div style='flex-grow:1;margin-left:0px;'>{bar}</div>"
       ) %>%
-        as.character() %>% gt::html()
+        as.character() %>%
+        gt::html()
     })
 
     chart
   }
 
-  color_dots <- function(x){
-
-    if(x %in% c("NA", "NULL")){
+  color_dots <- function(x) {
+    if (x %in% c("NA", "NULL")) {
       return("<div></div>")
     }
 
@@ -91,9 +91,11 @@ gt_plt_dot <- function(gt_object, column, category_column , palette = NULL,
     category_label <- split_cols[1]
     val_x <- split_cols[2]
 
-    colors <- scales::col_factor(palette = palette,
-                                 domain = NULL,
-                                 levels = cat_levels)(category_label)
+    colors <- scales::col_factor(
+      palette = palette,
+      domain = NULL,
+      levels = cat_levels
+    )(category_label)
 
     htmltools::div(
       htmltools::div(
@@ -117,7 +119,8 @@ gt_plt_dot <- function(gt_object, column, category_column , palette = NULL,
         )
       ),
       htmltools::div(htmltools::div(bar_chart(val_x, fill = colors)),
-                     style = "position: relative;top: 1.2em;")
+        style = "position: relative;top: 1.2em;"
+      )
     ) %>%
       as.character() %>%
       gt::html()

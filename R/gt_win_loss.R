@@ -41,14 +41,12 @@
 #' @section Function ID:
 #' 3-1
 
-gt_plt_winloss <- function(
-  gt_object,
-  column,
-  max_wins = 17,
-  palette = c("#013369", "#D50A0A", "gray"),
-  type = "pill",
-  width = max_wins / 0.83
-) {
+gt_plt_winloss <- function(gt_object,
+                           column,
+                           max_wins = 17,
+                           palette = c("#013369", "#D50A0A", "gray"),
+                           type = "pill",
+                           width = max_wins / 0.83) {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
   stopifnot("type must be on of 'pill' or 'square'" = {
     type %in% c("pill", "square")

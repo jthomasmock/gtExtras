@@ -18,7 +18,6 @@ gtsave_extra <- function(data,
                          ...,
                          zoom = 2,
                          expand = 5) {
-
   filename <- gtsave_filename(path = path, filename = filename)
 
   # Create a temporary file with the `html` extension
@@ -39,10 +38,9 @@ gtsave_extra <- function(data,
   # Saving an image requires the webshot2 package; if it's
   # not present, stop with a message
   if (!rlang::is_installed("webshot2")) {
-
     stop("The 'webshot2' package is required for saving images of gt tables.)",
-      call. = FALSE)
-
+      call. = FALSE
+    )
   } else {
     # Save the image in the working directory
     webshot2::webshot(
@@ -54,7 +52,7 @@ gtsave_extra <- function(data,
     )
   }
 
-  if(interactive()){
+  if (interactive()) {
     htmltools::browsable(data)
   }
 }

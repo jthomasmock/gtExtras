@@ -9,8 +9,7 @@
 #' @import rlang
 #' @noRd
 resolve_cells_body <- function(data,
-  object) {
-
+                               object) {
   # Get the `stub_df` data frame from `data`
   stub_df <- dt_stub_df_get(data = data)
   data_tbl <- dt_data_get(data = data)
@@ -64,8 +63,7 @@ resolve_cells_body <- function(data,
 #' @param object The list object created by the `cells_stub()` function.
 #' @noRd
 resolve_cells_stub <- function(data,
-  object) {
-
+                               object) {
   #
   # Resolution of rows as integer vectors
   # providing the positions of the matched variables
@@ -93,8 +91,7 @@ resolve_cells_stub <- function(data,
 #'   function.
 #' @noRd
 resolve_cells_column_labels <- function(data,
-  object) {
-
+                                        object) {
   #
   # Resolution of columns as integer vectors
   # providing the positions of the matched variables
@@ -122,8 +119,7 @@ resolve_cells_column_labels <- function(data,
 #'   function.
 #' @noRd
 resolve_cells_column_spanners <- function(data,
-  object) {
-
+                                          object) {
   #
   # Resolution of spanners as column spanner names
   #
@@ -162,16 +158,15 @@ resolve_cells_column_spanners <- function(data,
 #' @return Character vector
 #' @noRd
 resolve_cols_c <- function(expr,
-  data,
-  strict = TRUE,
-  excl_stub = TRUE,
-  null_means = c("everything", "nothing")) {
-
+                           data,
+                           strict = TRUE,
+                           excl_stub = TRUE,
+                           null_means = c("everything", "nothing")) {
   null_means <- match.arg(null_means)
 
   names(
     resolve_cols_i(
-      expr = {{expr}},
+      expr = {{ expr }},
       data = data,
       strict = strict,
       excl_stub = excl_stub,
@@ -190,17 +185,15 @@ resolve_cols_c <- function(expr,
 #' @return Named integer vector
 #' @noRd
 resolve_cols_i <- function(expr,
-  data,
-  strict = TRUE,
-  excl_stub = TRUE,
-  null_means = c("everything", "nothing")) {
-
+                           data,
+                           strict = TRUE,
+                           excl_stub = TRUE,
+                           null_means = c("everything", "nothing")) {
   quo <- rlang::enquo(expr)
   cols_excl <- c()
   null_means <- match.arg(null_means)
 
   if (is_gt(data)) {
-
     cols <- colnames(dt_data_get(data = data))
 
     # In most cases we would want to exclude the column that
@@ -241,7 +234,6 @@ resolve_cols_i <- function(expr,
 #' @param quo A quosure that might contain legacy gt column criteria
 #' @noRd
 translate_legacy_resolver_expr <- function(quo, null_means) {
-
   expr <- rlang::quo_get_expr(quo = quo)
 
   if (identical(expr, FALSE)) {
@@ -252,9 +244,7 @@ translate_legacy_resolver_expr <- function(quo, null_means) {
     )
 
     rlang::quo_set_expr(quo = quo, expr = quote(NULL))
-
   } else if (identical(expr, TRUE)) {
-
     warning(
       "`columns = TRUE` has been deprecated in gt 0.3.0:\n",
       "* please use `columns = everything()` instead",
@@ -262,11 +252,8 @@ translate_legacy_resolver_expr <- function(quo, null_means) {
     )
 
     rlang::quo_set_expr(quo = quo, expr = quote(everything()))
-
   } else if (is.null(expr)) {
-
     if (null_means == "everything") {
-
       warning(
         "`columns = NULL` has been deprecated in gt 0.3.0:\n",
         "* please use `columns = everything()` instead",
@@ -274,13 +261,10 @@ translate_legacy_resolver_expr <- function(quo, null_means) {
       )
 
       rlang::quo_set_expr(quo = quo, expr = quote(everything()))
-
     } else {
       rlang::quo_set_expr(quo = quo, expr = quote(NULL))
     }
-
   } else if (rlang::quo_is_call(quo = quo, name = "vars")) {
-
     warning(
       "`columns = vars(...)` has been deprecated in gt 0.3.0:\n",
       "* please use `columns = c(...)` instead",
@@ -291,7 +275,6 @@ translate_legacy_resolver_expr <- function(quo, null_means) {
       quo = quo,
       expr = rlang::call2(quote(c), !!!rlang::call_args(expr))
     )
-
   } else {
     # No legacy expression detected
     quo
@@ -299,7 +282,6 @@ translate_legacy_resolver_expr <- function(quo, null_means) {
 }
 
 resolve_rows_l <- function(expr, data) {
-
   if (is_gt(data)) {
     row_names <- dt_stub_df_get(data)$rowname
     data <- dt_data_get(data = data)
@@ -318,7 +300,6 @@ resolve_rows_l <- function(expr, data) {
     )
 
   if (is.null(resolved)) {
-
     warning(
       "The use of `NULL` for rows has been deprecated in gt 0.3.0:\n",
       "* please use `TRUE` instead",
@@ -344,12 +325,9 @@ resolve_rows_i <- function(expr, data) {
   which(resolve_rows_l(expr = {{ expr }}, data = data))
 }
 
-resolve_vector_l <- function(
-    expr,
-  vector,
-  item_label = "item"
-) {
-
+resolve_vector_l <- function(expr,
+                             vector,
+                             item_label = "item") {
   quo <- rlang::enquo(expr)
 
   resolved <-
@@ -373,14 +351,12 @@ resolve_vector_i <- function(expr, vector, item_label = "item") {
 }
 
 normalize_resolved <- function(resolved,
-  item_names,
-  item_label) {
-
+                               item_names,
+                               item_label) {
   item_count <- length(item_names)
   item_sequence <- seq_along(item_names)
 
   if (is.null(resolved)) {
-
     # Maintained for backcompatability
     resolved <- rep_len(TRUE, item_count)
 
@@ -388,13 +364,11 @@ normalize_resolved <- function(resolved,
     # want to either make this warning conditional (after investigating which
     # resolving contexts still allow `NULL`)
     warning(
-      "The use of `NULL` for ", item_label , "s has been deprecated in gt 0.3.0:\n",
+      "The use of `NULL` for ", item_label, "s has been deprecated in gt 0.3.0:\n",
       "* please use `everything()` instead",
       call. = FALSE
     )
-
   } else if (is.logical(resolved)) {
-
     if (length(resolved) == 1) {
       resolved <- rep_len(resolved, item_count)
     } else if (length(resolved) == item_count) {
@@ -402,23 +376,18 @@ normalize_resolved <- function(resolved,
     } else {
       resolver_stop_on_logical(item_label = item_label)
     }
-
   } else if (is.numeric(resolved)) {
-
     unknown_resolved <- setdiff(resolved, item_sequence)
     if (length(unknown_resolved) != 0) {
       resolver_stop_on_numeric(item_label = item_label, unknown_resolved = unknown_resolved)
     }
     resolved <- item_sequence %in% resolved
-
   } else if (is.character(resolved)) {
-
     unknown_resolved <- setdiff(resolved, item_names)
     if (length(unknown_resolved) != 0) {
       resolver_stop_on_character(item_label = item_label, unknown_resolved = unknown_resolved)
     }
     resolved <- item_names %in% resolved
-
   } else {
     resolver_stop_unknown(item_label = item_label, resolved = resolved)
   }
@@ -427,7 +396,6 @@ normalize_resolved <- function(resolved,
 }
 
 resolver_stop_on_logical <- function(item_label) {
-
   stop(
     "The number of logical values must either be 1 or the number of ",
     item_label, "s",
@@ -436,7 +404,6 @@ resolver_stop_on_logical <- function(item_label) {
 }
 
 resolver_stop_on_numeric <- function(item_label, unknown_resolved) {
-
   stop(
     "The following ", item_label, " indices do not exist in the data: ",
     paste0(unknown_resolved, collapse = ", "),
@@ -445,7 +412,6 @@ resolver_stop_on_numeric <- function(item_label, unknown_resolved) {
 }
 
 resolver_stop_on_character <- function(item_label, unknown_resolved) {
-
   stop(
     "The following ", item_label, "(s) do not exist in the data: ",
     paste0(unknown_resolved, collapse = ", "),
@@ -454,7 +420,6 @@ resolver_stop_on_character <- function(item_label, unknown_resolved) {
 }
 
 resolver_stop_unknown <- function(item_label, resolved) {
-
   stop(
     "Don't know how to select ", item_label, "s using an object of class ",
     class(resolved)[1],

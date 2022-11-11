@@ -19,8 +19,7 @@
 #' @section Function ID:
 #' 1-3
 
-gt_theme_nytimes <- function(gt_object, ...){
-
+gt_theme_nytimes <- function(gt_object, ...) {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
 
   gt_object %>%
@@ -45,19 +44,19 @@ gt_theme_nytimes <- function(gt_object, ...){
         transform = "uppercase"
       ),
       locations = cells_column_labels(everything())
-    )  %>%
+    ) %>%
     tab_style(
-      style = cell_text(font = google_font("Libre Franklin"),
-                        weight = 800),
+      style = cell_text(
+        font = google_font("Libre Franklin"),
+        weight = 800
+      ),
       locations = cells_title(groups = "title")
     ) %>%
     tab_style(
       style = cell_text(
         font = google_font("Source Sans Pro"),
-        weight =  400
+        weight = 400
       ),
       locations = cells_body()
     )
-
 }
-

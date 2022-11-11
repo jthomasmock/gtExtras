@@ -5,9 +5,10 @@
 #' @param width A numeric indicating the
 #' @return gt table
 #'
-add_pcttile_plot <- function(data, palette, add_label, width){
-
-  if(data %in% c("NA", "NULL", NA, NULL)){ return("<div></div>")}
+add_pcttile_plot <- function(data, palette, add_label, width) {
+  if (data %in% c("NA", "NULL", NA, NULL)) {
+    return("<div></div>")
+  }
   stopifnot("Values must be between 0 and 100" = dplyr::between(data, 0, 100))
 
   df_in <- dplyr::tibble(
@@ -16,25 +17,37 @@ add_pcttile_plot <- function(data, palette, add_label, width){
 
   out_pct_plt <- ggplot(df_in) +
     geom_vline(xintercept = 50, color = "black", linewidth = 0.5) +
-    geom_vline(xintercept = c(0,25,75,100), color = "grey", linewidth = 0.25) +
+    geom_vline(xintercept = c(0, 25, 75, 100), color = "grey", linewidth = 0.25) +
     geom_hline(yintercept = 1, color = "lightgrey", linewidth = 0.25, linetype = "dotted") +
-    geom_point(aes(x = .data$x, y = .data$y, fill = I(.data$color)), color = "black", size = 3, stroke = 0.5,
-               shape = 21) +
+    geom_point(aes(x = .data$x, y = .data$y, fill = I(.data$color)),
+      color = "black", size = 3, stroke = 0.5,
+      shape = 21
+    ) +
     theme_void() +
-    coord_cartesian(xlim = c(0,100),
-                    ylim = c(0.6, 1.2), clip = "off")
+    coord_cartesian(
+      xlim = c(0, 100),
+      ylim = c(0.6, 1.2), clip = "off"
+    )
 
-  if(isTRUE(add_label)){
+  if (isTRUE(add_label)) {
     out_pct_plt <- out_pct_plt +
-      geom_text(data = NULL,
-        aes(x = 1, y = .61, label = "0"), hjust = 0,vjust = 0,
-        size = 1.5, family = "mono", color = "black") +
-      geom_text(aes(x = 99, y = 0.61, label = "100"), hjust = 1,vjust = 0,
-                size = 1.5, family = "mono", color = "black") +
-      geom_text(aes(x = 49, y = 0.61, label = "5"), hjust = 1, vjust = 0,
-                size = 1.5, family = "mono", color = "black") +
-      geom_text(aes(x = 51, y = 0.61, label = "0"), hjust = 0, vjust = 0,
-                size = 1.5, family = "mono", color = "black")
+      geom_text(
+        data = NULL,
+        aes(x = 1, y = .61, label = "0"), hjust = 0, vjust = 0,
+        size = 1.5, family = "mono", color = "black"
+      ) +
+      geom_text(aes(x = 99, y = 0.61, label = "100"),
+        hjust = 1, vjust = 0,
+        size = 1.5, family = "mono", color = "black"
+      ) +
+      geom_text(aes(x = 49, y = 0.61, label = "5"),
+        hjust = 1, vjust = 0,
+        size = 1.5, family = "mono", color = "black"
+      ) +
+      geom_text(aes(x = 51, y = 0.61, label = "0"),
+        hjust = 0, vjust = 0,
+        size = 1.5, family = "mono", color = "black"
+      )
   } else {
     out_pct_plt <- out_pct_plt
   }
@@ -45,18 +58,19 @@ add_pcttile_plot <- function(data, palette, add_label, width){
     fileext = ".svg"
   ))
 
-  ggsave(out_name, out_pct_plt, height = 5, width = width,
-         dpi = 25.4, units = "mm", device = "svg")
+  ggsave(out_name, out_pct_plt,
+    height = 5, width = width,
+    dpi = 25.4, units = "mm", device = "svg"
+  )
 
   img_plot <- readLines(out_name) %>%
     paste0(collapse = "") %>%
     gt::html()
 
-  on.exit(file.remove(out_name), add=TRUE)
+  on.exit(file.remove(out_name), add = TRUE)
 
   img_plot
-
-  }
+}
 
 #' Create a dot plot for percentiles
 #' @description Creates a percentile dot plot in each row. Can be used as an
@@ -85,8 +99,8 @@ add_pcttile_plot <- function(data, palette, add_label, width){
 #' @section Function ID:
 #' 3-8
 gt_plt_percentile <- function(gt_object, column,
-                               palette = c("#007ad6", "#f0f0f0", "#f72e2e"),
-                               width = 25, scale = 1) {
+                              palette = c("#007ad6", "#f0f0f0", "#f72e2e"),
+                              width = 25, scale = 1) {
   gt_object %>%
     text_transform(
       locations = cells_body({{ column }}),
@@ -94,11 +108,12 @@ gt_plt_percentile <- function(gt_object, column,
         x <- as.double(x) * scale
         n_vals <- 1:length(x)
 
-        stopifnot("Values must be scaled between 0 and 100"= dplyr::between(x, 0, 100))
+        stopifnot("Values must be scaled between 0 and 100" = dplyr::between(x, 0, 100))
 
         col_pal <- scales::col_quantile(
           palette = palette, domain = c(0:100),
-          reverse = TRUE, alpha = TRUE, n = 5)(x)
+          reverse = TRUE, alpha = TRUE, n = 5
+        )(x)
 
         add_label <- n_vals %in% c(min(n_vals), max(n_vals))
 
@@ -106,4 +121,3 @@ gt_plt_percentile <- function(gt_object, column,
       }
     )
 }
-

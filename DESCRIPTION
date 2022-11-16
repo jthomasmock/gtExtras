@@ -17,10 +17,10 @@ BugReports: https://github.com/jthomasmock/gtExtras/issues
 Imports: 
     commonmark,
     dplyr (>= 1.0.9),
-    fontawesome (>= 0.3.0),
-    ggplot2 (>= 3.3.6),
+    fontawesome (>= 0.4.0),
+    ggplot2 (>= 3.4.0),
     glue (>= 1.6.1),
-    gt (>= 0.7),
+    gt (>= 0.8.0),
     htmltools (>= 0.5.3),
     paletteer (>= 1.4.0),
     rlang (>= 1.0.4),

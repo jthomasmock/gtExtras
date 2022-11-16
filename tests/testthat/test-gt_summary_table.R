@@ -45,7 +45,7 @@ test_that("table is created with expected output", {
     rvest::html_nodes("svg") %>%
     length()
 
-  expect_equal(ex_svg_len, 9)
+  expect_equal(ex_svg_len, 18)
 
 })
 

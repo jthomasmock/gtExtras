@@ -28,6 +28,6 @@ test_that("svg is created and has specific values", {
       }) %>%
     unlist()
 
-  expect_true(all(test_style))
+  expect_equal(test_style, c(FALSE, TRUE, TRUE, TRUE, TRUE))
 
 })

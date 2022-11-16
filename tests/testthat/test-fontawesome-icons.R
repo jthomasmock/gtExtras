@@ -16,11 +16,11 @@ test_that("fontawesome, test repeats", {
       rvest::html_attr("aria-label")
   }
 
-  expect_equal(row_counter(1), rep("Car", 5))
-  expect_equal(row_counter(2), rep("Car", 5))
-  expect_equal(row_counter(3), rep("Car", 3))
-  expect_equal(row_counter(4), rep("Car", 5))
-  expect_equal(row_counter(5), rep("Car", 7))
+  expect_equal(row_counter(1), rep("Car", 6))
+  expect_equal(row_counter(2), rep("Car", 6))
+  expect_equal(row_counter(3), rep("Car", 4))
+  expect_equal(row_counter(4), rep("Car", 6))
+  expect_equal(row_counter(5), rep("Car", 8))
   expect_equal(row_counter(6), character(0))
 
 })
@@ -115,10 +115,10 @@ test_that("fontawesome, test repeats", {
 
   pal_out <- c("red", "blue", "green")
 
-  pal_rep <- c(rep("red", 10), rep("blue", 3), rep("red", 5), rep("green", 7))
+  pal_rep <- c(rep("red", 12), rep("blue", 4), rep("red", 6), rep("green", 8))
 
-  expect_equal(color_fn("#FF0000"), rep("#FF0000", 25))
-  expect_equal(color_fn("blue"), rep("blue", 25))
+  expect_equal(color_fn("#FF0000"), rep("#FF0000", 30))
+  expect_equal(color_fn("blue"), rep("blue", 30))
   expect_equal(color_fn(pal_out), pal_rep)
 
 })

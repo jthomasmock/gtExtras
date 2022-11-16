@@ -34,7 +34,7 @@ test_that("gt_plt_conf_int generates correct points/text", {
     unlist() %>%
     unname()
 
-  expect_equal(ci_tab_style, rep("stroke-width: 1.06; stroke: #FFFFFF; fill: #000000;",3))
+  expect_equal(ci_tab_style, rep("stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 10.00; stroke-width: 1.06; stroke: #FFFFFF; fill: #000000;",3))
 
   ci_tab_svg <- ci_tab_attrs %>%
     lapply(function(x){
@@ -80,7 +80,7 @@ test_that("gt_plt_conf_int uses correct points/text/colors", {
     unlist() %>%
     unname()
 
-  expect_equal(pre_tab_style, rep("stroke-width: 1.06; fill: #FF0000;",2))
+  expect_equal(pre_tab_style, rep("stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 10.00; stroke-width: 1.06; fill: #FF0000;",2))
 
   pre_tab_svg <- pre_tab_attrs %>%
     lapply(function(x){

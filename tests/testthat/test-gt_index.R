@@ -37,15 +37,18 @@ test_that("gt_index has correct inputs, correct ouput index, and can affect corr
     gt::as_raw_html() %>%
     rvest::read_html()
 
-  tab_styled <- tab_out_styled %>%
-    rvest::html_elements("td:nth-child(1)") %>%
-    .[c(2:4, 6:8, 10:12)] %>%
-    rvest::html_attr("style")
+  expect_equal(
+    tab_out_styled %>%
+      rvest::html_elements("td:nth-child(1)") %>%
+      as.character() %>%
+      grepl("background-color", .),
+    c(TRUE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE)
+  )
 
-  tab_pattern <- "background-color: \\s*(.*?)\\s*;"
-  reg_matches <- regmatches(tab_styled, regexec(tab_pattern, tab_styled)) %>%
-    lapply(function(x){x[2]}) %>%
-    unlist()
+  # tab_pattern <- "background-color: \\s*(.*?)\\s*;"
+  # reg_matches <- regmatches(tab_styled, regexec(tab_pattern, tab_styled)) %>%
+  #   lapply(function(x){x[2]}) %>%
+  #   unlist()
 
 #
 # # Expect color backgrounds to match ---------------------------------------

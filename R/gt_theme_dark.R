@@ -38,7 +38,6 @@ gt_theme_dark <- function(gt_object, ...) {
       column_labels.background.color = "#333333",
       column_labels.border.bottom.width = 3,
       column_labels.border.bottom.color = "white",
-      column_labels.font.size = px(12),
       data_row.padding = px(7),
       ...
     ) %>%

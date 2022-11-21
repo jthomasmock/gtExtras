@@ -64,8 +64,9 @@ test_tab <- sliced_data \%>\%
 
 # can style a specific column based on the contents of another column
 tab_out_styled <- test_tab \%>\%
-  tab_style(locations = cells_body(mpg, rows = gt_index(., am) == 0),
-            style = cell_fill("red")
+  tab_style(
+    locations = cells_body(mpg, rows = gt_index(., am) == 0),
+    style = cell_fill("red")
   )
 
 # OR can extract the underlying data in the "correct order"

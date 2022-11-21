@@ -57,14 +57,14 @@ in the remaining rows.
 library(gt)
 fmted_tab <- gtcars \%>\%
   head() \%>\%
-    dplyr::select(mfr, year, bdy_style, mpg_h, hp) \%>\%
-    dplyr::mutate(mpg_h = rnorm(n = dplyr::n(), mean = 22, sd = 1)) \%>\%
-    gt::gt() \%>\%
-    gt::opt_table_lines() \%>\%
-    fmt_symbol_first(column = mfr, symbol = "&#x24;", last_row_n = 6) \%>\%
-    fmt_symbol_first(column = year, suffix = "\%") \%>\%
-    fmt_symbol_first(column = mpg_h, symbol = "&#37;", decimals = 1) \%>\%
-    fmt_symbol_first(hp, symbol = "&#176;", suffix = "F", symbol_first = TRUE)
+  dplyr::select(mfr, year, bdy_style, mpg_h, hp) \%>\%
+  dplyr::mutate(mpg_h = rnorm(n = dplyr::n(), mean = 22, sd = 1)) \%>\%
+  gt::gt() \%>\%
+  gt::opt_table_lines() \%>\%
+  fmt_symbol_first(column = mfr, symbol = "&#x24;", last_row_n = 6) \%>\%
+  fmt_symbol_first(column = year, suffix = "\%") \%>\%
+  fmt_symbol_first(column = mpg_h, symbol = "&#37;", decimals = 1) \%>\%
+  fmt_symbol_first(hp, symbol = "&#176;", suffix = "F", symbol_first = TRUE)
 
 }
 \seealso{

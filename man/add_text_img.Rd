@@ -43,8 +43,8 @@ title_car <- mtcars \%>\%
     title = add_text_img(
       "A table about cars made with",
       url = "https://www.r-project.org/logo/Rlogo.png"
-      )
     )
+  )
 }
 \seealso{
 Other Utilities: 

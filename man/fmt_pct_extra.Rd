@@ -23,9 +23,9 @@ Convert to percent and show less than 1\% as <1\% in grey
 }
 \examples{
 library(gt)
-pct_tab <- dplyr::tibble(x = c(.001,.05,.008,.1,.2,.5,.9)) \%>\%
+pct_tab <- dplyr::tibble(x = c(.001, .05, .008, .1, .2, .5, .9)) \%>\%
   gt::gt() \%>\%
-  fmt_pct_extra(x, scale = 100, accuracy=.1)
+  fmt_pct_extra(x, scale = 100, accuracy = .1)
 }
 \seealso{
 Other Utilities: 

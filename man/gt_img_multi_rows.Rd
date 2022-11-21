@@ -31,13 +31,13 @@ the necessary boilerplate already applied.
 teams <- "https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"
 team_df <- readRDS(url(teams))
 
-conf_table <- team_df \%>\% 
-  dplyr::select(team_conf, team_division, logo = team_logo_espn) \%>\% 
-  dplyr::distinct() \%>\% 
-  tidyr::nest(data = logo) \%>\% 
-  dplyr::rename(team_logos = data) \%>\% 
-  dplyr::arrange(team_conf, team_division) \%>\% 
-  gt() \%>\% 
+conf_table <- team_df \%>\%
+  dplyr::select(team_conf, team_division, logo = team_logo_espn) \%>\%
+  dplyr::distinct() \%>\%
+  tidyr::nest(data = logo) \%>\%
+  dplyr::rename(team_logos = data) \%>\%
+  dplyr::arrange(team_conf, team_division) \%>\%
+  gt() \%>\%
   gt_img_multi_rows(columns = team_logos, height = 25)
 
 }\if{html}{\out{</div>}}

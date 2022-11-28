@@ -1,7 +1,7 @@
 ## Submission details
 
-- This is a submission to correct a failing test on M1 Mac per Brian Ripley's email. 
-- I have corrected the failing test.
+- This is a submission to correct a number of failing tests as necessary by the latest release of `gt` package on 2022-11-16
+- I have corrected all the failing tests.
 
 ## R CMD check results
 

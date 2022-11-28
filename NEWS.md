@@ -1,4 +1,5 @@
-# gtExtras 0.4.4
+# gtExtras 0.4.5
+- Refactor many functions to account for upstream changes in `gt` v0.8.0
 - Add a `palette_col` argument to `gt_plt_bullet()` to accept a named column of palette colors as present in the data. Fixed #72
 - Fix internals of `gt_theme_pff()` to use `table.font.size` inside `tab_options()` rather than `tab_style()`. Fixed #74
 - Fix a few instances of `geom_line()` and `geom_v/hline()` that were throwing warnings for `ggplot2` v3.4.0

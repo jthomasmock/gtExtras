@@ -1,4 +1,8 @@
-# gtExtras 0.4.5
+# 0.4.6
+
+- Refactor 
+
+# 0.4.5
 - Refactor many functions to account for upstream changes in `gt` v0.8.0
 - Add a `palette_col` argument to `gt_plt_bullet()` to accept a named column of palette colors as present in the data. Fixed #72
 - Fix internals of `gt_theme_pff()` to use `table.font.size` inside `tab_options()` rather than `tab_style()`. Fixed #74

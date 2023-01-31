@@ -127,6 +127,7 @@ gt_fa_column <- function(gt_object, column, ..., palette = NULL,
     gt_object,
     locations = cells_body(columns = {{ column }}),
     fn = function(x) {
+
       if (is.null(palette)) {
         # if no palette use categorical colorblind palette
         pal_filler <- c(
@@ -137,9 +138,10 @@ gt_fa_column <- function(gt_object, column, ..., palette = NULL,
       } else if (length(palette) == 1) {
         pal_filler <- palette %>% rep(length(unique(x)))
       } else if (all(unique(x) %in% names(palette))) {
+        pal_no_missing <- x[!x %in% c("", "NA", NA, "NULL", NULL)]
         # palette is superset of values,
         # so reduce palette to just what's needed
-        pal_filler <- palette[unique(x)]
+        pal_filler <- palette[unique(pal_no_missing)]
       } else {
         # palette is the palette
         pal_filler <- palette
@@ -147,15 +149,19 @@ gt_fa_column <- function(gt_object, column, ..., palette = NULL,
 
       # pass arguments into anonymous function
       lapply(X = x, FUN = function(xy) {
-        if (xy %in% c("", "NA", NA)) {
+        if (xy %in% c("", "NA", NA, NULL, "NULL")) {
           return(gt::html("&nbsp;"))
         }
 
         # drop missing levels
-        x <- x[!(x %in% c("", "NA", NA))]
+        x <- x[!(x %in% c("", "NA", NA, NULL, "NULL"))]
 
         fct_lvl <- unique(x)
-        stopifnot("The length of the unique elements must match the palette length" = length(fct_lvl) == length(pal_filler))
+        # TODO revisit if a useful check, since I'm dropping missing vals
+        stopifnot(
+          "The length of the unique elements must match the palette length" =
+            length(fct_lvl) == length(as.vector(na.omit(pal_filler)))
+          )
 
         if (!is.null(names(pal_filler))) {
           fct_x <- factor(xy, levels = names(pal_filler), labels = pal_filler) %>%

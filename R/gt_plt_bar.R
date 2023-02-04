@@ -74,6 +74,11 @@ gt_plt_bar <- function(gt_object,
   if ((min(all_vals, na.rm = TRUE) >= 0)) {
     min_val <- 0
     rng_multiplier <- c(0.98, 1.02)
+  } else if (
+    (max(all_vals, na.rm = TRUE) < 0 & min(all_vals, na.rm = TRUE) < 0)
+    ) {
+    min_val <- min(all_vals, na.rm = TRUE)
+    rng_multiplier <- c(1.02, 0)
   } else {
     min_val <- min(all_vals, na.rm = TRUE)
     rng_multiplier <- c(1.02, 1.02)

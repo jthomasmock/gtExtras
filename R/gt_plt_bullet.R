@@ -6,6 +6,7 @@
 #' @param width Width of the plot in pixels
 #' @param palette Color of the bar and target line, defaults to `c("grey", "red")`, can use named colors or hex colors. Must be of length two, and the first color will always be used as the bar color.
 #' @param palette_col An additional column that contains specific colors for the bar colors themselves. Defaults to NULL which skips this argument.
+#' @importFrom stats na.omit
 #' @return An object of class `gt_tbl`.
 #' @export
 #'
@@ -36,15 +37,13 @@ gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
 
   # extract the values from specified columns
   all_vals <- gt_index(gt_object, {{ column }})
+  target_vals <- gt_index(gt_object, {{ target }})
 
   if (length(all_vals) == 0) {
     return(gt_object)
   }
-
-  max_val <- max(all_vals, na.rm = TRUE)
+  rng_val <- range(c(all_vals, target_vals), na.rm = TRUE)
   length_val <- length(all_vals)
-
-  target_vals <- gt_index(gt_object, {{ target }})
 
   col_bare <- gt_index(gt_object, {{ column }}, as_vector = FALSE) %>%
     dplyr::select({{ column }}) %>%
@@ -87,7 +86,7 @@ gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
             ) +
             geom_vline(xintercept = 0, color = "black", linewidth = 1) +
             theme_void() +
-            coord_cartesian(xlim = c(0, max_val)) +
+            coord_cartesian(xlim = rng_val) +
             scale_x_continuous(expand = expansion(mult = c(0, 0.15))) +
             scale_y_discrete(expand = expansion(mult = c(0.1, 0.1))) +
             theme_void() +

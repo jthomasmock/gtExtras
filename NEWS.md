@@ -1,6 +1,8 @@
 # 0.4.6
 
-- Refactor 
+- Refactor NA handling in `gt_fa_` functions - thanks to @areckenrode via [#78](https://github.com/jthomasmock/gtExtras/issues/78)
+- Allow for all negative values in `gt_plt_bar()` - thanks to @paspvik via [#75](https://github.com/jthomasmock/gtExtras/pull/75)
+- Respect max and negative range of target and column values in `gt_plt_bullet()` - thanks to @zdenall via [#79](https://github.com/jthomasmock/gtExtras/issues/79)
 
 # 0.4.5
 - Refactor many functions to account for upstream changes in `gt` v0.8.0
@@ -10,20 +12,20 @@
 - Refactor internals of `fmt_pad_num` to align with @mrcaseb implementation https://gist.github.com/mrcaseb/f0f85b48df7957c27c4205cafccbc5a2
 - Refactor many functions that use lines with size parameter, to avoid ggplot2 v.3.4.0 deprecation warnings (affects `gt_plt_bar`, `gt_pct_bar`, `gt_plt_dist`, `gt_plt_conf_int`, `gt_plt_percentile_dot`, `gt_plt_point`, `gt_plt_sparkline`, `gt_win_loss`)
 
-# gtExtras 0.4.3
+# 0.4.3
 - Modify internals of `gt_fa_column()` to accept factors with levels not present in the data, ignoring unneeded levels. Thank you to @mikedolanfliss for the suggestion.
 - Add `gt_merge_stack_color()` to create a merge/stack with background color - per @mrcaseb and issue #71 
 - Add `gt_alert_icon()` to create a colored circle based on the range of values in the column.
 - Fix a CRAN extra check
 
-# gtExtras 0.4.2
+# 0.4.2
 
 - Rebuild docs with latest `roxygen2` to fix HTML documentation issues on CRAN
 - Add `gt_img_multi_rows()` courtesy of Ryan Timpe per [#63](https://github.com/jthomasmock/gtExtras/pull/63)
 - Add "alt" argument to `man_get_image_tag()` helper - solves CRAN HTML issues for missing alt-text
 - Use alt-text on `gt_plt_summary()` and `gt_plt_winloss()`
 
-# gtExtras 0.4.1
+# 0.4.1
 
 - Add explicit height argument to `gt_fa_column()`
 - Add `get_row_index()` to assist in applying styles to specific rows visually
@@ -43,66 +45,66 @@
 - Add `gt_index()` to internals of `gt_merge_stack()` to prevent incorrect arrangement when grouping data - closes [issue #55](https://github.com/jthomasmock/gtExtras/issues/55)
 - Corrected `gt_plt_sparkline()` where in some cases inline plots weren't respecting shared limits.
 
-# gtExtras 0.4.0
+# 0.4.0
 
 - Prep for and submit initial CRAN release :fingers-crossed:
 
-# gtExtras 0.3.9
+# 0.3.9
 - Renamed colors arg in `gt_merge_stack()` to be 'palette'
 - Renamed colors arg in `gt_plt_bullet()` to be 'palette'
 - Renamed pal arg in `gt_plt_sparkline()` to be 'palette'
 
-# gtExtras 0.3.8
+# 0.3.8
 - Renamed `colors` argument in `gt_win_loss()` to `palette`
 - Added NA handling to all `fontawesome::fa()` functions, ie `gt_fa_rank_change()`, `gt_fa_repeats()`, `gt_fa_column()`
 - Add missing data handling to more plotting functions
 - Refactor testing to use `webshot2::webshot()` over `webshot::webshot()`
 - Remove `gt_sparkline()` - functions separated into `gt_plt_sparkline()` and `gt_plt_dist()`
 
-# gtExtras 0.3.7
+# 0.3.7
 - Added basic support in `gt_plt_summary()` for dates/times. 
 - Updated tests for `gt_plt_summary()` to include dates/times
 
-# gtExtras 0.3.6
+# 0.3.6
 
 - Remove `use_paletteer` arg from `gt_color_rows()` in favor of a hopefully more user friendly detection of `::`
 - Convert `gt_color_rows()` 'type' argument to 'pal_type' to prevent an edge-case where a column named type conflicts with the `paletteer` "type" argument per [issue #50](https://github.com/jthomasmock/gtExtras/issues/50)
 
-# gtExtras 0.3.4
+# 0.3.4
 
 - Add initial version of a `gt_plt_summary()` function, as inspired by the [Observable/SummaryTable function](https://observablehq.com/@observablehq/summary-table).
 - `gt_sparkline()` will be removed soon now that [`bstfun`/`gtsummary`](https://github.com/ddsjoberg/bstfun/pull/102) are no longer depending on it. `gt_plt_dist()` and `gt_plt_sparkline()` will be the new preferred and enhanced versions of `gt_sparkline()`.
 - Add tests for `gt_plt_summary()`
 
-# gtExtras 0.3.3
+# 0.3.3
 
 - Add `webshot2` as a dependency now that it's on CRAN!
 
-# gtExtras 0.3.2
+# 0.3.2
 
 * Remove `scales::scales_label_si()` in favor of `scales::label_number(scale_cut = cut_scale_short())` as the previous function was deprecated. Thanks to [@mrcaseb](https://github.com/mrcaseb) for pointing out in [Issue 48](https://github.com/jthomasmock/gtExtras/issues/48)
 
-# gtExtras 0.3
+# 0.3
 
 * Add [Daniel Sjoberg](https://github.com/ddsjoberg) as a contributor in honor of their major assistance with preparation towards CRAN
 * Move past 0.2 release into a "next stop CRAN"... hopefully
 * Vendor additional unexported functions from `{gt}` with attribution
 
-# gtExtras 0.2.7
+# 0.2.7
 
 * Bring in `webshot2` as a remote dependency suggest and minor changes to clean up some R checks, thanks to a PR from the great [Daniel Sjoberg](https://github.com/jthomasmock/gtExtras/pull/43). 
 
 * Correct an internal bug in `gt_plt_dist()` which was failing for plotting integers.
 
-# gtExtras 0.2.6
+# 0.2.6
 
 * Exchange `webshot` for `webshot2` to enhance capabilities. Note that `webshot2` is GitHub only, install via: `remotes::install_github("rstudio/webshot2")`. This solves [issue #42](https://github.com/jthomasmock/gtExtras/issues/42).
 
-# gtExtras 0.2.5
+# 0.2.5
 
 * Updated `gt_theme_guardian()` to work with zero-length tables per [Issue 41](https://github.com/jthomasmock/gtExtras/issues/41)
 
-# gtExtras 0.2.4
+# 0.2.4
 
 * Added a `NEWS.md` file to track changes to the package.
 

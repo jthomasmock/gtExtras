@@ -3,6 +3,7 @@
 - Refactor NA handling in `gt_fa_` functions - thanks to @areckenrode via [#78](https://github.com/jthomasmock/gtExtras/issues/78)
 - Allow for all negative values in `gt_plt_bar()` - thanks to @paspvik via [#75](https://github.com/jthomasmock/gtExtras/pull/75)
 - Respect max and negative range of target and column values in `gt_plt_bullet()` - thanks to @zdenall via [#79](https://github.com/jthomasmock/gtExtras/issues/79)
+- Improve `gt_theme_538()` to better align with FiveThirtyEight style, namely improved font choices ("Cairo")
 
 # gtExtras 0.4.5
 - Refactor many functions to account for upstream changes in `gt` v0.8.0

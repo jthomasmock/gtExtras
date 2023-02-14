@@ -1,7 +1,6 @@
 ## Submission details
 
-- This is a submission to correct a number of failing tests as necessary by the latest release of `gt` package on 2022-11-16
-- I have corrected all the failing tests.
+- This is an update to solve a few bugs as indicated by users
 
 ## R CMD check results
 

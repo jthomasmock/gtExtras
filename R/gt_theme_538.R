@@ -23,17 +23,39 @@ gt_theme_538 <- function(gt_object, ...) {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
 
   gt_object %>%
-    opt_all_caps() %>%
     opt_table_font(
       font = list(
-        google_font("Chivo"),
+        google_font("Cairo"),
         default_fonts()
       ),
-      weight = 300
+      weight = 400
     ) %>%
     tab_style(
-      style = cell_borders(
-        sides = "top", color = "black", weight = px(0)
+      locations = cells_title("title"),
+      style = cell_text(
+        font = google_font("Chivo"),
+        weight = 700
+      )
+    ) %>%
+    tab_style(
+      locations = cells_title("subtitle"),
+      style = cell_text(
+        font = google_font("Chivo"),
+        weight = 300
+      )
+    ) %>%
+    tab_style(
+      style = list(
+        cell_borders(
+          sides = "top", color = "black", weight = px(0)
+        ),
+        cell_text(
+          font = google_font("Chivo"),
+          transform = "uppercase",
+          v_align = "bottom",
+          size = px(14),
+          weight = 200
+        )
       ),
       locations = gt::cells_column_labels(
         columns = gt::everything()
@@ -47,6 +69,7 @@ gt_theme_538 <- function(gt_object, ...) {
     ) %>%
     tab_options(
       column_labels.background.color = "white",
+      data_row.padding = px(3),
       heading.border.bottom.style = "none",
       table.border.top.width = px(3),
       table.border.top.style = "none", # transparent
@@ -61,7 +84,6 @@ gt_theme_538 <- function(gt_object, ...) {
       row_group.border.bottom.color = "white",
       stub.border.color = "white",
       stub.border.width = px(0),
-      data_row.padding = px(3),
       source_notes.font.size = 12,
       source_notes.border.lr.style = "none",
       table.font.size = 16,

@@ -11,7 +11,7 @@ knitr::opts_chunk$set(
 
 ## Graphs vs Tables
 
-Per Stephen Few in his book, [*Show Me the Numbers*](http://www.stephen-few.com/smtn.php):
+Per Stephen Few in his book, [*Show Me the Numbers*](http://www.perceptualedge.com/library.php):
 
 The difference between Tables and Graphs:
 

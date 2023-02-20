@@ -275,7 +275,7 @@ gt_fa_rating <- function(gt_object, column, max_rating = 5, ...,
 #' @param gt_object An existing `gt` table object
 #' @param column The single column that you would like to convert to rank change indicators.
 #' @param palette A character vector of length 3. Colors can be represented as hex values or named colors. Colors should be in the order of up-arrow, no-change, down-arrow, defaults to green, grey, purple.
-#' @param fa_type The name of the Fontawesome icon, limited to 6 types of various arrows.
+#' @param fa_type The name of the Fontawesome icon, limited to 5 types of various arrows, one of `c("angles", "arrow", "turn", "chevron", "caret")`
 #' @param font_color A string, indicating the color of the font, can also be returned as `'match'` to match the font color to the arrow palette.
 #' @param show_text A logical indicating whether to show/hide the values in the column.
 #' @return a `gt` table
@@ -291,9 +291,14 @@ gt_fa_rating <- function(gt_object, column, max_rating = 5, ...,
 #' \if{html}{\figure{fa_rank_change.png}{options: width=5\%}}
 #'
 #' @family Utilities
-gt_fa_rank_change <- function(gt_object, column, palette = c("#1b7837", "lightgrey", "#762a83"),
-                              fa_type = c("angles", "arrow", "turn", "chevron", "caret"),
-                              font_color = "black", show_text = TRUE) {
+gt_fa_rank_change <- function(
+    gt_object,
+    column,
+    palette = c("#1b7837", "lightgrey", "#762a83"),
+    fa_type = c("angles", "arrow", "turn", "chevron", "caret"),
+    font_color = "black",
+    show_text = TRUE) {
+
   vals <- gt_index(gt_object, {{ column }})
 
   stopifnot("Column must be integers" = is.integer(as.integer(vals)))
@@ -310,7 +315,7 @@ gt_fa_rank_change <- function(gt_object, column, palette = c("#1b7837", "lightgr
       font_color <- color
     }
 
-    if (is_blank(text)) {
+    if (is_blank(text) || is_blank(fa_name)) {
       return(gt::html("<bold style='color:#d3d3d3;'>--</bold>"))
     } else if (!nzchar(text) & !is_blank(text)) {
       fa_height <- "20px"
@@ -341,6 +346,7 @@ gt_fa_rank_change <- function(gt_object, column, palette = c("#1b7837", "lightgr
     text_transform(
       locations = cells_body({{ column }}),
       fn = function(x) {
+
         vals <- gt_index(gt_object, {{ column }})
 
         color_vals <- dplyr::case_when(

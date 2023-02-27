@@ -2,7 +2,6 @@
 #'
 #' @description Take a gt pipeline or object and print it within reprex
 #' @param gt_object an existing gt table
-#' @param imgur Logical indicates whether to print a markdown link to imgur upload or not
 #' @importFrom knitr include_graphics
 #'
 #' @return a png image
@@ -10,7 +9,7 @@
 #'
 gt_render_reprex <- function(gt_object, imgur = FALSE) {
 
-  stopifnot("Table must be of class 'gt_tbl'" = inherits(gt_tbl, "gt_tbl"))
+  stopifnot("Table must be of class 'gt_tbl'" = inherits(gt_object, "gt_tbl"))
 
   # create temp file
   img_out <- tempfile(fileext = ".png")
@@ -20,9 +19,7 @@ gt_render_reprex <- function(gt_object, imgur = FALSE) {
     utils::capture.output(type = "message") %>%
     invisible()
 
-  on.exit(unlink(img_out))
-
-    # just include the image
-    knitr::include_graphics(img_out)
+  # just include the image
+  knitr::include_graphics(img_out)
 
 }

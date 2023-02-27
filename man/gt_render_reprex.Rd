@@ -8,8 +8,6 @@ gt_render_reprex(gt_object, imgur = FALSE)
 }
 \arguments{
 \item{gt_object}{an existing gt table}
-
-\item{imgur}{Logical indicates whether to print a markdown link to imgur upload or not}
 }
 \value{
 a png image

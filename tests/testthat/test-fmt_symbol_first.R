@@ -54,21 +54,21 @@ test_gt_by_col <- function(col_n, row_first = TRUE, expectation) {
 
 test_that("fmt_symbol_first works with escaped characters", {
   test_gt_by_col(1, expectation = "Ford \\$")
-  test_gt_by_col(1, row_first = FALSE, expectation = rep(2, 5))
+  test_gt_by_col(1, row_first = FALSE, expectation = rep(1, 5))
 })
 
 testthat::test_that("fmt_symbol_first, Raw percent character works", {
   test_gt_by_col(2, expectation = "2017%")
-  test_gt_by_col(2, row_first = FALSE, expectation = rep(1, 5))
+  test_gt_by_col(2, row_first = FALSE, expectation = rep(0, 5))
 })
 
 testthat::test_that("fmt_symbol_first, HTML symbol for percent works", {
   test_gt_by_col(4, expectation = "20.2%")
-  test_gt_by_col(4, row_first = FALSE, expectation = rep(1, 5))
+  test_gt_by_col(4, row_first = FALSE, expectation = rep(0, 5))
 })
 
 testthat::test_that("fmt_symbol_first, A combined suffix + symbol work", {
   test_gt_by_col(5, expectation = "647°F")
-  test_gt_by_col(5, row_first = FALSE, expectation = rep(2, 5))
+  test_gt_by_col(5, row_first = FALSE, expectation = rep(0, 5))
 })
 

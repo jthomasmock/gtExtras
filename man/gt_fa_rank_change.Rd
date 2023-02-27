@@ -20,7 +20,7 @@ gt_fa_rank_change(
 
 \item{palette}{A character vector of length 3. Colors can be represented as hex values or named colors. Colors should be in the order of up-arrow, no-change, down-arrow, defaults to green, grey, purple.}
 
-\item{fa_type}{The name of the Fontawesome icon, limited to 6 types of various arrows.}
+\item{fa_type}{The name of the Fontawesome icon, limited to 5 types of various arrows, one of \code{c("angles", "arrow", "turn", "chevron", "caret")}}
 
 \item{font_color}{A string, indicating the color of the font, can also be returned as \code{'match'} to match the font color to the arrow palette.}
 

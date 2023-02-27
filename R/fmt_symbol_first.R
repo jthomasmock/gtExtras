@@ -11,7 +11,7 @@
 #' @param last_row_n Defining the last row to apply this to. The function will attempt to guess the proper length, but you can always hardcode a specific length.
 #' @param symbol_first TRUE/FALSE - symbol before after suffix.
 #' @param scale_by A numeric value to multiply the values by. Useful for scaling percentages from 0 to 1 to 0 to 100.
-#' @param gfont A string passed to `gt::google_font()` - defaults to "Fira Mono" and requires a Monospaced font for alignment purposes. Existing Google Monospaced fonts are available at: [fonts.google.com](https://fonts.google.com/?category=Monospace&preview.text=0123456789&preview.text_type=custom)
+#' @param gfont A string passed to `gt::google_font()` - Existing Google Monospaced fonts are available at: [fonts.google.com](https://fonts.google.com/?category=Monospace&preview.text=0123456789&preview.text_type=custom)
 #' @return An object of class `gt_tbl`.
 #' @export
 #' @examples
@@ -35,15 +35,16 @@
 #' 2-1
 
 
-fmt_symbol_first <- function(gt_object,
-                             column = NULL, # column of interest to apply to
-                             symbol = NULL, # symbol to add, optionally
-                             suffix = "", # suffix to add, optionally
-                             decimals = NULL, # number of decimal places to round to
-                             last_row_n = NULL, # what's the last row in data?
-                             symbol_first = FALSE, # symbol before or after suffix?,
-                             scale_by = NULL,
-                             gfont = "Fira Mono" # Google font with monospacing
+fmt_symbol_first <- function(
+    gt_object,
+    column = NULL,        # column of interest to apply to
+    symbol = NULL,        # symbol to add, optionally
+    suffix = "",          # suffix to add, optionally
+    decimals = NULL,      # number of decimal places to round to
+    last_row_n = NULL,    # what's the last row in data?
+    symbol_first = FALSE, # symbol before or after suffix?,
+    scale_by = NULL,      # scaling value for things like percentages
+    gfont = NULL          # Google font option
 ) {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
   # Test and error out if mandatory columns are missing
@@ -77,17 +78,18 @@ fmt_symbol_first <- function(gt_object,
     }
   }
 
-  # repeat non-breaking space for combined length of suffix + symbol
-  # logic is based on is a NULL passed or not
-  if (!is.null(symbol) | !identical(as.character(symbol), character(0))) {
-    suffix <- ifelse(identical(as.character(suffix), character(0)), "", suffix)
-    length_nbsp <- c("&nbsp;", rep("&nbsp;", nchar(suffix))) %>%
-      paste0(collapse = "")
-  } else {
-    suffix <- ifelse(identical(as.character(suffix), character(0)), "", suffix)
-    length_nbsp <- rep("&nbsp;", nchar(suffix)) %>%
-      paste0(collapse = "")
-  }
+  # remove in future
+  # # repeat non-breaking space for combined length of suffix + symbol
+  # # logic is based on is a NULL passed or not
+  # if (!is.null(symbol) | !identical(as.character(symbol), character(0))) {
+  #   suffix <- ifelse(identical(as.character(suffix), character(0)), "", suffix)
+  #   length_nbsp <- c("&nbsp;", rep("&nbsp;", nchar(suffix))) %>%
+  #     paste0(collapse = "")
+  # } else {
+  #   suffix <- ifelse(identical(as.character(suffix), character(0)), "", suffix)
+  #   length_nbsp <- rep("&nbsp;", nchar(suffix)) %>%
+  #     paste0(collapse = "")
+  # }
 
   # affect rows OTHER than the first row
   add_to_remainder <- function(x, length = length_nbsp) {
@@ -104,7 +106,10 @@ fmt_symbol_first <- function(gt_object,
     } else if (is.null(decimals) && is.null(scale_by)) {
       fmt_val <- x
     }
-    paste0(fmt_val, length) %>% lapply(FUN = gt::html)
+    paste0(
+      fmt_val,
+      "<span style='color: transparent;'>", symbol, suffix,"</span>"
+      ) %>% lapply(FUN = gt::html)
   }
 
   # default to nrows in input data
@@ -117,13 +122,8 @@ fmt_symbol_first <- function(gt_object,
 
   # pass gt object
   # align right to make sure the spacing is meaningful
-  gt_object %>%
+  tab_out <- gt_object %>%
     cols_align(align = "right", columns = c({{ column }})) %>%
-    # convert to mono-font for column of interest
-    tab_style(
-      style = cell_text(font = google_font(gfont)),
-      locations = cells_body(columns = c({{ column }}))
-    ) %>%
     # transform first rows
     text_transform(
       locations = cells_body(c({{ column }}), rows = 1),
@@ -134,4 +134,15 @@ fmt_symbol_first <- function(gt_object,
       locations = cells_body(c({{ column }}), rows = 2:last_row_n),
       fn = add_to_remainder
     )
+
+  if(!is.null(gfont)){
+    tab_out <- tab_out %>%
+      # convert to mono-font for column of interest
+      tab_style(
+        style = cell_text(font = google_font(gfont)),
+        locations = cells_body(columns = c({{ column }}))
+      )
+  }
+
+  tab_out
 }

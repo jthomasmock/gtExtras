@@ -13,7 +13,7 @@ fmt_symbol_first(
   last_row_n = NULL,
   symbol_first = FALSE,
   scale_by = NULL,
-  gfont = "Fira Mono"
+  gfont = NULL
 )
 }
 \arguments{
@@ -33,7 +33,7 @@ fmt_symbol_first(
 
 \item{scale_by}{A numeric value to multiply the values by. Useful for scaling percentages from 0 to 1 to 0 to 100.}
 
-\item{gfont}{A string passed to \code{gt::google_font()} - defaults to "Fira Mono" and requires a Monospaced font for alignment purposes. Existing Google Monospaced fonts are available at: \href{https://fonts.google.com/?category=Monospace&preview.text=0123456789&preview.text_type=custom}{fonts.google.com}}
+\item{gfont}{A string passed to \code{gt::google_font()} - Existing Google Monospaced fonts are available at: \href{https://fonts.google.com/?category=Monospace&preview.text=0123456789&preview.text_type=custom}{fonts.google.com}}
 }
 \value{
 An object of class \code{gt_tbl}.

@@ -31,21 +31,21 @@
 generate_df <- function(n = 10L, n_grps = 1L, mean = c(10), sd = mean / 10,
                         with_seed = NULL) {
   # If a seed is specified, then use it, otherwise ignore
-  if (!base::is.null(with_seed)) {
-    base::set.seed(with_seed)
+  if (!is.null(with_seed)) {
+    set.seed(with_seed)
   }
 
-  stopifnot("'n' must be an integer of length 1, ie '10', not 'c(10, 20)'" = base::length(n) == 1)
-  stopifnot("'n' must be an integer" = base::all.equal(n, base::as.integer(n)))
-  stopifnot("'n_grps' must be an integer" = base::all.equal(n_grps, base::as.integer(n_grps)))
-  stopifnot("'n_grps' must be equal to the number of values in 'mean'" = base::length(mean) == n_grps)
-  stopifnot("'n_grps' must be equal to the number of values in 'sd'" = base::length(sd) == n_grps)
-  stopifnot("Number of values in 'sd' must be equal to number of values in 'mean'" = base::length(mean) == length(sd))
+  stopifnot("'n' must be an integer of length 1, ie '10', not 'c(10, 20)'" = length(n) == 1)
+  stopifnot("'n' must be an integer" = all.equal(n, as.integer(n)))
+  stopifnot("'n_grps' must be an integer" = all.equal(n_grps, as.integer(n_grps)))
+  stopifnot("'n_grps' must be equal to the number of values in 'mean'" = length(mean) == n_grps)
+  stopifnot("'n_grps' must be equal to the number of values in 'sd'" = length(sd) == n_grps)
+  stopifnot("Number of values in 'sd' must be equal to number of values in 'mean'" = length(mean) == length(sd))
 
   # pad the values with repeated zeros
-  pad_length <- base::paste0("%0", nchar(n), "d")
-  random_int <- base::sample(1:n, replace = TRUE)
-  padded_int <- base::sprintf(pad_length, random_int)
+  pad_length <- paste0("%0", nchar(n), "d")
+  random_int <- sample(1:n, replace = TRUE)
+  padded_int <- sprintf(pad_length, random_int)
 
   my_rnorm <- function(n, mean, sd) {
     stats::rnorm(n = n, mean = mean, sd = sd)
@@ -54,8 +54,8 @@ generate_df <- function(n = 10L, n_grps = 1L, mean = c(10), sd = mean / 10,
   # create a df with combined random letters and integers
   dplyr::tibble(
     row_id = 1:(n * n_grps),
-    id = base::paste0(base::sample(LETTERS, n * n_grps, replace = TRUE), padded_int),
-    grp = base::sprintf("grp-%s", 1:n_grps) %>% rep(each = n),
-    values = base::mapply(my_rnorm, n, mean, sd) %>% base::as.vector()
+    id = paste0(sample(LETTERS, n * n_grps, replace = TRUE), padded_int),
+    grp = sprintf("grp-%s", 1:n_grps) %>% rep(each = n),
+    values = mapply(my_rnorm, n, mean, sd) %>% as.vector()
   )
 }

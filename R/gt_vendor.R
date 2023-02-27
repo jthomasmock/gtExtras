@@ -871,7 +871,7 @@ check_named_colors <- function(named_colors) {
   named_colors <- tolower(named_colors)
 
   if (!all(named_colors %in% valid_color_names())) {
-    invalid_colors <- base::setdiff(unique(named_colors), valid_color_names())
+    invalid_colors <- setdiff(unique(named_colors), valid_color_names())
 
     one_several_invalid <-
       ifelse(

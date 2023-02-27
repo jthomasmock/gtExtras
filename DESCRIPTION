@@ -24,7 +24,8 @@ Imports:
     htmltools (>= 0.5.3),
     paletteer (>= 1.4.0),
     rlang (>= 1.0.4),
-    scales (>= 1.2.0)
+    scales (>= 1.2.0),
+    knitr (>= 1.35)
 Suggests: 
     base64enc (>= 0.1-3),
     bitops (>= 1.0.6),
@@ -42,9 +43,10 @@ Suggests:
     tidyselect (>= 1.0.0),
     webshot2 (>= 0.1.0),
     xml2 (>= 1.3.3)
-Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
 Depends: 
     R (>= 3.6.0)
+Config/testthat/edition: 3
+Config/testthat/parallel: true

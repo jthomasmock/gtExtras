@@ -90,7 +90,7 @@ reference:
   - gt_index
   - get_row_index
   - generate_df
-  - gt_render_reprex
+  - gt_reprex_image
 - title: internal
   desc: Internally used functions
   contents:

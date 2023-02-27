@@ -5,6 +5,8 @@
 - Respect max and negative range of target and column values in `gt_plt_bullet()` - thanks to @zdenall via [#79](https://github.com/jthomasmock/gtExtras/issues/79)
 - Improve `gt_theme_538()` to better align with FiveThirtyEight style, namely improved font choices ("Cairo")
 - Address NAs properly in `gt_fa_rank_change()` - thanks to @moodymudskipper via [#80](https://github.com/jthomasmock/gtExtras/issues/80)
+- Refactor `fmt_symbol_first()` to work correctly with any font, not just monospace fonts.
+- Add an experimental `gt_render_reprex()` thanks to @mrcaseb suggestion on [Twitter](https://twitter.com/mrcaseb/status/1628122417523527697?s=20)
 
 # gtExtras 0.4.5
 - Refactor many functions to account for upstream changes in `gt` v0.8.0

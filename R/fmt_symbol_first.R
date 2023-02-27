@@ -78,7 +78,7 @@ fmt_symbol_first <- function(
     }
   }
 
-  # remove in future
+  # TODO remove in future?
   # # repeat non-breaking space for combined length of suffix + symbol
   # # logic is based on is a NULL passed or not
   # if (!is.null(symbol) | !identical(as.character(symbol), character(0))) {
@@ -92,7 +92,11 @@ fmt_symbol_first <- function(
   # }
 
   # affect rows OTHER than the first row
-  add_to_remainder <- function(x, length = length_nbsp) {
+  add_to_remainder <- function(
+    x#,
+    # TODO remove in future?
+    # length = length_nbsp
+    ) {
     if (!is.null(decimals) && !is.null(scale_by)) {
       # if decimal not null, convert to double
       x <- suppressWarnings(as.double(x) * scale_by)

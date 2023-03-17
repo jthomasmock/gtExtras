@@ -5,7 +5,7 @@
 
 utils::globalVariables(
   c(
-    ".",
+    ".", "df", "x1", "x2",
     "var", "type", "text", "cmark_rules", "rtf_wrap",
     "Var1", "rtf_escape_unicode", "value", "median", "sd",
     "name", "Mean", "SD", "n_missing", "name", "vals", "x",

@@ -29,18 +29,19 @@ reference:
 - title: Plotting
   desc: Add plots to specific rows of an existing table
   contents:
-  - gt_plt_winloss
-  - gt_plt_sparkline
-  - gt_plt_dist
-  - gt_plt_summary
   - gt_plt_bar
   - gt_plt_bar_pct
   - gt_plt_bar_stack
   - gt_plt_bullet
-  - gt_plt_dot
-  - gt_plt_point
-  - gt_plt_percentile
   - gt_plt_conf_int
+  - gt_plt_dist
+  - gt_plt_dot
+  - gt_plt_dumbbell
+  - gt_plt_percentile
+  - gt_plt_point
+  - gt_plt_sparkline
+  - gt_plt_summary
+  - gt_plt_winloss
 - title: Images and icons
   desc: Add fontawesome icons or web images to a table
   contents:

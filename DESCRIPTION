@@ -1,7 +1,7 @@
 Type: Package
 Package: gtExtras
 Title: Extending 'gt' for Beautiful HTML Tables
-Version: 0.4.6.9000
+Version: 0.4.6.9001
 Authors@R: c(
     person("Thomas", "Mock", , "j.thomasmock@gmail.com", role = c("aut", "cre", "cph")),
     person("Daniel D.", "Sjoberg", , "danield.sjoberg@gmail.com", role = "ctb",

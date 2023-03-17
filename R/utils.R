@@ -37,7 +37,7 @@ save_svg <- function(plot, ..., dpi = 25.4) {
     bg = "transparent",
     # below are some general defaults, but don't want to
     # force them if used more generally
-    dpi = dpi,
+    dpi = dpi#,
     # height = fig_dim[1],
     # width = fig_dim[2],
     # units = "mm"

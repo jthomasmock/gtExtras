@@ -158,10 +158,10 @@ gt_fa_column <- function(gt_object, column, ..., palette = NULL,
 
         fct_lvl <- unique(x)
         # TODO revisit if a useful check, since I'm dropping missing vals
-        stopifnot(
-          "The length of the unique elements must match the palette length" =
-            length(fct_lvl) == length(as.vector(na.omit(pal_filler)))
-          )
+        # stopifnot(
+        #   "The length of the unique elements must match the palette length" =
+        #     length(fct_lvl) == length(as.vector(na.omit(pal_filler)))
+        #   )
 
         if (!is.null(names(pal_filler))) {
           fct_x <- factor(xy, levels = names(pal_filler), labels = pal_filler) %>%

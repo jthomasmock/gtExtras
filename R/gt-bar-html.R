@@ -40,23 +40,38 @@
 #' @section Function ID:
 #' 3-5
 
-gt_plt_bar_pct <- function(gt_object, column, height = 16, fill = "purple",
-                           background = "#e1e1e1", scaled = FALSE) {
+gt_plt_bar_pct <- function(
+  gt_object,
+  column,
+  height = 16,
+  fill = "purple",
+  background = "#e1e1e1",
+  scaled = FALSE
+) {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
 
   # convert tidyeval column to bare string
-  col_bare <- rlang::enexpr(column) %>% rlang::as_string()
+  #col_bare <- rlang::enexpr(column) %>% rlang::as_string()
   # segment data with bare string column name
   data_in <- gt_index(gt_object, column = {{ column }})
 
-  col_number <- which(colnames(gt_object[["_data"]]) == col_bare)
+  #col_number <- which(colnames(gt_object[["_data"]]) == col_bare)
 
   gt_object %>%
     text_transform(
       locations = cells_body(columns = {{ column }}),
       fn = function(x) {
-        max_x <- max(as.double(x), na.rm = TRUE)
+
+        if (length(na.omit(data_in))==0) {
+          return("<div></div>")
+        } else {
+          max_x <- max(as.double(data_in), na.rm = TRUE)
+        }
+
         bar <- lapply(data_in, function(x) {
+
+          #if(is.na(x)) x <- 0
+
           scaled_value <- if (isFALSE(scaled)) {
             x / max_x * 100
           } else {
@@ -68,10 +83,16 @@ gt_plt_bar_pct <- function(gt_object, column, height = 16, fill = "purple",
           )
         })
 
-        chart <- lapply(bar, function(bar) {
-          glue::glue(
-            "<div style='flex-grow:1;margin-left:8px;background:{background};'>{bar}</div>"
-          )
+        chart <- lapply(bar, function(bar_pct) {
+          ext_pct <- gsub(".*width:(.+);height.*", "\\1", bar_pct)
+
+          if (ext_pct == "NA%") {
+            return("<div></div>")
+          } else {
+            glue::glue(
+              "<div style='flex-grow:1;margin-left:8px;background:{background};'>{bar_pct}</div>"
+            )
+          }
         })
 
         chart

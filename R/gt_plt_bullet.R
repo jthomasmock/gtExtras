@@ -30,8 +30,14 @@
 #' @family Themes
 #' @section Function ID:
 #' 3-7
-gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
-                          palette = c("grey", "red"), palette_col = NULL) {
+gt_plt_bullet <- function(
+  gt_object,
+  column = NULL,
+  target = NULL,
+  width = 65,
+  palette = c("grey", "red"),
+  palette_col = NULL
+) {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
   stopifnot("'palette' must be 2 colors" = length(palette) == 2)
 
@@ -42,7 +48,11 @@ gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
   if (length(all_vals) == 0) {
     return(gt_object)
   }
+
+  # provide a forced zero baseline - needed for small value ranges
   rng_val <- range(c(all_vals, target_vals), na.rm = TRUE)
+  if (all(na.omit(all_vals) >= 0)) rng_val <- c(0, max(rng_val))
+
   length_val <- length(all_vals)
 
   col_bare <- gt_index(gt_object, {{ column }}, as_vector = FALSE) %>%
@@ -67,13 +77,15 @@ gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
           }
 
           if (is.na(target_vals)) {
-            stop("Target Column not coercible to numeric, please create and supply an unformatted column ahead of time with gtExtras::gt_duplicate_columns()",
+            stop(
+              "Target Column not coercible to numeric, please create and supply an unformatted column ahead of time with gtExtras::gt_duplicate_columns()",
               call. = FALSE
             )
           }
 
           if (is.na(vals)) {
-            stop("Column not coercible to numeric, please create and supply an unformatted column ahead of time with gtExtras::gt_duplicate_columns()",
+            stop(
+              "Column not coercible to numeric, please create and supply an unformatted column ahead of time with gtExtras::gt_duplicate_columns()",
               call. = FALSE
             )
           }
@@ -81,7 +93,9 @@ gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
           plot_out <- ggplot(data = NULL, aes(x = vals, y = factor("1"))) +
             geom_col(width = 0.1, color = bar_pal, fill = bar_pal) +
             geom_vline(
-              xintercept = target_vals, color = tar_pal, linewidth = 1.5,
+              xintercept = target_vals,
+              color = tar_pal,
+              linewidth = 1.5,
               alpha = 0.7
             ) +
             geom_vline(xintercept = 0, color = "black", linewidth = 1) +
@@ -98,13 +112,19 @@ gt_plt_bullet <- function(gt_object, column = NULL, target = NULL, width = 65,
             )
 
           out_name <- file.path(tempfile(
-            pattern = "file", tmpdir = tempdir(),
+            pattern = "file",
+            tmpdir = tempdir(),
             fileext = ".svg"
           ))
 
-          ggsave(out_name,
-            plot = plot_out, dpi = 25.4, height = 5, width = width,
-            units = "mm", device = "svg"
+          ggsave(
+            out_name,
+            plot = plot_out,
+            dpi = 25.4,
+            height = 5,
+            width = width,
+            units = "mm",
+            device = "svg"
           )
 
           img_plot <- readLines(out_name) %>%

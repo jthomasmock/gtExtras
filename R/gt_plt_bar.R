@@ -54,7 +54,7 @@ gt_plt_bar <- function(gt_object,
     unlist()
 
   # need to handle truly empty cols
-  if (length(all_vals) == 0) {
+  if (length(na.omit(all_vals)) == 0) {
     return(gt_object)
   }
 
@@ -92,7 +92,7 @@ gt_plt_bar <- function(gt_object,
   }
 
   bar_fx <- function(x_val, colors) {
-    if (x_val %in% c("NA", "NULL")) {
+    if (x_val %in% c("NA", "NULL", NA)) {
       return("<div></div>")
     }
 

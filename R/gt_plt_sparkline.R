@@ -59,7 +59,8 @@ gt_plt_sparkline <- function(gt_object,
       return("<div></div>")
     }
 
-    vals <- as.double(stats::na.omit(list_data_in))
+    # vals <- as.double(stats::na.omit(list_data_in))
+    vals <- as.double(list_data_in)
 
     max_val <- max(vals, na.rm = TRUE)
     min_val <- min(vals, na.rm = TRUE)
@@ -87,7 +88,7 @@ gt_plt_sparkline <- function(gt_object,
     plot_base <- ggplot(input_data) +
       theme_void()
 
-    med_y_rnd <- round(stats::median(input_data$y))
+    med_y_rnd <- round(stats::median(input_data$y, na.rm = TRUE))
     last_val_label <- input_data[nrow(vals), 2]
 
     if (isTRUE(same_limit) && isFALSE(label)) {
@@ -125,7 +126,8 @@ gt_plt_sparkline <- function(gt_object,
           hjust = 0,
           vjust = 0.5,
           position = position_nudge(x = max(input_data$x) * 0.05),
-          color = palette[2]
+          color = palette[2],
+          na.rm = TRUE
         ) +
         scale_y_continuous(expand = expansion(mult = 0.05)) +
         coord_cartesian(
@@ -154,7 +156,8 @@ gt_plt_sparkline <- function(gt_object,
           hjust = 0,
           vjust = 0.5,
           position = position_nudge(x = max(input_data$x) * 0.05),
-          color = palette[2]
+          color = palette[2],
+          na.rm = TRUE
         ) +
         scale_y_continuous(expand = expansion(mult = 0.05)) +
         coord_cartesian(
@@ -168,24 +171,32 @@ gt_plt_sparkline <- function(gt_object,
       geom_line(
         aes(x = .data$x, y = .data$y, group = 1),
         linewidth = 0.5,
-        color = palette[1]
+        color = palette[1],
+        na.rm = TRUE
       ) +
       geom_point(
         data = filter(input_data, .data$x == max(.data$x)),
         aes(x = .data$x, y = .data$y),
         size = 0.5,
-        color = palette[2]
+        color = palette[2],
+        na.rm = TRUE
       ) +
       geom_point(
         data = point_data,
         aes(x = .data$x, y = .data$y, color = I(.data$colors), group = 1),
-        size = 0.5
+        size = 0.5,
+        na.rm = TRUE
       )
 
     ### Shaded area
     if (type == "shaded") {
       plot_out$layers <- c(
-        geom_area(aes(x = .data$x, y = .data$y), fill = palette[5], alpha = 0.75),
+        geom_area(
+          aes(x = .data$x, y = .data$y),
+          fill = palette[5],
+          alpha = 0.75,
+          na.rm = TRUE
+          ),
         plot_out$layers
       )
 
@@ -200,7 +211,8 @@ gt_plt_sparkline <- function(gt_object,
             yend = stats::median(.data$y)
           ),
           color = palette[5],
-          linewidth = 0.1
+          linewidth = 0.1,
+          na.rm = TRUE
         ),
         plot_out$layers
       )
@@ -210,7 +222,8 @@ gt_plt_sparkline <- function(gt_object,
         geom_point(
           aes(x = .data$x, y = .data$y),
           color = palette[5],
-          size = 0.4
+          size = 0.4,
+          na.rm = TRUE
         ),
         plot_out$layers
       )
@@ -225,7 +238,8 @@ gt_plt_sparkline <- function(gt_object,
             yend = mean(.data$y)
           ),
           color = palette[5],
-          linewidth = 0.1
+          linewidth = 0.1,
+          na.rm = TRUE
         ),
         plot_out$layers
       )
@@ -240,7 +254,8 @@ gt_plt_sparkline <- function(gt_object,
             yend = last(.data$y)
           ),
           color = palette[5],
-          linewidth = 0.1
+          linewidth = 0.1,
+          na.rm = TRUE
         ),
         plot_out$layers
       )
@@ -256,7 +271,8 @@ gt_plt_sparkline <- function(gt_object,
         geom_ribbon(
           aes(x = .data$x, ymin = ribbon_df$q25, ymax = ribbon_df$q75),
           fill = palette[5],
-          alpha = 0.5
+          alpha = 0.5,
+          na.rm = TRUE
         ),
         geom_segment(
           aes(
@@ -266,7 +282,8 @@ gt_plt_sparkline <- function(gt_object,
             yend = stats::median(.data$y)
           ),
           color = palette[5],
-          linewidth = 0.1
+          linewidth = 0.1,
+          na.rm = TRUE
         ),
         plot_out$layers
       )

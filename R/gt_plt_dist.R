@@ -282,7 +282,7 @@ gt_plt_dist <- function(gt_object,
             color = line_color,
             fill = fill_color
           ) +
-          xlim(range(density_range)) +
+          xlim(range(density_range, na.rm = TRUE)) +
           coord_cartesian(
             xlim = range(total_rng_dens, na.rm = TRUE),
             expand = TRUE,

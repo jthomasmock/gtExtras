@@ -9,6 +9,7 @@
 - Add an experimental `gt_render_reprex()` thanks to @mrcaseb suggestion on [Twitter](https://twitter.com/mrcaseb/status/1628122417523527697?s=20)
 - Allow for entire NA columns in `gt_plt_bar()` and `gt_plt_bar_pct()` - [#86](https://github.com/jthomasmock/gtExtras/issues/86)
 - Accommodate small values in `gt_plt_bullet()` - [#87](https://github.com/jthomasmock/gtExtras/issues/87)
+- Address some small bugs #94 and #95
 
 # gtExtras 0.4.5
 - Refactor many functions to account for upstream changes in `gt` v0.8.0

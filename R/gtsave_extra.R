@@ -52,8 +52,8 @@ gtsave_extra <- function(data,
       expand = expand,
       ...
     ) %>%
-      utils::capture.output(type = "message") %>%
-      invisible()
+     utils::capture.output(type = "message") %>%
+     invisible()
 
     if(!grepl("screenshot completed", tolower(web_out))) print(web_out)
 

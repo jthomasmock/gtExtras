@@ -1,4 +1,4 @@
-# gtExtras (development version)
+# gtExtras 0.5.0
 
 - Refactor NA handling in `gt_fa_` functions - thanks to @areckenrode via [#78](https://github.com/jthomasmock/gtExtras/issues/78)
 - Allow for all negative values in `gt_plt_bar()` - thanks to @paspvik via [#75](https://github.com/jthomasmock/gtExtras/pull/75)

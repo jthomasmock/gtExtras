@@ -65,6 +65,6 @@ gt_hulk_col_numeric <- function(gt_object, columns = NULL, domain = NULL, ..., t
   gt::data_color(
     gt_object,
     columns = {{ columns }},
-    colors = hulk_pal
+    fn = hulk_pal
   )
 }

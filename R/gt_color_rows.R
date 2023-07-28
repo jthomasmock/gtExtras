@@ -82,7 +82,7 @@ gt_color_rows <- function(gt_object,
   gt_object %>%
     data_color(
       columns = {{ columns }},
-      colors = scales::col_numeric(
+      fn = scales::col_numeric(
         palette = if (grepl(x = palette[1], pattern = "::")) {
           paletteer::paletteer_d(
             palette = palette,

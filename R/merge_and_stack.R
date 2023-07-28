@@ -144,7 +144,7 @@ gt_merge_stack_color <- function(gt_object, top_val, color_val,
   gt_object %>%
     data_color(
       columns = {{ color_val }},
-      colors = scales::col_numeric(
+      fn = scales::col_numeric(
         palette = if (grepl(x = palette[1], pattern = "::")) {
           paletteer::paletteer_d(
             palette = palette

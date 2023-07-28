@@ -176,8 +176,8 @@ test_that("fontawesome, test rank change", {
     })
 
   expect_equal(
-    sapply(rank_tab_items, function(x)x[1]) %>% unname(),
-    c(rep("Angles up", 3), rep("Angles down", 3), "Equals")
+    c(sapply(rank_tab_items, function(x)x[1]) %>% unname()),
+    c(rep("Angles Up", 3), rep("Angles Down", 3), "Equals")
   )
 
   expect_equal(

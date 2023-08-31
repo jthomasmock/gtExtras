@@ -50,6 +50,7 @@
 #' ```
 #' \if{html}{\figure{plt-bar-stack.png}{options: width=70\%}}
 
+
 gt_plt_bar_stack <- function(gt_object,
                              column = NULL,
                              palette = c("#ff4343", "#bfbfbf", "#0a1c2b"),
@@ -196,11 +197,11 @@ gt_plt_bar_stack <- function(gt_object,
     lab3 <- labels[3]
 
     glue::glue(
-      "<span style='color:{lab_pal1}'><b>{lab1}</b></span>",
+      "<div><span style='color:{lab_pal1}'><b>{lab1}</b></span>",
       "||",
       "<span style='color:{lab_pal2}'><b>{lab2}</b></span>",
       "||",
-      "<span style='color:{lab_pal3}'><b>{lab3}</b></span>"
+      "<span style='color:{lab_pal3}'><b>{lab3}</b></span></div>"
     ) %>% gt::html()
   }
 

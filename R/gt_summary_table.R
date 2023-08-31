@@ -41,12 +41,16 @@ gt_plt_summary <- function(df, title = NULL) {
         apply_detail <- function(type, name, value){
           if (grepl(x = type, pattern = "factor|character|ordered")){
 
+            value_count <- tapply(value,value,length) %>%
+              sort(decreasing = TRUE) %>%
+              labels() %>% unlist()
+
             html(
               glue::glue(
                 "<div style='max-width: 150px;'>
                 <details style='font-weight: normal !important;'>
                 <summary style='font-weight: bold !important;'>{name}</summary>
-            {glue::glue_collapse(unique(value), ', ', last = ' and ')}
+            {glue::glue_collapse(value_count, ', ', last = ' and ')}
             </details></div>"
               )
             )

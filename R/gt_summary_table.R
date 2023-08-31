@@ -33,6 +33,39 @@ gt_plt_summary <- function(df, title = NULL) {
 
   tab_out <- sum_table %>%
     gt() %>%
+    text_transform(
+      cells_body(name),
+      fn = function(x){
+        temp_df <- gtExtras::gt_index(gt_object = ., name, as_vector = FALSE)
+
+        apply_detail <- function(type, name, value){
+          if (grepl(x = type, pattern = "factor|character|ordered")){
+
+            html(
+              glue::glue(
+                "<div style='max-width: 150px;'>
+                <details style='font-weight: normal !important;'>
+                <summary style='font-weight: bold !important;'>{name}</summary>
+            {glue::glue_collapse(unique(value), ', ', last = ' and ')}
+            </details></div>"
+              )
+            )
+
+          } else {
+            name
+          }
+        }
+
+        mapply(
+          FUN = apply_detail,
+            temp_df$type,
+            temp_df$name,
+            temp_df$value,
+          MoreArgs = NULL
+        )
+
+      }
+    ) %>%
     text_transform(cells_body(value),
       fn = function(x) {
         .mapply(

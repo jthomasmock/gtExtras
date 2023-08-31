@@ -55,19 +55,20 @@ dt_boxhead_init <- function(data) {
 }
 
 dt_boxhead_edit <- function(data, var, ...) {
-  dt_boxhead <- data %>% dt_boxhead_get()
+
+  dt_boxhead <- dt_boxhead_get(data = data)
 
   var_name <- var
 
   val_list <- list(...)
 
   if (length(val_list) != 1) {
-    stop("`dt_boxhead_edit()` expects a single value at ...")
+    cli::cli_abort("`dt_boxhead_edit()` expects a single value at `...`.")
   }
 
-  check_names_dt_boxhead_expr(val_list)
+  check_names_dt_boxhead_expr(expr = val_list)
 
-  check_vars_dt_boxhead(var, dt_boxhead)
+  check_vars_dt_boxhead(var = var, dt_boxhead = dt_boxhead)
 
   if (is.list(dt_boxhead[[names(val_list)]])) {
     dt_boxhead[[which(dt_boxhead$var == var_name), names(val_list)]] <- unname(val_list)
@@ -75,7 +76,7 @@ dt_boxhead_edit <- function(data, var, ...) {
     dt_boxhead[[which(dt_boxhead$var == var_name), names(val_list)]] <- unlist(val_list)
   }
 
-  dt_boxhead %>% dt_boxhead_set(data = data)
+  dt_boxhead_set(data = data, boxh = dt_boxhead)
 }
 
 dt_boxhead_add_var <- function(data,

@@ -78,10 +78,10 @@ two tables like <code>list(table1, table2)</code>, or passes the output of <code
 into this function. The user should indicate whether they want to return the
 HTML to R's viewer with <code>output = "viewer"</code> to "view" the final output, or to
 save to disk as a <code>.png</code> via <code>output = "save".</code> Note that this is a relatively
-complex wrapper around <code><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">htmltools::div()</a></code> + <code><a href="https://rdrr.io/pkg/webshot2/man/webshot.html" class="external-link">webshot2::webshot()</a></code>. Additional
-arguments can be passed to <code><a href="https://rdrr.io/pkg/webshot2/man/webshot.html" class="external-link">webshot2::webshot()</a></code> if the automatic output is not
+complex wrapper around <code><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">htmltools::div()</a></code> + <code><a href="https://rstudio.github.io/webshot2/reference/webshot.html" class="external-link">webshot2::webshot()</a></code>. Additional
+arguments can be passed to <code><a href="https://rstudio.github.io/webshot2/reference/webshot.html" class="external-link">webshot2::webshot()</a></code> if the automatic output is not
 satisfactory. In most situations, modifying the <code>vwidth</code> argument is sufficient
-to get the desired output, but all arguments to <code><a href="https://rdrr.io/pkg/webshot2/man/webshot.html" class="external-link">webshot2::webshot()</a></code> are
+to get the desired output, but all arguments to <code><a href="https://rstudio.github.io/webshot2/reference/webshot.html" class="external-link">webshot2::webshot()</a></code> are
 available by their original name via the passed <code>...</code>.</p>
     </div>
 
@@ -119,23 +119,23 @@ available by their original name via the passed <code>...</code>.</p>
 
 
 <dt>vwidth</dt>
-<dd><p>Viewport width. This is the width of the browser "window" when passed to <code><a href="https://rdrr.io/pkg/webshot2/man/webshot.html" class="external-link">webshot2::webshot()</a></code>.</p></dd>
+<dd><p>Viewport width. This is the width of the browser "window" when passed to <code><a href="https://rstudio.github.io/webshot2/reference/webshot.html" class="external-link">webshot2::webshot()</a></code>.</p></dd>
 
 
 <dt>vheight</dt>
-<dd><p>Viewport height This is the height of the browser "window" when passed to <code><a href="https://rdrr.io/pkg/webshot2/man/webshot.html" class="external-link">webshot2::webshot()</a></code>.</p></dd>
+<dd><p>Viewport height This is the height of the browser "window" when passed to <code><a href="https://rstudio.github.io/webshot2/reference/webshot.html" class="external-link">webshot2::webshot()</a></code>.</p></dd>
 
 
 <dt>...</dt>
-<dd><p>Additional arguments passed to <code><a href="https://rdrr.io/pkg/webshot2/man/webshot.html" class="external-link">webshot2::webshot()</a></code>, only to be used if <code>output = "save"</code>, saving the two-column layout tables to disk as a <code>.png</code>.</p></dd>
+<dd><p>Additional arguments passed to <code><a href="https://rstudio.github.io/webshot2/reference/webshot.html" class="external-link">webshot2::webshot()</a></code>, only to be used if <code>output = "save"</code>, saving the two-column layout tables to disk as a <code>.png</code>.</p></dd>
 
 
 <dt>zoom</dt>
-<dd><p>Argument to <code><a href="https://rdrr.io/pkg/webshot2/man/webshot.html" class="external-link">webshot2::webshot()</a></code>. A number specifying the zoom factor. A zoom factor of 2 will result in twice as many pixels vertically and horizontally. Note that using 2 is not exactly the same as taking a screenshot on a HiDPI (Retina) device: it is like increasing the zoom to 200 doubling the height and width of the browser window. This differs from using a HiDPI device because some web pages load different, higher-resolution images when they know they will be displayed on a HiDPI device (but using zoom will not report that there is a HiDPI device).</p></dd>
+<dd><p>Argument to <code><a href="https://rstudio.github.io/webshot2/reference/webshot.html" class="external-link">webshot2::webshot()</a></code>. A number specifying the zoom factor. A zoom factor of 2 will result in twice as many pixels vertically and horizontally. Note that using 2 is not exactly the same as taking a screenshot on a HiDPI (Retina) device: it is like increasing the zoom to 200 doubling the height and width of the browser window. This differs from using a HiDPI device because some web pages load different, higher-resolution images when they know they will be displayed on a HiDPI device (but using zoom will not report that there is a HiDPI device).</p></dd>
 
 
 <dt>expand</dt>
-<dd><p>Argument to <code><a href="https://rdrr.io/pkg/webshot2/man/webshot.html" class="external-link">webshot2::webshot()</a></code>. A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order. When taking screenshots of multiple URLs, this parameter can also be a list with same length as url with each element of the list containing a single number or four numbers to use for the corresponding URL.</p></dd>
+<dd><p>Argument to <code><a href="https://rstudio.github.io/webshot2/reference/webshot.html" class="external-link">webshot2::webshot()</a></code>. A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order. When taking screenshots of multiple URLs, this parameter can also be a list with same length as url with each element of the list containing a single number or four numbers to use for the corresponding URL.</p></dd>
 
 </dl></div>
     <div class="section level2">

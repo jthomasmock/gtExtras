@@ -18,7 +18,7 @@
 #' @param label_cutoff A number, 0 to 1, representing where to set the inside/outside label boundary. Defaults to 0.40 (40%) of the column's maximum value. If the value in that row is less than the cutoff, the label will be placed outside the bar, otherwise it will be placed within the bar. This interacts with the overall width of the bar, so if you are not happy with the placement of the labels you may try adjusting the `width` argument as well.
 #' @param decimals A number representing how many decimal places to be used in label rounding. Defaults to 1.
 #' @param font_style A character representing the font style of the labels. Accepts one of 'bold' (default), 'italic', or 'normal'.
-#' @param font_size A character representing the font size of the labels. Defaults to '12px'.
+#' @param font_size A character representing the font size of the labels. Defaults to '10px'.
 #' @return An object of class `gt_tbl`.
 #' @export
 #' @section Examples:
@@ -49,7 +49,7 @@ gt_plt_bar_pct <- function(
     gt_object,
     column,
     height = 16,
-    width = 100, 
+    width = 100,
     fill = "purple",
     background = "#e1e1e1",
     scaled = FALSE,
@@ -62,21 +62,21 @@ gt_plt_bar_pct <- function(
 
   stopifnot(`'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?` = "gt_tbl" %in%
     class(gt_object))
-  
+
   stopifnot('label_cutoff must be a number between 0 and 1' = dplyr::between(label_cutoff, 0, 1))
 
   # ensure font_style is one of the accepted values
   stopifnot(
-    '`font_style` argument must be "bold", "normal", or "italic"' = 
+    '`font_style` argument must be "bold", "normal", or "italic"' =
       font_style %in% c("bold", "normal", "italic")
     )
-  
+
   all_cols <- gt_index(gt_object, column = {{ column }}, as_vector = FALSE)
 
   data_in <- all_cols %>% select({{ column }}) %>% pull()
-  
+
   col_name <- all_cols %>%
-    select({{ column }}) %>% 
+    select({{ column }}) %>%
     names()
 
   # create a formula for cols_width
@@ -112,7 +112,7 @@ gt_plt_bar_pct <- function(
             label <- glue::glue("{round(label_values, decimals)}%")
 
             if (x < (label_cutoff * max_x)) {
-              
+
               css_styles <- paste0(
                 "background:", fill,";",
                 "width:", scaled_value, "%;",
@@ -125,7 +125,7 @@ gt_plt_bar_pct <- function(
                 "font-size:", font_size, ";",
                 "position:relative;"
               )
-              
+
               span_styles <- paste0(
                 "color:", ideal_fgnd_color(background),";",
                 "position:absolute;",
@@ -134,13 +134,13 @@ gt_plt_bar_pct <- function(
                 "font-weight:", font_style,";",
                 "font-size:", font_size,";"
               )
-              
+
               glue::glue(
                 "<div style='{css_styles}'>",
                 "<span style='{span_styles}'>{label}</span></div>"
               )
             } else {
-              
+
               css_styles <- paste0(
                 "background:", fill,";",
                 "width:", scaled_value, "%;",
@@ -150,7 +150,7 @@ gt_plt_bar_pct <- function(
                 "justify-content:flex-start;",
                 "position:relative;"
               )
-              
+
               span_styles <- paste0(
                 "color:", ideal_fgnd_color(fill),";",
                 "position:absolute;",
@@ -159,7 +159,7 @@ gt_plt_bar_pct <- function(
                 "font-weight:", font_style,";",
                 "font-size:", font_size,";"
               )
-              
+
               glue::glue(
                 "<div style='{css_styles}'>",
                 "<span style='{span_styles}'>{label}</span></div>"

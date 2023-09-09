@@ -17,7 +17,7 @@
 #' @param labels `TRUE`/`FALSE` logical representing if labels should be plotted. Defaults to `FALSE`, meaning that no value labels will be plotted.
 #' @param inside_label_color A character representing the color for labels inside the bar. Defaults to 'white'.
 #' @param outside_label_color A character representing the color for labels outside the bar. Defaults to 'black'.
-#' @param label_value_cutoff A number, [0,1], representing where to set the inside/outside label boundary. Defaults to 0.50 (50%) of the column's maximum value.
+#' @param label_value_cutoff A number, 0 to 1, representing where to set the inside/outside label boundary. Defaults to 0.50 (50%) of the column's maximum value.
 #' @param digits A number representing how many decimal places to be used in label rounding. Defaults to 1.
 #' @param scale_label `TRUE`/`FALSE` logical representing if the label values should be scaled by 100. Defaults to `TRUE`, meaning the values will be scaled when transformed to labels.
 #' @param percent_sign `TRUE`/`FALSE` logical representing if a percent sign, `%`, should be appended to the labels. Defaults to `TRUE`.

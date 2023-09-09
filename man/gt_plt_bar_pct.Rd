@@ -41,7 +41,7 @@ gt_plt_bar_pct(
 
 \item{outside_label_color}{A character representing the color for labels outside the bar. Defaults to 'black'.}
 
-\item{label_value_cutoff}{A number, \link{0,1}, representing where to set the inside/outside label boundary. Defaults to 0.50 (50\%) of the column's maximum value.}
+\item{label_value_cutoff}{A number, 0 to 1, representing where to set the inside/outside label boundary. Defaults to 0.50 (50\%) of the column's maximum value.}
 
 \item{digits}{A number representing how many decimal places to be used in label rounding. Defaults to 1.}
 

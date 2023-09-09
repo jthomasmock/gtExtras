@@ -24,19 +24,25 @@
 #' @section Examples:
 #' ```r
 #' library(gt)
-#'  gt_bar_plot_tab <- mtcars %>%
-#'    head() %>%
-#'    dplyr::select(cyl, mpg) %>%
-#'    dplyr::mutate(mpg_pct_max = round(mpg/max(mpg) * 100, digits = 2),
-#'                  mpg_scaled = mpg/max(mpg) * 100) %>%
-#'    dplyr::mutate(mpg_unscaled = mpg) %>%
-#'    gt() %>%
-#'    gt_plt_bar_pct(column = mpg_scaled, scaled = TRUE) %>%
-#'    gt_plt_bar_pct(column = mpg_unscaled, scaled = FALSE,
-#'                   fill = "blue", background = "lightblue") %>%
-#'    cols_align("center", contains("scale")) %>%
-#'    cols_width(4 ~ px(125),
-#'               5 ~ px(125))
+#'
+#' base_tab <- dplyr::tibble(x = seq(1, 100, length.out = 6)) %>%
+#'   dplyr::mutate(
+#'     x_unscaled = x,
+#'     x_scaled = x / max(x) * 100
+#'   ) %>%
+#'   gt()
+#'
+#' base_tab %>%
+#'   gt_plt_bar_pct(
+#'     column = x_unscaled,
+#'     scaled = TRUE,
+#'     fill = "forestgreen"
+#'   ) %>%
+#'   gt_plt_bar_pct(
+#'     column = x_scaled,
+#'     scaled = FALSE,
+#'     labels = TRUE
+#'   )
 #' ```
 #' @section Figures:
 #' \if{html}{\figure{gt_bar_plot.png}{options: width=100\%}}

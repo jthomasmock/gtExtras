@@ -42,7 +42,7 @@ gt_plt_bar_pct(
 
 \item{font_style}{A character representing the font style of the labels. Accepts one of 'bold' (default), 'italic', or 'normal'.}
 
-\item{font_size}{A character representing the font size of the labels. Defaults to '12px'.}
+\item{font_size}{A character representing the font size of the labels. Defaults to '10px'.}
 }
 \value{
 An object of class \code{gt_tbl}.
@@ -58,19 +58,25 @@ represent a percentage value representing 0-100.
 
 
 \if{html}{\out{<div class="sourceCode r">}}\preformatted{library(gt)
- gt_bar_plot_tab <- mtcars \%>\%
-   head() \%>\%
-   dplyr::select(cyl, mpg) \%>\%
-   dplyr::mutate(mpg_pct_max = round(mpg/max(mpg) * 100, digits = 2),
-                 mpg_scaled = mpg/max(mpg) * 100) \%>\%
-   dplyr::mutate(mpg_unscaled = mpg) \%>\%
-   gt() \%>\%
-   gt_plt_bar_pct(column = mpg_scaled, scaled = TRUE) \%>\%
-   gt_plt_bar_pct(column = mpg_unscaled, scaled = FALSE,
-                  fill = "blue", background = "lightblue") \%>\%
-   cols_align("center", contains("scale")) \%>\%
-   cols_width(4 ~ px(125),
-              5 ~ px(125))
+
+base_tab <- dplyr::tibble(x = seq(1, 100, length.out = 6)) \%>\%
+  dplyr::mutate(
+    x_unscaled = x,
+    x_scaled = x / max(x) * 100
+  ) \%>\%
+  gt()
+
+base_tab \%>\%
+  gt_plt_bar_pct(
+    column = x_unscaled,
+    scaled = TRUE,
+    fill = "forestgreen"
+  ) \%>\%
+  gt_plt_bar_pct(
+    column = x_scaled,
+    scaled = FALSE,
+    labels = TRUE
+  )
 }\if{html}{\out{</div>}}
 }
 

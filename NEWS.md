@@ -11,6 +11,7 @@
 - Accommodate small values in `gt_plt_bullet()` - [#87](https://github.com/jthomasmock/gtExtras/issues/87)
 - Address some small bugs #94 and #95
 - Add an expandable tag to `gt_plt_summary()` - [Request](https://twitter.com/AdriMichelson/status/1697020677952557103?s=20)
+- Add a labelling feature to `gt_plt_bar_pct()` - thanks to @andreweatherman and [PR](https://github.com/jthomasmock/gtExtras/pull/100)
 
 # gtExtras 0.4.5
 - Refactor many functions to account for upstream changes in `gt` v0.8.0

@@ -10,7 +10,16 @@ gt_plt_bar_pct(
   height = 16,
   fill = "purple",
   background = "#e1e1e1",
-  scaled = FALSE
+  scaled = FALSE,
+  labels = FALSE,
+  inside_label_color = "white",
+  outside_label_color = "black",
+  label_value_cutoff = 0.5,
+  digits = 1,
+  scale_label = TRUE,
+  percent_sign = TRUE,
+  font_style = "bold",
+  font_size = "12px"
 )
 }
 \arguments{
@@ -25,6 +34,24 @@ gt_plt_bar_pct(
 \item{background}{A character representing the background filling out the 100\% mark of the bar, defaults to light grey. Accepts a named color (eg 'white') or a hex color.}
 
 \item{scaled}{\code{TRUE}/\code{FALSE} logical indicating if the value is already scaled to a percent of max (\code{TRUE}) or if it needs to be scaled (\code{FALSE}). Defaults to \code{FALSE}, meaning the value will be divided by the max value in that column and then multiplied by 100.}
+
+\item{labels}{\code{TRUE}/\code{FALSE} logical representing if labels should be plotted. Defaults to \code{FALSE}, meaning that no value labels will be plotted.}
+
+\item{inside_label_color}{A character representing the color for labels inside the bar. Defaults to 'white'.}
+
+\item{outside_label_color}{A character representing the color for labels outside the bar. Defaults to 'black'.}
+
+\item{label_value_cutoff}{A number, \link{0,1}, representing where to set the inside/outside label boundary. Defaults to 0.50 (50\%) of the column's maximum value.}
+
+\item{digits}{A number representing how many decimal places to be used in label rounding. Defaults to 1.}
+
+\item{scale_label}{\code{TRUE}/\code{FALSE} logical representing if the label values should be scaled by 100. Defaults to \code{TRUE}, meaning the values will be scaled when transformed to labels.}
+
+\item{percent_sign}{\code{TRUE}/\code{FALSE} logical representing if a percent sign, \verb{\%}, should be appended to the labels. Defaults to \code{TRUE}.}
+
+\item{font_style}{A character represening the font style of the labels. Accepts one of 'bold' (default), 'italic', or 'normal'.}
+
+\item{font_size}{A character representing the font size of the labels. Defaults to '12px'.}
 }
 \value{
 An object of class \code{gt_tbl}.

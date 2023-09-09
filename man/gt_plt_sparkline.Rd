@@ -27,7 +27,7 @@ gt_plt_sparkline(
 
 \item{same_limit}{A logical indicating that the plots will use the same axis range (\code{TRUE}) or have individual axis ranges (\code{FALSE}).}
 
-\item{label}{A logical indicating whether the sparkline will have a numeric label at the end of the plot.}
+\item{label}{A logical indicating whether the sparkline will have a numeric label for the last value in the vector, placed at the end of the plot.}
 }
 \value{
 An object of class \code{gt_tbl}.

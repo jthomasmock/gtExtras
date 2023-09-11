@@ -34,7 +34,7 @@ gt_plt_bar <- function(gt_object,
                        color = "purple",
                        ...,
                        keep_column = FALSE,
-                       width = 70,
+                       width = 40,
                        scale_type = "none",
                        text_color = "white") {
   stopifnot(
@@ -114,13 +114,13 @@ gt_plt_bar <- function(gt_object,
           group = .data$y
         )
       ) +
-      geom_col(color = "transparent", width = 0.3) +
+      geom_col(color = "transparent", width = 0.35) +
       scale_x_continuous(
         limits = total_rng,
         expand = expansion(mult = c(0.05, 0.08)),
       ) +
       scale_y_discrete(expand = expansion(mult = c(0.2, 0.2))) +
-      geom_vline(xintercept = 0, color = "black", linewidth = 1) +
+      geom_vline(xintercept = 0, color = "black", linewidth = 0.5) +
       coord_cartesian(clip = "off") +
       theme_void() +
       theme(legend.position = "none", plot.margin = unit(rep(0, 4), "pt"))
@@ -135,12 +135,10 @@ gt_plt_bar <- function(gt_object,
             } else if (scale_type == "percent") {
               scales::label_percent(...)(.data$x)
             },
-            hjust = ifelse(.data$x >= 0, 1, 0)
+            hjust = ifelse(.data$x >= 0, 1.2, -.2)
           ),
-          nudge_x = sign(df_in$x) * (-1) / 80,
           vjust = 0.5,
           size = 3,
-          family = "mono",
           color = text_color,
           fontface = "bold"
         )

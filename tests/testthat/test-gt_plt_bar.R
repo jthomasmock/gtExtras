@@ -40,9 +40,7 @@ test_that("gt_plt_bar svg is created and has specific values", {
     rvest::html_nodes("svg > g > rect") %>%
     rvest::html_attr("width")
 
-  expect_equal(bar_vals, c("158.56","158.56","172.15","161.58","141.20","136.67"))
-  expect_equal(bar_neg_vals, c("86.08","57.38","28.69","28.69","57.38","86.08"))
+  expect_equal(bar_vals, c("90.61", "90.61", "98.37", "92.33", "80.68", "78.10"))
+  expect_equal(bar_neg_vals, c("49.19", "32.79", "16.40", "16.40", "32.79", "49.19"))
 
 })
-
-

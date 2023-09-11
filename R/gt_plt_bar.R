@@ -2,7 +2,8 @@
 #' @description
 #' The `gt_plt_bar` function takes an existing `gt_tbl` object and
 #' adds horizontal barplots via `ggplot2`. Note that values are plotted on a
-#' shared x-axis, and a vertical black bar is added at x = zero.
+#' shared x-axis, and a vertical black bar is added at x = zero. To add labels
+#' to each of the of the bars, set `scale_type` to either `'percent'` or `'number`'.
 #'
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param column A single column wherein the bar plot should replace existing data.

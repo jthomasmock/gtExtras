@@ -10,7 +10,7 @@ gt_plt_bar(
   color = "purple",
   ...,
   keep_column = FALSE,
-  width = 70,
+  width = 40,
   scale_type = "none",
   text_color = "white"
 )
@@ -38,7 +38,8 @@ An object of class \code{gt_tbl}.
 \description{
 The \code{gt_plt_bar} function takes an existing \code{gt_tbl} object and
 adds horizontal barplots via \code{ggplot2}. Note that values are plotted on a
-shared x-axis, and a vertical black bar is added at x = zero.
+shared x-axis, and a vertical black bar is added at x = zero. To add labels
+to each of the of the bars, set \code{scale_type} to either \code{'percent'} or \verb{'number}'.
 }
 \section{Examples}{
 

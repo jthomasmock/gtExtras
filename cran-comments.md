@@ -1,6 +1,6 @@
 ## Submission details
 
-- This is an update to solve a few bugs as indicated by users
+- This is an update to solve a few bugs as indicated by users and add new features.
 
 ## R CMD check results
 

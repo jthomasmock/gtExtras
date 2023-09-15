@@ -1,3 +1,5 @@
+# gtExtras (development version)
+
 # gtExtras 0.5.0
 
 - Refactor NA handling in `gt_fa_` functions - thanks to @areckenrode via [#78](https://github.com/jthomasmock/gtExtras/issues/78)

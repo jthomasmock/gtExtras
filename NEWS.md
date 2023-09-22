@@ -84,7 +84,7 @@
 # gtExtras 0.3.4
 
 - Add initial version of a `gt_plt_summary()` function, as inspired by the [Observable/SummaryTable function](https://observablehq.com/@observablehq/summary-table).
-- `gt_sparkline()` will be removed soon now that [`bstfun`/`gtsummary`](https://github.com/ddsjoberg/bstfun/pull/102) are no longer depending on it. `gt_plt_dist()` and `gt_plt_sparkline()` will be the new preferred and enhanced versions of `gt_sparkline()`.
+- `gt_sparkline()` will be removed soon now that `bstfun`/`gtsummary` are no longer depending on it. `gt_plt_dist()` and `gt_plt_sparkline()` will be the new preferred and enhanced versions of `gt_sparkline()`.
 - Add tests for `gt_plt_summary()`
 
 # gtExtras 0.3.3

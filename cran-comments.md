@@ -1,6 +1,7 @@
 ## Submission details
 
 - This is an update to solve a few bugs as indicated by users and add new features.
+- Fixed the version of package to be stable and not release version (0.5.0.90000)
 
 ## R CMD check results
 

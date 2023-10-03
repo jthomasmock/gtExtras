@@ -252,7 +252,7 @@ gt_plt_dist <- function(gt_object,
           bw <- bw
         }
 
-        total_rng_dens <- stats::density(data_in, bw = bw)[["x"]]
+        total_rng_dens <- stats::density(stats::na.omit(as.vector(vals)), bw = bw)[["x"]]
 
         density_calc <- stats::density(input_data[["y"]], bw = bw)
         density_range <- density_calc[["x"]]

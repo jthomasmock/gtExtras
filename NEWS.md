@@ -1,4 +1,6 @@
 # gtExtras (development version)
+- Handle interquartile range of zero in `gt_plt_summary()` - [#104](https://github.com/jthomasmock/gtExtras/issues/104)  
+- Experimentally handle multiple types of plots in `gt_plt_dist()` - [#102](https://github.com/jthomasmock/gtExtras/issues/102)  
 
 # gtExtras 0.5.0
 

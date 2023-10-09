@@ -221,7 +221,17 @@ plot_data <- function(col, col_name, ...) {
     bw <- 2 * IQR(col, na.rm = TRUE) / length(col)^(1 / 3)
 
     plot_out <- ggplot(df_in, aes(x = x)) +
-      geom_histogram(color = "white", fill = "#f8bb87", binwidth = bw) +
+      # conditional to switch between estimated binwidth or Freedman–Diaconis rule
+      {
+        if(bw > 0){
+          geom_histogram(color = "white", fill = "#f8bb87", binwidth = bw)
+        } else {
+
+          hist_breaks <- hist(col[!is.na(col)], breaks = "FD")$breaks
+
+          geom_histogram(color = "white", fill = "#f8bb87", breaks = hist_breaks)
+        }
+      } +
       scale_x_continuous(
         breaks = range(col),
         labels = scales::label_number(big.mark = ",", ..., scale_cut = scales::cut_long_scale())(range(col, na.rm = TRUE))

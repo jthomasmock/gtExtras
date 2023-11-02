@@ -79,7 +79,8 @@ gt_plt_summary <- function(df, title = NULL) {
           FUN = plot_data,
           list(
             gtExtras::gt_index(gt_object = ., value),
-            gtExtras::gt_index(gt_object = ., name)
+            gtExtras::gt_index(gt_object = ., name),
+            gtExtras::gt_index(gt_object = ., n_missing)
           ),
           MoreArgs = NULL
         )
@@ -131,7 +132,7 @@ gt_plt_summary <- function(df, title = NULL) {
     if (utils::packageVersion("gt")$minor >= 6) {
       tab_out %>% sub_missing(Mean:SD)
     } else {
-      tab_out %>% fmt_missing(Mean:SD)
+      tab_out %>% fmt_missing(Mean:SD, missing_text = "--")
     }
   }
 }
@@ -184,7 +185,9 @@ create_sum_table <- function(df) {
 #' @import ggplot2 dplyr
 #' @importFrom scales seq_gradient_pal expand_range label_number cut_long_scale label_date
 #' @return svg text encoded as HTML
-plot_data <- function(col, col_name, ...) {
+plot_data <- function(col, col_name, n_missing, ...) {
+
+  if(n_missing >= 0.99){return("<div></div>")}
   col_type <- paste0(class(col), collapse = " ")
 
   col <- col[!is.na(col)]

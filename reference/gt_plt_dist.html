@@ -16,7 +16,7 @@ wanting to plot more traditional sparklines, you can use gtExtras::gt_plt_sparkl
     
     <a class="navbar-brand me-2" href="../index.html">gtExtras</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.0.9003</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.0.9004</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,7 +75,8 @@ wanting to plot more traditional spark<strong>lines</strong>, you can use <code>
 <span>  fill_color <span class="op">=</span> <span class="st">"grey"</span>,</span>
 <span>  bw <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  trim <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  same_limit <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  same_limit <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  type_col <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -115,6 +116,10 @@ wanting to plot more traditional spark<strong>lines</strong>, you can use <code>
 
 <dt>same_limit</dt>
 <dd><p>A logical indicating that the plots will use the same axis range (<code>TRUE</code>) or have individual axis ranges (<code>FALSE</code>).</p></dd>
+
+
+<dt>type_col</dt>
+<dd><p>A tidyselect column indicating a vector of which <code>type</code> of plot to make by row. Must be equal to the total number of rows and limited to <code>"boxplot"</code>, <code>"histogram"</code>, <code>"rug_strip"</code> or <code>"density"</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">

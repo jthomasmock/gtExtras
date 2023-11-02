@@ -16,7 +16,7 @@ the header of a table via gt::tab_header()."><meta property="og:image" content="
     
     <a class="navbar-brand me-2" href="../index.html">gtExtras</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.0.9003</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.0.9004</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,11 +76,16 @@ the header of a table via <code><a href="https://gt.rstudio.com/reference/tab_he
 
 
 <dt>url</dt>
-<dd><p>A url that resolves to an image file.</p></dd>
+<dd><p><em>An image URL</em></p>
+<p><code>scalar&lt;character&gt;</code> // <strong>required</strong></p>
+<p>A url that resolves to an image file.</p></dd>
 
 
 <dt>height</dt>
-<dd><p>The absolute height (px) of the image in the table cell.</p></dd>
+<dd><p><em>Height of image</em></p>
+<p><code>scalar&lt;numeric|integer&gt;</code> // <em>default:</em> <code>30</code></p>
+<p>The absolute height of the image in the table cell (in <code>"px"</code> units). By
+default, this is set to <code>"30px"</code>.</p></dd>
 
 
 <dt>left</dt>

@@ -27,6 +27,9 @@ gt_plt_summary <- function(df, title = NULL) {
   # returns a . for df %>% gt_plt_summary()
   if (is.null(title)) title <- deparse(substitute(df))
 
+  if(any(sapply(df, class) == "list")){stop("gt_plt_summary() doesn't handle list columns.", call. = FALSE)}
+  if(nrow(df) >= 1e5){warning("Data has more than 100,000 rows, consider sampling the data to reduce size.", call. = FALSE)}
+
   sum_table <- create_sum_table(df)
 
   dim_df <- dim(df)

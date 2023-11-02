@@ -88,102 +88,115 @@ gt_plt_bar_pct <- function(
   # create a formula for cols_width
   col_to_widen <- rlang::new_formula(col_name, px(width))
 
-  gt_object %>%
+  bar_plt_html <- function(xy) {
+
+    if (length(na.omit(xy)) == 0) {
+      max_x <- 0
+    } else {
+      max_x <- max(as.double(xy), na.rm = TRUE)
+    }
+
+    bar <- lapply(data_in, function(x) {
+
+      scaled_value <- if(isFALSE(scaled)) {
+        x / max_x * 100
+      } else {
+        x
+      }
+
+      if (labels) {
+        # adjust values for labeling // scale_label
+        label_values <- if(scaled) {
+          x
+        } else {
+          x / max_x * 100
+        }
+
+        # create label string to print out // add % sign if requested
+        label <- glue::glue("{round(label_values, decimals)}%")
+
+        if (x < (label_cutoff * max_x)) {
+
+          css_styles <- paste0(
+            "background:", fill,";",
+            "width:", scaled_value, "%;",
+            "height:", height, "px;",
+            "display:flex;",
+            "align-items:center;",
+            "justify-content:center;",
+            "color:", ideal_fgnd_color(background),";",
+            "font-weight:", font_style,";",
+            "font-size:", font_size, ";",
+            "position:relative;"
+          )
+
+          span_styles <- paste0(
+            "color:", ideal_fgnd_color(background),";",
+            "position:absolute;",
+            "left:0%;",
+            "margin-left:", scaled_value * width/100, "px;",
+            "font-weight:", font_style,";",
+            "font-size:", font_size,";"
+          )
+
+          glue::glue(
+            "<div style='{css_styles}'>",
+            "<span style='{span_styles}'>{label}</span></div>"
+          )
+        } else {
+
+          css_styles <- paste0(
+            "background:", fill,";",
+            "width:", scaled_value, "%;",
+            "height:", height, "px;",
+            "display:flex;",
+            "align-items:center;",
+            "justify-content:flex-start;",
+            "position:relative;"
+          )
+
+          span_styles <- paste0(
+            "color:", ideal_fgnd_color(fill),";",
+            "position:absolute;",
+            "left:0px;",
+            "margin-left:5px;",
+            "font-weight:", font_style,";",
+            "font-size:", font_size,";"
+          )
+
+          glue::glue(
+            "<div style='{css_styles}'>",
+            "<span style='{span_styles}'>{label}</span></div>"
+          )
+        }
+      } else if(!is.na(x)) {
+        glue::glue(
+          "<div style='background:{fill};width:{scaled_value}%;height:{height}px;'></div>" # no labels added
+        )
+      } else if(is.na(x)){
+        "<div style='background:transparent;width:0%;height:{height}px;'></div>" # no labels added
+      }
+    })
+
+    chart <- lapply(bar, function(bar) {
+      glue::glue("<div style='flex-grow:1;margin-left:8px;background:{background};'>{bar}</div>")
+    })
+
+    chart
+  }
+
+  # silence NAs messing with rownum_i
+  quiet <- function(x) {
+    sink(tempfile())
+    on.exit(sink())
+    invisible(force(x))
+  }
+
+  quiet(gt_object %>%
     cols_width(col_to_widen) %>%
     text_transform(
       locations = cells_body(columns = {{ column }}),
-      fn = function(x) {
-        if (length(na.omit(x)) == 0) {
-          return("<div></div>")
-        } else {
-          max_x <- max(as.double(x), na.rm = TRUE)
-        }
-
-        bar <- lapply(data_in, function(x) {
-          scaled_value <- if (isFALSE(scaled)) {
-            x / max_x * 100
-          } else {
-            x
-          }
-
-          if (labels) {
-            # adjust values for labeling // scale_label
-            label_values <- if (scaled) {
-              x
-            } else {
-              x / max_x * 100
-            }
-
-            # create label string to print out // add % sign if requested
-            label <- glue::glue("{round(label_values, decimals)}%")
-
-            if (x < (label_cutoff * max_x)) {
-
-              css_styles <- paste0(
-                "background:", fill,";",
-                "width:", scaled_value, "%;",
-                "height:", height, "px;",
-                "display:flex;",
-                "align-items:center;",
-                "justify-content:center;",
-                "color:", ideal_fgnd_color(background),";",
-                "font-weight:", font_style,";",
-                "font-size:", font_size, ";",
-                "position:relative;"
-              )
-
-              span_styles <- paste0(
-                "color:", ideal_fgnd_color(background),";",
-                "position:absolute;",
-                "left:0%;",
-                "margin-left:", scaled_value * width/100, "px;",
-                "font-weight:", font_style,";",
-                "font-size:", font_size,";"
-              )
-
-              glue::glue(
-                "<div style='{css_styles}'>",
-                "<span style='{span_styles}'>{label}</span></div>"
-              )
-            } else {
-
-              css_styles <- paste0(
-                "background:", fill,";",
-                "width:", scaled_value, "%;",
-                "height:", height, "px;",
-                "display:flex;",
-                "align-items:center;",
-                "justify-content:flex-start;",
-                "position:relative;"
-              )
-
-              span_styles <- paste0(
-                "color:", ideal_fgnd_color(fill),";",
-                "position:absolute;",
-                "left:0px;",
-                "margin-left:5px;",
-                "font-weight:", font_style,";",
-                "font-size:", font_size,";"
-              )
-
-              glue::glue(
-                "<div style='{css_styles}'>",
-                "<span style='{span_styles}'>{label}</span></div>"
-              )
-            }
-          } else {
-            glue::glue(
-              "<div style='background:{fill};width:{scaled_value}%;height:{height}px;'></div>" # no labels added
-            )
-          }
-        })
-
-        chart <- lapply(bar, function(bar) {
-          glue::glue("<div style='flex-grow:1;margin-left:8px;background:{background};'>{bar}</div>")
-        })
-
-        chart
-      }
+      fn = quiet(bar_plt_html)
     ) %>%
-    cols_align(align = "left", columns = {{ column }})
+    cols_align(align = "left", columns = {{ column }}))
 }

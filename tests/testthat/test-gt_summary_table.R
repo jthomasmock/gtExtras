@@ -53,8 +53,8 @@ test_that("table is created with expected output", {
 test_that("svg is created", {
   check_suggests()
 
-  num_plot <- plot_data(gt::exibble$num)
-  chr_plot <- plot_data(gt::exibble$char)
+  num_plot <- plot_data(gt::exibble$num, n_missing = 0.1)
+  chr_plot <- plot_data(gt::exibble$char, n_missing = 0.1)
 
   expect_true("html" %in% class(num_plot))
   expect_true("html" %in% class(chr_plot))

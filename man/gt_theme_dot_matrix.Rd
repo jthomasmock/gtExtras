@@ -4,7 +4,7 @@
 \alias{gt_theme_dot_matrix}
 \title{Apply dot matrix theme to a gt table}
 \usage{
-gt_theme_dot_matrix(gt_object, ..., color = "#b5dbb6")
+gt_theme_dot_matrix(gt_object, ..., color = "#b5dbb6", quiet = FALSE)
 }
 \arguments{
 \item{gt_object}{An existing gt table object of class \code{gt_tbl}}
@@ -12,6 +12,8 @@ gt_theme_dot_matrix(gt_object, ..., color = "#b5dbb6")
 \item{...}{Additional arguments passed to \code{gt::tab_options()}}
 
 \item{color}{A string indicating the color of the row striping, defaults to a light green. Accepts either named colors or hex colors.}
+
+\item{quiet}{A logical to silence the warning about missing ID}
 }
 \value{
 An object of class \code{gt_tbl}.

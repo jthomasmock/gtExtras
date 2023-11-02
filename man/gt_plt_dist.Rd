@@ -13,7 +13,8 @@ gt_plt_dist(
   fill_color = "grey",
   bw = NULL,
   trim = FALSE,
-  same_limit = TRUE
+  same_limit = TRUE,
+  type_col = NULL
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ gt_plt_dist(
 \item{trim}{A logical indicating whether to trim the values in \code{type = "density"} to a slight expansion beyond the observable range. Can help with long tails in \code{density} plots.}
 
 \item{same_limit}{A logical indicating that the plots will use the same axis range (\code{TRUE}) or have individual axis ranges (\code{FALSE}).}
+
+\item{type_col}{A tidyselect column indicating a vector of which \code{type} of plot to make by row. Must be equal to the total number of rows and limited to \code{"boxplot"}, \code{"histogram"}, \code{"rug_strip"} or \code{"density"}.}
 }
 \value{
 An object of class \code{gt_tbl}.

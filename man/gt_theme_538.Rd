@@ -4,12 +4,14 @@
 \alias{gt_theme_538}
 \title{Apply FiveThirtyEight theme to a gt table}
 \usage{
-gt_theme_538(gt_object, ...)
+gt_theme_538(gt_object, ..., quiet = FALSE)
 }
 \arguments{
 \item{gt_object}{An existing gt table object of class \code{gt_tbl}}
 
 \item{...}{Optional additional arguments to \code{gt::table_options()}}
+
+\item{quiet}{A logical to silence the warning about missing ID}
 }
 \value{
 An object of class \code{gt_tbl}.

@@ -4,12 +4,14 @@
 \alias{plot_data}
 \title{Create inline plots for a summary table}
 \usage{
-plot_data(col, col_name, ...)
+plot_data(col, col_name, n_missing, ...)
 }
 \arguments{
 \item{col}{The column of data to be used for plotting}
 
 \item{col_name}{the name of the column - use for reporting warnings}
+
+\item{n_missing}{Number of missing - used if all missing}
 
 \item{...}{additional arguments passed to scales::label_number()}
 }

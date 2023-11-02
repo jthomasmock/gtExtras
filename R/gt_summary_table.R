@@ -8,6 +8,7 @@
 #' @import gt
 #' @importFrom gt %>%
 #' @importFrom stats IQR
+#' @importFrom graphics hist
 #' @importFrom utils packageVersion
 #' @return a gt table
 #' @export
@@ -181,6 +182,7 @@ create_sum_table <- function(df) {
 #'
 #' @param col The column of data to be used for plotting
 #' @param col_name the name of the column - use for reporting warnings
+#' @param n_missing Number of missing - used if all missing
 #' @param ... additional arguments passed to scales::label_number()
 #' @import ggplot2 dplyr
 #' @importFrom scales seq_gradient_pal expand_range label_number cut_long_scale label_date
@@ -233,7 +235,7 @@ plot_data <- function(col, col_name, n_missing, ...) {
           geom_histogram(color = "white", fill = "#f8bb87", binwidth = bw)
         } else {
 
-          hist_breaks <- hist(col[!is.na(col)], breaks = "FD")$breaks
+          hist_breaks <- graphics::hist(col[!is.na(col)], breaks = "FD")$breaks
 
           geom_histogram(color = "white", fill = "#f8bb87", breaks = hist_breaks)
         }

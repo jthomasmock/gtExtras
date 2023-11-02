@@ -2,6 +2,7 @@
 #'
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param ... Optional additional arguments to `gt::table_options()`
+#' @param quiet A logical to silence the warning about missing ID
 #' @return An object of class `gt_tbl`.
 #' @export
 #' @section Examples:
@@ -19,8 +20,23 @@
 #' 1-1
 
 
-gt_theme_538 <- function(gt_object, ...) {
+gt_theme_538 <- function(gt_object, ..., quiet = FALSE) {
   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
+
+  table_id <- subset(gt_object[['_options']], parameter == 'table_id')[["value"]][[1]]
+
+  if(is.na(table_id)){
+    table_id <- gt::random_id()
+    if(isFALSE(quiet)){
+      message(glue::glue(
+        "Table has no assigned ID, using random ID '{table_id}' to apply `gt::opt_css()`",
+        "\nAvoid this message by assigning an ID: `gt(id = '')` or `gt_theme_538(quiet = TRUE)`"
+        ))
+    }
+
+    opt_position <- which("table_id" %in% gt_object[["_options"]][["parameter"]])[[1]]
+    gt_object[["_options"]][["value"]][[opt_position]] <- table_id
+  }
 
   gt_object %>%
     opt_table_font(
@@ -91,11 +107,7 @@ gt_theme_538 <- function(gt_object, ...) {
       ...
     ) %>%
     opt_css(
-      "tbody tr:last-child {
-    border-bottom: 2px solid #ffffff00;
-      }
-
-    ",
+      paste0("#", table_id, " tbody tr:last-child {border-bottom: 2px solid #ffffff00;}"),
       add = TRUE
     )
 }

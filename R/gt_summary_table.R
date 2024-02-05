@@ -235,7 +235,7 @@ plot_data <- function(col, col_name, n_missing, ...) {
           geom_histogram(color = "white", fill = "#f8bb87", binwidth = bw)
         } else {
 
-          hist_breaks <- graphics::hist(col[!is.na(col)], breaks = "FD")$breaks
+          hist_breaks <- graphics::hist(col[!is.na(col)], breaks = "FD", plot=FALSE)$breaks
 
           geom_histogram(color = "white", fill = "#f8bb87", breaks = hist_breaks)
         }

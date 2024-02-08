@@ -159,21 +159,40 @@ gt_plt_dist <- function(gt_object,
 
       if (isTRUE(same_limit)) {
         if (is.null(bw)) {
-          bw <- 2 * stats::IQR(data_in, na.rm = TRUE) / length(data_in)^(1 / 3)
+          bw <- bw_calc(data_in)
 
         } else {
           bw <- bw
         }
 
         plot_out <- plot_base +
-          geom_histogram(
-            aes(x = .data$y),
-            color = line_color,
-            fill = fill_color,
-            binwidth = bw,
-            linewidth = 0.2
-          ) +
-          scale_x_continuous(expand = expansion(mult = 0.2)) +
+          {
+            if(bw > 0){
+              geom_histogram(
+                aes(x = .data$y), 
+                color = line_color, fill = fill_color, binwidth = bw,
+                linewidth = 0.2
+              )
+            } else if(bw == 0) {
+              bw <- 1
+
+              geom_histogram(
+                aes(x = .data$y), 
+                color = line_color, fill = fill_color, binwidth = bw,
+                linewidth = 0.2
+              )
+            } else {
+    
+              hist_breaks <- graphics::hist(data_in[!is.na(data_in)], breaks = "FD", plot=FALSE)$breaks
+    
+              geom_histogram(
+                aes(x = .data$y), 
+                color = line_color, fill = fill_color, breaks = hist_breaks,
+                linewidth = 0.2
+              )
+            }
+          } +
+          scale_x_continuous(expand = expansion(mult = 0.1)) +
           coord_cartesian(
             clip = "off",
             xlim = grDevices::extendrange(

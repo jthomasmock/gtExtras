@@ -96,6 +96,7 @@ gt_double_table <- function(data, gt_fn, nrows = NULL, noisy = TRUE) {
 #' @param ... Additional arguments passed to `webshot2::webshot()`, only to be used if `output = "save"`, saving the two-column layout tables to disk as a `.png`.
 #' @param zoom Argument to `webshot2::webshot()`. A number specifying the zoom factor. A zoom factor of 2 will result in twice as many pixels vertically and horizontally. Note that using 2 is not exactly the same as taking a screenshot on a HiDPI (Retina) device: it is like increasing the zoom to 200 doubling the height and width of the browser window. This differs from using a HiDPI device because some web pages load different, higher-resolution images when they know they will be displayed on a HiDPI device (but using zoom will not report that there is a HiDPI device).
 #' @param expand Argument to `webshot2::webshot()`. A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order. When taking screenshots of multiple URLs, this parameter can also be a list with same length as url with each element of the list containing a single number or four numbers to use for the corresponding URL.
+#' @param tab_header_from If `NULL` (the default) renders tab headers of each table individually. If one of "table1" or "table2", the function extracts tab header information (including styling) from table 1 or table 2 respectively and renders it as high level header for the combined view (individual headers will be removed). 
 #' @return Saves a `.png` to disk if `output = "save"`, returns HTML to the viewer via `htmltools::browsable()` when `output = "viewer"`, or returns raw HTML if `output = "html"`.
 #' @export
 #' @family Utilities
@@ -157,7 +158,8 @@ gt_double_table <- function(data, gt_fn, nrows = NULL, noisy = TRUE) {
 gt_two_column_layout <- function(tables = NULL, output = "viewer",
                                  filename = NULL, path = NULL,
                                  vwidth = 992, vheight = 600, ...,
-                                 zoom = 2, expand = 5) {
+                                 zoom = 2, expand = 5,
+                                 tab_header_from = NULL) {
   if (length(tables) != 2) {
     stop("Two 'gt' tables must be provided like `list(table1, table2)` and be of length == 2", call. = FALSE)
   }
@@ -171,11 +173,36 @@ gt_two_column_layout <- function(tables = NULL, output = "viewer",
   stopifnot("Two 'gt' tables must be provided like `list(table1, table2)`" = !is.null(tables))
   stopifnot("Two 'gt' tables must be provided like `list(table1, table2)`" = is.list(tables))
   stopifnot("Both tables in the list must be a 'gt_tbl' object" = all(c(class(tables[[1]])[1], class(tables[[2]])[1]) == "gt_tbl"))
-
-  double_tables <- htmltools::div(
-    htmltools::div(tables[1], style = "display: inline-block;float:left;"),
-    htmltools::div(tables[2], style = "display: inline-block;float:right;")
-  )
+  
+  if (!is.null(tab_header_from)){
+    stopifnot("The `tab_header_from` argument must be one of 'table1', or 'table2'" = tab_header_from %in% c("table1", "table2"))
+    extract_from <- switch (tab_header_from,
+      "table1" = tables[[1]],
+      "table2" = tables[[2]]
+    )
+    header_data <- extract_tab_header_and_style(extract_from)
+    double_tables <- htmltools::div(
+      id = "mycombinedtable",
+      htmltools::tag("style", header_data[["style"]]),
+      htmltools::div(
+        header_data[["title"]],
+        class = header_data[["title_class"]],
+        style = header_data[["title_style"]]
+      ),
+      htmltools::div(
+        header_data[["subtitle"]],
+        class = header_data[["subtitle_class"]],
+        style = header_data[["subtitle_style"]]
+      ),
+      htmltools::div(tables[[1]] %>% gt::tab_header(NULL, NULL), style = "display: inline-block;float:left;"),
+      htmltools::div(tables[[2]] %>% gt::tab_header(NULL, NULL), style = "display: inline-block;float:right;")
+    )
+  } else {
+    double_tables <- htmltools::div(
+      htmltools::div(tables[1], style = "display: inline-block;float:left;"),
+      htmltools::div(tables[2], style = "display: inline-block;float:right;")
+    )
+  }
 
   if (output == "viewer") {
     htmltools::browsable(double_tables)
@@ -213,4 +240,42 @@ gt_two_column_layout <- function(tables = NULL, output = "viewer",
   } else if (output == "html") {
     double_tables
   }
+}
+
+extract_tab_header_and_style <- function(table) {
+  raw_html <- gt::as_raw_html(table, inline_css = FALSE) %>%
+    xml2::read_html()
+  
+  gt_title <- raw_html %>%
+    xml2::xml_find_first("//*[contains(concat(' ',normalize-space(@class),' '),' gt_title ')]")
+  
+  gt_subtitle <- raw_html %>%
+    xml2::xml_find_first("//*[contains(concat(' ',normalize-space(@class),' '),' gt_subtitle ')]")
+  
+  gt_table_id <- raw_html %>%
+    xml2::xml_find_all("//body/div") %>%
+    xml2::xml_attr("id")
+  
+  s <- raw_html %>%
+    xml2::xml_find_first("//style") %>%
+    xml2::xml_contents() %>%
+    xml2::xml_text() %>%
+    gsub(gt_table_id, "mycombinedtable", x = .) %>%
+    gsub("mycombinedtable table", "mycombinedtable div", x = .)
+  
+  list(
+    title = xml_missing(gt_title),
+    title_class = paste("gt_table", xml2::xml_attr(gt_title, "class")),
+    title_style = xml2::xml_attr(gt_title, "style"),
+    subtitle = xml_missing(gt_subtitle),
+    subtitle_class = paste("gt_table", xml2::xml_attr(gt_subtitle, "class")),
+    subtitle_style = xml2::xml_attr(gt_subtitle, "style"),
+    style = s
+  )
+}
+
+xml_missing <- function(xml){
+  xml_txt <- xml2::xml_text(xml)
+  if (is.na(xml_txt)) return(NULL)
+  xml_txt
 }

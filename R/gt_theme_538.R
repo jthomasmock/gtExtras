@@ -73,8 +73,9 @@ gt_theme_538 <- function(gt_object, ..., quiet = FALSE) {
           weight = 200
         )
       ),
-      locations = gt::cells_column_labels(
-        columns = gt::everything()
+      locations = list(
+        gt::cells_column_labels(),
+        gt::cells_stubhead()
       )
     ) %>%
     tab_style(

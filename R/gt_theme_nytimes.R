@@ -43,7 +43,10 @@ gt_theme_nytimes <- function(gt_object, ...) {
         font = google_font("Source Sans Pro"),
         transform = "uppercase"
       ),
-      locations = cells_column_labels(everything())
+      locations = list(
+        gt::cells_column_labels(),
+        gt::cells_stubhead()
+      )
     ) %>%
     tab_style(
       style = cell_text(

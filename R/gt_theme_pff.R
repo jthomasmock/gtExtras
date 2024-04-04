@@ -157,6 +157,9 @@ gt_theme_pff <- function(gt_object, ..., divider, spanners, rank_col) {
           weight = px(2.5)
         )
       ),
-      locations = gt::cells_column_labels()
+      locations = list(
+        gt::cells_column_labels(),
+        gt::cells_stubhead()
+      )
     )
 }

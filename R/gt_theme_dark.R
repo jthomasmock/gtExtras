@@ -47,7 +47,10 @@ gt_theme_dark <- function(gt_object, ...) {
         font = google_font("Source Sans Pro"),
         transform = "uppercase"
       ),
-      locations = cells_column_labels(everything())
+      locations = list(
+        cells_column_labels(),
+        cells_stubhead()
+      )
     ) %>%
     tab_style(
       style = cell_text(

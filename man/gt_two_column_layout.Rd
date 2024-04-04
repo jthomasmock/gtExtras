@@ -13,7 +13,8 @@ gt_two_column_layout(
   vheight = 600,
   ...,
   zoom = 2,
-  expand = 5
+  expand = 5,
+  tab_header_from = NULL
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ gt_two_column_layout(
 \item{zoom}{Argument to \code{webshot2::webshot()}. A number specifying the zoom factor. A zoom factor of 2 will result in twice as many pixels vertically and horizontally. Note that using 2 is not exactly the same as taking a screenshot on a HiDPI (Retina) device: it is like increasing the zoom to 200 doubling the height and width of the browser window. This differs from using a HiDPI device because some web pages load different, higher-resolution images when they know they will be displayed on a HiDPI device (but using zoom will not report that there is a HiDPI device).}
 
 \item{expand}{Argument to \code{webshot2::webshot()}. A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order. When taking screenshots of multiple URLs, this parameter can also be a list with same length as url with each element of the list containing a single number or four numbers to use for the corresponding URL.}
+
+\item{tab_header_from}{If \code{NULL} (the default) renders tab headers of each table individually. If one of "table1" or "table2", the function extracts tab header information (including styling) from table 1 or table 2 respectively and renders it as high level header for the combined view (individual headers will be removed).}
 }
 \value{
 Saves a \code{.png} to disk if \code{output = "save"}, returns HTML to the viewer via \code{htmltools::browsable()} when \code{output = "viewer"}, or returns raw HTML if \code{output = "html"}.
@@ -133,8 +136,8 @@ Other Utilities:
 \code{\link{gt_img_multi_rows}()},
 \code{\link{gt_img_rows}()},
 \code{\link{gt_index}()},
-\code{\link{gt_merge_stack_color}()},
 \code{\link{gt_merge_stack}()},
+\code{\link{gt_merge_stack_color}()},
 \code{\link{gtsave_extra}()},
 \code{\link{img_header}()},
 \code{\link{pad_fn}()},

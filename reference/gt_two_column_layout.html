@@ -30,7 +30,7 @@ available by their original name via the passed ...."><meta property="og:image" 
     
     <a class="navbar-brand me-2" href="../index.html">gtExtras</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.0.9004</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.0.9005</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -96,7 +96,8 @@ available by their original name via the passed <code>...</code>.</p>
 <span>  vheight <span class="op">=</span> <span class="fl">600</span>,</span>
 <span>  <span class="va">...</span>,</span>
 <span>  zoom <span class="op">=</span> <span class="fl">2</span>,</span>
-<span>  expand <span class="op">=</span> <span class="fl">5</span></span>
+<span>  expand <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  tab_header_from <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -136,6 +137,10 @@ available by their original name via the passed <code>...</code>.</p>
 
 <dt>expand</dt>
 <dd><p>Argument to <code><a href="https://rstudio.github.io/webshot2/reference/webshot.html" class="external-link">webshot2::webshot()</a></code>. A numeric vector specifying how many pixels to expand the clipping rectangle by. If one number, the rectangle will be expanded by that many pixels on all sides. If four numbers, they specify the top, right, bottom, and left, in that order. When taking screenshots of multiple URLs, this parameter can also be a list with same length as url with each element of the list containing a single number or four numbers to use for the corresponding URL.</p></dd>
+
+
+<dt>tab_header_from</dt>
+<dd><p>If <code>NULL</code> (the default) renders tab headers of each table individually. If one of "table1" or "table2", the function extracts tab header information (including styling) from table 1 or table 2 respectively and renders it as high level header for the combined view (individual headers will be removed).</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -212,8 +217,8 @@ the tables and then pass it to <code><a href="gt_double_table.html">gt_double_ta
 <code><a href="gt_img_multi_rows.html">gt_img_multi_rows</a>()</code>,
 <code><a href="gt_img_rows.html">gt_img_rows</a>()</code>,
 <code><a href="gt_index.html">gt_index</a>()</code>,
-<code><a href="gt_merge_stack_color.html">gt_merge_stack_color</a>()</code>,
 <code><a href="gt_merge_stack.html">gt_merge_stack</a>()</code>,
+<code><a href="gt_merge_stack_color.html">gt_merge_stack_color</a>()</code>,
 <code><a href="gtsave_extra.html">gtsave_extra</a>()</code>,
 <code><a href="img_header.html">img_header</a>()</code>,
 <code><a href="pad_fn.html">pad_fn</a>()</code>,

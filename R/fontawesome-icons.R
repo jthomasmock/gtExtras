@@ -1,5 +1,7 @@
 #' Repeat `{fontawesome}` icons based on an integer.
 #' @description
+#' `r lifecycle::badge("deprecated")`
+#' This function was deprecated because `gt` now has it's own robust `gt::fmt_icon()` function.
 #' The `gt_fa_repeats` function takes an existing `gt_tbl` object and
 #' adds specific `fontawesome` to the cells. The icons are repeated according to the
 #' integer that the column contains.
@@ -31,6 +33,8 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
                           palette = NULL, align = "left",
                           direction = 1) {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
+
+  lifecycle::deprecate_warn("0.5.1", "gt_fa_repeats()", "gt::fmt_icon()")
 
   text_transform(
     gt_object,
@@ -88,6 +92,8 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
 
 #' Add `{fontawesome}` icons inside a `{gt}` column.
 #' @description
+#' `r lifecycle::badge("deprecated")`
+#' This function was deprecated because `gt` now has it's own robust `gt::fmt_icon()` function.
 #' The `gt_fa_column` function takes an existing `gt_tbl` object and
 #' adds specific `fontawesome` icons based on what the names in the column are.
 #' The icons are colored according to a palette that the user supplies, either
@@ -122,6 +128,7 @@ gt_fa_repeats <- function(gt_object, column, name = NULL, ...,
 gt_fa_column <- function(gt_object, column, ..., palette = NULL,
                          align = "left", direction = 1, height = "20px") {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
+  lifecycle::deprecate_warn("0.5.1", "gt_fa_column()", "gt::fmt_icon()")
 
   text_transform(
     gt_object,

@@ -16,6 +16,7 @@
 #' @param position An string indicator passed to `ggplot2` indicating if the bar should be a percent of total `"fill"` or stacked as the raw values `"stack"`.
 #' @param width An integer representing the width of the bar chart in pixels.
 #' @param fmt_fn A specific function from `scales::label_???` family. Defaults to `scales::label_number()`
+#' @param font A string representing the font family of the numbers of the bar labels. Defaults to `mono`.
 #' @return An object of class `gt_tbl`.
 #' @export
 #' @family Plotting
@@ -57,7 +58,8 @@ gt_plt_bar_stack <- function(gt_object,
                              labels = c("Group 1", "Group 2", "Group 3"),
                              position = "fill",
                              width = 70,
-                             fmt_fn = scales::label_number(scale_cut = cut_short_scale(), trim = TRUE)) {
+                             fmt_fn = scales::label_number(scale_cut = cut_short_scale(), trim = TRUE),
+                            font = "mono") {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
   stopifnot("There must be 2 or 3 labels" = (length(labels) %in% c(2:3)))
   stopifnot("There must be 2 or 3 colors in the palette" = (length(palette) %in% c(2:3)))
@@ -121,7 +123,7 @@ gt_plt_bar_stack <- function(gt_object,
             aes(label = fmt_fn(x)),
             hjust = 0.5,
             size = 3,
-            family = "mono",
+            family = font,
             position = if (position == "fill") {
               position_fill(vjust = .5)
             } else if (position == "stack") {

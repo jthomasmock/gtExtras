@@ -46,7 +46,7 @@ with_tooltip <- function(label, tooltip) {
   tags$abbr(
     style = paste0(
       "text-decoration: underline; text-decoration-style: solid;", "
-    cursor: question; color: blue"
+    cursor: help; color: blue"
     ),
     title = tooltip, label
   ) %>%

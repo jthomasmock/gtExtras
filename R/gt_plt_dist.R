@@ -7,7 +7,7 @@
 #'
 #' @param gt_object An existing gt table object of class `gt_tbl`
 #' @param column The column wherein the sparkline plot should replace existing data. Note that the data *must* be represented as a list of numeric values ahead of time.
-#' @param type A string indicating the type of plot to generate, accepts `"boxplot"`, `"histogram"`, `"rug_strip"` or `"density"`.
+#' @param type A string indicating the type of plot to generate, accepts `"boxplot"`, `"boxplot_identity"`, `"histogram"`, `"rug_strip"` or `"density"`.
 #' @param fig_dim A vector of two numbers indicating the height/width of the plot in mm at a DPI of 25.4, defaults to `c(5,30)`
 #' @param line_color Color for the line, defaults to `"black"`. Accepts a named color (eg 'blue') or a hex color.
 #' @param fill_color Color for the fill of histograms/density plots, defaults to `"grey"`. Accepts a named color (eg `'blue'`) or a hex color.
@@ -57,7 +57,7 @@ gt_plt_dist <- function(gt_object,
 
   stopifnot("Specified column must contain list of values" = any(class(list_data_in) %in% "list"))
   stopifnot("Specified column must be numeric" = is.numeric(data_in))
-  stopifnot("You must indicate the `type` of plot as one of 'boxplot', 'histogram', 'rug_strip' or 'density'." = isTRUE(type %in% c("boxplot", "rug_strip", "histogram", "density")))
+  stopifnot("You must indicate the `type` of plot as one of 'boxplot', 'boxplot_identity', 'histogram', 'rug_strip' or 'density'." = isTRUE(type %in% c("boxplot","boxplot_identity", "rug_strip", "histogram", "density")))
 
   # range to be used for plotting if same axis
   total_rng <- grDevices::extendrange(data_in, r = range(data_in, na.rm = TRUE), f = 0.02)
@@ -111,6 +111,54 @@ gt_plt_dist <- function(gt_object,
       plot_out <- plot_base +
         geom_boxplot(
           aes(x = .data$y, y = 1),
+          width = 0.15,
+          color = line_color,
+          fill = fill_color,
+          outlier.size = 0.3,
+          linewidth = 0.3
+        )
+    } else if (type == "boxplot_identity") {
+      stopifnot("'boxplot_identity' type expected ordered 5 number summary" = length(vals) == 5)
+
+      # Re-define input_data with required 5-num data
+      input_data <- bind_cols(
+        as.list(setNames(vals, c("xmin", "lower", "middle", "upper", "xmax"))),
+        y = 1
+      )
+
+      plot_base <- ggplot(input_data) +
+        theme_void()
+
+      if (isTRUE(same_limit)) {
+        plot_base <- plot_base +
+          scale_x_continuous(expand = expansion(mult = 0.05)) +
+          coord_cartesian(
+            clip = "off",
+            xlim = grDevices::extendrange(total_rng, f = c(0, 0.01)),
+            ylim = c(0.9, 1.15)
+          )
+      } else {
+        plot_base <- plot_base +
+          scale_x_continuous(expand = expansion(mult = 0.05)) +
+          coord_cartesian(
+            clip = "off",
+            xlim = grDevices::extendrange(vals, f = 0.09),
+            ylim = c(0.9, 1.15)
+          )
+      }
+
+      plot_out <- plot_base +
+        geom_boxplot(
+          aes(
+            xmin = xmin,
+            xlower = lower,
+            xmiddle = middle,
+            xupper = upper,
+            xmax = xmax,
+            y = y
+          ),
+          stat = "identity",
+          orientation = "y",
           width = 0.15,
           color = line_color,
           fill = fill_color,

@@ -13,6 +13,7 @@
 #' @section Function ID:
 #' 2-14
 #'
+
 gtsave_extra <- function(data,
                          filename,
                          path = NULL,
@@ -20,46 +21,52 @@ gtsave_extra <- function(data,
                          zoom = 2,
                          expand = 5) {
 
-  filename <- gtsave_filename(path = path, filename = filename)
+  # Handle the `path` argument to construct the output file path
+  if (!is.null(path)) {
+    filename <- file.path(path, filename)
+  }
 
   # Create a temporary file with the `html` extension
   tempfile_ <- tempfile(fileext = ".html")
 
   # Reverse slashes on Windows filesystems
-  tempfile_ <-
-    tempfile_ %>%
-    tidy_gsub("\\\\", "/")
+  tempfile_ <- gsub("\\\\", "/", tempfile_)
 
   # Save gt table as HTML using the `gt_save_html()` function
-  gt_save_html(
+  gtsave(
     data = data,
     filename = tempfile_,
-    path = NULL
+    path = NULL # Assuming gt_save_html doesn't need a separate path
   )
 
-  # Saving an image requires the webshot2 package; if it's
-  # not present, stop with a message
+  # Saving an image requires the webshot2 package
   if (!rlang::is_installed("webshot2")) {
-    stop("The 'webshot2' package is required for saving images of gt tables.)",
-      call. = FALSE
+    stop("The 'webshot2' package is required for saving images of gt tables.",
+         call. = FALSE
     )
-  } else {
-    # Save the image in the working directory
-    web_out <- webshot2::webshot(
-      url = paste0("file:///", tempfile_),
-      file = filename,
-      zoom = zoom,
-      expand = expand,
-      ...
-    ) %>%
-     utils::capture.output(type = "message") %>%
-     invisible()
-
-    if(!grepl("screenshot completed", tolower(web_out))) print(web_out)
-
   }
 
+  # Take the screenshot using webshot2::webshot
+  result <- webshot2::webshot(
+    url = paste0("file:///", tempfile_),
+    file = filename,
+    zoom = zoom,
+    expand = expand,
+    ...
+  )
+
+  # Check if the screenshot was successful using the return value and file.exists()
+  if (!is.null(result) && file.exists(result)) {
+    message("Screenshot saved successfully to ", result)
+  } else {
+    stop("Screenshot failed to save.")
+  }
+
+  # Optional: Display the table in a browser in interactive sessions
   if (interactive()) {
     htmltools::browsable(data)
   }
+
+  # Return the filename (or result) invisibly
+  invisible(result)
 }

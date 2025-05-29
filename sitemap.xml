@@ -1,231 +1,77 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/404.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/articles/plotting-with-gtExtras.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/index.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/add_badge_color.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/add_pcttile_plot.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/add_point_plot.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/add_text_img.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/create_sum_table.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/fa_icon_repeat.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/fmt_pad_num.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/fmt_pct_extra.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/fmt_symbol_first.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/generate_df.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/get_row_index.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gtExtras-package.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_add_divider.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_alert_icon.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_badge.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_color_box.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_color_rows.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_double_table.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_duplicate_column.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_fa_column.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_fa_rank_change.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_fa_rating.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_fa_repeats.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_highlight_cols.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_highlight_rows.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_hulk_col_numeric.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_hyperlink.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_img_border.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_img_circle.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_img_multi_rows.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_img_rows.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_index.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_label_details.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_merge_stack.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_merge_stack_color.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_bar.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_bar_pct.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_bar_stack.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_bullet.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_conf_int.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_dist.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_dot.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_dumbbell.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_percentile.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_point.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_sparkline.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_summary.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_winloss.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_reprex_image.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_theme_538.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_theme_dark.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_theme_dot_matrix.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_theme_espn.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_theme_excel.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_theme_guardian.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_theme_nytimes.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_theme_pff.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gt_two_column_layout.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/gtsave_extra.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/img_header.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/last_row_id.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/n_decimals.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/pad_fn.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/plot_data.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/reexports.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/tab_style_by_grp.html</loc>
-  </url>
-  <url>
-    <loc>https://jthomasmock.github.io/gtExtras/reference/with_tooltip.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://jthomasmock.github.io/gtExtras/404.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/LICENSE-text.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/LICENSE.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/articles/index.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/articles/plotting-with-gtExtras.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/authors.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/index.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/news/index.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/add_badge_color.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/add_pcttile_plot.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/add_point_plot.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/add_text_img.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/create_sum_table.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/fa_icon_repeat.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/fmt_pad_num.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/fmt_pct_extra.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/fmt_symbol_first.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/generate_df.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/get_row_index.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gtExtras-package.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_add_divider.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_alert_icon.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_badge.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_color_box.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_color_rows.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_double_table.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_duplicate_column.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_fa_rank_change.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_fa_rating.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_highlight_cols.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_highlight_rows.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_hulk_col_numeric.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_hyperlink.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_img_border.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_img_circle.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_img_multi_rows.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_img_rows.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_index.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_label_details.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_merge_stack.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_merge_stack_color.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_bar.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_bar_pct.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_bar_stack.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_bullet.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_conf_int.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_dist.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_dot.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_dumbbell.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_percentile.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_point.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_sparkline.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_summary.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_plt_winloss.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_reprex_image.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_theme_538.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_theme_dark.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_theme_dot_matrix.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_theme_espn.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_theme_excel.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_theme_guardian.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_theme_nytimes.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_theme_pff.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gt_two_column_layout.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/gtsave_extra.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/img_header.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/index.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/last_row_id.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/n_decimals.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/pad_fn.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/plot_data.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/reexports.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/tab_style_by_grp.html</loc></url>
+<url><loc>https://jthomasmock.github.io/gtExtras/reference/with_tooltip.html</loc></url>
 </urlset>
+

@@ -29,7 +29,7 @@ test_that("svg is created and has specific values", {
   gt_iqr <- basic_gt %>%
     gt_plt_sparkline(mpg_data, type = "ref_iqr")
 
-  get_html <- function(table){
+  get_html <- function(table) {
     table %>%
       gt::as_raw_html() %>%
       rvest::read_html()
@@ -44,16 +44,16 @@ test_that("svg is created and has specific values", {
 
   # SVG Exists and is of length 3 ----
 
-  get_length <- function(html){
+  get_length <- function(html) {
     html %>%
       rvest::html_nodes("svg") %>%
       length()
   }
 
-  all_lengths <- sapply(list(basic_html, median_html, mean_html,
-    points_html, last_html, iqr_html),
-    get_length)
-
+  all_lengths <- sapply(
+    list(basic_html, median_html, mean_html, points_html, last_html, iqr_html),
+    get_length
+  )
 
   expect_equal(all_lengths, rep(3, 6))
 
@@ -65,4 +65,4 @@ test_that("svg is created and has specific values", {
     substr(1, 34)
 
   expect_equal(spark_vals, "8.16,6.80 13.89,6.08 19.61,6.80 25")
-  })
+})

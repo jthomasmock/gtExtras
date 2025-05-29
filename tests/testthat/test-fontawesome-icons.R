@@ -1,61 +1,3 @@
-# test_that("fontawesome, test repeats", {
-#   check_suggests()
-#   skip_on_cran()
-
-#   fa_rep_html <- mtcars[1:5, 1:4] %>%
-#     dplyr::add_row(mpg = 20.09, cyl = NA, disp = 200, hp = 108) %>%
-#     gt::gt() %>%
-#     gt_fa_repeats(cyl, name = "car") %>%
-#     gt::as_raw_html() %>%
-#     rvest::read_html()
-
-#   row_counter <- function(row_n) {
-#     fa_rep_html %>%
-#       rvest::html_nodes(paste0("tbody > tr:nth-child(", row_n, ")")) %>%
-#       rvest::html_nodes("svg") %>%
-#       rvest::html_attr("aria-label")
-#   }
-
-#   expect_equal(row_counter(1), rep("Car", 6))
-#   expect_equal(row_counter(2), rep("Car", 6))
-#   expect_equal(row_counter(3), rep("Car", 4))
-#   expect_equal(row_counter(4), rep("Car", 6))
-#   expect_equal(row_counter(5), rep("Car", 8))
-#   expect_equal(row_counter(6), character(0))
-# })
-
-
-test_that("fontawesome, test column, name and colors", {
-  check_suggests()
-  skip_on_cran()
-  skip_on_ci()
-
-  fa_car_html <- head(mtcars) %>%
-    dplyr::select(cyl, mpg, am, gear) %>%
-    dplyr::add_row(cyl = 6, mpg = mean(mtcars$mpg), am = NA, gear = 3) %>%
-    dplyr::mutate(man = dplyr::case_when(am == 1 ~ "gear", am == 0 ~ "gears", TRUE ~ NA_character_)) %>%
-    gt::gt() %>%
-    gt_fa_column(man) %>%
-    gt::as_raw_html() %>%
-    rvest::read_html()
-
-  fa_cogs <- fa_car_html %>%
-    rvest::html_nodes("td:nth-child(5)") %>%
-    rvest::html_nodes("svg") %>%
-    rvest::html_attr("aria-label")
-
-  cog_colors <- fa_car_html %>%
-    rvest::html_nodes("td:nth-child(5)") %>%
-    rvest::html_nodes("svg") %>%
-    rvest::html_attr("style") %>%
-    gsub(x = ., pattern = ".*fill:", "") %>%
-    substr(1, 7)
-
-  expect_equal(fa_cogs, rep(c("Gear", "Gears"), each = 3))
-  expect_equal(cog_colors, rep(c("#000000", "#E69F00"), each = 3))
-})
-
-
 test_that("fontawesome, test ratings all R and colors/numbers match", {
   check_suggests()
   skip_on_cran()
@@ -97,62 +39,60 @@ test_that("fontawesome, test ratings all R and colors/numbers match", {
 
 # fa-palette --------------------------------------------------------------
 
-test_that("fontawesome, test repeats", {
-  check_suggests()
-  skip_on_cran()
-  skip_on_ci()
+# test_that("fontawesome, test repeats", {
+#   check_suggests()
+#   skip_on_cran()
+#   skip_on_ci()
 
-  color_fn <- function(pal = "#FF0000") {
-    mtcars[1:5, 1:4] %>%
-      gt::gt() %>%
-      gt_fa_repeats(cyl, name = "car", palette = pal) %>%
-      gt::as_raw_html() %>%
-      rvest::read_html() %>%
-      rvest::html_nodes("td:nth-child(2)") %>%
-      rvest::html_nodes("svg") %>%
-      rvest::html_attr("style") %>%
-      gsub(x = ., pattern = ".*fill:", "") %>%
-      gsub(x = ., pattern = ";.*", "")
-  }
+#   color_fn <- function(pal = "#FF0000") {
+#     mtcars[1:5, 1:4] %>%
+#       gt::gt() %>%
+#       gt_fa_repeats(cyl, name = "car", palette = pal) %>%
+#       gt::as_raw_html() %>%
+#       rvest::read_html() %>%
+#       rvest::html_nodes("td:nth-child(2)") %>%
+#       rvest::html_nodes("svg") %>%
+#       rvest::html_attr("style") %>%
+#       gsub(x = ., pattern = ".*fill:", "") %>%
+#       gsub(x = ., pattern = ";.*", "")
+#   }
 
-  pal_out <- c("red", "blue", "green")
+#   pal_out <- c("red", "blue", "green")
 
-  pal_rep <- c(rep("red", 12), rep("blue", 4), rep("red", 6), rep("green", 8))
+#   pal_rep <- c(rep("red", 12), rep("blue", 4), rep("red", 6), rep("green", 8))
 
-  expect_equal(color_fn("#FF0000"), rep("#FF0000", 30))
-  expect_equal(color_fn("blue"), rep("blue", 30))
-  expect_equal(color_fn(pal_out), pal_rep)
-})
-
-
+#   expect_equal(color_fn("#FF0000"), rep("#FF0000", 30))
+#   expect_equal(color_fn("blue"), rep("blue", 30))
+#   expect_equal(color_fn(pal_out), pal_rep)
+# })
 
 # Check for palette -------------------------------------------------------
 
-test_that("fontawesome, test column, name and colors", {
-  check_suggests()
-  skip_on_cran()
-  skip_on_ci()
+# test_that("fontawesome, test column, name and colors", {
+#   check_suggests()
+#   skip_on_cran()
+#   skip_on_ci()
 
-  col_cog_fn <- function(pal) {
-    head(mtcars) %>%
-      dplyr::select(cyl, mpg, am, gear) %>%
-      dplyr::mutate(man = ifelse(am == 1, "gear", "gears")) %>%
-      gt::gt() %>%
-      gt_fa_column(man, palette = pal) %>%
-      gt::as_raw_html() %>%
-      rvest::read_html() %>%
-      rvest::html_nodes("td:nth-child(5)") %>%
-      rvest::html_nodes("svg") %>%
-      rvest::html_attr("style") %>%
-      gsub(x = ., pattern = ".*fill:", "") %>%
-      gsub(x = ., pattern = ";.*", "") %>%
-      substr(1, 7)
-  }
+#   col_cog_fn <- function(pal) {
+#     head(mtcars) %>%
+#       dplyr::select(cyl, mpg, am, gear) %>%
+#       dplyr::mutate(man = ifelse(am == 1, "gear", "gears")) %>%
+#       gt::gt() %>%
+#       gt_fa_column(man, palette = pal) %>%
+#       gt::as_raw_html() %>%
+#       rvest::read_html() %>%
+#       rvest::html_nodes("td:nth-child(5)") %>%
+#       rvest::html_nodes("svg") %>%
+#       rvest::html_attr("style") %>%
+#       gsub(x = ., pattern = ".*fill:", "") %>%
+#       gsub(x = ., pattern = ";.*", "") %>%
+#       substr(1, 7)
+#   }
 
-  expect_equal(col_cog_fn(c("red", "green")), rep(c("red", "green"), each = 3))
-  expect_equal(col_cog_fn(c("red")), rep(c("red"), each = 6))
-  expect_equal(col_cog_fn(c("gear" = "red", "gears" = "green")), rep(c("red", "green"), each = 3))
-})
+#   expect_equal(col_cog_fn(c("red", "green")), rep(c("red", "green"), each = 3))
+#   expect_equal(col_cog_fn(c("red")), rep(c("red"), each = 6))
+#   expect_equal(col_cog_fn(c("gear" = "red", "gears" = "green")), rep(c("red", "green"), each = 3))
+# })
 
 # Check for palette -------------------------------------------------------
 

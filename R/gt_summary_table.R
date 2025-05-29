@@ -28,8 +28,15 @@ gt_plt_summary <- function(df, title = NULL) {
   # returns a . for df %>% gt_plt_summary()
   if (is.null(title)) title <- deparse(substitute(df))
 
-  if(any(sapply(df, class) == "list")){stop("gt_plt_summary() doesn't handle list columns.", call. = FALSE)}
-  if(nrow(df) >= 1e5){warning("Data has more than 100,000 rows, consider sampling the data to reduce size.", call. = FALSE)}
+  if (any(sapply(df, class) == "list")) {
+    stop("gt_plt_summary() doesn't handle list columns.", call. = FALSE)
+  }
+  if (nrow(df) >= 1e5) {
+    warning(
+      "Data has more than 100,000 rows, consider sampling the data to reduce size.",
+      call. = FALSE
+    )
+  }
 
   sum_table <- create_sum_table(df)
 
@@ -39,15 +46,15 @@ gt_plt_summary <- function(df, title = NULL) {
     gt() %>%
     text_transform(
       cells_body(name),
-      fn = function(x){
+      fn = function(x) {
         temp_df <- gtExtras::gt_index(gt_object = ., name, as_vector = FALSE)
 
-        apply_detail <- function(type, name, value){
-          if (grepl(x = type, pattern = "factor|character|ordered")){
-
-            value_count <- tapply(value,value,length) %>%
+        apply_detail <- function(type, name, value) {
+          if (grepl(x = type, pattern = "factor|character|ordered")) {
+            value_count <- tapply(value, value, length) %>%
               sort(decreasing = TRUE) %>%
-              labels() %>% unlist()
+              labels() %>%
+              unlist()
 
             html(
               glue::glue(
@@ -58,7 +65,6 @@ gt_plt_summary <- function(df, title = NULL) {
             </details></div>"
               )
             )
-
           } else {
             name
           }
@@ -66,30 +72,28 @@ gt_plt_summary <- function(df, title = NULL) {
 
         mapply(
           FUN = apply_detail,
-            temp_df$type,
-            temp_df$name,
-            temp_df$value,
-          MoreArgs = NULL
-        )
-
-      }
-    ) %>%
-    text_transform(cells_body(value),
-      fn = function(x) {
-        .mapply(
-          FUN = plot_data,
-          list(
-            gtExtras::gt_index(gt_object = ., value),
-            gtExtras::gt_index(gt_object = ., name),
-            gtExtras::gt_index(gt_object = ., n_missing)
-          ),
+          temp_df$type,
+          temp_df$name,
+          temp_df$value,
           MoreArgs = NULL
         )
       }
     ) %>%
+    text_transform(cells_body(value), fn = function(x) {
+      .mapply(
+        FUN = plot_data,
+        list(
+          gtExtras::gt_index(gt_object = ., value),
+          gtExtras::gt_index(gt_object = ., name),
+          gtExtras::gt_index(gt_object = ., n_missing)
+        ),
+        MoreArgs = NULL
+      )
+    }) %>%
     # add number formatting to numeric cols
     fmt_number(
-      Mean:SD,
+      5:7,
+      #Mean:SD,
       decimals = 1,
       rows = type %in% c("numeric", "double", "integer")
     ) %>%
@@ -101,9 +105,13 @@ gt_plt_summary <- function(df, title = NULL) {
         lapply(x, function(z) {
           if (grepl(x = z, pattern = "factor|character|ordered")) {
             fontawesome::fa("list", "#4e79a7", height = "20px")
-          } else if (grepl(x = z, pattern = "number|numeric|double|integer|complex")) {
+          } else if (
+            grepl(x = z, pattern = "number|numeric|double|integer|complex")
+          ) {
             fontawesome::fa("signal", "#f18e2c", height = "20px")
-          } else if (grepl(x = z, pattern = "date|time|posix|hms", ignore.case = TRUE)) {
+          } else if (
+            grepl(x = z, pattern = "date|time|posix|hms", ignore.case = TRUE)
+          ) {
             fontawesome::fa("clock", "#73a657", height = "20px")
           } else {
             fontawesome::fa("question", "black", height = "20px")
@@ -114,12 +122,11 @@ gt_plt_summary <- function(df, title = NULL) {
     cols_label(
       name = "Column",
       value = "Plot Overview",
-      type = "", n_missing = "Missing"
+      type = "",
+      n_missing = "Missing"
     ) %>%
     gtExtras::gt_theme_espn() %>%
-    tab_style(cells_body(name),
-      style = cell_text(weight = "bold")
-    ) %>%
+    tab_style(cells_body(name), style = cell_text(weight = "bold")) %>%
     tab_header(
       title = title,
       subtitle = glue::glue("{dim_df[1]} rows x {dim_df[2]} cols")
@@ -131,9 +138,9 @@ gt_plt_summary <- function(df, title = NULL) {
 
   {
     if (utils::packageVersion("gt")$minor >= 6) {
-      tab_out %>% sub_missing(Mean:SD)
+      tab_out %>% sub_missing(5:7) #Mean:SD)
     } else {
-      tab_out %>% fmt_missing(Mean:SD, missing_text = "--")
+      tab_out %>% fmt_missing(5:7, missing_text = "--")
     }
   }
 }
@@ -169,13 +176,27 @@ create_sum_table <- function(df) {
       n_missing = sum(is.na(value) | is.null(value)) / length(value)
     ) %>%
     dplyr::mutate(
-      Mean = ifelse(type %in% c("double", "integer", "numeric"), mean(value, na.rm = TRUE), NA),
-      Median = ifelse(type %in% c("double", "integer", "numeric"), median(value, na.rm = TRUE), NA),
-      SD = ifelse(type %in% c("double", "integer", "numeric"), sd(value, na.rm = TRUE), NA)
+      Mean = ifelse(
+        type %in% c("double", "integer", "numeric"),
+        mean(value, na.rm = TRUE),
+        NA
+      ),
+      Median = ifelse(
+        type %in% c("double", "integer", "numeric"),
+        median(value, na.rm = TRUE),
+        NA
+      ),
+      SD = ifelse(
+        type %in% c("double", "integer", "numeric"),
+        sd(value, na.rm = TRUE),
+        NA
+      )
     ) %>%
     dplyr::ungroup() %>%
     dplyr::select(type, name, dplyr::everything())
   sum_table
+
+  # browser()
 }
 
 #' Create inline plots for a summary table
@@ -188,8 +209,9 @@ create_sum_table <- function(df) {
 #' @importFrom scales seq_gradient_pal expand_range label_number cut_long_scale label_date
 #' @return svg text encoded as HTML
 plot_data <- function(col, col_name, n_missing, ...) {
-
-  if(n_missing >= 0.99){return("<div></div>")}
+  if (n_missing >= 0.99) {
+    return("<div></div>")
+  }
   col_type <- paste0(class(col), collapse = " ")
 
   col <- col[!is.na(col)]
@@ -197,16 +219,26 @@ plot_data <- function(col, col_name, n_missing, ...) {
   if (col_type %in% c("factor", "character", "ordered factor")) {
     n_unique <- length(unique(col))
 
-    cat_lab <- ifelse(col_type == "ordered factor", "categories, ordered", "categories")
+    cat_lab <- ifelse(
+      col_type == "ordered factor",
+      "categories, ordered",
+      "categories"
+    )
 
-    cc <- scales::seq_gradient_pal(low = "#3181bd", high = "#ddeaf7", space = "Lab")(seq(0, 1, length.out = n_unique))
+    cc <- scales::seq_gradient_pal(
+      low = "#3181bd",
+      high = "#ddeaf7",
+      space = "Lab"
+    )(seq(0, 1, length.out = n_unique))
 
     plot_out <- dplyr::tibble(vals = as.character(col)) %>%
       dplyr::group_by(vals) %>%
       dplyr::mutate(n = n(), .groups = "drop") %>%
       dplyr::arrange(desc(n)) %>%
       dplyr::ungroup() %>%
-      dplyr::mutate(vals = factor(vals, levels = unique(rev(vals)), ordered = TRUE)) %>%
+      dplyr::mutate(
+        vals = factor(vals, levels = unique(rev(vals)), ordered = TRUE)
+      ) %>%
       ggplot(aes(y = 1, fill = vals)) +
       geom_bar(position = "fill") +
       guides(fill = "none") +
@@ -231,24 +263,46 @@ plot_data <- function(col, col_name, n_missing, ...) {
     plot_out <- ggplot(df_in, aes(x = x)) +
       # conditional to switch between estimated binwidth or Freedman–Diaconis rule
       {
-        if(bw > 0){
+        if (bw > 0) {
           geom_histogram(color = "white", fill = "#f8bb87", binwidth = bw)
         } else {
+          hist_breaks <- graphics::hist(
+            col[!is.na(col)],
+            breaks = "FD",
+            plot = FALSE
+          )$breaks
 
-          hist_breaks <- graphics::hist(col[!is.na(col)], breaks = "FD", plot=FALSE)$breaks
-
-          geom_histogram(color = "white", fill = "#f8bb87", breaks = hist_breaks)
+          geom_histogram(
+            color = "white",
+            fill = "#f8bb87",
+            breaks = hist_breaks
+          )
         }
       } +
       scale_x_continuous(
-        breaks = range(col),
-        labels = scales::label_number(big.mark = ",", ..., scale_cut = scales::cut_long_scale())(range(col, na.rm = TRUE))
+        breaks = range(col, na.rm = TRUE),
+        labels = scales::label_number(
+          big.mark = ",",
+          ...,
+          scale_cut = scales::cut_si(unit = "auto")
+        )(range(col, na.rm = TRUE))
       ) +
-      geom_point(data = NULL, aes(x = rng_vals[1], y = 1), color = "transparent", size = 0.1) +
-      geom_point(data = NULL, aes(x = rng_vals[2], y = 1), color = "transparent", size = 0.1) +
+      geom_point(
+        data = data.frame(x = rng_vals[1], y = 1),
+        aes(x = x, y = y),
+        color = "transparent",
+        size = 0.1
+      ) +
+      geom_point(
+        data = data.frame(x = rng_vals[1], y = 1),
+        aes(x = x, y = y),
+        color = "transparent",
+        size = 0.1
+      ) +
       scale_y_continuous(expand = c(0, 0)) +
       {
-        if (length(unique(col)) > 2) geom_vline(xintercept = median(col, na.rm = TRUE))
+        if (length(unique(col)) > 2)
+          geom_vline(xintercept = median(col, na.rm = TRUE))
       } +
       theme_void() +
       theme(
@@ -263,7 +317,9 @@ plot_data <- function(col, col_name, n_missing, ...) {
         plot.margin = margin(1, 1, 3, 1),
         text = element_text(family = "mono", size = 6)
       )
-  } else if (grepl(x = col_type, pattern = "date|posix|time|hms", ignore.case = TRUE)) {
+  } else if (
+    grepl(x = col_type, pattern = "date|posix|time|hms", ignore.case = TRUE)
+  ) {
     # message(glue::glue("Dates and times are not fully supported yet - plot and summaries skipped for col {col_name}"))
 
     df_in <- dplyr::tibble(x = col) %>%
@@ -310,9 +366,13 @@ plot_data <- function(col, col_name, n_missing, ...) {
     fileext = ".svg"
   ))
 
-  ggsave(out_name,
-    plot = plot_out, dpi = 25.4,
-    height = 12, width = 50, units = "mm",
+  ggsave(
+    out_name,
+    plot = plot_out,
+    dpi = 25.4,
+    height = 12,
+    width = 50,
+    units = "mm",
     device = "svg"
   )
 

@@ -111,12 +111,16 @@ add_badge_color <- function(add_color, add_label, alpha_lvl) {
 #' \if{html}{\figure{gt_badge.png}{options: width=50\%}}
 #'
 #' @family Utilities
-gt_badge <- function(gt_object, column, palette = NULL, alpha = 0.2) {
+gt_badge <- function(gt_object, column, palette = NULL, alpha = 0.2,
+                     rows = gt::everything()) {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
 
   text_transform(
     gt_object,
-    locations = cells_body(columns = {{ column }}),
+    locations = cells_body(
+      columns = {{ column }},
+      rows = {{ rows }}
+    ),
     fn = function(x) {
       if (is.null(palette)) {
         pal_filler <- rev(c(
@@ -129,6 +133,8 @@ gt_badge <- function(gt_object, column, palette = NULL, alpha = 0.2) {
       } else {
         pal_filler <- palette
       }
+
+      #
 
       lapply(X = x, FUN = function(xy) {
         fct_lvl <- unique(x)

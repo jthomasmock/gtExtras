@@ -126,6 +126,7 @@ Other Utilities:
 \code{\link{gt_double_table}()},
 \code{\link{gt_duplicate_column}()},
 \code{\link{gt_fa_rank_change}()},
+\code{\link{gt_fa_rating}()},
 \code{\link{gt_highlight_cols}()},
 \code{\link{gt_highlight_rows}()},
 \code{\link{gt_img_border}()},

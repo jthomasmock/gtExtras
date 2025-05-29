@@ -29,14 +29,19 @@
 #' @family Plotting
 #' @section Function ID:
 #' 1-4
-gt_plt_sparkline <- function(gt_object,
-                             column,
-                             type = "default",
-                             fig_dim = c(5, 30),
-                             palette = c("black", "black", "purple", "green", "lightgrey"),
-                             same_limit = TRUE,
-                             label = TRUE) {
-  stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
+gt_plt_sparkline <- function(
+  gt_object,
+  column,
+  type = "default",
+  fig_dim = c(5, 30),
+  palette = c("black", "black", "purple", "green", "lightgrey"),
+  same_limit = TRUE,
+  label = TRUE
+) {
+  stopifnot(
+    "'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in%
+      class(gt_object)
+  )
 
   # convert tidyeval column to bare string
   col_bare <- dplyr::select(gt_object[["_data"]], {{ column }}) %>% names()
@@ -47,12 +52,34 @@ gt_plt_sparkline <- function(gt_object,
   # convert to a single vector
   data_in <- unlist(list_data_in)
 
-  stopifnot("Specified column must contain list of values" = class(list_data_in) %in% "list")
-  stopifnot("You must supply five colors for the palette." = length(palette) == 5L)
-  stopifnot("You must indicate the `type` of plot as one of 'default', 'shaded', 'ref_median', 'ref_mean', 'points', 'ref_last' or 'ref_iqr'." = isTRUE(type %in% c("default", "shaded", "ref_median", "ref_mean", "ref_iqr", "points", "ref_last")))
+  stopifnot(
+    "Specified column must contain list of values" = class(list_data_in) %in%
+      "list"
+  )
+  stopifnot(
+    "You must supply five colors for the palette." = length(palette) == 5L
+  )
+  stopifnot(
+    "You must indicate the `type` of plot as one of 'default', 'shaded', 'ref_median', 'ref_mean', 'points', 'ref_last' or 'ref_iqr'." = isTRUE(
+      type %in%
+        c(
+          "default",
+          "shaded",
+          "ref_median",
+          "ref_mean",
+          "ref_iqr",
+          "points",
+          "ref_last"
+        )
+    )
+  )
 
   # range to be used for plotting if same axis
-  total_rng <- grDevices::extendrange(data_in, r = range(data_in, na.rm = TRUE), f = 0.02)
+  total_rng <- grDevices::extendrange(
+    data_in,
+    r = range(data_in, na.rm = TRUE),
+    f = 0.02
+  )
 
   plot_fn_spark <- function(list_data_in) {
     if (all(list_data_in %in% c(NA, NULL))) {
@@ -196,22 +223,21 @@ gt_plt_sparkline <- function(gt_object,
           fill = palette[5],
           alpha = 0.75,
           na.rm = TRUE
-          ),
+        ),
         plot_out$layers
       )
 
       ### Horizontal ref line at median
     } else if (type == "ref_median") {
       plot_out$layers <- c(
-        geom_segment(
-          aes(
-            x = min(.data$x),
-            y = stats::median(.data$y),
-            xend = max(.data$x),
-            yend = stats::median(.data$y)
-          ),
+        annotate(
+          "segment",
+          x = min(input_data$x),
+          y = stats::median(input_data$y),
+          xend = max(input_data$x),
+          yend = stats::median(input_data$y),
           color = palette[5],
-          linewidth = 0.1,
+          linewidth = 0.5,
           na.rm = TRUE
         ),
         plot_out$layers
@@ -230,15 +256,14 @@ gt_plt_sparkline <- function(gt_object,
       ### Horizontal ref line at mean
     } else if (type == "ref_mean") {
       plot_out$layers <- c(
-        geom_segment(
-          aes(
-            x = min(.data$x),
-            y = mean(.data$y),
-            xend = max(.data$x),
-            yend = mean(.data$y)
-          ),
+        annotate(
+          "segment",
+          x = min(input_data$x),
+          y = mean(input_data$y),
+          xend = max(input_data$x),
+          yend = mean(input_data$y),
           color = palette[5],
-          linewidth = 0.1,
+          linewidth = 0.5,
           na.rm = TRUE
         ),
         plot_out$layers
@@ -246,15 +271,14 @@ gt_plt_sparkline <- function(gt_object,
       ### Horizontal ref line at last point
     } else if (type == "ref_last") {
       plot_out$layers <- c(
-        geom_segment(
-          aes(
-            x = min(.data$x),
-            y = last(.data$y),
-            xend = max(.data$x),
-            yend = last(.data$y)
-          ),
+        annotate(
+          "segment",
+          x = min(input_data$x),
+          y = dplyr::last(input_data$y),
+          xend = max(input_data$x),
+          yend = dplyr::last(input_data$y),
           color = palette[5],
-          linewidth = 0.1,
+          linewidth = 0.5,
           na.rm = TRUE
         ),
         plot_out$layers
@@ -274,15 +298,14 @@ gt_plt_sparkline <- function(gt_object,
           alpha = 0.5,
           na.rm = TRUE
         ),
-        geom_segment(
-          aes(
-            x = min(.data$x),
-            y = stats::median(.data$y),
-            xend = max(.data$x),
-            yend = stats::median(.data$y)
-          ),
+        annotate(
+          "segment",
+          x = min(input_data$x),
+          y = ribbon_df$q25,
+          xend = max(input_data$x),
+          yend = ribbon_df$q25,
           color = palette[5],
-          linewidth = 0.1,
+          linewidth = 0.5,
           na.rm = TRUE
         ),
         plot_out$layers

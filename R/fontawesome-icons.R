@@ -231,157 +231,184 @@
 # #' @section Function ID:
 # #' 2-16
 
-# gt_fa_rating <- function(gt_object, column, max_rating = 5, ...,
-#                          color = "orange", icon = "star") {
-#   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
+gt_fa_rating <- function(
+  gt_object,
+  column,
+  max_rating = 5,
+  ...,
+  color = "orange",
+  icon = "star"
+) {
+  stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
 
-#   text_transform(
-#     gt_object,
-#     locations = cells_body(columns = {{ column }}),
-#     fn = function(x) {
-#       # convert the raw text to numeric
-#       num_x <- suppressWarnings(as.numeric(x))
+  text_transform(
+    gt_object,
+    locations = cells_body(columns = {{ column }}),
+    fn = function(x) {
+      # convert the raw text to numeric
+      num_x <- suppressWarnings(as.numeric(x))
 
-#       lapply(X = num_x, FUN = function(rating) {
-#         # handle missing values & return a blank space if missing
-#         if (is_blank(rating) || rating %in% c(NA, "NA", "")) {
-#           return(gt::html("&nbsp;"))
-#         }
-#         # adapted from: glin.github.io/reactable/articles/cookbook/cookbook.html#rating-stars
-#         rounded_rating <- floor(rating + 0.5) # always round up
-#         stars <- lapply(seq_len(max_rating), function(i) {
-#           if (i <= rounded_rating) {
-#             fontawesome::fa(icon, fill = color, height = "20px", a11y = "sem")
-#           } else {
-#             fontawesome::fa(icon, fill = "grey", height = "20px", a11y = "sem")
-#           }
-#         })
-#         label <- sprintf("%s out of %s", rating, max_rating)
-#         div_out <- htmltools::div(title = label, "aria-label" = label, role = "img", stars, style = "padding:0px")
+      lapply(X = num_x, FUN = function(rating) {
+        # handle missing values & return a blank space if missing
+        if (is_blank(rating) || rating %in% c(NA, "NA", "")) {
+          return(gt::html("&nbsp;"))
+        }
+        # adapted from: glin.github.io/reactable/articles/cookbook/cookbook.html#rating-stars
+        rounded_rating <- floor(rating + 0.5) # always round up
+        stars <- lapply(seq_len(max_rating), function(i) {
+          if (i <= rounded_rating) {
+            fontawesome::fa(icon, fill = color, height = "20px", a11y = "sem")
+          } else {
+            fontawesome::fa(icon, fill = "grey", height = "20px", a11y = "sem")
+          }
+        })
+        label <- sprintf("%s out of %s", rating, max_rating)
+        div_out <- htmltools::div(
+          title = label,
+          "aria-label" = label,
+          role = "img",
+          stars,
+          style = "padding:0px"
+        )
 
-#         # need to convert from text to html
-#         as.character(div_out) %>%
-#           gt::html()
-#       })
-#     }
-#   ) %>%
-#     cols_align(align = "left", columns = {{ column }})
-# }
+        # need to convert from text to html
+        as.character(div_out) %>%
+          gt::html()
+      })
+    }
+  ) %>%
+    cols_align(align = "left", columns = {{ column }})
+}
 
-# #' Add rank change indicators to a gt table
-# #' @description Takes an existing `gt` table and converts a column of integers
-# #' into various types of up/down arrows. Note that you need to specify a palette
-# #' of three colors, in the order of up, neutral, down. Defaults to green, grey,
-# #' purple. There are 6 supported `fa_type`, representing various arrows.
-# #' Note that you can use `font_color = 'match'` to match the palette across
-# #' arrows and text. `show_text = FALSE` will remove the text from the column,
-# #' resulting only in colored arrows.
-# #' @param gt_object An existing `gt` table object
-# #' @param column The single column that you would like to convert to rank change indicators.
-# #' @param palette A character vector of length 3. Colors can be represented as hex values or named colors. Colors should be in the order of up-arrow, no-change, down-arrow, defaults to green, grey, purple.
-# #' @param fa_type The name of the Fontawesome icon, limited to 5 types of various arrows, one of `c("angles", "arrow", "turn", "chevron", "caret")`
-# #' @param font_color A string, indicating the color of the font, can also be returned as `'match'` to match the font color to the arrow palette.
-# #' @param show_text A logical indicating whether to show/hide the values in the column.
-# #' @return a `gt` table
-# #' @export
-# #'
-# #' @section Examples:
-# #' ```r
-# #' rank_table <- dplyr::tibble(x = c(1:3, -1, -2, -5, 0)) %>%
-# #'   gt::gt() %>%
-# #'   gt_fa_rank_change(x, font_color = "match")
-# #' ```
-# #' @section Figures:
-# #' \if{html}{\figure{fa_rank_change.png}{options: width=5\%}}
-# #'
-# #' @family Utilities
-# gt_fa_rank_change <- function(
-#     gt_object,
-#     column,
-#     palette = c("#1b7837", "lightgrey", "#762a83"),
-#     fa_type = c("angles", "arrow", "turn", "chevron", "caret"),
-#     font_color = "black",
-#     show_text = TRUE) {
+#' Add rank change indicators to a gt table
+#' @description Takes an existing `gt` table and converts a column of integers
+#' into various types of up/down arrows. Note that you need to specify a palette
+#' of three colors, in the order of up, neutral, down. Defaults to green, grey,
+#' purple. There are 6 supported `fa_type`, representing various arrows.
+#' Note that you can use `font_color = 'match'` to match the palette across
+#' arrows and text. `show_text = FALSE` will remove the text from the column,
+#' resulting only in colored arrows.
+#' @param gt_object An existing `gt` table object
+#' @param column The single column that you would like to convert to rank change indicators.
+#' @param palette A character vector of length 3. Colors can be represented as hex values or named colors. Colors should be in the order of up-arrow, no-change, down-arrow, defaults to green, grey, purple.
+#' @param fa_type The name of the Fontawesome icon, limited to 5 types of various arrows, one of `c("angles", "arrow", "turn", "chevron", "caret")`
+#' @param font_color A string, indicating the color of the font, can also be returned as `'match'` to match the font color to the arrow palette.
+#' @param show_text A logical indicating whether to show/hide the values in the column.
+#' @return a `gt` table
+#' @export
+#'
+#' @section Examples:
+#' ```r
+#' rank_table <- dplyr::tibble(x = c(1:3, -1, -2, -5, 0)) %>%
+#'   gt::gt() %>%
+#'   gt_fa_rank_change(x, font_color = "match")
+#' ```
+#' @section Figures:
+#' \if{html}{\figure{fa_rank_change.png}{options: width=5\%}}
+#'
+#' @family Utilities
+gt_fa_rank_change <- function(
+  gt_object,
+  column,
+  palette = c("#1b7837", "lightgrey", "#762a83"),
+  fa_type = c("angles", "arrow", "turn", "chevron", "caret"),
+  font_color = "black",
+  show_text = TRUE
+) {
+  vals <- gt_index(gt_object, {{ column }})
 
-#   vals <- gt_index(gt_object, {{ column }})
+  stopifnot("Column must be integers" = is.integer(as.integer(vals)))
+  stopifnot(
+    "Palette must be length 3, in order of increase, no change, decrease" = length(
+      palette
+    ) ==
+      3
+  )
+  stopifnot(
+    'fa_type must be one of "angles", "arrow", "turn", "chevron", "caret"' = fa_type %in%
+      c("angles", "arrow", "turn", "chevron", "caret")
+  )
 
-#   stopifnot("Column must be integers" = is.integer(as.integer(vals)))
-#   stopifnot("Palette must be length 3, in order of increase, no change, decrease" = length(palette) == 3)
-#   stopifnot(
-#     'fa_type must be one of "angles", "arrow", "turn", "chevron", "caret"' =
-#       fa_type %in% c("angles", "arrow", "turn", "chevron", "caret")
-#   )
+  # internal function
+  # could possibly pull out to standalone function
+  fa_rank_chg <- function(fa_name, color, font_color, text) {
+    if (font_color == "match") {
+      font_color <- color
+    }
 
-#   # internal function
-#   # could possibly pull out to standalone function
-#   fa_rank_chg <- function(fa_name, color, font_color, text) {
-#     if (font_color == "match") {
-#       font_color <- color
-#     }
+    if (is_blank(text) || is_blank(fa_name)) {
+      return(gt::html("<bold style='color:#d3d3d3;'>--</bold>"))
+    } else if (!nzchar(text) & !is_blank(text)) {
+      fa_height <- "20px"
+    } else if (nzchar(text) & !is_blank(text)) {
+      fa_height <- "12px"
+    }
 
-#     if (is_blank(text) || is_blank(fa_name)) {
-#       return(gt::html("<bold style='color:#d3d3d3;'>--</bold>"))
-#     } else if (!nzchar(text) & !is_blank(text)) {
-#       fa_height <- "20px"
-#     } else if (nzchar(text) & !is_blank(text)) {
-#       fa_height <- "12px"
-#     }
+    # fill the Fontawesome call
+    my_fa <- list(
+      fontawesome::fa(
+        name = fa_name,
+        fill = color,
+        height = fa_height,
+        a11y = "sem"
+      ) %>%
+        gt::html()
+    )
 
-#     # fill the Fontawesome call
-#     my_fa <- list(
-#       fontawesome::fa(
-#         name = fa_name, fill = color, height = fa_height,
-#         a11y = "sem"
-#       ) %>% gt::html()
-#     )
+    # hardcode some HTML/CSS styling
+    htmltools::div(
+      "aria-label" = text,
+      role = "img",
+      htmltools::div(my_fa, style = "float: left;margin-right:1px;"),
+      htmltools::div(text, style = "float:right;"),
+      style = glue::glue(
+        "padding:0px;display:inline;color:{font_color};font-weight:bold;font-size:12px;"
+      )
+    ) %>%
+      as.character() %>%
+      gt::html()
+  }
 
-#     # hardcode some HTML/CSS styling
-#     htmltools::div(
-#       "aria-label" = text, role = "img",
-#       htmltools::div(my_fa, style = "float: left;margin-right:1px;"),
-#       htmltools::div(text, style = "float:right;"),
-#       style = glue::glue("padding:0px;display:inline;color:{font_color};font-weight:bold;font-size:12px;")
-#     ) %>%
-#       as.character() %>%
-#       gt::html()
-#   }
+  gt_object %>%
+    text_transform(
+      locations = cells_body({{ column }}),
+      fn = function(x) {
+        vals <- gt_index(gt_object, {{ column }})
 
-#   gt_object %>%
-#     text_transform(
-#       locations = cells_body({{ column }}),
-#       fn = function(x) {
+        color_vals <- dplyr::case_when(
+          vals > 0 ~ palette[1],
+          vals == 0 ~ palette[2],
+          vals < 0 ~ palette[3],
+          TRUE ~ palette[2]
+        )
 
-#         vals <- gt_index(gt_object, {{ column }})
+        if (fa_type[1] == "level") {
+          fa_vals <- dplyr::case_when(
+            vals > 0 ~ "level-up-alt",
+            vals < 0 ~ "level-down-alt",
+            vals == 0 ~ "equals",
+            TRUE ~ "question"
+          )
+        } else {
+          fa_vals <- dplyr::case_when(
+            vals > 0 ~ paste0(fa_type[1], "-up"),
+            vals == 0 ~ "equals",
+            vals < 0 ~ paste0(fa_type[1], "-down")
+          )
+        }
 
-#         color_vals <- dplyr::case_when(
-#           vals > 0 ~ palette[1],
-#           vals == 0 ~ palette[2],
-#           vals < 0 ~ palette[3],
-#           TRUE ~ palette[2]
-#         )
+        if (isFALSE(show_text)) {
+          vals <- ""
+        }
 
-#         if (fa_type[1] == "level") {
-#           fa_vals <- dplyr::case_when(
-#             vals > 0 ~ "level-up-alt",
-#             vals < 0 ~ "level-down-alt",
-#             vals == 0 ~ "equals",
-#             TRUE ~ "question"
-#           )
-#         } else {
-#           fa_vals <- dplyr::case_when(
-#             vals > 0 ~ paste0(fa_type[1], "-up"),
-#             vals == 0 ~ "equals",
-#             vals < 0 ~ paste0(fa_type[1], "-down")
-#           )
-#         }
-
-#         if (isFALSE(show_text)) {
-#           vals <- ""
-#         }
-
-#         mapply(fa_rank_chg, fa_vals, color_vals, font_color, vals,
-#           SIMPLIFY = FALSE
-#         )
-#       }
-#     )
-# }
+        mapply(
+          fa_rank_chg,
+          fa_vals,
+          color_vals,
+          font_color,
+          vals,
+          SIMPLIFY = FALSE
+        )
+      }
+    )
+}

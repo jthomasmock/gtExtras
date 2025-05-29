@@ -137,7 +137,7 @@ gt_plt_summary <- function(df, title = NULL) {
     )
 
   {
-    if (utils::packageVersion("gt")$minor >= 6) {
+    if (utils::packageVersion("gt")$major <= 1) {
       tab_out %>% sub_missing(5:7) #Mean:SD)
     } else {
       tab_out %>% fmt_missing(5:7, missing_text = "--")

@@ -201,35 +201,35 @@
 #     cols_align(align = align, columns = {{ column }})
 # }
 
-# #' Add rating "stars" to a gt column
-# #'
-# #' @param gt_object An existing gt table object of class `gt_tbl`
-# #' @param column The column wherein the numeric values should be replaced with their corresponding `{fontawesome}` icons.
-# #' @param max_rating The max number of icons to add, these will be added in grey to indicate "missing"
-# #' @param ... Additional arguments passed to `fontawesome::fa()`
-# #' @param color The color of the icon, accepts named colors (`"orange"`) or hex strings.
-# #' @param icon The icon name, passed to `fontawesome::fa()`
-# #'
-# #' @return An object of class `gt_tbl`.
-# #' @export
-# #'
-# #' @section Examples:
-# #' ```r
-# #' library(gt)
-# #' set.seed(37)
-# #' rating_table <- mtcars %>%
-# #'   dplyr::select(mpg:wt) %>%
-# #'   dplyr::slice(1:5) %>%
-# #'   dplyr::mutate(rating = sample(1:5, size = 5, TRUE)) %>%
-# #'   gt() %>%
-# #'   gt_fa_rating(rating, icon = "r-project")
-# #' ```
-# #' @section Figures:
-# #' \if{html}{\figure{fa-stars.png}{options: width=60\%}}
-# #'
-# #' @family Utilities
-# #' @section Function ID:
-# #' 2-16
+#' Add rating "stars" to a gt column
+#'
+#' @param gt_object An existing gt table object of class `gt_tbl`
+#' @param column The column wherein the numeric values should be replaced with their corresponding `{fontawesome}` icons.
+#' @param max_rating The max number of icons to add, these will be added in grey to indicate "missing"
+#' @param ... Additional arguments passed to `fontawesome::fa()`
+#' @param color The color of the icon, accepts named colors (`"orange"`) or hex strings.
+#' @param icon The icon name, passed to `fontawesome::fa()`
+#'
+#' @return An object of class `gt_tbl`.
+#' @export
+#'
+#' @section Examples:
+#' ```r
+#' library(gt)
+#' set.seed(37)
+#' rating_table <- mtcars %>%
+#'   dplyr::select(mpg:wt) %>%
+#'   dplyr::slice(1:5) %>%
+#'   dplyr::mutate(rating = sample(1:5, size = 5, TRUE)) %>%
+#'   gt() %>%
+#'   gt_fa_rating(rating, icon = "r-project")
+#' ```
+#' @section Figures:
+#' \if{html}{\figure{fa-stars.png}{options: width=60\%}}
+#'
+#' @family Utilities
+#' @section Function ID:
+#' 2-16
 
 gt_fa_rating <- function(
   gt_object,

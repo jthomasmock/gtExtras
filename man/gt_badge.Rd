@@ -4,7 +4,13 @@
 \alias{gt_badge}
 \title{Add a 'badge' based on values and palette}
 \usage{
-gt_badge(gt_object, column, palette = NULL, alpha = 0.2)
+gt_badge(
+  gt_object,
+  column,
+  palette = NULL,
+  alpha = 0.2,
+  rows = gt::everything()
+)
 }
 \arguments{
 \item{gt_object}{An existing \code{gt} table object}
@@ -14,6 +20,8 @@ gt_badge(gt_object, column, palette = NULL, alpha = 0.2)
 \item{palette}{Name of palette as a string. Must be either length of 1 or a vector of valid color names/hex values of equal length to the unique levels of the column (ie if there are 4 names, there need to be 4x colors). Note that if you would like to specify a specific color to match a specific icon, you can also use a named vector like: \code{c("angle-double-up" = "#009E73", "angle-double-down" = "#D55E00","sort" = "#000000")}}
 
 \item{alpha}{A numeric indicating the alpha/transparency. Range from 0 to 1}
+
+\item{rows}{The rows to apply the badge to, accepts \code{tidyeval}. Defaults to all rows.}
 }
 \value{
 \code{gt} table
@@ -48,10 +56,8 @@ Other Utilities:
 \code{\link{gt_add_divider}()},
 \code{\link{gt_double_table}()},
 \code{\link{gt_duplicate_column}()},
-\code{\link{gt_fa_column}()},
 \code{\link{gt_fa_rank_change}()},
 \code{\link{gt_fa_rating}()},
-\code{\link{gt_fa_repeats}()},
 \code{\link{gt_highlight_cols}()},
 \code{\link{gt_highlight_rows}()},
 \code{\link{gt_img_border}()},
@@ -59,8 +65,8 @@ Other Utilities:
 \code{\link{gt_img_multi_rows}()},
 \code{\link{gt_img_rows}()},
 \code{\link{gt_index}()},
-\code{\link{gt_merge_stack_color}()},
 \code{\link{gt_merge_stack}()},
+\code{\link{gt_merge_stack_color}()},
 \code{\link{gt_two_column_layout}()},
 \code{\link{gtsave_extra}()},
 \code{\link{img_header}()},

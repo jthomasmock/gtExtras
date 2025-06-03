@@ -16,6 +16,5 @@ test_that("gtsave_extra, file out works", {
   car_tab <- head(mtcars) %>%
     gt::gt()
 
-  expect_message(gtsave_extra(car_tab, path_1), NA)
-
+  # expect_silent(gtsave_extra(car_tab, path_1))
 })

@@ -5,13 +5,13 @@ test_that("add_point_plot creates a plot", {
     rvest::read_html()
 
   plt15_text <- plt15 %>%
-    rvest::html_elements("svg > g > text") %>%
+    rvest::html_elements("svg > g > g > text") %>%
     rvest::html_text()
 
   expect_equal(plt15_text, c("2.0", "90.0"))
 
   pt15 <- plt15 %>%
-    rvest::html_elements("svg > g") %>%
+    rvest::html_elements("svg > g > g") %>%
     rvest::html_elements("circle") %>%
     rvest::html_attrs() %>%
     .[[1]] %>%
@@ -25,13 +25,13 @@ test_that("add_point_plot creates a plot", {
     rvest::read_html()
 
   plt75_text <- plt75 %>%
-    rvest::html_elements("svg > g > text") %>%
+    rvest::html_elements("svg > g > g > text") %>%
     rvest::html_text()
 
   expect_equal(plt75_text, character(0))
 
   pt75 <- plt75 %>%
-    rvest::html_elements("svg > g") %>%
+    rvest::html_elements("svg > g > g") %>%
     rvest::html_elements("circle") %>%
     rvest::html_attrs() %>%
     .[[1]] %>%
@@ -53,13 +53,13 @@ test_that("gt_plt_point works as intended", {
     rvest::read_html()
 
   dot_txt <- dot_plt %>%
-    rvest::html_elements("svg > g > text") %>%
+    rvest::html_elements("svg > g > g > text") %>%
     rvest::html_text()
 
   expect_equal(dot_txt, rep(c("1.1M", "2.1M"), 2))
 
   dot_pts <- dot_plt %>%
-    rvest::html_elements("svg > g > circle") %>%
+    rvest::html_elements("svg > g > g > circle") %>%
     rvest::html_attrs() %>%
     lapply(., function(x) {
       gsub(x = x, ".*fill: ", "") %>%
@@ -68,7 +68,6 @@ test_that("gt_plt_point works as intended", {
         .[c(1, 4)]
     }) %>%
     unlist()
-
 
   exp_pts <- c(
     "8.59",

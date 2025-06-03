@@ -11,7 +11,8 @@ gt_plt_bar_stack(
   labels = c("Group 1", "Group 2", "Group 3"),
   position = "fill",
   width = 70,
-  fmt_fn = scales::label_number(scale_cut = cut_short_scale(), trim = TRUE)
+  fmt_fn = scales::label_number(scale_cut = cut_short_scale(), trim = TRUE),
+  font = "mono"
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ gt_plt_bar_stack(
 \item{width}{An integer representing the width of the bar chart in pixels.}
 
 \item{fmt_fn}{A specific function from \verb{scales::label_???} family. Defaults to \code{scales::label_number()}}
+
+\item{font}{A string representing the font family of the numbers of the bar labels. Defaults to \code{mono}.}
 }
 \value{
 An object of class \code{gt_tbl}.
@@ -77,8 +80,8 @@ ex_tab <- tab_df \%>\%
 
 \seealso{
 Other Plotting: 
-\code{\link{gt_plt_bar_pct}()},
 \code{\link{gt_plt_bar}()},
+\code{\link{gt_plt_bar_pct}()},
 \code{\link{gt_plt_dist}()},
 \code{\link{gt_plt_percentile}()},
 \code{\link{gt_plt_point}()},

@@ -14,3 +14,7 @@ docs
 CRAN-SUBMISSION
 /meta_fns/
 /revdep/
+
+.env
+logs/
+__pycache__/

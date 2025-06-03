@@ -8,13 +8,17 @@ test_that("gt_plt_bullet SVG is created and has specific values", {
     dplyr::slice_head(n = 3) %>%
     dplyr::ungroup() %>%
     gt::gt() %>%
-    gt_plt_bullet(column = mpg, target = target_col, width = 45,
-                  palette = c("lightblue", "black")) %>%
+    gt_plt_bullet(
+      column = mpg,
+      target = target_col,
+      width = 45,
+      palette = c("lightblue", "black")
+    ) %>%
     gt::as_raw_html() %>%
     rvest::read_html()
 
   bar_vals <- bullet_tab %>%
-    rvest::html_nodes("svg > g > rect") %>%
+    rvest::html_nodes("svg > g > g > rect") %>%
     rvest::html_attr("width") %>%
     as.double() %>%
     round(digits = 1)
@@ -31,7 +35,7 @@ test_that("gt_plt_bullet SVG is created and has specific values", {
   exp_tar_vals <- c(121, 121, 121, 90, 90, 90, 69, 69, 69)
   expect_equal(length(bar_vals), length(exp_bar_vals))
   expect_equal(length(target_vals), length(exp_tar_vals))
-  })
+})
 
 # test_that("gt_plt_bullet keep_column = TRUE", {
 #   check_suggests()
@@ -51,7 +55,7 @@ test_that("gt_plt_bullet SVG is created and has specific values", {
 #     rvest::read_html()
 #
 #   bar_vals <- bullet_tab %>%
-#     rvest::html_nodes("svg > g > rect") %>%
+#     rvest::html_nodes("svg > g > g > rect") %>%
 #     rvest::html_attr("width") %>%
 #     as.double() %>%
 #     round(digits = 1)

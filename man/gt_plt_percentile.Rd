@@ -54,9 +54,9 @@ dot_plt <- dplyr::tibble(x = c(seq(10, 90, length.out = 5))) \%>\%
 
 \seealso{
 Other Plotting: 
+\code{\link{gt_plt_bar}()},
 \code{\link{gt_plt_bar_pct}()},
 \code{\link{gt_plt_bar_stack}()},
-\code{\link{gt_plt_bar}()},
 \code{\link{gt_plt_dist}()},
 \code{\link{gt_plt_point}()},
 \code{\link{gt_plt_sparkline}()},

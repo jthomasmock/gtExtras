@@ -5,7 +5,11 @@
 #' @param names a string indicating the name of the two columns inside the details tag
 #' @return HTML text
 #' @export
-gt_label_details <- function(label, content, names = c("Column", "Description")) {
+gt_label_details <- function(
+  label,
+  content,
+  names = c("Column", "Description")
+) {
   stopifnot("Must be a named list" = length(names(content)) >= 1)
   stopifnot("'names' must be length 2" = length(names) == 2)
 
@@ -16,7 +20,9 @@ gt_label_details <- function(label, content, names = c("Column", "Description"))
   }
 
   fill_content <- mapply(
-    FUN = build_content, names(content), as.character(content),
+    FUN = build_content,
+    names(content),
+    as.character(content),
     SIMPLIFY = FALSE
   ) %>%
     unlist() %>%
@@ -45,10 +51,12 @@ gt_label_details <- function(label, content, names = c("Column", "Description"))
 with_tooltip <- function(label, tooltip) {
   tags$abbr(
     style = paste0(
-      "text-decoration: underline; text-decoration-style: solid;", "
+      "text-decoration: underline; text-decoration-style: solid;",
+      "
     cursor: help; color: blue"
     ),
-    title = tooltip, label
+    title = tooltip,
+    label
   ) %>%
     as.character() %>%
     gt::html()
@@ -97,6 +105,7 @@ add_badge_color <- function(add_color, add_label, alpha_lvl) {
 #' @param column The column to convert to badges, accepts `tidyeval`
 #' @param palette Name of palette as a string. Must be either length of 1 or a vector of valid color names/hex values of equal length to the unique levels of the column (ie if there are 4 names, there need to be 4x colors). Note that if you would like to specify a specific color to match a specific icon, you can also use a named vector like: `c("angle-double-up" = "#009E73", "angle-double-down" = "#D55E00","sort" = "#000000")`
 #' @param alpha A numeric indicating the alpha/transparency. Range from 0 to 1
+#' @param rows The rows to apply the badge to, accepts `tidyeval`. Defaults to all rows.
 #' @export
 #' @return `gt` table
 #' @section Examples:
@@ -111,18 +120,32 @@ add_badge_color <- function(add_color, add_label, alpha_lvl) {
 #' \if{html}{\figure{gt_badge.png}{options: width=50\%}}
 #'
 #' @family Utilities
-gt_badge <- function(gt_object, column, palette = NULL, alpha = 0.2) {
+gt_badge <- function(
+  gt_object,
+  column,
+  palette = NULL,
+  alpha = 0.2,
+  rows = gt::everything()
+) {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
 
   text_transform(
     gt_object,
-    locations = cells_body(columns = {{ column }}),
+    locations = cells_body(
+      columns = {{ column }},
+      rows = {{ rows }}
+    ),
     fn = function(x) {
       if (is.null(palette)) {
         pal_filler <- rev(c(
-          "#CC79A7", "#D55E00", "#0072B2",
-          "#F0E442", "#009E73", "#56B4E9",
-          "#E69F00", "#000000"
+          "#CC79A7",
+          "#D55E00",
+          "#0072B2",
+          "#F0E442",
+          "#009E73",
+          "#56B4E9",
+          "#E69F00",
+          "#000000"
         ))[seq_along(unique(x))]
       } else if (length(palette) == 1) {
         pal_filler <- palette %>% rep(length(unique(x)))
@@ -130,12 +153,23 @@ gt_badge <- function(gt_object, column, palette = NULL, alpha = 0.2) {
         pal_filler <- palette
       }
 
+      #
+
       lapply(X = x, FUN = function(xy) {
         fct_lvl <- unique(x)
-        stopifnot("The length of the unique elements must match the palette length" = length(fct_lvl) == length(pal_filler))
+        stopifnot(
+          "The length of the unique elements must match the palette length" = length(
+            fct_lvl
+          ) ==
+            length(pal_filler)
+        )
 
         if (!is.null(names(pal_filler))) {
-          fct_x <- factor(xy, levels = names(pal_filler), labels = pal_filler) %>%
+          fct_x <- factor(
+            xy,
+            levels = names(pal_filler),
+            labels = pal_filler
+          ) %>%
             as.character()
         } else {
           fct_x <- factor(xy, levels = fct_lvl, labels = pal_filler) %>%

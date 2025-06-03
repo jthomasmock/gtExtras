@@ -51,19 +51,25 @@
 #' ```
 #' \if{html}{\figure{plt-bar-stack.png}{options: width=70\%}}
 
-
-gt_plt_bar_stack <- function(gt_object,
-                             column = NULL,
-                             palette = c("#ff4343", "#bfbfbf", "#0a1c2b"),
-                             labels = c("Group 1", "Group 2", "Group 3"),
-                             position = "fill",
-                             width = 70,
-                             fmt_fn = scales::label_number(scale_cut = cut_short_scale(), trim = TRUE),
-                            font = "mono") {
+gt_plt_bar_stack <- function(
+  gt_object,
+  column = NULL,
+  palette = c("#ff4343", "#bfbfbf", "#0a1c2b"),
+  labels = c("Group 1", "Group 2", "Group 3"),
+  position = "fill",
+  width = 70,
+  fmt_fn = scales::label_number(scale_cut = cut_short_scale(), trim = TRUE),
+  font = "mono"
+) {
   stopifnot("Table must be of class 'gt_tbl'" = "gt_tbl" %in% class(gt_object))
   stopifnot("There must be 2 or 3 labels" = (length(labels) %in% c(2:3)))
-  stopifnot("There must be 2 or 3 colors in the palette" = (length(palette) %in% c(2:3)))
-  stopifnot("`position` must be one of 'stack' or 'fill'" = (position %in% c("stack", "fill")))
+  stopifnot(
+    "There must be 2 or 3 colors in the palette" = (length(palette) %in% c(2:3))
+  )
+  stopifnot(
+    "`position` must be one of 'stack' or 'fill'" = (position %in%
+      c("stack", "fill"))
+  )
 
   var_sym <- rlang::enquo(column)
   var_bare <- rlang::as_label(var_sym)
@@ -146,7 +152,10 @@ gt_plt_bar_stack <- function(gt_object,
           scale_y_discrete(expand = c(0, 0)) +
           coord_cartesian(clip = "off") +
           theme_void() +
-          theme(legend.position = "none", plot.margin = margin(0, 0, 0, 0, "pt"))
+          theme(
+            legend.position = "none",
+            plot.margin = margin(0, 0, 0, 0, "pt")
+          )
 
         out_name <- file.path(tempfile(
           pattern = "file",
@@ -188,7 +197,8 @@ gt_plt_bar_stack <- function(gt_object,
       "<span style='color:{lab_pal1}'><b>{lab1}</b></span>",
       "||",
       "<span style='color:{lab_pal2}'><b>{lab2}</b></span>"
-    ) %>% gt::html()
+    ) %>%
+      gt::html()
   } else {
     lab_pal1 <- palette[1]
     lab_pal2 <- palette[2]
@@ -204,10 +214,9 @@ gt_plt_bar_stack <- function(gt_object,
       "<span style='color:{lab_pal2}'><b>{lab2}</b></span>",
       "||",
       "<span style='color:{lab_pal3}'><b>{lab3}</b></span></div>"
-    ) %>% gt::html()
+    ) %>%
+      gt::html()
   }
-
-
 
   # Get the columns supplied in `columns` as a character vector
   tab_out <-
@@ -216,5 +225,11 @@ gt_plt_bar_stack <- function(gt_object,
       var = var_bare,
       column_label = label_built
     )
-  suppressWarnings(tab_out)
+  suppressWarnings(
+    tab_out %>%
+      # format the label 'column' as gt::html
+      cols_label(
+        {{ column }} := gt::html(label_built)
+      )
+  )
 }

@@ -13,13 +13,14 @@
 #' @section Function ID:
 #' 2-14
 #'
-gtsave_extra <- function(data,
-                         filename,
-                         path = NULL,
-                         ...,
-                         zoom = 2,
-                         expand = 5) {
-
+gtsave_extra <- function(
+  data,
+  filename,
+  path = NULL,
+  ...,
+  zoom = 2,
+  expand = 5
+) {
   filename <- gtsave_filename(path = path, filename = filename)
 
   # Create a temporary file with the `html` extension
@@ -40,7 +41,8 @@ gtsave_extra <- function(data,
   # Saving an image requires the webshot2 package; if it's
   # not present, stop with a message
   if (!rlang::is_installed("webshot2")) {
-    stop("The 'webshot2' package is required for saving images of gt tables.)",
+    stop(
+      "The 'webshot2' package is required for saving images of gt tables.)",
       call. = FALSE
     )
   } else {
@@ -52,11 +54,10 @@ gtsave_extra <- function(data,
       expand = expand,
       ...
     ) %>%
-     utils::capture.output(type = "message") %>%
-     invisible()
+      utils::capture.output(type = "message") %>%
+      invisible()
 
-    if(!grepl("screenshot completed", tolower(web_out))) print(web_out)
-
+    #if(!grepl("screenshot completed", tolower(web_out))) print(web_out)
   }
 
   if (interactive()) {

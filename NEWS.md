@@ -1,6 +1,11 @@
-# gtExtras (development version)
+# gtExtras 0.6.0
+
 - Handle interquartile range of zero in `gt_plt_summary()` - [#104](https://github.com/jthomasmock/gtExtras/issues/104)  
 - Experimentally handle multiple types of plots in `gt_plt_dist()` - [#102](https://github.com/jthomasmock/gtExtras/issues/102)  
+- Resolve issues with `gt_plt_summary()` - [#148](https://github.com/jthomasmock/gtExtras/issues/148) and [146](https://github.com/jthomasmock/gtExtras/issues/146)
+- Address test issues with svglite - [#147](https://github.com/jthomasmock/gtExtras/issues/147)
+- Remove deprecated fontawesome functions `gt_fa_repeats()`, and `gt_fa_column()` in favor of `gt` native functions.
+- Address CRAN issues
 
 # gtExtras 0.5.0
 
@@ -18,16 +23,18 @@
 - Add a labelling feature to `gt_plt_bar_pct()` - thanks to @andreweatherman and [PR](https://github.com/jthomasmock/gtExtras/pull/100)
 
 # gtExtras 0.4.5
+
 - Refactor many functions to account for upstream changes in `gt` v0.8.0
 - Add a `palette_col` argument to `gt_plt_bullet()` to accept a named column of palette colors as present in the data. Fixed #72
 - Fix internals of `gt_theme_pff()` to use `table.font.size` inside `tab_options()` rather than `tab_style()`. Fixed #74
 - Fix a few instances of `geom_line()` and `geom_v/hline()` that were throwing warnings for `ggplot2` v3.4.0
-- Refactor internals of `fmt_pad_num` to align with @mrcaseb implementation https://gist.github.com/mrcaseb/f0f85b48df7957c27c4205cafccbc5a2
+- Refactor internals of `fmt_pad_num` to align with @mrcaseb implementation <https://gist.github.com/mrcaseb/f0f85b48df7957c27c4205cafccbc5a2>
 - Refactor many functions that use lines with size parameter, to avoid ggplot2 v.3.4.0 deprecation warnings (affects `gt_plt_bar`, `gt_pct_bar`, `gt_plt_dist`, `gt_plt_conf_int`, `gt_plt_percentile_dot`, `gt_plt_point`, `gt_plt_sparkline`, `gt_win_loss`)
 
 # gtExtras 0.4.3
+
 - Modify internals of `gt_fa_column()` to accept factors with levels not present in the data, ignoring unneeded levels. Thank you to @mikedolanfliss for the suggestion.
-- Add `gt_merge_stack_color()` to create a merge/stack with background color - per @mrcaseb and issue #71 
+- Add `gt_merge_stack_color()` to create a merge/stack with background color - per @mrcaseb and issue #71
 - Add `gt_alert_icon()` to create a colored circle based on the range of values in the column.
 - Fix a CRAN extra check
 
@@ -63,11 +70,13 @@
 - Prep for and submit initial CRAN release :fingers-crossed:
 
 # gtExtras 0.3.9
+
 - Renamed colors arg in `gt_merge_stack()` to be 'palette'
 - Renamed colors arg in `gt_plt_bullet()` to be 'palette'
 - Renamed pal arg in `gt_plt_sparkline()` to be 'palette'
 
 # gtExtras 0.3.8
+
 - Renamed `colors` argument in `gt_win_loss()` to `palette`
 - Added NA handling to all `fontawesome::fa()` functions, ie `gt_fa_rank_change()`, `gt_fa_repeats()`, `gt_fa_column()`
 - Add missing data handling to more plotting functions
@@ -75,7 +84,8 @@
 - Remove `gt_sparkline()` - functions separated into `gt_plt_sparkline()` and `gt_plt_dist()`
 
 # gtExtras 0.3.7
-- Added basic support in `gt_plt_summary()` for dates/times. 
+
+- Added basic support in `gt_plt_summary()` for dates/times.
 - Updated tests for `gt_plt_summary()` to include dates/times
 
 # gtExtras 0.3.6
@@ -95,34 +105,34 @@
 
 # gtExtras 0.3.2
 
-* Remove `scales::scales_label_si()` in favor of `scales::label_number(scale_cut = cut_scale_short())` as the previous function was deprecated. Thanks to [@mrcaseb](https://github.com/mrcaseb) for pointing out in [Issue 48](https://github.com/jthomasmock/gtExtras/issues/48)
+- Remove `scales::scales_label_si()` in favor of `scales::label_number(scale_cut = cut_scale_short())` as the previous function was deprecated. Thanks to [@mrcaseb](https://github.com/mrcaseb) for pointing out in [Issue 48](https://github.com/jthomasmock/gtExtras/issues/48)
 
 # gtExtras 0.3
 
-* Add [Daniel Sjoberg](https://github.com/ddsjoberg) as a contributor in honor of their major assistance with preparation towards CRAN
-* Move past 0.2 release into a "next stop CRAN"... hopefully
-* Vendor additional unexported functions from `{gt}` with attribution
+- Add [Daniel Sjoberg](https://github.com/ddsjoberg) as a contributor in honor of their major assistance with preparation towards CRAN
+- Move past 0.2 release into a "next stop CRAN"... hopefully
+- Vendor additional unexported functions from `{gt}` with attribution
 
 # gtExtras 0.2.7
 
-* Bring in `webshot2` as a remote dependency suggest and minor changes to clean up some R checks, thanks to a PR from the great [Daniel Sjoberg](https://github.com/jthomasmock/gtExtras/pull/43). 
+- Bring in `webshot2` as a remote dependency suggest and minor changes to clean up some R checks, thanks to a PR from the great [Daniel Sjoberg](https://github.com/jthomasmock/gtExtras/pull/43).
 
-* Correct an internal bug in `gt_plt_dist()` which was failing for plotting integers.
+- Correct an internal bug in `gt_plt_dist()` which was failing for plotting integers.
 
 # gtExtras 0.2.6
 
-* Exchange `webshot` for `webshot2` to enhance capabilities. Note that `webshot2` is GitHub only, install via: `remotes::install_github("rstudio/webshot2")`. This solves [issue #42](https://github.com/jthomasmock/gtExtras/issues/42).
+- Exchange `webshot` for `webshot2` to enhance capabilities. Note that `webshot2` is GitHub only, install via: `remotes::install_github("rstudio/webshot2")`. This solves [issue #42](https://github.com/jthomasmock/gtExtras/issues/42).
 
 # gtExtras 0.2.5
 
-* Updated `gt_theme_guardian()` to work with zero-length tables per [Issue 41](https://github.com/jthomasmock/gtExtras/issues/41)
+- Updated `gt_theme_guardian()` to work with zero-length tables per [Issue 41](https://github.com/jthomasmock/gtExtras/issues/41)
 
 # gtExtras 0.2.4
 
-* Added a `NEWS.md` file to track changes to the package.
+- Added a `NEWS.md` file to track changes to the package.
 
 ## Bug Fixes prior to 0.2.4
 
-* Use `gt_index` to prevent incorrect ordering of rows with `gt_plt_bar_pct()` per [StackOverflow report](https://stackoverflow.com/questions/71313688/gtextras-column-showing-in-wrong-order-in-gt-table-when-grouped?noredirect=1#comment126232993_71313688)
+- Use `gt_index` to prevent incorrect ordering of rows with `gt_plt_bar_pct()` per [StackOverflow report](https://stackoverflow.com/questions/71313688/gtextras-column-showing-in-wrong-order-in-gt-table-when-grouped?noredirect=1#comment126232993_71313688)
 
-* Remove `keep_column` argument for `gt_plt_bullet`, this functionality is able to be achieved with `gt_duplicate_column()` upstream. This also solves naming confusion as seen in [issue 37](https://github.com/jthomasmock/gtExtras/issues/37)
+- Remove `keep_column` argument for `gt_plt_bullet`, this functionality is able to be achieved with `gt_duplicate_column()` upstream. This also solves naming confusion as seen in [issue 37](https://github.com/jthomasmock/gtExtras/issues/37)

@@ -232,7 +232,7 @@ add_ci_plot <- function(data_in,
       position = position_nudge(y = 0.25),
       family = "mono",
       fontface = "bold",
-      label.size = unit(0, "lines"),
+      linewidth = 0,
       label.padding = unit(0.05, "lines"),
       label.r = unit(0, "lines")
     ) +
@@ -246,7 +246,7 @@ add_ci_plot <- function(data_in,
       fill = "transparent",
       family = "mono",
       fontface = "bold",
-      label.size = unit(0, "lines"),
+      linewidth = 0,
       label.padding = unit(0.05, "lines"),
       label.r = unit(0, "lines")
     ) +

@@ -11,6 +11,7 @@
 #' @param palette A character string with 5 elements indicating the colors of various components. Order matters, and palette = sparkline color, final value color, range color low, range color high, and 'type' color (eg shading or reference lines). To show a plot with no points (only the line itself), use: `palette = c("black", rep("transparent", 4))`.
 #' @param same_limit A logical indicating that the plots will use the same axis range (`TRUE`) or have individual axis ranges (`FALSE`).
 #' @param label A logical indicating whether the sparkline will have a numeric label for the last value in the vector, placed at the end of the plot.
+#' @param size A number indicating the font size of the numeric label when `label` is `TRUE`. Passed to [ggplot2::size].
 #' @return An object of class `gt_tbl`.
 #' @export
 #' @section Examples:
@@ -36,7 +37,8 @@ gt_plt_sparkline <- function(
   fig_dim = c(5, 30),
   palette = c("black", "black", "purple", "green", "lightgrey"),
   same_limit = TRUE,
-  label = TRUE
+  label = TRUE,
+  font_size = 2
 ) {
   stopifnot(
     "'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in%
@@ -148,7 +150,7 @@ gt_plt_sparkline <- function(
               }
             )(.data$y)
           ),
-          size = 2,
+          size = font_size,
           family = "mono",
           hjust = 0,
           vjust = 0.5,
@@ -178,7 +180,7 @@ gt_plt_sparkline <- function(
               }
             )(.data$y)
           ),
-          size = 2,
+          size = font_size,
           family = "mono",
           hjust = 0,
           vjust = 0.5,

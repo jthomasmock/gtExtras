@@ -11,7 +11,8 @@ gt_plt_sparkline(
   fig_dim = c(5, 30),
   palette = c("black", "black", "purple", "green", "lightgrey"),
   same_limit = TRUE,
-  label = TRUE
+  label = TRUE,
+  font_size = 2
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ gt_plt_sparkline(
 \item{same_limit}{A logical indicating that the plots will use the same axis range (\code{TRUE}) or have individual axis ranges (\code{FALSE}).}
 
 \item{label}{A logical indicating whether the sparkline will have a numeric label for the last value in the vector, placed at the end of the plot.}
+
+\item{size}{A number indicating the font size of the numeric label when \code{label} is \code{TRUE}. Passed to \link[ggplot2:aes_linetype_size_shape]{ggplot2::size}.}
 }
 \value{
 An object of class \code{gt_tbl}.

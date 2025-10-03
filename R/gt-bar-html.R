@@ -115,7 +115,7 @@ gt_plt_bar_pct <- function(
         # create label string to print out // add % sign if requested
         label <- glue::glue("{round(label_values, decimals)}%")
 
-        if (x < (label_cutoff * max_x)) {
+        if (!is.na(x) && x < (label_cutoff * max_x)) {
 
           css_styles <- paste0(
             "background:", fill,";",

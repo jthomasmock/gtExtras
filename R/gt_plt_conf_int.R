@@ -52,18 +52,22 @@
 #' @family Themes
 #' @section Function ID:
 #' 3-10
-gt_plt_conf_int <- function(gt_object,
-                            column,
-                            ci_columns,
-                            ci = 0.9,
-                            ref_line = NULL,
-                            palette = c("black", "grey", "white", "black"),
-                            width = 45,
-                            text_args = list(accuracy = 1),
-                            text_size = 1.5) {
+gt_plt_conf_int <- function(
+  gt_object,
+  column,
+  ci_columns,
+  ci = 0.9,
+  ref_line = NULL,
+  palette = c("black", "grey", "white", "black"),
+  width = 45,
+  text_args = list(accuracy = 1),
+  text_size = 1.5
+) {
   all_vals <- gt_index(gt_object, {{ column }}, as_vector = FALSE)
 
-  stopifnot("Confidence level must be between 0 and 1" = dplyr::between(ci, 0, 1))
+  stopifnot(
+    "Confidence level must be between 0 and 1" = dplyr::between(ci, 0, 1)
+  )
   # convert desired confidence interval from percentage
   # to a two-tailed level to be used in confint() function
   level <- 1 - ((1 - ci) * 2)
@@ -86,8 +90,10 @@ gt_plt_conf_int <- function(gt_object,
 
   if ("none" %in% ci_val1) {
     stopifnot(
-      "Must provide list column if no defined Confidence Intervals" =
-        (class(column_vals) %in% c("list"))
+      "Must provide list column if no defined Confidence Intervals" = (class(
+        column_vals
+      ) %in%
+        c("list"))
     )
 
     # create a list of dataframes with
@@ -106,8 +112,10 @@ gt_plt_conf_int <- function(gt_object,
     })
   } else {
     stopifnot(
-      "Must provide single values per row if defining Confidence Intervals" =
-        !(class(column_vals) %in% "list")
+      "Must provide single values per row if defining Confidence Intervals" = !(class(
+        column_vals
+      ) %in%
+        "list")
     )
 
     data_in <- dplyr::tibble(mean = column_vals, y = "1a") %>%
@@ -158,7 +166,6 @@ gt_plt_conf_int <- function(gt_object,
 }
 
 
-
 #' Add a confidence interval plot inside a specific row
 #'
 #' @param data_in A dataframe of length 1
@@ -170,13 +177,15 @@ gt_plt_conf_int <- function(gt_object,
 #' @noRd
 #'
 #' @return SVG/HTML
-add_ci_plot <- function(data_in,
-                        pal_vals,
-                        width,
-                        ext_range,
-                        text_args = list(scale_cut = cut_short_scale()),
-                        text_size,
-                        ref_line) {
+add_ci_plot <- function(
+  data_in,
+  pal_vals,
+  width,
+  ext_range,
+  text_args = list(scale_cut = cut_short_scale()),
+  text_size,
+  ref_line
+) {
   if (NA %in% unlist(data_in)) {
     return("&nbsp;")
   }
@@ -232,12 +241,15 @@ add_ci_plot <- function(data_in,
       position = position_nudge(y = 0.25),
       family = "mono",
       fontface = "bold",
-      label.size = unit(0, "lines"),
+      label.size = 0,
       label.padding = unit(0.05, "lines"),
       label.r = unit(0, "lines")
     ) +
     geom_label(
-      aes(x = .data$ci1, label = do.call(scales::label_number, text_args)(.data$ci1)),
+      aes(
+        x = .data$ci1,
+        label = do.call(scales::label_number, text_args)(.data$ci1)
+      ),
       position = position_nudge(y = 0.25),
       color = pal_vals[4],
       hjust = -0.1,
@@ -246,7 +258,7 @@ add_ci_plot <- function(data_in,
       fill = "transparent",
       family = "mono",
       fontface = "bold",
-      label.size = unit(0, "lines"),
+      label.size = 0,
       label.padding = unit(0.05, "lines"),
       label.r = unit(0, "lines")
     ) +

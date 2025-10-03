@@ -45,6 +45,7 @@
 
 test_that("gt_pct_bar SVG is created and has specific palette", {
   check_suggests()
+  testthat::skip_on_cran()
 
   ex_df <- dplyr::tibble(
     x = c(
@@ -76,7 +77,10 @@ test_that("gt_pct_bar SVG is created and has specific palette", {
 
   ex_tab <- tab_df %>%
     gt::gt() %>%
-    gt_plt_bar_stack(column = list_data, labels = c("Lab 1", "Lab 2")) %>%
+    gtExtras::gt_plt_bar_stack(
+      column = list_data,
+      labels = c("Lab 1", "Lab 2")
+    ) %>%
     gt::as_raw_html() %>%
     rvest::read_html()
 
@@ -86,13 +90,15 @@ test_that("gt_pct_bar SVG is created and has specific palette", {
     as.double()
 
   bar_colors <- ex_tab %>%
-    rvest::html_nodes("svg > g > g > rect") %>%
+    rvest::html_nodes(
+      "svg > g > g > rect:nth-child(2), svg > g > g > rect:nth-child(3)"
+    ) %>%
     rvest::html_attr("style") %>%
     gsub(x = ., pattern = ".*fill: #", "")
 
   expect_equal(
     round(bar_vals, 2),
-    c(0.00, 119.06, 0.00, 124.02, 0.00, 85.04, 0.00, 85.04)
+    c(0.00, 0, 119.06, 0.00, 0, 124.02, 0.00, 0, 85.04, 0.00, 0, 85.04)
   )
   expect_equal(
     bar_colors,

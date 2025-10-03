@@ -33,11 +33,11 @@ test_that("gt_plt_bar svg is created and has specific values", {
   # SVG has specific points ----
 
   bar_vals <- bar_tbl %>%
-    rvest::html_nodes("svg > g > g > rect") %>%
+    rvest::html_nodes("svg > g > g > rect:nth-child(2)") %>%
     rvest::html_attr("width")
 
   bar_neg_vals <- bar_tbl_neg %>%
-    rvest::html_nodes("svg > g > g > rect") %>%
+    rvest::html_nodes("svg > g > g > rect:nth-child(2)") %>%
     rvest::html_attr("width")
 
   expect_equal(

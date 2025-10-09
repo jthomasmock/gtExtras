@@ -19,11 +19,11 @@
 * Improve `gt_theme_538()` to better align with FiveThirtyEight style, namely improved font choices ("Cairo")
 * Address NAs properly in `gt_fa_rank_change()` - thanks to @moodymudskipper via [#80](https://github.com/jthomasmock/gtExtras/issues/80)
 * Refactor `fmt_symbol_first()` to work correctly with any font, not just monospace fonts.
-* Add an experimental `gt_render_reprex()` thanks to @mrcaseb suggestion on [Twitter](https://twitter.com/mrcaseb/status/1628122417523527697?s=20)
+* Add an experimental `gt_render_reprex()` thanks to @mrcaseb suggestion on Twitter
 * Allow for entire NA columns in `gt_plt_bar()` and `gt_plt_bar_pct()` - [#86](https://github.com/jthomasmock/gtExtras/issues/86)
 * Accommodate small values in `gt_plt_bullet()` - [#87](https://github.com/jthomasmock/gtExtras/issues/87)
 * Address some small bugs #94 and #95
-* Add an expandable tag to `gt_plt_summary()` - [Request](https://twitter.com/AdriMichelson/status/1697020677952557103?s=20)
+* Add an expandable tag to `gt_plt_summary()`
 * Add a labelling feature to `gt_plt_bar_pct()` - thanks to @andreweatherman and [PR](https://github.com/jthomasmock/gtExtras/pull/100)
 
 # gtExtras 0.4.5

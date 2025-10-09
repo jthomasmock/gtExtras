@@ -1,5 +1,6 @@
 test_that("gt_plt_conf_int generates correct points/text", {
   check_suggests()
+  testthat::skip_on_cran()
 
   ci_table <- generate_df(
     n = 50,
@@ -56,6 +57,7 @@ test_that("gt_plt_conf_int generates correct points/text", {
 
 test_that("gt_plt_conf_int uses correct points/text/colors", {
   check_suggests()
+  testthat::skip_on_cran()
 
   # You can also provide your own values
   # based on your own algorithm/calculations

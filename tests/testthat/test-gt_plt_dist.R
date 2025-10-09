@@ -7,6 +7,12 @@ test_that("svg is created", {
     dplyr::summarize(mpg_data = list(mpg), .groups = "drop") %>%
     gt()
 
+  fivenum_tab <- mtcars %>%
+    dplyr::group_by(cyl) %>%
+    # must end up with list of data for each row in the input dataframe
+    dplyr::summarize(mpg_data = list(stats::fivenum(mpg)), .groups = "drop") %>%
+    gt()
+
   get_svg_len <- function(table){
     table %>%
       gt::as_raw_html() %>%
@@ -46,6 +52,9 @@ test_that("svg is created", {
   gt_box <- base_tab %>%
     gt_plt_dist(mpg_data, type = "boxplot")
 
+  gt_box_manual <- fivenum_tab |>
+    gt_plt_dist(mpg_data, type = "boxplot_identity")
+
   expect_equal(get_svg_len(gt_dens), 3)
   expect_equal(get_svg_len(gt_dens_bw), 3)
   expect_equal(get_svg_len(gt_dens_lim), 3)
@@ -55,5 +64,6 @@ test_that("svg is created", {
   expect_equal(get_svg_len(gt_hist_bw), 3)
   expect_equal(get_svg_len(gt_hist_lim), 3)
   expect_equal(get_svg_len(gt_rug), 3)
+  expect_equal(get_svg_len(gt_box_manual), 3)
 
 })

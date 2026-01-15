@@ -34,8 +34,8 @@
 #'    )
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{highlight-basic.png}{options: width=70\%}}
-#' \if{html}{\figure{highlight-target.png}{options: width=70\%}}
+#' \if{html}{\figure{highlight-basic.png}{options: style="width=70\%;"}}
+#' \if{html}{\figure{highlight-target.png}{options: style="width=70\%;"}}
 #'
 #' @family Utilities
 #' @section Function ID:

@@ -19,7 +19,7 @@ Apply ESPN theme to a gt table
 }
 \section{Figures}{
 
-\if{html}{\figure{gt_espn.png}{options: width=100\%}}
+\if{html}{\figure{gt_espn.png}{options: style="width=100\%;"}}
 }
 
 \section{Function ID}{

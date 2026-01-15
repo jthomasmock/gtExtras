@@ -44,7 +44,7 @@ dot_plt <- dplyr::tibble(x = c(seq(10, 90, length.out = 5))) \%>\%
 
 \section{Figures}{
 
-\if{html}{\figure{gt_plt_percentile.png}{options: width=30\%}}
+\if{html}{\figure{gt_plt_percentile.png}{options: style="width=30\%;"}}
 }
 
 \section{Function ID}{

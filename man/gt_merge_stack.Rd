@@ -68,7 +68,7 @@ stacked_tab <- team_df \%>\%
 
 \section{Figures}{
 
-\if{html}{\figure{merge-stack.png}{options: width=50\%}}
+\if{html}{\figure{merge-stack.png}{options: style="width=50\%;"}}
 }
 
 \section{Function ID}{

@@ -47,7 +47,7 @@ dot_bar_tab <- mtcars \%>\%
 
 \section{Figures}{
 
-\if{html}{\figure{gt_dot_bar.png}{options: width=50\%}}
+\if{html}{\figure{gt_dot_bar.png}{options: style="width=50\%;"}}
 }
 
 \seealso{

@@ -26,7 +26,7 @@ to align at the decimal point.
 }
 \section{Figures}{
 
-\if{html}{\figure{fmt_pad_num.png}{options: width=20\%}}
+\if{html}{\figure{fmt_pad_num.png}{options: style="width=20\%;"}}
 }
 
 \section{Function ID}{

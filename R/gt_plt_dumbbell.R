@@ -19,7 +19,7 @@
 #'   gt_plt_dumbbell(disp, mpg)
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{gt_plt_dumbell.png}{options: width=70\%}}
+#' \if{html}{\figure{gt_plt_dumbell.png}{options: style="width=70\%;"}}
 gt_plt_dumbbell <- function(
   gt_object,
   col1 = NULL,

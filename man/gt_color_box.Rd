@@ -55,7 +55,7 @@ color_box_tab <- test_data \%>\%
 
 \section{Figures}{
 
-\if{html}{\figure{color_box.png}{options: width=30\%}}
+\if{html}{\figure{color_box.png}{options: style="width=30\%;"}}
 }
 
 \section{Function ID}{

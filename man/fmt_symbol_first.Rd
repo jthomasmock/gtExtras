@@ -45,7 +45,7 @@ in the remaining rows.
 }
 \section{Figures}{
 
-\if{html}{\figure{gt_fmt_first.png}{options: width=100\%}}
+\if{html}{\figure{gt_fmt_first.png}{options: style="width=100\%;"}}
 }
 
 \section{Function ID}{

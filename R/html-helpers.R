@@ -117,7 +117,7 @@ add_badge_color <- function(add_color, add_label, alpha_lvl) {
 #'   gt_badge(cyl, palette = c("4 Cyl"="red","6 Cyl"="blue","8 Cyl"="green"))
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{gt_badge.png}{options: width=50\%}}
+#' \if{html}{\figure{gt_badge.png}{options: style="width=50\%;"}}
 #'
 #' @family Utilities
 gt_badge <- function(

@@ -51,7 +51,7 @@ gt_plt_bar_tab <- mtcars \%>\%
   gt_plt_bar(column = mpg, keep_column = TRUE)
 }\if{html}{\out{</div>}}
 
-\if{html}{\figure{gt_plt_bar.png}{options: width=100\%}}
+\if{html}{\figure{gt_plt_bar.png}{options: style="width=100\%;"}}
 }
 
 \section{Function ID}{

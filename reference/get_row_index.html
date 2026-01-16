@@ -125,7 +125,7 @@ the visual representation and the output.</p>
 <span>  <span class="fu">row_sty</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">row_sty</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">row_sty</span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></code></pre><p></p></div>
-<p><img src="figures/ungrouped-tab.png" width="40%"></p>
+<p><img src="figures/ungrouped-tab.png" style="width=40%;"></p>
 </div>
 
 <div class="section">
@@ -140,7 +140,7 @@ data before grouping, leading to some potential confusion.</p>
 <span>  <span class="fu">row_sty</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="co">## actually row 1</span></span>
 <span>  <span class="fu">row_sty</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="co">## actually row 5</span></span>
 <span>  <span class="fu">row_sty</span><span class="op">(</span><span class="fl">5</span><span class="op">)</span>     <span class="co">## actually row 2</span></span></code></pre><p></p></div>
-<p><img src="figures/grouped-tab.png" width="40%"></p>
+<p><img src="figures/grouped-tab.png" style="width=40%;"></p>
 <p>The <code>get_row_index()</code> function gives ability to create an index of the final
 output, so you can reference specific rows by number.</p>
 <p></p><div class="sourceCode r"><pre><code><span><span class="va">tab_index</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_row_index.html">get_row_index</a></span><span class="op">(</span><span class="va">tab2</span><span class="op">)</span></span>
@@ -148,12 +148,12 @@ output, so you can reference specific rows by number.</p>
 <span><span class="va">tab2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">row_sty</span><span class="op">(</span><span class="fl">4</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="co">## wrong row, actually row 6 visually</span></span>
 <span>  <span class="fu">row_sty</span><span class="op">(</span><span class="va">tab_index</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span> <span class="co">## correct row, actually row 4</span></span></code></pre><p></p></div>
-<p><img src="figures/grouped-tab-row4.png" width="40%"></p>
+<p><img src="figures/grouped-tab-row4.png" style="width=40%;"></p>
 <p></p><div class="sourceCode r"><pre><code><span><span class="va">tab2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">row_sty</span><span class="op">(</span><span class="va">tab_index</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">row_sty</span><span class="op">(</span><span class="va">tab_index</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">row_sty</span><span class="op">(</span><span class="va">tab_index</span><span class="op">[</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span></code></pre><p></p></div>
-<p><img src="figures/grouped-tab-index.png" width="40%"></p>
+<p><img src="figures/grouped-tab-index.png" style="width=40%;"></p>
 </div>
 
     </div>
@@ -167,7 +167,7 @@ output, so you can reference specific rows by number.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

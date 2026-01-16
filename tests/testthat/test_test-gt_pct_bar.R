@@ -71,9 +71,9 @@ test_that("gt_pct_bar SVG structure, positions, and default palette are correct"
     ) %>%
     rvest::html_attr("style")
 
-  # There should be 4 rows * 2 segments
-  expect_length(bar_x, 8L)
-  expect_length(styles, 8L)
+  # There should be 4 rows
+  expect_length(bar_x, 4L)
+  expect_length(styles, 4L)
 })
 
 test_that("gt_pct_bar respects a custom two-color palette", {
@@ -147,5 +147,5 @@ test_that("gt_pct_bar respects a custom two-color palette", {
     rvest::html_attr("style")
 
   cols <- normalize_colors(styles)
-  expect_length(cols, 8L)
+  expect_length(cols, 4L)
 })

@@ -26,7 +26,7 @@
 #'                    cell_fill(color = "red", alpha = 0.5))
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{grp-tab-style.png}{options: width=40\%}}
+#' \if{html}{\figure{grp-tab-style.png}{options: style="width=40\%;"}}
 #'
 #' @family Utilities
 #' @section Function ID:

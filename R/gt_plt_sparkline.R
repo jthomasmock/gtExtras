@@ -24,7 +24,7 @@
 #'     gt_plt_sparkline(mpg_data)
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{gt_plt_sparkline.png}{options: width=50\%}}
+#' \if{html}{\figure{gt_plt_sparkline.png}{options: style="width=50\%;"}}
 #'
 #' @family Plotting
 #' @section Function ID:

@@ -50,7 +50,7 @@ conf_table <- team_df \%>\%
 
 \section{Figures}{
 
-\if{html}{\figure{img-rows.png}{options: width=100\%}}
+\if{html}{\figure{img-rows.png}{options: style="width=100\%;"}}
 }
 
 \section{Function ID}{

@@ -110,7 +110,7 @@ If you wanted to save it out instead, could use the code below
 
 \section{Figures}{
 
-\if{html}{\figure{basic-two-col.png}{options: width=60\%}}
+\if{html}{\figure{basic-two-col.png}{options: style="width=60\%;"}}
 }
 
 \seealso{

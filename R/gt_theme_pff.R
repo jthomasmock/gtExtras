@@ -54,7 +54,7 @@
 #'        locations = cells_column_labels(prp)
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{gt_theme_pff.png}{options: width=80\%}}
+#' \if{html}{\figure{gt_theme_pff.png}{options: style="width=80\%;"}}
 #'
 #' @family Themes
 gt_theme_pff <- function(gt_object, ..., divider, spanners, rank_col) {

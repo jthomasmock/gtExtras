@@ -57,7 +57,7 @@
 #' # however all the of the rows still match
 #' sliced_data
 #' @section Figures:
-#' \if{html}{\figure{gt_index_style.png}{options: width=50\%}}
+#' \if{html}{\figure{gt_index_style.png}{options: style="width=50\%;"}}
 #'
 #' @family Utilities
 #' @section Function ID:

@@ -47,7 +47,7 @@ alternative for a bar plot. Accepts any range of values, as opposed to
 
 \section{Figures}{
 
-\if{html}{\figure{gt_plt_point.png}{options: width=30\%}}
+\if{html}{\figure{gt_plt_point.png}{options: style="width=30\%;"}}
 }
 
 \section{Function ID}{

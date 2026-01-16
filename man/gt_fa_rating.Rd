@@ -48,7 +48,7 @@ rating_table <- mtcars \%>\%
 
 \section{Figures}{
 
-\if{html}{\figure{fa-stars.png}{options: width=60\%}}
+\if{html}{\figure{fa-stars.png}{options: style="width=60\%;"}}
 }
 
 \section{Function ID}{

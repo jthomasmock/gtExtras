@@ -50,7 +50,7 @@ dplyr::tibble(
 
 \section{Figures}{
 
-\if{html}{\figure{img_header.png}{options: width=80\%}}
+\if{html}{\figure{img_header.png}{options: style="width=80\%;"}}
 }
 
 \seealso{

@@ -47,6 +47,6 @@ Insert an alert icon to a specific column
   gt_alert_icon(warn)
 }\if{html}{\out{</div>}}
 
-\if{html}{\figure{man/figures/gt_alert_icon-binary.png}{options: width=100\%}}
+\if{html}{\figure{man/figures/gt_alert_icon-binary.png}{options: style="width=100\%;"}}
 }
 

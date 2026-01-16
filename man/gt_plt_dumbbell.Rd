@@ -49,6 +49,6 @@ Add a dumbbell plot in place of two columns
 
 \section{Figures}{
 
-\if{html}{\figure{gt_plt_dumbell.png}{options: width=70\%}}
+\if{html}{\figure{gt_plt_dumbell.png}{options: style="width=70\%;"}}
 }
 

@@ -27,7 +27,7 @@
 #'                palette = c("purple", "lightgrey", "green"))
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{color_box.png}{options: width=30\%}}
+#' \if{html}{\figure{color_box.png}{options: style="width=30\%;"}}
 #'
 #' @family Colors
 #' @section Function ID:

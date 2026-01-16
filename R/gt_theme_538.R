@@ -13,7 +13,7 @@
 #'   gt_theme_538()
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{gt_538.png}{options: style="width=100\%;"}}
+#' \if{html}{\figure{gt_538.png}{options: style="width:500px;"}}
 #'
 #' @family Themes
 #' @section Function ID:

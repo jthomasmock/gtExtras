@@ -27,7 +27,7 @@
 #'     )
 #'   )
 #' @section Figures:
-#' \if{html}{\figure{title-car.png}{options: style="width=70\%;"}}
+#' \if{html}{\figure{title-car.png}{options: style="width:500px;"}}
 #'
 
 add_text_img <- function(text, url, height = 30, left = FALSE) {

@@ -64,7 +64,7 @@
 #'   row_sty(3) %>%
 #'   row_sty(5)
 #' ```
-#' \if{html}{\figure{ungrouped-tab.png}{options: style="width=40\%;"}}
+#' \if{html}{\figure{ungrouped-tab.png}{options: style="width:500px;"}}
 #' ### Grouped data
 #'
 #' However, for grouped data, the row indices are representative of the underlying
@@ -77,7 +77,7 @@
 #'   row_sty(3) %>% ## actually row 5
 #'   row_sty(5)     ## actually row 2
 #' ```
-#' \if{html}{\figure{grouped-tab.png}{options: style="width=40\%;"}}
+#' \if{html}{\figure{grouped-tab.png}{options: style="width:500px;"}}
 #'
 #' The `get_row_index()` function gives ability to create an index of the final
 #' output, so you can reference specific rows by number.
@@ -89,14 +89,14 @@
 #'   row_sty(4) %>% ## wrong row, actually row 6 visually
 #'   row_sty(tab_index[4]) ## correct row, actually row 4
 #' ```
-#' \if{html}{\figure{grouped-tab-row4.png}{options: style="width=40\%;"}}
+#' \if{html}{\figure{grouped-tab-row4.png}{options: style="width:500px;"}}
 #' ```r
 #' tab2 %>%
 #'   row_sty(tab_index[1]) %>%
 #'   row_sty(tab_index[3]) %>%
 #'   row_sty(tab_index[5])
 #' ```
-#' \if{html}{\figure{grouped-tab-index.png}{options: style="width=40\%;"}}
+#' \if{html}{\figure{grouped-tab-index.png}{options: style="width:500px;"}}
 #'
 get_row_index <- function(gt_object) {
   is_gt_stop(gt_object)

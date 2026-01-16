@@ -24,7 +24,7 @@
 # #'   gt_fa_repeats(cyl, name = "car")
 # #' ```
 # #' @section Figures:
-# #' \if{html}{\figure{fa-cars.png}{options: width=50\%}}
+# #' \if{html}{\figure{fa-cars.png}{options: width:500px}}
 # #'
 # #' @family Utilities
 # #' @section Function ID:
@@ -120,7 +120,7 @@
 # #'   gt_fa_column(man)
 # #' ```
 # #' @section Figures:
-# #' \if{html}{\figure{fa-column-cars.png}{options: width=50\%}}
+# #' \if{html}{\figure{fa-column-cars.png}{options: width:500px}}
 # #'
 # #' @family Utilities
 # #' @section Function ID:
@@ -225,7 +225,7 @@
 #'   gt_fa_rating(rating, icon = "r-project")
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{fa-stars.png}{options: style="width=60\%;"}}
+#' \if{html}{\figure{fa-stars.png}{options: style="width:500px;"}}
 #'
 #' @family Utilities
 #' @section Function ID:
@@ -304,7 +304,7 @@ gt_fa_rating <- function(
 #'   gt_fa_rank_change(x, font_color = "match")
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{fa_rank_change.png}{options: style="width=5\%;"}}
+#' \if{html}{\figure{fa_rank_change.png}{options: style="width:500px;"}}
 #'
 #' @family Utilities
 gt_fa_rank_change <- function(

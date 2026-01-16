@@ -54,7 +54,7 @@
 #'        locations = cells_column_labels(prp)
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{gt_theme_pff.png}{options: style="width=80\%;"}}
+#' \if{html}{\figure{gt_theme_pff.png}{options: style="width:500px;"}}
 #'
 #' @family Themes
 gt_theme_pff <- function(gt_object, ..., divider, spanners, rank_col) {
@@ -93,7 +93,11 @@ gt_theme_pff <- function(gt_object, ..., divider, spanners, rank_col) {
 
     # add blank span and modify
     built_table <- built_table %>%
-      tab_spanner(columns = c(gt::everything(), -any_of(span_vars)), label = " ", id = "blank") %>%
+      tab_spanner(
+        columns = c(gt::everything(), -any_of(span_vars)),
+        label = " ",
+        id = "blank"
+      ) %>%
       tab_style(
         style = list(
           cell_fill(color = "transparent"),
@@ -126,7 +130,11 @@ gt_theme_pff <- function(gt_object, ..., divider, spanners, rank_col) {
   if (!missing(divider)) {
     built_table <- built_table %>%
       tab_style(
-        style = cell_borders(sides = "left", color = "lightgrey", weight = px(2)),
+        style = cell_borders(
+          sides = "left",
+          color = "lightgrey",
+          weight = px(2)
+        ),
         locations = cells_body(columns = {{ divider }})
       ) %>%
       tab_style(
@@ -153,7 +161,8 @@ gt_theme_pff <- function(gt_object, ..., divider, spanners, rank_col) {
         cell_fill(color = "#585d63"),
         cell_text(color = "white", size = px(10), weight = "bold"),
         cell_borders(
-          sides = c("bottom"), color = "#585d63",
+          sides = c("bottom"),
+          color = "#585d63",
           weight = px(2.5)
         )
       ),

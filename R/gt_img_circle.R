@@ -73,7 +73,7 @@ img_square <- function(value, height, width, border_color, border_weight) {
 #'   gt_img_border(img)
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{gt_img_circle.png}{options: style="width=80\%;"}}
+#' \if{html}{\figure{gt_img_circle.png}{options: style="width:500px;"}}
 #'
 #' @family Utilities
 gt_img_border <- function(gt_object, column, height = 25, width = 25,
@@ -121,7 +121,7 @@ gt_img_border <- function(gt_object, column, height = 25, width = 25,
 #'   gt_img_circle(img)
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{gt_img_circle.png}{options: style="width=80\%;"}}
+#' \if{html}{\figure{gt_img_circle.png}{options: style="width:500px;"}}
 #'
 #' @family Utilities
 #' @section Function ID:

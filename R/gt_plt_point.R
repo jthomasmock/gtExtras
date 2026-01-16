@@ -126,7 +126,7 @@ add_point_plot <- function(data,
 #'   gt::fmt_number(x, suffixing = TRUE, decimals = 1)
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{gt_plt_point.png}{options: style="width=30\%;"}}
+#' \if{html}{\figure{gt_plt_point.png}{options: style="width:500px;"}}
 #'
 #' @family Plotting
 #' @section Function ID:

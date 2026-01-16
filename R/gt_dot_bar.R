@@ -22,7 +22,7 @@
 #'   cols_width(cars ~ px(125))
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{gt_dot_bar.png}{options: style="width=50\%;"}}
+#' \if{html}{\figure{gt_dot_bar.png}{options: style="width:500px;"}}
 #'
 #' @family Themes
 

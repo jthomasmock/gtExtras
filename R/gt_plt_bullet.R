@@ -25,7 +25,7 @@
 #'                palette = c("lightblue", "black")) %>%
 #'  gt_theme_538()
 #' ```
-#' \if{html}{\figure{gt_bullet.png}{options: style="width=100\%;"}}
+#' \if{html}{\figure{gt_bullet.png}{options: style="width:500px;"}}
 #'
 #' @family Themes
 #' @section Function ID:

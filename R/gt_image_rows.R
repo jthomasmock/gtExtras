@@ -27,7 +27,7 @@
 #'    tab_options(data_row.padding = px(1))
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{img-rows.png}{options: width=100\%}}
+#' \if{html}{\figure{img-rows.png}{options: width:500px}}
 #'
 #' @family Utilities
 #' @section Function ID:
@@ -41,10 +41,16 @@ gt_img_rows <- function(gt_object, columns, img_source = "web", height = 30) {
     data = gt_object
   )
 
-  stub_var <- gt_object[["_boxhead"]][["var"]][which(gt_object[["_boxhead"]][["type"]] == "stub")]
-  grp_var <- gt_object[["_boxhead"]][["var"]][which(gt_object[["_boxhead"]][["type"]] == "row_group")]
+  stub_var <- gt_object[["_boxhead"]][["var"]][which(
+    gt_object[["_boxhead"]][["type"]] == "stub"
+  )]
+  grp_var <- gt_object[["_boxhead"]][["var"]][which(
+    gt_object[["_boxhead"]][["type"]] == "row_group"
+  )]
 
-  stopifnot("img_source must be 'web' or 'local'" = img_source %in% c("web", "local"))
+  stopifnot(
+    "img_source must be 'web' or 'local'" = img_source %in% c("web", "local")
+  )
 
   gt_object %>%
     text_transform(

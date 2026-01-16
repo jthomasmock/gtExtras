@@ -17,7 +17,7 @@
 #'   gt_add_divider(columns = "cyl", style = "dashed")
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{add-divider.png}{options: style="width=70\%;"}}
+#' \if{html}{\figure{add-divider.png}{options: style="width:500px;"}}
 #'
 #' @family Utilities
 #' @section Function ID:

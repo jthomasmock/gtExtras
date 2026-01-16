@@ -15,7 +15,7 @@
 #'   tab_header(title = "Styled like dot matrix printer paper")
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{gt_dot_matrix.png}{options: style="width=100\%;"}}
+#' \if{html}{\figure{gt_dot_matrix.png}{options: style="width:500px;"}}
 #'
 #' @family Themes
 

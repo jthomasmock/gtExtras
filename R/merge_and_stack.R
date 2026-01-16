@@ -33,7 +33,7 @@
 #'  gt_img_rows(team_wordmark)
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{merge-stack.png}{options: style="width=50\%;"}}
+#' \if{html}{\figure{merge-stack.png}{options: style="width:500px;"}}
 #'
 #' @family Utilities
 #' @section Function ID:
@@ -115,7 +115,7 @@ gt_merge_stack <- function(gt_object, col1, col2, palette = c("black", "grey"), 
 #'    gt_merge_stack_color(value, color_by)
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{merge-stack-color.png}{options: style="width=50\%;"}}
+#' \if{html}{\figure{merge-stack-color.png}{options: style="width:500px;"}}
 #'
 #' @family Utilities
 

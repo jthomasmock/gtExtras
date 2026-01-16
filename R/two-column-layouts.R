@@ -153,7 +153,7 @@ gt_double_table <- function(data, gt_fn, nrows = NULL, noisy = TRUE) {
 #'                       vwidth = 550, vheight = 620)
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{basic-two-col.png}{options: style="width=60\%;"}}
+#' \if{html}{\figure{basic-two-col.png}{options: style="width:500px;"}}
 #'
 gt_two_column_layout <- function(tables = NULL, output = "viewer",
                                  filename = NULL, path = NULL,

@@ -28,7 +28,7 @@
 #'   fmt_symbol_first(hp, symbol = "&#176;", suffix = "F", symbol_first = TRUE)
 #'
 #' @section Figures:
-#' \if{html}{\figure{gt_fmt_first.png}{options: style="width=100\%;"}}
+#' \if{html}{\figure{gt_fmt_first.png}{options: style="width:500px;"}}
 #'
 #' @family Utilities
 #' @section Function ID:

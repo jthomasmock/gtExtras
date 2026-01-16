@@ -57,14 +57,17 @@
 #' # however all the of the rows still match
 #' sliced_data
 #' @section Figures:
-#' \if{html}{\figure{gt_index_style.png}{options: style="width=50\%;"}}
+#' \if{html}{\figure{gt_index_style.png}{options: style="width:500px;"}}
 #'
 #' @family Utilities
 #' @section Function ID:
 #' 2-20
 
 gt_index <- function(gt_object, column, as_vector = TRUE) {
-  stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
+  stopifnot(
+    "'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in%
+      class(gt_object)
+  )
   stopifnot("'as_vector' must be a TRUE or FALSE" = is.logical(as_vector))
 
   if (length(gt_object[["_row_groups"]]) >= 1) {

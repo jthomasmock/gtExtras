@@ -11,7 +11,7 @@
 #'   gt() %>%
 #'   gt_theme_guardian()
 #' @section Figures:
-#' \if{html}{\figure{gt_guardian.png}{options: style="width=100\%;"}}
+#' \if{html}{\figure{gt_guardian.png}{options: style="width:500px;"}}
 #'
 #' @family Themes
 #' @section Function ID:

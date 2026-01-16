@@ -19,7 +19,7 @@
 #'   gt_highlight_cols(cyl, fill = "red", alpha = 0.5)
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{highlight-col.png}{options: style="width=70\%;"}}
+#' \if{html}{\figure{highlight-col.png}{options: style="width:500px;"}}
 #'
 #' @family Utilities
 #' @section Function ID:

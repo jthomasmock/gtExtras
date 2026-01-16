@@ -53,13 +53,13 @@
 #'    palette = "colorblindr::OkabeIto_black", domain = c(3,4,5))
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{basic-pal.png}{options: style="width=100\%;"}}
+#' \if{html}{\figure{basic-pal.png}{options: style="width:500px;"}}
 #'
-#' \if{html}{\figure{blue-pal.png}{options: style="width=100\%;"}}
+#' \if{html}{\figure{blue-pal.png}{options: style="width:500px;"}}
 #'
-#' \if{html}{\figure{custom-pal.png}{options: style="width=100\%;"}}
+#' \if{html}{\figure{custom-pal.png}{options: style="width:500px;"}}
 #'
-#' \if{html}{\figure{discrete-pal.png}{options: style="width=100\%;"}}
+#' \if{html}{\figure{discrete-pal.png}{options: style="width:500px;"}}
 #'
 #' @family Colors
 #' @section Function ID:

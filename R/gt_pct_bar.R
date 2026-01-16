@@ -49,7 +49,7 @@
 #'   gt() %>%
 #'   gt_plt_bar_stack(column = list_data)
 #' ```
-#' \if{html}{\figure{plt-bar-stack.png}{options: style="width=70\%;"}}
+#' \if{html}{\figure{plt-bar-stack.png}{options: style="width:500px;"}}
 
 gt_plt_bar_stack <- function(
   gt_object,

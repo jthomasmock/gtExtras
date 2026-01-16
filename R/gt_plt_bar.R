@@ -24,7 +24,7 @@
 #'   gt_plt_bar(column = mpg, keep_column = TRUE)
 #' ```
 #'
-#' \if{html}{\figure{gt_plt_bar.png}{options: style="width=100\%;"}}
+#' \if{html}{\figure{gt_plt_bar.png}{options: style="width:500px;"}}
 #'
 #' @family Plotting
 #' @section Function ID:

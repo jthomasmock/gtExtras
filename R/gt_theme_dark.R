@@ -13,7 +13,7 @@
 #'   tab_header(title = "Dark mode table")
 #'
 #' @section Figures:
-#' \if{html}{\figure{gt_dark.png}{options: style="width=100\%;"}}
+#' \if{html}{\figure{gt_dark.png}{options: style="width:500px;"}}
 #'
 #' @family Themes
 #' @section Function ID:

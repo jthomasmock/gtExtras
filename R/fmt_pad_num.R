@@ -18,7 +18,7 @@
 #'   gt() %>%
 #'   fmt_pad_num(columns = numbers, nsmall = 4)
 #' @section Figures:
-#' \if{html}{\figure{fmt_pad_num.png}{options: style="width=20\%;"}}
+#' \if{html}{\figure{fmt_pad_num.png}{options: style="width:500px;"}}
 #'
 #' @family Utilities
 #' @section Function ID:

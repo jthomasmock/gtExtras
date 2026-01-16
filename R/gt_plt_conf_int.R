@@ -46,8 +46,8 @@
 #'     )
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{gt_plt_ci_calc.png}{options: style="width=70\%;"}}
-#' \if{html}{\figure{gt_plt_ci_vals.png}{options: style="width=70\%;"}}
+#' \if{html}{\figure{gt_plt_ci_calc.png}{options: style="width:500px;"}}
+#' \if{html}{\figure{gt_plt_ci_vals.png}{options: style="width:500px;"}}
 #'
 #' @family Themes
 #' @section Function ID:

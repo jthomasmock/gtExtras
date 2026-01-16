@@ -13,7 +13,7 @@
 #'   tab_header(title = "Table styled like the NY Times")
 #'
 #' @section Figures:
-#' \if{html}{\figure{gt_nyt.png}{options: style="width=100\%;"}}
+#' \if{html}{\figure{gt_nyt.png}{options: style="width:500px;"}}
 #'
 #' @family Themes
 #' @section Function ID:

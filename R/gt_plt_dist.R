@@ -28,7 +28,7 @@
 #'     gt_plt_dist(mpg_data)
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{gt_plt_dist.png}{options: style="width=50\%;"}}
+#' \if{html}{\figure{gt_plt_dist.png}{options: style="width:500px;"}}
 #'
 #' @family Plotting
 #' @section Function ID:

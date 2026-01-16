@@ -1,4 +1,3 @@
-
 #' Add HTML-based bar plots into rows of a `gt` table
 #' @description
 #' The `gt_plt_bar_pct` function takes an existing `gt_tbl` object and
@@ -45,37 +44,44 @@
 #'   )
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{gt_bar_plot.png}{options: width=100\%}}
+#' \if{html}{\figure{gt_bar_plot.png}{options: width:500px}}
 #'
 #' @family Plotting
 #' @section Function ID:
 #' 3-5
 
 gt_plt_bar_pct <- function(
-    gt_object,
-    column,
-    height = 16,
-    width = 100,
-    fill = "purple",
-    background = "#e1e1e1",
-    scaled = FALSE,
-    labels = FALSE,
-    label_cutoff = 0.40,
-    decimals = 1,
-    font_style = "bold",
-    font_size = "10px") {
+  gt_object,
+  column,
+  height = 16,
+  width = 100,
+  fill = "purple",
+  background = "#e1e1e1",
+  scaled = FALSE,
+  labels = FALSE,
+  label_cutoff = 0.40,
+  decimals = 1,
+  font_style = "bold",
+  font_size = "10px"
+) {
+  stopifnot(
+    `'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?` = "gt_tbl" %in%
+      class(gt_object)
+  )
 
-
-  stopifnot(`'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?` = "gt_tbl" %in%
-    class(gt_object))
-
-  stopifnot('label_cutoff must be a number between 0 and 1' = dplyr::between(label_cutoff, 0, 1))
+  stopifnot(
+    'label_cutoff must be a number between 0 and 1' = dplyr::between(
+      label_cutoff,
+      0,
+      1
+    )
+  )
 
   # ensure font_style is one of the accepted values
   stopifnot(
-    '`font_style` argument must be "bold", "normal", or "italic"' =
-      font_style %in% c("bold", "normal", "italic")
-    )
+    '`font_style` argument must be "bold", "normal", or "italic"' = font_style %in%
+      c("bold", "normal", "italic")
+  )
 
   all_cols <- gt_index(gt_object, column = {{ column }}, as_vector = FALSE)
 
@@ -89,7 +95,6 @@ gt_plt_bar_pct <- function(
   col_to_widen <- rlang::new_formula(col_name, px(width))
 
   bar_plt_html <- function(xy) {
-
     if (length(na.omit(xy)) == 0) {
       max_x <- 0
     } else {
@@ -97,8 +102,7 @@ gt_plt_bar_pct <- function(
     }
 
     bar <- lapply(data_in, function(x) {
-
-      scaled_value <- if(isFALSE(scaled)) {
+      scaled_value <- if (isFALSE(scaled)) {
         x / max_x * 100
       } else {
         x
@@ -106,7 +110,7 @@ gt_plt_bar_pct <- function(
 
       if (labels) {
         # adjust values for labeling // scale_label
-        label_values <- if(scaled) {
+        label_values <- if (scaled) {
           x
         } else {
           x / max_x * 100
@@ -116,27 +120,46 @@ gt_plt_bar_pct <- function(
         label <- glue::glue("{round(label_values, decimals)}%")
 
         if (x < (label_cutoff * max_x)) {
-
           css_styles <- paste0(
-            "background:", fill,";",
-            "width:", scaled_value, "%;",
-            "height:", height, "px;",
+            "background:",
+            fill,
+            ";",
+            "width:",
+            scaled_value,
+            "%;",
+            "height:",
+            height,
+            "px;",
             "display:flex;",
             "align-items:center;",
             "justify-content:center;",
-            "color:", ideal_fgnd_color(background),";",
-            "font-weight:", font_style,";",
-            "font-size:", font_size, ";",
+            "color:",
+            ideal_fgnd_color(background),
+            ";",
+            "font-weight:",
+            font_style,
+            ";",
+            "font-size:",
+            font_size,
+            ";",
             "position:relative;"
           )
 
           span_styles <- paste0(
-            "color:", ideal_fgnd_color(background),";",
+            "color:",
+            ideal_fgnd_color(background),
+            ";",
             "position:absolute;",
             "left:0%;",
-            "margin-left:", scaled_value * width/100, "px;",
-            "font-weight:", font_style,";",
-            "font-size:", font_size,";"
+            "margin-left:",
+            scaled_value * width / 100,
+            "px;",
+            "font-weight:",
+            font_style,
+            ";",
+            "font-size:",
+            font_size,
+            ";"
           )
 
           glue::glue(
@@ -144,11 +167,16 @@ gt_plt_bar_pct <- function(
             "<span style='{span_styles}'>{label}</span></div>"
           )
         } else {
-
           css_styles <- paste0(
-            "background:", fill,";",
-            "width:", scaled_value, "%;",
-            "height:", height, "px;",
+            "background:",
+            fill,
+            ";",
+            "width:",
+            scaled_value,
+            "%;",
+            "height:",
+            height,
+            "px;",
             "display:flex;",
             "align-items:center;",
             "justify-content:flex-start;",
@@ -156,12 +184,18 @@ gt_plt_bar_pct <- function(
           )
 
           span_styles <- paste0(
-            "color:", ideal_fgnd_color(fill),";",
+            "color:",
+            ideal_fgnd_color(fill),
+            ";",
             "position:absolute;",
             "left:0px;",
             "margin-left:5px;",
-            "font-weight:", font_style,";",
-            "font-size:", font_size,";"
+            "font-weight:",
+            font_style,
+            ";",
+            "font-size:",
+            font_size,
+            ";"
           )
 
           glue::glue(
@@ -169,17 +203,19 @@ gt_plt_bar_pct <- function(
             "<span style='{span_styles}'>{label}</span></div>"
           )
         }
-      } else if(!is.na(x)) {
+      } else if (!is.na(x)) {
         glue::glue(
           "<div style='background:{fill};width:{scaled_value}%;height:{height}px;'></div>" # no labels added
         )
-      } else if(is.na(x)){
+      } else if (is.na(x)) {
         "<div style='background:transparent;width:0%;height:{height}px;'></div>" # no labels added
       }
     })
 
     chart <- lapply(bar, function(bar) {
-      glue::glue("<div style='flex-grow:1;margin-left:8px;background:{background};'>{bar}</div>")
+      glue::glue(
+        "<div style='flex-grow:1;margin-left:8px;background:{background};'>{bar}</div>"
+      )
     })
 
     chart
@@ -192,11 +228,13 @@ gt_plt_bar_pct <- function(
     invisible(force(x))
   }
 
-  quiet(gt_object %>%
-    cols_width(col_to_widen) %>%
-    text_transform(
-      locations = cells_body(columns = {{ column }}),
-      fn = quiet(bar_plt_html)
-    ) %>%
-    cols_align(align = "left", columns = {{ column }}))
+  quiet(
+    gt_object %>%
+      cols_width(col_to_widen) %>%
+      text_transform(
+        locations = cells_body(columns = {{ column }}),
+        fn = quiet(bar_plt_html)
+      ) %>%
+      cols_align(align = "left", columns = {{ column }})
+  )
 }

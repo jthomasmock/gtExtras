@@ -12,7 +12,7 @@
 #'   gt_theme_excel() %>%
 #'   tab_header(title = "Styled like your old pal, Excel")
 #' @section Figures:
-#' \if{html}{\figure{gt_excel.png}{options: style="width=75\%;"}}
+#' \if{html}{\figure{gt_excel.png}{options: style="width:500px;"}}
 #'
 #' @family Themes
 #' @section Function ID:

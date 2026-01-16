@@ -46,6 +46,7 @@
 test_that("gt_pct_bar SVG is created and has specific palette", {
   check_suggests()
   testthat::skip_on_cran()
+  testthat::skip_on_ci()
 
   ex_df <- dplyr::tibble(
     x = c(

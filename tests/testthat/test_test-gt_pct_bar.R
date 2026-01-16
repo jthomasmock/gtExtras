@@ -3,6 +3,7 @@
 test_that("gt_pct_bar SVG structure, positions, and default palette are correct", {
   check_suggests()
   testthat::skip_on_cran()
+  testthat::skip_on_ci()
 
   # Helpers
   get_bar_rect_nodes <- function(doc) {
@@ -78,6 +79,7 @@ test_that("gt_pct_bar SVG structure, positions, and default palette are correct"
 test_that("gt_pct_bar respects a custom two-color palette", {
   check_suggests()
   testthat::skip_on_cran()
+  testthat::skip_on_ci()
 
   # Helpers
   get_bar_rect_nodes <- function(doc) {

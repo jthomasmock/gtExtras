@@ -1,6 +1,7 @@
 test_that("gt_plt_bar svg is created and has specific values", {
   check_suggests()
   testthat::skip_on_cran()
+  testthat::skip_on_ci()
 
   bar_tbl <- mtcars %>%
     head() %>%

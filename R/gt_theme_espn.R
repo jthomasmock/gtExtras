@@ -11,7 +11,7 @@
 #'   gt() %>%
 #'   gt_theme_espn()
 #' @section Figures:
-#' \if{html}{\figure{gt_espn.png}{options: width=100\%}}
+#' \if{html}{\figure{gt_espn.png}{options: style="width=100\%;"}}
 #'
 #' @family Themes
 #' @section Function ID:

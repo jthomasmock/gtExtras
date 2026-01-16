@@ -50,7 +50,7 @@ gt_img_tab <- dplyr::tibble(
 
 \section{Figures}{
 
-\if{html}{\figure{gt_img_circle.png}{options: width=80\%}}
+\if{html}{\figure{gt_img_circle.png}{options: style="width=80\%;"}}
 }
 
 \section{Function ID}{

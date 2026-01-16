@@ -75,7 +75,7 @@ ex_tab <- tab_df \%>\%
   gt_plt_bar_stack(column = list_data)
 }\if{html}{\out{</div>}}
 
-\if{html}{\figure{plt-bar-stack.png}{options: width=70\%}}
+\if{html}{\figure{plt-bar-stack.png}{options: style="width=70\%;"}}
 }
 
 \seealso{

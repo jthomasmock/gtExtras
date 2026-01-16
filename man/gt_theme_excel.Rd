@@ -21,7 +21,7 @@ Apply Excel-style theme to an existing gt table
 }
 \section{Figures}{
 
-\if{html}{\figure{gt_excel.png}{options: width=75\%}}
+\if{html}{\figure{gt_excel.png}{options: style="width=75\%;"}}
 }
 
 \section{Function ID}{

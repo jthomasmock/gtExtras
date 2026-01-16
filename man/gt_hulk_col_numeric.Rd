@@ -69,11 +69,11 @@ can indicate low or "bad" value, and green can indicate a high or "good" value.
 
 \section{Figures}{
 
-\if{html}{\figure{hulk_basic.png}{options: width=100\%}}
+\if{html}{\figure{hulk_basic.png}{options: style="width=100\%;"}}
 
-\if{html}{\figure{hulk_trim.png}{options: width=100\%}}
+\if{html}{\figure{hulk_trim.png}{options: style="width=100\%;"}}
 
-\if{html}{\figure{hulk_reverse.png}{options: width=100\%}}
+\if{html}{\figure{hulk_reverse.png}{options: style="width=100\%;"}}
 }
 
 \section{Function ID}{

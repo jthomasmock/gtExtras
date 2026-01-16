@@ -24,7 +24,7 @@
 #'   gt::gt() %>%
 #'   gt_alert_icon(warn)
 #' ```
-#' \if{html}{\figure{man/figures/gt_alert_icon-binary.png}{options: width=100\%}}
+#' \if{html}{\figure{man/figures/gt_alert_icon-binary.png}{options: style="width=100\%;"}}
 gt_alert_icon <- function(gt_object,
                           column,
                           palette = c("#a962b6", "#f1f1f1", "#378e38"),

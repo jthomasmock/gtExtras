@@ -93,7 +93,7 @@ add_pcttile_plot <- function(data, palette, add_label, width) {
 #'   gt_plt_percentile(dot_plot)
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{gt_plt_percentile.png}{options: width=30\%}}
+#' \if{html}{\figure{gt_plt_percentile.png}{options: style="width=30\%;"}}
 #'
 #' @family Plotting
 #' @section Function ID:

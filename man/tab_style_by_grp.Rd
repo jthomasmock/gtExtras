@@ -43,7 +43,7 @@ test_tab <- df_in \%>\%
 
 \section{Figures}{
 
-\if{html}{\figure{grp-tab-style.png}{options: width=40\%}}
+\if{html}{\figure{grp-tab-style.png}{options: style="width=40\%;"}}
 }
 
 \section{Function ID}{

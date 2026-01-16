@@ -49,7 +49,7 @@ resulting only in colored arrows.
 
 \section{Figures}{
 
-\if{html}{\figure{fa_rank_change.png}{options: width=5\%}}
+\if{html}{\figure{fa_rank_change.png}{options: style="width=5\%;"}}
 }
 
 \seealso{

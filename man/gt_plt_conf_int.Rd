@@ -78,8 +78,8 @@ pre_calc_ci_tab <- dplyr::tibble(
 
 \section{Figures}{
 
-\if{html}{\figure{gt_plt_ci_calc.png}{options: width=70\%}}
-\if{html}{\figure{gt_plt_ci_vals.png}{options: width=70\%}}
+\if{html}{\figure{gt_plt_ci_calc.png}{options: style="width=70\%;"}}
+\if{html}{\figure{gt_plt_ci_vals.png}{options: style="width=70\%;"}}
 }
 
 \section{Function ID}{

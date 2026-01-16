@@ -24,7 +24,7 @@
 #'   )
 #'
 #' @section Figures:
-#' \if{html}{\figure{gt_pad_fn.png}{options: width=20\%}}
+#' \if{html}{\figure{gt_pad_fn.png}{options: style="width=20\%;"}}
 #'
 #' @family Utilities
 #' @section Function ID:

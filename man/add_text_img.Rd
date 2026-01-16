@@ -40,7 +40,7 @@ the header of a table via \code{gt::tab_header()}.
 
 \section{Figures}{
 
-\if{html}{\figure{title-car.png}{options: width=70\%}}
+\if{html}{\figure{title-car.png}{options: style="width=70\%;"}}
 }
 
 \examples{

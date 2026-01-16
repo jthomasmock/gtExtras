@@ -48,7 +48,7 @@ bullet_tab <- tibble::rownames_to_column(mtcars) \%>\%
  gt_theme_538()
 }\if{html}{\out{</div>}}
 
-\if{html}{\figure{gt_bullet.png}{options: width=100\%}}
+\if{html}{\figure{gt_bullet.png}{options: style="width=100\%;"}}
 }
 
 \section{Function ID}{

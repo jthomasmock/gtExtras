@@ -45,7 +45,7 @@ basic_col <- head(mtcars) \%>\%
 
 \section{Figures}{
 
-\if{html}{\figure{highlight-col.png}{options: width=70\%}}
+\if{html}{\figure{highlight-col.png}{options: style="width=70\%;"}}
 }
 
 \section{Function ID}{

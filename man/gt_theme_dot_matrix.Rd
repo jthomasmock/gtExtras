@@ -34,7 +34,7 @@ themed_tab <- head(mtcars) \%>\%
 
 \section{Figures}{
 
-\if{html}{\figure{gt_dot_matrix.png}{options: width=100\%}}
+\if{html}{\figure{gt_dot_matrix.png}{options: style="width=100\%;"}}
 }
 
 \seealso{

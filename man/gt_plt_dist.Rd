@@ -62,7 +62,7 @@ wanting to plot more traditional spark\strong{lines}, you can use \code{gtExtras
 
 \section{Figures}{
 
-\if{html}{\figure{gt_plt_dist.png}{options: width=50\%}}
+\if{html}{\figure{gt_plt_dist.png}{options: style="width=50\%;"}}
 }
 
 \section{Function ID}{

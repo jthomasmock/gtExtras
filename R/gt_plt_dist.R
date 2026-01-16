@@ -28,7 +28,7 @@
 #'     gt_plt_dist(mpg_data)
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{gt_plt_dist.png}{options: width=50\%}}
+#' \if{html}{\figure{gt_plt_dist.png}{options: style="width=50\%;"}}
 #'
 #' @family Plotting
 #' @section Function ID:
@@ -169,7 +169,7 @@ gt_plt_dist <- function(gt_object,
           {
             if(bw > 0){
               geom_histogram(
-                aes(x = .data$y), 
+                aes(x = .data$y),
                 color = line_color, fill = fill_color, binwidth = bw,
                 linewidth = 0.2
               )
@@ -177,16 +177,16 @@ gt_plt_dist <- function(gt_object,
               bw <- 1
 
               geom_histogram(
-                aes(x = .data$y), 
+                aes(x = .data$y),
                 color = line_color, fill = fill_color, binwidth = bw,
                 linewidth = 0.2
               )
             } else {
-    
+
               hist_breaks <- graphics::hist(data_in[!is.na(data_in)], breaks = "FD", plot=FALSE)$breaks
-    
+
               geom_histogram(
-                aes(x = .data$y), 
+                aes(x = .data$y),
                 color = line_color, fill = fill_color, breaks = hist_breaks,
                 linewidth = 0.2
               )

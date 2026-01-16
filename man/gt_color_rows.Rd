@@ -92,13 +92,13 @@ is simpler than \code{data_color()}.
 
 \section{Figures}{
 
-\if{html}{\figure{basic-pal.png}{options: width=100\%}}
+\if{html}{\figure{basic-pal.png}{options: style="width=100\%;"}}
 
-\if{html}{\figure{blue-pal.png}{options: width=100\%}}
+\if{html}{\figure{blue-pal.png}{options: style="width=100\%;"}}
 
-\if{html}{\figure{custom-pal.png}{options: width=100\%}}
+\if{html}{\figure{custom-pal.png}{options: style="width=100\%;"}}
 
-\if{html}{\figure{discrete-pal.png}{options: width=100\%}}
+\if{html}{\figure{discrete-pal.png}{options: style="width=100\%;"}}
 }
 
 \section{Function ID}{

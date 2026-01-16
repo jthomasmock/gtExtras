@@ -44,7 +44,7 @@ basic_divider <- head(mtcars) \%>\%
 
 \section{Figures}{
 
-\if{html}{\figure{add-divider.png}{options: width=70\%}}
+\if{html}{\figure{add-divider.png}{options: style="width=70\%;"}}
 }
 
 \section{Function ID}{

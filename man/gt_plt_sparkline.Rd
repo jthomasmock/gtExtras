@@ -52,7 +52,7 @@ distributions (ie density/histograms) you can instead use: \code{gtExtras::gt_pl
 
 \section{Figures}{
 
-\if{html}{\figure{gt_plt_sparkline.png}{options: width=50\%}}
+\if{html}{\figure{gt_plt_sparkline.png}{options: style="width=50\%;"}}
 }
 
 \section{Function ID}{

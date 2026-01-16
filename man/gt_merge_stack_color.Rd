@@ -56,7 +56,7 @@ values.
 
 \section{Figures}{
 
-\if{html}{\figure{merge-stack-color.png}{options: width=50\%}}
+\if{html}{\figure{merge-stack-color.png}{options: style="width=50\%;"}}
 }
 
 \seealso{

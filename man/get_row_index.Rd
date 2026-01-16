@@ -76,7 +76,7 @@ the visual representation and the output.
   row_sty(5)
 }\if{html}{\out{</div>}}
 
-\if{html}{\figure{ungrouped-tab.png}{options: width=40\%}}
+\if{html}{\figure{ungrouped-tab.png}{options: style="width=40\%;"}}
 }
 
 \subsection{Grouped data}{
@@ -92,7 +92,7 @@ tab2 \%>\%
   row_sty(5)     ## actually row 2
 }\if{html}{\out{</div>}}
 
-\if{html}{\figure{grouped-tab.png}{options: width=40\%}}
+\if{html}{\figure{grouped-tab.png}{options: style="width=40\%;"}}
 
 The \code{get_row_index()} function gives ability to create an index of the final
 output, so you can reference specific rows by number.
@@ -104,7 +104,7 @@ tab2 \%>\%
   row_sty(tab_index[4]) ## correct row, actually row 4
 }\if{html}{\out{</div>}}
 
-\if{html}{\figure{grouped-tab-row4.png}{options: width=40\%}}
+\if{html}{\figure{grouped-tab-row4.png}{options: style="width=40\%;"}}
 
 \if{html}{\out{<div class="sourceCode r">}}\preformatted{tab2 \%>\%
   row_sty(tab_index[1]) \%>\%
@@ -112,7 +112,7 @@ tab2 \%>\%
   row_sty(tab_index[5])
 }\if{html}{\out{</div>}}
 
-\if{html}{\figure{grouped-tab-index.png}{options: width=40\%}}
+\if{html}{\figure{grouped-tab-index.png}{options: style="width=40\%;"}}
 }
 }
 

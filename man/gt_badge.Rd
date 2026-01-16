@@ -42,7 +42,7 @@ head(mtcars) \%>\%
 
 \section{Figures}{
 
-\if{html}{\figure{gt_badge.png}{options: width=50\%}}
+\if{html}{\figure{gt_badge.png}{options: style="width=50\%;"}}
 }
 
 \seealso{

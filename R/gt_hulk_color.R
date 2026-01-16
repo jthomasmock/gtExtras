@@ -35,11 +35,11 @@
 #'    gt_hulk_col_numeric(mpg:disp, reverse = TRUE)
 #' ```
 #' @section Figures:
-#' \if{html}{\figure{hulk_basic.png}{options: width=100\%}}
+#' \if{html}{\figure{hulk_basic.png}{options: style="width=100\%;"}}
 #'
-#' \if{html}{\figure{hulk_trim.png}{options: width=100\%}}
+#' \if{html}{\figure{hulk_trim.png}{options: style="width=100\%;"}}
 #'
-#' \if{html}{\figure{hulk_reverse.png}{options: width=100\%}}
+#' \if{html}{\figure{hulk_reverse.png}{options: style="width=100\%;"}}
 #'
 #' @family Colors
 #' @section Function ID:
